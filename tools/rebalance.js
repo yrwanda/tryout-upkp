@@ -1,0 +1,48 @@
+// Menyeimbangkan posisi kunci jawaban (A-E) untuk file bank tambahan (x2_*.js) dengan rotasi opsi.
+// Soal dengan pembahasan yang menyebut huruf pilihan atau opsi berurutan (angka/ordinal) tidak diubah.
+// Pemakaian: node tools/rebalance.js .
+const fs = require('fs'), path = require('path'), vm = require('vm');
+const root = process.argv[2] || '.';
+const bankDir = path.join(root, 'js/bank');
+const all = fs.readdirSync(bankDir).filter(f => f.endsWith('.js'));
+const files = all.filter(f => !f.startsWith('x2_')).concat(all.filter(f => f.startsWith('x2_')));
+const ctx = { window: {} }; vm.createContext(ctx);
+const fileParts = {}; const headers = {};
+for (const f of files) {
+  const src = fs.readFileSync(path.join(bankDir, f), 'utf8');
+  headers[f] = src.split('\n').filter(l => l.startsWith('//')).join('\n');
+  const before = {}; for (const k in (ctx.window.BANK || {})) before[k] = ctx.window.BANK[k].length;
+  vm.runInContext(src, ctx, { filename: f });
+  const parts = [];
+  for (const k in ctx.window.BANK) { const n0 = before[k] || 0; if (ctx.window.BANK[k].length > n0) parts.push({ key: k, qs: ctx.window.BANK[k].slice(n0) }); }
+  fileParts[f] = parts;
+}
+const order = files.flatMap(f => fileParts[f].flatMap(p => p.qs));
+// Opsional: berkas JSON {id: {o:[...5], a:index}} untuk menimpa opsi sebelum penyeimbangan
+if (process.argv[3]) { const ov = JSON.parse(fs.readFileSync(process.argv[3], 'utf8')); let n = 0; order.forEach(q => { if (ov[q.id]) { q.o = ov[q.id].o; q.a = ov[q.id].a; n++; } }); console.log('opsi ditimpa:', n); }
+const x2 = new Set(files.filter(f => f.startsWith('x2_')).flatMap(f => fileParts[f].flatMap(p => p.qs)));
+const letterRef = /\b(pilihan|kalimat|opsi|jawaban)\s+[A-E]\b|\([A-E]\)|\b[A-E]\s*(dan|,|-|serta)\s*[A-E]\b/i;
+const ordered = q => q.o.every(s => /^\d/.test(s)) || q.o.every(s => /^(Satu|Dua|Tiga|Empat|Lima|Enam|Tujuh|Delapan|Sembilan|Sepuluh|Sila |Alinea |Pasal |Arah kebijakan|Misi |Tipe |Inspektorat Wilayah)/.test(s)) || q.o.every(s => s.length < 22 && /\d/.test(s));
+const cnt = [0, 0, 0, 0, 0];
+const before = [0, 0, 0, 0, 0]; order.forEach(q => before[q.a]++);
+order.forEach(q => { if (!x2.has(q) || letterRef.test(q.e) || ordered(q)) cnt[q.a]++; });
+const target = Math.ceil(order.length / 5);
+let moved = 0;
+order.forEach(q => {
+  if (!x2.has(q) || letterRef.test(q.e) || ordered(q)) return;
+  let best = q.a;
+  if (cnt[q.a] >= target) best = cnt.indexOf(Math.min(...cnt));
+  if (best !== q.a) { const shift = (best - q.a + 5) % 5; const n = new Array(5); q.o.forEach((o, i) => n[(i + shift) % 5] = o); q.o = n; q.a = best; moved++; }
+  cnt[best]++;
+});
+const after = [0, 0, 0, 0, 0]; order.forEach(q => after[q.a]++);
+console.log('sebelum:', before.join(' '), '| sesudah:', after.join(' '), '| dirotasi:', moved);
+const js = s => JSON.stringify(s);
+for (const f of files) {
+  if (!f.startsWith('x2_')) continue;
+  let out = headers[f] + '\nwindow.BANK = window.BANK || {};\n';
+  for (const { key, qs } of fileParts[f]) {
+    out += 'window.BANK.' + key + '.push(\n' + qs.map(q => `  {\n    id: ${js(q.id)},${q.imi ? ' imi: true,' : ''} topic: ${js(q.topic)},\n    q: ${js(q.q)},\n    o: [${q.o.map(js).join(', ')}],\n    a: ${q.a},\n    e: ${js(q.e)},\n    src: ${js(q.src)}\n  }`).join(',\n') + '\n);\n\n';
+  }
+  fs.writeFileSync(path.join(bankDir, f), out, 'utf8');
+}
