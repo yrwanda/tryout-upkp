@@ -387,8 +387,8 @@ window.BANK.sotk.push(
     q: "Perbedaan mendasar antara instansi vertikal kementerian dan perangkat daerah adalah ...",
     o: ["Instansi vertikal dipimpin gubernur, perangkat daerah dipimpin menteri", "Instansi vertikal hanya ada di ibu kota provinsi, perangkat daerah hanya di kabupaten/kota", "Instansi vertikal melaksanakan tugas kementerian di daerah dan bertanggung jawab kepada pimpinan kementerian, perangkat daerah membantu kepala daerah", "Instansi vertikal dibiayai APBD, perangkat daerah dibiayai APBN", "Instansi vertikal menangani urusan konkuren, perangkat daerah menangani urusan absolut"],
     a: 2,
-    e: "Instansi vertikal adalah perangkat kementerian yang berada di daerah untuk melaksanakan urusan pemerintahan pusat (mis. Kanwil Ditjen Imigrasi sebagai instansi vertikal Kemenimipas di provinsi, melapor ke Dirjen Imigrasi). Perangkat daerah adalah unsur pembantu kepala daerah dan DPRD dalam urusan pemerintahan yang menjadi kewenangan daerah (PP 18/2016). Keimigrasian termasuk urusan pemerintahan absolut (UU 23/2014 Pasal 10: politik luar negeri, pertahanan, keamanan, yustisi, moneter, agama) sehingga dijalankan instansi vertikal, bukan perangkat daerah.",
-    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 1-2; UU No. 23 Tahun 2014 Pasal 10; PP No. 18 Tahun 2016"
+    e: "Instansi vertikal adalah perangkat kementerian yang berada di daerah untuk melaksanakan urusan pemerintahan pusat (mis. Kanwil Ditjen Imigrasi sebagai instansi vertikal Kemenimipas di provinsi, melapor ke Dirjen Imigrasi). Perangkat daerah adalah unsur pembantu kepala daerah dan DPRD dalam urusan pemerintahan yang menjadi kewenangan daerah (PP 18/2016). Keimigrasian termasuk urusan pemerintahan absolut, yaitu urusan yang sepenuhnya kewenangan pusat (UU 23/2014 Pasal 10: politik luar negeri, pertahanan, keamanan, yustisi, moneter dan fiskal nasional, agama; Penjelasan huruf d menyebut kebijakan kehakiman dan keimigrasian sebagai bagian yustisi). Pasal 10 ayat (2): pusat dapat melaksanakannya sendiri atau melimpahkan wewenang kepada instansi vertikal di daerah, bukan kepada perangkat daerah.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 1-2; UU No. 23 Tahun 2014 Pasal 10 dan Penjelasannya; PP No. 18 Tahun 2016 Pasal 5"
   },
   {
     id: "bkn-stk-08", set: "bkn", topic: "sotk",
@@ -467,8 +467,8 @@ window.BANK.sotk.push(
     q: "Struktur Kantor Wilayah Ditjen Imigrasi tidak lagi memiliki seksi atau subbidang (eselon IV) di bawah bidang, melainkan langsung kelompok jabatan fungsional dan pelaksana. Hal ini merupakan penerapan kebijakan ...",
     o: ["Desentralisasi urusan keimigrasian kepada pemerintah daerah", "Penyederhanaan birokrasi melalui penyetaraan jabatan administrasi ke jabatan fungsional", "Pemekaran organisasi untuk menambah formasi jabatan struktural", "Penggabungan Kanwil dengan Kantor Imigrasi kelas I", "Pengalihan status pegawai Kanwil menjadi PPPK"],
     a: 1,
-    e: "Penyederhanaan birokrasi (arahan Presiden 2019) dijalankan lewat PermenPANRB 25/2021 (penyederhanaan struktur organisasi: eselon III dan IV dipangkas menjadi dua level) dan PermenPANRB 17/2021 (penyetaraan jabatan administrasi ke jabatan fungsional). Dalam Permenimipas 2/2024, bidang dan bagian Kanwil (administrator III.a) langsung membawahi jabatan fungsional dan pelaksana (Pasal 30-31).",
-    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 30-31; PermenPANRB No. 25 Tahun 2021; PermenPANRB No. 17 Tahun 2021"
+    e: "Penyederhanaan birokrasi (arahan Presiden 2019) dijalankan lewat PermenPANRB 25/2021 (penyederhanaan struktur organisasi: eselon III dan IV dipangkas menjadi dua level) dan PermenPANRB 17/2021 (penyetaraan jabatan administrasi ke jabatan fungsional). Dalam Permenimipas 2/2024, setiap bagian dan bidang Kanwil (administrator III.a) langsung terdiri atas kelompok jabatan fungsional dan pelaksana (Tipe A: Pasal 11, 14, 17, 20; Tipe B: Pasal 24, 27, 30; penetapan JF/pelaksana: Pasal 31).",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 11-31; PermenPANRB No. 25 Tahun 2021; PermenPANRB No. 17 Tahun 2021"
   }
 );
 
