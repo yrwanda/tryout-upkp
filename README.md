@@ -12,8 +12,8 @@ Kementerian Imigrasi dan Pemasyarakatan, mengikuti SE Kepala BKN No. 10 Tahun 20
 ## Dua sumber bank soal (bisa dibandingkan)
 Pilih sumber di menu atas atau Pengaturan:
 - **Kurasi (riset)** - 488 soal (`twk_*`, `tkt_*`, `tsi_*`, `tkp_*`, `x2_*`, `bonus_imigrasi`) yang disusun dari peraturan primer (JDIH).
-- **Kisi-kisi BKN** - 284 soal dari deck resmi PPSS BKN "PPT UDIN & UPKP - IMIPAS" (kisi-kisi hal. 18 dst.):
-  234 soal turunan deck (`bkn_twk`, `bkn_tkt`, `bkn_tsi_tkp`, `bkn_ekstra`; `set: "bkn"`, rujukan ke halaman deck)
+- **Kisi-kisi BKN** - 296 soal dari deck resmi PPSS BKN "PPT UDIN & UPKP - IMIPAS" (kisi-kisi hal. 18 dst.):
+  246 soal turunan deck (`bkn_twk`, `bkn_tkt`, `bkn_tsi_tkp`, `bkn_ekstra`; `set: "bkn"`, rujukan ke halaman deck)
   dan 50 soal asli Google Form "Latihan Soal UD/UPKP 2025" (`bkn_form`; `set: "form"`, 4 opsi, urutan asli, kunci + pembahasan disusun aplikasi karena form tidak memuat kunci).
   Topik tambahan dari deck yang tidak ada di komposisi SE: Perkantoran dan Manajemen & Kepemimpinan.
 - **Semua sumber** - gabungan.

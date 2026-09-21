@@ -373,6 +373,102 @@ window.BANK.sotk.push(
     a: 4,
     e: "Deck hal. 151 memasukkan pengangkatan dan pemberhentian sebagai materi SOTK. Pejabat eselon I diangkat dan diberhentikan Presiden atas usul Menteri; eselon II ke bawah oleh Menteri selaku PPK (Pasal 401 Permenimipas 1/2024; UU 20/2023 Pasal 29).",
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 401"
+  },
+  {
+    id: "bkn-stk-06", set: "bkn", topic: "sotk",
+    q: "Dalam peraturan organisasi dan tata kerja, hubungan antara \"tugas\" dan \"fungsi\" suatu satuan kerja adalah ...",
+    o: ["Fungsi adalah rincian kegiatan yang diselenggarakan untuk melaksanakan tugas", "Tugas adalah rincian dari fungsi yang ditetapkan oleh pimpinan satuan kerja", "Tugas dan fungsi adalah istilah yang sama dan dapat saling dipertukarkan", "Fungsi hanya dimiliki unit pusat, sedangkan tugas hanya dimiliki instansi vertikal", "Tugas ditetapkan Menteri, sedangkan fungsi ditetapkan sendiri oleh kepala satuan kerja"],
+    a: 0,
+    e: "Pola baku peraturan OTK: pasal tugas menyebut apa yang harus dilaksanakan, lalu pasal berikutnya berbunyi \"untuk melaksanakan tugas sebagaimana dimaksud, ... menyelenggarakan fungsi: a, b, c\". Contoh: Permenimipas 2/2024 Pasal 3 (tugas Kanwil: melaksanakan sebagian tugas Ditjen Imigrasi dalam provinsi) dan Pasal 4 (enam fungsi). Keduanya ditetapkan dalam peraturan menteri, bukan oleh kepala satuan kerja.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 3-4"
+  },
+  {
+    id: "bkn-stk-07", set: "bkn", topic: "sotk",
+    q: "Perbedaan mendasar antara instansi vertikal kementerian dan perangkat daerah adalah ...",
+    o: ["Instansi vertikal dipimpin gubernur, perangkat daerah dipimpin menteri", "Instansi vertikal hanya ada di ibu kota provinsi, perangkat daerah hanya di kabupaten/kota", "Instansi vertikal melaksanakan tugas kementerian di daerah dan bertanggung jawab kepada pimpinan kementerian, perangkat daerah membantu kepala daerah", "Instansi vertikal dibiayai APBD, perangkat daerah dibiayai APBN", "Instansi vertikal menangani urusan konkuren, perangkat daerah menangani urusan absolut"],
+    a: 2,
+    e: "Instansi vertikal adalah perangkat kementerian yang berada di daerah untuk melaksanakan urusan pemerintahan pusat (mis. Kanwil Ditjen Imigrasi sebagai instansi vertikal Kemenimipas di provinsi, melapor ke Dirjen Imigrasi). Perangkat daerah adalah unsur pembantu kepala daerah dan DPRD dalam urusan pemerintahan yang menjadi kewenangan daerah (PP 18/2016). Keimigrasian termasuk urusan pemerintahan absolut (UU 23/2014 Pasal 10: politik luar negeri, pertahanan, keamanan, yustisi, moneter, agama) sehingga dijalankan instansi vertikal, bukan perangkat daerah.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 1-2; UU No. 23 Tahun 2014 Pasal 10; PP No. 18 Tahun 2016"
+  },
+  {
+    id: "bkn-stk-08", set: "bkn", topic: "sotk",
+    q: "Perangkat daerah provinsi menurut PP No. 18 Tahun 2016 terdiri atas ...",
+    o: ["Sekretariat daerah, sekretariat DPRD, inspektorat, dinas, dan badan", "Sekretariat daerah, dinas, badan, kecamatan, dan kelurahan", "Kantor wilayah kementerian, dinas, badan, dan inspektorat", "Sekretariat daerah, sekretariat DPRD, kantor gubernur, dan kecamatan", "Dinas, badan, kecamatan, dan unit pelaksana teknis daerah"],
+    a: 0,
+    e: "PP 18/2016 Pasal 5: perangkat daerah provinsi terdiri atas sekretariat daerah, sekretariat DPRD, inspektorat, dinas, dan badan. Perangkat daerah kabupaten/kota sama, ditambah kecamatan. Kantor wilayah kementerian bukan perangkat daerah melainkan instansi vertikal; kelurahan adalah perangkat kecamatan.",
+    src: "Kisi-kisi BKN hal. 151; PP No. 18 Tahun 2016 Pasal 5"
+  },
+  {
+    id: "bkn-stk-09", set: "bkn", topic: "sotk",
+    q: "Menurut Pasal 400 Permenimipas No. 1 Tahun 2024, Kepala Subbagian di lingkungan Kementerian adalah ...",
+    o: ["Jabatan Administrator atau jabatan struktural eselon III.a", "Jabatan Pengawas atau jabatan struktural eselon IV.a", "Jabatan Pimpinan Tinggi Pratama atau jabatan struktural eselon II.b", "Jabatan pelaksana yang tidak memiliki eselon", "Jabatan fungsional ahli muda hasil penyetaraan"],
+    a: 1,
+    e: "Eselonisasi Pasal 400: Sesjen/Dirjen/Irjen/Kepala Badan = JPT madya I.a; Staf Ahli = JPT madya I.b; Kepala Biro, Sesditjen, Direktur, Inspektur, Kepala Pusat = JPT pratama II.a; Kepala Bagian dan Kepala Subdirektorat = Administrator III.a; Kepala Subbagian = Pengawas IV.a.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 400 ayat (5)"
+  },
+  {
+    id: "bkn-stk-10", set: "bkn", topic: "sotk",
+    q: "Staf Ahli Menteri Imigrasi dan Pemasyarakatan termasuk ...",
+    o: ["Jabatan Pimpinan Tinggi Pratama atau eselon II.a", "Jabatan Pimpinan Tinggi Madya atau eselon I.b", "Jabatan Pimpinan Tinggi Utama yang diangkat Presiden", "Jabatan fungsional ahli utama di bawah Sekretaris Jenderal", "Jabatan Administrator yang dikoordinasikan Biro Umum"],
+    a: 1,
+    e: "Pasal 400 ayat (2): Staf Ahli adalah JPT madya atau eselon I.b (setingkat di bawah Sesjen/Dirjen yang I.a). Ada tiga Staf Ahli: Hubungan Antar Lembaga; Pelayanan Publik dan Reformasi Hukum; Penguatan Reformasi Birokrasi. Diangkat dan diberhentikan Presiden atas usul Menteri (Pasal 401), secara administratif dikoordinasikan Sekretaris Jenderal.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 7, 400, 401"
+  },
+  {
+    id: "bkn-stk-11", set: "bkn", topic: "sotk",
+    q: "Menurut Pasal 36 Permenimipas No. 2 Tahun 2024, pejabat fungsional dan pelaksana di Kantor Wilayah Ditjen Imigrasi bertanggung jawab kepada Kepala Kantor Wilayah melalui ...",
+    o: ["Sekretaris Direktorat Jenderal Imigrasi", "Kepala Bagian Tata Usaha dan Umum untuk seluruh pegawai", "Kepala bagian atau kepala bidang yang menjadi atasan langsung", "Koordinator kelompok jabatan fungsional yang dipilih anggota", "Direktur Jenderal Imigrasi selaku pembina teknis"],
+    a: 2,
+    e: "Pasal 36 ayat (3): jabatan fungsional dan jabatan pelaksana bertanggung jawab kepada Kakanwil melalui kepala bagian atau kepala bidang yang menjadi atasan langsungnya. Ayat (2): kepala bagian dan kepala bidang bertanggung jawab kepada Kakanwil; ayat (1): Kakanwil melaporkan pelaksanaan tugas kepada Dirjen Imigrasi. Inilah jalur koordinasi berjenjang yang dimaksud kisi-kisi.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 36"
+  },
+  {
+    id: "bkn-stk-12", set: "bkn", topic: "sotk",
+    q: "Menurut tata kerja Kantor Wilayah Ditjen Imigrasi, tembusan laporan yang disampaikan kepada atasan juga disampaikan kepada ...",
+    o: ["Gubernur selaku wakil pemerintah pusat di daerah", "Satuan organisasi yang secara fungsional mempunyai hubungan kerja", "Inspektorat Jenderal sebagai aparat pengawasan intern", "Seluruh unit pelaksana teknis di wilayah provinsi", "Biro Umum Sekretariat Jenderal untuk diarsipkan"],
+    a: 1,
+    e: "Pasal 39 Permenimipas 2/2024: dalam menyampaikan laporan kepada atasan, tembusan disampaikan juga kepada satuan organisasi yang secara fungsional mempunyai hubungan kerja. Pasal 37: setiap pimpinan satuan organisasi menyampaikan laporan berkala dan/atau sewaktu-waktu; Pasal 38: laporan yang diterima Kakanwil menjadi bahan rekomendasi tindak lanjut sebagai petunjuk kepada bawahan.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 37-39"
+  },
+  {
+    id: "bkn-stk-13", set: "bkn", topic: "sotk",
+    q: "Setiap unsur pimpinan pada Kantor Wilayah Ditjen Imigrasi wajib melaksanakan ... dan melaporkan hasil pelaksanaan tugasnya kepada pimpinan secara berjenjang.",
+    o: ["Audit kinerja tahunan", "Reviu laporan keuangan", "Pengawasan melekat", "Evaluasi jabatan", "Survei kepuasan masyarakat"],
+    a: 2,
+    e: "Pasal 33 Permenimipas 2/2024: setiap unsur pimpinan melaksanakan pengawasan melekat (waskat) dan melaporkan hasil pelaksanaan tugasnya secara berjenjang. Pasal 34: bila terjadi penyimpangan, pimpinan satuan organisasi memimpin, mengoordinasikan, membimbing, mengawasi bawahannya, dan mengambil langkah yang diperlukan. Audit dan reviu adalah tugas Inspektorat Jenderal (pengawasan intern), bukan kewajiban tiap pimpinan satuan.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 33-34"
+  },
+  {
+    id: "bkn-stk-14", set: "bkn", topic: "sotk",
+    q: "Pertanggungjawaban pelaksanaan tugas dan fungsi unit pelaksana teknis keimigrasian (Kantor Imigrasi, Rumah Detensi Imigrasi) di suatu provinsi kepada Direktur Jenderal Imigrasi dikoordinasikan oleh ...",
+    o: ["Sekretaris Jenderal Kementerian", "Inspektur Wilayah yang membawahi provinsi tersebut", "Kepala Bagian Tata Usaha dan Umum Kantor Wilayah", "Direktur Kepatuhan Internal Keimigrasian", "Kepala Kantor Wilayah Direktorat Jenderal Imigrasi"],
+    a: 4,
+    e: "Pasal 35 Permenimipas 2/2024: Kepala Kantor Wilayah mengoordinasikan pelaksanaan pertanggungjawaban tugas dan fungsi UPT kepada Dirjen Imigrasi. Ini sejalan dengan fungsi Kanwil (Pasal 4): koordinasi pelaksanaan tugas satuan kerja serta pemantauan, evaluasi, dan pelaporan.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 4 dan 35"
+  },
+  {
+    id: "bkn-stk-15", set: "bkn", topic: "sotk",
+    q: "Pola hubungan dan mekanisme kerja Kantor Wilayah Direktorat Jenderal Imigrasi ditetapkan oleh ...",
+    o: ["Kepala Kantor Wilayah dengan persetujuan gubernur", "Direktur Jenderal Imigrasi melalui surat edaran", "Menteri Imigrasi dan Pemasyarakatan", "Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi", "Sekretaris Direktorat Jenderal Imigrasi"],
+    a: 2,
+    e: "Pasal 40 Permenimipas 2/2024: pola hubungan dan mekanisme kerja Kanwil ditetapkan oleh Menteri. Bedakan dengan perubahan organisasi dan tata kerja Kanwil (Pasal 44) yang baru dapat dilakukan setelah mendapat persetujuan tertulis MenPANRB.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 40 dan 44"
+  },
+  {
+    id: "bkn-stk-16", set: "bkn", topic: "sotk",
+    q: "Peraturan Presiden yang secara khusus menjadi dasar pembentukan Kementerian Imigrasi dan Pemasyarakatan adalah ...",
+    o: ["Perpres No. 140 Tahun 2024 tentang Organisasi Kementerian Negara", "Perpres No. 157 Tahun 2024 tentang Kementerian Imigrasi dan Pemasyarakatan", "Perpres No. 68 Tahun 2019 tentang Organisasi Kementerian Negara", "Perpres No. 12 Tahun 2025 tentang RPJMN 2025-2029", "Perpres No. 81 Tahun 2010 tentang Grand Design Reformasi Birokrasi"],
+    a: 1,
+    e: "Konsiderans Permenimipas 1/2024 merujuk Perpres 140/2024 (Organisasi Kementerian Negara, berlaku umum untuk semua kementerian) dan Perpres 157/2024 tentang Kementerian Imigrasi dan Pemasyarakatan (LN 2024 No. 353) sebagai dasar khusus. Perpres 68/2019 adalah aturan organisasi kementerian periode sebelumnya yang telah diganti.",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 (konsiderans); Perpres No. 157 Tahun 2024"
+  },
+  {
+    id: "bkn-stk-17", set: "bkn", topic: "sotk",
+    q: "Struktur Kantor Wilayah Ditjen Imigrasi tidak lagi memiliki seksi atau subbidang (eselon IV) di bawah bidang, melainkan langsung kelompok jabatan fungsional dan pelaksana. Hal ini merupakan penerapan kebijakan ...",
+    o: ["Desentralisasi urusan keimigrasian kepada pemerintah daerah", "Penyederhanaan birokrasi melalui penyetaraan jabatan administrasi ke jabatan fungsional", "Pemekaran organisasi untuk menambah formasi jabatan struktural", "Penggabungan Kanwil dengan Kantor Imigrasi kelas I", "Pengalihan status pegawai Kanwil menjadi PPPK"],
+    a: 1,
+    e: "Penyederhanaan birokrasi (arahan Presiden 2019) dijalankan lewat PermenPANRB 25/2021 (penyederhanaan struktur organisasi: eselon III dan IV dipangkas menjadi dua level) dan PermenPANRB 17/2021 (penyetaraan jabatan administrasi ke jabatan fungsional). Dalam Permenimipas 2/2024, bidang dan bagian Kanwil (administrator III.a) langsung membawahi jabatan fungsional dan pelaksana (Pasal 30-31).",
+    src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 30-31; PermenPANRB No. 25 Tahun 2021; PermenPANRB No. 17 Tahun 2021"
   }
 );
 

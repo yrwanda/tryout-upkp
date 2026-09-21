@@ -409,8 +409,8 @@ window.BANK.uud.push(
   {
     id: "uud-47", topic: "uud",
     q: "Kekuasaan kehakiman menurut Pasal 24 UUD 1945 dilakukan oleh Mahkamah Agung dan badan peradilan di bawahnya dalam lingkungan ...",
-    o: ["Peradilan negeri, peradilan tinggi, dan Mahkamah Agung sebagai tiga lingkungan yang terpisah", "Peradilan sipil dan peradilan militer serta Komisi Yudisial sebagai pelaku kekuasaan kehakiman", "Peradilan umum, peradilan agama, peradilan militer, dan peradilan tata usaha negara, serta oleh sebuah Mahkamah Konstitusi", "Peradilan umum dan peradilan khusus saja, sedangkan peradilan lain berada di bawah kementerian", "Peradilan pidana, perdata, dan niaga yang masing-masing dipimpin ketua mahkamah tersendiri"],
-    a: 2,
+    o: ["Peradilan pidana, perdata, dan niaga yang masing-masing dipimpin ketua mahkamah tersendiri", "Peradilan negeri, peradilan tinggi, dan Mahkamah Agung sebagai tiga lingkungan yang terpisah", "Peradilan sipil dan peradilan militer serta Komisi Yudisial sebagai pelaku kekuasaan kehakiman", "Peradilan umum, peradilan agama, peradilan militer, dan peradilan tata usaha negara, serta oleh sebuah Mahkamah Konstitusi", "Peradilan umum dan peradilan khusus saja, sedangkan peradilan lain berada di bawah kementerian"],
+    a: 3,
     e: "Pasal 24 ayat (2): kekuasaan kehakiman dilakukan oleh MA dan badan peradilan di bawahnya dalam lingkungan peradilan umum, agama, militer, dan tata usaha negara, serta oleh sebuah MK. Sengketa keputusan tata usaha negara (misalnya keputusan penolakan izin tinggal) diuji di PTUN. Komisi Yudisial bukan pelaku kekuasaan kehakiman.",
     src: "UUD NRI 1945 Pasal 24 ayat (2)"
   }

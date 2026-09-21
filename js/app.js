@@ -398,7 +398,6 @@
         el("p", { class: "muted small" }, ["Komposisi mengikuti Lampiran III SE BKN 10/2024 untuk UPKP D3-S3: 100 soal, urut TWK - TKT - TSI - TKP, waktu 90 menit. Pembahasan tampil setelah ujian selesai, seperti kondisi CAT sesungguhnya."]),
         el("div", { class: "field" }, [el("label", null, ["Sumber soal saat ini"]), el("div", null, [el("span", { class: "badge" }, [SOURCES[source()]]), " ", el("span", { class: "small muted" }, ["(ubah di menu atas atau Pengaturan)"])])]),
         source() !== "kurasi" ? el("div", { class: "field" }, [el("label", null, ["Mode simulasi"]), modeSel]) : null,
-        source() === "bkn" ? el("p", { class: "small muted" }, ["Catatan: bank Kisi-kisi BKN untuk beberapa topik (misalnya SOTK) lebih sedikit dari kuota resmi, sehingga simulasi 100 soal bisa terisi kurang dari 100. Pakai \"Semua sumber\" untuk komposisi penuh."]) : null,
         el("div", { class: "field" }, [el("label", null, ["Durasi (menit)"]), dur]),
         el("h3", { style: "margin-top:10px" }, ["Nilai ambang batas (opsional)"]),
         el("p", { class: "small muted" }, ["Isi sesuai pengumuman PPK/panitia jika sudah ada. Kosongkan jika belum ditetapkan; hasil tetap menampilkan skor per jenis tes. Skor maksimal: TWK 150, TKT 125, TSI 150, TKP 75."]),

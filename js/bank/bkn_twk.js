@@ -442,8 +442,8 @@ window.BANK.pancasila.push(
   {
     id: "bkn-pcs-25", set: "bkn", topic: "pancasila",
     q: "Ideologi Pancasila menurut kisi-kisi BKN adalah ...",
-    o: ["Sistem ekonomi terpimpin yang ditetapkan pemerintah untuk mengatur pasar", "Pandangan hidup atau sistem nilai dasar yang menjadi landasan negara dan bangsa", "Himpunan undang-undang yang mengatur tata negara dan lembaga negara", "Doktrin militer untuk mempertahankan negara dari ancaman luar dan dalam", "Ajaran filsafat Barat yang diadopsi Indonesia setelah kemerdekaan"],
-    a: 1,
+    o: ["Himpunan undang-undang yang mengatur tata negara dan lembaga negara", "Doktrin militer untuk mempertahankan negara dari ancaman luar dan dalam", "Ajaran filsafat Barat yang diadopsi Indonesia setelah kemerdekaan", "Sistem ekonomi terpimpin yang ditetapkan pemerintah untuk mengatur pasar", "Pandangan hidup atau sistem nilai dasar yang menjadi landasan negara dan bangsa"],
+    a: 4,
     e: "Deck hal. 24: ideologi Pancasila adalah pandangan hidup atau sistem nilai dasar yang menjadi landasan bagi negara dan seluruh bangsa Indonesia, diakui sebagai ideologi negara dan tercantum dalam Pembukaan UUD 1945.",
     src: "Kisi-kisi BKN hal. 24"
   }
@@ -454,8 +454,8 @@ window.BANK.sejarah.push(
   {
     id: "bkn-sej-01", set: "bkn", topic: "sejarah",
     q: "Kabinet pada masa pemerintahan B.J. Habibie yang terdiri atas unsur ABRI, Golkar, PPP, dan PDI adalah ...",
-    o: ["Kabinet Persatuan Nasional", "Kabinet Reformasi Pembangunan", "Kabinet Gotong Royong", "Kabinet Indonesia Bersatu", "Kabinet Pembangunan VII"],
-    a: 1,
+    o: ["Kabinet Indonesia Bersatu", "Kabinet Pembangunan VII", "Kabinet Persatuan Nasional", "Kabinet Reformasi Pembangunan", "Kabinet Gotong Royong"],
+    a: 3,
     e: "Deck hal. 62: masa Habibie ditandai Kabinet Reformasi Pembangunan (ABRI, Golkar, PPP, PDI), referendum Timor-Timur, kebebasan pers (UU 40/1999), dan reformasi hukum yang menjamin kebebasan berpendapat. Kabinet Persatuan Nasional = Gus Dur; Gotong Royong = Megawati; Indonesia Bersatu = SBY.",
     src: "Kisi-kisi BKN hal. 62"
   },
@@ -470,8 +470,8 @@ window.BANK.sejarah.push(
   {
     id: "bkn-sej-03", set: "bkn", topic: "sejarah",
     q: "Kebijakan Presiden Abdurrahman Wahid yang mencabut peraturan penghalang perayaan Imlek dan melegalkan agama Konghucu menunjukkan ...",
-    o: ["Sentralisasi kekuasaan", "Pengakuan kesetaraan dan kebebasan beragama bagi masyarakat Tionghoa", "Politik luar negeri bebas aktif", "Reformasi birokrasi", "Penghapusan dwifungsi ABRI"],
-    a: 1,
+    o: ["Reformasi birokrasi", "Penghapusan dwifungsi ABRI", "Sentralisasi kekuasaan", "Pengakuan kesetaraan dan kebebasan beragama bagi masyarakat Tionghoa", "Politik luar negeri bebas aktif"],
+    a: 3,
     e: "Deck hal. 63: masa Gus Dur - pengakuan Tahun Baru Imlek (Keppres), kesetaraan agama Konghucu, dialog kebangsaan pemberantasan korupsi, dan dialog penyelesaian konflik Aceh. Gus Dur adalah Presiden ke-4 (soal latihan resmi BKN 2025).",
     src: "Kisi-kisi BKN hal. 63; Latihan resmi BKN 2025"
   },
