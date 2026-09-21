@@ -9,15 +9,26 @@ Kementerian Imigrasi dan Pemasyarakatan, mengikuti SE Kepala BKN No. 10 Tahun 20
 - Buka `index.html` langsung di browser (tanpa server), atau jalankan `python -m http.server 8765` lalu buka http://localhost:8765.
 - Progres tersimpan di localStorage browser. Gunakan Pengaturan > Ekspor/Impor untuk memindahkan progres.
 
+## Dua sumber bank soal (bisa dibandingkan)
+Pilih sumber di menu atas atau Pengaturan:
+- **Kurasi (riset)** - 488 soal (`twk_*`, `tkt_*`, `tsi_*`, `tkp_*`, `x2_*`, `bonus_imigrasi`) yang disusun dari peraturan primer (JDIH).
+- **Kisi-kisi BKN** - 284 soal dari deck resmi PPSS BKN "PPT UDIN & UPKP - IMIPAS" (kisi-kisi hal. 18 dst.):
+  234 soal turunan deck (`bkn_twk`, `bkn_tkt`, `bkn_tsi_tkp`, `bkn_ekstra`; `set: "bkn"`, rujukan ke halaman deck)
+  dan 50 soal asli Google Form "Latihan Soal UD/UPKP 2025" (`bkn_form`; `set: "form"`, 4 opsi, urutan asli, kunci + pembahasan disusun aplikasi karena form tidak memuat kunci).
+  Topik tambahan dari deck yang tidak ada di komposisi SE: Perkantoran dan Manajemen & Kepemimpinan.
+- **Semua sumber** - gabungan.
+Mode Simulasi "Latihan Resmi BKN 2025" mengerjakan 50 soal asli secara utuh (45 menit).
+Bila deck BKN berbeda dari sumber primer (mis. jumlah pasal UUD pascaamandemen, "UU 9/1999"), pembahasan mencatat keduanya.
+
 ## Struktur
-- `js/bank/*.js` bank soal per topik (id, soal, 5 opsi, kunci, pembahasan, rujukan).
+- `js/bank/*.js` bank soal per topik (id, soal, 4-5 opsi, kunci, pembahasan, rujukan; `set` menandai sumber).
 - `js/materi.js` ringkasan materi per topik + metadata komposisi soal.
 - `js/app.js` logika aplikasi; `css/style.css` tampilan.
 - `js/bank/bonus_imigrasi.js` dan soal bertanda `imi: true` hanya tampil jika opsi
   "Sertakan soal substansi keimigrasian" diaktifkan (di luar komposisi resmi BKN).
 
 ## Menambah soal
-Soal tambahan batch 2 ada di `js/bank/x2_*.js` (memakai `push`). Setelah menambah, jalankan `node tools/rebalance.js .` (menyeimbangkan posisi kunci A-E untuk berkas x2_*) dan naikkan `VERSION` di `sw.js` serta `?v=` di `index.html` agar cache pengguna diperbarui.
+Soal tambahan ada di `js/bank/x2_*.js` dan `js/bank/bkn_*.js` (memakai `push`). Setelah menambah, jalankan `node tools/rebalance.js .` (menyeimbangkan posisi kunci A-E untuk berkas x2_* dan bkn_*, kecuali `bkn_form.js` yang dipertahankan asli; argumen ketiga opsional: JSON `{id:{o,a}}` untuk menimpa opsi). `bkn_form.js` dibangkitkan oleh `python tools/build_form_set.py` dari `tools/gform_bkn_2025.json`. Setelah itu dan naikkan `VERSION` di `sw.js` serta `?v=` di `index.html` agar cache pengguna diperbarui.
 Tambahkan objek baru ke array di file bank yang sesuai. Aturan mutu: 5 opsi setara
 panjang, satu jawaban benar, pembahasan menjelaskan kenapa benar dan kenapa pengecoh salah,
 sertakan rujukan pasal/dokumen. Jalankan `node tools/validate.js .` untuk memeriksa.

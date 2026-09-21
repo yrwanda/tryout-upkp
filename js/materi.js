@@ -246,6 +246,38 @@ Digital **Skills** (kecakapan perangkat/aplikasi), Digital **Culture** (Pancasil
 - ASN di media sosial: jaga rahasia jabatan, netralitas, data pribadi pemohon, nama baik instansi.
 - Istilah: cloud computing, big data, AI, interoperabilitas, metadata, open data, e-office/SRIKANDI (kearsipan), SIMKIM (sistem keimigrasian), tanda tangan digital, PDF vs DOCX.
 `,
+  perkantoran: `
+## Komunikasi dan ragam bahasa (kisi-kisi BKN hal. 127-130)
+- Komunikasi = pengalihan informasi; unsur: **who, what, to whom, how, in what effect**.
+- Lisan (dua arah): fleksibel, umpan balik langsung, gesture. Tertulis (satu arah): terstruktur, waktu memilih diksi.
+- **Ragam beku**: paling formal, kaidah tidak boleh diubah (UUD, akta notaris, SK, sumpah). **Ragam resmi**: bahasa baku, kalimat lengkap-lugas-sopan; contoh naskah dinas.
+
+## Naskah dinas (hal. 131-132)
+- Definisi: informasi tertulis sebagai alat komunikasi kedinasan yang dibuat/diterima pejabat berwenang di instansi pemerintah.
+- **Arahan**: pengaturan (peraturan, pedoman, juklak, SOP, surat edaran), penetapan (keputusan), penugasan (instruksi, surat perintah, surat tugas).
+- **Korespondensi**: intern (nota dinas, memorandum), ekstern, surat undangan. **Khusus**: surat perjanjian, surat kuasa, surat pengantar, berita acara, surat keterangan, pengumuman.
+- Surat elektronik: To, Cc, Bcc, Subject, Attachment.
+
+## Organisasi, administrasi, kearsipan (hal. 134-136)
+- Organisasi (Max Weber): kerangka terstruktur berisi wewenang, tanggung jawab, pembagian kerja. Unsur: personel, kerja sama, tujuan, peralatan, lingkungan, SDA.
+- Administrasi (Haryadi & Sugiarto, 2009): penyusunan dan pencatatan data/informasi secara sistematis. Tujuan: menyusun (mencatat, mengirim, mengolah), memonitor, mengevaluasi, mengamankan data. Fungsi: perencanaan, penyusunan, pengarahan, pengoordinasian, pelaporan.
+- Kearsipan **UU 43/2009**: arsip = rekaman kegiatan/peristiwa dalam berbagai bentuk dan media. Dinamis (aktif = sering dipakai; inaktif; vital) vs statis; arsip terjaga.
+`,
+  manajemen: `
+## Definisi dan fungsi (kisi-kisi BKN hal. 152-160)
+- **Terry**: planning, organizing, actuating, controlling (POAC). **Fayol**: planning, organizing, commanding, coordinating, controlling. **Koontz & O'Donnel**: mencapai tujuan melalui dan dengan orang lain. **Millet**: pembimbingan dan pemberian fasilitas kelompok formal.
+- Planning: menetapkan/merumuskan tujuan, identifikasi masalah, strategi. Organizing: pembagian tugas, pendelegasian, penugasan. Actuating: routing, scheduling, dispatching. Controlling: follow up.
+- Level: top (kepala institusi, CEO, direktur), middle (kepala bagian/departemen/cabang), low (mandor, supervisor). Unsur **6M**: man, money, machines, methods, materials, market.
+
+## Kepemimpinan (hal. 153-156)
+- Gaya: otokratik (sentralisasi wewenang), paternalistik (pusat informasi), kharismatik (daya tarik), militeristik (perintah kaku formal), pseudo-demokratik (manipulatif), demokratik (aktif, dinamis, terarah), laissez faire (kendali bebas).
+- Indikator: mengambil keputusan, tanggung jawab, memotivasi, komunikasi. Teori: trait (bawaan), behavioral (perilaku), situasional (menyesuaikan situasi).
+
+## Teori manajemen (hal. 163-164)
+- Klasik: birokrasi Weber (pembagian kerja, hierarki, prosedur, impersonal); administrasi Mooney & Reiley (koordinasi, skalar-hierarkis, fungsional); manajemen ilmiah (4 kaidah; deck menyebut Fayol, literatur umum Taylor); Fayol 6 kegiatan industri.
+- Neo-klasik: Munsterberg (partisipasi, perluasan kerja, bottom-up). Modern: Maslow (organisasi sebagai kesatuan saling bergantung).
+- Mintzberg 10 peran manajer: interpersonal, informational, decisional.
+`,
   imigrasi: `
 ## Dasar hukum
 UU **6/2011** Keimigrasian, diubah UU Cipta Kerja (UU 11/2020 → UU 6/2023) dan **UU 63/2024** (perubahan ketiga, 17 Okt 2024). PP 31/2013 jo. perubahannya (terakhir PP 48/2021). UU 12/2006 Kewarganegaraan.
@@ -280,6 +312,8 @@ window.TOPICS = [
   { id: "sotk", label: "SOTK", test: "TSI", n: 15 },
   { id: "inggris", label: "Bahasa Inggris", test: "TKP", n: 10 },
   { id: "literasi", label: "Literasi Digital", test: "TKP", n: 5 },
+  { id: "perkantoran", label: "Perkantoran (materi kisi-kisi BKN)", test: "TKT", n: 0, bkn: true },
+  { id: "manajemen", label: "Manajemen & Kepemimpinan (materi kisi-kisi BKN)", test: "TPM", n: 0, bkn: true },
   { id: "imigrasi", label: "Substansi Keimigrasian (opsional)", test: "BONUS", n: 0, optional: true }
 ];
 
@@ -288,5 +322,6 @@ window.TESTS = {
   TKT: { label: "Tes Kompetensi Teknis", short: "TKT" },
   TSI: { label: "Tes Substansi Instansi", short: "TSI" },
   TKP: { label: "Tes Kompetensi Penunjang", short: "TKP" },
+  TPM: { label: "Tes Pengetahuan Manajerial (Ujian Dinas Tk. II)", short: "TPM" },
   BONUS: { label: "Bonus: Substansi Keimigrasian", short: "BONUS" }
 };

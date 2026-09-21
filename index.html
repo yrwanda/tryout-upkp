@@ -13,7 +13,7 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f4e79'/%3E%3Ctext x='32' y='42' font-size='30' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EU%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 <body>
   <header class="topbar">
@@ -30,31 +30,37 @@
         <button data-route="riwayat">Riwayat</button>
         <button data-route="pengaturan">Pengaturan</button>
       </nav>
+      <select id="sourceSel" class="btn btn-sm" title="Sumber soal" aria-label="Sumber soal"></select>
       <button id="installBtn" class="btn btn-sm btn-primary" hidden title="Pasang sebagai aplikasi di perangkat ini">Pasang</button>
       <button id="themeBtn" class="icon-btn" title="Ganti tema" aria-label="Ganti tema">&#9681;</button>
     </div>
   </header>
   <main id="view" class="main"></main>
 
-  <script src="js/materi.js?v=3"></script>
-  <script src="js/bank/twk_pancasila.js?v=3"></script>
-  <script src="js/bank/twk_uud.js?v=3"></script>
-  <script src="js/bank/twk_sejarah.js?v=3"></script>
-  <script src="js/bank/twk_bindo.js?v=3"></script>
-  <script src="js/bank/tkt_kepegawaian.js?v=3"></script>
-  <script src="js/bank/tkt_yanlik.js?v=3"></script>
-  <script src="js/bank/tkt_gg.js?v=3"></script>
-  <script src="js/bank/tkt_kebijakan.js?v=3"></script>
-  <script src="js/bank/tsi_renstra.js?v=3"></script>
-  <script src="js/bank/tsi_sotk.js?v=3"></script>
-  <script src="js/bank/tkp_inggris.js?v=3"></script>
-  <script src="js/bank/tkp_literasi.js?v=3"></script>
-  <script src="js/bank/bonus_imigrasi.js?v=3"></script>
-  <script src="js/bank/x2_twk.js?v=3"></script>
-  <script src="js/bank/x2_tkt.js?v=3"></script>
-  <script src="js/bank/x2_tsi.js?v=3"></script>
-  <script src="js/bank/x2_tkp.js?v=3"></script>
-  <script src="js/app.js?v=3"></script>
+  <script src="js/materi.js?v=4"></script>
+  <script src="js/bank/twk_pancasila.js?v=4"></script>
+  <script src="js/bank/twk_uud.js?v=4"></script>
+  <script src="js/bank/twk_sejarah.js?v=4"></script>
+  <script src="js/bank/twk_bindo.js?v=4"></script>
+  <script src="js/bank/tkt_kepegawaian.js?v=4"></script>
+  <script src="js/bank/tkt_yanlik.js?v=4"></script>
+  <script src="js/bank/tkt_gg.js?v=4"></script>
+  <script src="js/bank/tkt_kebijakan.js?v=4"></script>
+  <script src="js/bank/tsi_renstra.js?v=4"></script>
+  <script src="js/bank/tsi_sotk.js?v=4"></script>
+  <script src="js/bank/tkp_inggris.js?v=4"></script>
+  <script src="js/bank/tkp_literasi.js?v=4"></script>
+  <script src="js/bank/bonus_imigrasi.js?v=4"></script>
+  <script src="js/bank/x2_twk.js?v=4"></script>
+  <script src="js/bank/x2_tkt.js?v=4"></script>
+  <script src="js/bank/x2_tsi.js?v=4"></script>
+  <script src="js/bank/x2_tkp.js?v=4"></script>
+  <script src="js/bank/bkn_twk.js?v=4"></script>
+  <script src="js/bank/bkn_tkt.js?v=4"></script>
+  <script src="js/bank/bkn_tsi_tkp.js?v=4"></script>
+  <script src="js/bank/bkn_ekstra.js?v=4"></script>
+  <script src="js/bank/bkn_form.js?v=4"></script>
+  <script src="js/app.js?v=4"></script>
   <script>
     if ("serviceWorker" in navigator && location.protocol !== "file:") {
       window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));

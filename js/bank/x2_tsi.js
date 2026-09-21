@@ -1,5 +1,6 @@
 // Bank soal tambahan (batch 2): TSI - Renstra/Perencanaan dan SOTK
 window.BANK = window.BANK || {};
+window.BANK.renstra = window.BANK.renstra || [];
 window.BANK.renstra.push(
   {
     id: "rst-41", topic: "renstra",
@@ -12,8 +13,8 @@ window.BANK.renstra.push(
   {
     id: "rst-42", topic: "renstra",
     q: "Indikator kinerja sasaran kegiatan Direktorat Izin Tinggal dan Status Keimigrasian dalam Renstra 2025-2029 adalah ...",
-    o: ["Indeks Kualitas Layanan Izin Tinggal dan Status Keimigrasian", "Persentase produk intelijen yang ditindaklanjuti", "Indeks keamanan dan pencegahan ancaman di TPI", "Jumlah paspor yang diterbitkan", "Persentase deportasi yang dilaksanakan"],
-    a: 0,
+    o: ["Indeks keamanan dan pencegahan ancaman di TPI", "Jumlah paspor yang diterbitkan", "Persentase deportasi yang dilaksanakan", "Indeks Kualitas Layanan Izin Tinggal dan Status Keimigrasian", "Persentase produk intelijen yang ditindaklanjuti"],
+    a: 3,
     e: "Kegiatan 6157 Pelayanan Izin Tinggal dan Status Keimigrasian memiliki Sasaran Kegiatan 3 \"Meningkatnya Kualitas Layanan Izin Tinggal dan Status Keimigrasian\" dengan IKK 3.1 Indeks Kualitas Layanan Izin Tinggal dan Status Keimigrasian (target 91,00 pada 2025 hingga 95,20 pada 2029). Produk intelijen adalah IKK Direktorat Intelijen; indeks keamanan TPI adalah IKK Direktorat TPI.",
     src: "Permenimipas No. 11 Tahun 2025, Bab IV (kegiatan 6157)"
   },
@@ -123,6 +124,7 @@ window.BANK.renstra.push(
   }
 );
 
+window.BANK.sotk = window.BANK.sotk || [];
 window.BANK.sotk.push(
   {
     id: "stk-41", topic: "sotk",

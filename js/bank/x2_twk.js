@@ -1,5 +1,6 @@
 // Bank soal tambahan (batch 2): TWK - Pancasila, UUD 1945, Sejarah, Bahasa Indonesia
 window.BANK = window.BANK || {};
+window.BANK.bindo = window.BANK.bindo || [];
 window.BANK.bindo.push(
   {
     id: "bin-19", topic: "bindo",
@@ -83,6 +84,7 @@ window.BANK.bindo.push(
   }
 );
 
+window.BANK.pancasila = window.BANK.pancasila || [];
 window.BANK.pancasila.push(
   {
     id: "pcs-31", topic: "pancasila",
@@ -206,6 +208,7 @@ window.BANK.pancasila.push(
   }
 );
 
+window.BANK.sejarah = window.BANK.sejarah || [];
 window.BANK.sejarah.push(
   {
     id: "sej-21", topic: "sejarah",
@@ -289,6 +292,7 @@ window.BANK.sejarah.push(
   }
 );
 
+window.BANK.uud = window.BANK.uud || [];
 window.BANK.uud.push(
   {
     id: "uud-33", topic: "uud",
