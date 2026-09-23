@@ -8,7 +8,7 @@ let problems=[], ids=new Set(), total=0, dist={};
 for(const t of TOPICS){
   const qs=BANK[t.id]||[]; total+=qs.length;
   if(!MATERI[t.id]) problems.push(`materi hilang: ${t.id}`);
-  if(!t.optional && !t.bkn && qs.length < t.n*2) problems.push(`bank ${t.id} hanya ${qs.length} (< 2x ${t.n})`);
+  if(!t.extra && qs.filter(q=>q.set!=='form').length < t.n) problems.push(`bank ${t.id} hanya ${qs.length} (< kuota ${t.n})`);
   for(const q of qs){
     if(ids.has(q.id)) problems.push('id ganda '+q.id); ids.add(q.id);
     if(q.topic!==t.id) problems.push(`${q.id} topic mismatch`);

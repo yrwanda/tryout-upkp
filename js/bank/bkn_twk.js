@@ -1,5 +1,5 @@
 // Bank soal SET "Kisi-kisi BKN" - TWK. Disusun dari deck "Materi Ujian Dinas & UPKP - Kisi-kisi" (PPSS BKN, untuk Kemenimipas).
-// Setiap soal bertanda set: "bkn" dan rujukan halaman deck (hal.). Tidak dicampur dengan bank kurasi.
+// Setiap soal bertanda set: "bkn" dan rujukan halaman deck (hal.). Satu-satunya bank soal aplikasi (bersama bkn_form.js).
 window.BANK = window.BANK || {};
 window.BANK.bindo = window.BANK.bindo || [];
 window.BANK.bindo.push(
@@ -410,15 +410,15 @@ window.BANK.pancasila.push(
   {
     id: "bkn-pcs-21", set: "bkn", topic: "pancasila",
     q: "\"Keputusan yang diambil harus dapat dipertanggungjawabkan secara moral kepada Tuhan Yang Maha Esa, menjunjung tinggi harkat dan martabat manusia, nilai kebenaran dan keadilan\" adalah butir pengamalan sila ...",
-    o: ["Kedua", "Ketiga", "Keempat", "Kelima", "Pertama"],
-    a: 2,
+    o: ["Pertama", "Kedua", "Ketiga", "Keempat", "Kelima"],
+    a: 3,
     e: "Deck hal. 38: butir sila ke-4 antara lain kedudukan/hak/kewajiban yang sama, tidak memaksakan kehendak, mengutamakan musyawarah, semangat kekeluargaan, menghormati hasil musyawarah, itikad baik melaksanakan keputusan, kepentingan bersama, akal sehat dan hati nurani luhur, keputusan dipertanggungjawabkan secara moral kepada Tuhan, dan memberi kepercayaan kepada wakil-wakil.",
     src: "Kisi-kisi BKN hal. 38"
   },
   {
     id: "bkn-pcs-22", set: "bkn", topic: "pancasila",
     q: "\"Tidak menggunakan hak milik untuk hal-hal yang bersifat pemborosan dan gaya hidup mewah\" serta \"suka bekerja keras\" adalah butir pengamalan sila ...",
-    o: ["Keempat", "Ketiga", "Kedua", "Pertama", "Kelima"],
+    o: ["Pertama", "Kedua", "Ketiga", "Keempat", "Kelima"],
     a: 4,
     e: "Deck hal. 38: butir sila ke-5 meliputi perbuatan luhur kekeluargaan dan gotong royong, adil terhadap sesama, keseimbangan hak dan kewajiban, menghormati hak orang lain, suka menolong agar orang lain mandiri, tidak menggunakan hak milik untuk pemerasan/pemborosan/merugikan kepentingan umum, suka bekerja keras, menghargai karya orang lain, dan kegiatan mewujudkan kemajuan yang merata.",
     src: "Kisi-kisi BKN hal. 38"
@@ -478,8 +478,8 @@ window.BANK.sejarah.push(
   {
     id: "bkn-sej-04", set: "bkn", topic: "sejarah",
     q: "Pemilihan Presiden dan Wakil Presiden secara langsung oleh rakyat pertama kali diterapkan pada Pemilu tahun ...",
-    o: ["1999", "2004", "2009", "2014", "1955"],
-    a: 1,
+    o: ["1955", "1999", "2004", "2009", "2014"],
+    a: 2,
     e: "Deck hal. 64: masa Megawati - Kabinet Gotong Royong, amendemen UUD 1945 (negara hukum, kedaulatan rakyat), dan perubahan tata cara pemilihan Presiden secara langsung yang mulai diterapkan pada Pemilu 2004 (dimenangkan SBY-JK).",
     src: "Kisi-kisi BKN hal. 64"
   },
@@ -586,8 +586,8 @@ window.BANK.uud.push(
   {
     id: "bkn-uud-03", set: "bkn", topic: "uud",
     q: "Menurut kisi-kisi BKN, setelah empat kali perubahan (1999-2002) UUD 1945 memiliki 16 bab, 37 pasal, ... ayat, 3 pasal aturan peralihan, dan 2 pasal aturan tambahan.",
-    o: ["65", "170", "194", "73", "37"],
-    a: 2,
+    o: ["37", "65", "73", "170", "194"],
+    a: 4,
     e: "Deck hal. 42 menulis 194 ayat. Catatan pembanding: banyak sumber lain menghitung 73 pasal dan 170 ayat (menghitung pasal tambahan seperti 6A, 7A, 22C, 28A-28J sebagai pasal tersendiri); deck menghitung nomor pasal 1-37 tetap 37. Untuk ujian yang soalnya disusun BKN, gunakan angka deck: 16 bab, 37 pasal, 194 ayat.",
     src: "Kisi-kisi BKN hal. 42"
   },

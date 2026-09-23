@@ -319,7 +319,7 @@ window.BANK.renstra.push(
     q: "Cakupan materi Rencana Strategis Instansi dalam kisi-kisi BKN meliputi ...",
     o: ["Laporan keuangan tahunan, neraca aset, dan realisasi anggaran instansi", "Daftar pegawai, peta jabatan, dan kebutuhan formasi lima tahun ke depan", "Rencana pengadaan barang/jasa dan jadwal pelaksanaan kontrak tahunan", "Jadwal cuti bersama, hari libur nasional, dan kalender kegiatan instansi", "Visi-misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, sistematika"],
     a: 4,
-    e: "Deck hal. 150: materi Renstra instansi mencakup visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, dan sistematika Renstra. Untuk Kemenimipas gunakan Permenimipas 11/2025 (bank kurasi memuat rinciannya).",
+    e: "Deck hal. 150: materi Renstra instansi mencakup visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, dan sistematika Renstra. Untuk Kemenimipas, Renstra 2025-2029 ditetapkan dengan Permenimipas 11/2025.",
     src: "Kisi-kisi BKN hal. 150"
   },
   {

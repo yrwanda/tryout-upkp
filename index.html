@@ -2,65 +2,53 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Tryout UPKP</title>
-  <meta name="description" content="Aplikasi belajar, latihan, dan simulasi Ujian Penyesuaian Kenaikan Pangkat (UPKP) S1 Kementerian Imigrasi dan Pemasyarakatan sesuai SE BKN No. 10 Tahun 2024.">
-  <meta name="theme-color" content="#1f4e79">
+  <meta name="description" content="Belajar, latihan, dan simulasi UPKP S1 Kemenimipas 2026 dari kisi-kisi resmi PPSS BKN 2025 dan 50 soal latihan resmi BKN.">
+  <meta name="theme-color" content="#0E5A4F">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Tryout UPKP">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="icons/icon-192.png">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%231f4e79'/%3E%3Ctext x='32' y='42' font-size='30' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EU%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="css/style.css?v=5">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230E5A4F'/%3E%3Ctext x='32' y='41' font-size='24' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EUP%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/style.css?v=6">
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <div class="brand">
-        <strong>Tryout UPKP</strong>
-        <span>UPKP S1 Kemenimipas 2026 - SE BKN No. 10 Tahun 2024</span>
-      </div>
-      <nav class="nav" aria-label="Menu utama">
-        <button data-route="home">Beranda</button>
-        <button data-route="materi">Materi</button>
-        <button data-route="latihan">Latihan</button>
-        <button data-route="simulasi">Simulasi</button>
-        <button data-route="riwayat">Riwayat</button>
-        <button data-route="pengaturan">Pengaturan</button>
-      </nav>
-      <select id="sourceSel" class="btn btn-sm" title="Sumber soal" aria-label="Sumber soal"></select>
-      <button id="installBtn" class="btn btn-sm btn-primary" hidden title="Pasang sebagai aplikasi di perangkat ini">Pasang</button>
-      <button id="themeBtn" class="icon-btn" title="Ganti tema" aria-label="Ganti tema">&#9681;</button>
+  <div class="shell">
+    <aside class="side" aria-label="Navigasi">
+      <div class="brand"><div class="brand-mark">UP</div><div><strong>Tryout UPKP</strong><span>Kisi-kisi BKN 2025</span></div></div>
+      <nav class="nav" id="sideNav"></nav>
+      <div class="side-foot" id="sideFoot"></div>
+    </aside>
+    <div>
+      <header class="topbar">
+        <div class="brand"><div class="brand-mark">UP</div><div><strong>Tryout UPKP</strong><span>Kisi-kisi BKN 2025</span></div></div>
+        <div class="row" style="gap:4px">
+          <button id="installBtn" class="btn btn-sm btn-primary" hidden>Pasang</button>
+          <button class="btn btn-ghost icon-btn" id="topTheme" aria-label="Ganti tema"></button>
+          <button class="btn btn-ghost icon-btn" id="topSettings" aria-label="Pengaturan"></button>
+        </div>
+      </header>
+      <main id="view" class="view"></main>
     </div>
-  </header>
-  <main id="view" class="main"></main>
+  </div>
+  <nav class="tabbar" id="tabbar" aria-label="Menu utama"></nav>
 
-  <script src="js/materi.js?v=5"></script>
-  <script src="js/bank/twk_pancasila.js?v=5"></script>
-  <script src="js/bank/twk_uud.js?v=5"></script>
-  <script src="js/bank/twk_sejarah.js?v=5"></script>
-  <script src="js/bank/twk_bindo.js?v=5"></script>
-  <script src="js/bank/tkt_kepegawaian.js?v=5"></script>
-  <script src="js/bank/tkt_yanlik.js?v=5"></script>
-  <script src="js/bank/tkt_gg.js?v=5"></script>
-  <script src="js/bank/tkt_kebijakan.js?v=5"></script>
-  <script src="js/bank/tsi_renstra.js?v=5"></script>
-  <script src="js/bank/tsi_sotk.js?v=5"></script>
-  <script src="js/bank/tkp_inggris.js?v=5"></script>
-  <script src="js/bank/tkp_literasi.js?v=5"></script>
-  <script src="js/bank/bonus_imigrasi.js?v=5"></script>
-  <script src="js/bank/x2_twk.js?v=5"></script>
-  <script src="js/bank/x2_tkt.js?v=5"></script>
-  <script src="js/bank/x2_tsi.js?v=5"></script>
-  <script src="js/bank/x2_tkp.js?v=5"></script>
-  <script src="js/bank/bkn_twk.js?v=5"></script>
-  <script src="js/bank/bkn_tkt.js?v=5"></script>
-  <script src="js/bank/bkn_tsi_tkp.js?v=5"></script>
-  <script src="js/bank/bkn_ekstra.js?v=5"></script>
-  <script src="js/bank/bkn_form.js?v=5"></script>
-  <script src="js/app.js?v=5"></script>
+  <script src="js/materi.js?v=6"></script>
+  <script src="js/bank/bkn_twk.js?v=6"></script>
+  <script src="js/bank/bkn_tkt.js?v=6"></script>
+  <script src="js/bank/bkn_tsi_tkp.js?v=6"></script>
+  <script src="js/bank/bkn_ekstra.js?v=6"></script>
+  <script src="js/bank/bkn_x3_twk.js?v=6"></script>
+  <script src="js/bank/bkn_x3_tkt.js?v=6"></script>
+  <script src="js/bank/bkn_x3_lain.js?v=6"></script>
+  <script src="js/bank/bkn_form.js?v=6"></script>
+  <script src="js/app.js?v=6"></script>
   <script>
     if ("serviceWorker" in navigator && location.protocol !== "file:") {
       window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));

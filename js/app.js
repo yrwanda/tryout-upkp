@@ -1,624 +1,728 @@
-/* Aplikasi belajar UPKP - vanilla JS, tanpa dependensi. Data tersimpan di localStorage browser. */
+/* Tryout UPKP - hanya bank kisi-kisi BKN 2025 (turunan deck + 50 soal resmi). Vanilla JS, data di localStorage. */
 (function () {
   "use strict";
 
   // ---------- Util ----------
-  const $ = (sel, root) => (root || document).querySelector(sel);
-  const el = (tag, attrs, children) => {
+  const $ = (s, r) => (r || document).querySelector(s);
+  const el = (tag, attrs, kids) => {
     const n = document.createElement(tag);
     if (attrs) for (const k in attrs) {
-      if (k === "class") n.className = attrs[k];
-      else if (k === "html") n.innerHTML = attrs[k];
-      else if (k.startsWith("on")) n.addEventListener(k.slice(2), attrs[k]);
-      else if (attrs[k] !== null && attrs[k] !== undefined) n.setAttribute(k, attrs[k]);
+      const v = attrs[k];
+      if (v === null || v === undefined || v === false) continue;
+      if (k === "class") n.className = v;
+      else if (k === "html") n.innerHTML = v;
+      else if (k === "style") n.setAttribute("style", v);
+      else if (k.startsWith("on")) n.addEventListener(k.slice(2), v);
+      else n.setAttribute(k, v === true ? "" : v);
     }
-    (children || []).forEach(c => { if (c === null || c === undefined) return; n.appendChild(typeof c === "string" ? document.createTextNode(c) : c); });
+    (kids || []).flat().forEach(c => { if (c === null || c === undefined || c === false) return; n.appendChild(typeof c === "string" || typeof c === "number" ? document.createTextNode(String(c)) : c); });
     return n;
   };
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const pad = n => String(n).padStart(2, "0");
-  const fmtTime = s => `${pad(Math.floor(s / 3600))}:${pad(Math.floor((s % 3600) / 60))}:${pad(s % 60)}`;
-  const fmtDate = ts => new Date(ts).toLocaleString("id-ID", { dateStyle: "medium", timeStyle: "short" });
-  const LETTERS = ["A", "B", "C", "D", "E"];
+  const fmtTime = s => { s = Math.max(0, s); const h = Math.floor(s / 3600); return (h ? h + ":" : "") + pad(Math.floor((s % 3600) / 60)) + ":" + pad(s % 60); };
+  const fmtDate = ts => new Date(ts).toLocaleString("id-ID", { day: "numeric", month: "short", year: "numeric", hour: "2-digit", minute: "2-digit" });
+  const fmtDay = d => new Date(d + "T00:00:00").toLocaleDateString("id-ID", { day: "numeric", month: "long", year: "numeric" });
+  const dayKey = (d = new Date()) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+  const L = ["A", "B", "C", "D", "E"];
+  const pct = (a, b) => b ? Math.round(a / b * 100) : 0;
 
-  // ---------- Storage ----------
-  const KEY = "upkp-app-v1";
-  const defaultState = () => ({
-    settings: { includeImi: false, examDate: "", durationMin: 90, thresholds: { TWK: "", TKT: "", TSI: "", TKP: "" }, theme: "auto", source: "all" },
-    stats: {},      // id -> { seen, correct, wrong, lastWrong(bool) }
-    history: [],    // tryout attempts
-    bookmarks: []
-  });
-  let state = load();
+  const ICONS = {
+    home: '<path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+    book: '<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+    pen: '<path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/>',
+    timer: '<circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2"/><path d="M10 2h4"/>',
+    chart: '<path d="M3 3v18h18"/><path d="M7 16v-5"/><path d="M12 16V8"/><path d="M17 16v-9"/>',
+    sliders: '<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',
+    sun: '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+    moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+    auto: '<circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/>',
+    check: '<path d="M20 6 9 17l-5-5"/>',
+    x: '<path d="M18 6 6 18M6 6l12 12"/>',
+    flag: '<path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><path d="M4 22v-7"/>',
+    bookmark: '<path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>',
+    left: '<path d="m15 18-6-6 6-6"/>',
+    right: '<path d="m9 18 6-6-6-6"/>',
+    grid: '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+    play: '<path d="m7 4 13 8-13 8z"/>',
+    award: '<circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/>',
+    flame: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3.3.3 1.3 1.2 2.3 2.5 2.8Z"/>',
+    target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
+    alert: '<circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/>',
+    calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'
+  };
+  const icon = (name, label) => { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("class", "ic"); s.setAttribute("aria-hidden", label ? "false" : "true"); if (label) s.setAttribute("aria-label", label); s.innerHTML = ICONS[name] || ""; return s; };
+
+  // ---------- Penyimpanan ----------
+  const KEY = "upkp-app-v1", EXAM_KEY = "upkp-exam-v2";
+  const defaults = () => ({ settings: { examDate: "", durationMin: 90, thresholds: { TWK: "", TKT: "", TSI: "", TKP: "" }, theme: "auto" }, stats: {}, history: [], bookmarks: [], days: {} });
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) { } },
+    del(k) { try { localStorage.removeItem(k); } catch (e) { } }
+  };
   function load() {
-    try { const raw = localStorage.getItem(KEY); if (raw) { const s = JSON.parse(raw); return Object.assign(defaultState(), s, { settings: Object.assign(defaultState().settings, s.settings || {}) }); } } catch (e) { }
-    return defaultState();
+    const d = defaults();
+    try { const s = JSON.parse(store.get(KEY) || "null"); if (s) return Object.assign(d, s, { settings: Object.assign(d.settings, s.settings || {}, { thresholds: Object.assign(d.settings.thresholds, (s.settings || {}).thresholds || {}) }), days: s.days || {} }); } catch (e) { }
+    return d;
   }
-  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { } }
+  let state = load();
+  const save = () => store.set(KEY, JSON.stringify(state));
 
   // ---------- Data ----------
-  const BANK = window.BANK || {};
-  const TOPICS = window.TOPICS || [];
-  const TESTS = window.TESTS || {};
+  const BANK = window.BANK || {}, TOPICS = window.TOPICS || [], TESTS = window.TESTS || {}, MATERI = window.MATERI || {};
   const topicById = id => TOPICS.find(t => t.id === id);
-  const allQuestions = () => TOPICS.flatMap(t => (BANK[t.id] || []));
-  const qById = {}; allQuestions().forEach(q => qById[q.id] = q);
-  const includeImi = () => !!state.settings.includeImi;
-  // Sumber soal: "kurasi" (bank hasil riset), "bkn" (kisi-kisi BKN + latihan resmi), "all" (keduanya)
-  const SOURCES = { kurasi: "Kurasi (riset)", bkn: "Kisi-kisi BKN", all: "Semua sumber" };
-  const source = () => state.settings.source || "all";
-  const inSource = q => source() === "all" ? true : source() === "bkn" ? (q.set === "bkn" || q.set === "form") : !q.set;
-  const visibleTopics = () => TOPICS.filter(t => (!t.optional || includeImi()) && (!t.bkn || source() !== "kurasi") && pool(t.id).length > 0);
-  const pool = topicId => (BANK[topicId] || []).filter(q => (includeImi() || !q.imi) && inSource(q));
-  const formSet = () => allQuestions().filter(q => q.set === "form");
+  const pool = tid => BANK[tid] || [];
+  const ALL = TOPICS.flatMap(t => pool(t.id));
+  const qById = {}; ALL.forEach(q => { qById[q.id] = q; });
+  const formSet = () => ALL.filter(q => q.set === "form").sort((a, b) => a.id.localeCompare(b.id));
+  const CORE = TOPICS.filter(t => !t.extra);
+  const TEST_ORDER = ["TWK", "TKT", "TSI", "TKP"];
+  const MONO = { pancasila: "PS", uud: "UUD", sejarah: "SJ", bindo: "BI", kepegawaian: "KP", yanlik: "PL", gg: "GG", kebijakan: "KB", renstra: "RS", sotk: "SO", inggris: "EN", literasi: "LD", perkantoran: "PK", manajemen: "MJ" };
+  const tcOf = t => "tc" + ((TESTS[t.test] || {}).color || 1);
 
-  function recordAnswer(q, correct) {
+  function recordAnswer(q, ok) {
     const s = state.stats[q.id] || { seen: 0, correct: 0, wrong: 0, lastWrong: false };
-    s.seen++; if (correct) s.correct++; else s.wrong++; s.lastWrong = !correct;
-    state.stats[q.id] = s; save();
+    s.seen++; ok ? s.correct++ : s.wrong++; s.lastWrong = !ok; state.stats[q.id] = s;
+    const k = dayKey(); state.days[k] = (state.days[k] || 0) + 1;
+    save();
   }
-  function pickQuestions(topicId, n, mode) {
-    const list = pool(topicId);
-    if (mode === "weak") {
-      const score = q => { const s = state.stats[q.id]; if (!s) return 0; return (s.lastWrong ? 3 : 0) + s.wrong - s.correct * 0.5 + 1 + Math.random() * 0.5; };
-      // belum pernah dikerjakan dan yang salah didahulukan
-      return list.slice().sort((a, b) => { const sa = state.stats[a.id], sb = state.stats[b.id]; if (!sa && sb) return -1; if (sa && !sb) return 1; return score(b) - score(a); }).slice(0, n);
-    }
-    return shuffle(list).slice(0, n);
+  function topicStat(tid) {
+    let seen = 0, correct = 0, done = 0;
+    pool(tid).forEach(q => { const s = state.stats[q.id]; if (s) { seen += s.seen; correct += s.correct; done++; } });
+    return { total: pool(tid).length, done, acc: seen ? correct / seen : null };
   }
-  function topicAccuracy(topicId) {
-    let seen = 0, correct = 0, answeredQ = 0;
-    pool(topicId).forEach(q => { const s = state.stats[q.id]; if (s) { seen += s.seen; correct += s.correct; answeredQ++; } });
-    return { seen, correct, answeredQ, total: pool(topicId).length, acc: seen ? correct / seen : null };
+  function overall() {
+    let seen = 0, correct = 0, done = 0;
+    ALL.forEach(q => { const s = state.stats[q.id]; if (s) { seen += s.seen; correct += s.correct; done++; } });
+    return { total: ALL.length, done, seen, correct, acc: seen ? correct / seen : null };
   }
+  function streak() {
+    let n = 0; const d = new Date();
+    if (!state.days[dayKey(d)]) d.setDate(d.getDate() - 1);
+    while (state.days[dayKey(d)]) { n++; d.setDate(d.getDate() - 1); }
+    return n;
+  }
+  const validHistory = () => state.history.filter(h => h.qids && h.qids.filter(id => qById[id]).length >= h.qids.length * 0.5);
+  const rowsOf = h => h.rows || Object.keys(h.perTest || {}).filter(k => TESTS[k]).map(k => ({ key: k, label: TESTS[k].label, tc: "tc" + TESTS[k].color, n: h.perTest[k].n, correct: h.perTest[k].correct, score: h.perTest[k].score, max: h.perTest[k].max, th: h.thresholds && h.thresholds[k] }));
 
-  // ---------- Markdown mini ----------
+  function srcTag(q) {
+    if (q.set === "form") return el("span", { class: "stamp" }, [icon("award"), `Resmi BKN · no. ${parseInt(q.id.split("-")[1], 10)}`]);
+    const m = (q.src || "").match(/hal\.\s*([\d][\d\s\-–,]*)/);
+    return el("span", { class: "chip chip-page" }, [m ? `Deck hal. ${m[1].trim().replace(/[,\s]+$/, "")}` : "Turunan deck"]);
+  }
+  const testChip = t => el("span", { class: "chip chip-test " + tcOf(t) }, [TESTS[t.test].short]);
+
+  // ---------- Markdown ringkas ----------
   function md(src) {
-    const lines = src.trim().split("\n"); let out = [], inList = false, inTable = false;
-    const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/`(.+?)`/g, "<code>$1</code>");
-    const closeList = () => { if (inList) { out.push("</ul>"); inList = false; } };
-    const closeTable = () => { if (inTable) { out.push("</tbody></table>"); inTable = false; } };
-    lines.forEach(line => {
+    const out = []; let list = false, table = null;
+    const inl = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+    const endList = () => { if (list) { out.push("</ul>"); list = false; } };
+    const endTable = () => { if (table) { out.push(table.join("") + "</tbody></table></div>"); table = null; } };
+    src.trim().split("\n").forEach(line => {
       const t = line.trim();
       if (t.startsWith("|")) {
-        closeList();
-        const cells = t.split("|").slice(1, -1).map(c => c.trim());
+        endList(); const cells = t.split("|").slice(1, -1).map(c => c.trim());
         if (cells.every(c => /^-+$/.test(c))) return;
-        if (!inTable) { out.push("<table><thead><tr>" + cells.map(c => `<th>${inline(c)}</th>`).join("") + "</tr></thead><tbody>"); inTable = true; return; }
-        out.push("<tr>" + cells.map(c => `<td>${inline(c)}</td>`).join("") + "</tr>"); return;
+        if (!table) { table = ['<div class="table-wrap"><table><thead><tr>' + cells.map(c => `<th>${inl(c)}</th>`).join("") + "</tr></thead><tbody>"]; return; }
+        table.push("<tr>" + cells.map(c => `<td>${inl(c)}</td>`).join("") + "</tr>"); return;
       }
-      closeTable();
-      if (t.startsWith("## ")) { closeList(); out.push(`<h2>${inline(t.slice(3))}</h2>`); }
-      else if (t.startsWith("# ")) { closeList(); out.push(`<h1>${inline(t.slice(2))}</h1>`); }
-      else if (t.startsWith("- ")) { if (!inList) { out.push("<ul>"); inList = true; } out.push(`<li>${inline(t.slice(2))}</li>`); }
-      else if (t === "") { closeList(); }
-      else { closeList(); out.push(`<p>${inline(t)}</p>`); }
+      endTable();
+      if (t.startsWith("## ")) { endList(); out.push(`<h2>${inl(t.slice(3))}</h2>`); }
+      else if (t.startsWith("> ")) { endList(); out.push(`<div class="note"><b>Catatan:</b> ${inl(t.slice(2))}</div>`); }
+      else if (t.startsWith("- ")) { if (!list) { out.push("<ul>"); list = true; } out.push(`<li>${inl(t.slice(2))}</li>`); }
+      else if (/^\d+\.\s/.test(t)) { endList(); out.push(`<p>${inl(t)}</p>`); }
+      else if (!t) endList();
+      else { endList(); out.push(`<p>${inl(t)}</p>`); }
     });
-    closeList(); closeTable();
-    return out.join("\n");
+    endList(); endTable();
+    return out.join("");
   }
 
-  // ---------- Theme ----------
+  // ---------- Tema ----------
   function applyTheme() {
     const t = state.settings.theme;
-    const dark = t === "dark" || (t === "auto" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    else document.documentElement.removeAttribute("data-theme");
+    const b = $("#topTheme"); if (b) { b.innerHTML = ""; b.appendChild(icon(t === "dark" ? "moon" : t === "light" ? "sun" : "auto")); }
   }
+  const THEME_LABEL = { auto: "Ikuti sistem", light: "Terang", dark: "Gelap" };
+  function cycleTheme() { const o = ["auto", "light", "dark"]; state.settings.theme = o[(o.indexOf(state.settings.theme) + 1) % 3]; save(); applyTheme(); renderSideFoot(); toast("Tema: " + THEME_LABEL[state.settings.theme]); }
 
-  // ---------- Toast / modal ----------
+  // ---------- Toast & modal ----------
   let toastT;
-  function toast(msg) { let t = $("#toast"); if (!t) { t = el("div", { id: "toast", class: "toast" }); document.body.appendChild(t); } t.textContent = msg; t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 2200); }
+  function toast(msg) { let t = $("#toast"); if (!t) { t = el("div", { id: "toast", class: "toast", role: "status" }); document.body.appendChild(t); } t.textContent = msg; t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 2200); }
   function confirmBox(title, body, okLabel, onOk, danger) {
-    const bg = el("div", { class: "modal-bg" });
-    const box = el("div", { class: "modal" }, [
-      el("h2", null, [title]), el("p", { class: "muted" }, [body]),
-      el("div", { class: "actions" }, [
-        el("button", { class: "btn btn-ghost", onclick: () => bg.remove() }, ["Batal"]),
-        el("button", { class: "btn " + (danger ? "btn-danger" : "btn-primary"), onclick: () => { bg.remove(); onOk(); } }, [okLabel])
-      ])
-    ]);
-    bg.appendChild(box); document.body.appendChild(bg);
+    const bg = el("div", { class: "modal-bg", onclick: e => { if (e.target === bg) bg.remove(); } });
+    const ok = el("button", { class: "btn " + (danger ? "btn-danger" : "btn-primary"), onclick: () => { bg.remove(); onOk(); } }, [okLabel]);
+    bg.appendChild(el("div", { class: "modal", role: "dialog", "aria-modal": "true" }, [el("h2", null, [title]), el("p", { class: "muted" }, [body]), el("div", { class: "row", style: "justify-content:flex-end" }, [el("button", { class: "btn btn-ghost", onclick: () => bg.remove() }, ["Batal"]), ok])]));
+    document.body.appendChild(bg); ok.focus();
+  }
+  function sheet(title, content) {
+    const bg = el("div", { class: "sheet-bg", onclick: e => { if (e.target === bg) bg.remove(); } });
+    bg.appendChild(el("div", { class: "sheet", role: "dialog", "aria-modal": "true", "aria-label": title }, [el("div", { class: "grab" }), el("div", { class: "row between" }, [el("h2", null, [title]), el("button", { class: "btn btn-ghost icon-btn", "aria-label": "Tutup", onclick: () => bg.remove() }, [icon("x")])]), content]));
+    document.body.appendChild(bg); return bg;
   }
 
-  // ---------- Router ----------
+  // ---------- Navigasi ----------
   const view = $("#view");
-  let current = "home";
-  let examTimer = null;
+  const NAV = [["home", "Beranda", "home"], ["materi", "Materi", "book"], ["latihan", "Latihan", "pen"], ["simulasi", "Simulasi", "timer"], ["riwayat", "Riwayat", "chart"], ["pengaturan", "Pengaturan", "sliders"]];
+  let current = "home", timerInt = null, drill = null, exam = null;
   const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan };
-  function go(name, arg) {
-    if (examTimer && name !== "simulasi") { clearInterval(examTimer); examTimer = null; }
-    current = name; view.innerHTML = "";
-    document.querySelectorAll(".nav button").forEach(b => b.classList.toggle("active", b.dataset.route === name));
-    routes[name](arg);
-    window.scrollTo({ top: 0 });
+  function renderNav() {
+    const side = $("#sideNav"), tab = $("#tabbar"); side.innerHTML = ""; tab.innerHTML = "";
+    NAV.forEach(([id, label, ic]) => {
+      const cur = id === current ? "page" : null;
+      side.appendChild(el("button", { "aria-current": cur, onclick: () => nav(id) }, [icon(ic), label]));
+      if (id !== "pengaturan") tab.appendChild(el("button", { "aria-current": cur, onclick: () => nav(id) }, [icon(ic), label]));
+    });
   }
-  document.querySelectorAll(".nav button").forEach(b => b.addEventListener("click", () => {
-    if (exam && exam.active && !exam.finished) { confirmBox("Keluar dari simulasi?", "Jawaban yang sudah diisi tidak akan dinilai.", "Keluar", () => { exam = null; go(b.dataset.route); }, true); return; }
-    go(b.dataset.route);
-  }));
-  const sourceSel = $("#sourceSel");
-  function syncSourceSel() { if (sourceSel) sourceSel.value = source(); }
-  if (sourceSel) { Object.keys(SOURCES).forEach(v => sourceSel.appendChild(el("option", { value: v }, [SOURCES[v]]))); syncSourceSel(); sourceSel.addEventListener("change", () => { if (exam && exam.active && !exam.finished) { syncSourceSel(); return toast("Selesaikan simulasi dulu."); } state.settings.source = sourceSel.value; save(); drill = null; toast("Sumber soal: " + SOURCES[source()]); go(current); }); }
-  $("#themeBtn").addEventListener("click", () => { const order = ["auto", "light", "dark"]; state.settings.theme = order[(order.indexOf(state.settings.theme) + 1) % 3]; save(); applyTheme(); toast("Tema: " + state.settings.theme); });
-
-  // ---------- Home ----------
-  function renderHome() {
-    const vt = visibleTopics();
-    const totalQ = vt.reduce((a, t) => a + pool(t.id).length, 0);
-    const answered = Object.keys(state.stats).filter(id => qById[id]).length;
-    const seen = Object.values(state.stats).reduce((a, s) => a + s.seen, 0);
-    const correct = Object.values(state.stats).reduce((a, s) => a + s.correct, 0);
-    const last = state.history[state.history.length - 1];
-
-    let countdown = null;
-    if (state.settings.examDate) {
-      const d = Math.ceil((new Date(state.settings.examDate + "T00:00:00") - new Date(new Date().toDateString())) / 86400000);
-      countdown = d > 0 ? `${d} hari lagi` : d === 0 ? "Hari ini!" : "Sudah lewat";
-    }
-
-    const weak = vt.map(t => ({ t, a: topicAccuracy(t.id) })).filter(x => x.a.seen >= 3 && x.a.acc < 0.7).sort((x, y) => x.a.acc - y.a.acc).slice(0, 3);
-
-    view.append(
-      el("div", { class: "grid grid-3" }, [
-        el("div", { class: "card stat" }, [el("div", { class: "v" }, [countdown || "-"]), el("div", { class: "l" }, [countdown ? "Menuju hari ujian (" + state.settings.examDate + ")" : "Atur tanggal ujian di Pengaturan"])]),
-        el("div", { class: "card stat" }, [el("div", { class: "v" }, [`${answered}/${totalQ}`]), el("div", { class: "l" }, ["Soal sudah pernah dikerjakan"])]),
-        el("div", { class: "card stat" }, [el("div", { class: "v" }, [seen ? Math.round(correct / seen * 100) + "%" : "-"]), el("div", { class: "l" }, [`Akurasi keseluruhan (${correct}/${seen} jawaban)`])]),
-      ]),
-      el("div", { class: "grid grid-2", style: "margin-top:16px" }, [
-        el("div", { class: "card" }, [
-          el("div", { class: "card-head" }, [el("h2", null, ["Mulai belajar"])]),
-          el("p", { class: "muted small" }, ["Alur yang disarankan: baca Materi topik lemah, kerjakan Latihan dengan umpan balik langsung, lalu uji diri dengan Simulasi 100 soal / 90 menit."]),
-          el("div", { class: "actions" }, [
-            el("button", { class: "btn btn-primary", onclick: () => go("simulasi") }, ["Simulasi ujian"]),
-            el("button", { class: "btn", onclick: () => go("latihan") }, ["Latihan per topik"]),
-            el("button", { class: "btn", onclick: () => go("materi") }, ["Baca materi"]),
-          ]),
-          last ? el("p", { class: "small muted", style: "margin-top:12px" }, [`Simulasi terakhir: ${fmtDate(last.ts)} - skor ${last.total.score}/${last.total.max} (${last.total.correct} benar).`]) : null,
-          weak.length ? el("div", { style: "margin-top:12px" }, [
-            el("h3", null, ["Topik yang perlu diperkuat"]),
-            ...weak.map(x => el("div", { class: "topic-row" }, [
-              el("span", null, [x.t.label]), el("span", { class: "small muted" }, [Math.round(x.a.acc * 100) + "%"]),
-              el("div", { class: "bar bad" }, [el("i", { style: `width:${Math.round(x.a.acc * 100)}%` })])
-            ])),
-            el("div", { class: "actions" }, [el("button", { class: "btn btn-sm", onclick: () => go("latihan", { topics: weak.map(x => x.t.id), mode: "weak" }) }, ["Latih topik lemah"])])
-          ]) : null
-        ]),
-        el("div", { class: "card" }, [
-          el("div", { class: "card-head" }, [el("h2", null, ["Struktur UPKP D3-S3"]), el("span", { class: "badge" }, ["SE BKN 10/2024"])]),
-          structureTable(),
-          el("p", { class: "small muted", style: "margin-top:8px" }, ["100 soal pilihan ganda, 90 menit, CAT BKN. Benar = 5, salah/kosong = 0 (maksimal 500). Nilai ambang batas UPKP ditetapkan PPK Kemenimipas dan disampaikan sebelum ujian; tidak ada pengurangan nilai, jadi jawab semua soal."])
-        ])
-      ]),
-      el("div", { class: "card", style: "margin-top:16px" }, [
-        el("div", { class: "card-head" }, [el("h2", null, ["Penguasaan per topik"])]),
-        ...vt.map(t => { const a = topicAccuracy(t.id); const p = a.acc === null ? 0 : Math.round(a.acc * 100); const cls = a.acc === null ? "" : p >= 80 ? "ok" : p >= 60 ? "warn" : "bad"; return el("div", { class: "topic-row" }, [
-          el("span", null, [el("span", { class: "badge badge-muted", style: "margin-right:6px" }, [t.test]), t.label]),
-          el("span", { class: "small muted" }, [a.acc === null ? `0/${a.total} dikerjakan` : `${p}% - ${a.answeredQ}/${a.total} soal`]),
-          el("div", { class: "bar " + cls }, [el("i", { style: `width:${p}%` })])
-        ]); })
-      ])
+  function renderSideFoot() {
+    const f = $("#sideFoot"); if (!f) return; f.innerHTML = "";
+    const d = daysLeft();
+    f.append(
+      el("div", { class: "countdown-mini" }, d === null ? [el("div", { class: "xs muted" }, ["Tanggal ujian belum diatur"]), el("button", { class: "btn btn-sm btn-ghost", style: "padding-left:0", onclick: () => nav("pengaturan") }, ["Atur tanggal"])]
+        : [el("div", { class: "xs muted" }, ["Menuju ujian"]), el("b", { class: "num" }, [d > 0 ? `H-${d}` : d === 0 ? "Hari ini" : "Selesai"]), el("div", { class: "xs muted" }, [fmtDay(state.settings.examDate)])]),
+      el("button", { class: "btn btn-sm btn-ghost", onclick: cycleTheme }, [icon(state.settings.theme === "dark" ? "moon" : state.settings.theme === "light" ? "sun" : "auto"), "Tema: " + THEME_LABEL[state.settings.theme]])
     );
   }
-  function structureTable() {
-    const rows = TOPICS.filter(t => !t.optional);
-    const byTest = {}; rows.forEach(t => { (byTest[t.test] = byTest[t.test] || []).push(t); });
-    const tb = el("table", { class: "tbl" }, [el("thead", null, [el("tr", null, [el("th", null, ["Jenis tes"]), el("th", null, ["Materi"]), el("th", { class: "num" }, ["Soal"])])])]);
-    const body = el("tbody");
-    Object.keys(byTest).forEach(k => {
-      byTest[k].forEach((t, i) => body.appendChild(el("tr", null, [el("td", null, [i === 0 ? el("strong", null, [k]) : ""]), el("td", null, [t.label]), el("td", { class: "num" }, [String(t.n)])])));
-      body.appendChild(el("tr", null, [el("td"), el("td", { class: "muted small" }, ["Subtotal " + k]), el("td", { class: "num" }, [String(byTest[k].reduce((a, t) => a + t.n, 0))])]));
+  function daysLeft() { if (!state.settings.examDate) return null; return Math.round((new Date(state.settings.examDate + "T00:00:00") - new Date(dayKey() + "T00:00:00")) / 86400000); }
+  function nav(name, arg) {
+    if (exam && !exam.finished && name !== "simulasi") return confirmBox("Tinggalkan simulasi?", "Simulasi tetap berjalan dan tersimpan. Kembali lewat menu Simulasi sebelum waktu habis.", "Tinggalkan", () => go(name, arg));
+    if (drill && drill.active && name !== "latihan") drill.active = false;
+    go(name, arg);
+  }
+  function go(name, arg) {
+    current = name; view.innerHTML = ""; renderNav();
+    routes[name](arg);
+    if (location.hash.slice(1) !== name) { try { history.replaceState(null, "", "#" + name); } catch (e) { } }
+    window.scrollTo({ top: 0 });
+  }
+
+  // ---------- Beranda ----------
+  function ring(value, label) {
+    const r = 58, c = 2 * Math.PI * r, off = c * (1 - value);
+    const w = el("div", { class: "ring-wrap", role: "img", "aria-label": `${Math.round(value * 100)}% ${label}` });
+    w.innerHTML = `<svg viewBox="0 0 148 148"><circle class="track" cx="74" cy="74" r="${r}" fill="none" stroke-width="14"/><circle class="val" cx="74" cy="74" r="${r}" fill="none" stroke-width="14" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/></svg>`;
+    w.appendChild(el("div", { class: "ring-label" }, [el("b", { class: "num" }, [Math.round(value * 100) + "%"]), el("span", null, [label])]));
+    return w;
+  }
+  function renderHome() {
+    const o = overall(), d = daysLeft(), hist = validHistory();
+    const best = hist.filter(h => h.mode !== "form").reduce((m, h) => Math.max(m, h.total.score), -1);
+    view.append(el("section", { class: "hero" }, [
+      el("div", { class: "stack", style: "position:relative;z-index:1;gap:14px" }, [
+        el("span", { class: "eyebrow" }, ["UPKP S1 Kemenimipas 2026"]),
+        el("h1", null, [d !== null && d >= 0 ? (d === 0 ? "Hari ujian. Tetap tenang." : `H-${d} menuju ujian`) : "Belajar dari kisi-kisi resmi BKN"]),
+        el("p", null, [`${o.total} soal, semuanya bersumber dari deck PPSS BKN 2025 (hal. 18-172) dan 50 soal latihan resmi BKN. Tidak dicampur soal dari sumber lain.`]),
+        el("div", { class: "row" }, [
+          el("button", { class: "btn btn-light", onclick: () => { simMode = "upkp"; nav("simulasi"); } }, [icon("timer"), "Simulasi 100 soal"]),
+          el("button", { class: "btn btn-outline", onclick: () => startDrill(formSet(), "50 soal resmi BKN 2025") }, [icon("award"), "50 soal resmi BKN"])
+        ])
+      ]),
+      ring(o.total ? o.done / o.total : 0, "soal sudah dicoba")
+    ]));
+    view.append(el("div", { class: "stats" }, [
+      el("div", { class: "stat" }, [el("b", null, [o.acc === null ? "-" : pct(o.correct, o.seen) + "%"]), el("span", null, ["Akurasi jawaban"])]),
+      el("div", { class: "stat" }, [el("b", null, [`${o.done}`]), el("span", null, [`dari ${o.total} soal dicoba`])]),
+      el("div", { class: "stat" }, [el("b", null, [`${streak()} hari`]), el("span", null, ["Belajar beruntun"])]),
+      el("div", { class: "stat" }, [el("b", null, [best < 0 ? "-" : `${best}`]), el("span", null, [best < 0 ? "Belum ada simulasi" : "Skor simulasi terbaik /500"])])
+    ]));
+    // rekomendasi: topik inti dengan akurasi terendah (min. 5 jawaban) atau cakupan terendah
+    const cand = CORE.map(t => ({ t, s: topicStat(t.id) }));
+    const weak = cand.filter(x => x.s.acc !== null && x.s.done >= 5 && x.s.acc < .75).sort((a, b) => a.s.acc - b.s.acc)[0];
+    const fresh = cand.slice().sort((a, b) => a.s.done / a.s.total - b.s.done / b.s.total)[0];
+    const rec = weak || fresh;
+    if (rec) view.append(el("div", { class: "panel row between" }, [
+      el("div", { class: "row", style: "gap:14px;flex-wrap:nowrap" }, [el("div", { class: "mono " + tcOf(rec.t) }, [MONO[rec.t.id]]), el("div", null, [
+        el("div", { class: "eyebrow" }, [weak ? "Perlu diperkuat" : "Belum banyak disentuh"]),
+        el("h3", null, [rec.t.label]),
+        el("p", { class: "small muted" }, [weak ? `Akurasi ${pct(rec.s.acc * 100, 100)}% dari ${rec.s.done} soal yang dicoba.` : `${rec.s.done} dari ${rec.s.total} soal sudah dicoba. Materi di deck hal. ${rec.t.pages}.`])
+      ])]),
+      el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: () => nav("materi", { topic: rec.t.id }) }, ["Baca materi"]), el("button", { class: "btn btn-sm btn-primary", onclick: () => startDrill(pickFrom([rec.t.id], 15, "unseen"), rec.t.label) }, ["Latih 15 soal"])])
+    ]));
+    // per jenis tes
+    view.append(el("div", { class: "sec-head" }, [el("h2", null, ["Penguasaan per topik"]), el("span", { class: "small muted" }, ["Bar = persentase soal yang sudah dicoba; angka = akurasi"])]));
+    const groups = {}; TOPICS.forEach(t => (groups[t.test] = groups[t.test] || []).push(t));
+    Object.keys(groups).forEach(k => {
+      const T = TESTS[k];
+      view.append(el("div", { class: "test-group" }, [
+        el("div", { class: "test-head tc" + T.color }, [el("span", { class: "swatch" }), el("h3", null, [T.label]), k !== "EKSTRA" ? el("span", { class: "chip" }, [`${groups[k].reduce((a, t) => a + t.n, 0)} soal di ujian`]) : el("span", { class: "chip" }, ["tidak masuk 100 soal UPKP"])]),
+        el("div", { class: "topic-grid" }, groups[k].map(topicCard))
+      ]));
     });
-    body.appendChild(el("tr", { class: "total" }, [el("td", null, ["Total"]), el("td"), el("td", { class: "num" }, ["100"])]));
-    tb.appendChild(body); return tb;
+  }
+  function topicCard(t) {
+    const s = topicStat(t.id), cov = pct(s.done, s.total);
+    return el("article", { class: "topic-card " + tcOf(t) }, [
+      el("div", { class: "t-top" }, [el("div", { class: "mono" }, [MONO[t.id]]), el("div", null, [el("h3", null, [t.label]), el("div", { class: "meta" }, [`Deck hal. ${t.pages} · ${s.total} soal${t.n ? ` · ${t.n} di ujian` : ""}`])])]),
+      el("div", { class: "stack", style: "gap:6px" }, [
+        el("div", { class: "row between xs" }, [el("span", { class: "muted" }, [`${s.done}/${s.total} dicoba (${cov}%)`]), el("b", null, [s.acc === null ? "belum ada" : `akurasi ${Math.round(s.acc * 100)}%`])]),
+        el("div", { class: "meter", role: "progressbar", "aria-valuenow": cov, "aria-valuemin": 0, "aria-valuemax": 100, "aria-label": t.label }, [el("i", { style: `width:${cov}%` })])
+      ]),
+      el("div", { class: "t-actions" }, [el("button", { class: "btn btn-sm", onclick: () => nav("materi", { topic: t.id }) }, ["Materi"]), el("button", { class: "btn btn-sm btn-primary", onclick: () => startDrill(pickFrom([t.id], 10, "unseen"), t.label) }, ["Latih"])])
+    ]);
   }
 
   // ---------- Materi ----------
   function renderMateri(arg) {
-    const vt = visibleTopics();
-    let cur = (arg && arg.topic) || vt[0].id;
-    const nav = el("div", { class: "materi-nav" });
-    const content = el("div", { class: "card prose" });
+    let cur = (arg && arg.topic) || (renderMateri.last) || TOPICS[0].id;
+    const toc = el("nav", { class: "toc", "aria-label": "Daftar topik" });
+    const art = el("article", { class: "panel article" });
     const draw = () => {
-      nav.innerHTML = ""; let lastTest = null;
-      vt.forEach(t => {
-        if (t.test !== lastTest) { nav.appendChild(el("div", { class: "grp" }, [TESTS[t.test].label])); lastTest = t.test; }
-        nav.appendChild(el("button", { class: t.id === cur ? "active" : "", onclick: () => { cur = t.id; draw(); window.scrollTo({ top: 0 }); } }, [t.label]));
+      renderMateri.last = cur;
+      toc.innerHTML = ""; let lastTest = null;
+      TOPICS.forEach(t => {
+        if (t.test !== lastTest) { toc.appendChild(el("div", { class: "grp eyebrow" }, [TESTS[t.test].label])); lastTest = t.test; }
+        toc.appendChild(el("button", { class: tcOf(t), "aria-current": t.id === cur ? "true" : null, onclick: () => { cur = t.id; draw(); window.scrollTo({ top: 0 }); } }, [t.label]));
       });
-      const t = topicById(cur);
-      content.innerHTML = `<div class="card-head"><h2>${esc(t.label)}</h2><span class="badge">${esc(t.test)}${t.n ? " - " + t.n + " soal" : ""}</span></div>` + md(window.MATERI[cur] || "Materi belum tersedia.");
-      content.appendChild(el("div", { class: "actions" }, [el("button", { class: "btn btn-primary", onclick: () => go("latihan", { topics: [cur] }) }, ["Latihan soal topik ini"])]));
+      const t = topicById(cur), n = pool(cur).length;
+      art.innerHTML = "";
+      art.append(
+        el("div", { class: "stack", style: "gap:10px;margin-bottom:18px" }, [
+          el("div", { class: "row" }, [testChip(t), el("span", { class: "chip chip-page" }, [`Deck hal. ${t.pages}`]), t.n ? el("span", { class: "chip" }, [`${t.n} soal di UPKP`]) : el("span", { class: "chip chip-warn" }, ["Materi tambahan deck"])]),
+          el("h1", null, [t.label])
+        ]),
+        el("div", { class: "prose", html: md(MATERI[cur] || "Materi belum tersedia.") }),
+        el("div", { class: "row", style: "margin-top:24px" }, [el("button", { class: "btn btn-primary", onclick: () => startDrill(pickFrom([cur], 20, "unseen"), t.label) }, [icon("pen"), `Latih topik ini (${n} soal)`])])
+      );
     };
     draw();
-    view.append(el("div", { class: "materi-layout" }, [el("div", { class: "card", style: "align-self:start" }, [nav]), content]));
+    view.append(el("div", { class: "materi" }, [toc, art]));
   }
 
   // ---------- Latihan ----------
-  let drill = null;
+  let pickSel = new Set(), pickCount = 20, pickOrder = "unseen", pickSrc = "all";
+  function pickFrom(tids, n, order, src) {
+    let list = tids.flatMap(pool);
+    if (src === "form") list = list.filter(q => q.set === "form"); else if (src === "deck") list = list.filter(q => q.set !== "form");
+    const st = id => state.stats[id];
+    if (order === "unseen") list = shuffle(list).sort((a, b) => (st(a.id) ? 1 : 0) - (st(b.id) ? 1 : 0));
+    else if (order === "wrong") list = shuffle(list).sort((a, b) => { const sa = st(a.id), sb = st(b.id); const w = s => !s ? 1 : s.lastWrong ? 3 + s.wrong : s.wrong > 0 ? 2 : 0; return w(sb) - w(sa); });
+    else list = shuffle(list);
+    // sebar merata antartopik
+    if (tids.length > 1) {
+      const by = {}; list.forEach(q => (by[q.topic] = by[q.topic] || []).push(q));
+      const out = []; let added = true;
+      while (out.length < n && added) { added = false; tids.forEach(t => { if (out.length < n && by[t] && by[t].length) { out.push(by[t].shift()); added = true; } }); }
+      return shuffle(out);
+    }
+    return list.slice(0, n);
+  }
+  function startDrill(qs, title) {
+    if (!qs.length) return toast("Tidak ada soal untuk pilihan ini.");
+    if (exam && !exam.finished) return toast("Selesaikan simulasi yang sedang berjalan dulu.");
+    drill = { active: true, qs, i: 0, answers: {}, correct: 0, title };
+    go("latihan");
+  }
   function renderLatihan(arg) {
-    if (drill && drill.active) return renderDrillQuestion();
-    const vt = visibleTopics();
-    const pre = (arg && arg.topics) || [];
-    const boxes = {};
-    const group = el("div", { class: "check-group" });
-    let lastTest = null;
-    vt.forEach(t => {
-      if (t.test !== lastTest) { group.appendChild(el("h3", null, [TESTS[t.test].label])); lastTest = t.test; }
-      const cb = el("input", { type: "checkbox" }); cb.checked = pre.length ? pre.includes(t.id) : false; boxes[t.id] = cb;
-      const a = topicAccuracy(t.id);
-      group.appendChild(el("label", { class: "check" }, [cb, el("span", null, [t.label, " ", el("span", { class: "small muted" }, [`(${pool(t.id).length} soal${a.acc !== null ? ", akurasi " + Math.round(a.acc * 100) + "%" : ""})`])])]));
-    });
-    const count = el("select", null, [10, 15, 20, 30, 50].map(n => el("option", { value: n }, [n + " soal"])));
-    count.value = "20";
-    const mode = el("select", null, [el("option", { value: "random" }, ["Acak"]), el("option", { value: "weak" }, ["Prioritaskan soal belum dikerjakan & pernah salah"])]);
-    if (arg && arg.mode) mode.value = arg.mode;
-    const start = () => {
-      const chosen = vt.filter(t => boxes[t.id].checked).map(t => t.id);
-      if (!chosen.length) return toast("Pilih minimal satu topik.");
-      const n = parseInt(count.value, 10);
-      // bagi rata antar topik, lalu isi sisa
-      let qs = []; const per = Math.max(1, Math.floor(n / chosen.length));
-      chosen.forEach(tid => qs.push(...pickQuestions(tid, per, mode.value)));
-      if (qs.length < n) { const rest = chosen.flatMap(tid => pool(tid)).filter(q => !qs.includes(q)); qs.push(...(mode.value === "weak" ? rest : shuffle(rest)).slice(0, n - qs.length)); }
-      qs = shuffle(qs).slice(0, n);
-      if (!qs.length) return toast("Tidak ada soal untuk topik tersebut.");
-      drill = { active: true, qs, i: 0, answers: {}, correct: 0 };
-      renderDrillQuestion();
-    };
-    view.append(el("div", { class: "card" }, [
-      el("div", { class: "card-head" }, [el("h2", null, ["Latihan dengan pembahasan langsung"])]),
-      el("p", { class: "muted small" }, ["Setiap jawaban langsung diperiksa. Benar maupun salah, pembahasan dan rujukannya ditampilkan."]),
-      source() !== "kurasi" ? el("div", { class: "feedback", style: "margin:0 0 12px" }, [
-        el("div", { class: "title" }, ["Latihan Resmi BKN 2025 (50 soal asli)"]),
-        el("div", { class: "small muted" }, ["Soal dari Google Form resmi BKN untuk Kemenimipas (tautan di kisi-kisi hal. 172), urutan asli, 4 opsi. Kunci dan pembahasan disusun aplikasi ini."]),
-        el("div", { class: "actions", style: "margin-top:8px" }, [el("button", { class: "btn btn-primary btn-sm", onclick: () => { drill = { active: true, qs: formSet(), i: 0, answers: {}, correct: 0 }; renderDrillQuestion(); } }, ["Kerjakan 50 soal resmi (urut, dengan pembahasan)"])])
-      ]) : null,
-      el("div", { class: "actions", style: "margin:0 0 6px" }, [
-        el("button", { class: "btn btn-sm", onclick: () => vt.forEach(t => boxes[t.id].checked = true) }, ["Pilih semua"]),
-        el("button", { class: "btn btn-sm", onclick: () => vt.forEach(t => boxes[t.id].checked = false) }, ["Kosongkan"]),
+    if (drill && drill.active) return drill.i >= drill.qs.length ? renderDrillSummary() : renderDrillQ();
+    if (arg && arg.topics) pickSel = new Set(arg.topics);
+    const avail = () => { let l = [...pickSel].flatMap(pool); if (pickSrc === "form") l = l.filter(q => q.set === "form"); else if (pickSrc === "deck") l = l.filter(q => q.set !== "form"); return l.length; };
+    const startBtn = el("button", { class: "btn btn-primary", onclick: () => { if (!pickSel.size) return toast("Pilih minimal satu topik."); startDrill(pickFrom([...pickSel], pickCount, pickOrder, pickSrc), [...pickSel].map(id => topicById(id).label).join(", ")); } });
+    const refresh = () => { const a = avail(); startBtn.textContent = pickSel.size ? `Mulai ${Math.min(a, pickCount)} soal` : "Pilih topik dulu"; startBtn.disabled = !pickSel.size || !a; };
+    const groups = {}; TOPICS.forEach(t => (groups[t.test] = groups[t.test] || []).push(t));
+    const picker = el("div", { class: "picker" }, Object.keys(groups).map(k => el("div", { class: "pick-group" }, [
+      el("span", { class: "label" }, [TESTS[k].label]),
+      el("div", { class: "pick-chips" }, groups[k].map(t => {
+        const b = el("button", { class: "pick " + tcOf(t), "aria-pressed": pickSel.has(t.id) ? "true" : "false", onclick: () => { pickSel.has(t.id) ? pickSel.delete(t.id) : pickSel.add(t.id); b.setAttribute("aria-pressed", pickSel.has(t.id)); refresh(); } }, [t.label, el("span", { class: "cnt" }, [pool(t.id).length])]);
+        return b;
+      }))
+    ])));
+    const seg = (opts, get, set) => { const w = el("div", { class: "seg", role: "group" }); const draw = () => { w.innerHTML = ""; opts.forEach(([v, l]) => w.appendChild(el("button", { "aria-pressed": get() === v ? "true" : "false", onclick: () => { set(v); draw(); refresh(); } }, [l]))); }; draw(); return w; };
+    const selAll = v => { pickSel = new Set(v ? TOPICS.map(t => t.id) : []); picker.querySelectorAll(".pick").forEach((b, i) => b.setAttribute("aria-pressed", v)); refresh(); };
+    view.append(
+      el("div", null, [el("h1", null, ["Latihan"]), el("p", { class: "muted", style: "margin-top:6px" }, ["Setiap jawaban langsung diperiksa. Benar atau salah, pembahasan dan halaman deck rujukannya tampil saat itu juga."])]),
+      el("div", { class: "official" }, [
+        el("div", { class: "stack", style: "gap:6px" }, [el("span", { class: "stamp", style: "align-self:flex-start" }, [icon("award"), "Resmi BKN 2025"]), el("h2", null, ["50 soal latihan resmi, urutan asli"]), el("p", { class: "small muted" }, ["Dari Google Form BKN yang ditautkan di deck hal. 172. Form tidak memuat kunci; kunci dan pembahasan disusun aplikasi dengan rujukan halaman deck."])]),
+        el("button", { class: "btn btn-primary", onclick: () => startDrill(formSet(), "50 soal resmi BKN 2025") }, [icon("play"), "Kerjakan"])
       ]),
-      group,
-      el("div", { class: "inline", style: "margin-top:14px" }, [
-        el("div", { class: "field", style: "margin:0" }, [el("label", null, ["Jumlah soal"]), count]),
-        el("div", { class: "field", style: "margin:0;min-width:260px" }, [el("label", null, ["Urutan"]), mode]),
-      ]),
-      el("div", { class: "actions" }, [el("button", { class: "btn btn-primary", onclick: start }, ["Mulai latihan"])])
-    ]));
+      el("section", { class: "panel stack", style: "gap:20px" }, [
+        el("div", { class: "sec-head" }, [el("h2", null, ["Susun latihan sendiri"]), el("div", { class: "row", style: "gap:4px" }, [el("button", { class: "btn btn-sm btn-ghost", onclick: () => selAll(true) }, ["Pilih semua"]), el("button", { class: "btn btn-sm btn-ghost", onclick: () => selAll(false) }, ["Kosongkan"])])]),
+        picker,
+        el("div", { class: "opts-row" }, [
+          el("div", { class: "field" }, [el("span", { class: "label" }, ["Jumlah soal"]), seg([[10, "10"], [20, "20"], [30, "30"], [50, "50"]], () => pickCount, v => pickCount = v)]),
+          el("div", { class: "field" }, [el("span", { class: "label" }, ["Prioritas"]), seg([["unseen", "Belum dicoba"], ["wrong", "Pernah salah"], ["random", "Acak"]], () => pickOrder, v => pickOrder = v)]),
+          el("div", { class: "field" }, [el("span", { class: "label" }, ["Jenis soal"]), seg([["all", "Semua"], ["deck", "Turunan deck"], ["form", "Resmi saja"]], () => pickSrc, v => pickSrc = v)])
+        ]),
+        el("div", { class: "row" }, [startBtn])
+      ])
+    );
+    refresh();
   }
-  function renderDrillQuestion() {
+  function renderDrillQ() {
     view.innerHTML = "";
-    if (drill.i >= drill.qs.length) return renderDrillSummary();
-    const q = drill.qs[drill.i]; const t = topicById(q.topic);
-    const card = el("div", { class: "card" });
-    const head = el("div", { class: "q-head" }, [
-      el("div", null, [el("span", { class: "badge" }, [t.test]), " ", el("span", { class: "badge badge-muted" }, [t.label]), " ", el("span", { class: "badge " + (q.set ? "badge-warn" : "badge-ok") }, [q.set === "form" ? "Resmi BKN" : q.set === "bkn" ? "Kisi-kisi BKN" : "Kurasi"])]),
-      el("div", { class: "small muted mono" }, [`Soal ${drill.i + 1} / ${drill.qs.length} - benar ${drill.correct}`])
+    const q = drill.qs[drill.i], t = topicById(q.topic), answered = q.id in drill.answers;
+    const top = el("div", { class: "q-top" }, [
+      el("button", { class: "btn btn-ghost icon-btn", "aria-label": "Hentikan latihan", onclick: () => confirmBox("Hentikan latihan?", "Jawaban yang sudah masuk tetap tercatat di statistik.", "Hentikan", () => { drill.i = drill.qs.length; renderDrillSummary(); }) }, [icon("x")]),
+      el("div", { class: "q-progress", role: "progressbar", "aria-valuenow": drill.i + 1, "aria-valuemax": drill.qs.length }, [el("i", { style: `width:${pct(drill.i + (answered ? 1 : 0), drill.qs.length)}%` })]),
+      el("span", { class: "small num muted" }, [`${drill.i + 1}/${drill.qs.length}`]),
+      el("span", { class: "chip chip-ok num" }, [icon("check"), `${drill.correct}`])
     ]);
-    const opts = el("div", { class: "opts" });
+    const opts = el("div", { class: "options", role: "group", "aria-label": "Pilihan jawaban" });
     const fb = el("div");
-    const btnRow = el("div", { class: "actions" });
-    const bmBtn = el("button", { class: "btn btn-sm btn-ghost", onclick: () => toggleBookmark(q.id, bmBtn) }, [state.bookmarks.includes(q.id) ? "Hapus tanda" : "Tandai soal"]);
-    q.o.forEach((o, idx) => {
-      opts.appendChild(el("button", { class: "opt", onclick: () => {
-        const correct = idx === q.a; recordAnswer(q, correct); drill.answers[q.id] = idx; if (correct) drill.correct++;
-        head.lastChild.textContent = `Soal ${drill.i + 1} / ${drill.qs.length} - benar ${drill.correct}`;
-        opts.querySelectorAll(".opt").forEach((b, j) => { b.disabled = true; if (j === q.a) b.classList.add("correct"); if (j === idx && !correct) b.classList.add("wrong"); });
-        fb.appendChild(feedbackBox(q, idx));
-        btnRow.innerHTML = ""; btnRow.append(bmBtn, el("button", { class: "btn btn-primary", onclick: () => { drill.i++; renderDrillQuestion(); } }, [drill.i + 1 < drill.qs.length ? "Soal berikutnya" : "Lihat ringkasan"]));
-      } }, [el("span", { class: "k" }, [LETTERS[idx]]), el("span", null, [o])]));
-    });
-    btnRow.append(bmBtn, el("button", { class: "btn btn-ghost", onclick: () => confirmBox("Hentikan latihan?", "Progres soal yang sudah dijawab tetap tersimpan.", "Hentikan", () => { drill.active = false; renderDrillSummary(); }) }, ["Hentikan"]));
-    card.append(head, el("div", { class: "q-text" }, [q.q]), opts, fb, btnRow);
-    view.appendChild(card);
+    const act = el("div", { class: "q-actions" });
+    const bm = () => el("button", { class: "btn btn-ghost btn-sm", "aria-pressed": state.bookmarks.includes(q.id) ? "true" : "false", onclick: e => { toggleBookmark(q.id); e.currentTarget.replaceWith(bm()); } }, [icon("bookmark"), state.bookmarks.includes(q.id) ? "Ditandai" : "Tandai"]);
+    const choose = idx => {
+      if (q.id in drill.answers) return;
+      const ok = idx === q.a; recordAnswer(q, ok); drill.answers[q.id] = idx; if (ok) drill.correct++;
+      paintOpts(); fb.appendChild(feedback(q, idx)); drawAct();
+      top.querySelector(".chip-ok").lastChild.textContent = String(drill.correct);
+      top.querySelector(".q-progress i").style.width = pct(drill.i + 1, drill.qs.length) + "%";
+      const nx = act.querySelector(".btn-primary"); if (nx) nx.focus();
+    };
+    const paintOpts = () => {
+      opts.innerHTML = ""; const ch = drill.answers[q.id], done = ch !== undefined;
+      q.o.forEach((o, i) => opts.appendChild(el("button", {
+        class: "opt" + (done ? (i === q.a ? " correct" : i === ch ? " wrong" : " dim") : ""), disabled: done, onclick: () => choose(i), "aria-label": `${L[i]}. ${o}`
+      }, [el("span", { class: "k" }, [L[i]]), el("span", null, [o]), el("span", { class: "mk" }, [done && i === q.a ? icon("check") : done && i === ch ? icon("x") : ""])])));
+    };
+    const drawAct = () => {
+      act.innerHTML = "";
+      const doneQ = q.id in drill.answers;
+      act.append(el("div", { class: "row" }, [bm(), el("span", { class: "kbd-hint" }, [el("span", { class: "kbd" }, ["A-" + L[q.o.length - 1]]), " pilih  ", el("span", { class: "kbd" }, ["Enter"]), " lanjut"])]),
+        doneQ ? el("button", { class: "btn btn-primary", onclick: nextDrill }, [drill.i + 1 < drill.qs.length ? "Soal berikutnya" : "Lihat ringkasan", icon("right")]) : el("span", { class: "small muted" }, ["Pilih satu jawaban"]));
+    };
+    paintOpts(); drawAct();
+    if (answered) fb.appendChild(feedback(q, drill.answers[q.id]));
+    view.append(el("div", { class: "stack", style: "gap:6px" }, [el("span", { class: "eyebrow" }, [drill.title || "Latihan"]), top]),
+      el("section", { class: "panel lift q-card" }, [el("div", { class: "q-meta" }, [testChip(t), el("span", { class: "chip" }, [t.label]), srcTag(q)]), el("div", { class: "q-text" }, [q.q]), opts, fb]),
+      el("div", { class: "sticky-act" }, [act]));
+    drill.choose = choose;
   }
-  function feedbackBox(q, chosen) {
-    const ok = chosen === q.a;
+  function nextDrill() { drill.i++; drill.i >= drill.qs.length ? renderDrillSummary() : renderDrillQ(); }
+  function feedback(q, ch) {
+    const ok = ch === q.a, skip = ch === null || ch === undefined;
     return el("div", { class: "feedback " + (ok ? "ok" : "bad") }, [
-      el("div", { class: "title " + (ok ? "ok" : "bad") }, [ok ? `Benar. Jawaban: ${LETTERS[q.a]}.` : chosen === null || chosen === undefined ? `Tidak dijawab. Jawaban yang benar: ${LETTERS[q.a]}.` : `Kurang tepat. Kamu memilih ${LETTERS[chosen]}, jawaban yang benar ${LETTERS[q.a]}.`]),
-      el("div", null, [q.e]),
-      el("div", { class: "src" }, ["Rujukan: " + q.src])
+      el("div", { class: "fb-title" }, [icon(ok ? "check" : skip ? "alert" : "x"), ok ? `Benar, jawabannya ${L[q.a]}.` : skip ? `Tidak dijawab. Jawaban benar: ${L[q.a]}.` : `Kurang tepat. Kamu memilih ${L[ch]}, jawaban benar ${L[q.a]}.`]),
+      el("div", { class: "fb-body" }, [q.e]),
+      el("div", { class: "fb-src" }, ["Rujukan: " + q.src])
     ]);
   }
-  function toggleBookmark(id, btn) {
-    const i = state.bookmarks.indexOf(id);
-    if (i >= 0) { state.bookmarks.splice(i, 1); toast("Tanda dihapus"); } else { state.bookmarks.push(id); toast("Soal ditandai"); }
-    save(); if (btn) btn.textContent = state.bookmarks.includes(id) ? "Hapus tanda" : "Tandai soal";
-  }
+  function toggleBookmark(id) { const i = state.bookmarks.indexOf(id); if (i >= 0) { state.bookmarks.splice(i, 1); toast("Tanda dihapus"); } else { state.bookmarks.push(id); toast("Soal ditandai"); } save(); }
   function renderDrillSummary() {
-    view.innerHTML = "";
-    const done = Object.keys(drill.answers).length;
-    const wrong = drill.qs.filter(q => q.id in drill.answers && drill.answers[q.id] !== q.a);
-    drill.active = false;
-    view.append(el("div", { class: "card" }, [
-      el("h2", null, ["Ringkasan latihan"]),
-      el("div", { class: "grid grid-3" }, [
-        el("div", { class: "stat" }, [el("div", { class: "v" }, [String(done)]), el("div", { class: "l" }, ["Dijawab"])]),
-        el("div", { class: "stat" }, [el("div", { class: "v" }, [String(drill.correct)]), el("div", { class: "l" }, ["Benar"])]),
-        el("div", { class: "stat" }, [el("div", { class: "v" }, [done ? Math.round(drill.correct / done * 100) + "%" : "-"]), el("div", { class: "l" }, ["Akurasi"])]),
+    view.innerHTML = ""; drill.active = false;
+    const done = Object.keys(drill.answers).length, wrong = drill.qs.filter(q => q.id in drill.answers && drill.answers[q.id] !== q.a);
+    view.append(
+      el("section", { class: "panel lift stack", style: "gap:18px" }, [
+        el("div", null, [el("span", { class: "eyebrow" }, [drill.title || "Latihan"]), el("h1", { style: "margin-top:6px" }, ["Ringkasan latihan"])]),
+        el("div", { class: "stats", style: "grid-template-columns:repeat(3,minmax(0,1fr))" }, [
+          el("div", { class: "stat" }, [el("b", null, [done]), el("span", null, ["dijawab"])]),
+          el("div", { class: "stat" }, [el("b", null, [drill.correct]), el("span", null, ["benar"])]),
+          el("div", { class: "stat" }, [el("b", null, [done ? pct(drill.correct, done) + "%" : "-"]), el("span", null, ["akurasi"])])
+        ]),
+        el("div", { class: "row" }, [
+          wrong.length ? el("button", { class: "btn btn-primary", onclick: () => startDrill(shuffle(wrong), "Ulangi yang salah") }, [`Ulangi ${wrong.length} soal yang salah`]) : null,
+          el("button", { class: "btn", onclick: () => { drill = null; go("latihan"); } }, ["Latihan baru"]),
+          el("button", { class: "btn btn-ghost", onclick: () => { drill = null; go("home"); } }, ["Beranda"])
+        ])
       ]),
-      el("div", { class: "actions" }, [
-        wrong.length ? el("button", { class: "btn btn-primary", onclick: () => { drill = { active: true, qs: shuffle(wrong), i: 0, answers: {}, correct: 0 }; renderDrillQuestion(); } }, [`Ulangi ${wrong.length} soal yang salah`]) : null,
-        el("button", { class: "btn", onclick: () => { drill = null; renderLatihan(); } }, ["Latihan baru"]),
-        el("button", { class: "btn btn-ghost", onclick: () => go("home") }, ["Beranda"])
-      ]),
-      wrong.length ? el("div", { style: "margin-top:16px" }, [el("h3", null, ["Soal yang salah"]), ...wrong.map(q => reviewItem(q, drill.answers[q.id], false))]) : null
-    ]));
+      wrong.length ? el("div", { class: "stack" }, [el("h2", null, ["Soal yang salah"]), el("div", { class: "review" }, wrong.map(q => reviewItem(q, drill.answers[q.id], false)))]) : null
+    );
   }
-  function reviewItem(q, chosen, flagged) {
-    const t = topicById(q.topic);
-    const status = chosen === null || chosen === undefined ? "skip" : chosen === q.a ? "ok" : "bad";
-    return el("div", { class: "review-item " + status }, [
-      el("div", { class: "q-head" }, [el("div", null, [el("span", { class: "badge badge-muted" }, [t.label]), " ", el("span", { class: "badge " + (q.set ? "badge-warn" : "badge-ok") }, [q.set === "form" ? "Resmi BKN" : q.set === "bkn" ? "Kisi-kisi BKN" : "Kurasi"]), flagged ? el("span", { class: "badge badge-warn", style: "margin-left:6px" }, ["Ragu-ragu"]) : null]), el("span", { class: "small muted" }, [q.id])]),
+  function reviewItem(q, ch, flagged, no) {
+    const t = topicById(q.topic), st = ch === null || ch === undefined ? "skip" : ch === q.a ? "ok" : "bad";
+    return el("article", { class: "review-item " + st }, [
+      el("div", { class: "q-meta" }, [no ? el("span", { class: "chip num" }, [`No. ${no}`]) : null, testChip(t), el("span", { class: "chip" }, [t.label]), srcTag(q), flagged ? el("span", { class: "chip chip-warn" }, [icon("flag"), "Ragu-ragu"]) : null]),
       el("div", { class: "q-text" }, [q.q]),
-      el("div", { class: "opts" }, q.o.map((o, i) => el("div", { class: "opt" + (i === q.a ? " correct" : i === chosen ? " wrong" : "") }, [el("span", { class: "k" }, [LETTERS[i]]), el("span", null, [o])]))),
-      feedbackBox(q, chosen)
+      el("div", { class: "options" }, q.o.map((o, i) => el("div", { class: "opt" + (i === q.a ? " correct" : i === ch ? " wrong" : " dim") }, [el("span", { class: "k" }, [L[i]]), el("span", null, [o]), el("span", { class: "mk" }, [i === q.a ? icon("check") : i === ch ? icon("x") : ""])]))),
+      feedback(q, st === "skip" ? null : ch)
     ]);
   }
 
   // ---------- Simulasi ----------
-  let exam = null;
-  function buildFormExam() {
-    // 50 soal resmi BKN dalam urutan asli, dikelompokkan per jenis tes
-    const qs = formSet(); const sections = []; let start = 0;
-    const testOf = q => (topicById(q.topic) || {}).test || "TKT";
-    qs.forEach((q, i) => { const t = testOf(q); const last = sections[sections.length - 1]; if (!last || last.test !== t) { if (last) last.end = i; sections.push({ test: t, start: i, end: i + 1 }); } });
-    if (sections.length) sections[sections.length - 1].end = qs.length;
+  let simMode = "upkp";
+  const MODES = {
+    upkp: { title: "Simulasi UPKP D3-S2", sub: "Komposisi deck hal. 6 / SE BKN 10/2024", n: 100, min: 90 },
+    form: { title: "Latihan Resmi BKN 2025", sub: "50 soal asli, urutan asli, 4 pilihan", n: 50, min: 45 }
+  };
+  function buildExam(mode) {
+    const qs = [], sections = [];
+    if (mode === "form") {
+      formSet().forEach(q => { const last = sections[sections.length - 1]; if (!last || last.key !== q.topic) sections.push({ key: q.topic, start: qs.length, end: qs.length + 1 }); else last.end++; qs.push(q); });
+    } else {
+      TEST_ORDER.forEach(k => {
+        const start = qs.length;
+        CORE.filter(t => t.test === k).forEach(t => qs.push(...pickFrom([t.id], t.n, "unseen")));
+        sections.push({ key: k, start, end: qs.length });
+      });
+    }
     return { qs, sections };
   }
-  function buildExam(withBonus) {
-    const qs = []; const sections = [];
-    ["TWK", "TKT", "TSI", "TKP"].forEach(test => {
-      const start = qs.length;
-      TOPICS.filter(t => t.test === test).forEach(t => { const picked = pickQuestions(t.id, t.n, "random"); if (picked.length < t.n) toast(`Bank soal ${t.label} kurang dari ${t.n}.`); qs.push(...shuffle(picked)); });
-      sections.push({ test, start, end: qs.length });
-    });
-    if (withBonus) { const start = qs.length; qs.push(...pickQuestions("imigrasi", 10, "random")); sections.push({ test: "BONUS", start, end: qs.length }); }
-    return { qs, sections };
+  const secLabel = (mode, key) => mode === "form" ? topicById(key).label : TESTS[key].label;
+  const secTc = (mode, key) => mode === "form" ? tcOf(topicById(key)) : "tc" + TESTS[key].color;
+  function persistExam() { if (!exam || exam.finished) return store.del(EXAM_KEY); store.set(EXAM_KEY, JSON.stringify({ mode: exam.mode, ids: exam.qs.map(q => q.id), sections: exam.sections, i: exam.i, answers: exam.answers, flags: exam.flags, endAt: exam.endAt, startedAt: exam.startedAt })); }
+  function restoreExam() {
+    try {
+      const s = JSON.parse(store.get(EXAM_KEY) || "null"); if (!s) return;
+      const qs = s.ids.map(id => qById[id]); if (qs.some(q => !q)) return store.del(EXAM_KEY);
+      exam = Object.assign(s, { qs, finished: false });
+      if (Date.now() >= exam.endAt) finishExam(true, true); else startTimer();
+    } catch (e) { store.del(EXAM_KEY); }
+  }
+  const remaining = () => Math.max(0, Math.round((exam.endAt - Date.now()) / 1000));
+  function startTimer() {
+    clearInterval(timerInt);
+    timerInt = setInterval(() => {
+      if (!exam || exam.finished) return clearInterval(timerInt);
+      const r = remaining(), t = $("#timer");
+      if (t) { t.lastChild.textContent = fmtTime(r); t.classList.toggle("low", r < 300); }
+      if (r <= 0) { finishExam(true); if (current === "simulasi") go("simulasi"); else toast("Waktu simulasi habis. Hasil tersimpan di Riwayat."); }
+    }, 1000);
   }
   function renderSimulasi() {
-    if (exam && exam.active) return exam.finished ? renderExamResult(exam) : renderExamQuestion();
-    const dur = el("input", { type: "number", min: 10, max: 240, value: state.settings.durationMin || 90 });
-    const th = {}; ["TWK", "TKT", "TSI", "TKP"].forEach(k => th[k] = el("input", { type: "number", min: 0, max: 250, placeholder: "kosong", value: state.settings.thresholds[k] }));
-    const bonus = el("input", { type: "checkbox" }); bonus.checked = false;
-    const modeSel = el("select", null, [el("option", { value: "upkp" }, ["UPKP D3-S3: 100 soal, komposisi SE BKN 10/2024"]), el("option", { value: "form" }, ["Latihan Resmi BKN 2025: 50 soal asli (urutan asli)"])]);
-    modeSel.addEventListener("change", () => { dur.value = modeSel.value === "form" ? 45 : (state.settings.durationMin || 90); });
-    const start = () => {
-      const isForm = modeSel.value === "form";
-      if (!isForm) state.settings.durationMin = parseInt(dur.value, 10) || 90;
-      ["TWK", "TKT", "TSI", "TKP"].forEach(k => state.settings.thresholds[k] = th[k].value); save();
-      const b = isForm ? buildFormExam() : buildExam(includeImi() && bonus.checked);
-      const secs = (parseInt(dur.value, 10) || (isForm ? 45 : 90)) * 60;
-      exam = { active: true, finished: false, mode: modeSel.value, qs: b.qs, sections: b.sections, i: 0, answers: {}, flags: {}, remaining: secs, startedAt: Date.now() };
-      examTimer = setInterval(() => { exam.remaining--; const tEl = $("#timer"); if (tEl) { tEl.textContent = fmtTime(Math.max(0, exam.remaining)); tEl.classList.toggle("low", exam.remaining < 300); } if (exam.remaining <= 0) { finishExam(true); } }, 1000);
-      renderExamQuestion();
+    if (exam) return exam.finished ? renderResult(exam) : renderExamQ();
+    const dur = el("input", { id: "durInput", class: "input", type: "number", min: 10, max: 240, value: simMode === "form" ? 45 : state.settings.durationMin || 90 });
+    const th = {}; TEST_ORDER.forEach(k => th[k] = el("input", { id: "th" + k, class: "input", type: "number", min: 0, max: 250, placeholder: "kosong", value: state.settings.thresholds[k] }));
+    const modes = el("div", { class: "modes", role: "radiogroup" });
+    const comp = el("div");
+    const draw = () => {
+      modes.innerHTML = "";
+      Object.entries(MODES).forEach(([k, m]) => modes.appendChild(el("button", { class: "mode", role: "radio", "aria-pressed": simMode === k ? "true" : "false", "aria-checked": simMode === k ? "true" : "false", onclick: () => { simMode = k; dur.value = k === "form" ? 45 : state.settings.durationMin || 90; draw(); } }, [
+        el("div", { class: "mode-top" }, [k === "form" ? el("span", { class: "stamp" }, [icon("award"), "Resmi"]) : el("span", { class: "chip" }, ["CAT BKN"]), el("span", { class: "radio" })]),
+        el("h3", null, [m.title]), el("div", { class: "big" }, [`${m.n} soal · ${m.min} menit`]), el("span", { class: "small muted" }, [m.sub])
+      ])));
+      comp.innerHTML = "";
+      const b = buildExamPreview(simMode);
+      comp.appendChild(el("div", { class: "table-wrap" }, [el("table", { class: "tbl" }, [
+        el("thead", null, [el("tr", null, [el("th", null, [simMode === "form" ? "Bagian (urutan asli)" : "Jenis tes / materi"]), el("th", { class: "n" }, ["Soal"]), el("th", { class: "n" }, ["Skor maks"])])]),
+        el("tbody", null, b.map(r => el("tr", r.sub ? { class: "sub" } : null, [el("td", { style: r.sub ? "padding-left:26px;color:var(--muted)" : "font-weight:700" }, [r.label]), el("td", { class: "n" }, [r.n]), el("td", { class: "n" }, [r.sub ? "" : r.n * 5])])))
+      ])]));
     };
-    view.append(el("div", { class: "grid grid-2" }, [
-      el("div", { class: "card" }, [
-        el("h2", null, ["Simulasi UPKP (CAT)"]),
-        el("p", { class: "muted small" }, ["Komposisi mengikuti Lampiran III SE BKN 10/2024 untuk UPKP D3-S3: 100 soal, urut TWK - TKT - TSI - TKP, waktu 90 menit. Pembahasan tampil setelah ujian selesai, seperti kondisi CAT sesungguhnya."]),
-        el("div", { class: "field" }, [el("label", null, ["Sumber soal saat ini"]), el("div", null, [el("span", { class: "badge" }, [SOURCES[source()]]), " ", el("span", { class: "small muted" }, ["(ubah di menu atas atau Pengaturan)"])])]),
-        source() !== "kurasi" ? el("div", { class: "field" }, [el("label", null, ["Mode simulasi"]), modeSel]) : null,
-        el("div", { class: "field" }, [el("label", null, ["Durasi (menit)"]), dur]),
-        el("h3", { style: "margin-top:10px" }, ["Nilai ambang batas (opsional)"]),
-        el("p", { class: "small muted" }, ["Isi sesuai pengumuman PPK/panitia jika sudah ada. Kosongkan jika belum ditetapkan; hasil tetap menampilkan skor per jenis tes. Skor maksimal: TWK 150, TKT 125, TSI 150, TKP 75."]),
-        el("div", { class: "grid grid-3", style: "gap:8px" }, ["TWK", "TKT", "TSI", "TKP"].map(k => el("div", { class: "field", style: "margin:0" }, [el("label", null, [k]), th[k]]))),
-        includeImi() ? el("label", { class: "check", style: "margin-top:10px" }, [bonus, el("span", null, ["Tambahkan bagian bonus: 10 soal substansi keimigrasian (dinilai terpisah, tidak masuk 100 soal resmi)"])]) : el("p", { class: "small muted" }, ["Soal keimigrasian tidak disertakan (aktifkan di Pengaturan bila ingin)."]),
-        el("div", { class: "actions" }, [el("button", { class: "btn btn-primary", onclick: start }, ["Mulai simulasi"])])
-      ]),
-      el("div", { class: "card" }, [el("h2", null, ["Komposisi soal"]), structureTable(),
-        el("p", { class: "small muted", style: "margin-top:8px" }, ["Tips: soal tanpa pengurangan nilai, jadi jangan ada yang kosong. Gunakan tombol Ragu-ragu untuk kembali sebelum waktu habis."])])
-    ]));
-  }
-  function sectionOf(i) { return exam.sections.find(s => i >= s.start && i < s.end); }
-  function renderExamQuestion() {
-    view.innerHTML = "";
-    const q = exam.qs[exam.i]; const t = topicById(q.topic); const sec = sectionOf(exam.i);
-    const answeredCount = Object.keys(exam.answers).length;
-    const bar = el("div", { class: "exam-bar" }, [
-      el("span", { id: "timer", class: "timer" + (exam.remaining < 300 ? " low" : "") }, [fmtTime(exam.remaining)]),
-      el("span", { class: "badge" }, [TESTS[sec.test].short]),
-      el("span", { class: "small muted" }, [`Soal ${exam.i + 1}/${exam.qs.length} - dijawab ${answeredCount}`]),
-      el("span", { style: "margin-left:auto" }),
-      el("button", { class: "btn btn-sm btn-danger", onclick: () => { const left = exam.qs.length - Object.keys(exam.answers).length; confirmBox("Selesaikan ujian?", left ? `Masih ada ${left} soal belum dijawab.` : "Semua soal sudah dijawab.", "Selesai & nilai", () => finishExam(false)); } }, ["Selesai"])
-    ]);
-    const opts = el("div", { class: "opts" }, q.o.map((o, idx) => el("button", { class: "opt" + (exam.answers[q.id] === idx ? " chosen" : ""), onclick: () => { exam.answers[q.id] = idx; renderExamQuestion(); } }, [el("span", { class: "k" }, [LETTERS[idx]]), el("span", null, [o])])));
-    const qcard = el("div", { class: "card" }, [
-      el("div", { class: "q-head" }, [el("div", null, [el("span", { class: "badge badge-muted" }, [t.label])]), el("span", { class: "small muted mono" }, [`No. ${exam.i + 1}`])]),
-      el("div", { class: "q-text" }, [q.q]), opts,
-      el("div", { class: "actions" }, [
-        el("button", { class: "btn", disabled: exam.i === 0 ? "" : null, onclick: () => { exam.i--; renderExamQuestion(); } }, ["Sebelumnya"]),
-        el("button", { class: "btn " + (exam.flags[q.id] ? "btn-primary" : ""), onclick: () => { exam.flags[q.id] = !exam.flags[q.id]; renderExamQuestion(); } }, [exam.flags[q.id] ? "Hapus ragu-ragu" : "Ragu-ragu"]),
-        el("button", { class: "btn btn-primary", disabled: exam.i === exam.qs.length - 1 ? "" : null, onclick: () => { exam.i++; renderExamQuestion(); } }, ["Berikutnya"]),
+    draw();
+    const start = () => {
+      if (simMode === "upkp") state.settings.durationMin = parseInt(dur.value, 10) || 90;
+      TEST_ORDER.forEach(k => state.settings.thresholds[k] = th[k].value); save();
+      const b = buildExam(simMode), secs = (parseInt(dur.value, 10) || MODES[simMode].min) * 60;
+      exam = { mode: simMode, qs: b.qs, sections: b.sections, i: 0, answers: {}, flags: {}, startedAt: Date.now(), endAt: Date.now() + secs * 1000, finished: false };
+      persistExam(); startTimer(); renderExamQ(); window.scrollTo({ top: 0 });
+    };
+    view.append(
+      el("div", null, [el("h1", null, ["Simulasi CAT"]), el("p", { class: "muted", style: "margin-top:6px;max-width:64ch" }, ["Kondisi seperti CAT BKN: pembahasan baru muncul setelah selesai. Benar bernilai 5, salah atau kosong 0, jadi jawab semua soal. Progres tersimpan otomatis bila halaman tertutup."])]),
+      modes,
+      el("section", { class: "panel stack", style: "gap:16px" }, [
+        el("h2", null, ["Komposisi"]), comp,
+        el("details", { class: "more" }, [el("summary", null, ["Durasi dan nilai ambang batas"]), el("div", { class: "stack", style: "margin-top:12px" }, [
+          el("div", { class: "field", style: "max-width:200px" }, [el("label", { for: "durInput" }, ["Durasi (menit)"]), dur]),
+          el("p", { class: "small muted" }, ["Ambang batas UPKP ditetapkan PPK Kemenimipas sebelum ujian. Isi bila sudah diumumkan; hasil akan menandai lulus/belum per jenis tes. Skor maks: TWK 150, TKT 125, TSI 150, TKP 75."]),
+          el("div", { class: "grid-3", style: "grid-template-columns:repeat(4,minmax(0,1fr))" }, TEST_ORDER.map(k => el("div", { class: "field" }, [el("label", { for: "th" + k }, [k]), th[k]])))
+        ])]),
+        el("div", { class: "row" }, [el("button", { class: "btn btn-primary", onclick: start }, [icon("play"), "Mulai simulasi"])])
       ])
-    ]);
-    const nav = el("div", { class: "card", style: "align-self:start" });
+    );
+  }
+  function buildExamPreview(mode) {
+    const rows = [];
+    if (mode === "form") { const secs = buildExam("form").sections; secs.forEach(s => rows.push({ label: topicById(s.key).label, n: s.end - s.start })); }
+    else TEST_ORDER.forEach(k => { const ts = CORE.filter(t => t.test === k); rows.push({ label: TESTS[k].label, n: ts.reduce((a, t) => a + t.n, 0) }); ts.forEach(t => rows.push({ label: t.label, n: t.n, sub: true })); });
+    return rows;
+  }
+  const secOf = i => exam.sections.find(s => i >= s.start && i < s.end);
+  function navGrid(onPick) {
+    const wrap = el("div", { class: "stack", style: "gap:12px" });
     exam.sections.forEach(s => {
-      nav.appendChild(el("div", { class: "section-title" }, [TESTS[s.test].label]));
+      wrap.appendChild(el("div", { class: "eyebrow" }, [secLabel(exam.mode, s.key)]));
       const g = el("div", { class: "navgrid" });
-      for (let i = s.start; i < s.end; i++) { const qq = exam.qs[i]; g.appendChild(el("button", { class: (exam.flags[qq.id] ? "flag" : qq.id in exam.answers ? "answered" : "") + (i === exam.i ? " current" : ""), onclick: () => { exam.i = i; renderExamQuestion(); } }, [String(i + 1)])); }
-      nav.appendChild(g);
+      for (let i = s.start; i < s.end; i++) { const q = exam.qs[i]; g.appendChild(el("button", { class: (exam.flags[q.id] ? "flag" : q.id in exam.answers ? "ans" : "") + (i === exam.i ? " cur" : ""), "aria-label": `Soal ${i + 1}`, onclick: () => { exam.i = i; persistExam(); onPick(); } }, [i + 1])); }
+      wrap.appendChild(g);
     });
-    nav.appendChild(el("div", { class: "legend" }, [el("span", null, [el("i", { style: "background:var(--primary-soft)" }), "dijawab"]), el("span", null, [el("i", { style: "background:var(--warn-soft)" }), "ragu-ragu"]), el("span", null, [el("i"), "kosong"])]));
-    view.append(bar, el("div", { class: "exam-layout" }, [qcard, nav]));
+    wrap.appendChild(el("div", { class: "legend" }, [el("span", null, [el("i", { style: "background:var(--primary-soft);border-color:var(--primary)" }), "dijawab"]), el("span", null, [el("i", { style: "background:var(--warn-soft);border-color:var(--warn)" }), "ragu-ragu"]), el("span", null, [el("i"), "kosong"])]));
+    return wrap;
   }
-  function finishExam(timeout) {
-    if (examTimer) { clearInterval(examTimer); examTimer = null; }
-    exam.finished = true; exam.finishedAt = Date.now();
-    const perTest = {};
-    exam.sections.forEach(s => {
-      let correct = 0, n = s.end - s.start;
-      for (let i = s.start; i < s.end; i++) { const q = exam.qs[i]; const ch = exam.answers[q.id]; const ok = ch === q.a; recordAnswer(q, ok); if (ok) correct++; }
-      // satu jenis tes bisa terpecah jadi beberapa bagian (set resmi 50 soal: TKT muncul dua kali), jadi diakumulasi
-      const acc = perTest[s.test] || { n: 0, correct: 0, score: 0, max: 0 };
-      perTest[s.test] = { n: acc.n + n, correct: acc.correct + correct, score: acc.score + correct * 5, max: acc.max + n * 5 };
-    });
-    const official = ["TWK", "TKT", "TSI", "TKP"].filter(k => perTest[k]);
-    const total = official.reduce((a, k) => ({ correct: a.correct + perTest[k].correct, score: a.score + perTest[k].score, max: a.max + perTest[k].max }), { correct: 0, score: 0, max: 0 });
-    exam.result = { perTest, total, timeout, thresholds: Object.assign({}, state.settings.thresholds) };
-    state.history.push({ ts: exam.finishedAt, mode: exam.mode || "upkp", source: source(), durationSec: Math.round((exam.finishedAt - exam.startedAt) / 1000), perTest, total, timeout, thresholds: exam.result.thresholds, qids: exam.qs.map(q => q.id), answers: exam.answers, flags: exam.flags });
-    if (state.history.length > 50) state.history.shift();
-    save();
-    renderExamResult(exam);
-  }
-  function resultTable(perTest, thresholds) {
-    const rows = ["TWK", "TKT", "TSI", "TKP", "BONUS"].filter(k => perTest[k]);
-    const tb = el("table", { class: "tbl" }, [el("thead", null, [el("tr", null, [el("th", null, ["Jenis tes"]), el("th", { class: "num" }, ["Soal"]), el("th", { class: "num" }, ["Benar"]), el("th", { class: "num" }, ["Skor"]), el("th", { class: "num" }, ["Maks"]), el("th", null, ["Ambang"]), el("th", null, ["Status"])])])]);
-    const body = el("tbody"); let allPass = true, anyTh = false;
-    rows.forEach(k => {
-      const r = perTest[k]; const th = thresholds && thresholds[k] !== "" && thresholds[k] !== undefined && k !== "BONUS" ? Number(thresholds[k]) : null;
-      let status = el("span", { class: "badge badge-muted" }, [r.n ? Math.round(r.correct / r.n * 100) + "%" : "-"]);
-      if (th !== null) { anyTh = true; const pass = r.score >= th; if (!pass) allPass = false; status = el("span", { class: "badge " + (pass ? "badge-ok" : "badge-bad") }, [pass ? "Lulus" : "Belum"]); }
-      body.appendChild(el("tr", null, [el("td", null, [k === "BONUS" ? "Bonus keimigrasian" : TESTS[k].label]), el("td", { class: "num" }, [String(r.n)]), el("td", { class: "num" }, [String(r.correct)]), el("td", { class: "num" }, [String(r.score)]), el("td", { class: "num" }, [String(r.max)]), el("td", null, [th === null ? "-" : String(th)]), el("td", null, [status])]));
-    });
-    const official = rows.filter(k => k !== "BONUS");
-    const tot = official.reduce((a, k) => ({ n: a.n + perTest[k].n, c: a.c + perTest[k].correct, s: a.s + perTest[k].score, m: a.m + perTest[k].max }), { n: 0, c: 0, s: 0, m: 0 });
-    body.appendChild(el("tr", { class: "total" }, [el("td", null, ["Total resmi"]), el("td", { class: "num" }, [String(tot.n)]), el("td", { class: "num" }, [String(tot.c)]), el("td", { class: "num" }, [String(tot.s)]), el("td", { class: "num" }, [String(tot.m)]), el("td"), el("td", null, [anyTh ? el("span", { class: "badge " + (allPass ? "badge-ok" : "badge-bad") }, [allPass ? "Memenuhi" : "Belum memenuhi"]) : ""])]));
-    tb.appendChild(body); return tb;
-  }
-  function renderExamResult(ex) {
+  function askFinish() { const left = exam.qs.length - Object.keys(exam.answers).length, fl = Object.values(exam.flags).filter(Boolean).length; confirmBox("Selesaikan simulasi?", (left ? `${left} soal belum dijawab. ` : "Semua soal sudah dijawab. ") + (fl ? `${fl} soal masih ditandai ragu-ragu.` : ""), "Selesai dan nilai", () => { finishExam(false); go("simulasi"); }); }
+  function renderExamQ() {
     view.innerHTML = "";
-    const r = ex.result;
-    const filter = el("select", null, [el("option", { value: "all" }, ["Semua soal"]), el("option", { value: "bad" }, ["Hanya yang salah"]), el("option", { value: "skip" }, ["Hanya yang kosong"]), el("option", { value: "flag" }, ["Hanya ragu-ragu"])]);
-    const list = el("div");
+    const q = exam.qs[exam.i], t = topicById(q.topic), sec = secOf(exam.i), done = Object.keys(exam.answers).length, r = remaining();
+    const set = idx => { exam.answers[q.id] = idx; persistExam(); renderExamQ(); };
+    const bar = el("div", { class: "exam-bar" }, [
+      el("span", { id: "timer", class: "timer" + (r < 300 ? " low" : ""), role: "timer", "aria-label": "Sisa waktu" }, [icon("timer"), fmtTime(r)]),
+      el("span", { class: "chip chip-test " + secTc(exam.mode, sec.key) }, [exam.mode === "form" ? t.label : TESTS[sec.key].short]),
+      el("span", { class: "small muted num" }, [`${done}/${exam.qs.length} dijawab`]),
+      el("span", { style: "flex:1" }),
+      el("button", { class: "btn btn-sm only-narrow", onclick: () => { const s = sheet("Daftar soal", navGrid(() => { s.remove(); renderExamQ(); })); } }, [icon("grid"), "Daftar"]),
+      el("button", { class: "btn btn-sm btn-primary", onclick: askFinish }, ["Selesai"])
+    ]);
+    const flagged = !!exam.flags[q.id];
+    const card = el("section", { class: "panel lift q-card" }, [
+      el("div", { class: "q-meta" }, [el("span", { class: "chip num" }, [`No. ${exam.i + 1}`]), el("span", { class: "chip" }, [t.label]), q.set === "form" ? el("span", { class: "stamp" }, [icon("award"), "Resmi BKN"]) : null]),
+      el("div", { class: "q-text" }, [q.q]),
+      el("div", { class: "options", role: "radiogroup" }, q.o.map((o, i) => el("button", { class: "opt" + (exam.answers[q.id] === i ? " chosen" : ""), role: "radio", "aria-checked": exam.answers[q.id] === i ? "true" : "false", onclick: () => set(i) }, [el("span", { class: "k" }, [L[i]]), el("span", null, [o]), el("span", { class: "mk" })])))
+    ]);
+    const act = el("div", { class: "q-actions sticky-act" }, [
+      el("button", { class: "btn", disabled: exam.i === 0, onclick: () => { exam.i--; persistExam(); renderExamQ(); } }, [icon("left"), "Sebelumnya"]),
+      el("button", { class: "btn" + (flagged ? " btn-primary" : ""), "aria-pressed": flagged ? "true" : "false", onclick: () => { exam.flags[q.id] = !flagged; persistExam(); renderExamQ(); } }, [icon("flag"), "Ragu-ragu"]),
+      exam.i < exam.qs.length - 1 ? el("button", { class: "btn btn-primary", onclick: () => { exam.i++; persistExam(); renderExamQ(); } }, ["Berikutnya", icon("right")]) : el("button", { class: "btn btn-primary", onclick: askFinish }, ["Selesai"])
+    ]);
+    view.append(bar, el("div", { class: "exam-layout" }, [el("div", { class: "stack", style: "gap:14px" }, [card, act]), el("aside", { class: "panel navpanel desk" }, [navGrid(renderExamQ)])]));
+  }
+  function finishExam(timeout, silent) {
+    clearInterval(timerInt); exam.finished = true; exam.finishedAt = Date.now();
+    const agg = {};
+    exam.sections.forEach(s => {
+      const r = agg[s.key] || (agg[s.key] = { key: s.key, label: secLabel(exam.mode, s.key), tc: secTc(exam.mode, s.key), n: 0, correct: 0 });
+      for (let i = s.start; i < s.end; i++) { const q = exam.qs[i], ok = exam.answers[q.id] === q.a; recordAnswer(q, ok); r.n++; if (ok) r.correct++; }
+    });
+    const rows = Object.values(agg).map(r => Object.assign(r, { score: r.correct * 5, max: r.n * 5, th: exam.mode === "form" ? "" : state.settings.thresholds[r.key] }));
+    const total = rows.reduce((a, r) => ({ n: a.n + r.n, correct: a.correct + r.correct, score: a.score + r.score, max: a.max + r.max }), { n: 0, correct: 0, score: 0, max: 0 });
+    exam.result = { rows, total, timeout };
+    state.history.push({ ts: exam.finishedAt, mode: exam.mode, durationSec: Math.round((Math.min(exam.finishedAt, exam.endAt) - exam.startedAt) / 1000), rows, total, timeout, qids: exam.qs.map(q => q.id), answers: exam.answers, flags: exam.flags });
+    if (state.history.length > 60) state.history.shift();
+    save(); store.del(EXAM_KEY);
+    if (!silent) toast(timeout ? "Waktu habis. Simulasi dinilai." : "Simulasi dinilai.");
+  }
+  function scoreBars(rows) {
+    return el("div", { class: "bars" }, rows.map(r => {
+      const th = r.th !== "" && r.th !== undefined && r.th !== null ? Number(r.th) : null, pass = th === null ? null : r.score >= th;
+      return el("div", { class: "bar-row " + r.tc }, [
+        el("div", null, [el("div", { style: "font-weight:700;font-size:.92rem" }, [r.label]), el("div", { class: "xs muted num" }, [`${r.correct}/${r.n} benar`])]),
+        el("div", { class: "bar-track", role: "img", "aria-label": `${r.label}: skor ${r.score} dari ${r.max}` }, [el("i", { style: `width:${pct(r.score, r.max)}%` }), th !== null ? el("span", { class: "th", style: `left:${Math.min(100, pct(th, r.max))}%`, title: `Ambang ${th}` }) : null]),
+        el("div", { class: "row", style: "gap:8px;justify-content:flex-end" }, [el("b", { class: "num" }, [`${r.score}/${r.max}`]), pass === null ? null : el("span", { class: "chip " + (pass ? "chip-ok" : "chip-bad") }, [icon(pass ? "check" : "x"), pass ? "Lulus" : `Ambang ${th}`])])
+      ]);
+    }));
+  }
+  function renderResult(ex) {
+    view.innerHTML = "";
+    const r = ex.result, rows = r.rows, anyTh = rows.some(x => x.th !== "" && x.th !== undefined && x.th !== null), allPass = rows.every(x => x.th === "" || x.th === undefined || x.th === null || x.score >= Number(x.th));
+    let filter = "all";
+    const list = el("div", { class: "review" });
     const drawList = () => {
       list.innerHTML = "";
-      ex.qs.forEach((q, i) => {
-        const ch = ex.answers[q.id]; const status = ch === undefined ? "skip" : ch === q.a ? "ok" : "bad";
-        if (filter.value === "bad" && status !== "bad") return; if (filter.value === "skip" && status !== "skip") return; if (filter.value === "flag" && !ex.flags[q.id]) return;
-        const item = reviewItem(q, ch === undefined ? null : ch, !!ex.flags[q.id]);
-        item.querySelector(".q-head .small").textContent = `No. ${i + 1}`;
-        list.appendChild(item);
-      });
+      ex.qs.forEach((q, i) => { const ch = ex.answers[q.id], st = ch === undefined ? "skip" : ch === q.a ? "ok" : "bad"; if (filter !== "all" && !(filter === "flag" ? ex.flags[q.id] : st === filter)) return; list.appendChild(reviewItem(q, ch === undefined ? null : ch, !!ex.flags[q.id], i + 1)); });
       if (!list.children.length) list.appendChild(el("div", { class: "empty" }, ["Tidak ada soal untuk filter ini."]));
     };
-    filter.addEventListener("change", drawList); drawList();
-    const pct = r.total.max ? Math.round(r.total.score / r.total.max * 100) : 0;
+    const cnt = { bad: ex.qs.filter(q => q.id in ex.answers && ex.answers[q.id] !== q.a).length, skip: ex.qs.filter(q => !(q.id in ex.answers)).length, flag: ex.qs.filter(q => ex.flags[q.id]).length };
+    const chips = el("div", { class: "seg" });
+    const drawChips = () => { chips.innerHTML = ""; [["all", `Semua (${ex.qs.length})`], ["bad", `Salah (${cnt.bad})`], ["skip", `Kosong (${cnt.skip})`], ["flag", `Ragu (${cnt.flag})`]].forEach(([v, l]) => chips.appendChild(el("button", { "aria-pressed": filter === v ? "true" : "false", onclick: () => { filter = v; drawChips(); drawList(); } }, [l]))); };
+    drawChips(); drawList();
+    const wrong = ex.qs.filter(q => ex.answers[q.id] !== q.a);
     view.append(
-      el("div", { class: "card" }, [
-        el("div", { class: "card-head" }, [el("h2", null, ["Hasil simulasi"]), r.timeout ? el("span", { class: "badge badge-warn" }, ["Waktu habis"]) : el("span", { class: "badge badge-ok" }, ["Selesai"])]),
-        el("div", { class: "grid grid-3", style: "margin-bottom:12px" }, [
-          el("div", { class: "stat" }, [el("div", { class: "v" }, [`${r.total.score}`]), el("div", { class: "l" }, [`Skor total dari ${r.total.max}`])]),
-          el("div", { class: "stat" }, [el("div", { class: "v" }, [`${r.total.correct}`]), el("div", { class: "l" }, ["Jawaban benar (resmi)"])]),
-          el("div", { class: "stat" }, [el("div", { class: "v" }, [pct + "%"]), el("div", { class: "l" }, ["Persentase"])]),
+      el("section", { class: "panel lift stack", style: "gap:22px" }, [
+        el("div", { class: "row between" }, [el("div", null, [el("span", { class: "eyebrow" }, [MODES[ex.mode || "upkp"].title]), el("h1", { style: "margin-top:4px" }, ["Hasil simulasi"])]), el("div", { class: "row" }, [r.timeout ? el("span", { class: "chip chip-warn" }, ["Waktu habis"]) : el("span", { class: "chip chip-ok" }, ["Selesai"]), anyTh ? el("span", { class: "chip " + (allPass ? "chip-ok" : "chip-bad") }, [allPass ? "Memenuhi semua ambang" : "Belum memenuhi ambang"]) : null])]),
+        el("div", { class: "score-hero" }, [
+          el("div", { class: "stack", style: "gap:6px" }, [el("div", { class: "score-big" }, [String(r.total.score), el("small", null, [` / ${r.total.max}`])]), el("span", { class: "muted num" }, [`${r.total.correct} dari ${r.total.n} benar · ${pct(r.total.score, r.total.max)}%`])]),
+          scoreBars(rows)
         ]),
-        resultTable(r.perTest, r.thresholds),
-        el("div", { class: "actions" }, [
-          el("button", { class: "btn btn-primary", onclick: () => { exam = null; renderSimulasi(); } }, ["Simulasi baru"]),
-          el("button", { class: "btn", onclick: () => { const wrong = ex.qs.filter(q => ex.answers[q.id] !== q.a); if (!wrong.length) return toast("Tidak ada yang salah."); drill = { active: true, qs: shuffle(wrong), i: 0, answers: {}, correct: 0 }; exam = null; go("latihan"); } }, ["Latih soal yang salah"]),
-          el("button", { class: "btn btn-ghost", onclick: () => { exam = null; go("home"); } }, ["Beranda"])
+        el("div", { class: "row" }, [
+          el("button", { class: "btn btn-primary", onclick: () => { exam = null; go("simulasi"); } }, ["Simulasi baru"]),
+          wrong.length ? el("button", { class: "btn", onclick: () => { exam = null; startDrill(shuffle(wrong), "Soal salah/kosong dari simulasi"); } }, [`Latih ${wrong.length} soal salah/kosong`]) : null,
+          el("button", { class: "btn btn-ghost", onclick: () => { exam = null; go("riwayat"); } }, ["Riwayat"])
         ])
       ]),
-      el("div", { class: "card", style: "margin-top:16px" }, [
-        el("div", { class: "card-head" }, [el("h2", null, ["Pembahasan"]), filter]), list
-      ])
+      el("div", { class: "sec-head" }, [el("h2", null, ["Pembahasan"]), chips]),
+      list
     );
   }
 
   // ---------- Riwayat ----------
+  function scoreChart(hist) {
+    const data = hist.slice(-12), W = 640, H = 220, padL = 36, padB = 26, padT = 12, iw = W - padL - 8, ih = H - padB - padT;
+    const bw = Math.min(40, iw / data.length * .6), step = iw / data.length;
+    const box = el("div", { class: "chart" }), tip = el("div", { class: "tip", hidden: true });
+    let svg = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Skor simulasi terakhir dalam persen">`;
+    [0, 50, 100].forEach(v => { const y = padT + ih * (1 - v / 100); svg += `<line class="grid-l" x1="${padL}" x2="${W - 4}" y1="${y}" y2="${y}"/><text class="ax" x="${padL - 8}" y="${y + 4}" text-anchor="end">${v}%</text>`; });
+    data.forEach((h, i) => {
+      const p = pct(h.total.score, h.total.max), x = padL + step * i + (step - bw) / 2, bh = Math.max(4, ih * p / 100), y = padT + ih - bh;
+      const col = h.mode === "form" ? "var(--s2)" : "var(--s1)";
+      svg += `<path class="bar-m" tabindex="0" data-i="${i}" fill="${col}" d="M${x},${padT + ih} V${y + 4} a4,4 0 0 1 4,-4 h${bw - 8} a4,4 0 0 1 4,4 V${padT + ih} Z"/>`;
+      svg += `<text class="ax" x="${x + bw / 2}" y="${H - 8}" text-anchor="middle">${i + 1}</text>`;
+      if (i === data.length - 1) svg += `<text class="ax" x="${x + bw / 2}" y="${y - 6}" text-anchor="middle" style="font-weight:700;fill:var(--text)">${p}%</text>`;
+    });
+    box.innerHTML = svg + "</svg>"; box.appendChild(tip);
+    const show = (e, target) => { const i = +target.dataset.i, h = data[i]; tip.hidden = false; tip.textContent = `${fmtDate(h.ts)} · ${h.mode === "form" ? "Resmi 50" : "UPKP 100"} · ${h.total.score}/${h.total.max} (${pct(h.total.score, h.total.max)}%)`; const br = box.getBoundingClientRect(), tr = target.getBoundingClientRect(); tip.style.left = (tr.left - br.left + tr.width / 2) + "px"; tip.style.top = (tr.top - br.top) + "px"; };
+    box.querySelectorAll(".bar-m").forEach(b => { b.addEventListener("mouseenter", e => show(e, b)); b.addEventListener("focus", e => show(e, b)); b.addEventListener("mouseleave", () => tip.hidden = true); b.addEventListener("blur", () => tip.hidden = true); });
+    return box;
+  }
   function renderRiwayat(arg) {
     if (arg && arg.attempt) {
-      const h = arg.attempt;
-      const ex = { qs: h.qids.map(id => qById[id]).filter(Boolean), answers: h.answers, flags: h.flags || {}, result: { perTest: h.perTest, total: h.total, timeout: h.timeout, thresholds: h.thresholds } };
-      renderExamResult(ex);
-      view.insertBefore(el("div", { class: "actions", style: "margin:0 0 12px" }, [el("button", { class: "btn btn-sm", onclick: () => go("riwayat") }, ["Kembali ke riwayat"])]), view.firstChild);
+      const h = arg.attempt, ex = { mode: h.mode, qs: h.qids.map(id => qById[id]).filter(Boolean), answers: h.answers || {}, flags: h.flags || {}, result: { rows: rowsOf(h), total: h.total, timeout: h.timeout } };
+      renderResult(ex);
+      view.insertBefore(el("div", null, [el("button", { class: "btn btn-sm btn-ghost", onclick: () => go("riwayat") }, [icon("left"), "Kembali ke riwayat"])]), view.firstChild);
       return;
     }
-    const hist = state.history.slice().reverse();
-    const wrongIds = Object.keys(state.stats).filter(id => qById[id] && state.stats[id].lastWrong && (includeImi() || !qById[id].imi) && (includeImi() || qById[id].topic !== "imigrasi") && inSource(qById[id]));
+    const hist = validHistory();
+    const wrongIds = Object.keys(state.stats).filter(id => qById[id] && state.stats[id].lastWrong);
     const bm = state.bookmarks.map(id => qById[id]).filter(Boolean);
-    view.append(
-      el("div", { class: "grid grid-2" }, [
-        el("div", { class: "card" }, [
-          el("h2", null, ["Soal yang terakhir dijawab salah"]),
-          el("p", { class: "muted small" }, [`${wrongIds.length} soal. Kerjakan ulang sampai benar; daftar ini otomatis berkurang.`]),
-          el("div", { class: "actions" }, [el("button", { class: "btn btn-primary", disabled: wrongIds.length ? null : "", onclick: () => { drill = { active: true, qs: shuffle(wrongIds.map(id => qById[id])), i: 0, answers: {}, correct: 0 }; go("latihan"); } }, ["Latih soal yang salah"])])
-        ]),
-        el("div", { class: "card" }, [
-          el("h2", null, ["Soal yang ditandai"]),
-          el("p", { class: "muted small" }, [`${bm.length} soal ditandai.`]),
-          el("div", { class: "actions" }, [el("button", { class: "btn", disabled: bm.length ? null : "", onclick: () => { drill = { active: true, qs: shuffle(bm), i: 0, answers: {}, correct: 0 }; go("latihan"); } }, ["Latih soal bertanda"])])
-        ])
+    view.append(el("h1", null, ["Riwayat & pengulangan"]),
+      el("div", { class: "grid-2" }, [
+        el("section", { class: "panel stack" }, [el("div", { class: "row", style: "gap:10px" }, [el("span", { class: "chip chip-bad" }, [icon("x"), wrongIds.length]), el("h2", null, ["Terakhir dijawab salah"])]), el("p", { class: "small muted" }, ["Daftar berkurang sendiri begitu soalnya dijawab benar."]), el("div", null, [el("button", { class: "btn btn-primary", disabled: !wrongIds.length, onclick: () => startDrill(shuffle(wrongIds.map(id => qById[id])), "Soal yang pernah salah") }, ["Latih ulang"])])]),
+        el("section", { class: "panel stack" }, [el("div", { class: "row", style: "gap:10px" }, [el("span", { class: "chip chip-warn" }, [icon("bookmark"), bm.length]), el("h2", null, ["Soal ditandai"])]), el("p", { class: "small muted" }, ["Tandai soal saat latihan untuk dikumpulkan di sini."]), el("div", null, [el("button", { class: "btn", disabled: !bm.length, onclick: () => startDrill(shuffle(bm), "Soal ditandai") }, ["Latih yang ditandai"])])])
       ]),
-      el("div", { class: "card", style: "margin-top:16px" }, [
-        el("h2", null, ["Riwayat simulasi"]),
-        hist.length ? el("div", { class: "list" }, hist.map(h => el("div", { class: "list-item" }, [
-          el("div", null, [el("div", null, [el("strong", null, [`${h.total.score}/${h.total.max}`]), ` - ${h.total.correct} benar`, el("span", { class: "badge badge-muted", style: "margin-left:6px" }, [h.mode === "form" ? "50 soal resmi BKN" : (SOURCES[h.source] || "Kurasi")]), h.timeout ? el("span", { class: "badge badge-warn", style: "margin-left:6px" }, ["waktu habis"]) : null]),
-            el("div", { class: "small muted" }, [fmtDate(h.ts) + " - " + Math.round(h.durationSec / 60) + " menit - " + ["TWK", "TKT", "TSI", "TKP"].map(k => h.perTest[k] ? `${k} ${h.perTest[k].score}` : "").filter(Boolean).join(", ")])]),
-          el("button", { class: "btn btn-sm", onclick: () => go("riwayat", { attempt: h }) }, ["Lihat pembahasan"])
-        ]))) : el("div", { class: "empty" }, ["Belum ada simulasi."])
+      el("section", { class: "panel stack", style: "gap:16px" }, [
+        el("div", { class: "sec-head" }, [el("h2", null, ["Skor simulasi"]), hist.length ? el("div", { class: "legend-row" }, [el("span", { class: "tc1" }, ["UPKP 100 soal"]), el("span", { class: "tc2" }, ["Resmi 50 soal"])]) : null]),
+        hist.length ? scoreChart(hist) : el("div", { class: "empty" }, ["Belum ada simulasi. Hasilnya akan tampil sebagai grafik di sini."]),
+        hist.length ? el("div", { class: "list" }, hist.slice().reverse().map(h => el("div", { class: "list-item" }, [
+          el("div", { class: "stack", style: "gap:2px" }, [el("div", { class: "row", style: "gap:8px" }, [el("b", { class: "num" }, [`${h.total.score}/${h.total.max}`]), el("span", { class: "chip " + (h.mode === "form" ? "tc2" : "tc1") + " chip-test" }, [h.mode === "form" ? "Resmi 50" : "UPKP 100"]), h.timeout ? el("span", { class: "chip chip-warn" }, ["waktu habis"]) : null]),
+            el("span", { class: "xs muted num" }, [`${fmtDate(h.ts)} · ${Math.round(h.durationSec / 60)} menit · ` + rowsOf(h).slice(0, 4).map(r => `${h.mode === "form" ? r.label.split(" ")[0] : r.key} ${r.score}`).join(", ")])]),
+          el("button", { class: "btn btn-sm", onclick: () => go("riwayat", { attempt: h }) }, ["Pembahasan"])
+        ]))) : null
       ])
     );
   }
 
   // ---------- Pengaturan ----------
   function renderPengaturan() {
-    const imi = el("input", { type: "checkbox" }); imi.checked = includeImi();
-    const date = el("input", { type: "date", value: state.settings.examDate || "" });
-    const th = {}; ["TWK", "TKT", "TSI", "TKP"].forEach(k => th[k] = el("input", { type: "number", min: 0, max: 250, placeholder: "kosong", value: state.settings.thresholds[k] }));
-    const theme = el("select", null, [["auto", "Ikuti sistem"], ["light", "Terang"], ["dark", "Gelap"]].map(([v, l]) => el("option", { value: v }, [l]))); theme.value = state.settings.theme;
-    const srcSel = el("select", null, Object.keys(SOURCES).map(v => el("option", { value: v }, [SOURCES[v]]))); srcSel.value = source();
-    const saveBtn = el("button", { class: "btn btn-primary", onclick: () => { state.settings.includeImi = imi.checked; state.settings.examDate = date.value; ["TWK", "TKT", "TSI", "TKP"].forEach(k => state.settings.thresholds[k] = th[k].value); state.settings.theme = theme.value; state.settings.source = srcSel.value; save(); applyTheme(); syncSourceSel(); toast("Pengaturan disimpan"); } }, ["Simpan"]);
-    const counts = TOPICS.map(t => `${t.label}: ${(BANK[t.id] || []).length}`).join(" | ");
-    view.append(el("div", { class: "grid grid-2" }, [
-      el("div", { class: "card" }, [
-        el("h2", null, ["Pengaturan"]),
-        el("label", { class: "check" }, [imi, el("span", null, [el("strong", null, ["Sertakan soal substansi keimigrasian"]), el("div", { class: "small muted" }, ["Materi ini di luar komposisi resmi SE BKN 10/2024 (soal UPKP disusun BKN). Jika diaktifkan, muncul sebagai kategori opsional di Materi dan Latihan, serta bagian bonus terpisah di Simulasi. Beberapa soal umum berkonteks keimigrasian juga hanya tampil saat opsi ini aktif."])])]),
-        el("div", { class: "field", style: "margin-top:10px" }, [el("label", null, ["Tanggal ujian (untuk hitung mundur)"]), date]),
-        el("h3", null, ["Nilai ambang batas per jenis tes"]),
-        el("p", { class: "small muted" }, ["Isi sesuai pengumuman PPK. Skor maksimal: TWK 150, TKT 125, TSI 150, TKP 75."]),
-        el("div", { class: "grid grid-3", style: "gap:8px" }, ["TWK", "TKT", "TSI", "TKP"].map(k => el("div", { class: "field", style: "margin:0" }, [el("label", null, [k]), th[k]]))),
-        el("div", { class: "field", style: "margin-top:10px" }, [el("label", null, ["Sumber soal"]), srcSel, el("div", { class: "small muted" }, ["Kurasi = bank hasil riset regulasi primer. Kisi-kisi BKN = soal yang disusun dari deck kisi-kisi resmi PPSS BKN (2025) + 50 soal latihan resmi BKN. Kedua bank tidak dicampur agar bisa dibandingkan; statistik per topik mengikuti sumber yang dipilih."])]),
-        el("div", { class: "field", style: "margin-top:10px" }, [el("label", null, ["Tema tampilan"]), theme]),
-        el("div", { class: "actions" }, [saveBtn])
-      ]),
-      el("div", { class: "card" }, [
-        el("h2", null, ["Data & bank soal"]),
-        el("p", { class: "small muted" }, ["Progres tersimpan di browser ini (localStorage). Menghapus data browser akan menghapus progres."]),
-        el("p", { class: "small" }, [`Total soal: ${allQuestions().length}.`]),
-        el("p", { class: "small muted" }, [counts]),
-        el("div", { class: "actions" }, [
-          el("button", { class: "btn", onclick: exportData }, ["Ekspor progres (JSON)"]),
-          el("button", { class: "btn", onclick: importData }, ["Impor progres"]),
-          el("button", { class: "btn btn-danger", onclick: () => confirmBox("Hapus semua progres?", "Statistik, riwayat simulasi, dan tanda soal akan dihapus. Pengaturan tetap.", "Hapus", () => { state.stats = {}; state.history = []; state.bookmarks = []; save(); toast("Progres dihapus"); }, true) }, ["Reset progres"])
+    const date = el("input", { id: "examDate", class: "input", type: "date", value: state.settings.examDate || "" });
+    const th = {}; TEST_ORDER.forEach(k => th[k] = el("input", { id: "set" + k, class: "input", type: "number", min: 0, max: 250, placeholder: "kosong", value: state.settings.thresholds[k] }));
+    const themeSeg = el("div", { class: "seg" });
+    const drawTheme = () => { themeSeg.innerHTML = ""; ["auto", "light", "dark"].forEach(v => themeSeg.appendChild(el("button", { "aria-pressed": state.settings.theme === v ? "true" : "false", onclick: () => { state.settings.theme = v; save(); applyTheme(); renderSideFoot(); drawTheme(); } }, [THEME_LABEL[v]]))); };
+    drawTheme();
+    const saveBtn = el("button", { class: "btn btn-primary", onclick: () => { state.settings.examDate = date.value; TEST_ORDER.forEach(k => state.settings.thresholds[k] = th[k].value); save(); renderSideFoot(); toast("Pengaturan disimpan"); } }, ["Simpan"]);
+    const counts = TOPICS.map(t => `${t.label} ${pool(t.id).length}`).join(" · ");
+    view.append(el("h1", null, ["Pengaturan"]),
+      el("div", { class: "grid-2" }, [
+        el("section", { class: "panel stack", style: "gap:16px" }, [
+          el("div", { class: "field" }, [el("label", { for: "examDate" }, ["Tanggal ujian (untuk hitung mundur)"]), date]),
+          el("div", { class: "stack", style: "gap:8px" }, [el("span", { class: "label" }, ["Nilai ambang batas per jenis tes"]), el("p", { class: "xs muted" }, ["Ditetapkan PPK Kemenimipas. Skor maks: TWK 150, TKT 125, TSI 150, TKP 75."]), el("div", { class: "grid-3", style: "grid-template-columns:repeat(4,minmax(0,1fr))" }, TEST_ORDER.map(k => el("div", { class: "field" }, [el("label", { for: "set" + k }, [k]), th[k]])))]),
+          el("div", { class: "field" }, [el("span", { class: "label" }, ["Tema tampilan"]), themeSeg]),
+          el("div", null, [saveBtn])
         ]),
-        el("h3", { style: "margin-top:16px" }, ["Sumber materi"]),
-        el("ul", { class: "small muted", style: "padding-left:18px;margin:4px 0" }, [
-          "SE Kepala BKN No. 10 Tahun 2024 (struktur & penilaian ujian)",
-          "Permenimipas No. 1 Tahun 2024 (OTK Kementerian), No. 2 Tahun 2024 (OTK Kanwil Ditjen Imigrasi), No. 11 Tahun 2025 (Renstra 2025-2029)",
-          "UU No. 20 Tahun 2023 (ASN), PP No. 94 Tahun 2021 (Disiplin PNS), Peraturan BKN No. 4 Tahun 2023",
-          "UU No. 25 Tahun 2009, UU No. 30 Tahun 2014, UU No. 28 Tahun 1999, UU No. 6 Tahun 2011 jo. UU No. 63 Tahun 2024",
-          "UUD NRI 1945, UU No. 12 Tahun 2011, EYD Edisi V (2022)"
-        ].map(s => el("li", null, [s])))
-      ])
-    ]));
+        el("section", { class: "panel stack", style: "gap:14px" }, [
+          el("h2", null, ["Bank soal"]),
+          el("p", { class: "small" }, [`${ALL.length} soal: ${ALL.filter(q => q.set !== "form").length} turunan deck PPSS BKN 2025 dan ${formSet().length} soal resmi Google Form BKN 2025.`]),
+          el("p", { class: "xs muted" }, [counts]),
+          el("p", { class: "xs muted" }, ["Kunci 50 soal resmi disusun aplikasi (form tidak memuat kunci). Bila deck berbeda dari peraturan primer, pembahasan mencatat keduanya. Materi SOTK dan Renstra instansi di deck hanya berupa judul subtopik, sehingga soalnya dilengkapi dari Permenimipas 1/2024, 2/2024, dan 11/2025."]),
+          el("h3", null, ["Data progres"]),
+          el("p", { class: "xs muted" }, ["Tersimpan di browser ini saja. Ekspor untuk pindah perangkat."]),
+          el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: exportData }, ["Ekspor JSON"]), el("button", { class: "btn btn-sm", onclick: importData }, ["Impor"]), el("button", { class: "btn btn-sm btn-danger", onclick: () => confirmBox("Hapus semua progres?", "Statistik, riwayat simulasi, dan tanda soal dihapus. Pengaturan tetap.", "Hapus progres", () => { state.stats = {}; state.history = []; state.bookmarks = []; state.days = {}; save(); toast("Progres dihapus"); go("pengaturan"); }, true) }, ["Reset progres"])])
+        ])
+      ]));
   }
-  function exportData() {
-    const blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
-    const a = el("a", { href: URL.createObjectURL(blob), download: "upkp-progres-" + new Date().toISOString().slice(0, 10) + ".json" }); document.body.appendChild(a); a.click(); a.remove();
-  }
+  function exportData() { const a = el("a", { href: URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: "application/json" })), download: "upkp-progres-" + dayKey() + ".json" }); document.body.appendChild(a); a.click(); a.remove(); }
   function importData() {
     const inp = el("input", { type: "file", accept: "application/json" });
-    inp.addEventListener("change", () => { const f = inp.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { try { const s = JSON.parse(r.result); if (!s.stats || !s.history) throw 0; state = Object.assign(defaultState(), s); save(); applyTheme(); toast("Progres diimpor"); go("home"); } catch (e) { toast("Berkas tidak valid"); } }; r.readAsText(f); });
+    inp.addEventListener("change", () => { const f = inp.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { try { const s = JSON.parse(r.result); if (!s.stats || !s.history) throw 0; state = Object.assign(defaults(), s); save(); applyTheme(); renderSideFoot(); toast("Progres diimpor"); go("home"); } catch (e) { toast("Berkas tidak valid: bukan hasil ekspor aplikasi ini."); } }; r.readAsText(f); });
     inp.click();
   }
 
-  // ---------- PWA: tombol pasang di layar utama ----------
+  // ---------- PWA ----------
   let installEvt = null;
   window.addEventListener("beforeinstallprompt", e => { e.preventDefault(); installEvt = e; const b = $("#installBtn"); if (b) b.hidden = false; });
-  window.addEventListener("appinstalled", () => { installEvt = null; const b = $("#installBtn"); if (b) b.hidden = true; toast("Aplikasi terpasang"); });
-  $("#installBtn").addEventListener("click", async () => { if (!installEvt) return; installEvt.prompt(); await installEvt.userChoice; installEvt = null; $("#installBtn").hidden = true; });
+  const ib = $("#installBtn"); if (ib) ib.addEventListener("click", async () => { if (!installEvt) return; installEvt.prompt(); await installEvt.userChoice; installEvt = null; ib.hidden = true; });
 
-  // ---------- Init ----------
-  applyTheme();
-  if (window.matchMedia) window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", applyTheme);
-  window.addEventListener("beforeunload", e => { if (exam && exam.active && !exam.finished) { e.preventDefault(); e.returnValue = ""; } });
+  // ---------- Keyboard ----------
   document.addEventListener("keydown", e => {
-    if (!exam || !exam.active || exam.finished) return;
-    if (e.target && /input|select|textarea/i.test(e.target.tagName)) return;
-    const idx = LETTERS.indexOf(e.key.toUpperCase());
-    if (idx >= 0 && idx < exam.qs[exam.i].o.length) { exam.answers[exam.qs[exam.i].id] = idx; renderExamQuestion(); }
-    else if (e.key === "ArrowRight" && exam.i < exam.qs.length - 1) { exam.i++; renderExamQuestion(); }
-    else if (e.key === "ArrowLeft" && exam.i > 0) { exam.i--; renderExamQuestion(); }
+    if (e.target && /input|select|textarea/i.test(e.target.tagName) || e.ctrlKey || e.metaKey || e.altKey || document.querySelector(".modal-bg,.sheet-bg")) return;
+    const k = e.key.toUpperCase(), idx = L.indexOf(k);
+    if (current === "latihan" && drill && drill.active && drill.i < drill.qs.length) {
+      const q = drill.qs[drill.i];
+      if (idx >= 0 && idx < q.o.length && !(q.id in drill.answers)) { e.preventDefault(); drill.choose(idx); }
+      else if ((e.key === "Enter" || e.key === "ArrowRight") && q.id in drill.answers && !(e.target && e.target.tagName === "BUTTON" && e.key === "Enter")) { e.preventDefault(); nextDrill(); }
+    } else if (current === "simulasi" && exam && !exam.finished) {
+      const q = exam.qs[exam.i];
+      if (idx >= 0 && idx < q.o.length) { exam.answers[q.id] = idx; persistExam(); renderExamQ(); }
+      else if (e.key === "ArrowRight" && exam.i < exam.qs.length - 1) { exam.i++; persistExam(); renderExamQ(); }
+      else if (e.key === "ArrowLeft" && exam.i > 0) { exam.i--; persistExam(); renderExamQ(); }
+      else if (k === "R") { exam.flags[q.id] = !exam.flags[q.id]; persistExam(); renderExamQ(); }
+    }
   });
-  go("home");
+
+  // ---------- Mulai ----------
+  $("#topTheme").addEventListener("click", cycleTheme);
+  $("#topSettings").appendChild(icon("sliders"));
+  $("#topSettings").addEventListener("click", () => nav("pengaturan"));
+  applyTheme(); renderSideFoot(); restoreExam();
+  window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (routes[h] && h !== current) nav(h); });
+  const start = location.hash.slice(1);
+  go(exam && !exam.finished ? "simulasi" : routes[start] ? start : "home");
 })();

@@ -23,9 +23,13 @@ for (const f of files) {
 const order = files.flatMap(f => fileParts[f].flatMap(p => p.qs));
 // Opsional: berkas JSON {id: {o:[...5], a:index}} untuk menimpa opsi sebelum penyeimbangan
 if (process.argv[3]) { const ov = JSON.parse(fs.readFileSync(process.argv[3], 'utf8')); let n = 0; order.forEach(q => { if (ov[q.id]) { q.o = ov[q.id].o; q.a = ov[q.id].a; n++; } }); console.log('opsi ditimpa:', n); }
+// Pilihan berurutan (ordinal/Romawi/angka) dikembalikan ke urutan wajar dan tidak dirotasi
+const ORD = ["pertama", "kedua", "ketiga", "keempat", "kelima"], ROM = ["I", "II", "III", "IV", "V", "I dan IV", "Semua alinea"];
+const rankOf = s => { const t = s.trim(); if (ORD.includes(t.toLowerCase())) return ORD.indexOf(t.toLowerCase()); if (ROM.includes(t)) return ROM.indexOf(t); if (/^\d+$/.test(t)) return Number(t); return null; };
+order.forEach(q => { const r = q.o.map(rankOf); if (r.some(x => x === null)) return; const ans = q.o[q.a]; const idx = q.o.map((o, i) => i).sort((i, j) => r[i] - r[j]); q.o = idx.map(i => q.o[i]); q.a = q.o.indexOf(ans); });
 const x2 = new Set(files.filter(isMov).flatMap(f => fileParts[f].flatMap(p => p.qs)));
 const letterRef = /\b(pilihan|kalimat|opsi|jawaban)\s+[A-E]\b|\([A-E]\)|\b[A-E]\s*(dan|,|-|serta)\s*[A-E]\b/i;
-const ordered = q => q.o.every(s => /^\d/.test(s)) || q.o.every(s => /^(Satu|Dua|Tiga|Empat|Lima|Enam|Tujuh|Delapan|Sembilan|Sepuluh|Sila |Alinea |Pasal |Arah kebijakan|Misi |Tipe |Inspektorat Wilayah)/.test(s)) || q.o.every(s => s.length < 22 && /\d/.test(s));
+const ordered = q => q.o.every(s => rankOf(s) !== null) || q.o.every(s => /^\d/.test(s)) || q.o.every(s => /^(Satu|Dua|Tiga|Empat|Lima|Enam|Tujuh|Delapan|Sembilan|Sepuluh|Sila |Alinea |Pasal |Arah kebijakan|Misi |Tipe |Inspektorat Wilayah)/.test(s)) || q.o.every(s => s.length < 22 && /\d/.test(s));
 const cnt = [0, 0, 0, 0, 0];
 const before = [0, 0, 0, 0, 0]; order.forEach(q => before[q.a]++);
 order.forEach(q => { if (!x2.has(q) || letterRef.test(q.e) || ordered(q)) cnt[q.a]++; });
