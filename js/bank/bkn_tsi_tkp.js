@@ -323,7 +323,7 @@ window.BANK.renstra.push(
     src: "Kisi-kisi BKN hal. 150"
   },
   {
-    id: "bkn-rst-17", set: "bkn", topic: "renstra",
+    id: "bkn-rst-17", set: "ext", topic: "renstra",
     q: "Sistematika Renstra Kementerian/Lembaga 2025-2029 (Permen PPN/Bappenas) yang juga dipakai Renstra Kemenimipas adalah ...",
     o: ["Latar Belakang; Anggaran; Sumber Daya Pegawai; Evaluasi dan Pelaporan", "Visi; Misi; Program; Kegiatan; Anggaran dan Pendanaan", "Pendahuluan; Gambaran Umum Organisasi; Permasalahan; Solusi dan Rekomendasi", "Dasar Hukum; Struktur Organisasi; Tata Kerja; Rencana Tindak Lanjut", "Pendahuluan; Visi-Misi-Tujuan-Sasaran; Arah Kebijakan-Strategi; Target Kinerja-Pendanaan; Penutup"],
     a: 4,
@@ -343,7 +343,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151"
   },
   {
-    id: "bkn-stk-02", set: "bkn", topic: "sotk",
+    id: "bkn-stk-02", set: "ext", topic: "sotk",
     q: "Padanan jabatan pimpinan tinggi madya dalam eselonisasi lama adalah ...",
     o: ["Eselon II", "Eselon III", "Eselon IV", "Eselon V", "Eselon I"],
     a: 4,
@@ -351,7 +351,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 400"
   },
   {
-    id: "bkn-stk-03", set: "bkn", topic: "sotk",
+    id: "bkn-stk-03", set: "ext", topic: "sotk",
     q: "Jalur koordinasi dalam tata kerja instansi pemerintah pada umumnya mensyaratkan setiap pimpinan satuan organisasi menerapkan prinsip ...",
     o: ["Kompetisi antarunit kerja", "Kerahasiaan penuh antarunit", "Otonomi tanpa pelaporan", "Delegasi penuh kepada bawahan", "Koordinasi, integrasi, dan sinkronisasi di lingkungan internal maupun dengan instansi lain"],
     a: 4,
@@ -359,7 +359,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 32"
   },
   {
-    id: "bkn-stk-04", set: "bkn", topic: "sotk",
+    id: "bkn-stk-04", set: "ext", topic: "sotk",
     q: "Dalam materi SOTK, \"kedudukan\" satuan kerja berarti ...",
     o: ["Alamat kantor dan wilayah kerja satuan kerja sesuai penetapan menteri", "Jumlah pegawai dan komposisi jabatan yang dimiliki satuan kerja", "Besaran anggaran dan sumber pendanaan satuan kerja dalam DIPA", "Kelas jabatan pimpinan dan tunjangan kinerja yang melekat padanya", "Posisi dalam struktur: di bawah dan bertanggung jawab kepada siapa serta siapa pemimpinnya"],
     a: 4,
@@ -367,7 +367,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 1-2"
   },
   {
-    id: "bkn-stk-05", set: "bkn", topic: "sotk",
+    id: "bkn-stk-05", set: "ext", topic: "sotk",
     q: "Pengangkatan dan pemberhentian pejabat pimpinan tinggi madya (eselon I) di kementerian dilakukan oleh ...",
     o: ["Menteri", "Sekretaris Jenderal", "Kepala BKN", "Menteri PANRB", "Presiden atas usul Menteri"],
     a: 4,
@@ -375,7 +375,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 401"
   },
   {
-    id: "bkn-stk-06", set: "bkn", topic: "sotk",
+    id: "bkn-stk-06", set: "ext", topic: "sotk",
     q: "Dalam peraturan organisasi dan tata kerja, hubungan antara \"tugas\" dan \"fungsi\" suatu satuan kerja adalah ...",
     o: ["Fungsi adalah rincian kegiatan yang diselenggarakan untuk melaksanakan tugas", "Tugas adalah rincian dari fungsi yang ditetapkan oleh pimpinan satuan kerja", "Tugas dan fungsi adalah istilah yang sama dan dapat saling dipertukarkan", "Fungsi hanya dimiliki unit pusat, sedangkan tugas hanya dimiliki instansi vertikal", "Tugas ditetapkan Menteri, sedangkan fungsi ditetapkan sendiri oleh kepala satuan kerja"],
     a: 0,
@@ -383,7 +383,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 3-4"
   },
   {
-    id: "bkn-stk-07", set: "bkn", topic: "sotk",
+    id: "bkn-stk-07", set: "ext", topic: "sotk",
     q: "Perbedaan mendasar antara instansi vertikal kementerian dan perangkat daerah adalah ...",
     o: ["Instansi vertikal dipimpin gubernur, perangkat daerah dipimpin menteri", "Instansi vertikal hanya ada di ibu kota provinsi, perangkat daerah hanya di kabupaten/kota", "Instansi vertikal melaksanakan tugas kementerian di daerah dan bertanggung jawab kepada pimpinan kementerian, perangkat daerah membantu kepala daerah", "Instansi vertikal dibiayai APBD, perangkat daerah dibiayai APBN", "Instansi vertikal menangani urusan konkuren, perangkat daerah menangani urusan absolut"],
     a: 2,
@@ -391,7 +391,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 1-2; UU No. 23 Tahun 2014 Pasal 10 dan Penjelasannya; PP No. 18 Tahun 2016 Pasal 5"
   },
   {
-    id: "bkn-stk-08", set: "bkn", topic: "sotk",
+    id: "bkn-stk-08", set: "ext", topic: "sotk",
     q: "Perangkat daerah provinsi menurut PP No. 18 Tahun 2016 terdiri atas ...",
     o: ["Sekretariat daerah, sekretariat DPRD, inspektorat, dinas, dan badan", "Sekretariat daerah, dinas, badan, kecamatan, dan kelurahan", "Kantor wilayah kementerian, dinas, badan, dan inspektorat", "Sekretariat daerah, sekretariat DPRD, kantor gubernur, dan kecamatan", "Dinas, badan, kecamatan, dan unit pelaksana teknis daerah"],
     a: 0,
@@ -399,7 +399,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; PP No. 18 Tahun 2016 Pasal 5"
   },
   {
-    id: "bkn-stk-09", set: "bkn", topic: "sotk",
+    id: "bkn-stk-09", set: "ext", topic: "sotk",
     q: "Menurut Pasal 400 Permenimipas No. 1 Tahun 2024, Kepala Subbagian di lingkungan Kementerian adalah ...",
     o: ["Jabatan Administrator atau jabatan struktural eselon III.a", "Jabatan Pengawas atau jabatan struktural eselon IV.a", "Jabatan Pimpinan Tinggi Pratama atau jabatan struktural eselon II.b", "Jabatan pelaksana yang tidak memiliki eselon", "Jabatan fungsional ahli muda hasil penyetaraan"],
     a: 1,
@@ -407,7 +407,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 400 ayat (5)"
   },
   {
-    id: "bkn-stk-10", set: "bkn", topic: "sotk",
+    id: "bkn-stk-10", set: "ext", topic: "sotk",
     q: "Staf Ahli Menteri Imigrasi dan Pemasyarakatan termasuk ...",
     o: ["Jabatan Pimpinan Tinggi Pratama atau eselon II.a", "Jabatan Pimpinan Tinggi Madya atau eselon I.b", "Jabatan Pimpinan Tinggi Utama yang diangkat Presiden", "Jabatan fungsional ahli utama di bawah Sekretaris Jenderal", "Jabatan Administrator yang dikoordinasikan Biro Umum"],
     a: 1,
@@ -415,7 +415,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 7, 400, 401"
   },
   {
-    id: "bkn-stk-11", set: "bkn", topic: "sotk",
+    id: "bkn-stk-11", set: "ext", topic: "sotk",
     q: "Menurut Pasal 36 Permenimipas No. 2 Tahun 2024, pejabat fungsional dan pelaksana di Kantor Wilayah Ditjen Imigrasi bertanggung jawab kepada Kepala Kantor Wilayah melalui ...",
     o: ["Sekretaris Direktorat Jenderal Imigrasi", "Kepala Bagian Tata Usaha dan Umum untuk seluruh pegawai", "Kepala bagian atau kepala bidang yang menjadi atasan langsung", "Koordinator kelompok jabatan fungsional yang dipilih anggota", "Direktur Jenderal Imigrasi selaku pembina teknis"],
     a: 2,
@@ -423,7 +423,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 36"
   },
   {
-    id: "bkn-stk-12", set: "bkn", topic: "sotk",
+    id: "bkn-stk-12", set: "ext", topic: "sotk",
     q: "Menurut tata kerja Kantor Wilayah Ditjen Imigrasi, tembusan laporan yang disampaikan kepada atasan juga disampaikan kepada ...",
     o: ["Gubernur selaku wakil pemerintah pusat di daerah", "Satuan organisasi yang secara fungsional mempunyai hubungan kerja", "Inspektorat Jenderal sebagai aparat pengawasan intern", "Seluruh unit pelaksana teknis di wilayah provinsi", "Biro Umum Sekretariat Jenderal untuk diarsipkan"],
     a: 1,
@@ -431,7 +431,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 37-39"
   },
   {
-    id: "bkn-stk-13", set: "bkn", topic: "sotk",
+    id: "bkn-stk-13", set: "ext", topic: "sotk",
     q: "Setiap unsur pimpinan pada Kantor Wilayah Ditjen Imigrasi wajib melaksanakan ... dan melaporkan hasil pelaksanaan tugasnya kepada pimpinan secara berjenjang.",
     o: ["Audit kinerja tahunan", "Reviu laporan keuangan", "Pengawasan melekat", "Evaluasi jabatan", "Survei kepuasan masyarakat"],
     a: 2,
@@ -439,7 +439,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 33-34"
   },
   {
-    id: "bkn-stk-14", set: "bkn", topic: "sotk",
+    id: "bkn-stk-14", set: "ext", topic: "sotk",
     q: "Pertanggungjawaban pelaksanaan tugas dan fungsi unit pelaksana teknis keimigrasian (Kantor Imigrasi, Rumah Detensi Imigrasi) di suatu provinsi kepada Direktur Jenderal Imigrasi dikoordinasikan oleh ...",
     o: ["Sekretaris Jenderal Kementerian", "Inspektur Wilayah yang membawahi provinsi tersebut", "Kepala Bagian Tata Usaha dan Umum Kantor Wilayah", "Direktur Kepatuhan Internal Keimigrasian", "Kepala Kantor Wilayah Direktorat Jenderal Imigrasi"],
     a: 4,
@@ -447,7 +447,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 4 dan 35"
   },
   {
-    id: "bkn-stk-15", set: "bkn", topic: "sotk",
+    id: "bkn-stk-15", set: "ext", topic: "sotk",
     q: "Pola hubungan dan mekanisme kerja Kantor Wilayah Direktorat Jenderal Imigrasi ditetapkan oleh ...",
     o: ["Kepala Kantor Wilayah dengan persetujuan gubernur", "Direktur Jenderal Imigrasi melalui surat edaran", "Menteri Imigrasi dan Pemasyarakatan", "Menteri Pendayagunaan Aparatur Negara dan Reformasi Birokrasi", "Sekretaris Direktorat Jenderal Imigrasi"],
     a: 2,
@@ -455,7 +455,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 40 dan 44"
   },
   {
-    id: "bkn-stk-16", set: "bkn", topic: "sotk",
+    id: "bkn-stk-16", set: "ext", topic: "sotk",
     q: "Peraturan Presiden yang secara khusus menjadi dasar pembentukan Kementerian Imigrasi dan Pemasyarakatan adalah ...",
     o: ["Perpres No. 140 Tahun 2024 tentang Organisasi Kementerian Negara", "Perpres No. 157 Tahun 2024 tentang Kementerian Imigrasi dan Pemasyarakatan", "Perpres No. 68 Tahun 2019 tentang Organisasi Kementerian Negara", "Perpres No. 12 Tahun 2025 tentang RPJMN 2025-2029", "Perpres No. 81 Tahun 2010 tentang Grand Design Reformasi Birokrasi"],
     a: 1,
@@ -463,7 +463,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 (konsiderans); Perpres No. 157 Tahun 2024"
   },
   {
-    id: "bkn-stk-17", set: "bkn", topic: "sotk",
+    id: "bkn-stk-17", set: "ext", topic: "sotk",
     q: "Struktur Kantor Wilayah Ditjen Imigrasi tidak lagi memiliki seksi atau subbidang (eselon IV) di bawah bidang, melainkan langsung kelompok jabatan fungsional dan pelaksana. Hal ini merupakan penerapan kebijakan ...",
     o: ["Desentralisasi urusan keimigrasian kepada pemerintah daerah", "Penyederhanaan birokrasi melalui penyetaraan jabatan administrasi ke jabatan fungsional", "Pemekaran organisasi untuk menambah formasi jabatan struktural", "Penggabungan Kanwil dengan Kantor Imigrasi kelas I", "Pengalihan status pegawai Kanwil menjadi PPPK"],
     a: 1,

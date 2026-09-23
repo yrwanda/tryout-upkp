@@ -493,7 +493,7 @@ window.BANK.renstra.push(
 window.BANK.sotk = window.BANK.sotk || [];
 window.BANK.sotk.push(
   {
-    id: "bkn-stk-18", set: "bkn", topic: "sotk",
+    id: "bkn-stk-18", set: "ext", topic: "sotk",
     q: "Menurut Pasal 7 Permenimipas No. 1 Tahun 2024, susunan organisasi Kementerian Imigrasi dan Pemasyarakatan terdiri atas ... unsur/unit.",
     o: ["8", "9", "10", "11", "12"],
     a: 2,
@@ -501,7 +501,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 7"
   },
   {
-    id: "bkn-stk-19", set: "bkn", topic: "sotk",
+    id: "bkn-stk-19", set: "ext", topic: "sotk",
     q: "Menurut Pasal 400 Permenimipas No. 1 Tahun 2024, Kepala Bagian dan Kepala Subdirektorat merupakan ...",
     o: ["Jabatan Pengawas, eselon IV.a", "Jabatan fungsional ahli madya", "Jabatan Pimpinan Tinggi Madya, eselon I.b", "Jabatan Pimpinan Tinggi Pratama, eselon II.a", "Jabatan Administrator, eselon III.a"],
     a: 4,
@@ -509,7 +509,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 400"
   },
   {
-    id: "bkn-stk-20", set: "bkn", topic: "sotk",
+    id: "bkn-stk-20", set: "ext", topic: "sotk",
     q: "Menurut Pasal 401 ayat (2) Permenimipas No. 1 Tahun 2024, pejabat pimpinan tinggi pratama atau pejabat struktural eselon II ke bawah diangkat dan diberhentikan oleh ...",
     o: ["Kepala BKN", "Direktur Jenderal masing-masing", "Presiden", "Menteri", "Sekretaris Jenderal"],
     a: 3,
@@ -517,7 +517,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 401"
   },
   {
-    id: "bkn-stk-21", set: "bkn", topic: "sotk",
+    id: "bkn-stk-21", set: "ext", topic: "sotk",
     q: "Staf Ahli Menteri Imigrasi dan Pemasyarakatan berada di bawah dan bertanggung jawab kepada Menteri, sedangkan secara administratif dikoordinasikan oleh ...",
     o: ["Kepala Biro Umum", "Wakil Menteri", "Kepala Pusat Strategi Kebijakan", "Inspektur Jenderal", "Sekretaris Jenderal"],
     a: 4,
@@ -525,7 +525,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 374"
   },
   {
-    id: "bkn-stk-22", set: "bkn", topic: "sotk",
+    id: "bkn-stk-22", set: "ext", topic: "sotk",
     q: "Fungsi Kantor Wilayah Ditjen Imigrasi yang pertama menurut Pasal 4 Permenimipas No. 2 Tahun 2024 adalah ...",
     o: ["Perumusan kebijakan keimigrasian nasional", "Pembinaan narapidana dan anak binaan", "Penerbitan paspor dan visa secara langsung", "Penyusunan rencana, program, kegiatan, dan anggaran di lingkungan Kantor Wilayah", "Penyidikan tindak pidana keimigrasian tingkat pusat"],
     a: 3,
@@ -533,7 +533,7 @@ window.BANK.sotk.push(
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 2 Tahun 2024 Pasal 4"
   },
   {
-    id: "bkn-stk-23", set: "bkn", topic: "sotk",
+    id: "bkn-stk-23", set: "ext", topic: "sotk",
     q: "Kepala Kantor Wilayah Direktorat Jenderal Imigrasi menurut Permenimipas No. 2 Tahun 2024 didefinisikan sebagai ...",
     o: ["Wakil gubernur di bidang keimigrasian", "Pejabat fungsional ahli utama", "Koordinator Tim Pengawasan Orang Asing", "Pimpinan unit pelaksana teknis keimigrasian", "Pimpinan instansi vertikal Direktorat Jenderal Imigrasi di provinsi"],
     a: 4,

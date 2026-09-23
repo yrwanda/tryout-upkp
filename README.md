@@ -9,15 +9,14 @@ Kementerian Imigrasi dan Pemasyarakatan, mengikuti SE Kepala BKN No. 10 Tahun 20
 - Buka `index.html` langsung di browser (tanpa server), atau jalankan `python -m http.server 8765` lalu buka http://localhost:8765.
 - Progres tersimpan di localStorage browser. Gunakan Pengaturan > Ekspor/Impor untuk memindahkan progres.
 
-## Bank soal: hanya kisi-kisi BKN 2025
-Aplikasi hanya memuat soal yang bersumber dari PPT kisi-kisi resmi PPSS BKN "PPT UDIN & UPKP - IMIPAS" (kisi-kisi hal. 18-172):
-- **427 soal dari materi kisi-kisi BKN** (`js/bank/bkn_*.js`, `set: "bkn"`, rujukan "Kisi-kisi BKN hal. X").
-- **50 soal asli** Google Form "Latihan Soal UD/UPKP 2025" (`bkn_form.js`, `set: "form"`, 4 opsi, urutan asli; kunci dan pembahasan disusun aplikasi karena form tidak memuat kunci).
-- Materi bacaan (`js/materi.js`) diringkas dari kisi-kisi BKN per halaman. Bila kisi-kisi BKN berbeda dari sumber primer (jumlah pasal UUD pascaamandemen, "UU 9/1999", "penurunan pangkat", manajemen ilmiah = Fayol), materi dan pembahasan mencatat keduanya.
-- SOTK dan Renstra instansi di kisi-kisi BKN hanya berupa judul subtopik; soalnya dilengkapi dari Permenimipas 1/2024, 2/2024, 11/2025.
-- Bank kurasi riset (488 soal) dipindah ke `arsip/kurasi/` dan tidak dimuat aplikasi.
+## Bank soal: kisi-kisi BKN 2025 (+ pelengkap yang ditandai)
+Total 565 soal, dibedakan lewat field `set`:
+- `set: "bkn"` (473): dari isi PPT kisi-kisi PPSS BKN "PPT UDIN & UPKP - IMIPAS" (hal. 18-172), termasuk halaman bergambar; rujukan "Kisi-kisi BKN hal. X".
+- `set: "form"` (50): soal asli Google Form "Latihan Soal UD/UPKP 2025", 4 opsi, urutan asli. BKN tidak menerbitkan kunci; kunci disusun aplikasi dan diberi label "kunci disusun AI".
+- `set: "ext"` (42+): **pelengkap**, isinya dari luar PPT kisi-kisi dan ditandai "Pelengkap": SOTK dari Permenimipas 1/2024 dan 2/2024 (kisi-kisi hal. 151 hanya berisi judul subtopik), sistematika Renstra, dan tata bahasa Inggris di luar tenses. Bisa disembunyikan di Pengaturan (akibatnya SOTK tidak cukup untuk simulasi 100 soal).
+- Bank kurasi riset lama (488 soal) ada di `arsip/kurasi/` dan tidak dimuat.
 
-Mode simulasi: **UPKP D3-S2** (100 soal, 90 menit, komposisi kisi-kisi BKN hal. 6 / SE BKN 10/2024) dan **Latihan Resmi BKN 2025** (50 soal, 45 menit). Simulasi yang sedang berjalan tersimpan otomatis bila halaman tertutup.
+Fitur belajar: **Sesi Hari Ini** (soal salah diulang besok, benar sekali diulang 3 hari kemudian, dikuasai = benar di 2 hari berbeda; sisanya soal baru dari jenis tes terlemah), kesiapan per jenis tes, tombol **Ragukan kunci** (daftarnya bisa disalin dari Riwayat untuk dicek), pengingat ekspor data mingguan, simulasi UPKP 100 soal/90 menit dan Resmi 50 soal/45 menit dengan ambang **perkiraan**.
 
 ## Struktur
 - `js/bank/*.js` bank soal (id, soal, 4-5 opsi, kunci, pembahasan, rujukan halaman kisi-kisi BKN).

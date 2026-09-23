@@ -484,7 +484,7 @@ window.TOPICS = [
   { id: "kebijakan", label: "Kebijakan Publik", test: "TKT", n: 5, pages: "145-149", icon: "route" },
   { id: "renstra", label: "Renstra & RPJMN", test: "TSI", n: 15, pages: "92-105, 150", icon: "target" },
   { id: "sotk", label: "SOTK", test: "TSI", n: 15, pages: "151", icon: "network" },
-  { id: "inggris", label: "Bahasa Inggris", test: "TKP", n: 10, pages: "165-171", icon: "languages" },
+  { id: "inggris", label: "Bahasa Inggris", test: "TKP", n: 10, pages: "165-171", icon: "languages", note: "Kisi-kisi hal. 165-171 hanya memuat latihan tenses. Soal tata bahasa lain (subject-verb agreement, passive, artikel, preposisi, conditional, dll.) ditandai Pelengkap sebagai jaga-jaga." },
   { id: "literasi", label: "Literasi Digital", test: "TKP", n: 5, pages: "137-139", icon: "wifi" },
   { id: "perkantoran", label: "Perkantoran", test: "EKSTRA", n: 0, pages: "126-136", icon: "folder", extra: true },
   { id: "manajemen", label: "Manajemen & Kepemimpinan", test: "EKSTRA", n: 0, pages: "152-164", icon: "users", extra: true }
@@ -495,5 +495,5 @@ window.TESTS = {
   TKT: { label: "Tes Kompetensi Teknis", short: "TKT", color: 2 },
   TSI: { label: "Tes Substansi Instansi", short: "TSI", color: 3 },
   TKP: { label: "Tes Kompetensi Penunjang", short: "TKP", color: 4 },
-  EKSTRA: { label: "Materi tambahan kisi-kisi BKN (Ujian Dinas)", short: "Ekstra", color: 5 }
+  EKSTRA: { label: "Di luar ujian UPKP (materi Ujian Dinas di kisi-kisi)", short: "Luar ujian", color: 5 }
 };
