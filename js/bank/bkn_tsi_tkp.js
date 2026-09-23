@@ -95,7 +95,7 @@ window.BANK.inggris.push(
     q: "I ... home at eight tonight.",
     o: ["will get", "get", "got", "am getting", "gotten"],
     a: 0,
-    e: "\"Tonight\" menandai masa depan: will get. (Present continuous \"am getting\" juga dapat dipakai untuk rencana pasti, tetapi konteks latihan future tense deck mengharapkan will get.)",
+    e: "\"Tonight\" menandai masa depan: will get. (Present continuous \"am getting\" juga dapat dipakai untuk rencana pasti, tetapi konteks latihan future tense kisi-kisi BKN mengharapkan will get.)",
     src: "Kisi-kisi BKN hal. 171"
   },
   {
@@ -119,7 +119,7 @@ window.BANK.inggris.push(
     q: "The game ... next month.",
     o: ["start", "starts", "will start", "will be starting", "will have started"],
     a: 2,
-    e: "Peristiwa masa depan (next month): will start. Simple present \"starts\" dipakai untuk jadwal tetap, tetapi latihan future tense deck mengharapkan will start.",
+    e: "Peristiwa masa depan (next month): will start. Simple present \"starts\" dipakai untuk jadwal tetap, tetapi latihan future tense kisi-kisi BKN mengharapkan will start.",
     src: "Kisi-kisi BKN hal. 171"
   }
 );
@@ -131,7 +131,7 @@ window.BANK.literasi.push(
     q: "Menurut kisi-kisi BKN, pilar literasi digital yang berisi pengetahuan mengenai perangkat keras dan perangkat lunak serta penggunaan perangkat untuk transaksi digital adalah ...",
     o: ["Digital skills", "Digital culture", "Digital ethics", "Digital safety", "Digital economy"],
     a: 0,
-    e: "Deck hal. 137: digital skills = pengetahuan perangkat keras/lunak dan penggunaan perangkat untuk transaksi digital; digital culture = penerapan Pancasila, Bhinneka Tunggal Ika, dan nilai NKRI di dunia digital; digital ethics = regulasi dan etika berinternet (netiquette); digital safety = proteksi dasar keamanan data.",
+    e: "Kisi-kisi BKN hal. 137: digital skills = pengetahuan perangkat keras/lunak dan penggunaan perangkat untuk transaksi digital; digital culture = penerapan Pancasila, Bhinneka Tunggal Ika, dan nilai NKRI di dunia digital; digital ethics = regulasi dan etika berinternet (netiquette); digital safety = proteksi dasar keamanan data.",
     src: "Kisi-kisi BKN hal. 137"
   },
   {
@@ -139,7 +139,7 @@ window.BANK.literasi.push(
     q: "Penerapan Pancasila, Bhinneka Tunggal Ika, dan nilai-nilai NKRI di dunia digital termasuk pilar ...",
     o: ["Digital skills", "Digital culture", "Digital ethics", "Digital safety", "Digital identity"],
     a: 1,
-    e: "Deck hal. 137 dan 139: budaya digital (digital culture) adalah hasil kreasi dan karya manusia berbasis internet yang tercermin dalam cara berinteraksi, berperilaku, berpikir, dan berkomunikasi di dunia digital, misalnya aktivitas media sosial dan belanja daring, yang dilandasi Pancasila dan Bhinneka Tunggal Ika.",
+    e: "Kisi-kisi BKN hal. 137 dan 139: budaya digital (digital culture) adalah hasil kreasi dan karya manusia berbasis internet yang tercermin dalam cara berinteraksi, berperilaku, berpikir, dan berkomunikasi di dunia digital, misalnya aktivitas media sosial dan belanja daring, yang dilandasi Pancasila dan Bhinneka Tunggal Ika.",
     src: "Kisi-kisi BKN hal. 137 dan 139"
   },
   {
@@ -147,7 +147,7 @@ window.BANK.literasi.push(
     q: "Definisi literasi digital menurut Devri Suherdi (2021) sebagaimana dikutip kisi-kisi BKN adalah ...",
     o: ["Pengetahuan dan kecakapan memanfaatkan media digital dengan bijak, cerdas, cermat, dan tepat", "Kemampuan membuat program komputer dan aplikasi menggunakan bahasa pemrograman", "Kemampuan memperbaiki perangkat keras komputer dan jaringan internet yang rusak", "Kemampuan berjualan daring melalui lokapasar dan media sosial secara menguntungkan", "Kemampuan menghafal istilah teknologi informasi dan singkatannya dalam bahasa asing"],
     a: 0,
-    e: "Deck hal. 138 mengutip Devri Suherdi (2021): literasi digital mencakup kemampuan menemukan, mengerjakan, mengevaluasi, menggunakan, membuat, serta memanfaatkan media digital dengan bijak, cerdas, cermat, dan tepat sesuai kegunaannya.",
+    e: "Kisi-kisi BKN hal. 138 mengutip Devri Suherdi (2021): literasi digital mencakup kemampuan menemukan, mengerjakan, mengevaluasi, menggunakan, membuat, serta memanfaatkan media digital dengan bijak, cerdas, cermat, dan tepat sesuai kegunaannya.",
     src: "Kisi-kisi BKN hal. 138"
   },
   {
@@ -155,7 +155,7 @@ window.BANK.literasi.push(
     q: "Contoh etika digital menurut kisi-kisi BKN adalah ...",
     o: ["Tidak menyebarkan berita bohong dan tidak melakukan perundungan", "Menggunakan Zoom meeting dan Google Doc", "Berbelanja daring", "Menggunakan kata sandi dan OTP", "Membeli perangkat terbaru"],
     a: 0,
-    e: "Deck hal. 139: etika digital = kemampuan menyadari, menyesuaikan diri, dan menerapkan etika saat berselancar (contoh: tidak menyebarkan hoaks, tidak melakukan perundungan). Keterampilan digital: menggunakan Zoom, Google Doc, spreadsheet. Budaya digital: media sosial, belanja daring. Keamanan digital: kata sandi, OTP, waspada cybercrime.",
+    e: "Kisi-kisi BKN hal. 139: etika digital = kemampuan menyadari, menyesuaikan diri, dan menerapkan etika saat berselancar (contoh: tidak menyebarkan hoaks, tidak melakukan perundungan). Keterampilan digital: menggunakan Zoom, Google Doc, spreadsheet. Budaya digital: media sosial, belanja daring. Keamanan digital: kata sandi, OTP, waspada cybercrime.",
     src: "Kisi-kisi BKN hal. 139"
   },
   {
@@ -163,7 +163,7 @@ window.BANK.literasi.push(
     q: "Kemampuan menggunakan Zoom meeting, Google Doc, dan spreadsheet dalam kehidupan sehari-hari termasuk pilar ...",
     o: ["Keterampilan digital (digital skills)", "Budaya digital", "Etika digital", "Keamanan digital", "Ekonomi digital"],
     a: 0,
-    e: "Deck hal. 139: keterampilan digital = kemampuan mengetahui, memahami, dan menggunakan hardware, software, serta sistem operasi digital, contohnya Zoom meeting, Google Doc, spreadsheet.",
+    e: "Kisi-kisi BKN hal. 139: keterampilan digital = kemampuan mengetahui, memahami, dan menggunakan hardware, software, serta sistem operasi digital, contohnya Zoom meeting, Google Doc, spreadsheet.",
     src: "Kisi-kisi BKN hal. 139"
   },
   {
@@ -171,7 +171,7 @@ window.BANK.literasi.push(
     q: "Keamanan digital menurut kisi-kisi BKN tercermin melalui ...",
     o: ["Penggunaan password, pemahaman OTP, dan kewaspadaan terhadap cybercrime", "Aktivitas berbelanja daring melalui berbagai lokapasar dengan pembayaran digital", "Penggunaan media sosial secara aktif untuk membangun jejaring dan reputasi", "Kemampuan membuat konten video yang menarik dan viral di platform digital", "Menghindari penggunaan internet sama sekali agar terhindar dari kejahatan siber"],
     a: 0,
-    e: "Deck hal. 139: keamanan digital adalah aktivitas mengamankan kegiatan digital, tercermin lewat penggunaan password hingga pemahaman OTP dan istilah keamanan siber lainnya; contohnya waspada terhadap cybercrime.",
+    e: "Kisi-kisi BKN hal. 139: keamanan digital adalah aktivitas mengamankan kegiatan digital, tercermin lewat penggunaan password hingga pemahaman OTP dan istilah keamanan siber lainnya; contohnya waspada terhadap cybercrime.",
     src: "Kisi-kisi BKN hal. 139"
   },
   {
@@ -179,7 +179,7 @@ window.BANK.literasi.push(
     q: "Kode sekali pakai yang dikirim melalui SMS/aplikasi untuk memverifikasi transaksi dan tidak boleh dibagikan kepada siapa pun disebut ...",
     o: ["PIN", "OTP (one-time password)", "CAPTCHA", "Cookie", "Token API"],
     a: 1,
-    e: "OTP (one-time password) adalah kode verifikasi sekali pakai; permintaan OTP oleh pihak lain adalah modus penipuan (phishing/social engineering). Deck hal. 139 menyebut pemahaman OTP sebagai bagian keamanan digital.",
+    e: "OTP (one-time password) adalah kode verifikasi sekali pakai; permintaan OTP oleh pihak lain adalah modus penipuan (phishing/social engineering). Kisi-kisi BKN hal. 139 menyebut pemahaman OTP sebagai bagian keamanan digital.",
     src: "Kisi-kisi BKN hal. 139"
   },
   {
@@ -187,7 +187,7 @@ window.BANK.literasi.push(
     q: "Perundungan di dunia maya yang dilarang etika digital dikenal dengan istilah ...",
     o: ["Cyberbullying", "Phishing", "Hacking", "Spamming", "Cracking"],
     a: 0,
-    e: "Cyberbullying = perundungan siber (penghinaan, ancaman, pelecehan daring), termasuk perbuatan yang dapat dijerat UU ITE. Phishing = penipuan data; hacking/cracking = pembobolan sistem; spamming = pesan massal tak diinginkan. Deck hal. 139: tidak melakukan perundungan adalah contoh etika digital.",
+    e: "Cyberbullying = perundungan siber (penghinaan, ancaman, pelecehan daring), termasuk perbuatan yang dapat dijerat UU ITE. Phishing = penipuan data; hacking/cracking = pembobolan sistem; spamming = pesan massal tak diinginkan. Kisi-kisi BKN hal. 139: tidak melakukan perundungan adalah contoh etika digital.",
     src: "Kisi-kisi BKN hal. 139"
   }
 );
@@ -199,7 +199,7 @@ window.BANK.renstra.push(
     q: "Menurut kisi-kisi BKN, dokumen perencanaan pembangunan nasional berjangka 20 tahun, 5 tahun, dan 1 tahun secara berurutan adalah ...",
     o: ["RPJP Nasional, RPJM Nasional, dan RKP", "RKP, RPJM Nasional, dan RPJP Nasional", "Renstra K/L, Renja K/L, dan APBN", "RPJM Nasional, RKP, dan Renja K/L", "RPJP Nasional, RKP, dan RPJM Nasional"],
     a: 0,
-    e: "Deck hal. 93 (UU 25/2004): RPJP Nasional 20 tahun dijabarkan ke RPJM Nasional 5 tahun, dijabarkan ke RKP 1 tahun; RPJMN menjadi pedoman Renstra K/L (5 tahun) yang dijabarkan ke Renja K/L (1 tahun); RKP menjadi pedoman penyusunan APBN yang dibahas bersama DPR (APBD dengan DPRD).",
+    e: "Kisi-kisi BKN hal. 93 (UU 25/2004): RPJP Nasional 20 tahun dijabarkan ke RPJM Nasional 5 tahun, dijabarkan ke RKP 1 tahun; RPJMN menjadi pedoman Renstra K/L (5 tahun) yang dijabarkan ke Renja K/L (1 tahun); RKP menjadi pedoman penyusunan APBN yang dibahas bersama DPR (APBD dengan DPRD).",
     src: "Kisi-kisi BKN hal. 93"
   },
   {
@@ -207,7 +207,7 @@ window.BANK.renstra.push(
     q: "Dalam bagan dokumen perencanaan kisi-kisi BKN, Renstra K/L disusun dengan berpedoman pada ...",
     o: ["RKP", "RPJM Nasional", "APBN", "Renja K/L", "RPJP Daerah"],
     a: 1,
-    e: "Deck hal. 93: RPJM Nasional menjadi pedoman Renstra K/L; Renstra K/L dijabarkan menjadi Renja K/L; RKP (penjabaran RPJMN) menjadi pedoman Renja K/L dan APBN. Sumber: UU No. 25 Tahun 2004 tentang SPPN.",
+    e: "Kisi-kisi BKN hal. 93: RPJM Nasional menjadi pedoman Renstra K/L; Renstra K/L dijabarkan menjadi Renja K/L; RKP (penjabaran RPJMN) menjadi pedoman Renja K/L dan APBN. Sumber: UU No. 25 Tahun 2004 tentang SPPN.",
     src: "Kisi-kisi BKN hal. 93"
   },
   {
@@ -215,7 +215,7 @@ window.BANK.renstra.push(
     q: "Visi pembangunan dalam RPJMN 2025-2029 menurut kisi-kisi BKN adalah ...",
     o: ["Terwujudnya Indonesia Maju yang Berdaulat, Mandiri, dan Berkepribadian Berlandaskan Gotong Royong", "Bersama Indonesia Maju Menuju Indonesia Emas 2045", "Indonesia Emas 2045: Negara Nusantara Berdaulat, Maju, dan Berkelanjutan", "Indonesia Kuat, Adil, dan Makmur", "Menuju Indonesia Sejahtera 2030"],
     a: 1,
-    e: "Deck hal. 92-95: RPJMN 2025-2029 memuat visi dan misi, arah kebijakan, 8 Prioritas Nasional, sasaran utama, 17 program prioritas, 8 program hasil terbaik cepat, dan proyek prioritas; visinya \"Bersama Indonesia Maju Menuju Indonesia Emas 2045\". Pilihan A adalah visi RPJMN 2020-2024; pilihan C visi RPJPN 2025-2045.",
+    e: "Kisi-kisi BKN hal. 92-95: RPJMN 2025-2029 memuat visi dan misi, arah kebijakan, 8 Prioritas Nasional, sasaran utama, 17 program prioritas, 8 program hasil terbaik cepat, dan proyek prioritas; visinya \"Bersama Indonesia Maju Menuju Indonesia Emas 2045\". Pilihan A adalah visi RPJMN 2020-2024; pilihan C visi RPJPN 2025-2045.",
     src: "Kisi-kisi BKN hal. 92-95"
   },
   {
@@ -223,7 +223,7 @@ window.BANK.renstra.push(
     q: "Komponen RPJMN 2025-2029 menurut kisi-kisi BKN meliputi visi-misi, arah kebijakan, 8 prioritas nasional, sasaran utama, proyek prioritas, serta ...",
     o: ["17 program prioritas dan 8 program hasil terbaik cepat", "9 agenda Nawacita", "5 arahan Presiden", "4 pilar pembangunan", "7 agenda pembangunan"],
     a: 0,
-    e: "Deck hal. 92 dan 96: 17 program prioritas dan 8 program hasil terbaik cepat (PHTC), misalnya makan bergizi gratis dan pemeriksaan kesehatan gratis. Nawacita (9) dan 5 arahan/4 pilar/7 agenda adalah komponen RPJMN 2014-2019 dan 2020-2024.",
+    e: "Kisi-kisi BKN hal. 92 dan 96: 17 program prioritas dan 8 program hasil terbaik cepat (PHTC), misalnya makan bergizi gratis dan pemeriksaan kesehatan gratis. Nawacita (9) dan 5 arahan/4 pilar/7 agenda adalah komponen RPJMN 2014-2019 dan 2020-2024.",
     src: "Kisi-kisi BKN hal. 92 dan 96"
   },
   {
@@ -231,7 +231,7 @@ window.BANK.renstra.push(
     q: "Sasaran utama Prioritas Nasional 1 (Memperkokoh Ideologi Pancasila, Demokrasi, dan HAM) dalam RPJMN 2025-2029 adalah ...",
     o: ["Kehidupan bermasyarakat, berbangsa, dan bernegara berlandaskan Pancasila, demokrasi, dan HAM", "Kedaulatan negara dan stabilitas keamanan nasional yang terjaga dari ancaman luar dan dalam", "Lapangan kerja berkualitas yang meningkat melalui investasi dan kewirausahaan", "Supremasi hukum yang transparan, adil, tidak memihak, dan bebas dari intervensi", "Kehidupan beragama yang maslahat dan berkebudayaan maju di seluruh wilayah"],
     a: 0,
-    e: "Deck hal. 98 dan 102: sasaran PN 1 adalah terwujudnya kehidupan bermasyarakat, berbangsa, dan bernegara yang berlandaskan Pancasila, demokrasi, dan HAM. Kemenimipas mendukung langsung PN 1 (Misi 1 Renstra).",
+    e: "Kisi-kisi BKN hal. 98 dan 102: sasaran PN 1 adalah terwujudnya kehidupan bermasyarakat, berbangsa, dan bernegara yang berlandaskan Pancasila, demokrasi, dan HAM. Kemenimipas mendukung langsung PN 1 (Misi 1 Renstra).",
     src: "Kisi-kisi BKN hal. 98 dan 102"
   },
   {
@@ -239,7 +239,7 @@ window.BANK.renstra.push(
     q: "Prioritas Nasional 2 RPJMN 2025-2029 berbunyi \"Memantapkan Sistem Pertahanan Keamanan Negara dan Mendorong Kemandirian Bangsa melalui Swasembada Pangan, Energi, Air, ...\"",
     o: ["Ekonomi Syariah, Ekonomi Digital, Ekonomi Hijau, dan Ekonomi Biru", "Industri Manufaktur dan Pariwisata", "Pertambangan dan Perkebunan", "Ekonomi Kreatif dan UMKM", "Perdagangan dan Investasi"],
     a: 0,
-    e: "Deck hal. 98 dan 103: PN 2 memuat swasembada pangan, energi, air, ekonomi syariah, ekonomi digital, ekonomi hijau, dan ekonomi biru, dengan sasaran antara lain terjaganya kedaulatan negara dan stabilitas keamanan nasional, kemandirian pangan-energi-air (pendekatan FEW Nexus), perekonomian progresif-inklusif-berkelanjutan, dan transformasi ekonomi hijau. Rumusan Asta Cita 2 (versi Renstra Kemenimipas) menyebut ekonomi kreatif, ekonomi hijau, dan ekonomi biru.",
+    e: "Kisi-kisi BKN hal. 98 dan 103: PN 2 memuat swasembada pangan, energi, air, ekonomi syariah, ekonomi digital, ekonomi hijau, dan ekonomi biru, dengan sasaran antara lain terjaganya kedaulatan negara dan stabilitas keamanan nasional, kemandirian pangan-energi-air (pendekatan FEW Nexus), perekonomian progresif-inklusif-berkelanjutan, dan transformasi ekonomi hijau. Rumusan Asta Cita 2 (versi Renstra Kemenimipas) menyebut ekonomi kreatif, ekonomi hijau, dan ekonomi biru.",
     src: "Kisi-kisi BKN hal. 98 dan 103"
   },
   {
@@ -247,7 +247,7 @@ window.BANK.renstra.push(
     q: "Pendekatan \"Nexus Pangan, Energi, dan Air (FEW Nexus)\" dalam RPJMN 2025-2029 termasuk sasaran utama Prioritas Nasional ke- ...",
     o: ["1", "2", "3", "5", "8"],
     a: 1,
-    e: "Deck hal. 98: sasaran PN 2 antara lain meningkatkan kemandirian bangsa memenuhi kebutuhan pangan, energi, dan air secara berkelanjutan dengan pendekatan Nexus Pangan-Energi-Air (Food-Energy-Water Nexus).",
+    e: "Kisi-kisi BKN hal. 98: sasaran PN 2 antara lain meningkatkan kemandirian bangsa memenuhi kebutuhan pangan, energi, dan air secara berkelanjutan dengan pendekatan Nexus Pangan-Energi-Air (Food-Energy-Water Nexus).",
     src: "Kisi-kisi BKN hal. 98"
   },
   {
@@ -255,7 +255,7 @@ window.BANK.renstra.push(
     q: "Prioritas Nasional 3 RPJMN 2025-2029 berkaitan dengan ...",
     o: ["Infrastruktur, lapangan kerja berkualitas, kewirausahaan, industri kreatif, dan agromaritim", "Pembangunan SDM, sains, teknologi, pendidikan, kesehatan, dan prestasi olahraga", "Hilirisasi dan industrialisasi berbasis sumber daya alam untuk nilai tambah dalam negeri", "Pembangunan dari desa dan dari bawah untuk pemerataan ekonomi dan pengentasan kemiskinan", "Reformasi politik, hukum, dan birokrasi serta pemberantasan korupsi dan narkoba"],
     a: 0,
-    e: "Deck hal. 99: PN 3 dengan sasaran meningkatnya total aset sektor keuangan terhadap PDB, lapangan kerja berkualitas, nilai tambah pariwisata, proporsi PDB ekonomi kreatif, dan infrastruktur berkelanjutan. PN 4 = SDM (pendidikan berkualitas merata, kesehatan untuk semua, keluarga berkualitas dan kesetaraan gender, iptek dan produktivitas, prestasi olahraga).",
+    e: "Kisi-kisi BKN hal. 99: PN 3 dengan sasaran meningkatnya total aset sektor keuangan terhadap PDB, lapangan kerja berkualitas, nilai tambah pariwisata, proporsi PDB ekonomi kreatif, dan infrastruktur berkelanjutan. PN 4 = SDM (pendidikan berkualitas merata, kesehatan untuk semua, keluarga berkualitas dan kesetaraan gender, iptek dan produktivitas, prestasi olahraga).",
     src: "Kisi-kisi BKN hal. 99"
   },
   {
@@ -263,7 +263,7 @@ window.BANK.renstra.push(
     q: "Sasaran \"terwujudnya kesehatan untuk semua\" dan \"pendidikan berkualitas yang merata\" dalam RPJMN 2025-2029 termasuk Prioritas Nasional ...",
     o: ["PN 2", "PN 3", "PN 4", "PN 6", "PN 8"],
     a: 2,
-    e: "Deck hal. 99: PN 4 (SDM, sains, teknologi, pendidikan, kesehatan, olahraga, kesetaraan gender, perempuan, pemuda, disabilitas) bersasaran pendidikan berkualitas merata, kesehatan untuk semua, keluarga berkualitas-kesetaraan gender-masyarakat inklusif, menguatnya iptek-inovasi-produktivitas tenaga kerja, dan prestasi olahraga.",
+    e: "Kisi-kisi BKN hal. 99: PN 4 (SDM, sains, teknologi, pendidikan, kesehatan, olahraga, kesetaraan gender, perempuan, pemuda, disabilitas) bersasaran pendidikan berkualitas merata, kesehatan untuk semua, keluarga berkualitas-kesetaraan gender-masyarakat inklusif, menguatnya iptek-inovasi-produktivitas tenaga kerja, dan prestasi olahraga.",
     src: "Kisi-kisi BKN hal. 99"
   },
   {
@@ -271,7 +271,7 @@ window.BANK.renstra.push(
     q: "Prioritas Nasional 6 RPJMN 2025-2029 \"Membangun dari Desa dan dari Bawah\" memiliki sasaran antara lain ...",
     o: ["Pengurangan kemiskinan, hunian layak, kemandirian perdesaan, dan perkotaan pusat pertumbuhan", "Nilai tambah industri pengolahan yang meningkat dan integrasi ekonomi domestik-global", "Supremasi hukum yang transparan, adil, dan tidak memihak serta birokrasi yang bersih", "Resiliensi terhadap bencana dan perubahan iklim serta kehidupan beragama yang maslahat", "Inflasi rendah dan stabil serta total aset sektor keuangan yang meningkat terhadap PDB"],
     a: 0,
-    e: "Deck hal. 100: PN 5 (hilirisasi) bersasaran integrasi ekonomi domestik-global dan nilai tambah industri pengolahan; PN 6 bersasaran pengurangan kemiskinan dan pemerataan, hunian layak-terjangkau-berkelanjutan, kemandirian perdesaan, dan perkotaan sebagai pusat pertumbuhan ekonomi.",
+    e: "Kisi-kisi BKN hal. 100: PN 5 (hilirisasi) bersasaran integrasi ekonomi domestik-global dan nilai tambah industri pengolahan; PN 6 bersasaran pengurangan kemiskinan dan pemerataan, hunian layak-terjangkau-berkelanjutan, kemandirian perdesaan, dan perkotaan sebagai pusat pertumbuhan ekonomi.",
     src: "Kisi-kisi BKN hal. 100"
   },
   {
@@ -279,7 +279,7 @@ window.BANK.renstra.push(
     q: "Rumusan Prioritas Nasional 7 RPJMN 2025-2029 menurut kisi-kisi BKN adalah memperkuat reformasi politik, hukum, dan birokrasi, serta memperkuat pencegahan dan pemberantasan ...",
     o: ["Korupsi dan narkoba", "Korupsi, narkoba, judi, dan penyelundupan", "Terorisme dan radikalisme", "Perdagangan orang dan pencucian uang", "Pungutan liar dan gratifikasi"],
     a: 1,
-    e: "Deck hal. 101: PN 7 - Memperkuat Reformasi Politik, Hukum, dan Birokrasi, serta Memperkuat Pencegahan dan Pemberantasan Korupsi, Narkoba, Judi, dan Penyelundupan; sasarannya antara lain supremasi hukum yang transparan-adil-tidak memihak, birokrasi adaptif dan melayani, masyarakat bebas narkoba, tata kelola BUMN, inflasi rendah, dan pendapatan negara optimal. Kemenimipas mendukung langsung PN 7 (rumusan Asta Cita 7 dalam Renstra menyebut \"korupsi dan narkoba\").",
+    e: "Kisi-kisi BKN hal. 101: PN 7 - Memperkuat Reformasi Politik, Hukum, dan Birokrasi, serta Memperkuat Pencegahan dan Pemberantasan Korupsi, Narkoba, Judi, dan Penyelundupan; sasarannya antara lain supremasi hukum yang transparan-adil-tidak memihak, birokrasi adaptif dan melayani, masyarakat bebas narkoba, tata kelola BUMN, inflasi rendah, dan pendapatan negara optimal. Kemenimipas mendukung langsung PN 7 (rumusan Asta Cita 7 dalam Renstra menyebut \"korupsi dan narkoba\").",
     src: "Kisi-kisi BKN hal. 101"
   },
   {
@@ -287,7 +287,7 @@ window.BANK.renstra.push(
     q: "Sasaran \"terwujudnya birokrasi pemerintahan yang adaptif dan melayani\" dalam RPJMN 2025-2029 termasuk Prioritas Nasional ...",
     o: ["PN 1", "PN 4", "PN 6", "PN 7", "PN 8"],
     a: 3,
-    e: "Deck hal. 101: sasaran PN 7 meliputi tata kelola BUMN yang baik, supremasi hukum dan sistem politik fungsional, inflasi rendah dan stabil, birokrasi adaptif dan melayani, masyarakat bebas narkoba, serta pendapatan negara optimal dengan reformasi fiskal.",
+    e: "Kisi-kisi BKN hal. 101: sasaran PN 7 meliputi tata kelola BUMN yang baik, supremasi hukum dan sistem politik fungsional, inflasi rendah dan stabil, birokrasi adaptif dan melayani, masyarakat bebas narkoba, serta pendapatan negara optimal dengan reformasi fiskal.",
     src: "Kisi-kisi BKN hal. 101"
   },
   {
@@ -295,7 +295,7 @@ window.BANK.renstra.push(
     q: "Prioritas Nasional 8 RPJMN 2025-2029 memiliki sasaran ...",
     o: ["Kehidupan beragama yang maslahat, budaya maju, dan resiliensi terhadap bencana dan iklim", "Swasembada pangan, energi, dan air serta ketahanan ekonomi hijau dan biru", "Proporsi PDB ekonomi kreatif dan nilai tambah pariwisata yang meningkat", "Pengembangan infrastruktur berkelanjutan dan konektivitas antarwilayah yang merata", "Masyarakat bebas narkoba, judi, dan penyelundupan serta supremasi hukum yang kuat"],
     a: 0,
-    e: "Deck hal. 101: PN 8 - Memperkuat Penyelarasan Kehidupan yang Harmonis dengan Lingkungan Alam dan Budaya serta Peningkatan Toleransi Antarumat Beragama; sasarannya kehidupan beragama yang maslahat dan berkebudayaan maju serta resiliensi terhadap bencana dan perubahan iklim.",
+    e: "Kisi-kisi BKN hal. 101: PN 8 - Memperkuat Penyelarasan Kehidupan yang Harmonis dengan Lingkungan Alam dan Budaya serta Peningkatan Toleransi Antarumat Beragama; sasarannya kehidupan beragama yang maslahat dan berkebudayaan maju serta resiliensi terhadap bencana dan perubahan iklim.",
     src: "Kisi-kisi BKN hal. 101"
   },
   {
@@ -319,7 +319,7 @@ window.BANK.renstra.push(
     q: "Cakupan materi Rencana Strategis Instansi dalam kisi-kisi BKN meliputi ...",
     o: ["Laporan keuangan tahunan, neraca aset, dan realisasi anggaran instansi", "Daftar pegawai, peta jabatan, dan kebutuhan formasi lima tahun ke depan", "Rencana pengadaan barang/jasa dan jadwal pelaksanaan kontrak tahunan", "Jadwal cuti bersama, hari libur nasional, dan kalender kegiatan instansi", "Visi-misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, sistematika"],
     a: 4,
-    e: "Deck hal. 150: materi Renstra instansi mencakup visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, dan sistematika Renstra. Untuk Kemenimipas, Renstra 2025-2029 ditetapkan dengan Permenimipas 11/2025.",
+    e: "Kisi-kisi BKN hal. 150: materi Renstra instansi mencakup visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, dan sistematika Renstra. Untuk Kemenimipas, Renstra 2025-2029 ditetapkan dengan Permenimipas 11/2025.",
     src: "Kisi-kisi BKN hal. 150"
   },
   {
@@ -339,7 +339,7 @@ window.BANK.sotk.push(
     q: "Cakupan materi SOTK dalam kisi-kisi BKN meliputi kedudukan, tugas, fungsi perangkat daerah/satuan kerja, jalur koordinasi, eselonisasi, serta ...",
     o: ["Tarif layanan", "Jumlah anggaran", "Nama-nama pejabat", "Sejarah berdirinya instansi", "Pengangkatan dan pemberhentian"],
     a: 4,
-    e: "Deck hal. 151: SOTK (Struktur Organisasi dan Tata Kerja) mencakup kedudukan, tugas, fungsi, jalur koordinasi, eselonisasi, dan pengangkatan-pemberhentian. Untuk Kemenimipas rujukannya Permenimipas 1/2024 (Kementerian) dan 2/2024 (Kanwil Ditjen Imigrasi).",
+    e: "Kisi-kisi BKN hal. 151: SOTK (Struktur Organisasi dan Tata Kerja) mencakup kedudukan, tugas, fungsi, jalur koordinasi, eselonisasi, dan pengangkatan-pemberhentian. Untuk Kemenimipas rujukannya Permenimipas 1/2024 (Kementerian) dan 2/2024 (Kanwil Ditjen Imigrasi).",
     src: "Kisi-kisi BKN hal. 151"
   },
   {
@@ -347,7 +347,7 @@ window.BANK.sotk.push(
     q: "Padanan jabatan pimpinan tinggi madya dalam eselonisasi lama adalah ...",
     o: ["Eselon II", "Eselon III", "Eselon IV", "Eselon V", "Eselon I"],
     a: 4,
-    e: "Eselonisasi (deck hal. 151): JPT madya = eselon I (Sekjen, Dirjen, Irjen, Kepala Badan, Staf Ahli), JPT pratama = eselon II (Direktur, Kepala Biro, Kepala Kanwil), administrator = eselon III (Kabag, Kasubdit, Kabid), pengawas = eselon IV (Kasubbag, Kasi).",
+    e: "Eselonisasi (kisi-kisi BKN hal. 151): JPT madya = eselon I (Sekjen, Dirjen, Irjen, Kepala Badan, Staf Ahli), JPT pratama = eselon II (Direktur, Kepala Biro, Kepala Kanwil), administrator = eselon III (Kabag, Kasubdit, Kabid), pengawas = eselon IV (Kasubbag, Kasi).",
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 400"
   },
   {
@@ -371,7 +371,7 @@ window.BANK.sotk.push(
     q: "Pengangkatan dan pemberhentian pejabat pimpinan tinggi madya (eselon I) di kementerian dilakukan oleh ...",
     o: ["Menteri", "Sekretaris Jenderal", "Kepala BKN", "Menteri PANRB", "Presiden atas usul Menteri"],
     a: 4,
-    e: "Deck hal. 151 memasukkan pengangkatan dan pemberhentian sebagai materi SOTK. Pejabat eselon I diangkat dan diberhentikan Presiden atas usul Menteri; eselon II ke bawah oleh Menteri selaku PPK (Pasal 401 Permenimipas 1/2024; UU 20/2023 Pasal 29).",
+    e: "Kisi-kisi BKN hal. 151 memasukkan pengangkatan dan pemberhentian sebagai materi SOTK. Pejabat eselon I diangkat dan diberhentikan Presiden atas usul Menteri; eselon II ke bawah oleh Menteri selaku PPK (Pasal 401 Permenimipas 1/2024; UU 20/2023 Pasal 29).",
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 401"
   },
   {

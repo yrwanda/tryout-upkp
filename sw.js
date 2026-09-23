@@ -1,10 +1,10 @@
 /* Service worker: cache semua aset agar aplikasi bisa dipakai offline. Naikkan VERSION setiap kali bank soal/aplikasi berubah. */
-const VERSION = "upkp-v6";
+const VERSION = "upkp-v7";
 const ASSETS = [
   "./", "./index.html", "./manifest.json", "./css/style.css",
   "./js/materi.js", "./js/app.js",
   "./js/bank/bkn_twk.js", "./js/bank/bkn_tkt.js", "./js/bank/bkn_tsi_tkp.js", "./js/bank/bkn_ekstra.js",
-  "./js/bank/bkn_x3_twk.js", "./js/bank/bkn_x3_tkt.js", "./js/bank/bkn_x3_lain.js", "./js/bank/bkn_form.js",
+  "./js/bank/bkn_x3_twk.js", "./js/bank/bkn_x3_tkt.js", "./js/bank/bkn_x3_lain.js", "./js/bank/bkn_x4.js", "./js/bank/bkn_form.js",
   "./icons/icon-192.png", "./icons/icon-512.png", "./icons/maskable-192.png", "./icons/maskable-512.png"
 ];
 

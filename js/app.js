@@ -1,4 +1,4 @@
-/* Tryout UPKP - hanya bank kisi-kisi BKN 2025 (turunan deck + 50 soal resmi). Vanilla JS, data di localStorage. */
+/* Tryout UPKP - hanya bank kisi-kisi BKN 2025 (soal dari materi kisi-kisi + 50 soal resmi). Vanilla JS, data di localStorage. */
 (function () {
   "use strict";
 
@@ -110,7 +110,7 @@
   function srcTag(q) {
     if (q.set === "form") return el("span", { class: "stamp" }, [icon("award"), `Resmi BKN · no. ${parseInt(q.id.split("-")[1], 10)}`]);
     const m = (q.src || "").match(/hal\.\s*([\d][\d\s\-–,]*)/);
-    return el("span", { class: "chip chip-page" }, [m ? `Deck hal. ${m[1].trim().replace(/[,\s]+$/, "")}` : "Turunan deck"]);
+    return el("span", { class: "chip chip-page" }, [m ? `Kisi-kisi hal. ${m[1].trim().replace(/[,\s]+$/, "")}` : "Dari kisi-kisi"]);
   }
   const testChip = t => el("span", { class: "chip chip-test " + tcOf(t) }, [TESTS[t.test].short]);
 
@@ -215,7 +215,7 @@
       el("div", { class: "stack", style: "position:relative;z-index:1;gap:14px" }, [
         el("span", { class: "eyebrow" }, ["UPKP S1 Kemenimipas 2026"]),
         el("h1", null, [d !== null && d >= 0 ? (d === 0 ? "Hari ujian. Tetap tenang." : `H-${d} menuju ujian`) : "Belajar dari kisi-kisi resmi BKN"]),
-        el("p", null, [`${o.total} soal, semuanya bersumber dari deck PPSS BKN 2025 (hal. 18-172) dan 50 soal latihan resmi BKN. Tidak dicampur soal dari sumber lain.`]),
+        el("p", null, [`${o.total} soal, semuanya bersumber dari PPT kisi-kisi PPSS BKN 2025 (hal. 18-172) dan 50 soal latihan resmi BKN. Tidak dicampur soal dari sumber lain.`]),
         el("div", { class: "row" }, [
           el("button", { class: "btn btn-light", onclick: () => { simMode = "upkp"; nav("simulasi"); } }, [icon("timer"), "Simulasi 100 soal"]),
           el("button", { class: "btn btn-outline", onclick: () => startDrill(formSet(), "50 soal resmi BKN 2025") }, [icon("award"), "50 soal resmi BKN"])
@@ -238,7 +238,7 @@
       el("div", { class: "row", style: "gap:14px;flex-wrap:nowrap" }, [el("div", { class: "mono " + tcOf(rec.t) }, [MONO[rec.t.id]]), el("div", null, [
         el("div", { class: "eyebrow" }, [weak ? "Perlu diperkuat" : "Belum banyak disentuh"]),
         el("h3", null, [rec.t.label]),
-        el("p", { class: "small muted" }, [weak ? `Akurasi ${pct(rec.s.acc * 100, 100)}% dari ${rec.s.done} soal yang dicoba.` : `${rec.s.done} dari ${rec.s.total} soal sudah dicoba. Materi di deck hal. ${rec.t.pages}.`])
+        el("p", { class: "small muted" }, [weak ? `Akurasi ${pct(rec.s.acc * 100, 100)}% dari ${rec.s.done} soal yang dicoba.` : `${rec.s.done} dari ${rec.s.total} soal sudah dicoba. Materi di kisi-kisi hal. ${rec.t.pages}.`])
       ])]),
       el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: () => nav("materi", { topic: rec.t.id }) }, ["Baca materi"]), el("button", { class: "btn btn-sm btn-primary", onclick: () => startDrill(pickFrom([rec.t.id], 15, "unseen"), rec.t.label) }, ["Latih 15 soal"])])
     ]));
@@ -256,7 +256,7 @@
   function topicCard(t) {
     const s = topicStat(t.id), cov = pct(s.done, s.total);
     return el("article", { class: "topic-card " + tcOf(t) }, [
-      el("div", { class: "t-top" }, [el("div", { class: "mono" }, [MONO[t.id]]), el("div", null, [el("h3", null, [t.label]), el("div", { class: "meta" }, [`Deck hal. ${t.pages} · ${s.total} soal${t.n ? ` · ${t.n} di ujian` : ""}`])])]),
+      el("div", { class: "t-top" }, [el("div", { class: "mono" }, [MONO[t.id]]), el("div", null, [el("h3", null, [t.label]), el("div", { class: "meta" }, [`Kisi-kisi hal. ${t.pages} · ${s.total} soal${t.n ? ` · ${t.n} di ujian` : ""}`])])]),
       el("div", { class: "stack", style: "gap:6px" }, [
         el("div", { class: "row between xs" }, [el("span", { class: "muted" }, [`${s.done}/${s.total} dicoba (${cov}%)`]), el("b", null, [s.acc === null ? "belum ada" : `akurasi ${Math.round(s.acc * 100)}%`])]),
         el("div", { class: "meter", role: "progressbar", "aria-valuenow": cov, "aria-valuemin": 0, "aria-valuemax": 100, "aria-label": t.label }, [el("i", { style: `width:${cov}%` })])
@@ -281,7 +281,7 @@
       art.innerHTML = "";
       art.append(
         el("div", { class: "stack", style: "gap:10px;margin-bottom:18px" }, [
-          el("div", { class: "row" }, [testChip(t), el("span", { class: "chip chip-page" }, [`Deck hal. ${t.pages}`]), t.n ? el("span", { class: "chip" }, [`${t.n} soal di UPKP`]) : el("span", { class: "chip chip-warn" }, ["Materi tambahan deck"])]),
+          el("div", { class: "row" }, [testChip(t), el("span", { class: "chip chip-page" }, [`Kisi-kisi hal. ${t.pages}`]), t.n ? el("span", { class: "chip" }, [`${t.n} soal di UPKP`]) : el("span", { class: "chip chip-warn" }, ["Materi tambahan kisi-kisi"])]),
           el("h1", null, [t.label])
         ]),
         el("div", { class: "prose", html: md(MATERI[cur] || "Materi belum tersedia.") }),
@@ -296,7 +296,7 @@
   let pickSel = new Set(), pickCount = 20, pickOrder = "unseen", pickSrc = "all";
   function pickFrom(tids, n, order, src) {
     let list = tids.flatMap(pool);
-    if (src === "form") list = list.filter(q => q.set === "form"); else if (src === "deck") list = list.filter(q => q.set !== "form");
+    if (src === "form") list = list.filter(q => q.set === "form"); else if (src === "kisi") list = list.filter(q => q.set !== "form");
     const st = id => state.stats[id];
     if (order === "unseen") list = shuffle(list).sort((a, b) => (st(a.id) ? 1 : 0) - (st(b.id) ? 1 : 0));
     else if (order === "wrong") list = shuffle(list).sort((a, b) => { const sa = st(a.id), sb = st(b.id); const w = s => !s ? 1 : s.lastWrong ? 3 + s.wrong : s.wrong > 0 ? 2 : 0; return w(sb) - w(sa); });
@@ -319,7 +319,7 @@
   function renderLatihan(arg) {
     if (drill && drill.active) return drill.i >= drill.qs.length ? renderDrillSummary() : renderDrillQ();
     if (arg && arg.topics) pickSel = new Set(arg.topics);
-    const avail = () => { let l = [...pickSel].flatMap(pool); if (pickSrc === "form") l = l.filter(q => q.set === "form"); else if (pickSrc === "deck") l = l.filter(q => q.set !== "form"); return l.length; };
+    const avail = () => { let l = [...pickSel].flatMap(pool); if (pickSrc === "form") l = l.filter(q => q.set === "form"); else if (pickSrc === "kisi") l = l.filter(q => q.set !== "form"); return l.length; };
     const startBtn = el("button", { class: "btn btn-primary", onclick: () => { if (!pickSel.size) return toast("Pilih minimal satu topik."); startDrill(pickFrom([...pickSel], pickCount, pickOrder, pickSrc), [...pickSel].map(id => topicById(id).label).join(", ")); } });
     const refresh = () => { const a = avail(); startBtn.textContent = pickSel.size ? `Mulai ${Math.min(a, pickCount)} soal` : "Pilih topik dulu"; startBtn.disabled = !pickSel.size || !a; };
     const groups = {}; TOPICS.forEach(t => (groups[t.test] = groups[t.test] || []).push(t));
@@ -333,9 +333,9 @@
     const seg = (opts, get, set) => { const w = el("div", { class: "seg", role: "group" }); const draw = () => { w.innerHTML = ""; opts.forEach(([v, l]) => w.appendChild(el("button", { "aria-pressed": get() === v ? "true" : "false", onclick: () => { set(v); draw(); refresh(); } }, [l]))); }; draw(); return w; };
     const selAll = v => { pickSel = new Set(v ? TOPICS.map(t => t.id) : []); picker.querySelectorAll(".pick").forEach((b, i) => b.setAttribute("aria-pressed", v)); refresh(); };
     view.append(
-      el("div", null, [el("h1", null, ["Latihan"]), el("p", { class: "muted", style: "margin-top:6px" }, ["Setiap jawaban langsung diperiksa. Benar atau salah, pembahasan dan halaman deck rujukannya tampil saat itu juga."])]),
+      el("div", null, [el("h1", null, ["Latihan"]), el("p", { class: "muted", style: "margin-top:6px" }, ["Setiap jawaban langsung diperiksa. Benar atau salah, pembahasan dan halaman kisi-kisi rujukannya tampil saat itu juga."])]),
       el("div", { class: "official" }, [
-        el("div", { class: "stack", style: "gap:6px" }, [el("span", { class: "stamp", style: "align-self:flex-start" }, [icon("award"), "Resmi BKN 2025"]), el("h2", null, ["50 soal latihan resmi, urutan asli"]), el("p", { class: "small muted" }, ["Dari Google Form BKN yang ditautkan di deck hal. 172. Form tidak memuat kunci; kunci dan pembahasan disusun aplikasi dengan rujukan halaman deck."])]),
+        el("div", { class: "stack", style: "gap:6px" }, [el("span", { class: "stamp", style: "align-self:flex-start" }, [icon("award"), "Resmi BKN 2025"]), el("h2", null, ["50 soal latihan resmi, urutan asli"]), el("p", { class: "small muted" }, ["Dari Google Form BKN yang ditautkan di PPT kisi-kisi hal. 172. Form tidak memuat kunci; kunci dan pembahasan disusun aplikasi dengan rujukan halaman kisi-kisi."])]),
         el("button", { class: "btn btn-primary", onclick: () => startDrill(formSet(), "50 soal resmi BKN 2025") }, [icon("play"), "Kerjakan"])
       ]),
       el("section", { class: "panel stack", style: "gap:20px" }, [
@@ -344,7 +344,7 @@
         el("div", { class: "opts-row" }, [
           el("div", { class: "field" }, [el("span", { class: "label" }, ["Jumlah soal"]), seg([[10, "10"], [20, "20"], [30, "30"], [50, "50"]], () => pickCount, v => pickCount = v)]),
           el("div", { class: "field" }, [el("span", { class: "label" }, ["Prioritas"]), seg([["unseen", "Belum dicoba"], ["wrong", "Pernah salah"], ["random", "Acak"]], () => pickOrder, v => pickOrder = v)]),
-          el("div", { class: "field" }, [el("span", { class: "label" }, ["Jenis soal"]), seg([["all", "Semua"], ["deck", "Turunan deck"], ["form", "Resmi saja"]], () => pickSrc, v => pickSrc = v)])
+          el("div", { class: "field" }, [el("span", { class: "label" }, ["Jenis soal"]), seg([["all", "Semua"], ["kisi", "Dari materi kisi-kisi"], ["form", "Resmi saja"]], () => pickSrc, v => pickSrc = v)])
         ]),
         el("div", { class: "row" }, [startBtn])
       ])
@@ -434,7 +434,7 @@
   // ---------- Simulasi ----------
   let simMode = "upkp";
   const MODES = {
-    upkp: { title: "Simulasi UPKP D3-S2", sub: "Komposisi deck hal. 6 / SE BKN 10/2024", n: 100, min: 90 },
+    upkp: { title: "Simulasi UPKP D3-S2", sub: "Komposisi kisi-kisi hal. 6 / SE BKN 10/2024", n: 100, min: 90 },
     form: { title: "Latihan Resmi BKN 2025", sub: "50 soal asli, urutan asli, 4 pilihan", n: 50, min: 45 }
   };
   function buildExam(mode) {
@@ -679,9 +679,9 @@
         ]),
         el("section", { class: "panel stack", style: "gap:14px" }, [
           el("h2", null, ["Bank soal"]),
-          el("p", { class: "small" }, [`${ALL.length} soal: ${ALL.filter(q => q.set !== "form").length} turunan deck PPSS BKN 2025 dan ${formSet().length} soal resmi Google Form BKN 2025.`]),
+          el("p", { class: "small" }, [`${ALL.length} soal: ${ALL.filter(q => q.set !== "form").length} soal dari materi PPT kisi-kisi PPSS BKN 2025 dan ${formSet().length} soal resmi Google Form BKN 2025.`]),
           el("p", { class: "xs muted" }, [counts]),
-          el("p", { class: "xs muted" }, ["Kunci 50 soal resmi disusun aplikasi (form tidak memuat kunci). Bila deck berbeda dari peraturan primer, pembahasan mencatat keduanya. Materi SOTK dan Renstra instansi di deck hanya berupa judul subtopik, sehingga soalnya dilengkapi dari Permenimipas 1/2024, 2/2024, dan 11/2025."]),
+          el("p", { class: "xs muted" }, ["Kunci 50 soal resmi disusun aplikasi (form tidak memuat kunci). Bila kisi-kisi berbeda dari peraturan primer, pembahasan mencatat keduanya. Materi SOTK dan Renstra instansi di kisi-kisi hanya berupa judul subtopik, sehingga soalnya dilengkapi dari Permenimipas 1/2024, 2/2024, dan 11/2025."]),
           el("h3", null, ["Data progres"]),
           el("p", { class: "xs muted" }, ["Tersimpan di browser ini saja. Ekspor untuk pindah perangkat."]),
           el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: exportData }, ["Ekspor JSON"]), el("button", { class: "btn btn-sm", onclick: importData }, ["Impor"]), el("button", { class: "btn btn-sm btn-danger", onclick: () => confirmBox("Hapus semua progres?", "Statistik, riwayat simulasi, dan tanda soal dihapus. Pengaturan tetap.", "Hapus progres", () => { state.stats = {}; state.history = []; state.bookmarks = []; state.days = {}; save(); toast("Progres dihapus"); go("pengaturan"); }, true) }, ["Reset progres"])])

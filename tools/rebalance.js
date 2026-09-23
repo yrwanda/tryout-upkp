@@ -21,8 +21,8 @@ for (const f of files) {
   fileParts[f] = parts;
 }
 const order = files.flatMap(f => fileParts[f].flatMap(p => p.qs));
-// Opsional: berkas JSON {id: {o:[...5], a:index}} untuk menimpa opsi sebelum penyeimbangan
-if (process.argv[3]) { const ov = JSON.parse(fs.readFileSync(process.argv[3], 'utf8')); let n = 0; order.forEach(q => { if (ov[q.id]) { q.o = ov[q.id].o; q.a = ov[q.id].a; n++; } }); console.log('opsi ditimpa:', n); }
+// Opsional: berkas JSON {id: {q?, o?, a?, e?, src?}} untuk mengoreksi soal sebelum penyeimbangan
+if (process.argv[3]) { const ov = JSON.parse(fs.readFileSync(process.argv[3], 'utf8')); let n = 0; order.forEach(q => { if (ov[q.id]) { Object.assign(q, ov[q.id]); n++; } }); console.log('opsi ditimpa:', n); }
 // Pilihan berurutan (ordinal/Romawi/angka) dikembalikan ke urutan wajar dan tidak dirotasi
 const ORD = ["pertama", "kedua", "ketiga", "keempat", "kelima"], ROM = ["I", "II", "III", "IV", "V", "I dan IV", "Semua alinea"];
 const rankOf = s => { const t = s.trim(); if (ORD.includes(t.toLowerCase())) return ORD.indexOf(t.toLowerCase()); if (ROM.includes(t)) return ROM.indexOf(t); if (/^\d+$/.test(t)) return Number(t); return null; };

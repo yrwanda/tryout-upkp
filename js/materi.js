@@ -1,5 +1,5 @@
-// Materi ringkas per topik, disusun dari deck resmi PPSS BKN "PPT UDIN & UPKP - IMIPAS" (2025), kisi-kisi hal. 18-172.
-// Format markdown sederhana: ##, -, **tebal**, tabel |. Baris "> " = catatan (perbedaan deck vs sumber primer).
+// Materi ringkas per topik, disusun dari PPT kisi-kisi resmi PPSS BKN "PPT UDIN & UPKP - IMIPAS" (2025), kisi-kisi hal. 18-172.
+// Format markdown sederhana: ##, -, **tebal**, tabel |. Baris "> " = catatan (perbedaan kisi-kisi BKN vs sumber primer).
 window.MATERI = {
   pancasila: `
 ## Asal-usul dan sejarah (hal. 21, 25-26)
@@ -25,7 +25,7 @@ window.MATERI = {
 
 ## Ideologi dan fungsi (hal. 24, 29-33)
 - **Ideologi Pancasila**: pandangan hidup/sistem nilai dasar yang menjadi landasan negara dan bangsa; diakui sebagai ideologi negara dan tercantum dalam Pembukaan UUD 1945.
-- **Sembilan fungsi**: pandangan hidup, dasar negara, sumber dari segala sumber hukum, jiwa bangsa, kepribadian bangsa, perjanjian luhur, cita-cita dan tujuan bangsa, falsafah bangsa (hal. 29).
+- **Delapan fungsi**: pandangan hidup, dasar negara, sumber dari segala sumber hukum, jiwa bangsa, kepribadian bangsa, perjanjian luhur, cita-cita dan tujuan bangsa, falsafah bangsa (hal. 29).
 - **Dasar negara**: dasar mengatur pemerintahan dan penyelenggaraan negara (rakyat, pemerintah, wilayah).
 - **Sumber segala sumber hukum**: semua hukum tidak boleh bertentangan dengan Pancasila; sila = **nilai dasar**, hukum = **nilai instrumental** (penjabaran).
 - **Jiwa bangsa** = *Volksgeist*. **Kepribadian bangsa** = corak khas pembeda dari bangsa lain, diwujudkan lewat tingkah laku dan sikap mental.
@@ -44,7 +44,7 @@ window.MATERI = {
 - Disahkan PPKI **18 Agustus 1945**: Pembukaan, Batang Tubuh (16 bab, 37 pasal, 65 ayat, 4 pasal aturan peralihan, 2 ayat aturan tambahan), dan Penjelasan.
 - **Amandemen 4 kali** oleh MPR: I 14-21 Okt 1999; II 7-18 Agt 2000; III 1-9 Nov 2001; IV 1-11 Agt 2002.
 - Alasan amandemen: kekuasaan Presiden terlalu besar (eksekutif dan legislatif), pasal terlalu fleksibel/multitafsir, Penjelasan diperlakukan setara pasal.
-> Deck: setelah amandemen "16 bab, 37 pasal, 194 ayat, 3 pasal aturan peralihan, 2 pasal aturan tambahan". Angka nomor pasal memang tetap sampai Pasal 37, tetapi hitungan resmi MPR adalah 21 bab, 73 pasal, 170 ayat. Untuk ujian, kenali rumusan deck dan pahami perbedaannya.
+> Kisi-kisi BKN: setelah amandemen "16 bab, 37 pasal, 194 ayat, 3 pasal aturan peralihan, 2 pasal aturan tambahan". Angka nomor pasal memang tetap sampai Pasal 37, tetapi hitungan resmi MPR adalah 21 bab, 73 pasal, 170 ayat. Untuk ujian, kenali rumusan kisi-kisi BKN dan pahami perbedaannya.
 
 ## Pembukaan (hal. 43-44)
 - Pokok kaidah negara yang fundamental; lebih tinggi dari Batang Tubuh karena memuat jiwa Proklamasi, tujuan dan dasar negara, dan menjadi acuan perumusan pasal.
@@ -89,14 +89,33 @@ window.MATERI = {
 - Legislatif (membuat UU), eksekutif (melaksanakan UU), yudikatif (mengawasi/mengadili pelaksanaan UU), eksaminatif (BPK, memeriksa keuangan negara).
 `,
   sejarah: `
-## Cakupan deck (hal. 58-61)
-Era Reformasi dan masa kepemimpinan presiden beserta kabinetnya.
+## Peristiwa Reformasi Mei 1998 (hal. 59)
+- Latar belakang: perekonomian terpuruk akibat krisis ekonomi global; mahasiswa menuntut turunkan harga sembako, hapus KKN, dan Soeharto mundur; pencabutan dwifungsi ABRI; otonomi daerah; penegakan supremasi hukum.
+| Tanggal | Peristiwa |
+|---|---|
+| 12 Mei 1998 | Peristiwa Trisakti: bentrokan mahasiswa Universitas Trisakti dengan aparat, mahasiswa tewas dan puluhan luka-luka |
+| 14-15 Mei 1998 | Kerusuhan massal, pusat perbelanjaan dijarah |
+| 17-19 Mei 1998 | Mahasiswa menduduki Gedung DPR/MPR |
+| 21 Mei 1998 | Presiden Soeharto mundur, digantikan B.J. Habibie |
+
+## Presiden, masa jabatan, dan kabinet (hal. 60)
+| Presiden | Masa jabatan | Kabinet (jumlah menteri) |
+|---|---|---|
+| Soekarno | 1945-1967 (21 th 7 bln) | - |
+| Soeharto | 1967-1998 (31 th 2 bln) | Pembangunan I-VII (24, 24, 32, 42, 44, 43, 38) |
+| B.J. Habibie | 1998-1999 (1 th 5 bln) | Reformasi Pembangunan (37) |
+| Abdurrahman Wahid | 1999-2001 (1 th 9 bln) | Persatuan Nasional (36) |
+| Megawati Soekarnoputri | 2001-2004 (3 th 3 bln) | Gotong Royong (33) |
+| Susilo Bambang Yudhoyono | 2004-2014 (10 th) | Indonesia Bersatu (34), Indonesia Bersatu II (34) |
+| Joko Widodo | 2014-2024 (10 th) | Kerja (34), Indonesia Maju (34) |
+| Prabowo Subianto | 2024-2029 | Merah Putih (48) |
+- Infografik kisi-kisi: sejak Orde Baru hingga Reformasi terdapat 15 kabinet.
 
 ## B.J. Habibie (hal. 62)
 - **Kabinet Reformasi Pembangunan** (unsur ABRI, Golkar, PPP, PDI).
 - **Referendum Timor Timur**; **kebebasan pers** melalui UU 40/1999 tentang Pers.
 - Reformasi hukum: undang-undang yang menjamin kebebasan berpendapat.
-> Deck menulis "UU No. 9 Tahun 1999". UU kemerdekaan menyampaikan pendapat di muka umum adalah **UU No. 9 Tahun 1998**.
+> Kisi-kisi BKN menulis "UU No. 9 Tahun 1999". UU kemerdekaan menyampaikan pendapat di muka umum adalah **UU No. 9 Tahun 1998**.
 
 ## Abdurrahman Wahid / Gus Dur (hal. 63)
 - Mencabut larangan perayaan **Imlek** (Keppres), mengakui **Konghucu** dengan hak setara, dialog kebangsaan pemberantasan korupsi, dialog damai dengan **Aceh**.
@@ -141,7 +160,14 @@ Ejaan dan tanda baca, kalimat efektif, ide pokok, kata baku, makna kata, kata um
 - Baku ↔ tidak baku: apotek/apotik, ajek/ajeg, analisis/analisa, antre/antri, asas/azas. Kata baku sesuai kaidah dan KBBI.
 
 ## Tanda baca dan konjungsi (hal. 86-88)
-- EYD mencantumkan **15 tanda baca**, dikelompokkan menjadi lima.
+- EYD mencantumkan **15 tanda baca**, dikelompokkan menjadi lima (hal. 86):
+| Kelompok | Tanda baca | Spasi |
+|---|---|---|
+| Penutup | titik, seru, tanya | rapat dengan kata sebelumnya, spasi sesudahnya |
+| Penjeda | koma, titik koma, titik dua | rapat dengan kata sebelumnya, spasi sesudahnya |
+| Pembatas | tanda hubung, tanda pisah, garis miring | tanpa spasi sebelum dan sesudah (di-PHK, 5–10 Januari, Rp200/buah) |
+| Pengapit | tanda petik, petik tunggal, tanda kurung, kurung siku | spasi di luar pasangan tanda |
+| Penyingkat | elipsis, apostrof | elipsis berspasi di kedua sisi; apostrof rapat dengan kata sesudahnya ('kan) |
 - **Konjungsi antarkalimat** di awal kalimat diikuti koma: Akan tetapi, Namun, Oleh karena itu, Akhirnya, Sebaliknya, Misalnya.
 - **Konjungsi intrakalimat** didahului koma: ..., kecuali; ..., melainkan; ..., sedangkan; ..., seperti; ..., yaitu; ..., yakni. **Tanpa** koma: bahwa, jika, karena, maka, sebab, sehingga, supaya, ketika, lalu.
 
@@ -168,13 +194,13 @@ UU 20/2023 (ASN); PP 11/2017 jo. PP 17/2020 (Manajemen PNS); PP 94/2021 (Disipli
 - **Ringan**: teguran lisan, teguran tertulis, pernyataan tidak puas tertulis.
 - **Sedang**: potong tunjangan kinerja 25% selama 6, 9, atau 12 bulan.
 - **Berat**: penurunan jabatan setingkat lebih rendah 12 bulan, pembebasan jabatan menjadi pelaksana 12 bulan, pemberhentian dengan hormat tidak atas permintaan sendiri.
-> Deck menulis "penurunan pangkat". Pasal 8 ayat (4) PP 94/2021 menyebut **penurunan jabatan** setingkat lebih rendah.
+> Kisi-kisi BKN menulis "penurunan pangkat". Pasal 8 ayat (4) PP 94/2021 menyebut **penurunan jabatan** setingkat lebih rendah.
 - Soal resmi: tidak masuk kerja tanpa alasan sah **11-13 hari** kumulatif setahun → hukuman **sedang**.
 
 ## Penghargaan, kenaikan pangkat, cuti (hal. 114-115)
 - Penghargaan: tanda kehormatan, kenaikan pangkat istimewa, prioritas pengembangan kompetensi, menghadiri acara resmi/kenegaraan.
 - Kenaikan pangkat: reguler, pilihan, anumerta, pengabdian.
-| Cuti | Ketentuan deck |
+| Cuti | Ketentuan kisi-kisi BKN |
 |---|---|
 | Tahunan | permintaan tertulis ke PPK, 12 hari kerja |
 | Besar | sudah bekerja 5 tahun, paling lama 3 bulan |
@@ -190,7 +216,29 @@ UU 20/2023 (ASN); PP 11/2017 jo. PP 17/2020 (Manajemen PNS); PP 94/2021 (Disipli
 - **Doktrin Bhinneka Karya Abdi Negara**: tugas dan karya beraneka ragam, tetap bersatu dalam pengabdian. Janji anggota: **Panca Prasetya KORPRI**.
 - Anggota **kehormatan** (penasihat, ditetapkan DP Nasional); **biasa** (PNS, pegawai BUMN, BUMD, LPP RI, BLU/BLUD, badan otorita/KEK, aparatur pemerintah desa); **luar biasa** (pensiunan anggota biasa).
 - Dewan pengurus bersifat kolektif, dipilih musyawarah; **masa jabatan 5 tahun**.
-- Soal resmi: lambang KORPRI = pohon, sayap, bangunan; HUT KORPRI **29 November**; KORPRI tidak boleh menerima bantuan parpol; pohon melambangkan kekuatan, kesanggupan, dan dinamika hidup.
+- Soal resmi: HUT KORPRI **29 November**; KORPRI tidak boleh menerima bantuan parpol.
+
+## Sejarah KORPRI (hal. 116)
+| Waktu | Peristiwa |
+|---|---|
+| 17 Agustus 1945 | Seluruh pegawai pemerintah Jepang menjadi pegawai NKRI |
+| 27 Desember 1949 (RIS) | Pegawai terbagi tiga: pegawai RI di wilayah RI, pegawai RI di wilayah Belanda (nonkolaborator), pegawai yang bekerja sama dengan Belanda (kolaborator) |
+| 5 Juli 1959 | Dekrit Presiden, kembali ke sistem presidensial; muncul upaya agar pegawai netral dan tidak berpolitik |
+| 29 November 1971 | Keppres 82/1971: KORPRI satu-satunya wadah menghimpun dan membina pegawai RI di luar kedinasan |
+
+## Lambang KORPRI (hal. 117)
+- **Pohon**: kehidupan masyarakat, **pengayom dan pelindung bangsa**; 17 ranting, 8 dahan, 45 daun = perjuangan sesuai fungsi dan peran KORPRI sejak 17-8-1945.
+- **Bangunan** (balairung lima tiang): KORPRI tempat pemersatu seluruh anggota, perekat bangsa, pendukung pemerintahan RI berdasarkan Pancasila.
+- **Sayap** (elar 4 di tengah, 5 di tepi): pengabdian dan perjuangan KORPRI mewujudkan organisasi mandiri dan profesional.
+- **Warna emas**: keluhuran dan keagungan cita-cita kemerdekaan bangsa Indonesia.
+
+## Panca Prasetya KORPRI (hal. 120)
+Kami Anggota Korps Pegawai Republik Indonesia adalah insan yang beriman dan bertakwa kepada Tuhan Yang Maha Esa, berjanji:
+- 1) Setia dan taat kepada Negara Kesatuan dan Pemerintah RI yang berdasarkan Pancasila dan UUD 1945.
+- 2) Menjunjung tinggi kehormatan bangsa dan negara serta memegang teguh rahasia jabatan dan rahasia negara.
+- 3) Mengutamakan kepentingan negara dan masyarakat di atas kepentingan pribadi dan golongan.
+- 4) Memelihara persatuan dan kesatuan bangsa serta kesetiakawanan Korps Pegawai RI.
+- 5) Menegakkan kejujuran, keadilan, dan disiplin serta meningkatkan kesejahteraan dan profesionalisme.
 `,
   yanlik: `
 ## Dasar (hal. 122)
@@ -249,17 +297,33 @@ UU 25/2004 SPPN: **RPJP Nasional 20 tahun** → dijabarkan **RPJM Nasional 5 tah
 | 7 | Reformasi politik, hukum, birokrasi; berantas korupsi, narkoba, judi, penyelundupan | supremasi hukum, birokrasi adaptif, bebas narkoba, inflasi rendah |
 | 8 | Harmoni dengan lingkungan alam dan budaya, toleransi antarumat beragama | kehidupan beragama maslahat, resiliensi bencana dan iklim |
 
+## Kerangka pikir RPJMN 2025-2029 (hal. 94)
+- **Sasaran pembangunan nasional**: pendapatan per kapita menuju setara negara maju; kepemimpinan dan pengaruh di dunia internasional meningkat; kemiskinan menurun dan ketimpangan berkurang; daya saing SDM meningkat; intensitas emisi GRK menurun menuju net zero emission.
+- Alur: **arah pembangunan** (visi misi Presiden, RPJPN 2025-2045, 8 PN Asta Cita) = direncanakan dan dianggarkan → **strategi kewilayahan** = menyatukan arah pembangunan nasional (pusat dan daerah) → **tata kelola pelaksanaan pembangunan** = dikendalikan pelaksanaannya.
+- **8 Asta Cita = 8 Prioritas Nasional** (hal. 95, 97).
+
+## 17 program prioritas dan 8 program hasil terbaik cepat (hal. 96)
+- Program prioritas antara lain: (1) swasembada pangan, energi, dan air; (2) penyempurnaan sistem penerimaan negara; (3) reformasi politik, hukum, dan birokrasi; (4) pencegahan dan pemberantasan korupsi; (5) pemberantasan kemiskinan; (6) pencegahan dan pemberantasan narkoba; (7) layanan kesehatan bagi seluruh rakyat; (8) pendidikan, sains, teknologi, digitalisasi; (9) pertahanan-keamanan dan hubungan internasional; (10) kesetaraan gender dan perlindungan perempuan, anak, disabilitas; (11) pelestarian lingkungan hidup; (12) pupuk, benih, pestisida langsung ke petani; (13) hunian berkualitas terjangkau; (14) pemerataan ekonomi, UMKM, IKN; (15) hilirisasi dan industrialisasi berbasis SDA; (16) kerukunan antarumat beragama; (17) pelestarian seni budaya dan ekonomi kreatif.
+- Program hasil terbaik cepat: (1) makan siang dan susu gratis di sekolah dan pesantren, bantuan gizi balita dan ibu hamil; (2) pemeriksaan kesehatan gratis, tuntaskan TBC, rumah sakit lengkap di kabupaten; (3) cetak dan tingkatkan produktivitas lahan pertanian, lumbung pangan; (4) sekolah unggul terintegrasi di setiap kabupaten dan renovasi sekolah; (5) lanjutkan dan tambah kartu kesejahteraan sosial dan kartu usaha; (6) naikkan gaji ASN (terutama guru, dosen, tenaga kesehatan, penyuluh), TNI/Polri, pejabat negara; (7) infrastruktur desa-kelurahan, BLT, rumah murah bersanitasi; (8) Badan Penerimaan Negara dan rasio penerimaan negara terhadap PDB.
+
+## Arah kebijakan PN 1 dan PN 2 (hal. 102-105)
+- **PN 1**: penguatan ideologi Pancasila, wawasan kebangsaan, dan ketahanan nasional; komunikasi publik dan media; lembaga demokrasi; kesetaraan masyarakat sipil; pengarusutamaan, pemajuan, dan penegakan HAM.
+- **PN 2 sasaran 1** (kedaulatan dan stabilitas keamanan): postur pertahanan; industri pertahanan; komponen cadangan dan pendukung; intelijen dan keamanan dalam negeri; keamanan siber, sandi, sinyal; keamanan laut dan hidro-oseanografi; kamtibmas; profesionalisme kepolisian; diplomasi Asta Cita dan diplomasi ekonomi.
+- **PN 2 sasaran 2-4** (FEW Nexus): swasembada pangan, swasembada energi, swasembada air. Isu air: kebutuhan air 2045 naik 31% dari 2020; hanya 10,21% rumah tangga punya akses sanitasi aman (2023); 203 kabupaten/kota belum punya IPLT/IPAL.
+- **PN 2 sasaran 5** (perekonomian progresif, inklusif, berkelanjutan): ekonomi syariah (peringkat 3 GIEI 2023/2024; ekspor halal ke OKI 3,8%; UMKM bersertifikat halal 0,2%; aset keuangan syariah posisi ke-7 global, market share 12%), ekonomi digital (literasi digital 62%, terendah se-ASEAN, rata-rata ASEAN 70%), ekonomi biru (PDB maritim 7,93% pada 2022; efektivitas kawasan konservasi perairan 49,56; garam masih impor).
+- **PN 2 sasaran 6** (transformasi ekonomi hijau): isu Triple Planetary Crisis (perubahan iklim, polusi dan kerusakan lingkungan, kehilangan keanekaragaman hayati); sampah 67,8 juta ton/tahun pada 2029; TPA penuh 2028; 40% TPA open dumping. Arah kebijakan: ekonomi sirkular, keanekaragaman hayati, kualitas lingkungan dan tata ruang, reformasi pengelolaan sampah hulu-hilir, pembangunan rendah karbon, green jobs, hutan lestari.
+
 ## RPJMN IV 2020-2024 (diuji di soal resmi BKN 2025)
 - **4 pilar**: kelembagaan politik dan hukum yang mantap; kesejahteraan masyarakat; struktur ekonomi maju dan kokoh; keanekaragaman hayati terjaga. **9 misi**. **7 agenda** (antara lain revolusi mental dan pembangunan kebudayaan). **5 arahan Presiden**: SDM, infrastruktur, penyederhanaan regulasi, penyederhanaan birokrasi (antara lain lewat e-government), transformasi ekonomi.
 
 ## Rencana strategis instansi (hal. 150)
-Deck hanya mencantumkan subtopik: **visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, sistematika Renstra**.
-> Pelengkap (sumber primer, karena deck hanya berupa judul): Renstra Kemenimipas 2025-2029 ditetapkan Permenimipas 11/2025. Sistematika Renstra K/L: Bab I Pendahuluan; II Visi, Misi, Tujuan, Sasaran Strategis; III Arah Kebijakan, Strategi, Kerangka Regulasi dan Kelembagaan; IV Target Kinerja dan Kerangka Pendanaan; V Penutup.
+Kisi-kisi BKN hanya mencantumkan subtopik: **visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, sistematika Renstra**.
+> Pelengkap (sumber primer, karena kisi-kisi BKN hanya berupa judul): Renstra Kemenimipas 2025-2029 ditetapkan Permenimipas 11/2025. Sistematika Renstra K/L: Bab I Pendahuluan; II Visi, Misi, Tujuan, Sasaran Strategis; III Arah Kebijakan, Strategi, Kerangka Regulasi dan Kelembagaan; IV Target Kinerja dan Kerangka Pendanaan; V Penutup.
 `,
   sotk: `
-## Cakupan deck (hal. 151)
-Struktur Organisasi dan Tata Kerja: **tugas, kedudukan, fungsi perangkat daerah/satuan kerja, jalur koordinasi, eselonisasi, pengangkatan dan pemberhentian**. Deck tidak menjabarkan isinya.
-> Pelengkap dari sumber primer (Permenimipas 1/2024 OTK Kementerian; 2/2024 OTK Kanwil Ditjen Imigrasi), karena deck hanya berupa judul subtopik.
+## Cakupan kisi-kisi BKN (hal. 151)
+Struktur Organisasi dan Tata Kerja: **tugas, kedudukan, fungsi perangkat daerah/satuan kerja, jalur koordinasi, eselonisasi, pengangkatan dan pemberhentian**. Kisi-kisi BKN tidak menjabarkan isinya.
+> Pelengkap dari sumber primer (Permenimipas 1/2024 OTK Kementerian; 2/2024 OTK Kanwil Ditjen Imigrasi), karena kisi-kisi BKN hanya berupa judul subtopik.
 
 ## Kedudukan, tugas, fungsi
 - Pola OTK: pasal **kedudukan** (berada di bawah dan bertanggung jawab kepada siapa, dipimpin siapa) → **tugas** → "untuk melaksanakan tugas... menyelenggarakan **fungsi**".
@@ -283,7 +347,7 @@ Struktur Organisasi dan Tata Kerja: **tugas, kedudukan, fungsi perangkat daerah/
 - Prinsip **koordinasi, integrasi, sinkronisasi**; **pengawasan melekat** dan lapor berjenjang; JF/pelaksana bertanggung jawab kepada Kakanwil melalui atasan langsung; tembusan laporan ke satuan yang secara fungsional berhubungan kerja; pola hubungan kerja ditetapkan Menteri; perubahan OTK perlu persetujuan tertulis MenPANRB (Pasal 44).
 `,
   inggris: `
-## Cakupan deck (hal. 165-171)
+## Cakupan kisi-kisi BKN (hal. 165-171)
 Present, past, dan future tense, masing-masing dengan latihan soal.
 
 ## Present
@@ -332,14 +396,25 @@ Aturan penulisan surat dinas, jenis naskah dinas, alat pengiriman surel (naskah 
 | Arahan - pengaturan | peraturan, pedoman, juklak, SOP, surat edaran |
 | Arahan - penetapan | keputusan |
 | Arahan - penugasan | instruksi, surat perintah, surat tugas |
-| Korespondensi intern | nota dinas, memorandum |
-| Korespondensi ekstern | surat dinas, surat undangan |
+| Korespondensi | intern (nota dinas, memorandum); ekstern; surat undangan |
 | Khusus | surat perjanjian, surat kuasa, surat pengantar, berita acara, surat keterangan, pengumuman |
 
 ## Organisasi dan administrasi (hal. 134-136)
 - **Organisasi** (Max Weber): kerangka terstruktur berisi wewenang, tanggung jawab, pembagian kerja. Unsur: personel, kerja sama, tujuan, peralatan, lingkungan, sumber daya alam.
 - **Administrasi** (Haryadi & Sugiarto, 2009): penyusunan dan pencatatan data/informasi secara sistematis agar mudah ditemukan kembali. Tujuan: menyusun data (mencatat, mengirim, mengolah), memonitor, mengevaluasi, mengamankan/menyimpan data. Fungsi: perencanaan, penyusunan, pengarahan, pengoordinasian, pelaporan.
 - Kearsipan: **UU 43/2009**. Arsip = rekaman kegiatan/peristiwa dalam berbagai bentuk dan media. **Arsip aktif** = frekuensi penggunaan tinggi/terus-menerus (soal resmi).
+
+## Tools pada e-mail (hal. 133)
+| Istilah | Arti |
+|---|---|
+| inbox | kotak surat masuk |
+| sent | kotak surat terkirim |
+| spam | kotak surat sampah |
+| send | mengirim surat |
+| reply | menjawab surat |
+| forward | meneruskan surat |
+| attach files | melampirkan file |
+| insert link | melampirkan link |
 `,
   manajemen: `
 ## Definisi (hal. 157)
@@ -348,7 +423,14 @@ Aturan penulisan surat dinas, jenis naskah dinas, alat pengiriman surel (naskah 
 - **Koontz & O'Donnell**: pencapaian tujuan melalui dan dengan orang lain. **John D. Millet**: pembimbingan dan pemberian fasilitas bagi orang dalam kelompok formal.
 
 ## Fungsi (hal. 152, 158)
-- **Planning**: menetapkan dan merumuskan tujuan, identifikasi masalah, menentukan strategi. **Organizing**: pembagian tugas, pendelegasian, penugasan. **Commanding**: sharing knowledge. **Coordinating**: penyatuan tindakan, sinkronisasi. **Actuating**: menggerakkan semua orang; routing, scheduling, dispatching. **Controlling**: follow up.
+| Fungsi | Isi menurut bagan hal. 158 |
+|---|---|
+| Planning (perencanaan) | menetapkan tujuan, perumusan tujuan, identifikasi masalah, menentukan strategi |
+| Organizing (pengorganisasian) | pembagian tugas/pekerjaan, pendelegasian |
+| Commanding (pengarahan, Fayol) | sharing knowledge, penugasan |
+| Coordinating (koordinasi, Fayol) | penyatuan tindakan untuk tujuan bersama, sinkronisasi kegiatan |
+| Actuating (pelaksanaan, Terry) | menggerakkan semua orang dalam organisasi untuk mencapai tujuan yang disepakati |
+| Controlling (pengendalian) | routing (alur kerja), scheduling, dispatching, follow up |
 
 ## Level dan unsur (hal. 159-160)
 - **Top** (kepala institusi, CEO, direktur); **middle** (manajer cabang, kepala departemen/bagian, penghubung); **low** (mandor, supervisor, pengawas lapangan).
@@ -358,9 +440,21 @@ Aturan penulisan surat dinas, jenis naskah dinas, alat pengiriman surel (naskah 
 - **Klasik**: birokrasi (**Max Weber**: pembagian kerja, hierarki wewenang, program rasional, prosedur, aturan hak-kewajiban, hubungan impersonal); administrasi (**Mooney & Reiley**: prinsip koordinasi, skalar/hierarkis, fungsional); manajemen ilmiah (4 kaidah: metode kerja ilmiah, seleksi-latihan-pengembangan karyawan, pengembangan ilmu, motivasi dan mental karyawan).
 - **Neo-klasik** (**Hugo Munsterberg**): partisipasi, perluasan kerja, manajemen bottom-up.
 - **Modern** (**Abraham Maslow**): organisasi sebagai kesatuan saling bergantung.
-- Fayol: 6 kegiatan industri (teknikal, komersial, finansial, keamanan, akuntansi, manajerial). Organisasi: 4 kondisi pokok (kekuasaan, saling melayani, doktrin, disiplin) dan 4 unsur pokok (sistem kegiatan terkoordinasi, kelompok orang, kerja sama, kekuasaan dan kepemimpinan).
-> Deck menaruh "Teori Manajemen Ilmiah oleh Henry Fayol". Literatur umum menyebut manajemen ilmiah dari **F.W. Taylor**; Fayol dikenal lewat teori administrasi dan 6 kegiatan industri.
+- Pada bagan, **teori klasik** dilengkapi 4 kondisi pokok (kekuasaan, saling melayani, doktrin, disiplin) dan 4 unsur pokok (sistem kegiatan terkoordinasi, kelompok orang, kerja sama, kekuasaan dan kepemimpinan). Fayol: 6 kegiatan industri (teknikal, komersial, finansial, keamanan, akuntansi, manajerial).
+> Kisi-kisi BKN menaruh "Teori Manajemen Ilmiah oleh Henry Fayol". Literatur umum menyebut manajemen ilmiah dari **F.W. Taylor**; Fayol dikenal lewat teori administrasi dan 6 kegiatan industri.
 - **Mintzberg**: 10 peran manajer dalam 3 kategori: interpersonal, informasional, pengambil keputusan (hal. 164).
+
+## McKinsey 7S Framework (hal. 161)
+Model manajemen: organisasi memerlukan tujuh unsur agar berjalan baik.
+| Unsur | Arti |
+|---|---|
+| Strategi (strategy) | rumusan untuk membangun dan mempertahankan keunggulan kompetitif berkelanjutan |
+| Struktur (structure) | memengaruhi bagaimana sistem bekerja |
+| Sistem (systems) | prosedur yang dilakukan organisasi |
+| Keterampilan (skills) | kapabilitas dan kompetensi karyawan |
+| Karyawan (staff) | aset dalam organisasi |
+| Gaya kepemimpinan (style) | memengaruhi kemampuan mencapai target dan sasaran |
+| Nilai-nilai organisasi (shared vision, di tengah bagan) | standar norma berperilaku bagi karyawan dan manajemen |
 
 ## Kepemimpinan (hal. 153-156)
 - Gaya kepemimpinan: cara, pola, kemampuan pemimpin bersikap, berkomunikasi, berinteraksi untuk memengaruhi dan mengendalikan bawahan mencapai tujuan.
@@ -378,7 +472,7 @@ Aturan penulisan surat dinas, jenis naskah dinas, alat pengiriman surel (naskah 
 `
 };
 
-// Komposisi UPKP D3-S2 (deck hal. 6 = SE BKN 10/2024 Lampiran III). extra = materi deck di luar komposisi UPKP D3-S2.
+// Komposisi UPKP D3-S2 (kisi-kisi BKN hal. 6 = SE BKN 10/2024 Lampiran III). extra = materi kisi-kisi BKN di luar komposisi UPKP D3-S2.
 window.TOPICS = [
   { id: "pancasila", label: "Pancasila", test: "TWK", n: 10, pages: "20-39", icon: "landmark" },
   { id: "uud", label: "UUD 1945", test: "TWK", n: 10, pages: "40-57", icon: "scroll" },
@@ -388,7 +482,7 @@ window.TOPICS = [
   { id: "yanlik", label: "Pelayanan Publik", test: "TKT", n: 5, pages: "122-125", icon: "handshake" },
   { id: "gg", label: "Good Governance", test: "TKT", n: 5, pages: "140-144", icon: "scale" },
   { id: "kebijakan", label: "Kebijakan Publik", test: "TKT", n: 5, pages: "145-149", icon: "route" },
-  { id: "renstra", label: "Renstra & RPJMN", test: "TSI", n: 15, pages: "92-101, 150", icon: "target" },
+  { id: "renstra", label: "Renstra & RPJMN", test: "TSI", n: 15, pages: "92-105, 150", icon: "target" },
   { id: "sotk", label: "SOTK", test: "TSI", n: 15, pages: "151", icon: "network" },
   { id: "inggris", label: "Bahasa Inggris", test: "TKP", n: 10, pages: "165-171", icon: "languages" },
   { id: "literasi", label: "Literasi Digital", test: "TKP", n: 5, pages: "137-139", icon: "wifi" },
@@ -401,5 +495,5 @@ window.TESTS = {
   TKT: { label: "Tes Kompetensi Teknis", short: "TKT", color: 2 },
   TSI: { label: "Tes Substansi Instansi", short: "TSI", color: 3 },
   TKP: { label: "Tes Kompetensi Penunjang", short: "TKP", color: 4 },
-  EKSTRA: { label: "Materi tambahan deck (Ujian Dinas)", short: "Ekstra", color: 5 }
+  EKSTRA: { label: "Materi tambahan kisi-kisi BKN (Ujian Dinas)", short: "Ekstra", color: 5 }
 };
