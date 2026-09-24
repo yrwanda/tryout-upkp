@@ -172,8 +172,14 @@ svg.ic { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none
   min-height: 44px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border);
   background: var(--surface); width: 100%;
 }
-.meter { height: 8px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
-.meter > i { display: block; height: 100%; border-radius: 999px; background: var(--tc, var(--primary)); transition: width .4s var(--ease); }
+.meter { position: relative; height: 8px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
+.meter > i { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 999px; background: var(--tc, var(--primary)); transition: width .4s var(--ease); }
+/* lapis muda = soal sudah benar tapi belum dikuasai (belum benar di 2 hari berbeda) */
+.meter > i.soft, .bar-track > i.soft { background: color-mix(in srgb, var(--tc, var(--primary)) 38%, transparent); }
+.legend-bars { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.legend-bars span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-bars i { width: 18px; height: 8px; border-radius: 999px; background: var(--primary); }
+.legend-bars i.soft { background: color-mix(in srgb, var(--primary) 38%, transparent); }
 .note {
   padding: 12px 14px; border-radius: 10px; background: var(--warn-soft); color: var(--text);
   border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent); font-size: .92rem;
@@ -200,6 +206,7 @@ svg.ic { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none
 .ring-wrap svg { width: 100%; height: 100%; transform: rotate(-90deg); }
 .ring-wrap .track { stroke: color-mix(in srgb, var(--hero-fg) 18%, transparent); }
 .ring-wrap .val { stroke: var(--hero-fg); transition: stroke-dashoffset .6s var(--ease); }
+.ring-wrap .val.soft { stroke: color-mix(in srgb, var(--hero-fg) 45%, transparent); }
 .ring-label { position: absolute; inset: 0; display: grid; place-content: center; text-align: center; }
 .ring-label b { font-size: 2rem; font-weight: 800; line-height: 1; }
 .ring-label span { font-size: .72rem; opacity: .85; max-width: 11ch; margin-inline: auto; }
