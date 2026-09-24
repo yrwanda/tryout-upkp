@@ -178,8 +178,9 @@ svg.ic { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none
 .meter > i.soft, .bar-track > i.soft { background: color-mix(in srgb, var(--tc, var(--primary)) 38%, transparent); }
 .legend-bars { display: flex; flex-wrap: wrap; gap: 4px 14px; }
 .legend-bars span { display: inline-flex; align-items: center; gap: 6px; }
-.legend-bars i { width: 18px; height: 8px; border-radius: 999px; background: var(--primary); }
-.legend-bars i.soft { background: color-mix(in srgb, var(--primary) 38%, transparent); }
+.legend-bars i { width: 18px; height: 8px; border-radius: 999px; background: var(--muted); }
+.legend-bars i.soft { background: color-mix(in srgb, var(--muted) 38%, transparent); }
+.pct-col { text-align: right; line-height: 1.35; white-space: nowrap; min-width: 118px; }
 .note {
   padding: 12px 14px; border-radius: 10px; background: var(--warn-soft); color: var(--text);
   border: 1px solid color-mix(in srgb, var(--warn) 30%, transparent); font-size: .92rem;
