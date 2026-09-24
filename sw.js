@@ -1,5 +1,5 @@
 /* Service worker: cache semua aset agar aplikasi bisa dipakai offline. Naikkan VERSION setiap kali bank soal/aplikasi berubah. */
-const VERSION = "upkp-v9";
+const VERSION = "upkp-v10";
 const ASSETS = [
   "./", "./index.html", "./manifest.json", "./css/style.css",
   "./js/materi.js", "./js/app.js",
@@ -15,12 +15,13 @@ self.addEventListener("activate", e => {
   e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k)))).then(() => self.clients.claim()));
 });
 // Strategi: network-first untuk HTML/JS/CSS (agar pembaruan cepat terlihat), fallback ke cache saat offline.
+// cache "no-cache": selalu cek ke server (304 bila sama), jangan pakai salinan HTTP cache browser yang bisa basi 10 menit.
 self.addEventListener("fetch", e => {
   if (e.request.method !== "GET") return;
   const url = new URL(e.request.url);
   if (url.origin !== location.origin) return;
   e.respondWith(
-    fetch(e.request).then(res => {
+    fetch(e.request, { cache: "no-cache" }).then(res => {
       const copy = res.clone();
       caches.open(VERSION).then(c => c.put(e.request, copy));
       return res;
