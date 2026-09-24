@@ -95,20 +95,22 @@
     save();
   }
   const mastered = s => !!s && !s.lastWrong && (s.okDays || []).length >= 2;
+  // sudah benar (jawaban terakhir), tapi belum benar di 2 hari berbeda: lapis muda di grafik
+  const okOnce = s => !!s && !s.lastWrong && !mastered(s);
   // jadwal ulang sederhana: salah -> besok; benar sekali -> 3 hari; dikuasai -> 14 hari
   const dueAt = s => !s ? 0 : (s.t || 0) + (s.lastWrong ? 1 : mastered(s) ? 14 : 3) * DAY;
   function topicStat(tid) {
-    let seen = 0, correct = 0, done = 0, mast = 0;
-    pool(tid).forEach(q => { const s = state.stats[q.id]; if (s) { seen += s.seen; correct += s.correct; done++; if (mastered(s)) mast++; } });
-    return { total: pool(tid).length, done, mast, acc: seen ? correct / seen : null };
+    let seen = 0, correct = 0, done = 0, mast = 0, ok = 0;
+    pool(tid).forEach(q => { const s = state.stats[q.id]; if (s) { seen += s.seen; correct += s.correct; done++; if (mastered(s)) mast++; else if (okOnce(s)) ok++; } });
+    return { total: pool(tid).length, done, mast, ok, acc: seen ? correct / seen : null };
   }
   function overall() {
-    let seen = 0, correct = 0, done = 0, mast = 0, total = 0;
-    CORE.forEach(t => pool(t.id).forEach(q => { total++; const s = state.stats[q.id]; if (s) { seen += s.seen; correct += s.correct; done++; if (mastered(s)) mast++; } }));
-    return { total, done, mast, seen, correct, acc: seen ? correct / seen : null };
+    let seen = 0, correct = 0, done = 0, mast = 0, ok = 0, total = 0;
+    CORE.forEach(t => pool(t.id).forEach(q => { total++; const s = state.stats[q.id]; if (s) { seen += s.seen; correct += s.correct; done++; if (mastered(s)) mast++; else if (okOnce(s)) ok++; } }));
+    return { total, done, mast, ok, seen, correct, acc: seen ? correct / seen : null };
   }
   function testReadiness() {
-    return TEST_ORDER.map(k => { let total = 0, mast = 0; CORE.filter(t => t.test === k).forEach(t => { const st = topicStat(t.id); total += st.total; mast += st.mast; }); return { k, total, mast, r: total ? mast / total : 0 }; });
+    return TEST_ORDER.map(k => { let total = 0, mast = 0, ok = 0; CORE.filter(t => t.test === k).forEach(t => { const st = topicStat(t.id); total += st.total; mast += st.mast; ok += st.ok; }); return { k, total, mast, ok, r: total ? mast / total : 0, rOk: total ? (mast + ok) / total : 0 }; });
   }
   // Sesi Hari Ini: soal jatuh tempo (salah kemarin, benar sekali 3 hari lalu) + soal baru dari jenis tes terlemah
   function todaySession(n) {
@@ -229,10 +231,10 @@
   }
 
   // ---------- Beranda ----------
-  function ring(value, label) {
-    const r = 58, c = 2 * Math.PI * r, off = c * (1 - value);
-    const w = el("div", { class: "ring-wrap", role: "img", "aria-label": `${Math.round(value * 100)}% ${label}` });
-    w.innerHTML = `<svg viewBox="0 0 148 148"><circle class="track" cx="74" cy="74" r="${r}" fill="none" stroke-width="14"/><circle class="val" cx="74" cy="74" r="${r}" fill="none" stroke-width="14" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${off.toFixed(1)}"/></svg>`;
+  function ring(value, label, soft) {
+    const r = 58, c = 2 * Math.PI * r, arc = (cls, v) => v > 0 ? `<circle class="${cls}" cx="74" cy="74" r="${r}" fill="none" stroke-width="14" stroke-linecap="round" stroke-dasharray="${c.toFixed(1)}" stroke-dashoffset="${(c * (1 - v)).toFixed(1)}"/>` : "";
+    const w = el("div", { class: "ring-wrap", role: "img", "aria-label": `${Math.round(value * 100)}% ${label}` + (soft > value ? `, ${Math.round(soft * 100)}% sudah pernah benar` : "") });
+    w.innerHTML = `<svg viewBox="0 0 148 148"><circle class="track" cx="74" cy="74" r="${r}" fill="none" stroke-width="14"/>${arc("val soft", soft || 0)}${arc("val", value)}</svg>`;
     w.appendChild(el("div", { class: "ring-label" }, [el("b", { class: "num" }, [Math.round(value * 100) + "%"]), el("span", null, [label])]));
     return w;
   }
@@ -249,14 +251,14 @@
           el("button", { class: "btn btn-outline", onclick: () => { simMode = "upkp"; nav("simulasi"); } }, [icon("timer"), "Simulasi 100 soal"])
         ])
       ]),
-      ring(o.total ? o.mast / o.total : 0, "soal dikuasai")
+      ring(o.total ? o.mast / o.total : 0, "soal dikuasai", o.total ? (o.mast + o.ok) / o.total : 0)
     ]));
     if (o.done && Date.now() - (state.lastExport || 0) > 7 * DAY && Date.now() > (state.exportSnooze || 0)) view.append(el("div", { class: "note row between", role: "status" }, [
       el("span", null, [el("b", null, ["Cadangkan progres. "]), state.lastExport ? `Terakhir diekspor ${fmtDate(state.lastExport)}.` : "Progres baru tersimpan di browser ini dan bisa hilang bila data browser terhapus."]),
       el("span", { class: "row", style: "gap:6px" }, [el("button", { class: "btn btn-sm btn-primary", onclick: () => { exportData(); go("home"); } }, ["Ekspor sekarang"]), el("button", { class: "btn btn-sm btn-ghost", onclick: () => { state.exportSnooze = Date.now() + 3 * DAY; save(); go("home"); } }, ["Nanti"])])
     ]));
     view.append(el("div", { class: "stats" }, [
-      el("div", { class: "stat" }, [el("b", null, [`${o.mast}`]), el("span", null, [`dari ${o.total} soal dikuasai (benar di 2 hari berbeda)`])]),
+      el("div", { class: "stat" }, [el("b", null, [`${o.mast}`]), el("span", null, [`dari ${o.total} soal dikuasai (benar di 2 hari berbeda)` + (o.ok ? `; ${o.ok} lagi sudah benar sekali` : "")])]),
       el("div", { class: "stat" }, [el("b", null, [o.acc === null ? "-" : pct(o.correct, o.seen) + "%"]), el("span", null, [`akurasi dari ${o.done} soal dicoba`])]),
       el("div", { class: "stat" }, [el("b", null, [`${streak()} hari`]), el("span", null, ["Belajar beruntun"])]),
       el("div", { class: "stat" }, [el("b", null, [best < 0 ? "-" : `${best}`]), el("span", null, [best < 0 ? "Belum ada simulasi" : "Skor simulasi terbaik /500"])])
@@ -276,14 +278,14 @@
     ]));
     // kesiapan per jenis tes (ambang berlaku per jenis tes)
     view.append(el("section", { class: "panel stack", style: "gap:12px" }, [
-      el("div", { class: "sec-head" }, [el("h2", null, ["Kesiapan per jenis tes"]), el("span", { class: "small muted" }, ["Persentase soal dikuasai. Ambang berlaku per jenis tes, jadi kejar yang paling rendah."])]),
+      el("div", { class: "sec-head" }, [el("h2", null, ["Kesiapan per jenis tes"]), el("span", { class: "small muted" }, ["Persentase soal dikuasai. Ambang berlaku per jenis tes, jadi kejar yang paling rendah."]), legend()]),
       el("div", { class: "bars" }, testReadiness().map(x => el("div", { class: "bar-row tc" + TESTS[x.k].color }, [
-        el("div", null, [el("div", { style: "font-weight:700;font-size:.92rem" }, [TESTS[x.k].label]), el("div", { class: "xs muted num" }, [`${x.mast}/${x.total} dikuasai`])]),
-        el("div", { class: "bar-track", role: "img", "aria-label": `${TESTS[x.k].label}: ${Math.round(x.r * 100)}% dikuasai` }, [el("i", { style: `width:${Math.round(x.r * 100)}%` })]),
+        el("div", null, [el("div", { style: "font-weight:700;font-size:.92rem" }, [TESTS[x.k].label]), el("div", { class: "xs muted num" }, [`${x.mast}/${x.total} dikuasai` + (x.ok ? ` · ${x.ok} benar, tunggu diulang` : "")])]),
+        el("div", { class: "bar-track", role: "img", "aria-label": `${TESTS[x.k].label}: ${Math.round(x.r * 100)}% dikuasai, ${x.ok} soal benar menunggu diulang` }, [el("i", { class: "soft", style: `width:${x.rOk * 100}%` }), el("i", { style: `width:${x.r * 100}%` })]),
         el("b", { class: "num" }, [Math.round(x.r * 100) + "%"])
       ])))
     ]));
-    view.append(el("div", { class: "sec-head" }, [el("h2", null, ["Penguasaan per topik"]), el("span", { class: "small muted" }, ["Bar = soal dikuasai; angka = akurasi"])]));
+    view.append(el("div", { class: "sec-head" }, [el("h2", null, ["Penguasaan per topik"]), legend()]));
     const groups = {}; TOPICS.forEach(t => (groups[t.test] = groups[t.test] || []).push(t));
     Object.keys(groups).forEach(k => {
       const T = TESTS[k];
@@ -293,13 +295,15 @@
       ]));
     });
   }
+  // keterangan dua lapis bar: dikuasai (penuh) dan sudah benar sekali (muda)
+  const legend = () => el("div", { class: "legend-bars xs muted" }, [el("span", null, [el("i"), "Dikuasai: benar di 2 hari berbeda"]), el("span", null, [el("i", { class: "soft" }), "Sudah benar, ulang di hari lain"])]);
   function topicCard(t) {
-    const s = topicStat(t.id), cov = pct(s.mast, s.total);
+    const s = topicStat(t.id), cov = pct(s.mast, s.total), w = n => s.total ? n / s.total * 100 : 0;
     return el("article", { class: "topic-card " + tcOf(t) }, [
       el("div", { class: "t-top" }, [el("div", { class: "mono" }, [MONO[t.id]]), el("div", null, [el("h3", null, [t.label]), el("div", { class: "meta" }, [`Kisi-kisi hal. ${t.pages} · ${s.total} soal${t.n ? ` · ${t.n} di ujian` : ""}`]), t.extra ? el("span", { class: "chip chip-warn", style: "margin-top:6px" }, ["di luar ujian UPKP"]) : t.note ? el("span", { class: "chip chip-warn", style: "margin-top:6px", title: t.note }, ["cakupan terbatas"]) : null])]),
       el("div", { class: "stack", style: "gap:6px" }, [
-        el("div", { class: "row between xs" }, [el("span", { class: "muted" }, [`${s.mast} dikuasai · ${s.done} dicoba`]), el("b", null, [s.acc === null ? "belum ada" : `akurasi ${Math.round(s.acc * 100)}%`])]),
-        el("div", { class: "meter", role: "progressbar", "aria-valuenow": cov, "aria-valuemin": 0, "aria-valuemax": 100, "aria-label": t.label }, [el("i", { style: `width:${cov}%` })])
+        el("div", { class: "row between xs" }, [el("span", { class: "muted" }, [`${s.done} dicoba · ${s.mast + s.ok} benar · ${s.mast} dikuasai`]), el("b", null, [s.acc === null ? "belum ada" : `akurasi ${Math.round(s.acc * 100)}%`])]),
+        el("div", { class: "meter", role: "progressbar", "aria-valuenow": cov, "aria-valuemin": 0, "aria-valuemax": 100, "aria-valuetext": `${cov}% dikuasai, ${s.ok} soal benar menunggu diulang`, "aria-label": t.label }, [el("i", { class: "soft", style: `width:${w(s.mast + s.ok)}%` }), el("i", { style: `width:${w(s.mast)}%` })])
       ]),
       el("div", { class: "t-actions" }, [el("button", { class: "btn btn-sm", onclick: () => nav("materi", { topic: t.id }) }, ["Materi"]), el("button", { class: "btn btn-sm btn-primary", onclick: () => startDrill(pickFrom([t.id], 10, "unseen"), t.label) }, ["Latih"])])
     ]);
