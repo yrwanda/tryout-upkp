@@ -280,9 +280,9 @@
     view.append(el("section", { class: "panel stack", style: "gap:12px" }, [
       el("div", { class: "sec-head" }, [el("h2", null, ["Kesiapan per jenis tes"]), el("span", { class: "small muted" }, ["Persentase soal dikuasai. Ambang berlaku per jenis tes, jadi kejar yang paling rendah."]), legend()]),
       el("div", { class: "bars" }, testReadiness().map(x => el("div", { class: "bar-row tc" + TESTS[x.k].color }, [
-        el("div", null, [el("div", { style: "font-weight:700;font-size:.92rem" }, [TESTS[x.k].label]), el("div", { class: "xs muted num" }, [`${x.mast}/${x.total} dikuasai` + (x.ok ? ` · ${x.ok} benar, tunggu diulang` : "")])]),
+        el("div", null, [el("div", { style: "font-weight:700;font-size:.92rem" }, [TESTS[x.k].label]), el("div", { class: "xs muted num" }, [`${x.mast}/${x.total} dikuasai` + (x.ok ? ` · ${x.ok} sudah benar` : "")])]),
         el("div", { class: "bar-track", role: "img", "aria-label": `${TESTS[x.k].label}: ${Math.round(x.r * 100)}% dikuasai, ${x.ok} soal benar menunggu diulang` }, [el("i", { class: "soft", style: `width:${x.rOk * 100}%` }), el("i", { style: `width:${x.r * 100}%` })]),
-        el("b", { class: "num" }, [Math.round(x.r * 100) + "%"])
+        el("div", { class: "pct-col" }, [el("div", null, [el("b", { class: "num" }, [Math.round(x.r * 100) + "%"]), el("span", { class: "xs muted" }, [" dikuasai"])]), x.ok ? el("div", { class: "xs muted num" }, [`${Math.round(x.rOk * 100)}% sudah benar`]) : null])
       ])))
     ]));
     view.append(el("div", { class: "sec-head" }, [el("h2", null, ["Penguasaan per topik"]), legend()]));
@@ -295,8 +295,8 @@
       ]));
     });
   }
-  // keterangan dua lapis bar: dikuasai (penuh) dan sudah benar sekali (muda)
-  const legend = () => el("div", { class: "legend-bars xs muted" }, [el("span", null, [el("i"), "Dikuasai: benar di 2 hari berbeda"]), el("span", null, [el("i", { class: "soft" }), "Sudah benar, ulang di hari lain"])]);
+  // keterangan dua lapis bar: dikuasai (penuh) dan sudah benar sekali (muda); abu-abu karena warna bar mengikuti jenis tes
+  const legend = () => el("div", { class: "legend-bars xs muted" }, [el("span", null, [el("i"), "Warna penuh: dikuasai (benar di 2 hari berbeda)"]), el("span", null, [el("i", { class: "soft" }), "Warna muda: sudah benar, ulang di hari lain"])]);
   function topicCard(t) {
     const s = topicStat(t.id), cov = pct(s.mast, s.total), w = n => s.total ? n / s.total * 100 : 0;
     return el("article", { class: "topic-card " + tcOf(t) }, [
