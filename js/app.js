@@ -465,7 +465,7 @@
           el("button", { class: "btn btn-ghost", onclick: () => { drill = null; go("home"); } }, ["Beranda"])
         ])
       ]),
-      wrong.length ? el("div", { class: "stack" }, [el("h2", null, ["Soal yang salah"]), el("div", { class: "review" }, wrong.map(q => reviewItem(q, drill.answers[q.id], false)))]) : null
+      wrong.length ? el("div", { class: "stack" }, [el("h2", null, ["Soal yang salah"]), el("div", { class: "review" }, wrong.map(q => reviewItem(q, drill.answers[q.id], false)))]) : ""
     );
   }
   function reviewItem(q, ch, flagged, no) {
