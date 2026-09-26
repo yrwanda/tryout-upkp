@@ -1,0 +1,82 @@
+// Data mini game "Detektif Kisi-kisi": setiap paragraf dipotong jadi bagian yang bisa diketuk.
+// Tepat satu bagian berbentuk [versi salah yang ditampilkan, versi benar]; semua bagian lain harus benar menurut PPT kisi-kisi BKN 2025 (hal. per set).
+window.DETEKTIF = [
+  { id: "d-pancasila", topic: "pancasila", title: "Pancasila", pages: "21-33", items: [
+    ["Istilah Pancasila", "pertama kali disampaikan", ["Mohammad Hatta", "Ir. Soekarno"], "pada sidang BPUPKI", "1 Juni 1945."],
+    ["Pancasila disahkan oleh", ["BPUPKI", "PPKI"], "pada 18 Agustus 1945,", "sehingga disebut", "perjanjian luhur bangsa."],
+    ["Dalam kitab Sutasoma", "karangan", ["Mpu Prapanca,", "Mpu Tantular,"], "Pancasila berarti", "pelaksanaan kesusilaan yang lima."],
+    ["Pada lambang Garuda,", "bintang melambangkan sila pertama,", ["kepala banteng melambangkan sila kedua,", "rantai melambangkan sila kedua,"], "dan padi-kapas", "melambangkan sila kelima."],
+    ["Pancasila sebagai jiwa bangsa", "disebut juga", ["Weltanschauung,", "Volksgeist,"], "agar Indonesia tetap hidup", "dalam jiwa Pancasila."],
+    ["Setiap sila Pancasila adalah", ["nilai instrumental,", "nilai dasar,"], "sedangkan hukum yang berlaku", "adalah penjabarannya."]] },
+  { id: "d-uud", topic: "uud", title: "UUD 1945", pages: "41-57", items: [
+    ["Panitia Sembilan", "merumuskan Piagam Jakarta", "pada", ["17 Agustus 1945", "22 Juni 1945"], "sebagai rancangan pembukaan hukum dasar."],
+    ["Saat disahkan PPKI,", "Batang Tubuh UUD 1945 terdiri atas", ["21 bab, 37 pasal,", "16 bab, 37 pasal,"], "65 ayat,", "4 pasal aturan peralihan, dan 2 ayat aturan tambahan."],
+    ["MPR mengamandemen UUD 1945", ["sebanyak 5 kali", "sebanyak 4 kali"], "pada 1999-2002;", "amandemen pertama berlangsung", "14-21 Oktober 1999."],
+    ["Menurut Pasal 2,", "MPR terdiri atas anggota DPR dan anggota DPD", "dan bersidang sedikitnya", ["sekali setahun", "sekali dalam lima tahun"], "di ibu kota negara."],
+    ["Pasal 7:", "Presiden dan Wakil Presiden memegang jabatan", "selama lima tahun", ["dan dapat dipilih kembali tanpa batas.", "dan dapat dipilih kembali hanya untuk satu kali masa jabatan."]],
+    ["Setelah amandemen,", ["DPD dihapus,", "DPA dihapus,"], "sedangkan MK dan KY", "muncul sebagai lembaga negara."],
+    ["BPK termasuk lembaga", ["yudikatif", "eksaminatif"], "yang bertugas", "memeriksa keuangan negara."],
+    ["Menurut Pasal 6A,", "pasangan calon terpilih bila meraih", "lebih dari 50% suara", "dan sedikitnya", ["10% suara", "20% suara"], "di lebih dari setengah jumlah provinsi."]] },
+  { id: "d-sejarah", topic: "sejarah", title: "Sejarah Indonesia", pages: "59-67", items: [
+    ["Peristiwa Trisakti,", "bentrokan mahasiswa dengan aparat,", "terjadi pada", ["21 Mei 1998,", "12 Mei 1998,"], "sebelum Soeharto mundur."],
+    ["B.J. Habibie", "menerbitkan", ["UU 24/2011 tentang BPJS", "UU 40/1999 tentang Pers"], "yang membawa perubahan besar", "bagi dunia pers Indonesia."],
+    ["Abdurrahman Wahid", "mencabut aturan yang menghalangi perayaan Imlek", "dan memberi hak setara", ["bagi penganut Buddha.", "bagi penganut Konghucu."]],
+    ["Pada masa Megawati,", "pemilihan presiden langsung oleh rakyat", "mulai diterapkan pada", ["pemilu 1999.", "pemilu 2004."]],
+    ["Pada masa SBY,", "Indonesia masuk G-20 pada 2009,", ["menambah utang IMF,", "melunasi utang IMF,"], "dan mengakhiri konflik di Aceh."],
+    ["Kabinet Merah Putih", "Presiden Prabowo terdiri atas", ["34 kementerian", "48 kementerian"], "karena pemecahan", "sejumlah kementerian."],
+    ["Kabinet pertama Presiden Joko Widodo", "(2014-2019)", "bernama", ["Kabinet Indonesia Maju.", "Kabinet Kerja."]]] },
+  { id: "d-bindo", topic: "bindo", title: "Bahasa Indonesia", pages: "72-90", items: [
+    ["Konjungsi yang ditulis di awal kalimat", ["dan didahului koma", "dan diikuti koma"], "disebut konjungsi antarkalimat,", "misalnya Namun dan Oleh karena itu."],
+    ["Konjungsi bahwa, karena, dan sehingga", ["didahului tanda koma,", "ditulis tanpa tanda koma,"], "sedangkan melainkan dan yaitu", "didahului tanda koma."],
+    ["Paragraf yang kalimat utamanya", "terletak di akhir paragraf", "disebut paragraf", ["deduktif.", "induktif."]],
+    ["EYD mencantumkan", ["12 tanda baca", "15 tanda baca"], "yang dibagi menjadi lima kelompok:", "penutup, penjeda, pembatas,", "pengapit, dan penyingkat."],
+    ["Kata baku sesuai kaidah dan KBBI,", "misalnya apotek, ajek,", ["analisa,", "analisis,"], "antre, dan asas."],
+    ["Nama geografi yang dipakai sebagai nama jenis", "ditulis dengan huruf kecil,", "misalnya", ["jeruk Bali", "jeruk bali"], "dan kunci inggris."],
+    ["Singkatan", ["u.p.", "u.b."], "berarti untuk beliau,", "sedangkan a.n.", "berarti atas nama."],
+    ["Kalimat efektif harus hemat,", "jadi cukup menulis", ["\"para siswa-siswi\"", "\"para siswa\""], "tanpa mengulang makna jamak."]] },
+  { id: "d-kepegawaian", topic: "kepegawaian", title: "Kepegawaian dan KORPRI", pages: "107-121", items: [
+    ["PNS diangkat", ["berdasarkan perjanjian kerja", "secara tetap"], "oleh pejabat pembina kepegawaian", "untuk menduduki jabatan pemerintahan."],
+    ["Hukuman disiplin sedang", "berupa pemotongan tunjangan kinerja", ["50%", "25%"], "selama 6, 9, atau 12 bulan."],
+    ["Cuti besar", "dapat diambil setelah bekerja 5 tahun,", ["paling lama 1 tahun.", "paling lama 3 bulan."]],
+    ["Cuti tahunan PNS", "diajukan secara tertulis kepada PPK", "dengan hak", ["14 hari kerja.", "12 hari kerja."]],
+    ["KORPRI dibentuk dengan", ["Keppres 24/1971", "Keppres 82/1971"], "pada 29 November 1971", "sebagai satu-satunya wadah", "pegawai RI di luar kedinasan."],
+    ["Doktrin KORPRI adalah", ["Panca Prasetya KORPRI,", "Bhinneka Karya Abdi Negara,"], "artinya tugas dan karya beraneka ragam", "tetap bersatu dalam pengabdian."],
+    ["Pohon pada lambang KORPRI memiliki", ["17 ranting, 8 dahan, dan 17 daun", "17 ranting, 8 dahan, dan 45 daun"], "yang melambangkan perjuangan", "sejak proklamasi 17 Agustus 1945."],
+    ["Masa jabatan Dewan Pengurus KORPRI", "adalah", ["3 tahun,", "5 tahun,"], "dipilih secara musyawarah,", "dan bersifat kolektif."],
+    ["Pensiunan dari anggota biasa", "tercatat sebagai", ["anggota kehormatan KORPRI.", "anggota luar biasa KORPRI."]]] },
+  { id: "d-pelayanan", topic: "gg", title: "Pelayanan publik dan good governance", pages: "122-144", items: [
+    ["Pengawas penyelenggaraan pelayanan publik", "adalah", ["Menteri PANRB,", "Ombudsman,"], "sedangkan Menteri PANRB", "merumuskan kebijakan nasionalnya."],
+    ["UU 25/2009 memuat", ["9 asas", "12 asas"], "pelayanan publik,", "antara lain kepastian hukum", "dan ketepatan waktu."],
+    ["Good governance memiliki sembilan karakteristik,", "antara lain partisipasi, transparansi,", ["dan sentralisasi.", "dan visi strategik."]],
+    ["Dalam good governance,", ["masyarakat", "dunia usaha/swasta"], "berperan mengembangkan kegiatan perekonomian", "dan menciptakan lapangan kerja."],
+    ["Grand Design Reformasi Birokrasi 2010-2025", "ditetapkan dengan", ["UU 25/2009.", "Perpres 81/2010."]]] },
+  { id: "d-kebijakan", topic: "kebijakan", title: "Kebijakan publik", pages: "145-149", items: [
+    ["Siklus kebijakan publik dimulai dari penyusunan agenda,", "lalu", ["adopsi, formulasi,", "formulasi, adopsi,"], "implementasi, dan evaluasi."],
+    ["Menurut Nugroho (2006),", "Peraturan Menteri dan SKB antarmenteri", "termasuk kebijakan", ["makro.", "meso."]],
+    ["Kebijakan PPKM", "untuk menanggulangi Covid-19", "tertuang dalam", ["Peraturan Presiden.", "Instruksi Mendagri."]],
+    ["Penetapan HET minyak goreng", "tertuang dalam", ["Peraturan Menteri Keuangan.", "Peraturan Menteri Perdagangan."]],
+    ["Menurut Mustari (2015),", "kebijakan adalah", ["aturan yang wajib dipatuhi masyarakat", "prinsip atau cara bertindak yang dipilih"], "untuk mengarahkan pengambilan keputusan."]] },
+  { id: "d-renstra", topic: "renstra", title: "Perencanaan dan RPJMN", pages: "92-105", items: [
+    ["RPJP Nasional berjangka", ["25 tahun", "20 tahun"], "dan dijabarkan ke dalam", "RPJM Nasional lima tahunan."],
+    ["RKP berjangka satu tahun", "dan menjadi dasar", ["Renstra K/L", "APBN"], "yang dibahas bersama DPR."],
+    ["Visi RPJMN 2025-2029 adalah", "\"Bersama Indonesia Maju", ["Menuju Indonesia Hebat 2045\"", "Menuju Indonesia Emas 2045\""], "dengan 8 Prioritas Nasional."],
+    ["RPJMN 2025-2029 memuat", ["8 program prioritas", "17 program prioritas"], "dan 8 program hasil terbaik cepat,", "antara lain makan siang dan susu gratis."],
+    ["Tingkat literasi digital Indonesia 62%,", ["tertinggi", "terendah"], "se-ASEAN,", "di bawah rata-rata ASEAN 70%."],
+    ["PN 6 RPJMN 2025-2029 adalah", ["hilirisasi dan industri berbasis SDA,", "membangun dari desa dan dari bawah,"], "antara lain untuk mengurangi kemiskinan."],
+    ["Kontribusi PDB maritim", "hanya mencapai", ["17,93%", "7,93%"], "pada 2022."]] },
+  { id: "d-manajemen", topic: "manajemen", title: "Manajemen dan kepemimpinan", pages: "154-164", items: [
+    ["George R. Terry", "merumuskan fungsi manajemen", ["POCCC:", "POAC:"], "planning, organizing,", "actuating, controlling."],
+    ["Gaya kepemimpinan", ["demokratik", "otokratik"], "bercirikan sentralisasi wewenang,", "sedangkan laissez faire", "bercirikan kendali bebas."],
+    ["Teori kepemimpinan", ["situasional", "trait"], "menyatakan pemimpin dilahirkan", "dengan sifat-sifat tertentu."],
+    ["Pada bagan McKinsey 7S,", ["strategy", "shared vision"], "berada di tengah", "sebagai nilai-nilai organisasi."],
+    ["Mandor, supervisor, dan pengawas lapangan", "termasuk", ["middle management.", "low management."]],
+    ["Mintzberg mengidentifikasi", ["7 peran manajer", "10 peran manajer"], "dalam 3 kategori:", "interpersonal, informasional,", "dan pengambil keputusan."],
+    ["Teori neo-klasik", "dikemukakan oleh", ["Max Weber,", "Hugo Munsterberg,"], "sedangkan teori modern", "oleh Abraham Maslow."]] },
+  { id: "d-perkantoran", topic: "perkantoran", title: "Perkantoran dan naskah dinas", pages: "127-136", items: [
+    ["Kearsipan diatur dalam", ["UU 25/2009,", "UU 43/2009,"], "dan tujuan administrasi antara lain", "menyusun, memonitor, mengevaluasi,", "dan mengamankan data."],
+    ["Keputusan termasuk naskah dinas arahan", ["penugasan,", "penetapan,"], "sedangkan instruksi dan surat tugas", "termasuk arahan penugasan."],
+    ["Nota dinas dan memorandum", "termasuk naskah dinas", ["khusus.", "korespondensi intern."]],
+    ["Ragam", ["resmi", "beku"], "paling formal, pola dan kaidahnya tetap,", "dipakai pada pengambilan sumpah", "dan akta notaris."],
+    ["Komunikasi tertulis", "bersifat", ["dua arah,", "satu arah,"], "tetapi bahasanya lebih terstruktur."],
+    ["Pada e-mail,", "forward berarti", ["menjawab surat,", "meneruskan surat,"], "sedangkan reply", "berarti menjawab surat."]] }
+];

@@ -55,7 +55,9 @@
     shuffle: '<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',
     bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
     bins: '<rect x="3" y="3" width="18" height="7" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/><rect x="13" y="14" width="8" height="7" rx="1.5"/>',
-    steps: '<path d="M10 6h11M10 12h11M10 18h11"/><path d="M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/>'
+    steps: '<path d="M10 6h11M10 12h11M10 18h11"/><path d="M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/>',
+    quiz: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17h.01"/>',
+    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>'
   };
   const icon = (name, label) => { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("class", "ic"); s.setAttribute("aria-hidden", label ? "false" : "true"); if (label) s.setAttribute("aria-label", label); s.innerHTML = ICONS[name] || ""; return s; };
 
@@ -225,7 +227,7 @@
   const view = $("#view");
   const NAV = [["home", "Beranda", "home"], ["materi", "Materi", "book"], ["latihan", "Latihan", "pen"], ["simulasi", "Simulasi", "timer"], ["riwayat", "Riwayat", "chart"], ["pengaturan", "Pengaturan", "sliders"]];
   let current = "home", timerInt = null, drill = null, exam = null, jodohInt = null;
-  const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan, selingan: renderSelingan, jodoh: renderJodoh, kilat: renderKilat, kelompok: renderKelompok, urut: renderUrut };
+  const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan, selingan: renderSelingan, jodoh: renderJodoh, kilat: renderKilat, kelompok: renderKelompok, urut: renderUrut, tebak: renderTebak, detektif: renderDetektif };
   function renderNav() {
     const side = $("#sideNav"), tab = $("#tabbar"); side.innerHTML = ""; tab.innerHTML = "";
     NAV.forEach(([id, label, ic]) => {
@@ -412,9 +414,9 @@
   }
 
   // ---------- Selingan: mini game ----------
-  // Semua kartu dari tabel/bagan PPT kisi-kisi (js/jodoh.js, js/kelompok.js, js/urut.js).
+  // Semua kartu dari tabel/bagan PPT kisi-kisi (js/jodoh.js, js/kelompok.js, js/urut.js, js/tebak.js, js/detektif.js).
   // Catatan benar/keliru per kartu disimpan di state.jodoh; kartu yang keliru terakhir kali didahulukan di ronde berikutnya.
-  const JODOH = window.JODOH || [], KELOMPOK = window.KELOMPOK || [], URUT = window.URUT || [];
+  const JODOH = window.JODOH || [], KELOMPOK = window.KELOMPOK || [], URUT = window.URUT || [], TEBAK = window.TEBAK || [], DETEKTIF = window.DETEKTIF || [];
   const setInScope = x => state.settings.includeExt !== false || !x.ext;
   const gKey = (x, item) => x.id + "|" + item;
   const gStat = key => (state.jodoh || {})[key];
@@ -431,11 +433,15 @@
     { id: "kelompok", title: "Kelompokkan", icon: "bins", sets: () => KELOMPOK.filter(setInScope), keys: x => kItems(x).map(o => gKey(x, o.it)), count: x => `${kItems(x).length} kartu · ${x.bins.length} kelompok`, size: 8,
       desc: "Masukkan kartu ke kelompok yang tepat: hukuman ringan, sedang, atau berat; kapital benar atau salah; asas atau karakteristik.", how: "Baca kartu, lalu ketuk kelompoknya." },
     { id: "urut", title: "Urutkan", icon: "steps", sets: () => URUT.filter(setInScope), keys: x => x.items.map(it => gKey(x, it[0])), count: x => `${x.items.length} langkah`, size: 6,
-      desc: "Susun peristiwa dan tahapan ke urutan yang benar: Mei 1998, siklus kebijakan, bab UUD, PN 1 sampai 8.", how: "Ketuk kartu sesuai urutannya, mulai dari yang pertama." }
+      desc: "Susun peristiwa dan tahapan ke urutan yang benar: Mei 1998, siklus kebijakan, bab UUD, PN 1 sampai 8.", how: "Ketuk kartu sesuai urutannya, mulai dari yang pertama." },
+    { id: "tebak", title: "Tebak dari Petunjuk", icon: "quiz", sets: () => TEBAK.filter(setInScope), keys: x => x.items.map(it => gKey(x, it.a)), count: x => `${x.items.length} teka-teki`, size: 5,
+      desc: "Petunjuk dibuka satu per satu, dari yang paling sulit. Tebak presiden, pasal, tokoh, atau istilahnya secepat mungkin.", how: "Makin sedikit petunjuk yang dipakai, makin banyak bintang; tebakan keliru membuka petunjuk berikutnya." },
+    { id: "detektif", title: "Detektif Kisi-kisi", icon: "search", sets: () => DETEKTIF.filter(setInScope), keys: x => x.items.map(it => gKey(x, it.find(s => Array.isArray(s))[1])), count: x => `${x.items.length} paragraf`, size: 5,
+      desc: "Setiap paragraf menyelipkan satu kesalahan: angka, tanggal, nama, atau istilah yang tertukar. Temukan dan ketuk.", how: "Ketuk bagian yang salah; bagian yang benar akan ditandai aman." }
   ];
   const gameById = id => GAMES.find(g => g.id === id);
   const gMissed = (g, x) => g.keys(x).filter(k => gWeak(gStat(k))).length;
-  const SEL_ROUTES = ["selingan", "jodoh", "kilat", "kelompok", "urut"];
+  const SEL_ROUTES = ["selingan", "jodoh", "kilat", "kelompok", "urut", "tebak", "detektif"];
   let gameKey = null; // penangan keyboard milik game yang sedang tampil; dikosongkan setiap pindah halaman
   function selinganCard(compact) {
     const weak = GAMES.filter(g => g.sets).reduce((a, g) => a + g.sets().reduce((b, x) => b + gMissed(g, x), 0), 0);
@@ -444,7 +450,7 @@
       el("div", { class: "stack", style: "gap:4px;min-width:0" }, [
         el("span", { class: "eyebrow" }, [compact ? "Lagi jenuh?" : "Selingan"]),
         el("h2", null, ["Mini game kisi-kisi"]),
-        el("p", { class: "small muted" }, [(compact ? "Jodohkan, Benar atau Salah, Kelompokkan, Urutkan. Satu ronde sekitar satu menit." : "Empat mini game dari tabel dan bagan PPT kisi-kisi, satu ronde sekitar satu menit.") + (weak ? ` ${weak} kartu pernah keliru dan akan muncul lagi.` : "")])
+        el("p", { class: "small muted" }, [(compact ? "Jodohkan, Benar atau Salah, Kelompokkan, Urutkan, Tebak, Detektif. Satu ronde sekitar satu menit." : "Enam mini game dari tabel dan bagan PPT kisi-kisi, satu ronde sekitar satu menit.") + (weak ? ` ${weak} kartu pernah keliru dan akan muncul lagi.` : "")])
       ]),
       el("button", { class: "btn btn-primary", onclick: () => nav("selingan") }, [icon("play"), "Main"])
     ]);
@@ -840,6 +846,152 @@
       secEl.textContent = String(s);
       if (left <= 0 && !done) end();
     }, 100);
+  }
+
+  // Tebak dari Petunjuk: 5 teka-teki per ronde, 6 pilihan; bintang 3 bila tertebak dengan petunjuk pertama tanpa keliru.
+  // Setiap petunjuk tambahan (dibuka sendiri atau karena tebakan keliru) mengurangi satu bintang.
+  function renderTebak(arg) {
+    const x = arg && arg.set && TEBAK.find(j => j.id === arg.set);
+    return x ? tebakPlay(x) : setMenu(gameById("tebak"));
+  }
+  function tebakPlay(x) {
+    const g = gameById("tebak"), answers = x.items.map(it => it.a);
+    const qs = shuffle(x.items).sort((a, b) => gRank(gKey(x, a.a)) - gRank(gKey(x, b.a))).slice(0, g.size);
+    const clk = roundClock(), res = [];
+    let qi = 0, errors = 0, stars = 0, keys = null;
+    const prog = el("span", { class: "num" }, [`1/${qs.length}`]), starEl = el("span", { class: "num" }, ["0"]), errEl = el("span", { class: "num" }, ["0"]);
+    const box = el("section", { class: "panel jpanel stack", style: "gap:14px" });
+    function drawQ() {
+      const it = qs[qi], opts = shuffle([it.a].concat(shuffle(answers.filter(a => a !== it.a)).slice(0, 5)));
+      let shown = 1, penalty = 0, wrong = 0, solved = false;
+      const clues = el("ol", { class: "tclues", "aria-live": "polite" });
+      const addClue = k => clues.append(el("li", { class: "tclue" }, [it.c[k]]));
+      addClue(0);
+      const worth = el("span", { class: "tworth small" });
+      const more = el("button", { class: "btn btn-sm", onclick: () => { if (shown < it.c.length && !solved) { addClue(shown); shown++; penalty++; upd(); } } }, ["Buka petunjuk berikutnya"]);
+      const next = el("div", { class: "row" });
+      const btns = opts.map((a, k) => el("button", { class: "topt", onclick: e => guess(a, e.currentTarget) }, [el("span", { class: "kbin-n" }, [String(k + 1)]), el("span", null, [a])]));
+      const starsNow = () => Math.max(0, 3 - penalty);
+      function upd() {
+        more.disabled = solved || shown >= it.c.length;
+        worth.textContent = solved ? "" : `Petunjuk ${shown} dari ${it.c.length} · jika benar sekarang: ${"★".repeat(starsNow()) || "0 bintang"}`;
+      }
+      function guess(a, btn) {
+        if (solved || btn.disabled) return;
+        if (a !== it.a) {
+          wrong++; errors++; penalty++; errEl.textContent = String(errors);
+          btn.classList.add("bad"); btn.disabled = true;
+          if (shown < it.c.length) { addClue(shown); shown++; }
+          return upd();
+        }
+        solved = true; const s = starsNow(); stars += s; starEl.textContent = String(stars);
+        btn.classList.add("ok"); btns.forEach(b => { b.disabled = true; });
+        // setelah tertebak, tampilkan semua petunjuk sebagai ringkasan belajar
+        for (let k = shown; k < it.c.length; k++) clues.append(el("li", { class: "tclue rest" }, [it.c[k]]));
+        res.push({ it, s, wrong, shown });
+        upd();
+        const last = qi + 1 >= qs.length;
+        next.append(
+          el("span", { class: "small" }, [el("b", null, [s ? "★".repeat(s) : "0 bintang"]), ` ${it.a}`]),
+          el("button", { class: "btn btn-primary", style: "margin-left:auto", onclick: () => { if (last) return done(); qi++; prog.textContent = `${qi + 1}/${qs.length}`; drawQ(); } }, [last ? "Lihat hasil" : "Teka-teki berikutnya", icon("right")])
+        );
+        next.querySelector(".btn-primary").focus();
+      }
+      keys = e => {
+        const n = parseInt(e.key, 10);
+        if (!solved && n >= 1 && n <= btns.length) { guess(opts[n - 1], btns[n - 1]); return true; }
+        if (!solved && e.key.toLowerCase() === "p") { more.click(); return true; }
+        return false;
+      };
+      box.innerHTML = "";
+      box.append(el("p", { class: "small muted" }, [x.ask]), clues, el("div", { class: "row between" }, [worth, more]), el("div", { class: "topts" }, btns), next);
+      upd();
+    }
+    function done() {
+      finishRound(g, x, {
+        secs: clk.secs(), errors, full: qs.length === Math.min(g.size, x.items.length),
+        marks: res.map(r => [gKey(x, r.it.a), r.wrong > 0 || r.s < 2]),
+        wrong: res.filter(r => r.wrong > 0 || r.s < 2).map(r => [r.it.a, r.it.c[r.it.c.length - 1]]),
+        wrongTitle: "Perlu diulang", doneTitle: "Semua teka-teki terjawab",
+        extra: el("div", { class: "stack", style: "gap:8px" }, [
+          el("h2", null, [`${stars} dari ${qs.length * 3} bintang`]),
+          el("ul", { class: "jlist" }, res.map(r => el("li", null, [el("b", null, [r.it.a]), el("span", { "aria-hidden": "true" }, ["★".repeat(r.s) || "·"]), el("span", null, [r.it.c.join(" · ")])])))
+        ])
+      });
+    }
+    gameKey = e => keys ? keys(e) : false;
+    view.append(
+      playHead(g, x, [meterSpan("Teka-teki", prog), meterSpan("Bintang", starEl), meterSpan("Keliru", errEl)]),
+      box,
+      el("p", { class: "xs muted" }, ["Di keyboard: angka 1-6 memilih jawaban, P membuka petunjuk."])
+    );
+    drawQ();
+  }
+
+  // Detektif Kisi-kisi: 5 paragraf per ronde, masing-masing berisi tepat satu bagian yang salah
+  const dErr = it => it.find(s => Array.isArray(s));
+  const dFixed = it => it.map(s => Array.isArray(s) ? s[1] : s).join(" ");
+  function renderDetektif(arg) {
+    const x = arg && arg.set && DETEKTIF.find(j => j.id === arg.set);
+    return x ? detektifPlay(x) : setMenu(gameById("detektif"));
+  }
+  function detektifPlay(x) {
+    const g = gameById("detektif");
+    const qs = shuffle(x.items).sort((a, b) => gRank(gKey(x, dErr(a)[1])) - gRank(gKey(x, dErr(b)[1]))).slice(0, g.size);
+    const clk = roundClock(), res = [];
+    let qi = 0, errors = 0, nextBtn = null;
+    const prog = el("span", { class: "num" }, [`1/${qs.length}`]), errEl = el("span", { class: "num" }, ["0"]);
+    const box = el("section", { class: "panel jpanel stack", style: "gap:14px" });
+    function drawQ() {
+      const it = qs[qi], [bad, good] = dErr(it);
+      let wrong = 0, found = false;
+      const fb = el("div", { "aria-live": "polite" }), next = el("div", { class: "row" });
+      // span (bukan button) agar potongan mengalir seperti teks biasa; tetap bisa difokus dan diaktifkan dengan Enter/spasi
+      const segs = it.map(s => el("span", { class: "dseg", role: "button", tabindex: "0", onclick: e => tap(s, e.currentTarget),
+        onkeydown: e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); e.stopPropagation(); tap(s, e.currentTarget); } } }, [Array.isArray(s) ? s[0] : s]));
+      const errBtn = segs[it.indexOf(dErr(it))];
+      function tap(s, b) {
+        if (found || b.classList.contains("clear")) return;
+        if (Array.isArray(s)) return reveal(true);
+        wrong++; errors++; errEl.textContent = String(errors);
+        b.classList.add("clear"); b.setAttribute("aria-label", b.textContent + ", bagian ini benar");
+        fb.innerHTML = ""; fb.append(el("p", { class: "small muted" }, [wrong >= 2 ? "Bagian itu juga benar. Kesalahannya ditandai di atas." : "Bagian itu benar. Cari lagi."]));
+        if (wrong >= 2) reveal(false);
+      }
+      function reveal(byUser) {
+        found = true; segs.forEach(b => { b.classList.add("off"); b.removeAttribute("tabindex"); b.setAttribute("aria-disabled", "true"); });
+        errBtn.classList.add(byUser ? "hit" : "miss"); errBtn.innerHTML = "";
+        errBtn.append(el("s", null, [bad]), " ", el("ins", null, [good]));
+        res.push({ it, wrong, byUser });
+        if (byUser) { fb.innerHTML = ""; fb.append(el("p", { class: "small" }, [el("b", null, ["Ketemu. "]), `Seharusnya: ${good}`])); }
+        else fb.append(el("p", { class: "small" }, [el("b", null, ["Seharusnya: "]), good]));
+        const last = qi + 1 >= qs.length;
+        nextBtn = el("button", { class: "btn btn-primary", style: "margin-left:auto", onclick: () => { if (last) return done(); qi++; prog.textContent = `${qi + 1}/${qs.length}`; drawQ(); } }, [last ? "Lihat hasil" : "Paragraf berikutnya", icon("right")]);
+        next.append(nextBtn); nextBtn.focus();
+      }
+      nextBtn = null;
+      box.innerHTML = "";
+      box.append(el("p", { class: "small muted" }, ["Ada satu bagian yang salah. Ketuk bagian itu."]), el("p", { class: "dpara" }, segs.flatMap(b => [b, " "])), fb, next);
+    }
+    function done() {
+      finishRound(g, x, {
+        secs: clk.secs(), errors, full: qs.length === Math.min(g.size, x.items.length),
+        marks: res.map(r => [gKey(x, dErr(r.it)[1]), r.wrong > 0]),
+        wrong: res.filter(r => r.wrong > 0).map(r => [dErr(r.it)[0], dErr(r.it)[1]]),
+        wrongTitle: "Kesalahan yang terlewat", doneTitle: "Semua kesalahan ketemu",
+        extra: el("div", { class: "stack", style: "gap:8px" }, [
+          el("h2", null, ["Versi yang benar"]),
+          el("ul", { class: "jlist dfix" }, res.map(r => el("li", null, [el("span", null, r.it.map(s => Array.isArray(s) ? el("ins", null, [s[1]]) : s + " ").flatMap(n => typeof n === "string" ? [n] : [n, " "]))])))
+        ])
+      });
+    }
+    gameKey = e => { if ((e.key === "Enter" || e.key === " ") && nextBtn && document.activeElement !== nextBtn) { nextBtn.click(); return true; } return false; };
+    view.append(
+      playHead(g, x, [meterSpan("Paragraf", prog), meterSpan("Keliru", errEl), el("span", null, [icon("timer"), clk.node])]),
+      box,
+      el("p", { class: "xs muted" }, ["Kesalahan bisa berupa angka, tanggal, nama, atau istilah yang tertukar. Setelah dua kali keliru, kesalahannya ditunjukkan."])
+    );
+    drawQ();
   }
 
   // ---------- Latihan ----------

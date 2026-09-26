@@ -21,10 +21,12 @@ Fitur belajar: **Sesi Hari Ini** (soal salah diulang besok, benar sekali diulang
 ## Struktur
 - `js/bank/*.js` bank soal (id, soal, 4-5 opsi, kunci, pembahasan, rujukan halaman kisi-kisi BKN).
 - `js/materi.js` materi per topik + metadata komposisi (`TOPICS`, `TESTS`).
-- Menu **Selingan** (`#selingan`, dari Beranda/Latihan dan tombol jeda saat latihan): 4 mini game dari tabel/bagan PPT kisi-kisi. Catatan benar/keliru per kartu di `state.jodoh` dipakai bersama, kartu yang terakhir keliru didahulukan.
+- Menu **Selingan** (`#selingan`, dari Beranda/Latihan dan tombol jeda saat latihan): 6 mini game dari tabel/bagan PPT kisi-kisi. Catatan benar/keliru per kartu di `state.jodoh` dipakai bersama, kartu yang terakhir keliru didahulukan.
   - `js/jodoh.js` **Jodohkan** (46 set, 345 pasangan, 6 per ronde); sisi kanan dalam satu set harus unik. Juga sumber **Benar atau Salah** (60 detik, pernyataan salah = pasangan ditukar dalam set yang sama).
   - `js/kelompok.js` **Kelompokkan** (20 set, 246 kartu, 8 per ronde); satu kartu hanya di satu kelompok.
   - `js/urut.js` **Urutkan** (15 set, 103 kartu, maks. 6 per ronde); items sudah urut, teks kartu tidak boleh membocorkan urutan.
+  - `js/tebak.js` **Tebak dari Petunjuk** (8 set, 70 teka-teki, 5 per ronde, 6 pilihan); petunjuk urut dari tersulit, tidak boleh menyebut jawaban, minimal 6 jawaban per set.
+  - `js/detektif.js` **Detektif Kisi-kisi** (10 set, 68 paragraf, 5 per ronde); tepat satu bagian `[salah, benar]` per paragraf, bagian lain harus benar menurut PPT.
   - Set `ext: true` = pelengkap (disembunyikan bila soal pelengkap dimatikan).
 - `js/app.js` logika aplikasi; `css/style.css` tampilan (token warna terang/gelap).
 

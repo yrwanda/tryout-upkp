@@ -677,3 +677,50 @@ div.kfix { padding: 12px 14px; border-radius: 10px; background: var(--surface-2)
 }
 /* saat bermain, slot kosong selain slot berikutnya disembunyikan agar kartu tetap terlihat di layar HP */
 .ulist:not(.done) .uslot:not(.ok):not(.late):not(.next) { display: none; }
+
+/* ---------- Tebak dari Petunjuk ---------- */
+.tclues { margin: 0; padding-left: 1.4em; display: flex; flex-direction: column; gap: 8px; font-family: var(--font-read); font-size: 1rem; line-height: 1.4; }
+.tclue { padding: 10px 12px; border-radius: 10px; background: var(--surface-2); border-left: 4px solid var(--gold-line); }
+.tclue.rest { opacity: .72; border-left-color: var(--border); }
+.tclue::marker { font-family: var(--font-ui); font-weight: 800; color: var(--muted); }
+.tworth { color: var(--gold); font-weight: 700; }
+.topts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.topt {
+  display: flex; gap: 8px; align-items: center; min-height: 52px; padding: 8px 10px; text-align: left; border-radius: 10px;
+  background: var(--surface); border: 2px solid var(--border); font-weight: 700; font-size: .9rem; line-height: 1.25;
+  transition: border-color .18s var(--ease), background .18s var(--ease), transform .18s var(--ease);
+}
+.topt:hover:not(:disabled) { border-color: var(--primary); }
+.topt:active:not(:disabled) { transform: scale(.98); }
+.topt:disabled { cursor: default; }
+.topt.bad { border-color: var(--bad); background: var(--bad-soft); color: var(--bad); opacity: .75; text-decoration: line-through; }
+.topt.ok { border-color: var(--ok); background: var(--ok-soft); }
+
+/* ---------- Detektif Kisi-kisi ---------- */
+.dpara { margin: 0; font-family: var(--font-read); font-size: 1.06rem; line-height: 2.15; }
+.dseg {
+  display: inline; padding: 3px 4px; margin: 0; border: 0; border-radius: 6px; background: transparent; color: inherit; font: inherit; line-height: inherit;
+  text-align: left; box-decoration-break: clone; -webkit-box-decoration-break: clone;
+  border-bottom: 2px dashed color-mix(in srgb, var(--primary) 45%, transparent);
+  transition: background .18s var(--ease), color .18s var(--ease);
+}
+.dseg { cursor: pointer; }
+.dseg:hover:not(.off):not(.clear) { background: var(--primary-soft); }
+.dseg:focus-visible { outline: 3px solid var(--primary); outline-offset: 1px; }
+.dseg.off, .dseg.clear { cursor: default; }
+.dseg.clear { color: var(--muted); border-bottom-color: transparent; background: var(--surface-2); }
+.dseg.clear::after { content: " ✓"; color: var(--ok); font-size: .85em; }
+.dseg.hit, .dseg.miss { border-bottom-color: transparent; background: var(--ok-soft); }
+.dseg.miss { background: var(--warn-soft); }
+.dseg s { color: var(--bad); text-decoration-thickness: 2px; }
+.dseg ins, .dfix ins { color: var(--ok); font-weight: 700; text-decoration: none; }
+.dfix li { display: block; line-height: 1.5; }
+@media (max-width: 420px) {
+  .dpara { font-size: 1rem; line-height: 2.05; }
+  .topt { font-size: .86rem; min-height: 48px; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .tclue { animation: rise .25s var(--ease); }
+  .topt.bad { animation: jshake .42s var(--ease); }
+  .dseg.hit, .dseg.miss { animation: jpop .3s var(--ease); }
+}
