@@ -21,6 +21,7 @@ Fitur belajar: **Sesi Hari Ini** (soal salah diulang besok, benar sekali diulang
 ## Struktur
 - `js/bank/*.js` bank soal (id, soal, 4-5 opsi, kunci, pembahasan, rujukan halaman kisi-kisi BKN).
 - `js/materi.js` materi per topik + metadata komposisi (`TOPICS`, `TESTS`).
+- `js/jodoh.js` data mini game **Jodohkan** (selingan di menu Latihan/Beranda, juga tombol jeda saat latihan): 27 set, 193 pasangan dari tabel/bagan PPT kisi-kisi dengan halaman rujukan; set `ext: true` = pelengkap. Sisi kanan dalam satu set harus unik. 6 pasangan per ronde, yang pernah keliru didahulukan.
 - `js/app.js` logika aplikasi; `css/style.css` tampilan (token warna terang/gelap).
 
 ## Menambah soal

@@ -50,7 +50,9 @@
     flame: '<path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3.3.3 1.3 1.2 2.3 2.5 2.8Z"/>',
     target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>',
     alert: '<circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/>',
-    calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>'
+    calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+    pair: '<rect x="2" y="5" width="8" height="14" rx="2"/><rect x="14" y="5" width="8" height="14" rx="2"/><path d="M10 12h4"/>',
+    shuffle: '<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>'
   };
   const icon = (name, label) => { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("class", "ic"); s.setAttribute("aria-hidden", label ? "false" : "true"); if (label) s.setAttribute("aria-label", label); s.innerHTML = ICONS[name] || ""; return s; };
 
@@ -219,12 +221,12 @@
   // ---------- Navigasi ----------
   const view = $("#view");
   const NAV = [["home", "Beranda", "home"], ["materi", "Materi", "book"], ["latihan", "Latihan", "pen"], ["simulasi", "Simulasi", "timer"], ["riwayat", "Riwayat", "chart"], ["pengaturan", "Pengaturan", "sliders"]];
-  let current = "home", timerInt = null, drill = null, exam = null;
-  const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan };
+  let current = "home", timerInt = null, drill = null, exam = null, jodohInt = null;
+  const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan, jodoh: renderJodoh };
   function renderNav() {
     const side = $("#sideNav"), tab = $("#tabbar"); side.innerHTML = ""; tab.innerHTML = "";
     NAV.forEach(([id, label, ic]) => {
-      const cur = id === current ? "page" : null;
+      const cur = id === current || (id === "latihan" && current === "jodoh") ? "page" : null;
       side.appendChild(el("button", { "aria-current": cur, onclick: () => nav(id) }, [icon(ic), label]));
       if (id !== "pengaturan") tab.appendChild(el("button", { "aria-current": cur, onclick: () => nav(id) }, [icon(ic), label]));
     });
@@ -241,10 +243,11 @@
   function daysLeft() { if (!state.settings.examDate) return null; return Math.round((new Date(state.settings.examDate + "T00:00:00") - new Date(dayKey() + "T00:00:00")) / 86400000); }
   function nav(name, arg) {
     if (exam && !exam.finished && name !== "simulasi") return confirmBox("Tinggalkan simulasi?", "Simulasi tetap berjalan dan tersimpan. Kembali lewat menu Simulasi sebelum waktu habis.", "Tinggalkan", () => go(name, arg));
-    if (drill && drill.active && name !== "latihan") drill.active = false;
+    if (drill && drill.active && name !== "latihan" && name !== "jodoh") drill.active = false;
     go(name, arg);
   }
   function go(name, arg) {
+    clearInterval(jodohInt); jodohInt = null;
     current = name; view.innerHTML = ""; renderNav();
     routes[name](arg);
     if (location.hash.slice(1) !== name) { try { history.replaceState(null, "", "#" + name); } catch (e) { } }
@@ -307,6 +310,7 @@
       el("div", { class: "stat" }, [el("b", null, [`${streak()} hari`]), el("span", null, ["Belajar beruntun"])]),
       el("div", { class: "stat" }, [el("b", null, [best < 0 ? "-" : `${best}`]), el("span", null, [best < 0 ? "Belum ada simulasi" : "Skor simulasi terbaik /500"])])
     ]));
+    view.append(jodohCard(true));
     // rekomendasi: topik inti dengan akurasi terendah (min. 5 jawaban) atau cakupan terendah
     const cand = CORE.map(t => ({ t, s: topicStat(t.id) }));
     const weak = cand.filter(x => x.s.acc !== null && x.s.done >= 5 && x.s.acc < .75).sort((a, b) => a.s.acc - b.s.acc)[0];
@@ -404,6 +408,151 @@
     view.append(el("div", { class: "materi" }, [toc, art]));
   }
 
+  // ---------- Jodohkan (selingan) ----------
+  // Pasangan dari tabel/bagan PPT kisi-kisi. 6 pasangan per ronde, pasangan yang sering keliru diprioritaskan.
+  const JODOH = window.JODOH || [];
+  const jSets = () => JODOH.filter(x => state.settings.includeExt !== false || !x.ext);
+  const jKey = (x, pr) => x.id + "|" + pr[0];
+  const jStat = (x, pr) => (state.jodoh || {})[jKey(x, pr)];
+  const jWeak = st => !!st && st.w > 0 && st.lastW;
+  const jMissed = x => x.pairs.filter(pr => jWeak(jStat(x, pr))).length;
+  const jRound = { size: 6 };
+  function jodohCard(compact) {
+    const sets = jSets(), weak = sets.reduce((a, x) => a + jMissed(x), 0);
+    return el("section", { class: "panel jodoh-card" }, [
+      el("div", { class: "jc-art", "aria-hidden": "true" }, [el("i"), el("i"), el("i")]),
+      el("div", { class: "stack", style: "gap:4px;min-width:0" }, [
+        el("span", { class: "eyebrow" }, [compact ? "Lagi jenuh?" : "Selingan"]),
+        el("h2", null, ["Jodohkan"]),
+        el("p", { class: "small muted" }, [compact ? "Satu ronde sekitar satu menit: pasangkan lambang, pasal, tokoh, dan istilah dari tabel kisi-kisi." : `Ketuk kiri lalu pasangannya di kanan. ${sets.length} set dari tabel dan bagan PPT kisi-kisi, 6 pasangan per ronde.` + (weak ? ` ${weak} pasangan pernah keliru dan akan muncul lagi.` : "")])
+      ]),
+      el("button", { class: "btn btn-primary", onclick: () => nav("jodoh") }, [icon("pair"), "Main"])
+    ]);
+  }
+  function renderJodoh(arg) {
+    const x = arg && arg.set && JODOH.find(j => j.id === arg.set);
+    return x ? jodohPlay(x) : jodohMenu();
+  }
+  const resumeBtn = () => drill && drill.active && drill.i < drill.qs.length
+    ? el("button", { class: "btn btn-primary", onclick: () => go("latihan") }, [icon("play"), `Lanjut latihan (soal ${drill.i + 1}/${drill.qs.length})`]) : null;
+  function jodohMenu() {
+    const sets = jSets();
+    // set acak: utamakan yang punya pasangan keliru, lalu yang belum pernah dimainkan
+    const pickRandom = () => { const w = sets.filter(jMissed); const fresh = sets.filter(x => !(state.jodohBest || {})[x.id]); return shuffle(w.length ? w : fresh.length ? fresh : sets)[0]; };
+    view.append(
+      el("div", { class: "stack", style: "gap:6px" }, [
+        el("span", { class: "eyebrow" }, ["Selingan"]),
+        el("h1", null, ["Jodohkan"]),
+        el("p", { class: "muted" }, ["Ketuk satu kartu di kiri, lalu pasangannya di kanan. Tidak ada skor, hanya waktu dan jumlah keliru. Semua pasangan diambil dari tabel dan bagan PPT kisi-kisi BKN."])
+      ]),
+      el("div", { class: "row" }, [resumeBtn(), el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go("jodoh", { set: pickRandom().id }) }, [icon("shuffle"), "Set acak"])])
+    );
+    const groups = {}; sets.forEach(x => { const t = topicById(x.topic); (groups[t.test] = groups[t.test] || []).push(x); });
+    TEST_ORDER.concat(Object.keys(groups).filter(k => !TEST_ORDER.includes(k))).filter(k => groups[k]).forEach(k => {
+      const T = TESTS[k];
+      view.append(el("div", { class: "test-group" }, [
+        el("div", { class: "test-head tc" + T.color }, [el("span", { class: "swatch" }), el("h3", null, [T.label])]),
+        el("div", { class: "jset-grid" }, groups[k].map(x => {
+          const t = topicById(x.topic), best = (state.jodohBest || {})[x.id], miss = jMissed(x);
+          return el("button", { class: "jset " + tcOf(t), onclick: () => go("jodoh", { set: x.id }) }, [
+            el("span", { class: "jset-top" }, [el("span", { class: "mono" }, [MONO[t.id]]), el("span", { class: "jset-t" }, [x.title])]),
+            el("span", { class: "xs muted" }, [`${x.pairs.length} pasangan · kisi-kisi hal. ${x.pages}`]),
+            el("span", { class: "row", style: "gap:6px" }, [
+              x.ext ? el("span", { class: "chip chip-warn" }, ["Pelengkap"]) : null,
+              miss ? el("span", { class: "chip chip-bad" }, [`${miss} pernah keliru`]) : null,
+              best ? el("span", { class: "chip num" }, [icon("award"), `${fmtTime(best.time)} · ${best.err} keliru`]) : el("span", { class: "xs faint" }, ["Belum dimainkan"])
+            ])
+          ]);
+        }))
+      ]));
+    });
+  }
+  function jodohPlay(x) {
+    const t = topicById(x.topic);
+    // prioritas: pernah keliru, belum pernah muncul, sisanya acak
+    const rank = pr => { const st = jStat(x, pr); return jWeak(st) ? 0 : !st ? 1 : 2; };
+    const pairs = shuffle(x.pairs).sort((a, b) => rank(a) - rank(b)).slice(0, jRound.size);
+    const L2 = shuffle(pairs.map((_, i) => i)), R2 = shuffle(pairs.map((_, i) => i));
+    const done = new Set(), missed = new Set(), t0 = Date.now();
+    let sel = null, errors = 0, busy = false;
+    const clock = el("span", { class: "num" }, ["00:00"]), errEl = el("span", { class: "num" }, ["0"]), prog = el("span", { class: "num" }, [`0/${pairs.length}`]);
+    const live = el("div", { class: "sr-only", "aria-live": "polite" });
+    const card = (side, i) => el("button", { class: "jcard" + (side === "R" ? " r" : ""), "data-side": side, "data-i": i, "aria-pressed": "false", onclick: e => tap(side, i, e.currentTarget) }, [el("span", null, [pairs[i][side === "L" ? 0 : 1]])]);
+    const colL = el("div", { class: "jcol", role: "group", "aria-label": x.left }, L2.map(i => card("L", i)));
+    const colR = el("div", { class: "jcol", role: "group", "aria-label": x.right }, R2.map(i => card("R", i)));
+    const board = el("div", { class: "jboard" }, [el("div", { class: "jhead" }, [x.left]), el("div", { class: "jhead" }, [x.right]), colL, colR]);
+    const clear = () => { board.querySelectorAll(".jcard[aria-pressed=true]").forEach(b => b.setAttribute("aria-pressed", "false")); sel = null; };
+    function tap(side, i, btn) {
+      if (busy || done.has(i) && btn.disabled) return;
+      if (sel && sel.btn === btn) return clear();
+      if (!sel || sel.side === side) { clear(); sel = { side, i, btn }; btn.setAttribute("aria-pressed", "true"); return; }
+      const a = sel, li = side === "L" ? i : a.i;
+      if (a.i === i) {
+        done.add(i); [a.btn, btn].forEach(b => { b.setAttribute("aria-pressed", "false"); b.classList.add("ok"); b.disabled = true; b.prepend(el("span", { class: "jnum" }, [String(done.size)])); });
+        sel = null; prog.textContent = `${done.size}/${pairs.length}`; live.textContent = `Cocok: ${pairs[i][0]} dengan ${pairs[i][1]}.`;
+        if (done.size === pairs.length) finish();
+      } else {
+        errors++; errEl.textContent = String(errors); missed.add(li);
+        live.textContent = "Belum cocok, coba lagi.";
+        busy = true; [a.btn, btn].forEach(b => b.classList.add("bad"));
+        setTimeout(() => { [a.btn, btn].forEach(b => b.classList.remove("bad")); clear(); busy = false; }, 520);
+      }
+    }
+    const tick = () => { clock.textContent = fmtTime(Math.round((Date.now() - t0) / 1000)); };
+    function finish() {
+      clearInterval(jodohInt); jodohInt = null;
+      const secs = Math.max(1, Math.round((Date.now() - t0) / 1000)), k = dayKey();
+      state.jodoh = state.jodoh || {}; state.jodohBest = state.jodohBest || {};
+      pairs.forEach((pr, i) => { const key = jKey(x, pr), st = state.jodoh[key] || { r: 0, w: 0 }; missed.has(i) ? st.w++ : st.r++; st.lastW = missed.has(i); st.t = Date.now(); state.jodoh[key] = st; });
+      const prev = state.jodohBest[x.id], full = pairs.length === Math.min(jRound.size, x.pairs.length);
+      const record = full && (!prev || errors < prev.err || (errors === prev.err && secs < prev.time));
+      if (record) state.jodohBest[x.id] = { time: secs, err: errors };
+      state.days[k] = (state.days[k] || 0) + 1; save();
+      setTimeout(() => jodohResult(x, pairs, missed, secs, errors, record, prev), 450);
+    }
+    view.append(
+      el("div", { class: "stack", style: "gap:10px" }, [
+        el("div", { class: "row between" }, [
+          el("button", { class: "btn btn-ghost btn-sm", style: "padding-left:0", onclick: () => go("jodoh") }, [icon("left"), "Pilih set"]),
+          el("div", { class: "jmeter small muted" }, [el("span", null, ["Cocok ", prog]), el("span", null, ["Keliru ", errEl]), el("span", null, [icon("timer"), clock])])
+        ]),
+        el("div", { class: "row", style: "gap:6px" }, [testChip(t), el("span", { class: "chip chip-page" }, [`Kisi-kisi hal. ${x.pages}`]), x.ext ? el("span", { class: "chip chip-warn" }, ["Pelengkap, di luar isi kisi-kisi"]) : null]),
+        el("h1", null, [x.title])
+      ]),
+      el("section", { class: "panel jpanel" }, [board, live]),
+      el("p", { class: "xs muted" }, ["Ketuk kartu kiri, lalu pasangannya di kanan (urutan sebaliknya juga bisa)."])
+    );
+    jodohInt = setInterval(tick, 1000);
+  }
+  function jodohResult(x, pairs, missed, secs, errors, record, prev) {
+    view.innerHTML = "";
+    const sets = jSets(), next = shuffle(sets.filter(s => s.id !== x.id && s.topic !== x.topic))[0] || shuffle(sets.filter(s => s.id !== x.id))[0];
+    const wrong = pairs.filter((_, i) => missed.has(i));
+    view.append(
+      el("section", { class: "panel lift stack", style: "gap:18px" }, [
+        el("div", { class: "row", style: "gap:14px;flex-wrap:nowrap" }, [el("span", { class: "done-badge", "aria-hidden": "true" }, [icon(errors ? "pair" : "check")]), el("div", null, [el("span", { class: "eyebrow" }, [x.title]), el("h1", { style: "margin-top:4px" }, [errors ? "Semua pasangan ketemu" : "Sempurna, tanpa keliru"])])]),
+        el("div", { class: "stats", style: "grid-template-columns:repeat(3,minmax(0,1fr))" }, [
+          el("div", { class: "stat" }, [el("b", { class: "num" }, [fmtTime(secs)]), el("span", null, ["waktu"])]),
+          el("div", { class: "stat" }, [el("b", { class: "num" }, [String(errors)]), el("span", null, ["kali keliru"])]),
+          el("div", { class: "stat" }, record ? [el("b", null, [prev ? "Rekor baru" : "Tercatat"]), el("span", null, [prev ? `sebelumnya ${fmtTime(prev.time)}, ${prev.err} keliru` : "rekor pertama set ini"])]
+            : prev ? [el("b", { class: "num" }, [fmtTime(prev.time)]), el("span", null, [`rekor set ini (${prev.err} keliru)`])] : [el("b", null, ["-"]), el("span", null, ["rekor"])])
+        ]),
+        wrong.length ? el("div", { class: "stack", style: "gap:8px" }, [
+          el("h2", null, ["Pasangan yang tadi keliru"]),
+          el("p", { class: "small muted" }, ["Pasangan ini akan didahulukan di ronde berikutnya."]),
+          el("ul", { class: "jlist" }, wrong.map(pr => el("li", null, [el("b", null, [pr[0]]), el("span", { "aria-hidden": "true" }, ["→"]), el("span", null, [pr[1]])])))
+        ]) : el("p", { class: "small muted" }, [`Rujukan: PPT kisi-kisi BKN hal. ${x.pages}.`]),
+        el("div", { class: "row" }, [
+          resumeBtn(),
+          el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go("jodoh", { set: x.id }) }, [icon("shuffle"), "Main lagi"]),
+          next ? el("button", { class: "btn", onclick: () => go("jodoh", { set: next.id }) }, [`Set lain: ${next.title}`]) : null,
+          el("button", { class: "btn btn-ghost", onclick: () => go("jodoh") }, ["Semua set"])
+        ])
+      ])
+    );
+    const f = view.querySelector(".btn-primary"); if (f) f.focus();
+  }
+
   // ---------- Latihan ----------
   let pickSel = new Set(), pickCount = 20, pickOrder = "unseen", pickSrc = "all";
   function pickFrom(tids, n, order, src) {
@@ -450,6 +599,7 @@
         el("div", { class: "stack", style: "gap:6px" }, [el("span", { class: "stamp", style: "align-self:flex-start" }, [icon("award"), "Resmi BKN 2025"]), el("h2", null, ["50 soal latihan resmi, urutan asli"]), el("p", { class: "small muted" }, ["Dari Google Form BKN yang ditautkan di PPT kisi-kisi hal. 172. Form tidak memuat kunci; kunci dan pembahasan disusun aplikasi dengan rujukan halaman kisi-kisi."])]),
         el("button", { class: "btn btn-primary", onclick: () => startDrill(formSet(), "50 soal resmi BKN 2025") }, [icon("play"), "Kerjakan"])
       ]),
+      jodohCard(),
       el("section", { class: "panel stack", style: "gap:20px" }, [
         el("div", { class: "sec-head" }, [el("h2", null, ["Susun latihan sendiri"]), el("div", { class: "row", style: "gap:4px" }, [el("button", { class: "btn btn-sm btn-ghost", onclick: () => selAll(true) }, ["Pilih semua"]), el("button", { class: "btn btn-sm btn-ghost", onclick: () => selAll(false) }, ["Kosongkan"])])]),
         picker,
@@ -471,7 +621,8 @@
       el("button", { class: "btn btn-ghost icon-btn", "aria-label": "Hentikan latihan", onclick: () => confirmBox("Hentikan latihan?", "Jawaban yang sudah masuk tetap tercatat di statistik.", "Hentikan", () => { drill.i = drill.qs.length; renderDrillSummary(); }) }, [icon("x")]),
       el("div", { class: "q-progress", role: "progressbar", "aria-valuenow": drill.i + 1, "aria-valuemax": drill.qs.length }, [el("i", { style: `width:${pct(drill.i + (answered ? 1 : 0), drill.qs.length)}%` })]),
       el("span", { class: "small num muted" }, [`${drill.i + 1}/${drill.qs.length}`]),
-      el("span", { class: "chip chip-ok num" }, [icon("check"), `${drill.correct}`])
+      el("span", { class: "chip chip-ok num" }, [icon("check"), `${drill.correct}`]),
+      el("button", { class: "btn btn-ghost icon-btn", "aria-label": "Jeda: main Jodohkan sebentar", title: "Jeda: main Jodohkan sebentar", onclick: () => nav("jodoh") }, [icon("pair")])
     ]);
     const opts = el("div", { class: "options", role: "group", "aria-label": "Pilihan jawaban" });
     const fb = el("div");
