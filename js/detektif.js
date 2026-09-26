@@ -3,10 +3,10 @@
 window.DETEKTIF = [
   { id: "d-pancasila", topic: "pancasila", title: "Pancasila", pages: "21-33", items: [
     ["Istilah Pancasila", "pertama kali disampaikan", ["Mohammad Hatta", "Ir. Soekarno"], "pada sidang BPUPKI", "1 Juni 1945."],
-    ["Pancasila disahkan oleh", ["BPUPKI", "PPKI"], "pada 18 Agustus 1945,", "sehingga disebut", "perjanjian luhur bangsa."],
+    ["Pada 18 Agustus 1945,", ["BPUPKI,", "PPKI,"], "badan tempat wakil-wakil rakyat,", "mengesahkan UUD 1945 yang berdasar Pancasila,", "sehingga Pancasila disebut perjanjian luhur."],
     ["Dalam kitab Sutasoma", "karangan", ["Mpu Prapanca,", "Mpu Tantular,"], "Pancasila berarti", "pelaksanaan kesusilaan yang lima."],
     ["Pada lambang Garuda,", "bintang melambangkan sila pertama,", ["kepala banteng melambangkan sila kedua,", "rantai melambangkan sila kedua,"], "dan padi-kapas", "melambangkan sila kelima."],
-    ["Pancasila sebagai jiwa bangsa", "disebut juga", ["Weltanschauung,", "Volksgeist,"], "agar Indonesia tetap hidup", "dalam jiwa Pancasila."],
+    ["Jiwa setiap bangsa", "disebut", ["Weltanschauung.", "Volksgeist."], "Pancasila sebagai jiwa bangsa berfungsi", "agar Indonesia tetap hidup dalam jiwa Pancasila."],
     ["Setiap sila Pancasila adalah", ["nilai instrumental,", "nilai dasar,"], "sedangkan hukum yang berlaku", "adalah penjabarannya."]] },
   { id: "d-uud", topic: "uud", title: "UUD 1945", pages: "41-57", items: [
     ["Panitia Sembilan", "merumuskan Piagam Jakarta", "pada", ["17 Agustus 1945", "22 Juni 1945"], "sebagai rancangan pembukaan hukum dasar."],
@@ -27,7 +27,7 @@ window.DETEKTIF = [
     ["Kabinet pertama Presiden Joko Widodo", "(2014-2019)", "bernama", ["Kabinet Indonesia Maju.", "Kabinet Kerja."]]] },
   { id: "d-bindo", topic: "bindo", title: "Bahasa Indonesia", pages: "72-90", items: [
     ["Konjungsi yang ditulis di awal kalimat", ["dan didahului koma", "dan diikuti koma"], "disebut konjungsi antarkalimat,", "misalnya Namun dan Oleh karena itu."],
-    ["Konjungsi bahwa, karena, dan sehingga", ["didahului tanda koma,", "ditulis tanpa tanda koma,"], "sedangkan melainkan dan yaitu", "didahului tanda koma."],
+    ["Konjungsi bahwa, karena, dan sehingga", ["didahului tanda koma,", "ditulis tanpa tanda koma,"], "adapun konjungsi melainkan dan yaitu", "didahului tanda koma."],
     ["Paragraf yang kalimat utamanya", "terletak di akhir paragraf", "disebut paragraf", ["deduktif.", "induktif."]],
     ["EYD mencantumkan", ["12 tanda baca", "15 tanda baca"], "yang dibagi menjadi lima kelompok:", "penutup, penjeda, pembatas,", "pengapit, dan penyingkat."],
     ["Kata baku sesuai kaidah dan KBBI,", "misalnya apotek, ajek,", ["analisa,", "analisis,"], "antre, dan asas."],
@@ -38,8 +38,8 @@ window.DETEKTIF = [
     ["PNS diangkat", ["berdasarkan perjanjian kerja", "secara tetap"], "oleh pejabat pembina kepegawaian", "untuk menduduki jabatan pemerintahan."],
     ["Hukuman disiplin sedang", "berupa pemotongan tunjangan kinerja", ["50%", "25%"], "selama 6, 9, atau 12 bulan."],
     ["Cuti besar", "dapat diambil setelah bekerja 5 tahun,", ["paling lama 1 tahun.", "paling lama 3 bulan."]],
-    ["Cuti tahunan PNS", "diajukan secara tertulis kepada PPK", "dengan hak", ["14 hari kerja.", "12 hari kerja."]],
-    ["KORPRI dibentuk dengan", ["Keppres 24/1971", "Keppres 82/1971"], "pada 29 November 1971", "sebagai satu-satunya wadah", "pegawai RI di luar kedinasan."],
+    ["Cuti tahunan PNS", "diajukan secara tertulis kepada PPK", "dengan hak", ["14 hari.", "12 hari."]],
+    ["Menurut", ["Keppres 24/1971", "Keppres 82/1971"], "(29 November 1971),", "KORPRI merupakan satu-satunya wadah", "untuk menghimpun dan membina seluruh pegawai RI di luar kedinasan."],
     ["Doktrin KORPRI adalah", ["Panca Prasetya KORPRI,", "Bhinneka Karya Abdi Negara,"], "artinya tugas dan karya beraneka ragam", "tetap bersatu dalam pengabdian."],
     ["Pohon pada lambang KORPRI memiliki", ["17 ranting, 8 dahan, dan 17 daun", "17 ranting, 8 dahan, dan 45 daun"], "yang melambangkan perjuangan", "sejak proklamasi 17 Agustus 1945."],
     ["Masa jabatan Dewan Pengurus KORPRI", "adalah", ["3 tahun,", "5 tahun,"], "dipilih secara musyawarah,", "dan bersifat kolektif."],
@@ -65,7 +65,7 @@ window.DETEKTIF = [
     ["PN 6 RPJMN 2025-2029 adalah", ["hilirisasi dan industri berbasis SDA,", "membangun dari desa dan dari bawah,"], "antara lain untuk mengurangi kemiskinan."],
     ["Kontribusi PDB maritim", "hanya mencapai", ["17,93%", "7,93%"], "pada 2022."]] },
   { id: "d-manajemen", topic: "manajemen", title: "Manajemen dan kepemimpinan", pages: "154-164", items: [
-    ["George R. Terry", "merumuskan fungsi manajemen", ["POCCC:", "POAC:"], "planning, organizing,", "actuating, controlling."],
+    ["Menurut George R. Terry,", "manajemen adalah proses", "perencanaan, pengorganisasian,", ["pengarahan, serta koordinasi", "penggerakan, serta pengawasan"], "guna mencapai tujuan yang sudah diputuskan."],
     ["Gaya kepemimpinan", ["demokratik", "otokratik"], "bercirikan sentralisasi wewenang,", "sedangkan laissez faire", "bercirikan kendali bebas."],
     ["Teori kepemimpinan", ["situasional", "trait"], "menyatakan pemimpin dilahirkan", "dengan sifat-sifat tertentu."],
     ["Pada bagan McKinsey 7S,", ["strategy", "shared vision"], "berada di tengah", "sebagai nilai-nilai organisasi."],
