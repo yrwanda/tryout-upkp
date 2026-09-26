@@ -52,7 +52,10 @@
     alert: '<circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/>',
     calendar: '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
     pair: '<rect x="2" y="5" width="8" height="14" rx="2"/><rect x="14" y="5" width="8" height="14" rx="2"/><path d="M10 12h4"/>',
-    shuffle: '<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>'
+    shuffle: '<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',
+    bolt: '<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+    bins: '<rect x="3" y="3" width="18" height="7" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/><rect x="13" y="14" width="8" height="7" rx="1.5"/>',
+    steps: '<path d="M10 6h11M10 12h11M10 18h11"/><path d="M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/>'
   };
   const icon = (name, label) => { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("class", "ic"); s.setAttribute("aria-hidden", label ? "false" : "true"); if (label) s.setAttribute("aria-label", label); s.innerHTML = ICONS[name] || ""; return s; };
 
@@ -222,11 +225,11 @@
   const view = $("#view");
   const NAV = [["home", "Beranda", "home"], ["materi", "Materi", "book"], ["latihan", "Latihan", "pen"], ["simulasi", "Simulasi", "timer"], ["riwayat", "Riwayat", "chart"], ["pengaturan", "Pengaturan", "sliders"]];
   let current = "home", timerInt = null, drill = null, exam = null, jodohInt = null;
-  const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan, jodoh: renderJodoh };
+  const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan, selingan: renderSelingan, jodoh: renderJodoh, kilat: renderKilat, kelompok: renderKelompok, urut: renderUrut };
   function renderNav() {
     const side = $("#sideNav"), tab = $("#tabbar"); side.innerHTML = ""; tab.innerHTML = "";
     NAV.forEach(([id, label, ic]) => {
-      const cur = id === current || (id === "latihan" && current === "jodoh") ? "page" : null;
+      const cur = id === current || (id === "latihan" && SEL_ROUTES.includes(current)) ? "page" : null;
       side.appendChild(el("button", { "aria-current": cur, onclick: () => nav(id) }, [icon(ic), label]));
       if (id !== "pengaturan") tab.appendChild(el("button", { "aria-current": cur, onclick: () => nav(id) }, [icon(ic), label]));
     });
@@ -243,11 +246,11 @@
   function daysLeft() { if (!state.settings.examDate) return null; return Math.round((new Date(state.settings.examDate + "T00:00:00") - new Date(dayKey() + "T00:00:00")) / 86400000); }
   function nav(name, arg) {
     if (exam && !exam.finished && name !== "simulasi") return confirmBox("Tinggalkan simulasi?", "Simulasi tetap berjalan dan tersimpan. Kembali lewat menu Simulasi sebelum waktu habis.", "Tinggalkan", () => go(name, arg));
-    if (drill && drill.active && name !== "latihan" && name !== "jodoh") drill.active = false;
+    if (drill && drill.active && name !== "latihan" && !SEL_ROUTES.includes(name)) drill.active = false;
     go(name, arg);
   }
   function go(name, arg) {
-    clearInterval(jodohInt); jodohInt = null;
+    clearInterval(jodohInt); jodohInt = null; gameKey = null;
     current = name; view.innerHTML = ""; renderNav();
     routes[name](arg);
     if (location.hash.slice(1) !== name) { try { history.replaceState(null, "", "#" + name); } catch (e) { } }
@@ -310,7 +313,7 @@
       el("div", { class: "stat" }, [el("b", null, [`${streak()} hari`]), el("span", null, ["Belajar beruntun"])]),
       el("div", { class: "stat" }, [el("b", null, [best < 0 ? "-" : `${best}`]), el("span", null, [best < 0 ? "Belum ada simulasi" : "Skor simulasi terbaik /500"])])
     ]));
-    view.append(jodohCard(true));
+    view.append(selinganCard(true));
     // rekomendasi: topik inti dengan akurasi terendah (min. 5 jawaban) atau cakupan terendah
     const cand = CORE.map(t => ({ t, s: topicStat(t.id) }));
     const weak = cand.filter(x => x.s.acc !== null && x.s.done >= 5 && x.s.acc < .75).sort((a, b) => a.s.acc - b.s.acc)[0];
@@ -408,44 +411,77 @@
     view.append(el("div", { class: "materi" }, [toc, art]));
   }
 
-  // ---------- Jodohkan (selingan) ----------
-  // Pasangan dari tabel/bagan PPT kisi-kisi. 6 pasangan per ronde, pasangan yang sering keliru diprioritaskan.
-  const JODOH = window.JODOH || [];
-  const jSets = () => JODOH.filter(x => state.settings.includeExt !== false || !x.ext);
-  const jKey = (x, pr) => x.id + "|" + pr[0];
-  const jStat = (x, pr) => (state.jodoh || {})[jKey(x, pr)];
-  const jWeak = st => !!st && st.w > 0 && st.lastW;
-  const jMissed = x => x.pairs.filter(pr => jWeak(jStat(x, pr))).length;
-  const jRound = { size: 6 };
-  function jodohCard(compact) {
-    const sets = jSets(), weak = sets.reduce((a, x) => a + jMissed(x), 0);
+  // ---------- Selingan: mini game ----------
+  // Semua kartu dari tabel/bagan PPT kisi-kisi (js/jodoh.js, js/kelompok.js, js/urut.js).
+  // Catatan benar/keliru per kartu disimpan di state.jodoh; kartu yang keliru terakhir kali didahulukan di ronde berikutnya.
+  const JODOH = window.JODOH || [], KELOMPOK = window.KELOMPOK || [], URUT = window.URUT || [];
+  const setInScope = x => state.settings.includeExt !== false || !x.ext;
+  const gKey = (x, item) => x.id + "|" + item;
+  const gStat = key => (state.jodoh || {})[key];
+  const gWeak = st => !!st && st.w > 0 && st.lastW;
+  // prioritas: pernah keliru, belum pernah muncul, sisanya acak
+  const gRank = key => { const st = gStat(key); return gWeak(st) ? 0 : !st ? 1 : 2; };
+  function gRecord(key, wrong) { state.jodoh = state.jodoh || {}; const st = state.jodoh[key] || { r: 0, w: 0 }; wrong ? st.w++ : st.r++; st.lastW = !!wrong; st.t = Date.now(); state.jodoh[key] = st; }
+  const kItems = x => x.bins.flatMap((b, bi) => b.items.map(it => ({ it, bi })));
+  const GAMES = [
+    { id: "jodoh", title: "Jodohkan", icon: "pair", sets: () => JODOH.filter(setInScope), keys: x => x.pairs.map(p => gKey(x, p[0])), count: x => `${x.pairs.length} pasangan`, size: 6,
+      desc: "Pasangkan kartu kiri dengan kanan: lambang dan sila, pasal dan isinya, tokoh dan teorinya.", how: "Ketuk satu kartu di kiri, lalu pasangannya di kanan." },
+    { id: "kilat", title: "Benar atau Salah", icon: "bolt",
+      desc: "60 detik. Pernyataan muncul satu per satu; putuskan benar atau salah secepatnya." },
+    { id: "kelompok", title: "Kelompokkan", icon: "bins", sets: () => KELOMPOK.filter(setInScope), keys: x => kItems(x).map(o => gKey(x, o.it)), count: x => `${kItems(x).length} kartu · ${x.bins.length} kelompok`, size: 8,
+      desc: "Masukkan kartu ke kelompok yang tepat: hukuman ringan, sedang, atau berat; kapital benar atau salah; asas atau karakteristik.", how: "Baca kartu, lalu ketuk kelompoknya." },
+    { id: "urut", title: "Urutkan", icon: "steps", sets: () => URUT.filter(setInScope), keys: x => x.items.map(it => gKey(x, it[0])), count: x => `${x.items.length} langkah`, size: 6,
+      desc: "Susun peristiwa dan tahapan ke urutan yang benar: Mei 1998, siklus kebijakan, bab UUD, PN 1 sampai 8.", how: "Ketuk kartu sesuai urutannya, mulai dari yang pertama." }
+  ];
+  const gameById = id => GAMES.find(g => g.id === id);
+  const gMissed = (g, x) => g.keys(x).filter(k => gWeak(gStat(k))).length;
+  const SEL_ROUTES = ["selingan", "jodoh", "kilat", "kelompok", "urut"];
+  let gameKey = null; // penangan keyboard milik game yang sedang tampil; dikosongkan setiap pindah halaman
+  function selinganCard(compact) {
+    const weak = GAMES.filter(g => g.sets).reduce((a, g) => a + g.sets().reduce((b, x) => b + gMissed(g, x), 0), 0);
     return el("section", { class: "panel jodoh-card" }, [
       el("div", { class: "jc-art", "aria-hidden": "true" }, [el("i"), el("i"), el("i")]),
       el("div", { class: "stack", style: "gap:4px;min-width:0" }, [
         el("span", { class: "eyebrow" }, [compact ? "Lagi jenuh?" : "Selingan"]),
-        el("h2", null, ["Jodohkan"]),
-        el("p", { class: "small muted" }, [compact ? "Satu ronde sekitar satu menit: pasangkan lambang, pasal, tokoh, dan istilah dari tabel kisi-kisi." : `Ketuk kiri lalu pasangannya di kanan. ${sets.length} set dari tabel dan bagan PPT kisi-kisi, 6 pasangan per ronde.` + (weak ? ` ${weak} pasangan pernah keliru dan akan muncul lagi.` : "")])
+        el("h2", null, ["Mini game kisi-kisi"]),
+        el("p", { class: "small muted" }, [(compact ? "Jodohkan, Benar atau Salah, Kelompokkan, Urutkan. Satu ronde sekitar satu menit." : "Empat mini game dari tabel dan bagan PPT kisi-kisi, satu ronde sekitar satu menit.") + (weak ? ` ${weak} kartu pernah keliru dan akan muncul lagi.` : "")])
       ]),
-      el("button", { class: "btn btn-primary", onclick: () => nav("jodoh") }, [icon("pair"), "Main"])
+      el("button", { class: "btn btn-primary", onclick: () => nav("selingan") }, [icon("play"), "Main"])
     ]);
-  }
-  function renderJodoh(arg) {
-    const x = arg && arg.set && JODOH.find(j => j.id === arg.set);
-    return x ? jodohPlay(x) : jodohMenu();
   }
   const resumeBtn = () => drill && drill.active && drill.i < drill.qs.length
     ? el("button", { class: "btn btn-primary", onclick: () => go("latihan") }, [icon("play"), `Lanjut latihan (soal ${drill.i + 1}/${drill.qs.length})`]) : null;
-  function jodohMenu() {
-    const sets = jSets();
-    // set acak: utamakan yang punya pasangan keliru, lalu yang belum pernah dimainkan
-    const pickRandom = () => { const w = sets.filter(jMissed); const fresh = sets.filter(x => !(state.jodohBest || {})[x.id]); return shuffle(w.length ? w : fresh.length ? fresh : sets)[0]; };
+  const backBtn = (label, route) => el("button", { class: "btn btn-ghost btn-sm", style: "padding-left:0;align-self:flex-start", onclick: () => go(route) }, [icon("left"), label]);
+  function renderSelingan() {
     view.append(
       el("div", { class: "stack", style: "gap:6px" }, [
         el("span", { class: "eyebrow" }, ["Selingan"]),
-        el("h1", null, ["Jodohkan"]),
-        el("p", { class: "muted" }, ["Ketuk satu kartu di kiri, lalu pasangannya di kanan. Tidak ada skor, hanya waktu dan jumlah keliru. Semua pasangan diambil dari tabel dan bagan PPT kisi-kisi BKN."])
+        el("h1", null, ["Mini game kisi-kisi"]),
+        el("p", { class: "muted" }, ["Jeda dari pilihan ganda tanpa berhenti belajar. Semua kartu diambil dari tabel dan bagan PPT kisi-kisi BKN. Kartu yang keliru di game mana pun akan muncul lagi lebih dulu."])
       ]),
-      el("div", { class: "row" }, [resumeBtn(), el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go("jodoh", { set: pickRandom().id }) }, [icon("shuffle"), "Set acak"])])
+      resumeBtn() ? el("div", { class: "row" }, [resumeBtn()]) : "",
+      el("div", { class: "game-grid" }, GAMES.map(g => {
+        const sets = g.sets ? g.sets() : null, miss = sets ? sets.reduce((a, x) => a + gMissed(g, x), 0) : 0, kb = state.kilatBest || 0;
+        const meta = sets ? `${sets.length} set` + (miss ? ` · ${miss} kartu pernah keliru` : "") : kb ? `Rekor: ${kb} benar dalam 60 detik` : "Belum ada rekor";
+        return el("button", { class: "game-card", onclick: () => go(g.id) }, [
+          el("span", { class: "game-ic", "aria-hidden": "true" }, [icon(g.icon)]),
+          el("span", { class: "stack", style: "gap:4px;min-width:0" }, [el("span", { class: "game-t" }, [g.title]), el("span", { class: "small muted" }, [g.desc]), el("span", { class: "xs faint" }, [meta])]),
+          icon("right")
+        ]);
+      }))
+    );
+  }
+  // daftar set per jenis tes, dipakai Jodohkan, Kelompokkan, Urutkan
+  function setMenu(g) {
+    const sets = g.sets();
+    const pickRandom = () => { const w = sets.filter(x => gMissed(g, x)); const fresh = sets.filter(x => !(state.jodohBest || {})[x.id]); return shuffle(w.length ? w : fresh.length ? fresh : sets)[0]; };
+    view.append(
+      el("div", { class: "stack", style: "gap:6px" }, [
+        backBtn("Semua mini game", "selingan"),
+        el("h1", null, [g.title]),
+        el("p", { class: "muted" }, [`${g.desc} ${g.how} Tidak ada skor, hanya waktu dan jumlah keliru.`])
+      ]),
+      el("div", { class: "row" }, [resumeBtn(), el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go(g.id, { set: pickRandom().id }) }, [icon("shuffle"), "Set acak"])])
     );
     const groups = {}; sets.forEach(x => { const t = topicById(x.topic); (groups[t.test] = groups[t.test] || []).push(x); });
     TEST_ORDER.concat(Object.keys(groups).filter(k => !TEST_ORDER.includes(k))).filter(k => groups[k]).forEach(k => {
@@ -453,10 +489,10 @@
       view.append(el("div", { class: "test-group" }, [
         el("div", { class: "test-head tc" + T.color }, [el("span", { class: "swatch" }), el("h3", null, [T.label])]),
         el("div", { class: "jset-grid" }, groups[k].map(x => {
-          const t = topicById(x.topic), best = (state.jodohBest || {})[x.id], miss = jMissed(x);
-          return el("button", { class: "jset " + tcOf(t), onclick: () => go("jodoh", { set: x.id }) }, [
+          const t = topicById(x.topic), best = (state.jodohBest || {})[x.id], miss = gMissed(g, x);
+          return el("button", { class: "jset " + tcOf(t), onclick: () => go(g.id, { set: x.id }) }, [
             el("span", { class: "jset-top" }, [el("span", { class: "mono" }, [MONO[t.id]]), el("span", { class: "jset-t" }, [x.title])]),
-            el("span", { class: "xs muted" }, [`${x.pairs.length} pasangan · kisi-kisi hal. ${x.pages}`]),
+            el("span", { class: "xs muted" }, [`${g.count(x)} · kisi-kisi hal. ${x.pages}`]),
             el("span", { class: "row", style: "gap:6px" }, [
               x.ext ? el("span", { class: "chip chip-warn" }, ["Pelengkap"]) : null,
               miss ? el("span", { class: "chip chip-bad" }, [`${miss} pernah keliru`]) : null,
@@ -467,15 +503,74 @@
       ]));
     });
   }
-  function jodohPlay(x) {
+  function playHead(g, x, meter) {
     const t = topicById(x.topic);
-    // prioritas: pernah keliru, belum pernah muncul, sisanya acak
-    const rank = pr => { const st = jStat(x, pr); return jWeak(st) ? 0 : !st ? 1 : 2; };
-    const pairs = shuffle(x.pairs).sort((a, b) => rank(a) - rank(b)).slice(0, jRound.size);
+    return el("div", { class: "stack", style: "gap:10px" }, [
+      el("div", { class: "row between" }, [backBtn("Pilih set", g.id), el("div", { class: "jmeter small muted" }, meter)]),
+      el("div", { class: "row", style: "gap:6px" }, [testChip(t), el("span", { class: "chip chip-page" }, [`Kisi-kisi hal. ${x.pages}`]), x.ext ? el("span", { class: "chip chip-warn" }, ["Pelengkap, di luar isi kisi-kisi"]) : null]),
+      el("h1", null, [x.title])
+    ]);
+  }
+  function roundClock() {
+    const t0 = Date.now(), node = el("span", { class: "num" }, ["00:00"]);
+    clearInterval(jodohInt); jodohInt = setInterval(() => { node.textContent = fmtTime(Math.round((Date.now() - t0) / 1000)); }, 1000);
+    return { node, secs: () => Math.max(1, Math.round((Date.now() - t0) / 1000)) };
+  }
+  const meterSpan = (label, node) => el("span", null, [label + " ", node]);
+  // o: { secs, errors, full, marks: [[key, keliru]], wrong: [[a, b]], wrongTitle, doneTitle, extra }
+  function finishRound(g, x, o) {
+    clearInterval(jodohInt); jodohInt = null; gameKey = null;
+    state.jodohBest = state.jodohBest || {};
+    o.marks.forEach(([k, w]) => gRecord(k, w));
+    o.prev = state.jodohBest[x.id];
+    o.record = o.full && (!o.prev || o.errors < o.prev.err || (o.errors === o.prev.err && o.secs < o.prev.time));
+    if (o.record) state.jodohBest[x.id] = { time: o.secs, err: o.errors };
+    const k = dayKey(); state.days[k] = (state.days[k] || 0) + 1; save();
+    setTimeout(() => { if (current === g.id) roundResult(g, x, o); }, 450);
+  }
+  function roundResult(g, x, o) {
+    view.innerHTML = "";
+    const sets = g.sets(), next = shuffle(sets.filter(s => s.id !== x.id && s.topic !== x.topic))[0] || shuffle(sets.filter(s => s.id !== x.id))[0];
+    const prev = o.prev;
+    view.append(
+      el("section", { class: "panel lift stack", style: "gap:18px" }, [
+        el("div", { class: "row", style: "gap:14px;flex-wrap:nowrap" }, [el("span", { class: "done-badge", "aria-hidden": "true" }, [icon(o.errors ? g.icon : "check")]), el("div", null, [el("span", { class: "eyebrow" }, [`${g.title} · ${x.title}`]), el("h1", { style: "margin-top:4px" }, [o.errors ? o.doneTitle : "Sempurna, tanpa keliru"])])]),
+        el("div", { class: "stats", style: "grid-template-columns:repeat(3,minmax(0,1fr))" }, [
+          el("div", { class: "stat" }, [el("b", { class: "num" }, [fmtTime(o.secs)]), el("span", null, ["waktu"])]),
+          el("div", { class: "stat" }, [el("b", { class: "num" }, [String(o.errors)]), el("span", null, ["kali keliru"])]),
+          el("div", { class: "stat" }, o.record ? [el("b", null, [prev ? "Rekor baru" : "Tercatat"]), el("span", null, [prev ? `sebelumnya ${fmtTime(prev.time)}, ${prev.err} keliru` : "rekor pertama set ini"])]
+            : prev ? [el("b", { class: "num" }, [fmtTime(prev.time)]), el("span", null, [`rekor set ini (${prev.err} keliru)`])] : [el("b", null, ["-"]), el("span", null, ["rekor"])])
+        ]),
+        o.wrong.length ? el("div", { class: "stack", style: "gap:8px" }, [
+          el("h2", null, [o.wrongTitle]),
+          el("p", { class: "small muted" }, ["Kartu ini akan didahulukan di ronde berikutnya."]),
+          el("ul", { class: "jlist" }, o.wrong.map(pr => el("li", null, [el("b", null, [pr[0]]), el("span", { "aria-hidden": "true" }, ["→"]), el("span", null, [pr[1]])])))
+        ]) : "",
+        o.extra || "",
+        el("p", { class: "xs muted" }, [`Rujukan: PPT kisi-kisi BKN hal. ${x.pages}.`]),
+        el("div", { class: "row" }, [
+          resumeBtn(),
+          el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go(g.id, { set: x.id }) }, [icon("shuffle"), "Main lagi"]),
+          next ? el("button", { class: "btn", onclick: () => go(g.id, { set: next.id }) }, [`Set lain: ${next.title}`]) : null,
+          el("button", { class: "btn btn-ghost", onclick: () => go("selingan") }, ["Mini game lain"])
+        ])
+      ])
+    );
+    const f = view.querySelector(".btn-primary"); if (f) f.focus();
+  }
+
+  // Jodohkan: 6 pasangan per ronde
+  function renderJodoh(arg) {
+    const x = arg && arg.set && JODOH.find(j => j.id === arg.set);
+    return x ? jodohPlay(x) : setMenu(gameById("jodoh"));
+  }
+  function jodohPlay(x) {
+    const g = gameById("jodoh");
+    const pairs = shuffle(x.pairs).sort((a, b) => gRank(gKey(x, a[0])) - gRank(gKey(x, b[0]))).slice(0, g.size);
     const L2 = shuffle(pairs.map((_, i) => i)), R2 = shuffle(pairs.map((_, i) => i));
-    const done = new Set(), missed = new Set(), t0 = Date.now();
+    const done = new Set(), missed = new Set(), clk = roundClock();
     let sel = null, errors = 0, busy = false;
-    const clock = el("span", { class: "num" }, ["00:00"]), errEl = el("span", { class: "num" }, ["0"]), prog = el("span", { class: "num" }, [`0/${pairs.length}`]);
+    const errEl = el("span", { class: "num" }, ["0"]), prog = el("span", { class: "num" }, [`0/${pairs.length}`]);
     const live = el("div", { class: "sr-only", "aria-live": "polite" });
     const card = (side, i) => el("button", { class: "jcard" + (side === "R" ? " r" : ""), "data-side": side, "data-i": i, "aria-pressed": "false", onclick: e => tap(side, i, e.currentTarget) }, [el("span", null, [pairs[i][side === "L" ? 0 : 1]])]);
     const colL = el("div", { class: "jcol", role: "group", "aria-label": x.left }, L2.map(i => card("L", i)));
@@ -490,7 +585,11 @@
       if (a.i === i) {
         done.add(i); [a.btn, btn].forEach(b => { b.setAttribute("aria-pressed", "false"); b.classList.add("ok"); b.disabled = true; b.prepend(el("span", { class: "jnum" }, [String(done.size)])); });
         sel = null; prog.textContent = `${done.size}/${pairs.length}`; live.textContent = `Cocok: ${pairs[i][0]} dengan ${pairs[i][1]}.`;
-        if (done.size === pairs.length) finish();
+        if (done.size === pairs.length) finishRound(g, x, {
+          secs: clk.secs(), errors, full: pairs.length === Math.min(g.size, x.pairs.length),
+          marks: pairs.map((pr, j) => [gKey(x, pr[0]), missed.has(j)]), wrong: pairs.filter((_, j) => missed.has(j)),
+          wrongTitle: "Pasangan yang tadi keliru", doneTitle: "Semua pasangan ketemu"
+        });
       } else {
         errors++; errEl.textContent = String(errors); missed.add(li);
         live.textContent = "Belum cocok, coba lagi.";
@@ -498,59 +597,249 @@
         setTimeout(() => { [a.btn, btn].forEach(b => b.classList.remove("bad")); clear(); busy = false; }, 520);
       }
     }
-    const tick = () => { clock.textContent = fmtTime(Math.round((Date.now() - t0) / 1000)); };
-    function finish() {
-      clearInterval(jodohInt); jodohInt = null;
-      const secs = Math.max(1, Math.round((Date.now() - t0) / 1000)), k = dayKey();
-      state.jodoh = state.jodoh || {}; state.jodohBest = state.jodohBest || {};
-      pairs.forEach((pr, i) => { const key = jKey(x, pr), st = state.jodoh[key] || { r: 0, w: 0 }; missed.has(i) ? st.w++ : st.r++; st.lastW = missed.has(i); st.t = Date.now(); state.jodoh[key] = st; });
-      const prev = state.jodohBest[x.id], full = pairs.length === Math.min(jRound.size, x.pairs.length);
-      const record = full && (!prev || errors < prev.err || (errors === prev.err && secs < prev.time));
-      if (record) state.jodohBest[x.id] = { time: secs, err: errors };
-      state.days[k] = (state.days[k] || 0) + 1; save();
-      setTimeout(() => jodohResult(x, pairs, missed, secs, errors, record, prev), 450);
-    }
     view.append(
-      el("div", { class: "stack", style: "gap:10px" }, [
-        el("div", { class: "row between" }, [
-          el("button", { class: "btn btn-ghost btn-sm", style: "padding-left:0", onclick: () => go("jodoh") }, [icon("left"), "Pilih set"]),
-          el("div", { class: "jmeter small muted" }, [el("span", null, ["Cocok ", prog]), el("span", null, ["Keliru ", errEl]), el("span", null, [icon("timer"), clock])])
-        ]),
-        el("div", { class: "row", style: "gap:6px" }, [testChip(t), el("span", { class: "chip chip-page" }, [`Kisi-kisi hal. ${x.pages}`]), x.ext ? el("span", { class: "chip chip-warn" }, ["Pelengkap, di luar isi kisi-kisi"]) : null]),
-        el("h1", null, [x.title])
-      ]),
+      playHead(g, x, [meterSpan("Cocok", prog), meterSpan("Keliru", errEl), el("span", null, [icon("timer"), clk.node])]),
       el("section", { class: "panel jpanel" }, [board, live]),
       el("p", { class: "xs muted" }, ["Ketuk kartu kiri, lalu pasangannya di kanan (urutan sebaliknya juga bisa)."])
     );
-    jodohInt = setInterval(tick, 1000);
   }
-  function jodohResult(x, pairs, missed, secs, errors, record, prev) {
-    view.innerHTML = "";
-    const sets = jSets(), next = shuffle(sets.filter(s => s.id !== x.id && s.topic !== x.topic))[0] || shuffle(sets.filter(s => s.id !== x.id))[0];
-    const wrong = pairs.filter((_, i) => missed.has(i));
+
+  // Kelompokkan: 8 kartu per ronde, diambil bergiliran dari tiap kelompok
+  function renderKelompok(arg) {
+    const x = arg && arg.set && KELOMPOK.find(j => j.id === arg.set);
+    return x ? kelompokPlay(x) : setMenu(gameById("kelompok"));
+  }
+  function kelompokPlay(x) {
+    const g = gameById("kelompok");
+    const byBin = x.bins.map((b, bi) => shuffle(b.items).map(it => ({ it, bi })).sort((a, c) => gRank(gKey(x, a.it)) - gRank(gKey(x, c.it))));
+    const size = Math.min(g.size, kItems(x).length), deck = [];
+    for (let r = 0; deck.length < size; r++) { let added = false; byBin.forEach(l => { if (deck.length < size && l[r]) { deck.push(l[r]); added = true; } }); if (!added) break; }
+    const cards = shuffle(deck), missed = new Set(), clk = roundClock();
+    let i = 0, errors = 0, busy = false;
+    const errEl = el("span", { class: "num" }, ["0"]), prog = el("span", { class: "num" }, [`0/${cards.length}`]);
+    const live = el("div", { class: "sr-only", "aria-live": "polite" });
+    const cardEl = el("div", { class: "kcard" });
+    const bins = x.bins.map((b, bi) => {
+      const chips = el("span", { class: "kchips" });
+      const btn = el("button", { class: "kbin", onclick: () => place(bi) }, [el("span", { class: "kbin-h" }, [el("span", { class: "kbin-n" }, [String(bi + 1)]), el("span", null, [b.label])]), chips]);
+      return { btn, chips };
+    });
+    const draw = () => {
+      cardEl.innerHTML = ""; cardEl.classList.remove("in"); void cardEl.offsetWidth; cardEl.classList.add("in");
+      cardEl.append(el("span", { class: "xs muted" }, [`Kartu ${i + 1} dari ${cards.length}`]), el("b", null, [cards[i].it]));
+    };
+    function place(bi) {
+      if (busy || i >= cards.length) return;
+      const c = cards[i], ok = bi === c.bi;
+      busy = true;
+      if (ok) live.textContent = `Tepat: ${x.bins[c.bi].label}.`;
+      else {
+        errors++; errEl.textContent = String(errors); missed.add(i);
+        live.textContent = `Belum tepat. ${c.it} masuk ${x.bins[c.bi].label}.`;
+        bins[bi].btn.classList.add("bad"); bins[c.bi].btn.classList.add("hint"); cardEl.classList.add("bad");
+        cardEl.append(el("span", { class: "kfix small" }, [`Masuk ke: ${x.bins[c.bi].label}`]));
+      }
+      setTimeout(() => {
+        bins.forEach(b => b.btn.classList.remove("bad", "hint")); cardEl.classList.remove("bad");
+        bins[c.bi].chips.append(el("span", { class: "kchip" + (ok ? "" : " miss") }, [c.it]));
+        i++; prog.textContent = `${i}/${cards.length}`; busy = false;
+        if (i < cards.length) return draw();
+        cardEl.innerHTML = ""; cardEl.append(el("b", null, ["Semua kartu sudah masuk"]));
+        finishRound(g, x, {
+          secs: clk.secs(), errors, full: cards.length === size,
+          marks: cards.map((cc, j) => [gKey(x, cc.it), missed.has(j)]), wrong: cards.filter((_, j) => missed.has(j)).map(cc => [cc.it, x.bins[cc.bi].label]),
+          wrongTitle: "Kartu yang tadi salah kelompok", doneTitle: "Semua kartu terkelompok"
+        });
+      }, ok ? 240 : 1300);
+    }
+    gameKey = e => { const n = parseInt(e.key, 10); if (n >= 1 && n <= x.bins.length) { place(n - 1); return true; } return false; };
     view.append(
-      el("section", { class: "panel lift stack", style: "gap:18px" }, [
-        el("div", { class: "row", style: "gap:14px;flex-wrap:nowrap" }, [el("span", { class: "done-badge", "aria-hidden": "true" }, [icon(errors ? "pair" : "check")]), el("div", null, [el("span", { class: "eyebrow" }, [x.title]), el("h1", { style: "margin-top:4px" }, [errors ? "Semua pasangan ketemu" : "Sempurna, tanpa keliru"])])]),
-        el("div", { class: "stats", style: "grid-template-columns:repeat(3,minmax(0,1fr))" }, [
-          el("div", { class: "stat" }, [el("b", { class: "num" }, [fmtTime(secs)]), el("span", null, ["waktu"])]),
-          el("div", { class: "stat" }, [el("b", { class: "num" }, [String(errors)]), el("span", null, ["kali keliru"])]),
-          el("div", { class: "stat" }, record ? [el("b", null, [prev ? "Rekor baru" : "Tercatat"]), el("span", null, [prev ? `sebelumnya ${fmtTime(prev.time)}, ${prev.err} keliru` : "rekor pertama set ini"])]
-            : prev ? [el("b", { class: "num" }, [fmtTime(prev.time)]), el("span", null, [`rekor set ini (${prev.err} keliru)`])] : [el("b", null, ["-"]), el("span", null, ["rekor"])])
-        ]),
-        wrong.length ? el("div", { class: "stack", style: "gap:8px" }, [
-          el("h2", null, ["Pasangan yang tadi keliru"]),
-          el("p", { class: "small muted" }, ["Pasangan ini akan didahulukan di ronde berikutnya."]),
-          el("ul", { class: "jlist" }, wrong.map(pr => el("li", null, [el("b", null, [pr[0]]), el("span", { "aria-hidden": "true" }, ["→"]), el("span", null, [pr[1]])])))
-        ]) : el("p", { class: "small muted" }, [`Rujukan: PPT kisi-kisi BKN hal. ${x.pages}.`]),
-        el("div", { class: "row" }, [
-          resumeBtn(),
-          el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go("jodoh", { set: x.id }) }, [icon("shuffle"), "Main lagi"]),
-          next ? el("button", { class: "btn", onclick: () => go("jodoh", { set: next.id }) }, [`Set lain: ${next.title}`]) : null,
-          el("button", { class: "btn btn-ghost", onclick: () => go("jodoh") }, ["Semua set"])
-        ])
+      playHead(g, x, [meterSpan("Kartu", prog), meterSpan("Keliru", errEl), el("span", null, [icon("timer"), clk.node])]),
+      el("section", { class: "panel jpanel stack", style: "gap:14px" }, [x.q ? el("p", { class: "small muted" }, [x.q]) : null, cardEl, el("div", { class: "kbins" }, bins.map(b => b.btn)), live]),
+      el("p", { class: "xs muted" }, [(x.note ? x.note + " " : "") + "Di keyboard, tekan angka kelompok."])
+    );
+    draw();
+  }
+
+  // Urutkan: maksimal 6 kartu per ronde; kartu dipilih dengan prioritas lalu diurutkan sesuai urutan aslinya
+  function renderUrut(arg) {
+    const x = arg && arg.set && URUT.find(j => j.id === arg.set);
+    return x ? urutPlay(x) : setMenu(gameById("urut"));
+  }
+  function urutPlay(x) {
+    const g = gameById("urut"), n = Math.min(g.size, x.items.length);
+    const pick = shuffle(x.items.map((_, k) => k)).sort((a, b) => gRank(gKey(x, x.items[a][0])) - gRank(gKey(x, x.items[b][0]))).slice(0, n).sort((a, b) => a - b);
+    const missed = new Set(), clk = roundClock();
+    let pos = 0, errors = 0, tries = 0, busy = false;
+    const errEl = el("span", { class: "num" }, ["0"]), prog = el("span", { class: "num" }, [`0/${n}`]);
+    const live = el("div", { class: "sr-only", "aria-live": "polite" });
+    const slots = pick.map((_, k) => el("li", { class: "uslot" + (k === 0 ? " next" : "") }, [el("span", { class: "unum" }, [String(k + 1)]), el("span", { class: "utext faint" }, [k === 0 ? `Kartu pertama? (${n} kartu)` : ""])]));
+    const pool = el("div", { class: "upool", role: "group", "aria-label": "Kartu yang belum diurutkan" }, shuffle(pick.map((_, k) => k)).map(k => el("button", { class: "ucard", "data-k": k, onclick: e => tap(k, e.currentTarget) }, [x.items[pick[k]][0]])));
+    function tap(k, btn) {
+      if (busy) return;
+      if (k === pos) {
+        const it = x.items[pick[k]], s = slots[pos];
+        s.classList.remove("next"); s.classList.add(missed.has(pos) ? "late" : "ok");
+        s.lastChild.replaceWith(el("span", { class: "utext" }, [it[0], it[1] ? el("span", { class: "udet" }, [it[1]]) : null]));
+        btn.remove(); pos++; tries = 0; prog.textContent = `${pos}/${n}`;
+        live.textContent = `Tepat, urutan ke-${pos}: ${it[0]}.`;
+        if (pos < n) { slots[pos].classList.add("next"); slots[pos].lastChild.textContent = `Berikutnya? (${n - pos} kartu lagi)`; return; }
+        finishRound(g, x, {
+          secs: clk.secs(), errors, full: true,
+          marks: pick.map((p, j) => [gKey(x, x.items[p][0]), missed.has(j)]),
+          wrong: pick.filter((_, j) => missed.has(j)).map(p => [x.items[p][0], `urutan ke-${pick.indexOf(p) + 1}` + (x.items[p][1] ? ` (${x.items[p][1]})` : "")]),
+          wrongTitle: "Posisi yang tadi keliru", doneTitle: "Urutan lengkap tersusun",
+          extra: el("div", { class: "stack", style: "gap:8px" }, [el("h2", null, ["Urutan yang benar"]), el("ol", { class: "ulist done" }, pick.map((p, j) => el("li", { class: "uslot " + (missed.has(j) ? "late" : "ok") }, [el("span", { class: "unum" }, [String(j + 1)]), el("span", { class: "utext" }, [x.items[p][0], x.items[p][1] ? el("span", { class: "udet" }, [x.items[p][1]]) : null])])))])
+        });
+      } else {
+        errors++; tries++; errEl.textContent = String(errors); missed.add(pos);
+        live.textContent = `Belum. Itu bukan urutan ke-${pos + 1}.`;
+        busy = true; btn.classList.add("bad");
+        // dua kali keliru di posisi yang sama: tandai kartu yang benar agar tidak buntu
+        if (tries >= 2) { const h = pool.querySelector(`[data-k="${pos}"]`); if (h) h.classList.add("hint"); }
+        setTimeout(() => { btn.classList.remove("bad"); busy = false; }, 450);
+      }
+    }
+    view.append(
+      playHead(g, x, [meterSpan("Tersusun", prog), meterSpan("Keliru", errEl), el("span", null, [icon("timer"), clk.node])]),
+      el("section", { class: "panel jpanel stack", style: "gap:14px" }, [
+        el("p", { class: "small muted" }, [`${x.dir}. Ketuk kartu yang menempati urutan berikutnya.`]),
+        el("ol", { class: "ulist" }, slots),
+        el("div", { class: "jhead" }, ["Kartu"]),
+        pool, live
       ])
     );
-    const f = view.querySelector(".btn-primary"); if (f) f.focus();
+  }
+
+  // Benar atau Salah: 60 detik, pernyataan dibentuk dari pasangan Jodohkan (asli atau ditukar dengan pasangan lain di set yang sama)
+  let kilatScope = "all";
+  const kilatSets = () => JODOH.filter(setInScope).filter(x => x.pairs.length >= 3 && (kilatScope === "all" || topicById(x.topic).test === kilatScope));
+  function renderKilat(arg) { return arg && arg.play ? kilatPlay() : kilatMenu(); }
+  function kilatMenu() {
+    const all = JODOH.filter(setInScope), tests = TEST_ORDER.concat(["EKSTRA"]).filter(k => all.some(x => topicById(x.topic).test === k));
+    if (kilatScope !== "all" && !tests.includes(kilatScope)) kilatScope = "all";
+    const info = el("span", { class: "small muted" });
+    const upd = () => { const s = kilatSets(); info.textContent = `${s.reduce((a, x) => a + x.pairs.length, 0)} pernyataan dari ${s.length} set.`; };
+    const seg = el("div", { class: "seg", role: "group", "aria-label": "Cakupan" });
+    const drawSeg = () => { seg.innerHTML = ""; [["all", "Semua"]].concat(tests.map(k => [k, TESTS[k].short])).forEach(([v, l]) => seg.appendChild(el("button", { "aria-pressed": kilatScope === v ? "true" : "false", onclick: () => { kilatScope = v; drawSeg(); upd(); } }, [l]))); };
+    drawSeg(); upd();
+    const kb = state.kilatBest || 0;
+    view.append(
+      el("div", { class: "stack", style: "gap:6px" }, [
+        backBtn("Semua mini game", "selingan"),
+        el("h1", null, ["Benar atau Salah"]),
+        el("p", { class: "muted" }, ["Sebuah pasangan muncul, misalnya pasal dan isinya. Putuskan pasangan itu benar atau salah. Salah menjawab tidak mengurangi waktu: jawaban yang benar ditampilkan dulu, lalu waktu berjalan lagi."])
+      ]),
+      el("section", { class: "panel stack", style: "gap:16px" }, [
+        el("div", { class: "field" }, [el("span", { class: "label" }, ["Cakupan"]), seg, info]),
+        el("div", { class: "row" }, [resumeBtn(), el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go("kilat", { play: true }) }, [icon("bolt"), "Mulai 60 detik"])]),
+        el("p", { class: "xs muted" }, [kb ? `Rekor: ${kb} jawaban benar dalam 60 detik. ` : "", "Di keyboard: panah kanan atau B = Benar, panah kiri atau S = Salah."])
+      ])
+    );
+  }
+  function kilatPlay() {
+    const sets = kilatSets(), all = sets.flatMap(x => x.pairs.map(p => ({ x, p })));
+    if (!all.length) return kilatMenu();
+    const weak = all.filter(o => gWeak(gStat(gKey(o.x, o.p[0]))));
+    const used = new Set(), marks = new Map(), wrongs = [];
+    const LIMIT = 60000;
+    let cur = null, score = 0, answered = 0, streak = 0, bestStreak = 0, left = LIMIT, last = Date.now(), paused = false, done = false, fixT = null;
+    const scoreEl = el("span", { class: "num" }, ["0"]), streakEl = el("span", { class: "num" }, ["0"]), secEl = el("span", { class: "num" }, ["60"]);
+    const bar = el("i", { style: "width:100%" }), barWrap = el("div", { class: "kbar", role: "progressbar", "aria-label": "Sisa waktu", "aria-valuemin": 0, "aria-valuemax": 60 }, [bar]);
+    const qEl = el("div", { class: "kq", "aria-live": "polite" }), fixEl = el("div");
+    const bNo = el("button", { class: "kbtn no", onclick: () => answer(false) }, [icon("x"), "Salah"]);
+    const bYes = el("button", { class: "kbtn yes", onclick: () => answer(true) }, [icon("check"), "Benar"]);
+    function nextQ() {
+      let cand = weak.length && Math.random() < 0.35 ? weak.filter(o => !used.has(o)) : [];
+      if (!cand.length) cand = all.filter(o => !used.has(o));
+      if (!cand.length) { used.clear(); cand = all; }
+      const o = cand[Math.floor(Math.random() * cand.length)]; used.add(o);
+      const truth = Math.random() < 0.5, others = o.x.pairs.filter(q => q !== o.p);
+      cur = { o, truth, shown: truth ? o.p[1] : others[Math.floor(Math.random() * others.length)][1] };
+      const t = topicById(o.x.topic);
+      qEl.className = "kq"; qEl.innerHTML = "";
+      qEl.append(
+        el("span", { class: "row", style: "gap:6px" }, [testChip(t), el("span", { class: "xs muted" }, [o.x.title])]),
+        el("span", { class: "kq-l" }, [o.x.left]), el("span", { class: "kq-v" }, [o.p[0]]),
+        el("span", { class: "kq-l" }, [o.x.right]), el("span", { class: "kq-v" }, [cur.shown])
+      );
+      fixEl.innerHTML = ""; bNo.disabled = bYes.disabled = false;
+    }
+    function resume() { clearTimeout(fixT); if (!paused || done) return; paused = false; last = Date.now(); nextQ(); }
+    function answer(v) {
+      if (done || paused || !cur) return;
+      const ok = v === cur.truth, key = gKey(cur.o.x, cur.o.p[0]);
+      answered++; marks.set(key, marks.get(key) || !ok);
+      if (ok) {
+        score++; streak++; bestStreak = Math.max(bestStreak, streak); scoreEl.textContent = String(score); streakEl.textContent = String(streak);
+        qEl.classList.add("ok"); bNo.disabled = bYes.disabled = true; paused = true;
+        setTimeout(() => { paused = false; last = Date.now(); if (!done) nextQ(); }, 200);
+        return;
+      }
+      streak = 0; streakEl.textContent = "0"; paused = true; wrongs.push(cur);
+      qEl.classList.add("bad"); bNo.disabled = bYes.disabled = true;
+      fixEl.append(el("div", { class: "kfix" }, [
+        el("b", null, [cur.truth ? "Pasangan itu benar." : "Pasangan itu salah."]),
+        cur.truth ? null : el("span", null, [` Yang benar: ${cur.o.p[0]} → ${cur.o.p[1]}.`]),
+        el("button", { class: "btn btn-sm btn-primary", style: "margin-left:auto", onclick: resume }, ["Lanjut", icon("right")])
+      ]));
+      const lb = fixEl.querySelector("button"); if (lb) lb.focus();
+      fixT = setTimeout(resume, 3200);
+    }
+    function end() {
+      done = true; clearInterval(jodohInt); jodohInt = null; clearTimeout(fixT); gameKey = null;
+      marks.forEach((w, k) => gRecord(k, w));
+      const prev = state.kilatBest || 0, record = score > prev;
+      if (record) state.kilatBest = score;
+      const k = dayKey(); state.days[k] = (state.days[k] || 0) + 1; save();
+      const seen = new Set(), wl = wrongs.filter(w => { const kk = gKey(w.o.x, w.o.p[0]); if (seen.has(kk)) return false; seen.add(kk); return true; });
+      view.innerHTML = "";
+      view.append(el("section", { class: "panel lift stack", style: "gap:18px" }, [
+        el("div", { class: "row", style: "gap:14px;flex-wrap:nowrap" }, [el("span", { class: "done-badge", "aria-hidden": "true" }, [icon("bolt")]), el("div", null, [el("span", { class: "eyebrow" }, ["Benar atau Salah · " + (kilatScope === "all" ? "Semua" : TESTS[kilatScope].short)]), el("h1", { style: "margin-top:4px" }, [record && prev ? "Rekor baru" : "Waktu habis"])])]),
+        el("div", { class: "stats" }, [
+          el("div", { class: "stat" }, [el("b", { class: "num" }, [String(score)]), el("span", null, ["jawaban benar"])]),
+          el("div", { class: "stat" }, [el("b", { class: "num" }, [answered ? pct(score, answered) + "%" : "-"]), el("span", null, [`akurasi dari ${answered} jawaban`])]),
+          el("div", { class: "stat" }, [el("b", { class: "num" }, [String(bestStreak)]), el("span", null, ["benar beruntun terpanjang"])]),
+          el("div", { class: "stat" }, [el("b", { class: "num" }, [String(Math.max(prev, score))]), el("span", null, [record ? (prev ? `rekor baru (sebelumnya ${prev})` : "rekor pertama") : "rekor"])])
+        ]),
+        wl.length ? el("div", { class: "stack", style: "gap:8px" }, [
+          el("h2", null, ["Pasangan yang benar untuk jawaban yang keliru"]),
+          el("p", { class: "small muted" }, ["Pasangan ini akan lebih sering muncul, juga di Jodohkan."]),
+          el("ul", { class: "jlist" }, wl.map(w => el("li", null, [el("b", null, [w.o.p[0]]), el("span", { "aria-hidden": "true" }, ["→"]), el("span", null, [w.o.p[1], el("span", { class: "udet" }, [`${w.o.x.title}, hal. ${w.o.x.pages}`])])])))
+        ]) : "",
+        el("div", { class: "row" }, [
+          resumeBtn(),
+          el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go("kilat", { play: true }) }, [icon("bolt"), "Main lagi"]),
+          el("button", { class: "btn", onclick: () => go("kilat") }, ["Ganti cakupan"]),
+          el("button", { class: "btn btn-ghost", onclick: () => go("selingan") }, ["Mini game lain"])
+        ])
+      ]));
+      const f = view.querySelector(".btn-primary"); if (f) f.focus();
+    }
+    gameKey = e => {
+      const key = e.key.toLowerCase();
+      if (paused && !done && (key === "enter" || key === " ") && fixEl.firstChild) { resume(); return true; }
+      if (key === "arrowright" || key === "b") { answer(true); return true; }
+      if (key === "arrowleft" || key === "s") { answer(false); return true; }
+      return false;
+    };
+    view.append(
+      el("div", { class: "stack", style: "gap:10px" }, [
+        el("div", { class: "row between" }, [backBtn("Keluar", "kilat"), el("div", { class: "jmeter small muted" }, [meterSpan("Benar", scoreEl), meterSpan("Beruntun", streakEl), el("span", null, [icon("timer"), secEl])])]),
+        barWrap
+      ]),
+      el("section", { class: "panel jpanel stack", style: "gap:14px" }, [qEl, fixEl, el("div", { class: "kbtns" }, [bNo, bYes])]),
+      el("p", { class: "xs muted" }, ["Semua pasangan dari tabel dan bagan PPT kisi-kisi. Pernyataan salah dibuat dengan menukar pasangan di set yang sama."])
+    );
+    nextQ();
+    clearInterval(jodohInt);
+    jodohInt = setInterval(() => {
+      const now = Date.now(); if (!paused) left -= now - last; last = now;
+      const s = Math.max(0, Math.ceil(left / 1000));
+      bar.style.width = Math.max(0, left / LIMIT * 100) + "%"; barWrap.classList.toggle("low", left < 10000); barWrap.setAttribute("aria-valuenow", s);
+      secEl.textContent = String(s);
+      if (left <= 0 && !done) end();
+    }, 100);
   }
 
   // ---------- Latihan ----------
@@ -599,7 +888,7 @@
         el("div", { class: "stack", style: "gap:6px" }, [el("span", { class: "stamp", style: "align-self:flex-start" }, [icon("award"), "Resmi BKN 2025"]), el("h2", null, ["50 soal latihan resmi, urutan asli"]), el("p", { class: "small muted" }, ["Dari Google Form BKN yang ditautkan di PPT kisi-kisi hal. 172. Form tidak memuat kunci; kunci dan pembahasan disusun aplikasi dengan rujukan halaman kisi-kisi."])]),
         el("button", { class: "btn btn-primary", onclick: () => startDrill(formSet(), "50 soal resmi BKN 2025") }, [icon("play"), "Kerjakan"])
       ]),
-      jodohCard(),
+      selinganCard(),
       el("section", { class: "panel stack", style: "gap:20px" }, [
         el("div", { class: "sec-head" }, [el("h2", null, ["Susun latihan sendiri"]), el("div", { class: "row", style: "gap:4px" }, [el("button", { class: "btn btn-sm btn-ghost", onclick: () => selAll(true) }, ["Pilih semua"]), el("button", { class: "btn btn-sm btn-ghost", onclick: () => selAll(false) }, ["Kosongkan"])])]),
         picker,
@@ -622,7 +911,7 @@
       el("div", { class: "q-progress", role: "progressbar", "aria-valuenow": drill.i + 1, "aria-valuemax": drill.qs.length }, [el("i", { style: `width:${pct(drill.i + (answered ? 1 : 0), drill.qs.length)}%` })]),
       el("span", { class: "small num muted" }, [`${drill.i + 1}/${drill.qs.length}`]),
       el("span", { class: "chip chip-ok num" }, [icon("check"), `${drill.correct}`]),
-      el("button", { class: "btn btn-ghost icon-btn", "aria-label": "Jeda: main Jodohkan sebentar", title: "Jeda: main Jodohkan sebentar", onclick: () => nav("jodoh") }, [icon("pair")])
+      el("button", { class: "btn btn-ghost icon-btn", "aria-label": "Jeda: main mini game sebentar", title: "Jeda: main mini game sebentar", onclick: () => nav("selingan") }, [icon("pair")])
     ]);
     const opts = el("div", { class: "options", role: "group", "aria-label": "Pilihan jawaban" });
     const fb = el("div");
@@ -1021,6 +1310,7 @@
   // ---------- Keyboard ----------
   document.addEventListener("keydown", e => {
     if (e.target && /input|select|textarea/i.test(e.target.tagName) || e.ctrlKey || e.metaKey || e.altKey || document.querySelector(".modal-bg,.sheet-bg")) return;
+    if (gameKey && SEL_ROUTES.includes(current) && gameKey(e)) { e.preventDefault(); return; }
     const k = e.key.toUpperCase(), idx = L.indexOf(k);
     if (current === "latihan" && drill && drill.active && drill.i < drill.qs.length) {
       const q = drill.qs[drill.i];
