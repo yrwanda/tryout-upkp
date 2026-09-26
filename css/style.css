@@ -466,3 +466,56 @@ details.more summary { cursor: pointer; font-weight: 700; color: var(--muted); m
   *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }
 @media print { .side, .topbar, .tabbar, .exam-bar { display: none !important; } }
+
+/* ---------- Upgrade UX belajar ---------- */
+p, li { text-wrap: pretty; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+.skip { position: absolute; left: 12px; top: -60px; z-index: 90; padding: 10px 14px; border-radius: 10px; background: var(--primary); color: var(--on-primary); font-weight: 700; text-decoration: none; }
+.skip:focus { top: calc(12px + env(safe-area-inset-top, 0px)); }
+
+/* pembahasan dua lapis */
+.feedback .fb-key { display: flex; gap: 10px; align-items: baseline; font-family: var(--font-read); font-weight: 700; line-height: 1.45; }
+.feedback .fb-key-l { flex: none; font-family: var(--font-ui); font-size: .72rem; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.fb-toggle { align-self: flex-start; display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 4px 2px; border: 0; background: transparent; color: var(--primary); font-weight: 700; font-size: .88rem; }
+.fb-toggle svg.ic { width: 16px; height: 16px; transition: transform .2s var(--ease); }
+.fb-toggle[aria-expanded="true"] svg.ic { transform: rotate(90deg); }
+.fb-more { display: flex; flex-direction: column; gap: 8px; padding-top: 4px; border-top: 1px dashed color-mix(in srgb, var(--text) 18%, transparent); }
+.fb-more[hidden] { display: none !important; }
+
+/* mode hafalan (tutup-buka) */
+.cloze-bar { display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; justify-content: space-between; padding: 10px 0 16px; margin-bottom: 8px; border-bottom: 1px solid var(--border); }
+.prose .cloze {
+  display: inline; padding: 0 .2em; margin: 0 .05em; border: 0; border-radius: 5px; font: inherit; font-weight: 700; line-height: inherit;
+  color: transparent; background: var(--surface-3); box-shadow: inset 0 -2px 0 var(--primary); cursor: pointer;
+  -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: background .15s var(--ease), color .15s var(--ease);
+}
+.prose .cloze:hover { background: color-mix(in srgb, var(--primary) 18%, var(--surface-3)); }
+.prose .cloze.open { color: var(--text); background: var(--primary-soft); box-shadow: none; }
+
+/* onboarding */
+.onboard { display: flex; flex-direction: column; gap: 16px; border-color: color-mix(in srgb, var(--primary) 35%, var(--border)); }
+.ob-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+.ob-step { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.ob-num { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary); font-weight: 800; }
+.ob-step.done .ob-num { background: var(--ok-soft); color: var(--ok); }
+.ob-step.done h3 { color: var(--muted); }
+
+/* penutup sesi harian */
+.done-badge { width: 52px; height: 52px; flex: none; border-radius: 16px; display: grid; place-items: center; background: var(--ok-soft); color: var(--ok); }
+.done-badge svg.ic { width: 28px; height: 28px; stroke-width: 2.6; }
+@media (prefers-reduced-motion: no-preference) { .done-badge { animation: pop .4s var(--ease); } }
+@keyframes pop { from { transform: scale(.6); opacity: 0; } to { transform: none; opacity: 1; } }
+
+/* header HP: jangan sampai ikon turun baris */
+@media (max-width: 860px) {
+  .topbar > .row { flex-wrap: nowrap; }
+  .topbar .brand { min-width: 0; }
+  .topbar .brand strong { white-space: nowrap; }
+}
+@media (max-width: 420px) {
+  .topbar .brand span { display: none; }
+  .topbar .icon-btn { width: 40px; }
+  #installBtn { padding: 6px 10px; }
+  .cloze-bar > .row { flex-wrap: nowrap; }
+  .cloze-bar .btn-sm { padding: 6px 8px; }
+}

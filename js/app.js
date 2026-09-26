@@ -127,6 +127,11 @@
     if (out.length < n) for (const q of shuffle(core.filter(q => !out.includes(q)))) { if (out.length >= n) break; out.push(q); }
     return { qs: shuffle(out), due: Math.min(due.length, 12), weakest: weakest ? weakest.k : null };
   }
+  // soal belum dikuasai yang jatuh tempo paling lambat akhir hari besok
+  function dueTomorrow() {
+    const end = new Date(); end.setHours(0, 0, 0, 0); const lim = end.getTime() + 2 * DAY;
+    return CORE.flatMap(t => pool(t.id)).filter(q => { const st = state.stats[q.id]; return st && !mastered(st) && dueAt(st) < lim; }).length;
+  }
   function streak() {
     let n = 0; const d = new Date();
     if (!state.days[dayKey(d)]) d.setDate(d.getDate() - 1);
@@ -238,16 +243,39 @@
     w.appendChild(el("div", { class: "ring-label" }, [el("b", { class: "num" }, [Math.round(value * 100) + "%"]), el("span", null, [label])]));
     return w;
   }
+  function onboardingPanel() {
+    const d = daysLeft(), base = validHistory().filter(h => h.mode === "form").slice(-1)[0];
+    const date = el("input", { id: "obDate", class: "input", type: "date", value: state.settings.examDate || "", style: "max-width:190px" });
+    const step = (n, done, title, body, action) => el("li", { class: "ob-step" + (done ? " done" : "") }, [
+      el("span", { class: "ob-num", "aria-hidden": "true" }, [done ? icon("check") : String(n)]),
+      el("div", { class: "stack", style: "gap:6px;min-width:0" }, [el("h3", null, [title]), el("p", { class: "small muted" }, [body]), action])
+    ]);
+    return el("section", { class: "panel onboard", "aria-labelledby": "obTitle" }, [
+      el("div", { class: "row between" }, [el("div", null, [el("span", { class: "eyebrow" }, ["Mulai dari sini"]), el("h2", { id: "obTitle", style: "margin-top:4px" }, ["Tiga langkah sebelum belajar rutin"])]),
+        el("button", { class: "btn btn-sm btn-ghost", onclick: () => { state.onboarded = true; save(); go("home"); } }, ["Tutup panduan"])]),
+      el("ol", { class: "ob-list" }, [
+        step(1, d !== null, "Isi tanggal ujian", d !== null ? `Tersimpan: ${fmtDay(state.settings.examDate)} (H-${Math.max(0, d)}).` : "Hitung mundur dan porsi belajar harian mengikuti tanggal ini. Perkiraan juga boleh, nanti bisa diganti di Pengaturan.",
+          d !== null ? null : el("div", { class: "row" }, [date, el("button", { class: "btn btn-sm btn-primary", onclick: () => { if (!date.value) return toast("Pilih tanggal dulu."); state.settings.examDate = date.value; save(); renderSideFoot(); go("home"); } }, ["Simpan tanggal"])])),
+        step(2, !!base, "Kerjakan 50 soal resmi sebagai skor awal", base ? `Skor awal: ${base.total.score}/${base.total.max} (${pct(base.total.score, base.total.max)}%).` : "45 menit, tanpa membuka materi, dan jangan ada yang kosong. Hasilnya jadi titik awal untuk melihat kemajuan.",
+          base ? null : el("button", { class: "btn btn-sm btn-primary", onclick: () => { simMode = "form"; nav("simulasi"); } }, [icon("timer"), "Buka simulasi 50 soal"])),
+        step(3, state.dailyDone === dayKey(), "Lanjut dengan sesi harian", "20 soal per hari, sekitar 20-25 menit. Soal yang salah muncul lagi besok; soal yang benar diulang beberapa hari kemudian sampai dikuasai.",
+          el("button", { class: "btn btn-sm", onclick: () => startDrill(todaySession(20).qs, "Sesi hari ini", { daily: true }) }, [icon("play"), "Mulai sesi hari ini"]))
+      ])
+    ]);
+  }
   function renderHome() {
     const o = overall(), d = daysLeft(), hist = validHistory(), ses = todaySession(20);
+    const doneToday = state.dailyDone === dayKey();
+    if (!state.onboarded && (d === null || !hist.some(h => h.mode === "form"))) view.append(onboardingPanel());
     const best = hist.filter(h => h.mode !== "form").reduce((m, h) => Math.max(m, h.total.score), -1);
     view.append(el("section", { class: "hero" }, [
       el("div", { class: "stack", style: "position:relative;z-index:1;gap:14px" }, [
         el("span", { class: "eyebrow" }, ["UPKP S1 Kemenimipas 2026"]),
         el("h1", null, [d !== null && d >= 0 ? (d === 0 ? "Hari ujian. Tetap tenang." : `H-${d} menuju ujian`) : "Belajar dari kisi-kisi resmi BKN"]),
-        el("p", null, [ses.qs.length ? `Sesi hari ini: ${ses.due ? ses.due + " soal jatuh tempo diulang, " : ""}sisanya soal baru${ses.weakest ? " dari " + TESTS[ses.weakest].short + " (jenis tes terlemah)" : ""}. Sekitar 20-25 menit.` : "Semua soal sudah dikuasai. Pertahankan dengan simulasi."]),
+        el("p", null, [doneToday ? `Sesi hari ini sudah selesai. Besok ${dueTomorrow()} soal jatuh tempo untuk diulang.` : ses.qs.length ? `Sesi hari ini: ${ses.due ? ses.due + " soal jatuh tempo diulang, " : ""}sisanya soal baru${ses.weakest ? " dari " + TESTS[ses.weakest].short + " (jenis tes terlemah)" : ""}. Sekitar 20-25 menit.` : "Semua soal sudah dikuasai. Pertahankan dengan simulasi."]),
         el("div", { class: "row" }, [
-          el("button", { class: "btn btn-light", onclick: () => startDrill(todaySession(20).qs, "Sesi hari ini") }, [icon("play"), "Mulai sesi hari ini"]),
+          doneToday ? el("button", { class: "btn btn-light", onclick: () => startDrill(todaySession(10).qs, "Tambahan hari ini", { daily: true }) }, [icon("play"), "Tambah 10 soal"])
+            : el("button", { class: "btn btn-light", onclick: () => startDrill(todaySession(20).qs, "Sesi hari ini", { daily: true }) }, [icon("play"), "Mulai sesi hari ini"]),
           el("button", { class: "btn btn-outline", onclick: () => { simMode = "upkp"; nav("simulasi"); } }, [icon("timer"), "Simulasi 100 soal"])
         ])
       ]),
@@ -314,7 +342,7 @@
     let cur = (arg && arg.topic) || (renderMateri.last) || TOPICS[0].id;
     const toc = el("nav", { class: "toc", "aria-label": "Daftar topik" });
     const art = el("article", { class: "panel article" });
-    const draw = () => {
+    let draw = () => {
       renderMateri.last = cur;
       toc.innerHTML = ""; let lastTest = null;
       TOPICS.forEach(t => {
@@ -322,6 +350,16 @@
         toc.appendChild(el("button", { class: tcOf(t), "aria-current": t.id === cur ? "true" : null, onclick: () => { cur = t.id; draw(); window.scrollTo({ top: 0 }); } }, [t.label]));
       });
       const t = topicById(cur), n = pool(cur).length;
+      const hafal = renderMateri.mode === "hafal";
+      const counter = el("span", { class: "small muted num", "aria-live": "polite" });
+      const modeBar = () => el("div", { class: "cloze-bar" }, [
+        el("div", { class: "seg", role: "group", "aria-label": "Mode materi" }, [["baca", "Baca"], ["hafal", "Hafalan"]].map(([v, l]) => el("button", { "aria-pressed": (renderMateri.mode || "baca") === v ? "true" : "false", onclick: () => { renderMateri.mode = v; draw(); } }, [l]))),
+        hafal ? el("div", { class: "row", style: "gap:6px" }, [counter, el("button", { class: "btn btn-sm btn-ghost", onclick: () => setAll(true) }, ["Buka semua"]), el("button", { class: "btn btn-sm btn-ghost", onclick: () => setAll(false) }, ["Tutup semua"])])
+          : el("span", { class: "small muted" }, ["Mode Hafalan menyembunyikan kata kunci. Tebak dulu, lalu ketuk untuk mengecek."])
+      ]);
+      const blanks = () => [...art.querySelectorAll(".cloze")];
+      const upd = () => { const b = blanks(); counter.textContent = `${b.filter(x => x.classList.contains("open")).length}/${b.length} dibuka`; };
+      const setAll = v => { blanks().forEach(b => { b.classList.toggle("open", v); b.setAttribute("aria-pressed", v); }); upd(); };
       art.innerHTML = "";
       art.append(
         el("div", { class: "stack", style: "gap:10px;margin-bottom:18px" }, [
@@ -329,9 +367,22 @@
           t.note ? el("p", { class: "small muted" }, [t.note]) : null,
           el("h1", null, [t.label])
         ]),
+        modeBar(),
         el("div", { class: "prose", html: md(MATERI[cur] || "Materi belum tersedia.") }),
         el("div", { class: "row", style: "margin-top:24px" }, [el("button", { class: "btn btn-primary", onclick: () => startDrill(pickFrom([cur], 20, "unseen"), t.label) }, [icon("pen"), `Latih topik ini (${n} soal)`])])
       );
+    };
+    const origDraw = draw;
+    draw = () => {
+      origDraw();
+      if (renderMateri.mode !== "hafal") return;
+      art.querySelectorAll(".prose strong").forEach(st => {
+        const b = el("button", { class: "cloze", type: "button", "aria-pressed": "false", title: "Ketuk untuk membuka" });
+        b.append(...st.childNodes);
+        b.addEventListener("click", () => { const o = b.classList.toggle("open"); b.setAttribute("aria-pressed", o); const c = art.querySelector(".cloze-bar .num"); const all = [...art.querySelectorAll(".cloze")]; if (c) c.textContent = `${all.filter(x => x.classList.contains("open")).length}/${all.length} dibuka`; });
+        st.replaceWith(b);
+      });
+      const c = art.querySelector(".cloze-bar .num"), all = [...art.querySelectorAll(".cloze")]; if (c) c.textContent = `0/${all.length} dibuka`;
     };
     draw();
     view.append(el("div", { class: "materi" }, [toc, art]));
@@ -355,10 +406,10 @@
     }
     return list.slice(0, n);
   }
-  function startDrill(qs, title) {
+  function startDrill(qs, title, opt) {
     if (!qs.length) return toast("Tidak ada soal untuk pilihan ini.");
     if (exam && !exam.finished) return toast("Selesaikan simulasi yang sedang berjalan dulu.");
-    drill = { active: true, qs, i: 0, answers: {}, correct: 0, title };
+    drill = { active: true, qs, i: 0, answers: {}, correct: 0, title, daily: !!(opt && opt.daily), mastBefore: overall().mast };
     go("latihan");
   }
   function renderLatihan(arg) {
@@ -426,7 +477,7 @@
     const drawAct = () => {
       act.innerHTML = "";
       const doneQ = q.id in drill.answers;
-      act.append(el("div", { class: "row" }, [bm(), doneQ ? doubtBtn(q) : null, el("span", { class: "kbd-hint" }, [el("span", { class: "kbd" }, ["A-" + L[q.o.length - 1]]), " pilih  ", el("span", { class: "kbd" }, ["Enter"]), " lanjut"])]),
+      act.append(el("div", { class: "row" }, [bm(), doneQ ? doubtBtn(q) : null, el("span", { class: "kbd-hint" }, [el("span", { class: "kbd" }, ["A-" + L[q.o.length - 1]]), " pilih  ", el("span", { class: "kbd" }, ["P"]), " pembahasan  ", el("span", { class: "kbd" }, ["Enter"]), " lanjut"])]),
         doneQ ? el("button", { class: "btn btn-primary", onclick: nextDrill }, [drill.i + 1 < drill.qs.length ? "Soal berikutnya" : "Lihat ringkasan", icon("right")]) : el("span", { class: "small muted" }, ["Pilih satu jawaban"]));
     };
     paintOpts(); drawAct();
@@ -437,13 +488,20 @@
     drill.choose = choose;
   }
   function nextDrill() { drill.i++; drill.i >= drill.qs.length ? renderDrillSummary() : renderDrillQ(); }
+  // Pembahasan dua lapis: jawaban benar selalu tampil; pembahasan lengkap terbuka otomatis hanya saat salah/kosong
   function feedback(q, ch) {
-    const ok = ch === q.a, skip = ch === null || ch === undefined;
-    return el("div", { class: "feedback " + (ok ? "ok" : "bad") }, [
-      el("div", { class: "fb-title" }, [icon(ok ? "check" : skip ? "alert" : "x"), ok ? `Benar, jawabannya ${L[q.a]}.` : skip ? `Tidak dijawab. Jawaban benar: ${L[q.a]}.` : `Kurang tepat. Kamu memilih ${L[ch]}, jawaban benar ${L[q.a]}.`]),
+    const ok = ch === q.a, skip = ch === null || ch === undefined, open = !ok;
+    const more = el("div", { class: "fb-more", hidden: !open }, [
       el("div", { class: "fb-body" }, [q.e]),
       el("div", { class: "fb-src" }, ["Rujukan: " + q.src]),
       q.set === "form" ? el("div", { class: "fb-src" }, ["BKN tidak menerbitkan kunci soal resmi; kunci ini disusun aplikasi. Bila terasa janggal, tekan Ragukan kunci."]) : null
+    ]);
+    const label = () => more.hidden ? "Lihat pembahasan" : "Sembunyikan pembahasan";
+    const tg = el("button", { class: "fb-toggle", type: "button", "aria-expanded": open ? "true" : "false", onclick: () => { more.hidden = !more.hidden; tg.setAttribute("aria-expanded", !more.hidden); tg.lastChild.textContent = label(); } }, [icon("right"), label()]);
+    return el("div", { class: "feedback " + (ok ? "ok" : "bad") }, [
+      el("div", { class: "fb-title" }, [icon(ok ? "check" : skip ? "alert" : "x"), ok ? "Benar." : skip ? "Tidak dijawab." : `Kurang tepat. Kamu memilih ${L[ch]}.`]),
+      el("div", { class: "fb-key" }, [el("span", { class: "fb-key-l" }, ["Jawaban"]), el("span", null, [`${L[q.a]}. ${q.o[q.a]}`])]),
+      tg, more
     ]);
   }
   function doubtBtn(q) {
@@ -455,6 +513,28 @@
   function renderDrillSummary() {
     view.innerHTML = ""; drill.active = false;
     const done = Object.keys(drill.answers).length, wrong = drill.qs.filter(q => q.id in drill.answers && drill.answers[q.id] !== q.a);
+    if (drill.daily && done) {
+      if (state.dailyDone !== dayKey()) { state.dailyDone = dayKey(); save(); }
+      const gain = overall().mast - drill.mastBefore, tmr = dueTomorrow(), stk = streak();
+      view.append(
+        el("section", { class: "panel lift stack daily-done", style: "gap:18px" }, [
+          el("div", { class: "row", style: "gap:14px;flex-wrap:nowrap" }, [el("span", { class: "done-badge", "aria-hidden": "true" }, [icon("check")]), el("div", null, [el("span", { class: "eyebrow" }, [drill.title]), el("h1", { style: "margin-top:4px" }, ["Sesi hari ini selesai"])])]),
+          el("div", { class: "stats" }, [
+            el("div", { class: "stat" }, [el("b", { class: "num" }, [`${drill.correct}/${done}`]), el("span", null, ["jawaban benar"])]),
+            el("div", { class: "stat" }, [el("b", { class: "num" }, [gain > 0 ? `+${gain}` : "0"]), el("span", null, [gain > 0 ? "soal naik jadi dikuasai" : "dikuasai butuh benar di 2 hari berbeda, jadi naiknya mulai besok"])]),
+            el("div", { class: "stat" }, [el("b", { class: "num" }, [String(tmr)]), el("span", null, ["soal jatuh tempo besok"])]),
+            el("div", { class: "stat" }, [el("b", { class: "num" }, [`${stk} hari`]), el("span", null, ["belajar beruntun"])])
+          ]),
+          el("p", { class: "small muted" }, [wrong.length ? `${wrong.length} soal yang salah akan muncul lagi besok. Baca pembahasannya di bawah sekali lagi sebelum menutup aplikasi.` : "Semua benar. Soal-soal ini akan diulang beberapa hari lagi untuk memastikan benar-benar diingat."]),
+          el("div", { class: "row" }, [
+            el("button", { class: "btn btn-primary", onclick: () => { drill = null; go("home"); } }, ["Selesai untuk hari ini"]),
+            el("button", { class: "btn", onclick: () => startDrill(todaySession(10).qs, "Tambahan hari ini", { daily: true }) }, ["Tambah 10 soal"])
+          ])
+        ]),
+        wrong.length ? el("div", { class: "stack" }, [el("h2", null, ["Soal yang salah"]), el("div", { class: "review" }, wrong.map(q => reviewItem(q, drill.answers[q.id], false)))]) : ""
+      );
+      return;
+    }
     view.append(
       el("section", { class: "panel lift stack", style: "gap:18px" }, [
         el("div", null, [el("span", { class: "eyebrow" }, [drill.title || "Latihan"]), el("h1", { style: "margin-top:6px" }, ["Ringkasan latihan"])]),
@@ -773,6 +853,7 @@
     if (current === "latihan" && drill && drill.active && drill.i < drill.qs.length) {
       const q = drill.qs[drill.i];
       if (idx >= 0 && idx < q.o.length && !(q.id in drill.answers)) { e.preventDefault(); drill.choose(idx); }
+      else if (k === "P" && q.id in drill.answers) { const tg = view.querySelector(".fb-toggle"); if (tg) { e.preventDefault(); tg.click(); } }
       else if ((e.key === "Enter" || e.key === "ArrowRight") && q.id in drill.answers && !(e.target && e.target.tagName === "BUTTON" && e.key === "Enter")) { e.preventDefault(); nextDrill(); }
     } else if (current === "simulasi" && exam && !exam.finished) {
       const q = exam.qs[exam.i];
