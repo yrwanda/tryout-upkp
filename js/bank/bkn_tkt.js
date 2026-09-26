@@ -67,20 +67,20 @@ window.BANK.gg.push(
     src: "Kisi-kisi BKN hal. 144"
   },
   {
-    id: "bkn-gg-09", set: "bkn", topic: "gg",
+    id: "bkn-gg-09", set: "ext", topic: "gg",
     q: "Tujuan reformasi birokrasi menurut Grand Design RB (Perpres No. 81 Tahun 2010) adalah menciptakan birokrasi pemerintah yang ...",
     o: ["Profesional, adaptif, berintegritas, berkinerja tinggi, bersih dan bebas KKN, serta netral", "Besar, terpusat, dan hierarkis agar seluruh kebijakan dikendalikan dari pusat", "Berbasis loyalitas politik kepada pemerintah yang sedang berkuasa", "Bebas dari pengawasan lembaga eksternal seperti BPK, Ombudsman, dan DPR", "Mengutamakan senioritas dan masa kerja dalam promosi jabatan pegawai"],
     a: 0,
     e: "Perpres 81/2010: tujuan RB adalah birokrasi profesional dengan karakteristik adaptif, berintegritas, berkinerja tinggi, bersih dan bebas KKN, mampu melayani publik, netral, sejahtera, berdedikasi, dan memegang teguh nilai-nilai dasar dan kode etik aparatur negara. Sasaran RB: terwujudnya pemerintahan yang bersih dan bebas KKN, meningkatnya kualitas pelayanan publik, dan meningkatnya kapasitas dan akuntabilitas kinerja birokrasi.",
-    src: "Kisi-kisi BKN hal. 140; Perpres No. 81 Tahun 2010"
+    src: "Perpres No. 81 Tahun 2010 (kisi-kisi BKN hal. 140 hanya memuat judul subtopik)"
   },
   {
-    id: "bkn-gg-10", set: "bkn", topic: "gg",
+    id: "bkn-gg-10", set: "ext", topic: "gg",
     q: "Tiga sasaran reformasi birokrasi menurut Grand Design RB 2010-2025 adalah ...",
     o: ["Pemerintahan bersih bebas KKN; kualitas pelayanan publik; kapasitas dan akuntabilitas kinerja", "Penambahan jumlah pegawai; kenaikan gaji berkala; pembangunan gedung kantor baru", "Privatisasi badan usaha; deregulasi perizinan; liberalisasi perdagangan dan investasi", "Sentralisasi kewenangan; standardisasi prosedur; digitalisasi seluruh layanan", "Pemilu yang jujur; partai politik yang kuat; parlemen yang efektif mengawasi"],
     a: 0,
     e: "Perpres 81/2010 menetapkan tiga sasaran RB: (1) terwujudnya pemerintahan yang bersih dan bebas KKN, (2) terwujudnya peningkatan kualitas pelayanan publik kepada masyarakat, (3) meningkatnya kapasitas dan akuntabilitas kinerja birokrasi. Grand Design dijabarkan dalam Road Map RB lima tahunan (kisi-kisi BKN hal. 140).",
-    src: "Kisi-kisi BKN hal. 140; Perpres No. 81 Tahun 2010"
+    src: "Perpres No. 81 Tahun 2010 (kisi-kisi BKN hal. 140 hanya memuat judul subtopik)"
   }
 );
 

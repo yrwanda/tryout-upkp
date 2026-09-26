@@ -264,7 +264,8 @@ Partisipasi, kepastian hukum, transparansi, tanggung jawab (responsif), berorien
 - **Transparansi**: kebebasan arus informasi; proses, lembaga, dan informasi dapat diterima langsung, dipahami, dan dimonitor.
 
 ## Reformasi birokrasi (hal. 140)
-Perpres 81/2010 tentang **Grand Design Reformasi Birokrasi 2010-2025**: prinsip dasar good governance, tujuan RB (birokrasi profesional, berintegritas, berkinerja tinggi, bersih bebas KKN, melayani, netral), dan tiga sasaran RB (pemerintahan bersih bebas KKN; kualitas pelayanan publik; kapasitas dan akuntabilitas kinerja birokrasi).
+Perpres 81/2010 tentang **Grand Design Reformasi Birokrasi 2010-2025**, dengan tiga pokok: **prinsip dasar good governance**, **tujuan RB**, dan **sasaran RB**.
+> Pelengkap (sumber primer, karena kisi-kisi BKN hal. 140 hanya berupa judul): tujuan RB = birokrasi profesional, berintegritas, berkinerja tinggi, bersih bebas KKN, melayani, netral; tiga sasaran RB = pemerintahan bersih bebas KKN, kualitas pelayanan publik, kapasitas dan akuntabilitas kinerja birokrasi.
 `,
   kebijakan: `
 ## Dasar dan konsep (hal. 145-146)
@@ -382,7 +383,7 @@ Present, past, dan future tense, masing-masing dengan latihan soal.
 Aturan penulisan surat dinas, jenis naskah dinas, alat pengiriman surel (naskah dinas, surat elektronik, surat dinas).
 
 ## Komunikasi (hal. 127-128)
-- Proses pengalihan informasi; penerima memberi arti. Unsur (Lasswell): **who, says what, to whom, how/in which channel, with what effect**.
+- Proses pengalihan informasi; penerima memberi arti. Unsur menurut kisi-kisi: **who, what, to whom, how, in what effect** (dikenal sebagai rumusan Lasswell; nama ini tidak disebut di kisi-kisi).
 - **Lisan**: dua arah, fleksibel, umpan balik langsung, dibantu gestur. **Tertulis**: satu arah, bahasa terstruktur, ada waktu memilih diksi.
 
 ## Ragam bahasa (hal. 129-130)

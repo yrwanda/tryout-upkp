@@ -113,7 +113,7 @@ window.JODOH = [
   { id: "sejarah-uud", topic: "uud", title: "Sejarah UUD dan lembaga negara", pages: "41-42, 56-57", left: "Istilah", right: "Keterangan", pairs: [
     ["Panitia Sembilan", "Menyusun Piagam Jakarta, 22 Juni 1945"], ["PPKI", "Mengesahkan UUD 1945, 18 Agustus 1945"],
     ["UUD sebelum amandemen", "16 bab, 37 pasal, 65 ayat"], ["Alasan amandemen", "Kekuasaan Presiden terlalu besar, pasal multitafsir"],
-    ["MPR sebelum amandemen", "Lembaga tertinggi negara"], ["DPA", "Dihapus setelah amandemen"], ["Lembaga baru setelah amandemen", "DPD, MK, KY"]] },
+    ["MPR sebelum amandemen", "Di puncak bagan, membawahi DPR, Presiden, DPA, MA, BPK"], ["DPA", "Dihapus setelah amandemen"], ["Lembaga baru setelah amandemen", "DPD, MK, KY"]] },
   { id: "presiden-masa", topic: "sejarah", title: "Presiden dan masa jabatan", pages: "60", left: "Presiden", right: "Masa jabatan", pairs: [
     ["Soekarno", "1945-1967 (21 tahun 7 bulan)"], ["Soeharto", "1967-1998 (31 tahun 2 bulan)"], ["B.J. Habibie", "1998-1999 (1 tahun 5 bulan)"],
     ["Abdurrahman Wahid", "1999-2001 (1 tahun 9 bulan)"], ["Megawati Soekarnoputri", "2001-2004 (3 tahun 3 bulan)"], ["Susilo Bambang Yudhoyono", "2004-2014"],
@@ -148,7 +148,7 @@ window.JODOH = [
     ["PER/04/M.PAN/4/2007", "Pedoman formulasi sampai revisi kebijakan publik"], ["UU 24/2011", "BPJS"]] },
   { id: "gg-rb", topic: "gg", title: "Good governance dan reformasi birokrasi", pages: "123-125, 140-144", left: "Istilah", right: "Keterangan", pairs: [
     ["Good governance", "Pemerintahan yang bersih, demokratis, efektif"], ["Partisipasi", "Masyarakat ikut merumuskan kebijakan publik"],
-    ["Tujuan reformasi birokrasi", "Birokrasi profesional, berintegritas, netral, melayani"], ["Sasaran reformasi birokrasi", "Bebas KKN, pelayanan publik berkualitas, kinerja akuntabel"],
+    ["Perpres 81/2010", "Grand Design Reformasi Birokrasi 2010-2025"], ["Tiga pokok Grand Design RB di kisi-kisi", "Prinsip dasar GG, tujuan RB, sasaran RB"],
     ["Pelayanan publik", "Barang, jasa, dan/atau pelayanan administratif"], ["Asas pelayanan publik", "12 asas, antara lain kesamaan hak"],
     ["Karakteristik good governance", "9 karakteristik, antara lain visi strategis"]] },
   { id: "contoh-kebijakan", topic: "kebijakan", title: "Konsep dan contoh kebijakan", pages: "145-149", left: "Istilah/contoh", right: "Keterangan", pairs: [
@@ -171,19 +171,19 @@ window.JODOH = [
     ["Kakanwil Ditjen Imigrasi", "Bertanggung jawab kepada Dirjen Imigrasi"], ["Kanwil Ditjen Imigrasi", "Instansi vertikal di provinsi"],
     ["Kanwil Kalimantan Barat", "Tipe B"], ["Perubahan OTK", "Perlu persetujuan tertulis MenPANRB"], ["Keimigrasian", "Urusan absolut, bukan urusan perangkat daerah"]] },
   { id: "definisi-ahli", topic: "manajemen", title: "Definisi menurut para ahli", pages: "134-135, 157", left: "Ahli", right: "Definisi", pairs: [
-    ["George R. Terry", "Perencanaan, pengorganisasian, penggerakan, pengawasan"], ["Henry Fayol", "Planning, organizing, commanding, coordinating, controlling"],
-    ["Koontz dan O'Donnell", "Mencapai tujuan melalui dan dengan orang lain"], ["John D. Millet", "Pembimbingan dan pemberian fasilitas bagi kelompok formal"],
+    ["George R. Terry", "Perencanaan, pengorganisasian, penggerakan, pengawasan"], ["Henry Fayol", "Merencanakan, mengorganisasikan, menggerakkan SDM, mengendalikan"],
+    ["Harold Koontz dan Cyril O'Donnell", "Mencapai tujuan melalui dan dengan orang lain"], ["John D. Millet", "Pembimbingan dan pemberian fasilitas bagi kelompok formal"],
     ["Max Weber", "Organisasi: kerangka wewenang, tanggung jawab, pembagian kerja"], ["Haryadi dan Sugiarto", "Administrasi: pencatatan data sistematis agar mudah ditemukan"]] },
   { id: "level-pimpin", topic: "manajemen", title: "Level manajemen dan teori kepemimpinan", pages: "156, 159", left: "Istilah", right: "Keterangan", pairs: [
     ["Top management", "Kepala institusi, CEO, direktur"], ["Middle management", "Manajer cabang, kepala departemen/bagian"],
     ["Low management", "Mandor, supervisor, pengawas lapangan"], ["Teori trait", "Pemimpin dilahirkan dengan sifat tertentu"],
     ["Teori behavioral", "Perilaku pemimpin dapat diterapkan dan ditiru"], ["Teori situasional", "Gaya kepemimpinan menyesuaikan situasi"]] },
   { id: "mckinsey", topic: "manajemen", title: "McKinsey 7S", pages: "161", left: "Unsur", right: "Arti", pairs: [
-    ["Strategy", "Rumusan membangun keunggulan kompetitif berkelanjutan"], ["Structure", "Memengaruhi bagaimana sistem bekerja"], ["Systems", "Prosedur yang dilakukan organisasi"],
-    ["Skills", "Kapabilitas dan kompetensi karyawan"], ["Staff", "Aset dalam organisasi"], ["Style", "Gaya kepemimpinan untuk mencapai target"],
-    ["Shared values", "Standar norma perilaku karyawan dan manajemen"]] },
-  { id: "komunikasi-arsip", topic: "perkantoran", title: "Komunikasi, ragam bahasa, arsip", pages: "127-130, 136", left: "Istilah", right: "Ciri", pairs: [
+    ["Strategi (strategy)", "Rumusan membangun keunggulan kompetitif berkelanjutan"], ["Struktur (structure)", "Memengaruhi bagaimana sistem bekerja"], ["Sistem (systems)", "Prosedur yang dilakukan organisasi"],
+    ["Keterampilan (skills)", "Kapabilitas dan kompetensi karyawan"], ["Karyawan (staff)", "Aset dalam organisasi"], ["Gaya kepemimpinan (style)", "Berpengaruh pada kemampuan mencapai target"],
+    ["Nilai-nilai organisasi (shared vision)", "Standar norma perilaku karyawan dan manajemen"]] },
+  { id: "komunikasi-arsip", topic: "perkantoran", title: "Komunikasi, ragam bahasa, arsip", pages: "127-130, 136", left: "Istilah", right: "Isi", pairs: [
     ["Ragam beku", "Pola tetap: sumpah, UU, akta notaris"], ["Ragam resmi", "Bahasa baku untuk suasana formal, misalnya naskah dinas"],
     ["Komunikasi lisan", "Dua arah, umpan balik langsung"], ["Komunikasi tertulis", "Satu arah, sempat memilih diksi"],
-    ["Lasswell", "Who, says what, to whom, in which channel, with what effect"], ["UU 43/2009", "Kearsipan"], ["Arsip aktif", "Frekuensi penggunaannya tinggi atau terus-menerus"]] }
+    ["Unsur komunikasi", "Who, what, to whom, how, in what effect"], ["UU 43/2009", "Kearsipan"], ["Tujuan administrasi", "Menyusun, memonitor, mengevaluasi, mengamankan data"]] }
 ];
