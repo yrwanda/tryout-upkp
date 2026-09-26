@@ -215,7 +215,7 @@ window.BANK.renstra.push(
     q: "Visi pembangunan dalam RPJMN 2025-2029 menurut kisi-kisi BKN adalah ...",
     o: ["Terwujudnya Indonesia Maju yang Berdaulat, Mandiri, dan Berkepribadian Berlandaskan Gotong Royong", "Bersama Indonesia Maju Menuju Indonesia Emas 2045", "Indonesia Emas 2045: Negara Nusantara Berdaulat, Maju, dan Berkelanjutan", "Indonesia Kuat, Adil, dan Makmur", "Menuju Indonesia Sejahtera 2030"],
     a: 1,
-    e: "Kisi-kisi BKN hal. 92-95: RPJMN 2025-2029 memuat visi dan misi, arah kebijakan, 8 Prioritas Nasional, sasaran utama, 17 program prioritas, 8 program hasil terbaik cepat, dan proyek prioritas; visinya \"Bersama Indonesia Maju Menuju Indonesia Emas 2045\". Pilihan A adalah visi RPJMN 2020-2024; pilihan C visi RPJPN 2025-2045.",
+    e: "Kisi-kisi BKN hal. 92-95: RPJMN 2025-2029 memuat visi dan misi, arah kebijakan, 8 Prioritas Nasional, sasaran utama, 17 program prioritas, 8 program hasil terbaik cepat, dan proyek prioritas; visinya \"Bersama Indonesia Maju Menuju Indonesia Emas 2045\". \"Terwujudnya Indonesia Maju yang Berdaulat, Mandiri, dan Berkepribadian...\" adalah visi RPJMN 2020-2024; \"Negara Nusantara Berdaulat, Maju, dan Berkelanjutan\" adalah visi RPJPN 2025-2045.",
     src: "Kisi-kisi BKN hal. 92-95"
   },
   {

@@ -88,7 +88,7 @@ window.BANK.perkantoran.push(
     q: "Unsur-unsur organisasi menurut kisi-kisi BKN adalah ...",
     o: ["Personel, kerja sama, tujuan, peralatan, lingkungan, dan sumber daya alam", "Man, money, machines, methods, materials, market", "Planning, organizing, actuating, controlling", "Visi, misi, tujuan, sasaran", "Pimpinan, staf, dan pelaksana"],
     a: 0,
-    e: "Kisi-kisi BKN hal. 134: enam unsur organisasi - personel (man), kerja sama (team work), tujuan, peralatan (equipment), lingkungan, sumber daya alam. Pilihan B adalah unsur manajemen (6M, hal. 160); pilihan C fungsi manajemen.",
+    e: "Kisi-kisi BKN hal. 134: enam unsur organisasi - personel (man), kerja sama (team work), tujuan, peralatan (equipment), lingkungan, sumber daya alam. \"Man, money, machines, methods, materials, market\" adalah unsur manajemen (6M, hal. 160); \"planning, organizing, actuating, controlling\" adalah fungsi manajemen.",
     src: "Kisi-kisi BKN hal. 134"
   },
   {

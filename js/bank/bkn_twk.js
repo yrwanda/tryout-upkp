@@ -176,7 +176,7 @@ window.BANK.bindo.push(
     q: "Pasangan kata baku - tidak baku yang benar menurut kisi-kisi BKN adalah ...",
     o: ["apotik - apotek", "ajek - ajeg", "analisa - analisis", "antri - antre", "azas - asas"],
     a: 1,
-    e: "Kisi-kisi BKN hal. 85 (baku - tidak baku): apotek - apotik; ajek - ajeg; analisis - analisa; antre - antri; asas - azas. Hanya pilihan B yang urutannya baku lalu tidak baku. Kata baku = sesuai kaidah dan KBBI. Soal latihan resmi BKN 2025: yang bukan kata baku adalah \"managemen\" (baku: manajemen).",
+    e: "Kisi-kisi BKN hal. 85 (baku - tidak baku): apotek - apotik; ajek - ajeg; analisis - analisa; antre - antri; asas - azas. Hanya \"ajek - ajeg\" yang urutannya baku lalu tidak baku; pasangan lain terbalik (tidak baku lalu baku). Kata baku = sesuai kaidah dan KBBI. Soal latihan resmi BKN 2025: yang bukan kata baku adalah \"managemen\" (baku: manajemen).",
     src: "Kisi-kisi BKN hal. 85; Latihan resmi BKN 2025"
   },
   {
@@ -260,7 +260,7 @@ window.BANK.pancasila.push(
     q: "Lima nilai utama Pancasila menurut kisi-kisi BKN adalah ...",
     o: ["Ketuhanan, kemanusiaan, persatuan, kerakyatan, keadilan sosial", "Religius, nasionalis, mandiri, gotong royong, integritas", "Kejujuran, kedisiplinan, kerja keras, kesederhanaan, kepedulian", "Keimanan, kebangsaan, kekeluargaan, kemandirian, kesejahteraan", "Ketakwaan, kebersamaan, kemerdekaan, kedaulatan, kemakmuran"],
     a: 0,
-    e: "Kisi-kisi BKN hal. 22 menyebut nilai utama Pancasila: Ketuhanan, Kemanusiaan, Persatuan, Kerakyatan, dan Keadilan Sosial; pengamalannya membantu menciptakan masyarakat yang harmonis, adil, dan damai. Pilihan B adalah nilai utama karakter Kemendikbud (PPK), bukan nilai Pancasila.",
+    e: "Kisi-kisi BKN hal. 22 menyebut nilai utama Pancasila: Ketuhanan, Kemanusiaan, Persatuan, Kerakyatan, dan Keadilan Sosial; pengamalannya membantu menciptakan masyarakat yang harmonis, adil, dan damai. \"Religius, nasionalis, mandiri, gotong royong, integritas\" adalah nilai utama karakter Kemendikbud (PPK), bukan nilai Pancasila.",
     src: "Kisi-kisi BKN hal. 22"
   },
   {
@@ -580,7 +580,7 @@ window.BANK.uud.push(
     q: "Saat disahkan PPKI pada 18 Agustus 1945, batang tubuh UUD 1945 terdiri atas ...",
     o: ["16 bab, 37 pasal, 65 ayat, 4 pasal aturan peralihan, dan 2 ayat aturan tambahan", "21 bab, 73 pasal, 170 ayat", "16 bab, 37 pasal, 194 ayat, 3 pasal aturan peralihan, 2 pasal aturan tambahan", "20 bab, 40 pasal, 100 ayat", "12 bab, 30 pasal, 50 ayat"],
     a: 0,
-    e: "Kisi-kisi BKN hal. 41: naskah asli UUD 1945 terdiri atas Pembukaan, Batang Tubuh (16 bab, 37 pasal, 65 ayat, 4 pasal aturan peralihan, 2 ayat aturan tambahan), serta Penjelasan. Pilihan C adalah angka kisi-kisi BKN untuk naskah setelah amandemen.",
+    e: "Kisi-kisi BKN hal. 41: naskah asli UUD 1945 terdiri atas Pembukaan, Batang Tubuh (16 bab, 37 pasal, 65 ayat, 4 pasal aturan peralihan, 2 ayat aturan tambahan), serta Penjelasan. \"16 bab, 37 pasal, 194 ayat...\" adalah angka kisi-kisi BKN untuk naskah setelah amandemen.",
     src: "Kisi-kisi BKN hal. 41"
   },
   {

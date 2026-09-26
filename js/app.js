@@ -127,6 +127,22 @@
     if (out.length < n) for (const q of shuffle(core.filter(q => !out.includes(q)))) { if (out.length >= n) break; out.push(q); }
     return { qs: shuffle(out), due: Math.min(due.length, 12), weakest: weakest ? weakest.k : null };
   }
+  // Acak urutan pilihan setiap kali soal tampil, agar yang diingat isi jawabannya, bukan posisi hurufnya.
+  // Pilihan berurutan (angka, Pertama-Kelima, Romawi) tetap urut; "semua pilihan di atas" tetap di akhir.
+  const ORDW = ["pertama", "kedua", "ketiga", "keempat", "kelima"], ROMW = ["I", "II", "III", "IV", "V", "I dan IV", "Semua alinea"];
+  const isOrdered = q => q.o.every(x => { const t = x.trim(); return ORDW.includes(t.toLowerCase()) || ROMW.includes(t) || /^\d+([.,]\d+)?$/.test(t); });
+  const PIN = /semua (pilihan|jawaban) di atas|di atas (benar|salah)|semua benar|tidak ada yang benar/i;
+  function makePerm(q) {
+    const idx = q.o.map((_, i) => i);
+    if (isOrdered(q)) return idx;
+    const pinned = idx.filter(i => PIN.test(q.o[i])), free = idx.filter(i => !PIN.test(q.o[i]));
+    const last = (state.pos || {})[q.id]; let p = idx;
+    // usahakan huruf kunci berbeda dari saat soal ini terakhir muncul
+    for (let t = 0; t < 10; t++) { p = shuffle(free).concat(pinned); if (last === undefined || p.indexOf(q.a) !== last) break; }
+    return p;
+  }
+  const idPerm = q => q.o.map((_, i) => i);
+  function rememberPos(q, perm) { state.pos = state.pos || {}; state.pos[q.id] = perm.indexOf(q.a); }
   // soal belum dikuasai yang jatuh tempo paling lambat akhir hari besok
   function dueTomorrow() {
     const end = new Date(); end.setHours(0, 0, 0, 0); const lim = end.getTime() + 2 * DAY;
@@ -409,7 +425,7 @@
   function startDrill(qs, title, opt) {
     if (!qs.length) return toast("Tidak ada soal untuk pilihan ini.");
     if (exam && !exam.finished) return toast("Selesaikan simulasi yang sedang berjalan dulu.");
-    drill = { active: true, qs, i: 0, answers: {}, correct: 0, title, daily: !!(opt && opt.daily), mastBefore: overall().mast };
+    drill = { active: true, qs, i: 0, answers: {}, correct: 0, perm: {}, title, daily: !!(opt && opt.daily), mastBefore: overall().mast };
     go("latihan");
   }
   function renderLatihan(arg) {
@@ -450,6 +466,7 @@
   function renderDrillQ() {
     view.innerHTML = "";
     const q = drill.qs[drill.i], t = topicById(q.topic), answered = q.id in drill.answers;
+    const perm = drill.perm[q.id] || (drill.perm[q.id] = makePerm(q));
     const top = el("div", { class: "q-top" }, [
       el("button", { class: "btn btn-ghost icon-btn", "aria-label": "Hentikan latihan", onclick: () => confirmBox("Hentikan latihan?", "Jawaban yang sudah masuk tetap tercatat di statistik.", "Hentikan", () => { drill.i = drill.qs.length; renderDrillSummary(); }) }, [icon("x")]),
       el("div", { class: "q-progress", role: "progressbar", "aria-valuenow": drill.i + 1, "aria-valuemax": drill.qs.length }, [el("i", { style: `width:${pct(drill.i + (answered ? 1 : 0), drill.qs.length)}%` })]),
@@ -462,17 +479,17 @@
     const bm = () => el("button", { class: "btn btn-ghost btn-sm", "aria-pressed": state.bookmarks.includes(q.id) ? "true" : "false", onclick: e => { toggleBookmark(q.id); e.currentTarget.replaceWith(bm()); } }, [icon("bookmark"), state.bookmarks.includes(q.id) ? "Ditandai" : "Tandai"]);
     const choose = idx => {
       if (q.id in drill.answers) return;
-      const ok = idx === q.a; recordAnswer(q, ok); drill.answers[q.id] = idx; if (ok) drill.correct++;
-      paintOpts(); fb.appendChild(feedback(q, idx)); drawAct();
+      const ok = idx === q.a; rememberPos(q, perm); recordAnswer(q, ok); drill.answers[q.id] = idx; if (ok) drill.correct++;
+      paintOpts(); fb.appendChild(feedback(q, idx, perm)); drawAct();
       top.querySelector(".chip-ok").lastChild.textContent = String(drill.correct);
       top.querySelector(".q-progress i").style.width = pct(drill.i + 1, drill.qs.length) + "%";
       const nx = act.querySelector(".btn-primary"); if (nx) nx.focus();
     };
     const paintOpts = () => {
       opts.innerHTML = ""; const ch = drill.answers[q.id], done = ch !== undefined;
-      q.o.forEach((o, i) => opts.appendChild(el("button", {
-        class: "opt" + (done ? (i === q.a ? " correct" : i === ch ? " wrong" : " dim") : ""), disabled: done, onclick: () => choose(i), "aria-label": `${L[i]}. ${o}`
-      }, [el("span", { class: "k" }, [L[i]]), el("span", null, [o]), el("span", { class: "mk" }, [done && i === q.a ? icon("check") : done && i === ch ? icon("x") : ""])])));
+      perm.forEach((i, pos) => opts.appendChild(el("button", {
+        class: "opt" + (done ? (i === q.a ? " correct" : i === ch ? " wrong" : " dim") : ""), disabled: done, onclick: () => choose(i), "aria-label": `${L[pos]}. ${q.o[i]}`
+      }, [el("span", { class: "k" }, [L[pos]]), el("span", null, [q.o[i]]), el("span", { class: "mk" }, [done && i === q.a ? icon("check") : done && i === ch ? icon("x") : ""])])));
     };
     const drawAct = () => {
       act.innerHTML = "";
@@ -481,7 +498,7 @@
         doneQ ? el("button", { class: "btn btn-primary", onclick: nextDrill }, [drill.i + 1 < drill.qs.length ? "Soal berikutnya" : "Lihat ringkasan", icon("right")]) : el("span", { class: "small muted" }, ["Pilih satu jawaban"]));
     };
     paintOpts(); drawAct();
-    if (answered) fb.appendChild(feedback(q, drill.answers[q.id]));
+    if (answered) fb.appendChild(feedback(q, drill.answers[q.id], perm));
     view.append(el("div", { class: "stack", style: "gap:6px" }, [el("span", { class: "eyebrow" }, [drill.title || "Latihan"]), top]),
       el("section", { class: "panel lift q-card" }, [el("div", { class: "q-meta" }, [testChip(t), el("span", { class: "chip" }, [t.label]), srcTag(q)]), el("div", { class: "q-text" }, [q.q]), opts, fb]),
       el("div", { class: "sticky-act" }, [act]));
@@ -489,8 +506,9 @@
   }
   function nextDrill() { drill.i++; drill.i >= drill.qs.length ? renderDrillSummary() : renderDrillQ(); }
   // Pembahasan dua lapis: jawaban benar selalu tampil; pembahasan lengkap terbuka otomatis hanya saat salah/kosong
-  function feedback(q, ch) {
-    const ok = ch === q.a, skip = ch === null || ch === undefined, open = !ok;
+  function feedback(q, ch, perm) {
+    perm = perm || idPerm(q);
+    const ok = ch === q.a, skip = ch === null || ch === undefined, open = !ok, Lof = i => L[perm.indexOf(i)];
     const more = el("div", { class: "fb-more", hidden: !open }, [
       el("div", { class: "fb-body" }, [q.e]),
       el("div", { class: "fb-src" }, ["Rujukan: " + q.src]),
@@ -499,8 +517,8 @@
     const label = () => more.hidden ? "Lihat pembahasan" : "Sembunyikan pembahasan";
     const tg = el("button", { class: "fb-toggle", type: "button", "aria-expanded": open ? "true" : "false", onclick: () => { more.hidden = !more.hidden; tg.setAttribute("aria-expanded", !more.hidden); tg.lastChild.textContent = label(); } }, [icon("right"), label()]);
     return el("div", { class: "feedback " + (ok ? "ok" : "bad") }, [
-      el("div", { class: "fb-title" }, [icon(ok ? "check" : skip ? "alert" : "x"), ok ? "Benar." : skip ? "Tidak dijawab." : `Kurang tepat. Kamu memilih ${L[ch]}.`]),
-      el("div", { class: "fb-key" }, [el("span", { class: "fb-key-l" }, ["Jawaban"]), el("span", null, [`${L[q.a]}. ${q.o[q.a]}`])]),
+      el("div", { class: "fb-title" }, [icon(ok ? "check" : skip ? "alert" : "x"), ok ? "Benar." : skip ? "Tidak dijawab." : `Kurang tepat. Kamu memilih ${Lof(ch)}.`]),
+      el("div", { class: "fb-key" }, [el("span", { class: "fb-key-l" }, ["Jawaban"]), el("span", null, [`${Lof(q.a)}. ${q.o[q.a]}`])]),
       tg, more
     ]);
   }
@@ -531,7 +549,7 @@
             el("button", { class: "btn", onclick: () => startDrill(todaySession(10).qs, "Tambahan hari ini", { daily: true }) }, ["Tambah 10 soal"])
           ])
         ]),
-        wrong.length ? el("div", { class: "stack" }, [el("h2", null, ["Soal yang salah"]), el("div", { class: "review" }, wrong.map(q => reviewItem(q, drill.answers[q.id], false)))]) : ""
+        wrong.length ? el("div", { class: "stack" }, [el("h2", null, ["Soal yang salah"]), el("div", { class: "review" }, wrong.map(q => reviewItem(q, drill.answers[q.id], false, null, drill.perm[q.id])))]) : ""
       );
       return;
     }
@@ -549,16 +567,17 @@
           el("button", { class: "btn btn-ghost", onclick: () => { drill = null; go("home"); } }, ["Beranda"])
         ])
       ]),
-      wrong.length ? el("div", { class: "stack" }, [el("h2", null, ["Soal yang salah"]), el("div", { class: "review" }, wrong.map(q => reviewItem(q, drill.answers[q.id], false)))]) : ""
+      wrong.length ? el("div", { class: "stack" }, [el("h2", null, ["Soal yang salah"]), el("div", { class: "review" }, wrong.map(q => reviewItem(q, drill.answers[q.id], false, null, drill.perm[q.id])))]) : ""
     );
   }
-  function reviewItem(q, ch, flagged, no) {
+  function reviewItem(q, ch, flagged, no, perm) {
+    perm = perm || idPerm(q);
     const t = topicById(q.topic), st = ch === null || ch === undefined ? "skip" : ch === q.a ? "ok" : "bad";
     return el("article", { class: "review-item " + st }, [
       el("div", { class: "q-meta" }, [no ? el("span", { class: "chip num" }, [`No. ${no}`]) : null, testChip(t), el("span", { class: "chip" }, [t.label]), srcTag(q), flagged ? el("span", { class: "chip chip-warn" }, [icon("flag"), "Ragu-ragu"]) : null]),
       el("div", { class: "q-text" }, [q.q]),
-      el("div", { class: "options" }, q.o.map((o, i) => el("div", { class: "opt" + (i === q.a ? " correct" : i === ch ? " wrong" : " dim") }, [el("span", { class: "k" }, [L[i]]), el("span", null, [o]), el("span", { class: "mk" }, [i === q.a ? icon("check") : i === ch ? icon("x") : ""])]))),
-      feedback(q, st === "skip" ? null : ch),
+      el("div", { class: "options" }, perm.map((i, pos) => el("div", { class: "opt" + (i === q.a ? " correct" : i === ch ? " wrong" : " dim") }, [el("span", { class: "k" }, [L[pos]]), el("span", null, [q.o[i]]), el("span", { class: "mk" }, [i === q.a ? icon("check") : i === ch ? icon("x") : ""])]))),
+      feedback(q, st === "skip" ? null : ch, perm),
       el("div", null, [doubtBtn(q)])
     ]);
   }
@@ -584,7 +603,7 @@
   }
   const secLabel = (mode, key) => mode === "form" ? topicById(key).label : TESTS[key].label;
   const secTc = (mode, key) => mode === "form" ? tcOf(topicById(key)) : "tc" + TESTS[key].color;
-  function persistExam() { if (!exam || exam.finished) return store.del(EXAM_KEY); store.set(EXAM_KEY, JSON.stringify({ mode: exam.mode, ids: exam.qs.map(q => q.id), sections: exam.sections, i: exam.i, answers: exam.answers, flags: exam.flags, endAt: exam.endAt, startedAt: exam.startedAt })); }
+  function persistExam() { if (!exam || exam.finished) return store.del(EXAM_KEY); store.set(EXAM_KEY, JSON.stringify({ mode: exam.mode, ids: exam.qs.map(q => q.id), sections: exam.sections, i: exam.i, answers: exam.answers, flags: exam.flags, perm: exam.perm, endAt: exam.endAt, startedAt: exam.startedAt })); }
   function restoreExam() {
     try {
       const s = JSON.parse(store.get(EXAM_KEY) || "null"); if (!s) return;
@@ -627,7 +646,7 @@
       if (simMode === "upkp") state.settings.durationMin = parseInt(dur.value, 10) || 90;
       TEST_ORDER.forEach(k => state.settings.thresholds[k] = th[k].value); save();
       const b = buildExam(simMode), secs = (parseInt(dur.value, 10) || MODES[simMode].min) * 60;
-      exam = { mode: simMode, qs: b.qs, sections: b.sections, i: 0, answers: {}, flags: {}, startedAt: Date.now(), endAt: Date.now() + secs * 1000, finished: false };
+      exam = { mode: simMode, qs: b.qs, sections: b.sections, i: 0, answers: {}, flags: {}, perm: {}, startedAt: Date.now(), endAt: Date.now() + secs * 1000, finished: false };
       persistExam(); startTimer(); renderExamQ(); window.scrollTo({ top: 0 });
     };
     const short = CORE.filter(t => pool(t.id).length < t.n);
@@ -668,6 +687,8 @@
   function renderExamQ() {
     view.innerHTML = "";
     const q = exam.qs[exam.i], t = topicById(q.topic), sec = secOf(exam.i), done = Object.keys(exam.answers).length, r = remaining();
+    exam.perm = exam.perm || {};
+    const perm = exam.perm[q.id] || (exam.perm[q.id] = makePerm(q));
     const set = idx => { exam.answers[q.id] = idx; persistExam(); renderExamQ(); };
     const bar = el("div", { class: "exam-bar" }, [
       el("span", { id: "timer", class: "timer" + (r < 300 ? " low" : ""), role: "timer", "aria-label": "Sisa waktu" }, [icon("timer"), fmtTime(r)]),
@@ -681,7 +702,7 @@
     const card = el("section", { class: "panel lift q-card" }, [
       el("div", { class: "q-meta" }, [el("span", { class: "chip num" }, [`No. ${exam.i + 1}`]), el("span", { class: "chip" }, [t.label]), q.set === "form" ? el("span", { class: "stamp" }, [icon("award"), "Resmi BKN"]) : null]),
       el("div", { class: "q-text" }, [q.q]),
-      el("div", { class: "options", role: "radiogroup" }, q.o.map((o, i) => el("button", { class: "opt" + (exam.answers[q.id] === i ? " chosen" : ""), role: "radio", "aria-checked": exam.answers[q.id] === i ? "true" : "false", onclick: () => set(i) }, [el("span", { class: "k" }, [L[i]]), el("span", null, [o]), el("span", { class: "mk" })])))
+      el("div", { class: "options", role: "radiogroup" }, perm.map((i, pos) => el("button", { class: "opt" + (exam.answers[q.id] === i ? " chosen" : ""), role: "radio", "aria-checked": exam.answers[q.id] === i ? "true" : "false", onclick: () => set(i) }, [el("span", { class: "k" }, [L[pos]]), el("span", null, [q.o[i]]), el("span", { class: "mk" })])))
     ]);
     const act = el("div", { class: "q-actions sticky-act" }, [
       el("button", { class: "btn", disabled: exam.i === 0, onclick: () => { exam.i--; persistExam(); renderExamQ(); } }, [icon("left"), "Sebelumnya"]),
@@ -695,12 +716,12 @@
     const agg = {};
     exam.sections.forEach(s => {
       const r = agg[s.key] || (agg[s.key] = { key: s.key, label: secLabel(exam.mode, s.key), tc: secTc(exam.mode, s.key), n: 0, correct: 0 });
-      for (let i = s.start; i < s.end; i++) { const q = exam.qs[i], ok = exam.answers[q.id] === q.a; recordAnswer(q, ok); r.n++; if (ok) r.correct++; }
+      for (let i = s.start; i < s.end; i++) { const q = exam.qs[i], ok = exam.answers[q.id] === q.a; if (exam.perm && exam.perm[q.id]) rememberPos(q, exam.perm[q.id]); recordAnswer(q, ok); r.n++; if (ok) r.correct++; }
     });
     const rows = Object.values(agg).map(r => Object.assign(r, { score: r.correct * 5, max: r.n * 5, th: exam.mode === "form" ? "" : state.settings.thresholds[r.key] }));
     const total = rows.reduce((a, r) => ({ n: a.n + r.n, correct: a.correct + r.correct, score: a.score + r.score, max: a.max + r.max }), { n: 0, correct: 0, score: 0, max: 0 });
     exam.result = { rows, total, timeout };
-    state.history.push({ ts: exam.finishedAt, mode: exam.mode, durationSec: Math.round((Math.min(exam.finishedAt, exam.endAt) - exam.startedAt) / 1000), rows, total, timeout, qids: exam.qs.map(q => q.id), answers: exam.answers, flags: exam.flags });
+    state.history.push({ ts: exam.finishedAt, mode: exam.mode, durationSec: Math.round((Math.min(exam.finishedAt, exam.endAt) - exam.startedAt) / 1000), rows, total, timeout, qids: exam.qs.map(q => q.id), answers: exam.answers, flags: exam.flags, perm: exam.perm || {} });
     if (state.history.length > 60) state.history.shift();
     save(); store.del(EXAM_KEY);
     if (!silent) toast(timeout ? "Waktu habis. Simulasi dinilai." : "Simulasi dinilai.");
@@ -722,7 +743,7 @@
     const list = el("div", { class: "review" });
     const drawList = () => {
       list.innerHTML = "";
-      ex.qs.forEach((q, i) => { const ch = ex.answers[q.id], st = ch === undefined ? "skip" : ch === q.a ? "ok" : "bad"; if (filter !== "all" && !(filter === "flag" ? ex.flags[q.id] : st === filter)) return; list.appendChild(reviewItem(q, ch === undefined ? null : ch, !!ex.flags[q.id], i + 1)); });
+      ex.qs.forEach((q, i) => { const ch = ex.answers[q.id], st = ch === undefined ? "skip" : ch === q.a ? "ok" : "bad"; if (filter !== "all" && !(filter === "flag" ? ex.flags[q.id] : st === filter)) return; list.appendChild(reviewItem(q, ch === undefined ? null : ch, !!ex.flags[q.id], i + 1, (ex.perm || {})[q.id])); });
       if (!list.children.length) list.appendChild(el("div", { class: "empty" }, ["Tidak ada soal untuk filter ini."]));
     };
     const cnt = { bad: ex.qs.filter(q => q.id in ex.answers && ex.answers[q.id] !== q.a).length, skip: ex.qs.filter(q => !(q.id in ex.answers)).length, flag: ex.qs.filter(q => ex.flags[q.id]).length };
@@ -769,7 +790,7 @@
   }
   function renderRiwayat(arg) {
     if (arg && arg.attempt) {
-      const h = arg.attempt, ex = { mode: h.mode, qs: h.qids.map(id => qById[id]).filter(Boolean), answers: h.answers || {}, flags: h.flags || {}, result: { rows: rowsOf(h), total: h.total, timeout: h.timeout } };
+      const h = arg.attempt, ex = { mode: h.mode, qs: h.qids.map(id => qById[id]).filter(Boolean), answers: h.answers || {}, flags: h.flags || {}, perm: h.perm || {}, result: { rows: rowsOf(h), total: h.total, timeout: h.timeout } };
       renderResult(ex);
       view.insertBefore(el("div", null, [el("button", { class: "btn btn-sm btn-ghost", onclick: () => go("riwayat") }, [icon("left"), "Kembali ke riwayat"])]), view.firstChild);
       return;
@@ -852,12 +873,12 @@
     const k = e.key.toUpperCase(), idx = L.indexOf(k);
     if (current === "latihan" && drill && drill.active && drill.i < drill.qs.length) {
       const q = drill.qs[drill.i];
-      if (idx >= 0 && idx < q.o.length && !(q.id in drill.answers)) { e.preventDefault(); drill.choose(idx); }
+      if (idx >= 0 && idx < q.o.length && !(q.id in drill.answers)) { e.preventDefault(); drill.choose(drill.perm[q.id][idx]); }
       else if (k === "P" && q.id in drill.answers) { const tg = view.querySelector(".fb-toggle"); if (tg) { e.preventDefault(); tg.click(); } }
       else if ((e.key === "Enter" || e.key === "ArrowRight") && q.id in drill.answers && !(e.target && e.target.tagName === "BUTTON" && e.key === "Enter")) { e.preventDefault(); nextDrill(); }
     } else if (current === "simulasi" && exam && !exam.finished) {
       const q = exam.qs[exam.i];
-      if (idx >= 0 && idx < q.o.length) { exam.answers[q.id] = idx; persistExam(); renderExamQ(); }
+      if (idx >= 0 && idx < q.o.length) { exam.answers[q.id] = (exam.perm && exam.perm[q.id] || idPerm(q))[idx]; persistExam(); renderExamQ(); }
       else if (e.key === "ArrowRight" && exam.i < exam.qs.length - 1) { exam.i++; persistExam(); renderExamQ(); }
       else if (e.key === "ArrowLeft" && exam.i > 0) { exam.i--; persistExam(); renderExamQ(); }
       else if (k === "R") { exam.flags[q.id] = !exam.flags[q.id]; persistExam(); renderExamQ(); }
