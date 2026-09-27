@@ -1043,18 +1043,33 @@
   }
   const kpTests = () => TEST_ORDER.filter(k => CORE.some(t => t.test === k));
   const kpPool = () => CORE.filter(t => kpScope === "all" || t.test === kpScope).flatMap(t => pool(t.id)).filter(q => q.o.length >= 4 && !q.o.some(o => PIN.test(o)));
-  function kpPick() {
-    const all = shuffle(kpPool()), st = id => state.stats[id], used = new Set(), out = [];
+  // Pilih 15 soal dari bank Latihan/Simulasi (topik inti UPKP, termasuk soal resmi).
+  // Topik tiap level diundi berbobot komposisi soal ujian (sama seperti simulasi) dan tidak sama berturut-turut.
+  // Soal yang tampil di 3 ronde terakhir tidak dipakai lagi; aturan ini dilonggarkan hanya bila stok cakupan habis.
+  const KP_GAP = 3;
+  const pickW = (l, w) => { const tot = l.reduce((a, x) => a + w(x), 0); let r = Math.random() * tot; for (const x of l) { r -= w(x); if (r <= 0) return x; } return l[l.length - 1]; };
+  const pickR = l => l[Math.floor(Math.random() * l.length)];
+  function kpPick(round) {
+    const all = kpPool(), seen = state.kpSeen || {}, st = id => state.stats[id], used = new Set(), out = [];
+    const fresh = q => !(q.id in seen) || round - seen[q.id] > KP_GAP;
+    const topics = CORE.filter(t => (kpScope === "all" || t.test === kpScope) && all.some(q => q.topic === t.id));
+    // tingkat kesulitan personal: pernah benar -> belum dicoba -> pernah salah
     const tier = [q => st(q.id) && !st(q.id).lastWrong, q => !st(q.id), q => st(q.id) && st(q.id).wrong > 0];
     for (let lv = 0; lv < 15; lv++) {
       const order = lv < 5 ? [0, 1, 2] : lv < 10 ? [1, 0, 2] : [2, 1, 0], last = out[out.length - 1];
+      const left = t => all.some(q => q.topic === t.id && !used.has(q.id) && fresh(q));
+      let cand = topics.filter(t => left(t) && !(last && t.id === last.topic));
+      if (!cand.length) cand = topics.filter(left);
+      if (!cand.length) cand = topics.filter(t => all.some(q => q.topic === t.id && !used.has(q.id)));
+      if (!cand.length) break;
+      const tp = pickW(cand, t => t.n || 1), inTopic = all.filter(q => q.topic === tp.id && !used.has(q.id));
       let q = null;
-      for (const ti of order) {
-        q = all.find(x => !used.has(x.id) && tier[ti](x) && (!last || x.topic !== last.topic)) || all.find(x => !used.has(x.id) && tier[ti](x));
+      // variasi didahulukan: soal segar dari tingkat mana pun lebih dulu daripada soal yang baru saja muncul
+      for (const needFresh of [true, false]) {
+        for (const ti of order) { const c = inTopic.filter(x => tier[ti](x) && (!needFresh || fresh(x))); if (c.length) { q = pickR(c); break; } }
         if (q) break;
       }
-      if (!q) q = all.find(x => !used.has(x.id));
-      if (!q) break;
+      if (!q) q = pickR(inTopic);
       used.add(q.id); out.push(q);
     }
     return out;
@@ -1089,7 +1104,8 @@
         el("h1", { class: "kp-title" }, ["Kursi Panas"]),
         el("p", { class: "kp-sub" }, ["15 soal kisi-kisi BKN menuju 1.000.000 poin"]),
         el("ul", { class: "kp-rules" }, [
-          el("li", null, [el("b", null, ["Makin tinggi, makin sulit. "]), "Level 1-5 dari soal yang pernah kamu jawab benar, 6-10 soal baru, 11-15 soal yang pernah kamu jawab salah."]),
+          el("li", null, [el("b", null, ["Soal dari bank Latihan dan Simulasi. "]), "Topik diundi mengikuti komposisi soal ujian, dan soal yang sudah tampil di 3 ronde terakhir tidak diulang."]),
+          el("li", null, [el("b", null, ["Makin tinggi, makin sulit. "]), "Sebisa mungkin level 1-5 dari soal yang pernah kamu jawab benar, 6-10 soal baru, 11-15 soal yang pernah kamu jawab salah."]),
           el("li", null, [el("b", null, ["Titik aman "]), "di level 5 (1.000 poin) dan level 10 (32.000 poin). Jawaban salah membuat poin turun ke titik aman terakhir."]),
           el("li", null, [el("b", null, ["Tiga bantuan, sekali pakai: "]), "50:50, Telepon Rekan, Tanya Peserta Diklat. Rekan dan peserta bisa keliru, makin sering di level tinggi."]),
           el("li", null, [el("b", null, ["Boleh berhenti "]), "kapan saja dan membawa pulang poin terakhir. Jawaban tercatat ke statistik latihan, dan pembahasan lengkap tampil di akhir."])
@@ -1102,9 +1118,13 @@
     );
   }
   function kpStart() {
-    const qs = kpPick();
+    const round = (state.kpRound || 0) + 1, seen = state.kpSeen || {};
+    const qs = kpPick(round);
     if (qs.length < 15) return kpIntro();
-    kp = { run: Date.now(), qs, lv: 0, perms: {}, answers: {}, removed: {}, life: {}, sel: null, locked: false, used: 0 };
+    // catatan soal yang sudah tampil: simpan 10 ronde terakhir saja
+    Object.keys(seen).forEach(id => { if (round - seen[id] > 10) delete seen[id]; });
+    state.kpRound = round; state.kpSeen = seen; save();
+    kp = { run: Date.now(), round, qs, lv: 0, perms: {}, answers: {}, removed: {}, life: {}, sel: null, locked: false, used: 0 };
     kpDraw(true);
   }
   function kpLadder() {
@@ -1118,6 +1138,7 @@
     view.innerHTML = "";
     const run = kp.run, q = kp.qs[kp.lv], t = topicById(q.topic);
     const perm = kp.perms[q.id] || (kp.perms[q.id] = kpOpts(q));
+    if (state.kpSeen[q.id] !== kp.round) { state.kpSeen[q.id] = kp.round; save(); }
     const removed = () => kp.removed[q.id] || [];
     const visible = () => perm.filter(i => !removed().includes(i));
     const help = el("div", { class: "kp-help", "aria-live": "polite" });

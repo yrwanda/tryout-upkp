@@ -150,8 +150,8 @@ window.BANK.sotk.push(
     q: "Menurut Permenimipas No. 1 Tahun 2024, pengawasan intern atas kantor wilayah dan unit pelaksana teknis di Provinsi Kalimantan Barat dilakukan oleh ...",
     o: ["Inspektorat Wilayah I", "Inspektorat Wilayah II", "Inspektorat Wilayah III", "Inspektorat Wilayah IV", "Sekretariat Inspektorat Jenderal"],
     a: 3,
-    e: "Pembagian wilayah Inspektorat Jenderal: Inspektorat Wilayah IV mengawasi Ditjen Pemasyarakatan serta kantor wilayah dan UPT antara lain di Lampung, Jawa Barat, Kalimantan Barat, Sulawesi Selatan. Inspektorat Wilayah III mengawasi Ditjen Imigrasi (unit pusat); Wilayah I mengawasi Itjen, BPSDM, Pusat Strategi Kebijakan; Wilayah II mengawasi Setjen dan Pusat Data, Informasi, dan Komunikasi Publik.",
-    src: "Kisi-kisi BKN hal. 151 (subtopik SOTK); Permenimipas No. 1 Tahun 2024 (pembagian tugas Inspektorat Wilayah)"
+    e: "Pembagian wilayah Inspektorat Jenderal: Pasal 107: Inspektorat Wilayah IV mengawasi Ditjen Pemasyarakatan serta kantor wilayah dan UPT di Lampung, Jawa Barat, Kalimantan Barat, Sulawesi Selatan, NTB, Maluku, Gorontalo, dan Jambi. Catatan Pasal 106: audit kinerja kanwil dan UPT Keimigrasian dilakukan tim bentukan Inspektur Jenderal dengan melibatkan Direktorat Kepatuhan Internal Ditjen Imigrasi. Inspektorat Wilayah III mengawasi Ditjen Imigrasi (unit pusat); Wilayah I mengawasi Itjen, BPSDM, Pusat Strategi Kebijakan; Wilayah II mengawasi Setjen dan Pusat Data, Informasi, dan Komunikasi Publik.",
+    src: "Kisi-kisi BKN hal. 151 (subtopik SOTK); Permenimipas No. 1 Tahun 2024 Pasal 106-107"
   },
   {
     id: "bkn-stk-30", set: "ext", topic: "sotk",
@@ -159,7 +159,7 @@ window.BANK.sotk.push(
     o: ["Inspektorat Wilayah I", "Inspektorat Wilayah II", "Inspektorat Wilayah III", "Inspektorat Wilayah IV", "Inspektorat Wilayah V"],
     a: 2,
     e: "Permenimipas 1/2024: Inspektorat Wilayah III mengawasi Direktorat Jenderal Imigrasi serta kanwil dan UPT di sejumlah provinsi (antara lain Riau, Aceh, Jawa Timur, Kalimantan Tengah). Inspektorat Wilayah IV mengawasi Ditjen Pemasyarakatan. Itjen hanya punya empat Inspektorat Wilayah.",
-    src: "Kisi-kisi BKN hal. 151 (subtopik SOTK); Permenimipas No. 1 Tahun 2024 (pembagian tugas Inspektorat Wilayah)"
+    src: "Kisi-kisi BKN hal. 151 (subtopik SOTK); Permenimipas No. 1 Tahun 2024 Pasal 106-107"
   },
   {
     id: "bkn-stk-31", set: "ext", topic: "sotk",

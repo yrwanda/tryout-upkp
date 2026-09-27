@@ -367,7 +367,7 @@ window.BANK.yanlik.push(
     q: "Penerbitan paspor, izin tinggal, dan KTP termasuk ruang lingkup pelayanan publik jenis ...",
     o: ["Pelayanan barang publik", "Pelayanan jasa publik", "Pelayanan administratif", "Pelayanan komersial", "Pelayanan sosial"],
     a: 2,
-    e: "Kisi-kisi BKN hal. 123: pelayanan publik mencakup barang, jasa, dan/atau pelayanan administratif. Paspor, izin tinggal, dan KTP adalah dokumen yang diterbitkan instansi pemerintah, sehingga termasuk pelayanan administratif.",
+    e: "Kisi-kisi BKN hal. 123: pelayanan publik mencakup barang, jasa, dan/atau pelayanan administratif. UU 25/2009 Pasal 5 ayat (7) huruf a: pelayanan administratif meliputi tindakan administratif pemerintah yang diwajibkan negara dan diatur peraturan perundang-undangan untuk melindungi pribadi, keluarga, kehormatan, martabat, dan harta benda warga negara. Penerbitan paspor, izin tinggal, dan KTP termasuk tindakan administratif ini.",
     src: "Kisi-kisi BKN hal. 123; UU No. 25 Tahun 2009 Pasal 5"
   },
   {
