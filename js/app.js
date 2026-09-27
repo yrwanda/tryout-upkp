@@ -978,12 +978,18 @@
       const addClue = k => clues.append(el("li", { class: "tclue" }, [it.c[k]]));
       addClue(0);
       const worth = el("span", { class: "tworth small" });
-      const more = el("button", { class: "btn btn-sm", onclick: () => { if (shown < it.c.length && !solved) { addClue(shown); shown++; penalty++; upd(); } } }, ["Buka petunjuk berikutnya"]);
+      const more = el("button", { class: "btn btn-sm", onclick: () => {
+        if (solved) return;
+        if (shown < it.c.length) { addClue(shown); shown++; penalty++; return upd(); }
+        giveUp();
+      } }, ["Buka petunjuk berikutnya"]);
       const next = el("div", { class: "row" });
       const btns = opts.map((a, k) => el("button", { class: "topt", onclick: e => guess(a, e.currentTarget) }, [el("span", { class: "kbin-n" }, [String(k + 1)]), el("span", null, [a])]));
       const starsNow = () => Math.max(0, 3 - penalty);
       function upd() {
-        more.disabled = solved || shown >= it.c.length;
+        more.disabled = solved;
+        more.textContent = shown >= it.c.length ? "Lihat jawaban" : "Buka petunjuk berikutnya";
+        more.classList.toggle("btn-primary", !solved && shown >= it.c.length);
         worth.textContent = solved ? "" : `Petunjuk ${shown} dari ${it.c.length} · jika benar sekarang: ${"★".repeat(starsNow()) || "0 bintang"}`;
       }
       function guess(a, btn) {
@@ -994,15 +1000,23 @@
           if (shown < it.c.length) { addClue(shown); shown++; }
           return upd();
         }
-        solved = true; const s = starsNow(); stars += s; starEl.textContent = String(stars);
+        reveal(starsNow(), btn, false);
+      }
+      // menyerah: jawaban ditunjukkan, 0 bintang, teka-teki dicatat perlu diulang
+      function giveUp() {
+        errors++; errEl.textContent = String(errors);
+        reveal(0, btns[opts.indexOf(it.a)], true);
+      }
+      function reveal(s, btn, gaveUp) {
+        solved = true; stars += s; starEl.textContent = String(stars);
         btn.classList.add("ok"); btns.forEach(b => { b.disabled = true; });
         // setelah tertebak, tampilkan semua petunjuk sebagai ringkasan belajar
         for (let k = shown; k < it.c.length; k++) clues.append(el("li", { class: "tclue rest" }, [it.c[k]]));
-        res.push({ it, s, wrong, shown });
+        res.push({ it, s, wrong: wrong + (gaveUp ? 1 : 0), shown });
         upd();
         const last = qi + 1 >= qs.length;
         next.append(
-          el("span", { class: "small" }, [el("b", null, [s ? "★".repeat(s) : "0 bintang"]), ` ${it.a}`]),
+          el("span", { class: "small" }, [el("b", null, [gaveUp ? "Jawabannya:" : s ? "★".repeat(s) : "0 bintang"]), ` ${it.a}`]),
           el("button", { class: "btn btn-primary", style: "margin-left:auto", onclick: () => { if (last) return done(); qi++; prog.textContent = `${qi + 1}/${qs.length}`; drawQ(); } }, [last ? "Lihat hasil" : "Teka-teki berikutnya", icon("right")])
         );
         next.querySelector(".btn-primary").focus();
@@ -1033,7 +1047,7 @@
     view.append(
       playHead(g, x, [meterSpan("Teka-teki", prog), meterSpan("Bintang", starEl), meterSpan("Keliru", errEl)]),
       box,
-      el("p", { class: "xs muted" }, ["Di keyboard: angka 1-6 memilih jawaban, P membuka petunjuk."])
+      el("p", { class: "xs muted" }, ["Di keyboard: angka 1-6 memilih jawaban, P membuka petunjuk (atau melihat jawaban setelah petunjuk habis)."])
     );
     drawQ();
   }
