@@ -273,11 +273,12 @@
     askPersist();
     state.savedAt = Date.now();
     if (store.set(KEY, JSON.stringify(state))) return scheduleSync(4000);
+    scheduleSync(4000); // browser gagal menyimpan, tetapi progres di memori masih bisa dikirim ke server
     if (saveWarned) return;
     saveWarned = true;
     // spanduk tetap (bukan toast) agar tidak tertimpa notifikasi lain
     const bar = el("div", { class: "save-warn", role: "alert" }, [
-      el("span", null, ["Progres tidak bisa disimpan: penyimpanan browser penuh atau diblokir (mode privat?). Ekspor cadangan di Pengaturan agar progres tidak hilang."]),
+      el("span", null, [sync ? "Progres tidak bisa disimpan di browser ini (penyimpanan penuh atau diblokir), tetapi tetap dikirim ke server lewat sinkron." : "Progres tidak bisa disimpan: penyimpanan browser penuh atau diblokir (mode privat?). Ekspor cadangan di Pengaturan agar progres tidak hilang."]),
       el("button", { class: "btn btn-sm", onclick: () => bar.remove() }, ["Tutup"])
     ]);
     document.body.appendChild(bar);
@@ -2117,10 +2118,15 @@
           el("p", { class: "xs muted" }, [counts]),
           el("p", { class: "xs muted" }, ["Kunci 50 soal resmi disusun aplikasi (form tidak memuat kunci). Bila kisi-kisi berbeda dari peraturan primer, pembahasan mencatat keduanya. Materi SOTK dan Renstra instansi di kisi-kisi hanya berupa judul subtopik, sehingga soalnya dilengkapi dari Permenimipas 1/2024, 2/2024, dan 11/2025."]),
           el("h3", null, ["Data progres"]),
-          el("p", { class: "xs muted" }, [sync ? "Tersimpan di perangkat ini dan tersinkron ke server, jadi ekspor JSON tidak wajib lagi (tetap bisa dipakai sebagai cadangan tambahan)." : (persisted ? "Tersimpan di browser ini dengan penyimpanan permanen: browser tidak akan menghapusnya sendiri saat ruang penuh. Tetap hilang bila data situs dihapus manual atau HP diganti, jadi ekspor sebulan sekali sudah cukup" : "Tersimpan di browser ini saja. Ekspor seminggu sekali sebagai cadangan") + (state.lastExport ? ` (terakhir ${fmtDate(state.lastExport)}).` : " (belum pernah).")]),
+          el("p", { class: "xs muted" }, [sync ? "Tersimpan di perangkat ini dan tersinkron ke server." : (persisted ? "Tersimpan di browser ini dengan penyimpanan permanen: browser tidak akan menghapusnya sendiri saat ruang penuh. Tetap hilang bila data situs dihapus manual atau HP diganti, jadi ekspor sebulan sekali sudah cukup" : "Tersimpan di browser ini saja. Ekspor seminggu sekali sebagai cadangan") + (state.lastExport ? ` (terakhir ${fmtDate(state.lastExport)}).` : " (belum pernah).")]),
           syncPanel(),
-          el("h3", null, ["Cadangan file"]),
-          el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: exportData }, ["Ekspor JSON"]), el("button", { class: "btn btn-sm", onclick: importData }, ["Impor"]), el("button", { class: "btn btn-sm btn-danger", onclick: () => confirmBox("Hapus semua progres?", "Statistik, riwayat simulasi, dan tanda soal dihapus. Pengaturan tetap.", "Hapus progres", () => { state.stats = {}; state.history = []; state.bookmarks = []; state.days = {}; state.jodoh = {}; state.resetAt = Date.now(); save(); toast("Progres dihapus"); go("pengaturan"); }, true) }, ["Reset progres"])])
+          // tanpa sinkron, pindah perangkat masih memakai file; dengan sinkron, tombol file disembunyikan
+          sync ? null : el("h3", null, ["Cadangan file"]),
+          sync ? null : el("p", { class: "xs muted" }, ["Dipakai bila sinkron tidak aktif: ekspor di perangkat lama, impor di perangkat baru."]),
+          sync ? null : el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: exportData }, ["Ekspor JSON"]), el("button", { class: "btn btn-sm", onclick: importData }, ["Impor"])]),
+          el("h3", null, ["Mulai dari nol"]),
+          el("p", { class: "xs muted" }, [sync ? "Menghapus statistik, riwayat simulasi, dan tanda soal di semua perangkat yang tersinkron. Pengaturan tetap." : "Menghapus statistik, riwayat simulasi, dan tanda soal di perangkat ini. Pengaturan tetap."]),
+          el("div", { class: "row" }, [el("button", { class: "btn btn-sm btn-danger", onclick: () => confirmBox("Hapus semua progres?", sync ? "Statistik, riwayat simulasi, dan tanda soal dihapus di semua perangkat yang tersinkron. Pengaturan tetap." : "Statistik, riwayat simulasi, dan tanda soal dihapus. Pengaturan tetap.", "Hapus progres", () => { state.stats = {}; state.history = []; state.bookmarks = []; state.days = {}; state.jodoh = {}; state.resetAt = Date.now(); save(); toast("Progres dihapus"); go("pengaturan"); }, true) }, ["Reset progres"])])
         ])
       ]));
   }

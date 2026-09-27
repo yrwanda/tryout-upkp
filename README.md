@@ -48,6 +48,7 @@ Simulasi bergaya CAT BKN (mengikuti pemberitaan Kompas 2019 dan Liputan6 2022 te
 - Pengaturan > Sinkron antarperangkat. Perangkat pertama membuat kode sinkron acak (24 karakter, 120 bit); perangkat lain memasukkan kode yang sama. Tanpa akun.
 - Backend: Supabase proyek `tryout-upkp` (ref `jmbddgpsfmphsgvuhziy`, Singapura, paket gratis). Tabel `sync_progress` (RLS aktif, tanpa policy) hanya diakses lewat fungsi `sync_get`, `sync_put`, `sync_delete`; server menyimpan hash SHA-256 kode, bukan kodenya. Kunci yang ada di `app.js` adalah publishable key (aman di sisi klien).
 - Penggabungan di perangkat (`mergeState`): statistik soal dan kartu mini game memakai catatan terbaru, riwayat simulasi disatukan, rekor diambil yang terbaik, pengaturan dan tanda soal dari sisi yang terakhir disimpan. "Reset progres" dicatat sebagai `resetAt` agar data lama dari perangkat lain tidak kembali.
+- Saat sinkron aktif, tombol Ekspor JSON/Impor disembunyikan (hanya tampil bila sinkron tidak aktif), dan Reset progres berlaku di semua perangkat tersinkron.
 - Paket gratis Supabase menjeda proyek yang 7 hari tidak dipakai; aktifkan lagi dari dasbor. Untuk menghapus semuanya: dasbor Supabase > proyek tryout-upkp > Settings > General > Delete project.
 
 ## Menambah soal
