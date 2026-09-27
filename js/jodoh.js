@@ -167,8 +167,8 @@ window.JODOH = [
     ["203", "Kabupaten/kota belum punya IPLT atau IPAL"], ["67,8 juta ton", "Sampah domestik per tahun pada 2029"], ["2028", "Perkiraan TPA nasional penuh"],
     ["40%", "TPA yang masih open dumping"], ["12,7 juta ha", "Hutan dan lahan kritis"]] },
   { id: "otk-imipas", topic: "sotk", title: "OTK dan tata kerja Kemenimipas", pages: "151 (subtopik)", ext: true, left: "Istilah", right: "Ketentuan", pairs: [
-    ["Sesjen, Dirjen, Irjen, Kepala Badan, Staf Ahli", "Diangkat Presiden atas usul Menteri"], ["JPT pratama ke bawah", "Diangkat dan diberhentikan Menteri"],
-    ["Kakanwil Ditjen Imigrasi", "Bertanggung jawab kepada Dirjen Imigrasi"], ["Kanwil Ditjen Imigrasi", "Instansi vertikal di provinsi"],
+    ["Sesjen, Dirjen, Irjen, Kepala Badan, Staf Ahli", "Diangkat Presiden atas usul Menteri"], ["JPT pratama (eselon II)", "Diangkat Menteri atas usul Dirjen"],
+    ["Kakanwil Ditjen Imigrasi", "Melaporkan pelaksanaan tugas kepada Dirjen Imigrasi"], ["Kanwil Ditjen Imigrasi", "Instansi vertikal di provinsi"],
     ["Kanwil Kalimantan Barat", "Tipe B"], ["Perubahan OTK", "Perlu persetujuan tertulis MenPANRB"], ["Keimigrasian", "Urusan absolut, bukan urusan perangkat daerah"]] },
   { id: "definisi-ahli", topic: "manajemen", title: "Definisi menurut para ahli", pages: "134-135, 157", left: "Ahli", right: "Definisi", pairs: [
     ["George R. Terry", "Perencanaan, pengorganisasian, penggerakan, pengawasan"], ["Henry Fayol", "Merencanakan, mengorganisasikan, menggerakkan SDM, mengendalikan"],

@@ -26,9 +26,9 @@ window.URUT = [
     ["Kabinet Indonesia Maju", "Joko Widodo 2019-2024"], ["Kabinet Merah Putih", "Prabowo Subianto, 48 kementerian"]] },
   { id: "u-berakhlak", topic: "kepegawaian", title: "Urutan nilai BerAKHLAK", pages: "109", dir: "Sesuai urutan huruf BerAKHLAK", items: [
     ["Berorientasi pelayanan", "Ber"], ["Akuntabel", "A"], ["Kompeten", "K"], ["Harmonis", "H"], ["Loyal", "L"], ["Adaptif", "A"], ["Kolaboratif", "K"]] },
-  { id: "u-manajemen-asn", topic: "kepegawaian", title: "Tahapan manajemen ASN", pages: "112", dir: "Sesuai urutan di kisi-kisi", items: [
-    ["Perencanaan kebutuhan", "Tahap 1"], ["Pengadaan", "Tahap 2"], ["Penguatan budaya kerja dan citra institusi", "Tahap 3"], ["Pengelolaan kinerja", "Tahap 4"],
-    ["Pengembangan talenta dan karier", "Tahap 5"], ["Pengembangan kompetensi", "Tahap 6"], ["Pemberian penghargaan dan pengakuan", "Tahap 7"], ["Pemberhentian", "Tahap 8"]] },
+  { id: "u-manajemen-asn", topic: "kepegawaian", title: "Urutan komponen manajemen ASN", pages: "112", dir: "Sesuai urutan nomor di kisi-kisi", items: [
+    ["Perencanaan kebutuhan", "Nomor 1"], ["Pengadaan", "Nomor 2"], ["Penguatan budaya kerja dan citra institusi", "Nomor 3"], ["Pengelolaan kinerja", "Nomor 4"],
+    ["Pengembangan talenta dan karier", "Nomor 5"], ["Pengembangan kompetensi", "Nomor 6"], ["Pemberian penghargaan dan pengakuan", "Nomor 7"], ["Pemberhentian", "Nomor 8"]] },
   { id: "u-hukuman", topic: "kepegawaian", title: "Hukuman disiplin dari ringan ke berat", pages: "113", dir: "Dari yang paling ringan", items: [
     ["Teguran lisan", "Ringan"], ["Teguran tertulis", "Ringan"], ["Pernyataan tidak puas secara tertulis", "Ringan"],
     ["Potong tunjangan kinerja 25% selama 6 bulan", "Sedang"], ["Potong tunjangan kinerja 25% selama 9 bulan", "Sedang"], ["Potong tunjangan kinerja 25% selama 12 bulan", "Sedang"],

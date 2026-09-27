@@ -188,7 +188,7 @@ UU 20/2023 (ASN); PP 11/2017 jo. PP 17/2020 (Manajemen PNS); PP 94/2021 (Disipli
 ## Hak, kewajiban, manajemen (hal. 111-112)
 - **Hak**: penghasilan, penghargaan motivasi, tunjangan dan fasilitas, jaminan sosial, lingkungan kerja, pengembangan diri, bantuan hukum.
 - **Kewajiban**: setia pada Pancasila/UUD/NKRI/pemerintah sah; menjaga persatuan; melaksanakan kebijakan pejabat berwenang; menaati peraturan; tugas dengan pengabdian dan kejujuran; integritas dan keteladanan; **menyimpan rahasia jabatan**; bersedia ditempatkan di seluruh NKRI.
-- **Manajemen ASN**: pengelolaan untuk ASN profesional, bernilai dasar, beretika, bebas intervensi politik, bersih KKN. Delapan tahap: perencanaan kebutuhan, pengadaan, penguatan budaya kerja dan citra institusi, pengelolaan kinerja, pengembangan talenta dan karier, pengembangan kompetensi, penghargaan dan pengakuan, pemberhentian.
+- **Manajemen ASN**: pengelolaan untuk ASN profesional, bernilai dasar, beretika, bebas intervensi politik, bersih KKN. Delapan komponen (urutan kisi-kisi, Pasal 31 UU 20/2023): perencanaan kebutuhan, pengadaan, penguatan budaya kerja dan citra institusi, pengelolaan kinerja, pengembangan talenta dan karier, pengembangan kompetensi, penghargaan dan pengakuan, pemberhentian.
 
 ## Disiplin PP 94/2021 (hal. 113)
 - **Ringan**: teguran lisan, teguran tertulis, pernyataan tidak puas tertulis.
@@ -251,6 +251,12 @@ UU 25/2009 tentang Pelayanan Publik; Kep. MenPAN 63/KEP/M.PAN/7/2003 tentang Ped
 
 ## 12 asas (hal. 125)
 Kepentingan umum; kepastian hukum; kesamaan hak; keseimbangan hak dan kewajiban; keprofesionalan; partisipatif; persamaan perlakuan/tidak diskriminatif; keterbukaan; akuntabilitas; fasilitas dan perlakuan khusus bagi kelompok rentan; ketepatan waktu; kecepatan, kemudahan, dan keterjangkauan.
+> Kisi-kisi hanya memuat nama asas. Uraiannya menurut Penjelasan Pasal 4 UU 25/2009:
+- **Kepentingan umum**: tidak mengutamakan kepentingan pribadi/golongan. **Kepastian hukum**: jaminan terwujudnya hak dan kewajiban.
+- **Kesamaan hak**: tidak membedakan suku, ras, agama, golongan, gender, dan status ekonomi. **Persamaan perlakuan/tidak diskriminatif**: setiap warga negara berhak memperoleh pelayanan yang adil. (Dua asas ini sering tertukar.)
+- **Keseimbangan hak dan kewajiban**: pemenuhan hak sebanding dengan kewajiban pemberi dan penerima layanan. **Keprofesionalan**: pelaksana berkompetensi sesuai bidang tugas.
+- **Partisipatif**: peran serta masyarakat dengan memperhatikan aspirasi, kebutuhan, dan harapannya. **Keterbukaan**: penerima layanan mudah mengakses informasi pelayanan. **Akuntabilitas**: proses dapat dipertanggungjawabkan.
+- **Fasilitas dan perlakuan khusus bagi kelompok rentan**: kemudahan bagi kelompok rentan. **Ketepatan waktu**: tiap jenis pelayanan selesai tepat waktu sesuai standar. **Kecepatan, kemudahan, keterjangkauan**: layanan cepat, mudah, terjangkau.
 `,
   gg: `
 ## Pengertian dan komponen (hal. 140-142)
@@ -311,7 +317,7 @@ UU 25/2004 SPPN: **RPJP Nasional 20 tahun** → dijabarkan **RPJM Nasional 5 tah
 - **PN 1**: penguatan ideologi Pancasila, wawasan kebangsaan, dan ketahanan nasional; komunikasi publik dan media; lembaga demokrasi; kesetaraan masyarakat sipil; pengarusutamaan, pemajuan, dan penegakan HAM.
 - **PN 2 sasaran 1** (kedaulatan dan stabilitas keamanan): postur pertahanan; industri pertahanan; komponen cadangan dan pendukung; intelijen dan keamanan dalam negeri; keamanan siber, sandi, sinyal; keamanan laut dan hidro-oseanografi; kamtibmas; profesionalisme kepolisian; diplomasi Asta Cita dan diplomasi ekonomi.
 - **PN 2 sasaran 2-4** (FEW Nexus): swasembada pangan, swasembada energi, swasembada air. Isu air: kebutuhan air 2045 naik 31% dari 2020; hanya 10,21% rumah tangga punya akses sanitasi aman (2023); 203 kabupaten/kota belum punya IPLT/IPAL.
-- **PN 2 sasaran 5** (perekonomian progresif, inklusif, berkelanjutan): ekonomi syariah (peringkat 3 GIEI 2023/2024; ekspor halal ke OKI 3,8%; UMKM bersertifikat halal 0,2%; aset keuangan syariah posisi ke-7 global, market share 12%), ekonomi digital (literasi digital 62%, terendah se-ASEAN, rata-rata ASEAN 70%), ekonomi biru (PDB maritim 7,93% pada 2022; efektivitas kawasan konservasi perairan 49,56; garam masih impor).
+- **PN 2 sasaran 5** (perekonomian progresif, inklusif, berkelanjutan): ekonomi syariah (peringkat 3 GIEI 2023/2024; ekspor halal ke OKI 3,8%; UMKM bersertifikat halal 0,2%; aset keuangan syariah posisi ke-7 global, pangsa terhadap keuangan nasional 12%), ekonomi digital (literasi digital 62%, terendah se-ASEAN, rata-rata ASEAN 70%), ekonomi biru (PDB maritim 7,93% pada 2022; efektivitas kawasan konservasi perairan 49,56; garam masih impor).
 - **PN 2 sasaran 6** (transformasi ekonomi hijau): isu Triple Planetary Crisis (perubahan iklim, polusi dan kerusakan lingkungan, kehilangan keanekaragaman hayati); sampah 67,8 juta ton/tahun pada 2029; TPA penuh 2028; 40% TPA open dumping. Arah kebijakan: ekonomi sirkular, keanekaragaman hayati, kualitas lingkungan dan tata ruang, reformasi pengelolaan sampah hulu-hilir, pembangunan rendah karbon, green jobs, hutan lestari.
 
 ## RPJMN IV 2020-2024 (diuji di soal resmi BKN 2025)
@@ -342,7 +348,7 @@ Struktur Organisasi dan Tata Kerja: **tugas, kedudukan, fungsi perangkat daerah/
 - Kanwil Tipe B (termasuk Kalimantan Barat): Kakanwil II.b; kabag/kabid III.a langsung membawahi kelompok JF dan pelaksana (penyederhanaan birokrasi).
 
 ## Pengangkatan dan pemberhentian (Pasal 401)
-- Sesjen, Dirjen, Irjen, Kepala Badan, Staf Ahli: **Presiden** atas usul Menteri. JPT pratama ke bawah: **Menteri**.
+- Sesjen, Dirjen, Irjen, Kepala Badan, Staf Ahli: **Presiden** atas usul Menteri (ayat 1). JPT pratama/eselon II: **Menteri** atas usul Direktur Jenderal (ayat 2). Pejabat administrasi/eselon III ke bawah: pimpinan tinggi madya unit eselon I yang diberi pelimpahan wewenang oleh Menteri (ayat 3).
 
 ## Jalur koordinasi dan tata kerja (Permenimipas 2/2024 Pasal 32-40)
 - Prinsip **koordinasi, integrasi, sinkronisasi**; **pengawasan melekat** dan lapor berjenjang; JF/pelaksana bertanggung jawab kepada Kakanwil melalui atasan langsung; tembusan laporan ke satuan yang secara fungsional berhubungan kerja; pola hubungan kerja ditetapkan Menteri; perubahan OTK perlu persetujuan tertulis MenPANRB (Pasal 44).

@@ -28,7 +28,7 @@ window.TEBAK = [
     { a: "PPKI", c: ["Terdiri dari wakil-wakil rakyat", "Asal sebutan Pancasila sebagai perjanjian luhur", "Mengesahkan Pancasila dan UUD 1945 pada 18 Agustus 1945"] },
     { a: "Volksgeist", c: ["Agar Indonesia tetap hidup dalam jiwa Pancasila", "Sebutan untuk jiwa atau nyawa setiap bangsa"] },
     { a: "Sumber segala sumber hukum", c: ["Sila-sila = nilai dasar, penjabarannya = nilai instrumental", "Tidak boleh ada peraturan yang bertentangan dengan Pancasila"] },
-    { a: "Kepribadian bangsa", c: ["Diwujudkan lewat tingkah laku dan sikap mental", "Corak khas yang membedakan Indonesia dari negara lain"] },
+    { a: "Kepribadian bangsa", c: ["Diwujudkan lewat tingkah laku dan sikap mental", "Corak khas yang membedakan bangsa Indonesia dari bangsa lain"] },
     { a: "Bahasa Sanskerta", c: ["Terkait kasta Brahmana", "Asal kata panca = lima dan sila = dasar"] }] },
   { id: "t-kepegawaian", topic: "kepegawaian", title: "Tebak istilah kepegawaian", pages: "107-121", ask: "Istilah apa yang dimaksud?", items: [
     { a: "PNS", c: ["Diangkat oleh pejabat pembina kepegawaian", "Untuk menduduki jabatan pemerintahan", "Diangkat sebagai pegawai ASN secara tetap"] },
