@@ -1,11 +1,11 @@
 /* Service worker: cache semua aset agar aplikasi bisa dipakai offline. Naikkan VERSION setiap kali bank soal/aplikasi berubah. */
-const VERSION = "upkp-v29";
+const VERSION = "upkp-v30";
 const ASSETS = [
   "./", "./index.html", "./manifest.json", "./css/style.css",
   "./js/materi.js", "./js/app.js", "./js/boot.js",
   "./js/bank/bkn_twk.js", "./js/bank/bkn_tkt.js", "./js/bank/bkn_tsi_tkp.js", "./js/bank/bkn_ekstra.js",
   "./js/bank/bkn_x3_twk.js", "./js/bank/bkn_x3_tkt.js", "./js/bank/bkn_x3_lain.js", "./js/bank/bkn_x4.js", "./js/bank/bkn_x5.js", "./js/bank/bkn_form.js", "./js/jodoh.js", "./js/kelompok.js", "./js/urut.js", "./js/tebak.js", "./js/detektif.js",
-  "./icons/icon-192.png", "./icons/icon-512.png", "./icons/maskable-192.png", "./icons/maskable-512.png"
+  "./icons/logo.svg", "./icons/favicon.svg", "./icons/favicon-32.png", "./icons/apple-touch-icon.png", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/maskable-192.png", "./icons/maskable-512.png"
 ];
 
 self.addEventListener("install", e => {
