@@ -71,16 +71,72 @@
   const defaults = () => ({ settings: { examDate: "", durationMin: 90, thresholds: { TWK: "", TKT: "", TSI: "", TKP: "" }, theme: "auto", includeExt: true }, stats: {}, history: [], bookmarks: [], days: {}, doubts: {}, lastExport: 0, exportSnooze: 0 });
   const store = {
     get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
-    set(k, v) { try { localStorage.setItem(k, v); } catch (e) { } },
+    set(k, v) { try { localStorage.setItem(k, v); return true; } catch (e) { return false; } },
     del(k) { try { localStorage.removeItem(k); } catch (e) { } }
   };
-  function load() {
-    const d = defaults();
-    try { const s = JSON.parse(store.get(KEY) || "null"); if (s) return Object.assign(d, s, { settings: Object.assign(d.settings, s.settings || {}, { thresholds: Object.assign(d.settings.thresholds, (s.settings || {}).thresholds || {}) }), days: s.days || {}, doubts: s.doubts || {} }); } catch (e) { }
+  // Data dari localStorage atau file impor selalu dibersihkan dulu: hanya kolom yang dikenal dengan tipe yang benar,
+  // kunci berbahaya (__proto__, constructor, prototype) dibuang, riwayat rusak dilewati. Data rusak tidak boleh membuat aplikasi macet.
+  const BAD_KEYS = new Set(["__proto__", "constructor", "prototype"]);
+  const safeParse = txt => JSON.parse(txt, (k, v) => BAD_KEYS.has(k) ? undefined : v);
+  const isObj = v => v !== null && typeof v === "object" && !Array.isArray(v);
+  const num = (v, d) => typeof v === "number" && isFinite(v) ? v : d;
+  const objOf = (v, f) => { const o = {}; if (isObj(v)) Object.keys(v).forEach(k => { if (BAD_KEYS.has(k)) return; const x = f(v[k]); if (x !== undefined) o[k] = x; }); return o; };
+  const strArr = v => Array.isArray(v) ? v.filter(x => typeof x === "string") : [];
+  function cleanHistory(h) {
+    if (!isObj(h) || !num(h.ts, 0) || !isObj(h.total) || !Array.isArray(h.qids) || !isObj(h.answers)) return null;
+    const t = h.total; if (![t.n, t.correct, t.score, t.max].every(x => typeof x === "number" && isFinite(x))) return null;
+    const row = r => isObj(r) && typeof r.key === "string" && [r.n, r.correct, r.score, r.max].every(x => typeof x === "number" && isFinite(x)) ? { key: r.key, label: String(r.label || r.key), tc: /^tc[1-5]$/.test(r.tc) ? r.tc : "tc1", n: r.n, correct: r.correct, score: r.score, max: r.max, th: r.th === undefined || r.th === null ? "" : String(r.th) } : null;
+    const out = { ts: h.ts, mode: h.mode === "form" ? "form" : "upkp", durationSec: num(h.durationSec, 0), timeout: h.timeout === true, total: { n: t.n, correct: t.correct, score: t.score, max: t.max },
+      qids: strArr(h.qids), answers: objOf(h.answers, v => Number.isInteger(v) ? v : undefined), flags: objOf(h.flags, v => v === true ? true : undefined), perm: objOf(h.perm, v => Array.isArray(v) && v.every(Number.isInteger) ? v : undefined) };
+    if (Array.isArray(h.rows)) out.rows = h.rows.map(row).filter(Boolean);
+    else if (isObj(h.perTest)) { out.perTest = objOf(h.perTest, v => isObj(v) && [v.n, v.correct, v.score, v.max].every(x => typeof x === "number") ? { n: v.n, correct: v.correct, score: v.score, max: v.max } : undefined); if (isObj(h.thresholds)) out.thresholds = objOf(h.thresholds, v => v === undefined || v === null ? undefined : String(v)); }
+    else return null;
+    return out;
+  }
+  function sanitize(s) {
+    const d = defaults(); if (!isObj(s)) return d;
+    const st = isObj(s.settings) ? s.settings : {}, ds = d.settings;
+    if (typeof st.examDate === "string" && /^\d{4}-\d{2}-\d{2}$/.test(st.examDate) && !isNaN(new Date(st.examDate + "T00:00:00"))) ds.examDate = st.examDate;
+    ds.durationMin = Math.min(240, Math.max(10, Math.round(num(st.durationMin, 90))));
+    if (["auto", "light", "dark"].includes(st.theme)) ds.theme = st.theme;
+    ds.includeExt = st.includeExt !== false;
+    if (isObj(st.thresholds)) ["TWK", "TKT", "TSI", "TKP"].forEach(k => { const v = st.thresholds[k], n = Number(v); ds.thresholds[k] = v === "" || v === null || v === undefined || !isFinite(n) ? "" : String(n); });
+    if (typeof st.catName === "string") ds.catName = st.catName.slice(0, 60);
+    if (st.catView === 2) ds.catView = 2;
+    if (st.kpSound === true) ds.kpSound = true;
+    d.stats = objOf(s.stats, v => isObj(v) ? { seen: num(v.seen, 0), correct: num(v.correct, 0), wrong: num(v.wrong, 0), lastWrong: v.lastWrong === true, t: num(v.t, 0), okDays: strArr(v.okDays).slice(-3) } : undefined);
+    d.history = (Array.isArray(s.history) ? s.history : []).map(cleanHistory).filter(Boolean).slice(-60);
+    d.bookmarks = strArr(s.bookmarks);
+    d.days = objOf(s.days, v => num(v, undefined));
+    d.doubts = objOf(s.doubts, v => num(v, undefined));
+    d.lastExport = num(s.lastExport, 0); d.exportSnooze = num(s.exportSnooze, 0);
+    if (s.onboarded === true) d.onboarded = true;
+    if (typeof s.dailyDone === "string") d.dailyDone = s.dailyDone;
+    d.pos = objOf(s.pos, v => Number.isInteger(v) ? v : undefined);
+    d.jodoh = objOf(s.jodoh, v => isObj(v) ? { r: num(v.r, 0), w: num(v.w, 0), lastW: v.lastW === true, t: num(v.t, 0) } : undefined);
+    d.jodohBest = objOf(s.jodohBest, v => isObj(v) && typeof v.time === "number" && typeof v.err === "number" ? { time: v.time, err: v.err } : undefined);
+    if (num(s.kilatBest, 0)) d.kilatBest = s.kilatBest;
+    if (isObj(s.kpBest) && typeof s.kpBest.poin === "number") d.kpBest = { poin: s.kpBest.poin, lv: num(s.kpBest.lv, 0), at: num(s.kpBest.at, 0) };
+    if (num(s.kpRound, 0)) d.kpRound = Math.round(s.kpRound);
+    d.kpSeen = objOf(s.kpSeen, v => Number.isInteger(v) ? v : undefined);
     return d;
   }
+  function load() {
+    try { const raw = store.get(KEY); if (raw) return sanitize(safeParse(raw)); } catch (e) { }
+    return defaults();
+  }
   let state = load();
-  const save = () => store.set(KEY, JSON.stringify(state));
+  let saveWarned = false;
+  const save = () => {
+    if (store.set(KEY, JSON.stringify(state)) || saveWarned) return;
+    saveWarned = true;
+    // spanduk tetap (bukan toast) agar tidak tertimpa notifikasi lain
+    const bar = el("div", { class: "save-warn", role: "alert" }, [
+      el("span", null, ["Progres tidak bisa disimpan: penyimpanan browser penuh atau diblokir (mode privat?). Ekspor cadangan di Pengaturan agar progres tidak hilang."]),
+      el("button", { class: "btn btn-sm", onclick: () => bar.remove() }, ["Tutup"])
+    ]);
+    document.body.appendChild(bar);
+  };
 
   // ---------- Data ----------
   const BANK = window.BANK || {}, TOPICS = window.TOPICS || [], TESTS = window.TESTS || {}, MATERI = window.MATERI || {};
@@ -231,7 +287,7 @@
   // ---------- Navigasi ----------
   const view = $("#view");
   const NAV = [["home", "Beranda", "home"], ["materi", "Materi", "book"], ["latihan", "Latihan", "pen"], ["simulasi", "Simulasi", "timer"], ["riwayat", "Riwayat", "chart"], ["pengaturan", "Pengaturan", "sliders"]];
-  let current = "home", timerInt = null, drill = null, exam = null, jodohInt = null;
+  let current = "home", timerInt = null, drill = null, exam = null, jodohInt = null, roundSeq = 0;
   const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan, selingan: renderSelingan, jodoh: renderJodoh, kilat: renderKilat, kelompok: renderKelompok, urut: renderUrut, tebak: renderTebak, detektif: renderDetektif, kursi: renderKursi };
   function renderNav() {
     const side = $("#sideNav"), tab = $("#tabbar"); side.innerHTML = ""; tab.innerHTML = "";
@@ -258,7 +314,7 @@
   }
   function go(name, arg) {
     clearInterval(jodohInt); jodohInt = null; gameKey = null;
-    document.body.classList.remove("cat-on");
+    document.body.classList.remove("cat-on"); roundSeq++;
     current = name; view.innerHTML = ""; renderNav();
     routes[name](arg);
     arenaWrap();
@@ -571,6 +627,9 @@
   const meterSpan = (label, node) => el("span", null, [label + " ", node]);
   // o: { secs, errors, full, marks: [[key, keliru]], wrong: [[a, b]], wrongTitle, doneTitle, extra }
   function finishRound(g, x, o) {
+    // ronde yang ditinggalkan (sudah pindah halaman) tidak dicatat; layar hasil tidak boleh menimpa ronde baru
+    if (current !== g.id) return;
+    const seq = roundSeq;
     clearInterval(jodohInt); jodohInt = null; gameKey = null;
     state.jodohBest = state.jodohBest || {};
     o.marks.forEach(([k, w]) => gRecord(k, w));
@@ -578,7 +637,7 @@
     o.record = o.full && (!o.prev || o.errors < o.prev.err || (o.errors === o.prev.err && o.secs < o.prev.time));
     if (o.record) state.jodohBest[x.id] = { time: o.secs, err: o.errors };
     const k = dayKey(); state.days[k] = (state.days[k] || 0) + 1; save();
-    setTimeout(() => { if (current === g.id) roundResult(g, x, o); }, 450);
+    setTimeout(() => { if (current === g.id && seq === roundSeq) roundResult(g, x, o); }, 450);
   }
   function roundResult(g, x, o) {
     view.innerHTML = "";
@@ -1590,9 +1649,10 @@
     };
     draw();
     const start = () => {
-      if (simMode === "upkp") state.settings.durationMin = parseInt(dur.value, 10) || 90;
+      const minutes = Math.min(240, Math.max(10, parseInt(dur.value, 10) || MODES[simMode].min)); dur.value = minutes;
+      if (simMode === "upkp") state.settings.durationMin = minutes;
       TEST_ORDER.forEach(k => state.settings.thresholds[k] = th[k].value); save();
-      const b = buildExam(simMode), secs = (parseInt(dur.value, 10) || MODES[simMode].min) * 60;
+      const b = buildExam(simMode), secs = minutes * 60;
       // halaman konfirmasi data peserta seperti CAT; waktu baru berjalan setelah Mulai Ujian
       catConfirm(b, secs, () => {
         exam = { mode: simMode, qs: b.qs, sections: b.sections, i: 0, answers: {}, flags: {}, perm: {}, startedAt: Date.now(), endAt: Date.now() + secs * 1000, finished: false };
@@ -1878,12 +1938,33 @@
         ])
       ]));
   }
-  function exportData() { state.lastExport = Date.now(); save(); const a = el("a", { href: URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: "application/json" })), download: "upkp-progres-" + dayKey() + ".json" }); document.body.appendChild(a); a.click(); a.remove(); }
+  function exportData() {
+    state.lastExport = Date.now(); save();
+    const url = URL.createObjectURL(new Blob([JSON.stringify(state, null, 2)], { type: "application/json" }));
+    const a = el("a", { href: url, download: "upkp-progres-" + dayKey() + ".json" }); document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 2000);
+  }
   function importData() {
-    const inp = el("input", { type: "file", accept: "application/json" });
-    inp.addEventListener("change", () => { const f = inp.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { try { const s = JSON.parse(r.result); if (!s.stats || !s.history) throw 0; state = Object.assign(defaults(), s); save(); applyTheme(); renderSideFoot(); toast("Progres diimpor"); go("home"); } catch (e) { toast("Berkas tidak valid: bukan hasil ekspor aplikasi ini."); } }; r.readAsText(f); });
+    if (exam && !exam.finished) return toast("Selesaikan simulasi yang sedang berjalan dulu.");
+    const inp = el("input", { type: "file", accept: "application/json,.json" });
+    inp.addEventListener("change", () => {
+      const f = inp.files[0]; if (!f) return;
+      if (f.size > 5 * 1024 * 1024) return toast("File terlalu besar untuk file cadangan progres (maks. 5 MB).");
+      const r = new FileReader();
+      r.onload = () => {
+        let raw;
+        try { raw = safeParse(r.result); } catch (e) { return toast("File bukan JSON yang valid."); }
+        if (!isObj(raw) || !isObj(raw.stats) || !Array.isArray(raw.history)) return toast("File ini bukan cadangan progres Tryout UPKP.");
+        const next = sanitize(raw), skipped = raw.history.length - next.history.length;
+        confirmBox("Ganti progres dengan isi file?", `File berisi ${Object.keys(next.stats).length} soal tercatat dan ${next.history.length} riwayat simulasi` + (skipped > 0 ? ` (${skipped} riwayat rusak dilewati)` : "") + ". Progres di perangkat ini akan diganti.", "Ganti progres", () => {
+          state = next; save(); applyTheme(); renderSideFoot(); toast("Progres diimpor"); go("home");
+        }, true);
+      };
+      r.readAsText(f);
+    });
     inp.click();
   }
+
 
   // ---------- PWA ----------
   let installEvt = null;
@@ -1914,6 +1995,9 @@
   $("#topSettings").appendChild(icon("sliders"));
   $("#topSettings").addEventListener("click", () => nav("pengaturan"));
   applyTheme(); renderSideFoot(); restoreExam();
+  // aplikasi terbuka di tab lain: progres bisa saling menimpa
+  let tabWarned = false;
+  window.addEventListener("storage", e => { if (e.key === KEY && !tabWarned) { tabWarned = true; toast("Aplikasi ini juga terbuka di tab lain. Pakai satu tab saja agar progres tidak saling menimpa."); } });
   window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (routes[h] && h !== current) nav(h); });
   const start = location.hash.slice(1);
   go(exam && !exam.finished ? "simulasi" : routes[start] ? start : "home");

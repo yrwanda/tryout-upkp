@@ -34,6 +34,14 @@ Simulasi bergaya CAT BKN (mengikuti pemberitaan Kompas 2019 dan Liputan6 2022 te
   - Set `ext: true` = pelengkap (disembunyikan bila soal pelengkap dimatikan).
 - `js/app.js` logika aplikasi; `css/style.css` tampilan (token warna terang/gelap).
 
+## Keamanan dan ketahanan data
+- Semua data (localStorage dan file impor) melewati `sanitize()`: hanya kolom dikenal dengan tipe benar, kunci `__proto__`/`constructor`/`prototype` dibuang, riwayat rusak dilewati. Data rusak tidak boleh membuat aplikasi macet.
+- Impor: maks. 5 MB, harus berisi `stats` dan `history`, konfirmasi sebelum mengganti progres.
+- Gagal menyimpan (penyimpanan penuh/diblokir) memunculkan spanduk tetap; aplikasi terbuka di dua tab memunculkan peringatan.
+- Content Security Policy lewat meta tag (skrip hanya dari origin sendiri; pendaftaran service worker ada di `js/boot.js`). Teks dari pengguna/berkas selalu dirender sebagai teks, bukan HTML.
+- Service worker hanya menyimpan respons sukses dari folder aplikasi ini; cadangan `index.html` saat offline hanya untuk navigasi.
+- Batasan yang tersisa: origin `yrwanda.github.io` dipakai bersama semua repo GitHub Pages milik akun ini (localStorage ikut terbagi); GitHub Pages tidak bisa mengirim header keamanan seperti `frame-ancestors`.
+
 ## Menambah soal
 Tambahkan soal ke berkas `js/bank/bkn_*.js` (pola `window.BANK.<topik>.push({...})`, `set: "bkn"`, rujukan "Kisi-kisi BKN hal. X"; berkas baru juga didaftarkan di `index.html` dan `sw.js`). Lalu:
 1. `node tools/rebalance.js .` menyeimbangkan posisi kunci A-E (kecuali `bkn_form.js` dan pilihan berurutan seperti Pertama-Kelima / angka / Romawi). Argumen ketiga opsional: JSON `{id:{o,a}}` untuk menimpa opsi.

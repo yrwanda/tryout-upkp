@@ -1349,3 +1349,5 @@ body.cat-on .view { max-width: 1280px; padding: 0; gap: 0; }
 /* selama ujian, lembar geser dan kotak konfirmasi ikut terang seperti layar CAT */
 body.cat-on .sheet, body.cat-on .modal { color-scheme: light; --text: #1F2933; --muted: #52606D; --surface: #FFFFFF; --surface-2: #F5F7FA; --border: #CBD2D9; --primary: #2E9E5B; --on-primary: #FFFFFF; --danger: #D64545; background: #FFFFFF; color: #1F2933; }
 body.cat-on .sheet .eyebrow, body.cat-on .sheet .cat-sec { color: #52606D; }
+.save-warn { position: fixed; left: 12px; right: 12px; bottom: calc(var(--tabbar-h) + 12px + env(safe-area-inset-bottom, 0px)); z-index: 95; display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 14px; border-radius: 12px; background: var(--bad-soft); color: var(--bad); border: 1px solid var(--bad); box-shadow: var(--shadow-lift); font-weight: 700; font-size: .9rem; }
+@media (min-width: 1101px) { .save-warn { left: 268px; bottom: 16px; } }
