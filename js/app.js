@@ -57,7 +57,12 @@
     bins: '<rect x="3" y="3" width="18" height="7" rx="1.5"/><rect x="3" y="14" width="8" height="7" rx="1.5"/><rect x="13" y="14" width="8" height="7" rx="1.5"/>',
     steps: '<path d="M10 6h11M10 12h11M10 18h11"/><path d="M4 6h1v4M4 10h2M6 18H4c0-1 2-2 2-3s-1-1.5-2-1"/>',
     quiz: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6V14M12 17h.01"/>',
-    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>'
+    search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/>',
+    trophy: '<path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/>',
+    phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/>',
+    crowd: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/>',
+    sound: '<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a10 10 0 0 1 0 14"/>',
+    mute: '<path d="M11 5 6 9H2v6h4l5 4z"/><path d="m22 9-6 6M16 9l6 6"/>'
   };
   const icon = (name, label) => { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("class", "ic"); s.setAttribute("aria-hidden", label ? "false" : "true"); if (label) s.setAttribute("aria-label", label); s.innerHTML = ICONS[name] || ""; return s; };
 
@@ -227,7 +232,7 @@
   const view = $("#view");
   const NAV = [["home", "Beranda", "home"], ["materi", "Materi", "book"], ["latihan", "Latihan", "pen"], ["simulasi", "Simulasi", "timer"], ["riwayat", "Riwayat", "chart"], ["pengaturan", "Pengaturan", "sliders"]];
   let current = "home", timerInt = null, drill = null, exam = null, jodohInt = null;
-  const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan, selingan: renderSelingan, jodoh: renderJodoh, kilat: renderKilat, kelompok: renderKelompok, urut: renderUrut, tebak: renderTebak, detektif: renderDetektif };
+  const routes = { home: renderHome, materi: renderMateri, latihan: renderLatihan, simulasi: renderSimulasi, riwayat: renderRiwayat, pengaturan: renderPengaturan, selingan: renderSelingan, jodoh: renderJodoh, kilat: renderKilat, kelompok: renderKelompok, urut: renderUrut, tebak: renderTebak, detektif: renderDetektif, kursi: renderKursi };
   function renderNav() {
     const side = $("#sideNav"), tab = $("#tabbar"); side.innerHTML = ""; tab.innerHTML = "";
     NAV.forEach(([id, label, ic]) => {
@@ -426,6 +431,8 @@
   function gRecord(key, wrong) { state.jodoh = state.jodoh || {}; const st = state.jodoh[key] || { r: 0, w: 0 }; wrong ? st.w++ : st.r++; st.lastW = !!wrong; st.t = Date.now(); state.jodoh[key] = st; }
   const kItems = x => x.bins.flatMap((b, bi) => b.items.map(it => ({ it, bi })));
   const GAMES = [
+    { id: "kursi", title: "Kursi Panas", icon: "trophy", feat: true, meta: () => state.kpBest ? `Rekor: ${state.kpBest.poin.toLocaleString("id-ID")} poin` : "Belum ada rekor",
+      desc: "Kuis 15 tingkat ala acara kuis TV: soal makin sulit, tiga bantuan, titik aman di level 5 dan 10, menuju 1.000.000 poin." },
     { id: "jodoh", title: "Jodohkan", icon: "pair", sets: () => JODOH.filter(setInScope), keys: x => x.pairs.map(p => gKey(x, p[0])), count: x => `${x.pairs.length} pasangan`, size: 6,
       desc: "Pasangkan kartu kiri dengan kanan: lambang dan sila, pasal dan isinya, tokoh dan teorinya.", how: "Ketuk satu kartu di kiri, lalu pasangannya di kanan." },
     { id: "kilat", title: "Benar atau Salah", icon: "bolt",
@@ -441,7 +448,7 @@
   ];
   const gameById = id => GAMES.find(g => g.id === id);
   const gMissed = (g, x) => g.keys(x).filter(k => gWeak(gStat(k))).length;
-  const SEL_ROUTES = ["selingan", "jodoh", "kilat", "kelompok", "urut", "tebak", "detektif"];
+  const SEL_ROUTES = ["selingan", "jodoh", "kilat", "kelompok", "urut", "tebak", "detektif", "kursi"];
   let gameKey = null; // penangan keyboard milik game yang sedang tampil; dikosongkan setiap pindah halaman
   function selinganCard(compact) {
     const weak = GAMES.filter(g => g.sets).reduce((a, g) => a + g.sets().reduce((b, x) => b + gMissed(g, x), 0), 0);
@@ -450,7 +457,7 @@
       el("div", { class: "stack", style: "gap:4px;min-width:0" }, [
         el("span", { class: "eyebrow" }, [compact ? "Lagi jenuh?" : "Selingan"]),
         el("h2", null, ["Mini game kisi-kisi"]),
-        el("p", { class: "small muted" }, [(compact ? "Jodohkan, Benar atau Salah, Kelompokkan, Urutkan, Tebak, Detektif. Satu ronde sekitar satu menit." : "Enam mini game dari tabel dan bagan PPT kisi-kisi, satu ronde sekitar satu menit.") + (weak ? ` ${weak} kartu pernah keliru dan akan muncul lagi.` : "")])
+        el("p", { class: "small muted" }, [(compact ? "Kursi Panas, Jodohkan, Benar atau Salah, Kelompokkan, Urutkan, Tebak, Detektif." : "Tujuh mini game dari PPT kisi-kisi, termasuk kuis 15 tingkat Kursi Panas.") + (weak ? ` ${weak} kartu pernah keliru dan akan muncul lagi.` : "")])
       ]),
       el("button", { class: "btn btn-primary", onclick: () => nav("selingan") }, [icon("play"), "Main"])
     ]);
@@ -463,13 +470,13 @@
       el("div", { class: "stack", style: "gap:6px" }, [
         el("span", { class: "eyebrow" }, ["Selingan"]),
         el("h1", null, ["Mini game kisi-kisi"]),
-        el("p", { class: "muted" }, ["Jeda dari pilihan ganda tanpa berhenti belajar. Semua kartu diambil dari tabel dan bagan PPT kisi-kisi BKN. Kartu yang keliru di game mana pun akan muncul lagi lebih dulu."])
+        el("p", { class: "muted" }, ["Jeda dari rutinitas latihan tanpa berhenti belajar. Semua isi diambil dari PPT kisi-kisi BKN. Kartu yang keliru di game mana pun akan muncul lagi lebih dulu."])
       ]),
       resumeBtn() ? el("div", { class: "row" }, [resumeBtn()]) : "",
       el("div", { class: "game-grid" }, GAMES.map(g => {
         const sets = g.sets ? g.sets() : null, miss = sets ? sets.reduce((a, x) => a + gMissed(g, x), 0) : 0, kb = state.kilatBest || 0;
-        const meta = sets ? `${sets.length} set` + (miss ? ` · ${miss} kartu pernah keliru` : "") : kb ? `Rekor: ${kb} benar dalam 60 detik` : "Belum ada rekor";
-        return el("button", { class: "game-card", onclick: () => go(g.id) }, [
+        const meta = g.meta ? g.meta() : sets ? `${sets.length} set` + (miss ? ` · ${miss} kartu pernah keliru` : "") : kb ? `Rekor: ${kb} benar dalam 60 detik` : "Belum ada rekor";
+        return el("button", { class: "game-card" + (g.feat ? " feat" : ""), onclick: () => go(g.id) }, [
           el("span", { class: "game-ic", "aria-hidden": "true" }, [icon(g.icon)]),
           el("span", { class: "stack", style: "gap:4px;min-width:0" }, [el("span", { class: "game-t" }, [g.title]), el("span", { class: "small muted" }, [g.desc]), el("span", { class: "xs faint" }, [meta])]),
           icon("right")
@@ -992,6 +999,288 @@
       el("p", { class: "xs muted" }, ["Kesalahan bisa berupa angka, tanggal, nama, atau istilah yang tertukar. Setelah dua kali keliru, kesalahannya ditunjukkan."])
     );
     drawQ();
+  }
+
+  // ---------- Kursi Panas: kuis 15 tingkat bergaya acara kuis TV ----------
+  // Soal dari bank kisi-kisi. Tingkat kesulitan mengikuti riwayat pengguna: level 1-5 soal yang pernah dijawab benar,
+  // 6-10 soal baru, 11-15 soal yang pernah dijawab salah. Jawaban tercatat ke statistik latihan seperti biasa.
+  const KP_LADDER = [100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 1000000];
+  const KP_SAFE = [4, 9]; // indeks level aman: level 5 dan level 10
+  const fmtPoin = n => n.toLocaleString("id-ID");
+  let kp = null, kpScope = "all", actx = null;
+  const kpAlive = run => kp && kp.run === run && current === "kursi";
+  function sfx(kind) {
+    if (!state.settings.kpSound) return;
+    try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === "suspended") actx.resume(); } catch (e) { return; }
+    const N = {
+      pick: [[660, .05]], lock: [[196, .6, "sawtooth", .035]],
+      ok: [[523, .11], [659, .11], [784, .24]], bad: [[220, .3, "square", .045], [165, .55, "square", .045]],
+      safe: [[523, .1], [659, .1], [784, .1], [1047, .4]], win: [[523, .12], [659, .12], [784, .12], [1047, .12], [1319, .5]],
+      life: [[880, .06], [1175, .1]]
+    }[kind] || [];
+    let t = actx.currentTime;
+    N.forEach(([f, d, type = "triangle", v = .08]) => {
+      const o = actx.createOscillator(), g = actx.createGain();
+      o.type = type; o.frequency.value = f; g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+      o.connect(g); g.connect(actx.destination); o.start(t); o.stop(t + d + .03); t += d * .85;
+    });
+  }
+  function kpEmblem(size) {
+    let rays = "";
+    for (let i = 0; i < 24; i++) rays += `<path d="M100 100 L97 8 L103 8 Z" transform="rotate(${i * 15} 100 100)" opacity="${i % 2 ? .35 : .7}"/>`;
+    const w = el("div", { class: "kp-emblem" + (size ? " " + size : ""), "aria-hidden": "true" });
+    w.innerHTML = `<svg viewBox="0 0 200 200"><defs>
+      <linearGradient id="kpg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FBE3A3"/><stop offset=".45" stop-color="#E6B865"/><stop offset="1" stop-color="#8A5E0C"/></linearGradient>
+      <radialGradient id="kpc" cx=".5" cy=".35" r=".7"><stop offset="0" stop-color="#1D6B61"/><stop offset=".6" stop-color="#0A332E"/><stop offset="1" stop-color="#041816"/></radialGradient>
+      <radialGradient id="kpr" cx=".5" cy=".5" r=".5"><stop offset=".45" stop-color="#E6B865" stop-opacity=".9"/><stop offset="1" stop-color="#E6B865" stop-opacity="0"/></radialGradient></defs>
+      <g class="kp-rays" fill="url(#kpr)">${rays}</g>
+      <circle cx="100" cy="100" r="66" fill="url(#kpc)" stroke="url(#kpg)" stroke-width="6"/>
+      <circle cx="100" cy="100" r="55" fill="none" stroke="url(#kpg)" stroke-width="1.2" stroke-dasharray="1.5 4.5"/>
+      <path d="M100 52 l5.3 10.8 11.9 1.7-8.6 8.4 2 11.8L100 79.1l-10.6 5.6 2-11.8-8.6-8.4 11.9-1.7z" fill="url(#kpg)"/>
+      <text x="100" y="118" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="800" font-size="28" fill="url(#kpg)" letter-spacing="1">UPKP</text>
+      <text x="100" y="138" text-anchor="middle" font-family="Plus Jakarta Sans, sans-serif" font-weight="700" font-size="9.5" fill="#E6B865" letter-spacing="3.2">KURSI PANAS</text></svg>`;
+    return w;
+  }
+  const kpTests = () => TEST_ORDER.filter(k => CORE.some(t => t.test === k));
+  const kpPool = () => CORE.filter(t => kpScope === "all" || t.test === kpScope).flatMap(t => pool(t.id)).filter(q => q.o.length >= 4 && !q.o.some(o => PIN.test(o)));
+  function kpPick() {
+    const all = shuffle(kpPool()), st = id => state.stats[id], used = new Set(), out = [];
+    const tier = [q => st(q.id) && !st(q.id).lastWrong, q => !st(q.id), q => st(q.id) && st(q.id).wrong > 0];
+    for (let lv = 0; lv < 15; lv++) {
+      const order = lv < 5 ? [0, 1, 2] : lv < 10 ? [1, 0, 2] : [2, 1, 0], last = out[out.length - 1];
+      let q = null;
+      for (const ti of order) {
+        q = all.find(x => !used.has(x.id) && tier[ti](x) && (!last || x.topic !== last.topic)) || all.find(x => !used.has(x.id) && tier[ti](x));
+        if (q) break;
+      }
+      if (!q) q = all.find(x => !used.has(x.id));
+      if (!q) break;
+      used.add(q.id); out.push(q);
+    }
+    return out;
+  }
+  // 4 pilihan: soal 5 opsi dikurangi satu pengecoh acak; pilihan berurutan (angka, Romawi) tetap urut
+  function kpOpts(q) {
+    let idx = q.o.map((_, i) => i);
+    if (idx.length > 4) { const wr = idx.filter(i => i !== q.a); const drop = wr[Math.floor(Math.random() * wr.length)]; idx = idx.filter(i => i !== drop); }
+    return isOrdered(q) ? idx : shuffle(idx);
+  }
+  const kpSoundBtn = () => {
+    const b = el("button", { class: "kp-ghost kp-ic", "aria-pressed": state.settings.kpSound ? "true" : "false", "aria-label": "Efek suara", title: "Efek suara", onclick: () => {
+      state.settings.kpSound = !state.settings.kpSound; save(); b.replaceWith(kpSoundBtn()); if (state.settings.kpSound) sfx("life");
+    } }, [icon(state.settings.kpSound ? "sound" : "mute")]);
+    return b;
+  };
+  function renderKursi(arg) { return arg && arg.play ? kpStart() : kpIntro(); }
+  function kpIntro() {
+    kp = null;
+    if (kpScope !== "all" && !kpTests().includes(kpScope)) kpScope = "all";
+    const info = el("span", { class: "kp-mute small" });
+    const upd = () => { const n = kpPool().length; info.textContent = n >= 15 ? `${n} soal tersedia untuk cakupan ini.` : `Hanya ${n} soal untuk cakupan ini; minimal 15.`; go_.disabled = n < 15; };
+    const seg = el("div", { class: "kp-seg", role: "group", "aria-label": "Cakupan soal" });
+    const drawSeg = () => { seg.innerHTML = ""; [["all", "Semua"]].concat(kpTests().map(k => [k, TESTS[k].short])).forEach(([v, l]) => seg.appendChild(el("button", { "aria-pressed": kpScope === v ? "true" : "false", onclick: () => { kpScope = v; drawSeg(); upd(); } }, [l]))); };
+    const go_ = el("button", { class: "kp-btn kp-big", onclick: () => go("kursi", { play: true }) }, [icon("play"), "Duduk di kursi panas"]);
+    drawSeg(); upd();
+    const best = state.kpBest;
+    view.append(
+      backBtn("Semua mini game", "selingan"),
+      el("section", { class: "kp kp-intro" }, [
+        kpEmblem(),
+        el("h1", { class: "kp-title" }, ["Kursi Panas"]),
+        el("p", { class: "kp-sub" }, ["15 soal kisi-kisi BKN menuju 1.000.000 poin"]),
+        el("ul", { class: "kp-rules" }, [
+          el("li", null, [el("b", null, ["Makin tinggi, makin sulit. "]), "Level 1-5 dari soal yang pernah kamu jawab benar, 6-10 soal baru, 11-15 soal yang pernah kamu jawab salah."]),
+          el("li", null, [el("b", null, ["Titik aman "]), "di level 5 (1.000 poin) dan level 10 (32.000 poin). Jawaban salah membuat poin turun ke titik aman terakhir."]),
+          el("li", null, [el("b", null, ["Tiga bantuan, sekali pakai: "]), "50:50, Telepon Rekan, Tanya Peserta Diklat. Rekan dan peserta bisa keliru, makin sering di level tinggi."]),
+          el("li", null, [el("b", null, ["Boleh berhenti "]), "kapan saja dan membawa pulang poin terakhir. Jawaban tercatat ke statistik latihan, dan pembahasan lengkap tampil di akhir."])
+        ]),
+        el("div", { class: "kp-scope" }, [el("span", { class: "kp-mute xs" }, ["CAKUPAN"]), seg, info]),
+        el("div", { class: "kp-cta" }, [go_, kpSoundBtn()]),
+        best ? el("p", { class: "kp-best" }, [icon("trophy"), `Rekor: ${fmtPoin(best.poin)} poin, lolos ${best.lv} level`]) : null
+      ]),
+      resumeBtn() ? el("div", { class: "row" }, [resumeBtn()]) : ""
+    );
+  }
+  function kpStart() {
+    const qs = kpPick();
+    if (qs.length < 15) return kpIntro();
+    kp = { run: Date.now(), qs, lv: 0, perms: {}, answers: {}, removed: {}, life: {}, sel: null, locked: false, used: 0 };
+    kpDraw(true);
+  }
+  function kpLadder() {
+    return el("ol", { class: "kp-ladder" }, KP_LADDER.map((_, i) => i).reverse().map(i => el("li", {
+      class: "kp-rung" + (i === kp.lv ? " now" : "") + (i < kp.lv ? " past" : "") + (KP_SAFE.includes(i) ? " safe" : ""), "aria-current": i === kp.lv ? "step" : null
+    }, [el("span", { class: "kp-rn" }, [String(i + 1)]), el("span", { class: "kp-rd", "aria-hidden": "true" }, [i < kp.lv ? "◆" : ""]), el("span", { class: "kp-rp" }, [fmtPoin(KP_LADDER[i])])])));
+  }
+  const kpBank = () => kp.lv > 0 ? KP_LADDER[kp.lv - 1] : 0;
+  const kpSafeNow = () => kp.lv >= 10 ? KP_LADDER[9] : kp.lv >= 5 ? KP_LADDER[4] : 0;
+  function kpDraw(banner) {
+    view.innerHTML = "";
+    const run = kp.run, q = kp.qs[kp.lv], t = topicById(q.topic);
+    const perm = kp.perms[q.id] || (kp.perms[q.id] = kpOpts(q));
+    const removed = () => kp.removed[q.id] || [];
+    const visible = () => perm.filter(i => !removed().includes(i));
+    const help = el("div", { class: "kp-help", "aria-live": "polite" });
+    const act = el("div", { class: "kp-act" });
+    const rows = perm.map((i, pos) => {
+      const gone = removed().includes(i);
+      const btn = el("button", { class: "kp-opt" + (gone ? " gone" : ""), "data-i": i, disabled: gone || kp.locked, "aria-label": gone ? `${L[pos]}: dihapus` : `${L[pos]}: ${q.o[i]}`, onclick: () => pick(i) },
+        [el("span", { class: "kp-in" }, [el("span", { class: "kp-l" }, [L[pos] + ":"]), el("span", { class: "kp-t" }, [gone ? "" : q.o[i]])])]);
+      return { i, btn, row: el("div", { class: "kp-row" }, [btn]) };
+    });
+    const btnOf = i => rows.find(r => r.i === i).btn;
+    const lifeBtn = (key, label, body, fn) => el("button", { class: "kp-life" + (kp.life[key] ? " used" : ""), disabled: !!kp.life[key] || kp.locked, "aria-label": label + (kp.life[key] ? ", sudah dipakai" : ""), title: label, onclick: () => { if (kp.life[key] || kp.locked) return; kp.life[key] = true; kp.used++; sfx("life"); fn(); drawLifes(); } }, body);
+    const lifes = el("div", { class: "kp-lifes" });
+    const drawLifes = () => { lifes.innerHTML = ""; lifes.append(
+      lifeBtn("fifty", "Bantuan 50:50", [el("b", null, ["50:50"])], use5050),
+      lifeBtn("phone", "Bantuan Telepon Rekan", [icon("phone")], usePhone),
+      lifeBtn("crowd", "Bantuan Tanya Peserta Diklat", [icon("crowd")], useCrowd)); };
+    function use5050() {
+      const wrong = shuffle(visible().filter(i => i !== q.a)).slice(0, Math.max(0, visible().length - 2));
+      kp.removed[q.id] = removed().concat(wrong);
+      wrong.forEach(i => { const b = btnOf(i); b.classList.add("gone"); b.disabled = true; b.querySelector(".kp-t").textContent = ""; b.setAttribute("aria-label", `${L[perm.indexOf(i)]}: dihapus`); if (kp.sel === i) { kp.sel = null; drawAct(); } });
+      help.innerHTML = ""; help.append(el("p", { class: "kp-note" }, ["Dua pilihan yang salah dihapus."]));
+    }
+    function usePhone() {
+      const acc = kp.lv < 5 ? .9 : kp.lv < 10 ? .75 : .6, vis = visible(), others = vis.filter(i => i !== q.a);
+      const g = Math.random() < acc || !others.length ? q.a : others[Math.floor(Math.random() * others.length)];
+      const sure = kp.lv < 5 ? "Saya yakin" : kp.lv < 10 ? "Saya cukup yakin" : "Terus terang saya ragu, tapi saya pilih";
+      help.innerHTML = "";
+      help.append(el("div", { class: "kp-bubble" }, [
+        el("span", { class: "kp-avatar", "aria-hidden": "true" }, [icon("phone")]),
+        el("div", null, [el("b", null, ["Rekan seangkatan"]), el("p", null, [`"${sure}, jawabannya ${L[perm.indexOf(g)]}: ${q.o[g]}."`])])
+      ]));
+    }
+    function useCrowd() {
+      const vis = visible(), others = vis.filter(i => i !== q.a), rng = kp.lv < 5 ? [55, 78] : kp.lv < 10 ? [40, 62] : [28, 50];
+      let c = rng[0] + Math.random() * (rng[1] - rng[0]);
+      const w = others.map(() => .2 + Math.random()), sw = w.reduce((a, b) => a + b, 0) || 1;
+      const share = {}; share[q.a] = c; others.forEach((i, k) => { share[i] = (100 - c) * w[k] / sw; });
+      // di level tinggi peserta kadang ikut tersesat: suara terbanyak jatuh ke pilihan yang salah
+      if (kp.lv >= 10 && others.length && Math.random() < .2) { const top = others.reduce((a, b) => share[a] > share[b] ? a : b); const tmp = share[top]; share[top] = share[q.a]; share[q.a] = tmp; }
+      const ints = {}; let sum = 0; vis.forEach(i => { ints[i] = Math.round(share[i]); sum += ints[i]; }); ints[vis[0]] += 100 - sum;
+      help.innerHTML = "";
+      const bars = el("div", { class: "kp-bars", role: "img", "aria-label": "Suara peserta diklat: " + perm.filter(i => vis.includes(i)).map(i => `${L[perm.indexOf(i)]} ${ints[i]}%`).join(", ") });
+      perm.forEach((i, pos) => bars.append(el("div", { class: "kp-bar" }, [el("span", { class: "kp-bv" }, [vis.includes(i) ? ints[i] + "%" : ""]), el("div", { class: "kp-bt" }, [el("i", { style: `--h:${vis.includes(i) ? ints[i] : 0}%` })]), el("span", { class: "kp-bl" }, [L[pos]])])));
+      help.append(el("div", { class: "kp-crowd" }, [el("b", { class: "xs" }, ["SUARA PESERTA DIKLAT"]), bars]));
+    }
+    function pick(i) {
+      if (kp.locked || removed().includes(i)) return;
+      kp.sel = kp.sel === i ? null : i; sfx("pick");
+      rows.forEach(r => r.btn.classList.toggle("sel", r.i === kp.sel));
+      drawAct();
+    }
+    function lockIn() {
+      if (kp.locked || kp.sel === null) return;
+      kp.locked = true; const ch = kp.sel;
+      rows.forEach(r => { r.btn.disabled = true; r.btn.classList.remove("sel"); });
+      btnOf(ch).classList.add("lock"); drawLifesDisabled(); sfx("lock");
+      act.innerHTML = ""; act.append(el("p", { class: "kp-wait" }, ["Jawaban dikunci..."]));
+      setTimeout(() => {
+        if (!kpAlive(run)) return;
+        const ok = ch === q.a;
+        kp.answers[q.id] = ch; rememberPos(q, perm); recordAnswer(q, ok);
+        btnOf(ch).classList.remove("lock"); btnOf(q.a).classList.add("ok"); if (!ok) btnOf(ch).classList.add("bad");
+        stage.classList.add(ok ? "flash-ok" : "flash-bad");
+        act.innerHTML = "";
+        if (!ok) {
+          sfx("bad");
+          act.append(el("p", { class: "kp-msg bad" }, [`Kurang tepat. Jawabannya ${L[perm.indexOf(q.a)]}: ${q.o[q.a]}.`]),
+            el("button", { class: "kp-btn", onclick: () => kpEnd("wrong") }, ["Lihat hasil", icon("right")]));
+        } else if (kp.lv === 14) {
+          sfx("win"); setTimeout(() => { if (kpAlive(run)) kpEnd("win"); }, 1200);
+        } else {
+          const safe = KP_SAFE.includes(kp.lv);
+          sfx(safe ? "safe" : "ok");
+          act.append(el("p", { class: "kp-msg ok" }, [safe ? `Benar! ${fmtPoin(KP_LADDER[kp.lv])} poin sudah aman.` : `Benar! ${fmtPoin(KP_LADDER[kp.lv])} poin.`]),
+            el("button", { class: "kp-btn", onclick: () => { kp.lv++; kp.sel = null; kp.locked = false; kpDraw(true); } }, [`Lanjut ke level ${kp.lv + 2}`, icon("right")]));
+        }
+        const nb = act.querySelector(".kp-btn"); if (nb) nb.focus();
+      }, 1600);
+    }
+    const drawLifesDisabled = () => lifes.querySelectorAll("button").forEach(b => { b.disabled = true; });
+    function drawAct() {
+      act.innerHTML = "";
+      if (kp.sel === null) act.append(
+        el("p", { class: "kp-mute small" }, ["Pilih jawaban, lalu kunci."]),
+        el("button", { class: "kp-ghost", onclick: walkAway }, [`Berhenti, bawa ${fmtPoin(kpBank())} poin`]));
+      else act.append(
+        el("button", { class: "kp-btn", onclick: lockIn }, [`Kunci jawaban ${L[perm.indexOf(kp.sel)]}`]),
+        el("button", { class: "kp-ghost", onclick: () => pick(kp.sel) }, ["Batal"]));
+    }
+    function walkAway() {
+      confirmBox("Berhenti di sini?", `Kamu membawa pulang ${fmtPoin(kpBank())} poin. Soal level ${kp.lv + 1} tidak dihitung.`, "Berhenti", () => { if (kpAlive(run)) kpEnd("walk"); });
+    }
+    const ladder = kpLadder();
+    const lad = el("details", { class: "kp-ladwrap" }, [el("summary", null, [`Tangga poin · aman ${fmtPoin(kpSafeNow())}`]), ladder]);
+    if (window.matchMedia && matchMedia("(min-width: 900px)").matches) lad.open = true;
+    const strip = el("div", { class: "kp-strip", "aria-hidden": "true" }, KP_LADDER.map((_, i) => el("i", { class: (i < kp.lv ? "past" : i === kp.lv ? "now" : "") + (KP_SAFE.includes(i) ? " safe" : "") })));
+    const stage = el("section", { class: "kp kp-stage" }, [
+      el("div", { class: "kp-main" }, [
+        el("div", { class: "kp-top" }, [
+          el("button", { class: "kp-ghost", onclick: () => confirmBox("Keluar dari permainan?", "Jawaban yang sudah dikunci tetap tercatat di statistik, tetapi poin ronde ini tidak disimpan.", "Keluar", () => go("kursi")) }, [icon("left"), "Keluar"]),
+          el("div", { class: "kp-now" }, [el("span", null, [`Level ${kp.lv + 1} dari 15`]), el("b", null, [fmtPoin(KP_LADDER[kp.lv]) + " poin"])]),
+          kpSoundBtn()
+        ]),
+        strip, lifes,
+        el("div", { class: "kp-qwrap" }, [el("div", { class: "kp-q" }, [el("span", { class: "kp-q-meta" }, [`${TESTS[t.test].short} · ${t.label}` + (q.set === "ext" ? " · Pelengkap" : q.set === "form" ? " · Soal resmi BKN" : "")]), el("p", null, [q.q])])]),
+        el("div", { class: "kp-opts" }, rows.map(r => r.row)),
+        help, act
+      ]),
+      lad,
+      banner ? el("div", { class: "kp-banner" + (KP_SAFE.includes(kp.lv - 1) ? " safe" : ""), "aria-hidden": "true" }, [el("span", null, [`Level ${kp.lv + 1}`]), el("b", null, [fmtPoin(KP_LADDER[kp.lv]) + " poin"])]) : null
+    ]);
+    drawLifes(); drawAct();
+    gameKey = e => {
+      const k = e.key.toUpperCase(), pos = L.indexOf(k);
+      if (!kp.locked && pos >= 0 && pos < perm.length) { pick(perm[pos]); return true; }
+      if (e.key === "Enter") { const b = act.querySelector(".kp-btn"); if (b && document.activeElement !== b) { b.click(); return true; } }
+      return false;
+    };
+    view.append(stage);
+    window.scrollTo({ top: 0 });
+  }
+  function kpEnd(reason) {
+    gameKey = null;
+    const reached = reason === "win" ? 15 : kp.lv; // jumlah level yang lolos
+    const poin = reason === "win" ? KP_LADDER[14] : reason === "walk" ? kpBank() : kpSafeNow();
+    const answered = kp.qs.filter(q => q.id in kp.answers), correct = answered.filter(q => kp.answers[q.id] === q.a);
+    const prev = state.kpBest, record = !prev || poin > prev.poin || (poin === prev.poin && reached > prev.lv);
+    if (record) state.kpBest = { poin, lv: reached, at: Date.now() };
+    save();
+    const head = reason === "win" ? "Semua 15 soal benar!" : reason === "walk" ? `Berhenti di level ${kp.lv + 1}` : `Tersandung di level ${kp.lv + 1}`;
+    const sub = reason === "win" ? "Kamu menaklukkan kursi panas." : reason === "walk" ? "Keputusan aman: poin terakhir dibawa pulang." : poin ? `Poin turun ke titik aman terakhir.` : "Belum mencapai titik aman, jadi poin kembali ke nol.";
+    const num = el("b", { class: "kp-score num" }, ["0"]);
+    view.innerHTML = "";
+    view.append(
+      el("section", { class: "kp kp-result" + (reason === "win" ? " win" : "") }, [
+        kpEmblem("sm"),
+        el("p", { class: "kp-sub" }, [head]),
+        num, el("span", { class: "kp-mute" }, ["poin"]),
+        el("p", { class: "kp-mute small", style: "text-align:center" }, [sub]),
+        el("div", { class: "kp-stats" }, [
+          el("div", null, [el("b", null, [`${reached}/15`]), el("span", null, ["level lolos"])]),
+          el("div", null, [el("b", null, [`${correct.length}/${answered.length}`]), el("span", null, ["jawaban benar"])]),
+          el("div", null, [el("b", null, [String(kp.used)]), el("span", null, ["bantuan dipakai"])]),
+          el("div", null, [el("b", null, [record ? "Baru" : fmtPoin(prev.poin)]), el("span", null, [record ? (prev ? `rekor (sebelumnya ${fmtPoin(prev.poin)})` : "rekor pertama") : "rekor"])])
+        ]),
+        el("div", { class: "kp-cta" }, [
+          el("button", { class: "kp-btn", onclick: () => go("kursi", { play: true }) }, [icon("play"), "Main lagi"]),
+          answered.length > correct.length ? el("button", { class: "kp-ghost", onclick: () => startDrill(answered.filter(q => kp.answers[q.id] !== q.a), "Kursi Panas: soal yang salah") }, ["Latih soal yang salah"]) : null,
+          el("button", { class: "kp-ghost", onclick: () => go("selingan") }, ["Mini game lain"])
+        ])
+      ]),
+      el("div", { class: "stack", style: "gap:10px" }, [
+        el("h2", null, ["Pembahasan soal yang dijawab"]),
+        el("div", { class: "review" }, answered.map((q, i) => reviewItem(q, kp.answers[q.id], false, i + 1, kp.perms[q.id])))
+      ])
+    );
+    // hitung naik poin
+    const t0 = performance.now(), dur = poin ? 1200 : 1;
+    const step = now => { const p = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - p, 3); num.textContent = fmtPoin(Math.round(poin * e)); if (p < 1 && document.body.contains(num)) requestAnimationFrame(step); };
+    requestAnimationFrame(step);
+    sfx(reason === "win" ? "win" : poin ? "safe" : "bad");
+    window.scrollTo({ top: 0 });
   }
 
   // ---------- Latihan ----------

@@ -21,7 +21,8 @@ Fitur belajar: **Sesi Hari Ini** (soal salah diulang besok, benar sekali diulang
 ## Struktur
 - `js/bank/*.js` bank soal (id, soal, 4-5 opsi, kunci, pembahasan, rujukan halaman kisi-kisi BKN).
 - `js/materi.js` materi per topik + metadata komposisi (`TOPICS`, `TESTS`).
-- Menu **Selingan** (`#selingan`, dari Beranda/Latihan dan tombol jeda saat latihan): 6 mini game dari tabel/bagan PPT kisi-kisi. Catatan benar/keliru per kartu di `state.jodoh` dipakai bersama, kartu yang terakhir keliru didahulukan.
+- Menu **Selingan** (`#selingan`, dari Beranda/Latihan dan tombol jeda saat latihan): 7 mini game dari PPT kisi-kisi. Catatan benar/keliru per kartu di `state.jodoh` dipakai bersama, kartu yang terakhir keliru didahulukan.
+  - **Kursi Panas** (`#kursi`, di app.js): kuis 15 tingkat bergaya acara kuis TV dari bank soal (bukan data baru); level 1-5 soal yang pernah benar, 6-10 soal baru, 11-15 soal yang pernah salah; titik aman level 5 dan 10; bantuan 50:50, Telepon Rekan, Tanya Peserta Diklat (disimulasikan, bisa keliru); jawaban tercatat ke statistik; rekor di `state.kpBest`, suara di `settings.kpSound` (default mati). Nama, emblem, dan suara buatan sendiri, bukan aset acara TV.
   - `js/jodoh.js` **Jodohkan** (46 set, 345 pasangan, 6 per ronde); sisi kanan dalam satu set harus unik. Juga sumber **Benar atau Salah** (60 detik, pernyataan salah = pasangan ditukar dalam set yang sama).
   - `js/kelompok.js` **Kelompokkan** (20 set, 246 kartu, 8 per ronde); satu kartu hanya di satu kelompok.
   - `js/urut.js` **Urutkan** (15 set, 103 kartu, maks. 6 per ronde); items sudah urut, teks kartu tidak boleh membocorkan urutan.
