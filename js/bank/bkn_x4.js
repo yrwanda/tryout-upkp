@@ -225,7 +225,7 @@ window.BANK.renstra.push(
     q: "Menurut isu sasaran PN 2, Indonesia baru mencapai peringkat ketiga pada Global Islamic Economy Indicator (GIEI) 2023/2024. Isu ini berkaitan dengan ...",
     o: ["Ekonomi biru", "Ekonomi hijau", "Swasembada pangan", "Ekonomi digital", "Ekonomi syariah"],
     a: 4,
-    e: "Sasaran 5, perekonomian progresif-inklusif-berkelanjutan: isu ekonomi syariah antara lain peringkat ketiga GIEI 2023/2024, ekspor produk halal ke negara OKI baru sekitar 3,8% dari total impor halal OKI, UMKM tersertifikasi halal baru sekitar 0,2% (2022), dan aset keuangan syariah di posisi ke-7 global dengan market share sekitar 12% (2023).",
+    e: "Sasaran 5, perekonomian progresif-inklusif-berkelanjutan: isu ekonomi syariah antara lain peringkat ketiga GIEI 2023/2024, ekspor produk halal ke negara OKI baru sekitar 3,8% dari total impor halal OKI, UMKM tersertifikasi halal baru sekitar 0,2% (2022), dan aset keuangan syariah Indonesia di posisi ke-7 global dengan pangsa terhadap keuangan nasional baru sekitar 12% (2023).",
     src: "Kisi-kisi BKN hal. 105"
   },
   {

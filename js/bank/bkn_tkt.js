@@ -123,7 +123,7 @@ window.BANK.kebijakan.push(
     q: "Menurut tingkatan kebijakan publik berdasarkan sifatnya (Nugroho, 2006), Undang-Undang Dasar termasuk kebijakan ...",
     o: ["Makro", "Meso", "Mikro", "Teknis", "Operasional"],
     a: 0,
-    e: "Makro = umum/mendasar, melibatkan seluruh elemen masyarakat (UUD; UU, PP, Perppu); meso = penjelas pelaksanaan (Peraturan Menteri, SKB antarmenteri, Peraturan Gubernur); mikro = mengatur pelaksanaan/implementasi kebijakan di atasnya (Peraturan Wali Kota/Bupati).",
+    e: "Makro = umum/mendasar, melibatkan seluruh elemen masyarakat (UUD; UU, PP, Perppu); meso = penjelas pelaksanaan (Peraturan Menteri, SKB antarmenteri); mikro = mengatur pelaksanaan/implementasi kebijakan di atasnya (Peraturan Gubernur, Peraturan Wali Kota/Bupati).",
     src: "Kisi-kisi BKN hal. 148"
   },
   {
@@ -131,7 +131,7 @@ window.BANK.kebijakan.push(
     q: "Peraturan Menteri dan Surat Keputusan Bersama antarmenteri menurut tingkatan kebijakan (Nugroho, 2006) termasuk kebijakan ...",
     o: ["Makro", "Meso", "Mikro", "Strategis", "Nasional"],
     a: 1,
-    e: "Kebijakan meso bersifat penjelas pelaksanaan, contohnya Peraturan Menteri, SKB antarmenteri, dan Peraturan Gubernur. Peraturan Wali Kota/Bupati adalah kebijakan mikro.",
+    e: "Kebijakan meso bersifat penjelas pelaksanaan, contohnya Peraturan Menteri dan SKB antarmenteri. Peraturan Gubernur dan Peraturan Wali Kota/Bupati adalah kebijakan mikro.",
     src: "Kisi-kisi BKN hal. 148"
   },
   {
@@ -279,7 +279,7 @@ window.BANK.kepegawaian.push(
     q: "Bentuk penghargaan bagi PNS antara lain ...",
     o: ["Tanda kehormatan, kenaikan pangkat istimewa, dan prioritas pengembangan kompetensi", "Bonus tahunan sebesar dua kali gaji pokok dan tunjangan kinerja tambahan", "Kendaraan dinas pribadi yang menjadi hak milik setelah masa pensiun", "Rumah dinas permanen yang dapat diwariskan kepada ahli waris pegawai", "Pembebasan pajak penghasilan dan iuran jaminan kesehatan seumur hidup"],
     a: 0,
-    e: "PP 11/2017 Pasal 231: penghargaan berupa tanda kehormatan, kenaikan pangkat istimewa, kesempatan prioritas untuk pengembangan kompetensi, dan kesempatan menghadiri acara resmi dan/atau acara kenegaraan.",
+    e: "PP 11/2017 Pasal 232: penghargaan berupa tanda kehormatan, kenaikan pangkat istimewa, kesempatan prioritas untuk pengembangan kompetensi, dan kesempatan menghadiri acara resmi dan/atau acara kenegaraan.",
     src: "Kisi-kisi BKN hal. 114"
   },
   {

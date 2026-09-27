@@ -51,7 +51,7 @@ window.BANK.bindo.push(
     q: "Perbedaan penulisan singkatan \"dr.\" dan \"Dr.\" adalah ...",
     o: ["dr. = doktor, Dr. = dokter", "dr. dipakai di awal kalimat, Dr. di tengah kalimat", "dr. untuk dokter umum, Dr. untuk dokter spesialis", "Keduanya sama-sama singkatan dokter", "dr. = dokter, Dr. = doktor"],
     a: 4,
-    e: "Dr. = dokter; Dr. = doktor; Dr. (H.C.) = doktor honoris causa. Dokter spesialis memakai singkatan Sp. (misalnya Sp.A. spesialis anak).",
+    e: "Singkatan \"dr.\" = dokter; \"Dr.\" = doktor; Dr. (H.C.) = doktor honoris causa. Dokter spesialis memakai singkatan Sp. (misalnya Sp.A. spesialis anak).",
     src: "Kisi-kisi BKN hal. 79-80"
   },
   {

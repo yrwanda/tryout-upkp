@@ -292,7 +292,7 @@ window.BANK.pancasila.push(
     q: "Dalam kitab Sutasoma karangan Mpu Tantular, Pancasila mempunyai arti ...",
     o: ["Lima perintah raja", "Berbatu sendi yang lima atau pelaksanaan kesusilaan yang lima", "Lima jalan menuju kebahagiaan", "Lima kerajaan yang bersatu", "Lima dewa pelindung"],
     a: 1,
-    e: "Dalam Sutasoma, Pancasila berarti \"berbatu sendi yang lima\" atau \"pelaksanaan kesusilaan lima\" (lima larangan moral). Nilai-nilai Pancasila menurut kisi-kisi BKN sudah dikenal sejak zaman Sriwijaya dan Majapahit meskipun belum dirumuskan secara konkret.",
+    e: "Dalam Sutasoma, Pancasila berarti \"berbatu sendi yang lima\" atau \"pelaksanaan kesusilaan lima\" (lima larangan moral). Kisi-kisi menulis \"berbantu sendi\"; bentuk yang lazim dalam sumber sejarah adalah \"berbatu sendi\". Nilai-nilai Pancasila menurut kisi-kisi BKN sudah dikenal sejak zaman Sriwijaya dan Majapahit meskipun belum dirumuskan secara konkret.",
     src: "Kisi-kisi BKN hal. 26"
   },
   {
