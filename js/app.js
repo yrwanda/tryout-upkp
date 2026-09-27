@@ -120,6 +120,7 @@
     if (num(s.kpRound, 0)) d.kpRound = Math.round(s.kpRound);
     d.kpSeen = objOf(s.kpSeen, v => Number.isInteger(v) ? v : undefined);
     d.savedAt = num(s.savedAt, 0);
+    d.metaAt = num(s.metaAt, 0);
     if (num(s.resetAt, 0)) d.resetAt = s.resetAt;
     return d;
   }
@@ -137,6 +138,10 @@
   const CODE_RE = /^[A-HJ-NP-Z2-9]{4}(-[A-HJ-NP-Z2-9]{4}){5}$/;
   let sync = (() => { try { const v = safeParse(store.get(SYNC_KEY) || "null"); return isObj(v) && typeof v.code === "string" && CODE_RE.test(v.code) ? { code: v.code, at: num(v.at, 0) } : null; } catch (e) { return null; } })();
   let syncTimer = null, syncRunning = false, syncAgain = false, syncErr = "";
+  // pengaturan, tanda soal, dan ragu kunci diberi cap waktu sendiri (metaAt) agar tidak tertimpa
+  // oleh perangkat lain yang sekadar menjawab soal lebih akhir
+  const metaSig = s => JSON.stringify([s.settings, s.bookmarks, s.doubts]);
+  let lastMeta = metaSig(state);
   const saveSyncCfg = () => sync ? store.set(SYNC_KEY, JSON.stringify(sync)) : store.del(SYNC_KEY);
   function newSyncCode() {
     const A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", b = new Uint8Array(24); crypto.getRandomValues(b);
@@ -158,6 +163,10 @@
   function mergeState(a, b) {
     const newer = (a.savedAt || 0) >= (b.savedAt || 0) ? a : b;
     const out = JSON.parse(JSON.stringify(newer));
+    const metaKey = s => [s.metaAt || 0, s.savedAt || 0];
+    const [ma, mb] = [metaKey(a), metaKey(b)], meta = ma[0] > mb[0] || (ma[0] === mb[0] && ma[1] >= mb[1]) ? a : b;
+    out.settings = JSON.parse(JSON.stringify(meta.settings)); out.bookmarks = meta.bookmarks.slice(); out.doubts = Object.assign({}, meta.doubts);
+    out.metaAt = Math.max(a.metaAt || 0, b.metaAt || 0);
     const resetAt = Math.max(a.resetAt || 0, b.resetAt || 0), live = s => (s.savedAt || 0) >= resetAt;
     const latest = key => { const o = {}; [a, b].forEach(s => Object.entries(s[key] || {}).forEach(([id, v]) => { if (resetAt && (v.t || 0) < resetAt) return; const c = o[id]; if (!c || (v.t || 0) > (c.t || 0) || ((v.t || 0) === (c.t || 0) && (v.seen || v.r || 0) > (c.seen || c.r || 0))) o[id] = v; })); return o; };
     out.stats = latest("stats"); out.jodoh = latest("jodoh");
@@ -175,12 +184,12 @@
   }
   const syncStatusText = () => !sync ? "" : syncRunning ? "Menyinkronkan..." : syncErr ? syncErr : sync.at ? `Terakhir tersinkron ${fmtDate(sync.at)}.` : "Belum pernah tersinkron.";
   const showSyncStatus = () => { const el2 = $("#syncStatus"); if (el2) el2.textContent = syncStatusText(); };
-  const scheduleSync = (ms) => { if (!sync) return; clearTimeout(syncTimer); syncTimer = setTimeout(syncNow, ms); };
+  const scheduleSync = (ms) => { if (!sync) return; clearTimeout(syncTimer); syncTimer = setTimeout(() => { syncTimer = null; syncNow(); }, ms); };
   async function syncNow() {
     if (!sync) return;
     if (syncRunning) { syncAgain = true; return; }
     if (!navigator.onLine) { syncErr = "Sedang offline. Progres tersimpan di perangkat ini dan dikirim saat online."; return showSyncStatus(); }
-    syncRunning = true; clearTimeout(syncTimer); showSyncStatus();
+    syncRunning = true; clearTimeout(syncTimer); syncTimer = null; showSyncStatus();
     try {
       const code = sync.code, r = await rpc("sync_get", { p_code: code });
       if (!sync || sync.code !== code) return;
@@ -188,7 +197,7 @@
       const merged = remote ? mergeState(state, remote) : state;
       const localTxt = JSON.stringify(sanitize(JSON.parse(JSON.stringify(state)))), mergedTxt = JSON.stringify(merged);
       if (mergedTxt !== localTxt) {
-        state = merged; store.set(KEY, mergedTxt);
+        state = merged; lastMeta = metaSig(state); store.set(KEY, mergedTxt);
         applyTheme(); renderSideFoot();
         // halaman yang hanya menampilkan data digambar ulang; sesi yang sedang berjalan tidak diganggu
         if (["home", "riwayat", "pengaturan"].includes(current) && !document.querySelector(".modal-bg,.sheet-bg")) { const y = window.scrollY; go(current); window.scrollTo({ top: y }); }
@@ -272,6 +281,7 @@
   const save = () => {
     askPersist();
     state.savedAt = Date.now();
+    const sig = metaSig(state); if (sig !== lastMeta) { lastMeta = sig; state.metaAt = state.savedAt; }
     if (store.set(KEY, JSON.stringify(state))) return scheduleSync(4000);
     scheduleSync(4000); // browser gagal menyimpan, tetapi progres di memori masih bisa dikirim ke server
     if (saveWarned) return;
