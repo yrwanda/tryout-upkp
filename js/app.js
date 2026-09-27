@@ -258,6 +258,7 @@
   }
   function go(name, arg) {
     clearInterval(jodohInt); jodohInt = null; gameKey = null;
+    document.body.classList.remove("cat-on");
     current = name; view.innerHTML = ""; renderNav();
     routes[name](arg);
     arenaWrap();
@@ -1592,13 +1593,17 @@
       if (simMode === "upkp") state.settings.durationMin = parseInt(dur.value, 10) || 90;
       TEST_ORDER.forEach(k => state.settings.thresholds[k] = th[k].value); save();
       const b = buildExam(simMode), secs = (parseInt(dur.value, 10) || MODES[simMode].min) * 60;
-      exam = { mode: simMode, qs: b.qs, sections: b.sections, i: 0, answers: {}, flags: {}, perm: {}, startedAt: Date.now(), endAt: Date.now() + secs * 1000, finished: false };
-      persistExam(); startTimer(); renderExamQ(); window.scrollTo({ top: 0 });
+      // halaman konfirmasi data peserta seperti CAT; waktu baru berjalan setelah Mulai Ujian
+      catConfirm(b, secs, () => {
+        exam = { mode: simMode, qs: b.qs, sections: b.sections, i: 0, answers: {}, flags: {}, perm: {}, startedAt: Date.now(), endAt: Date.now() + secs * 1000, finished: false };
+        catSel = null; persistExam(); startTimer(); renderExamQ(); window.scrollTo({ top: 0 });
+      });
+      window.scrollTo({ top: 0 });
     };
     const short = CORE.filter(t => pool(t.id).length < t.n);
     view.append(
       short.length ? el("div", { class: "note" }, [el("b", null, ["Bank kurang: "]), short.map(t => `${t.label} ${pool(t.id).length}/${t.n}`).join(", ") + ". Aktifkan soal pelengkap di Pengaturan agar simulasi 100 soal terisi penuh."]) :"",
-      el("div", null, [el("h1", null, ["Simulasi CAT"]), el("p", { class: "muted", style: "margin-top:6px;max-width:64ch" }, ["Kondisi seperti CAT BKN: pembahasan baru muncul setelah selesai. Benar bernilai 5, salah atau kosong 0, jadi jawab semua soal. Progres tersimpan otomatis bila halaman tertutup."])]),
+      el("div", null, [el("h1", null, ["Simulasi CAT"]), el("p", { class: "muted", style: "margin-top:6px;max-width:64ch" }, ["Layar ujian meniru CAT BKN: kotak nomor soal hijau/merah, pilih lalu Simpan dan Lanjutkan atau Lewatkan, sisa waktu di kanan bawah. Pembahasan baru muncul setelah selesai. Benar bernilai 5, salah atau kosong 0, jadi jawab semua soal. Progres tersimpan otomatis bila halaman tertutup."])]),
       modes,
       el("section", { class: "panel stack", style: "gap:16px" }, [
         el("h2", null, ["Komposisi"]), comp,
@@ -1618,44 +1623,116 @@
     return rows;
   }
   const secOf = i => exam.sections.find(s => i >= s.start && i < s.end);
-  function navGrid(onPick) {
-    const wrap = el("div", { class: "stack", style: "gap:12px" });
-    exam.sections.forEach(s => {
-      wrap.appendChild(el("div", { class: "eyebrow" }, [secLabel(exam.mode, s.key)]));
-      const g = el("div", { class: "navgrid" });
-      for (let i = s.start; i < s.end; i++) { const q = exam.qs[i]; g.appendChild(el("button", { class: (exam.flags[q.id] ? "flag" : q.id in exam.answers ? "ans" : "") + (i === exam.i ? " cur" : ""), "aria-label": `Soal ${i + 1}`, onclick: () => { exam.i = i; persistExam(); onPick(); } }, [i + 1])); }
-      wrap.appendChild(g);
-    });
-    wrap.appendChild(el("div", { class: "legend" }, [el("span", null, [el("i", { style: "background:var(--primary-soft);border-color:var(--primary)" }), "dijawab"]), el("span", null, [el("i", { style: "background:var(--warn-soft);border-color:var(--warn)" }), "ragu-ragu"]), el("span", null, [el("i"), "kosong"])]));
-    return wrap;
-  }
   function askFinish() { const left = exam.qs.length - Object.keys(exam.answers).length, fl = Object.values(exam.flags).filter(Boolean).length; confirmBox("Selesaikan simulasi?", (left ? `${left} soal belum dijawab. ` : "Semua soal sudah dijawab. ") + (fl ? `${fl} soal masih ditandai ragu-ragu.` : ""), "Selesai dan nilai", () => { finishExam(false); go("simulasi"); }); }
-  function renderExamQ() {
+  // ---------- Layar ujian bergaya CAT ----------
+  // Mengikuti gambaran CAT BKN dari pemberitaan (Kompas 2019, Liputan6 2022): halaman data peserta lalu Mulai Ujian;
+  // kotak nomor soal di kiri (hijau = sudah dijawab, merah = belum); pilih jawaban lalu "Simpan dan Lanjutkan" atau "Lewatkan";
+  // informasi soal dan tombol "Selesai Ujian" di kanan atas, pilihan tampilan 1/2, sisa waktu di kanan bawah.
+  // Pilihan yang belum disimpan tidak dihitung. CAT tidak punya tombol ragu-ragu; soal yang dilewati tetap merah.
+  let catSel = null;
+  function catConfirm(b, secs, onStart) {
+    document.body.classList.add("cat-on");
     view.innerHTML = "";
-    const q = exam.qs[exam.i], t = topicById(q.topic), sec = secOf(exam.i), done = Object.keys(exam.answers).length, r = remaining();
+    const name = el("input", { class: "input", id: "catName", placeholder: "Opsional", maxlength: 60, value: state.settings.catName || "" });
+    const susunan = simMode === "form" ? `${b.sections.length} bagian, urutan asli` : b.sections.map(s => `${TESTS[s.key].short} ${s.end - s.start}`).join(" · ");
+    const row = (k, v) => el("tr", null, [el("th", null, [k]), el("td", null, [v])]);
+    view.append(el("div", { class: "cat cat-confirm" }, [
+      el("header", { class: "cat-head" }, [el("div", { class: "cat-id" }, [el("b", null, ["Simulasi CAT"]), el("span", null, ["Tryout UPKP · kisi-kisi BKN 2025"])])]),
+      el("section", { class: "cat-card" }, [
+        el("h1", null, ["Konfirmasi Data Peserta"]),
+        el("table", { class: "cat-table" }, [el("tbody", null, [
+          row(el("label", { for: "catName" }, ["Nama peserta"]), name),
+          row("Jenis ujian", MODES[simMode].title),
+          row("Jumlah soal", `${b.qs.length} soal`),
+          row("Susunan", susunan),
+          row("Alokasi waktu", `${Math.round(secs / 60)} menit`)
+        ])]),
+        el("ul", { class: "cat-rules" }, [
+          el("li", null, ["Pilih jawaban, lalu tekan ", el("b", null, ["Simpan dan Lanjutkan"]), ". Pilihan yang belum disimpan tidak dihitung."]),
+          el("li", null, ["Tekan ", el("b", null, ["Lewatkan"]), " untuk pindah ke soal berikutnya. Nomornya tetap merah sampai dijawab."]),
+          el("li", null, ["Kotak nomor soal: ", el("b", { class: "c-ok" }, ["hijau"]), " sudah dijawab, ", el("b", { class: "c-no" }, ["merah"]), " belum. Tekan nomor untuk pindah soal atau mengubah jawaban."]),
+          el("li", null, ["Sisa waktu ada di kanan bawah. Tekan ", el("b", null, ["Selesai Ujian"]), " di kanan atas bila sudah selesai. Benar bernilai 5, salah atau kosong 0."])
+        ]),
+        el("div", { class: "cat-actions" }, [
+          el("button", { class: "cat-skip", onclick: () => go("simulasi") }, ["Kembali"]),
+          el("button", { class: "cat-save", onclick: () => { state.settings.catName = name.value.trim(); save(); onStart(); } }, ["Mulai Ujian"])
+        ])
+      ])
+    ]));
+    name.focus();
+  }
+  function renderExamQ() {
+    document.body.classList.add("cat-on");
+    view.innerHTML = "";
+    const q = exam.qs[exam.i], t = topicById(q.topic), sec = secOf(exam.i), done = Object.keys(exam.answers).length, r = remaining(), n = exam.qs.length;
     exam.perm = exam.perm || {};
     const perm = exam.perm[q.id] || (exam.perm[q.id] = makePerm(q));
-    const set = idx => { exam.answers[q.id] = idx; persistExam(); renderExamQ(); };
-    const bar = el("div", { class: "exam-bar" }, [
-      el("span", { id: "timer", class: "timer" + (r < 300 ? " low" : ""), role: "timer", "aria-label": "Sisa waktu" }, [icon("timer"), fmtTime(r)]),
-      el("span", { class: "chip chip-test " + secTc(exam.mode, sec.key) }, [exam.mode === "form" ? t.label : TESTS[sec.key].short]),
-      el("span", { class: "small muted num" }, [`${done}/${exam.qs.length} dijawab`]),
-      el("span", { style: "flex:1" }),
-      el("button", { class: "btn btn-sm only-narrow", onclick: () => { const s = sheet("Daftar soal", navGrid(() => { s.remove(); renderExamQ(); })); } }, [icon("grid"), "Daftar"]),
-      el("button", { class: "btn btn-sm btn-primary", onclick: askFinish }, ["Selesai"])
+    if (!catSel || catSel.id !== q.id) catSel = { id: q.id, i: q.id in exam.answers ? exam.answers[q.id] : null };
+    const tampil = state.settings.catView === 2 ? 2 : 1;
+    let sheetEl = null;
+    const goTo = k => { if (sheetEl) sheetEl.remove(); exam.i = k; catSel = null; persistExam(); renderExamQ(); window.scrollTo({ top: 0 }); };
+    // setelah nomor terakhir, kembali ke nomor pertama yang belum dijawab
+    const nextIdx = () => { if (exam.i < n - 1) return exam.i + 1; const f = exam.qs.findIndex(x => !(x.id in exam.answers)); return f >= 0 ? f : exam.i; };
+    const saveNext = () => {
+      if (catSel.i === null) return toast("Pilih jawaban dulu, atau tekan Lewatkan.");
+      exam.answers[q.id] = catSel.i; persistExam();
+      const k = nextIdx();
+      if (k === exam.i) { toast("Semua soal sudah dijawab. Tekan Selesai Ujian bila sudah yakin."); catSel = null; return renderExamQ(); }
+      goTo(k);
+    };
+    const skip = () => goTo(nextIdx());
+    const opts = el("div", { class: "cat-opts", role: "radiogroup", "aria-label": "Pilihan jawaban" });
+    const status = el("p", { class: "cat-status", "aria-live": "polite" });
+    const pick = i => { catSel.i = i; drawOpts(); };
+    function drawOpts() {
+      opts.innerHTML = "";
+      perm.forEach((i, pos) => opts.append(el("button", { class: "cat-opt" + (catSel.i === i ? " sel" : ""), role: "radio", "aria-checked": catSel.i === i ? "true" : "false", onclick: () => pick(i) },
+        [el("span", { class: "cat-radio", "aria-hidden": "true" }), el("span", { class: "cat-l" }, [L[pos] + "."]), el("span", null, [q.o[i]])])));
+      const saved = q.id in exam.answers ? exam.answers[q.id] : null;
+      status.className = "cat-status" + (saved !== null && catSel.i === saved ? " ok" : catSel.i !== null ? " pend" : "");
+      status.textContent = saved !== null && catSel.i === saved ? `Jawaban ${L[perm.indexOf(saved)]} tersimpan.` : catSel.i !== null ? `Pilihan ${L[perm.indexOf(catSel.i)]} belum disimpan.` : "Belum ada jawaban.";
+    }
+    drawOpts();
+    const grid = () => {
+      const w = el("div", { class: "cat-gridwrap" });
+      exam.sections.forEach(s => {
+        if (exam.mode !== "form") w.append(el("div", { class: "cat-sec" }, [TESTS[s.key].short]));
+        const g = el("div", { class: "cat-grid" });
+        for (let k = s.start; k < s.end; k++) {
+          const qq = exam.qs[k], ans = qq.id in exam.answers;
+          g.append(el("button", { class: (ans ? "ans" : "no") + (k === exam.i ? " cur" : ""), "aria-label": `Soal ${k + 1}, ${ans ? "sudah dijawab" : "belum dijawab"}`, "aria-current": k === exam.i ? "true" : null, onclick: () => goTo(k) }, [String(k + 1)]));
+        }
+        w.append(g);
+      });
+      w.append(el("div", { class: "cat-legend" }, [el("span", null, [el("i", { class: "ans" }), "Sudah dijawab"]), el("span", null, [el("i", { class: "no" }), "Belum dijawab"])]));
+      return w;
+    };
+    const head = el("header", { class: "cat-head" }, [
+      el("div", { class: "cat-id" }, [el("b", null, [MODES[exam.mode].title]), el("span", null, [state.settings.catName || "Peserta simulasi"])]),
+      el("div", { class: "cat-view", role: "group", "aria-label": "Tampilan soal" }, [1, 2].map(v => el("button", { "aria-pressed": tampil === v ? "true" : "false", title: v === 1 ? "Tampilan 1: soal di atas, jawaban di bawah" : "Tampilan 2: soal di kiri, jawaban di kanan", onclick: () => { state.settings.catView = v; save(); renderExamQ(); } }, [String(v)]))),
+      el("button", { class: "cat-finish", onclick: askFinish }, ["Selesai Ujian"])
     ]);
-    const flagged = !!exam.flags[q.id];
-    const card = el("section", { class: "panel lift q-card" }, [
-      el("div", { class: "q-meta" }, [el("span", { class: "chip num" }, [`No. ${exam.i + 1}`]), el("span", { class: "chip" }, [t.label]), q.set === "form" ? el("span", { class: "stamp" }, [icon("award"), "Resmi BKN"]) : null]),
-      el("div", { class: "q-text" }, [q.q]),
-      el("div", { class: "options", role: "radiogroup" }, perm.map((i, pos) => el("button", { class: "opt" + (exam.answers[q.id] === i ? " chosen" : ""), role: "radio", "aria-checked": exam.answers[q.id] === i ? "true" : "false", onclick: () => set(i) }, [el("span", { class: "k" }, [L[pos]]), el("span", null, [q.o[i]]), el("span", { class: "mk" })])))
+    const info = el("div", { class: "cat-info" }, [
+      el("span", null, ["Jumlah soal ", el("b", null, [String(n)])]),
+      el("span", { class: "c-ok" }, ["Sudah dijawab ", el("b", null, [String(done)])]),
+      el("span", { class: "c-no" }, ["Belum dijawab ", el("b", null, [String(n - done)])]),
+      el("button", { class: "cat-listbtn", onclick: () => { sheetEl = sheet("Nomor soal", grid()); } }, [icon("grid"), "Nomor soal"]),
+      el("button", { class: "cat-exit", onclick: () => nav("home") }, ["Keluar sementara"])
     ]);
-    const act = el("div", { class: "q-actions sticky-act" }, [
-      el("button", { class: "btn", disabled: exam.i === 0, onclick: () => { exam.i--; persistExam(); renderExamQ(); } }, [icon("left"), "Sebelumnya"]),
-      el("button", { class: "btn" + (flagged ? " btn-primary" : ""), "aria-pressed": flagged ? "true" : "false", onclick: () => { exam.flags[q.id] = !flagged; persistExam(); renderExamQ(); } }, [icon("flag"), "Ragu-ragu"]),
-      exam.i < exam.qs.length - 1 ? el("button", { class: "btn btn-primary", onclick: () => { exam.i++; persistExam(); renderExamQ(); } }, ["Berikutnya", icon("right")]) : el("button", { class: "btn btn-primary", onclick: askFinish }, ["Selesai"])
+    const qbox = el("section", { class: "cat-q" }, [
+      el("div", { class: "cat-qno" }, [el("b", null, [`Soal nomor ${exam.i + 1}`]), el("span", null, [exam.mode === "form" ? t.label : `${TESTS[sec.key].short} · ${t.label}`])]),
+      el("div", { class: "cat-qtext" }, [q.q])
     ]);
-    view.append(bar, el("div", { class: "exam-layout" }, [el("div", { class: "stack", style: "gap:14px" }, [card, act]), el("aside", { class: "panel navpanel desk" }, [navGrid(renderExamQ)])]));
+    const bottom = el("div", { class: "cat-bottom" }, [
+      el("div", { class: "cat-actions" }, [el("button", { class: "cat-skip", onclick: skip }, ["Lewatkan"]), el("button", { class: "cat-save", onclick: saveNext }, ["Simpan dan Lanjutkan"])]),
+      el("div", { class: "cat-time" + (r < 300 ? " low" : "") }, [el("span", null, ["Sisa waktu"]), el("b", { id: "timer", role: "timer", "aria-label": "Sisa waktu" }, [fmtTime(r)])])
+    ]);
+    exam.catPick = pos => { if (pos < perm.length) pick(perm[pos]); };
+    exam.catSave = saveNext; exam.catSkip = skip;
+    view.append(el("div", { class: "cat" }, [head, info, el("div", { class: "cat-main" }, [
+      el("aside", { class: "cat-side" }, [el("div", { class: "cat-side-h" }, ["Nomor Soal"]), grid()]),
+      el("div", { class: "cat-work" }, [el("div", { class: "cat-body v" + tampil }, [qbox, el("div", { class: "cat-ans" }, [opts, status])]), bottom])
+    ])]));
   }
   function finishExam(timeout, silent) {
     clearInterval(timerInt); exam.finished = true; exam.finishedAt = Date.now();
@@ -1694,7 +1771,7 @@
     };
     const cnt = { bad: ex.qs.filter(q => q.id in ex.answers && ex.answers[q.id] !== q.a).length, skip: ex.qs.filter(q => !(q.id in ex.answers)).length, flag: ex.qs.filter(q => ex.flags[q.id]).length };
     const chips = el("div", { class: "seg" });
-    const drawChips = () => { chips.innerHTML = ""; [["all", `Semua (${ex.qs.length})`], ["bad", `Salah (${cnt.bad})`], ["skip", `Kosong (${cnt.skip})`], ["flag", `Ragu (${cnt.flag})`]].forEach(([v, l]) => chips.appendChild(el("button", { "aria-pressed": filter === v ? "true" : "false", onclick: () => { filter = v; drawChips(); drawList(); } }, [l]))); };
+    const drawChips = () => { chips.innerHTML = ""; [["all", `Semua (${ex.qs.length})`], ["bad", `Salah (${cnt.bad})`], ["skip", `Kosong (${cnt.skip})`]].concat(cnt.flag ? [["flag", `Ragu (${cnt.flag})`]] : []).forEach(([v, l]) => chips.appendChild(el("button", { "aria-pressed": filter === v ? "true" : "false", onclick: () => { filter = v; drawChips(); drawList(); } }, [l]))); };
     drawChips(); drawList();
     const wrong = ex.qs.filter(q => ex.answers[q.id] !== q.a);
     view.append(
@@ -1824,11 +1901,11 @@
       else if (k === "P" && q.id in drill.answers) { const tg = view.querySelector(".fb-toggle"); if (tg) { e.preventDefault(); tg.click(); } }
       else if ((e.key === "Enter" || e.key === "ArrowRight") && q.id in drill.answers && !(e.target && e.target.tagName === "BUTTON" && e.key === "Enter")) { e.preventDefault(); nextDrill(); }
     } else if (current === "simulasi" && exam && !exam.finished) {
-      const q = exam.qs[exam.i];
-      if (idx >= 0 && idx < q.o.length) { exam.answers[q.id] = (exam.perm && exam.perm[q.id] || idPerm(q))[idx]; persistExam(); renderExamQ(); }
-      else if (e.key === "ArrowRight" && exam.i < exam.qs.length - 1) { exam.i++; persistExam(); renderExamQ(); }
-      else if (e.key === "ArrowLeft" && exam.i > 0) { exam.i--; persistExam(); renderExamQ(); }
-      else if (k === "R") { exam.flags[q.id] = !exam.flags[q.id]; persistExam(); renderExamQ(); }
+      // huruf = pilih (belum tersimpan), Enter = Simpan dan Lanjutkan, panah kanan = Lewatkan
+      if (!exam.catPick) return;
+      if (idx >= 0) { e.preventDefault(); exam.catPick(idx); }
+      else if (e.key === "Enter" && !(e.target && e.target.tagName === "BUTTON")) { e.preventDefault(); exam.catSave(); }
+      else if (e.key === "ArrowRight") { e.preventDefault(); exam.catSkip(); }
     }
   });
 

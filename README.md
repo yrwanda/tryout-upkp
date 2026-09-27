@@ -18,6 +18,8 @@ Total 565 soal, dibedakan lewat field `set`:
 
 Fitur belajar: **Sesi Hari Ini** (soal salah diulang besok, benar sekali diulang 3 hari kemudian, dikuasai = benar di 2 hari berbeda; sisanya soal baru dari jenis tes terlemah), kesiapan per jenis tes, tombol **Ragukan kunci** (daftarnya bisa disalin dari Riwayat untuk dicek), pengingat ekspor data mingguan, simulasi UPKP 100 soal/90 menit dan Resmi 50 soal/45 menit dengan ambang **perkiraan**.
 
+Simulasi bergaya CAT BKN (mengikuti pemberitaan Kompas 2019 dan Liputan6 2022 tentang layar CAT): halaman konfirmasi data peserta lalu Mulai Ujian; menu aplikasi disembunyikan dan layar selalu terang; kotak nomor soal hijau (sudah dijawab) / merah (belum); pilih jawaban lalu **Simpan dan Lanjutkan** (pilihan yang belum disimpan tidak dihitung) atau **Lewatkan**; Selesai Ujian dan tampilan 1/2 di kanan atas, sisa waktu di kanan bawah. Tidak ada tombol ragu-ragu karena CAT tidak memilikinya. Keyboard: huruf memilih, Enter menyimpan, panah kanan melewatkan.
+
 ## Struktur
 - `js/bank/*.js` bank soal (id, soal, 4-5 opsi, kunci, pembahasan, rujukan halaman kisi-kisi BKN).
 - `js/materi.js` materi per topik + metadata komposisi (`TOPICS`, `TESTS`).
