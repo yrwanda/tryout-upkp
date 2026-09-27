@@ -470,8 +470,8 @@ details.more summary { cursor: pointer; font-weight: 700; color: var(--muted); m
 /* ---------- Upgrade UX belajar ---------- */
 p, li { text-wrap: pretty; }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-.skip { position: absolute; left: 12px; top: -60px; z-index: 90; padding: 10px 14px; border-radius: 10px; background: var(--primary); color: var(--on-primary); font-weight: 700; text-decoration: none; }
-.skip:focus { top: calc(12px + env(safe-area-inset-top, 0px)); }
+.skip-link { position: absolute; left: 12px; top: -60px; z-index: 90; padding: 10px 14px; border-radius: 10px; background: var(--primary); color: var(--on-primary); font-weight: 700; text-decoration: none; }
+.skip-link:focus { top: calc(12px + env(safe-area-inset-top, 0px)); }
 
 /* pembahasan dua lapis */
 .feedback .fb-key { display: flex; gap: 10px; align-items: baseline; font-family: var(--font-read); font-weight: 700; line-height: 1.45; }
@@ -1234,7 +1234,7 @@ div.kfix { padding: 12px 14px; border-radius: 10px; background: var(--surface-2)
 /* ---------- Layar ujian bergaya CAT ----------
    Polos dan terang di tema apa pun (seperti ruang CAT), menu aplikasi disembunyikan selama ujian. */
 body.cat-on { background: #E9EDF1; }
-body.cat-on .side, body.cat-on .topbar, body.cat-on .tabbar, body.cat-on .skip { display: none !important; }
+body.cat-on .side, body.cat-on .topbar, body.cat-on .tabbar, body.cat-on .skip-link { display: none !important; }
 body.cat-on .shell { grid-template-columns: minmax(0, 1fr); }
 body.cat-on .view { max-width: 1280px; padding: 0; gap: 0; }
 .cat {
