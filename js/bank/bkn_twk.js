@@ -512,7 +512,7 @@ window.BANK.sejarah.push(
     q: "Menurut kisi-kisi BKN, Kabinet Merah Putih Presiden Prabowo Subianto terdiri atas ... kementerian, lebih banyak daripada kabinet Jokowi yang berjumlah 34 kementerian.",
     o: ["38", "42", "48", "52", "60"],
     a: 2,
-    e: "Kisi-kisi BKN hal. 67: Kabinet Merah Putih terdiri atas 48 kementerian (dari 34 pada era Jokowi) karena pemecahan sejumlah kementerian, termasuk Kemenkumham menjadi Kementerian Hukum, Kementerian HAM, dan Kementerian Imigrasi dan Pemasyarakatan (UU 61/2024 menghapus batas 34 kementerian).",
+    e: "Kisi-kisi BKN hal. 67: Kabinet Merah Putih terdiri atas 48 kementerian (dari 34 pada era Jokowi) karena pemecahan sejumlah kementerian (contoh di luar kisi-kisi: Kemenkumham menjadi Kementerian Hukum, Kementerian HAM, dan Kementerian Imigrasi dan Pemasyarakatan; UU 61/2024 menghapus batas 34 kementerian).",
     src: "Kisi-kisi BKN hal. 67"
   },
   {
