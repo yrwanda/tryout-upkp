@@ -119,6 +119,8 @@
     if (isObj(s.kpBest) && typeof s.kpBest.poin === "number") d.kpBest = { poin: s.kpBest.poin, lv: num(s.kpBest.lv, 0), at: num(s.kpBest.at, 0) };
     if (num(s.kpRound, 0)) d.kpRound = Math.round(s.kpRound);
     d.kpSeen = objOf(s.kpSeen, v => Number.isInteger(v) ? v : undefined);
+    d.savedAt = num(s.savedAt, 0);
+    if (num(s.resetAt, 0)) d.resetAt = s.resetAt;
     return d;
   }
   function load() {
@@ -126,6 +128,129 @@
     return defaults();
   }
   let state = load();
+
+  // ---------- Sinkron antarperangkat ----------
+  // Progres disimpan di Supabase (proyek "tryout-upkp") lewat fungsi RPC yang hanya menerima "kode sinkron".
+  // Tanpa akun: perangkat pertama membuat kode acak 24 karakter (120 bit), perangkat lain memasukkan kode yang sama.
+  // Server hanya menyimpan hash SHA-256 kode; tabel tidak bisa dibaca langsung. Penggabungan dilakukan di perangkat.
+  const SYNC_KEY = "upkp-sync-v1", SB_URL = "https://jmbddgpsfmphsgvuhziy.supabase.co", SB_KEY = "sb_publishable_LzRp7IzIoQIRzAM21ugZ0A_PBVsLJ1C";
+  const CODE_RE = /^[A-HJ-NP-Z2-9]{4}(-[A-HJ-NP-Z2-9]{4}){5}$/;
+  let sync = (() => { try { const v = safeParse(store.get(SYNC_KEY) || "null"); return isObj(v) && typeof v.code === "string" && CODE_RE.test(v.code) ? { code: v.code, at: num(v.at, 0) } : null; } catch (e) { return null; } })();
+  let syncTimer = null, syncRunning = false, syncAgain = false, syncErr = "";
+  const saveSyncCfg = () => sync ? store.set(SYNC_KEY, JSON.stringify(sync)) : store.del(SYNC_KEY);
+  function newSyncCode() {
+    const A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", b = new Uint8Array(24); crypto.getRandomValues(b);
+    return Array.from(b, x => A[x % 32]).join("").match(/.{4}/g).join("-");
+  }
+  const normCode = s => (String(s || "").toUpperCase().replace(/[^A-Z0-9]/g, "").match(/.{1,4}/g) || []).join("-");
+  async function rpc(fn, body) {
+    const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 15000);
+    try {
+      const r = await fetch(`${SB_URL}/rest/v1/rpc/${fn}`, { method: "POST", headers: { apikey: SB_KEY, "Content-Type": "application/json" }, body: JSON.stringify(body), signal: ctl.signal, cache: "no-store" });
+      const txt = await r.text();
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      return txt ? safeParse(txt) : null;
+    } finally { clearTimeout(to); }
+  }
+  // Gabungkan dua progres. Statistik per soal dan kartu mini game: catatan terbaru (t) menang. Riwayat simulasi: disatukan.
+  // Hari belajar: nilai terbesar. Rekor: yang terbaik. Pengaturan, tanda soal, dan ragu kunci: dari sisi yang terakhir disimpan.
+  // "Reset progres" dicatat sebagai resetAt agar data lama dari perangkat lain tidak kembali.
+  function mergeState(a, b) {
+    const newer = (a.savedAt || 0) >= (b.savedAt || 0) ? a : b;
+    const out = JSON.parse(JSON.stringify(newer));
+    const resetAt = Math.max(a.resetAt || 0, b.resetAt || 0), live = s => (s.savedAt || 0) >= resetAt;
+    const latest = key => { const o = {}; [a, b].forEach(s => Object.entries(s[key] || {}).forEach(([id, v]) => { if (resetAt && (v.t || 0) < resetAt) return; const c = o[id]; if (!c || (v.t || 0) > (c.t || 0) || ((v.t || 0) === (c.t || 0) && (v.seen || v.r || 0) > (c.seen || c.r || 0))) o[id] = v; })); return o; };
+    out.stats = latest("stats"); out.jodoh = latest("jodoh");
+    const hs = {}; [a, b].forEach(s => s.history.forEach(h => { if (h.ts >= resetAt) hs[h.ts] = h; }));
+    out.history = Object.values(hs).sort((x, y) => x.ts - y.ts).slice(-60);
+    out.days = {}; [a, b].filter(live).forEach(s => Object.entries(s.days).forEach(([k, v]) => { out.days[k] = Math.max(out.days[k] || 0, v); }));
+    const jb = {}; [a, b].forEach(s => Object.entries(s.jodohBest || {}).forEach(([k, v]) => { const c = jb[k]; if (!c || v.err < c.err || (v.err === c.err && v.time < c.time)) jb[k] = v; })); out.jodohBest = jb;
+    const kb = Math.max(a.kilatBest || 0, b.kilatBest || 0); if (kb) out.kilatBest = kb; else delete out.kilatBest;
+    const kp = [a.kpBest, b.kpBest].filter(Boolean).sort((x, y) => y.poin - x.poin)[0]; if (kp) out.kpBest = kp; else delete out.kpBest;
+    const kr = (a.kpRound || 0) >= (b.kpRound || 0) ? a : b; out.kpRound = kr.kpRound; out.kpSeen = kr.kpSeen || {}; if (!out.kpRound) delete out.kpRound;
+    const dd = [a.dailyDone, b.dailyDone].filter(Boolean).sort().pop(); if (dd) out.dailyDone = dd; else delete out.dailyDone;
+    if (a.onboarded || b.onboarded) out.onboarded = true;
+    out.resetAt = resetAt || undefined; out.savedAt = Math.max(a.savedAt || 0, b.savedAt || 0);
+    return sanitize(out);
+  }
+  const syncStatusText = () => !sync ? "" : syncRunning ? "Menyinkronkan..." : syncErr ? syncErr : sync.at ? `Terakhir tersinkron ${fmtDate(sync.at)}.` : "Belum pernah tersinkron.";
+  const showSyncStatus = () => { const el2 = $("#syncStatus"); if (el2) el2.textContent = syncStatusText(); };
+  const scheduleSync = (ms) => { if (!sync) return; clearTimeout(syncTimer); syncTimer = setTimeout(syncNow, ms); };
+  async function syncNow() {
+    if (!sync) return;
+    if (syncRunning) { syncAgain = true; return; }
+    if (!navigator.onLine) { syncErr = "Sedang offline. Progres tersimpan di perangkat ini dan dikirim saat online."; return showSyncStatus(); }
+    syncRunning = true; clearTimeout(syncTimer); showSyncStatus();
+    try {
+      const code = sync.code, r = await rpc("sync_get", { p_code: code });
+      if (!sync || sync.code !== code) return;
+      const remote = isObj(r) && isObj(r.data) ? sanitize(r.data) : null;
+      const merged = remote ? mergeState(state, remote) : state;
+      const localTxt = JSON.stringify(sanitize(JSON.parse(JSON.stringify(state)))), mergedTxt = JSON.stringify(merged);
+      if (mergedTxt !== localTxt) {
+        state = merged; store.set(KEY, mergedTxt);
+        applyTheme(); renderSideFoot();
+        // halaman yang hanya menampilkan data digambar ulang; sesi yang sedang berjalan tidak diganggu
+        if (["home", "riwayat", "pengaturan"].includes(current) && !document.querySelector(".modal-bg,.sheet-bg")) { const y = window.scrollY; go(current); window.scrollTo({ top: y }); }
+      }
+      if (!remote || JSON.stringify(remote) !== mergedTxt) await rpc("sync_put", { p_code: code, p_data: merged });
+      sync.at = Date.now(); saveSyncCfg(); syncErr = "";
+    } catch (e) {
+      syncErr = "Sinkron gagal (server tidak terjangkau). Progres tetap tersimpan di perangkat ini dan akan dicoba lagi.";
+      scheduleSync(60000);
+    } finally {
+      syncRunning = false; showSyncStatus();
+      if (syncAgain) { syncAgain = false; scheduleSync(1000); }
+    }
+  }
+  function syncPanel() {
+    const box = el("div", { class: "stack", style: "gap:8px" }, [el("h3", null, ["Sinkron antarperangkat"])]);
+    if (!sync) {
+      const inp = el("input", { class: "input sync-input", id: "syncCode", placeholder: "XXXX-XXXX-XXXX-XXXX-XXXX-XXXX", autocomplete: "off", autocapitalize: "characters", spellcheck: "false" });
+      box.append(
+        el("p", { class: "xs muted" }, ["Progres juga disimpan di server, jadi HP dan laptop memakai data yang sama tanpa ekspor-impor. Tidak perlu akun: perangkat pertama membuat kode sinkron, perangkat lain cukup memasukkan kode itu. Progres kedua perangkat digabung, tidak saling menimpa."]),
+        el("div", { class: "row" }, [el("button", { class: "btn btn-sm btn-primary", onclick: enableSync }, ["Aktifkan di perangkat ini"])]),
+        el("label", { class: "xs muted", for: "syncCode" }, ["Sudah punya kode dari perangkat lain?"]),
+        el("div", { class: "row" }, [inp, el("button", { class: "btn btn-sm", onclick: () => joinSync(inp.value) }, ["Sambungkan"])])
+      );
+    } else {
+      box.append(
+        el("p", { class: "xs muted" }, ["Aktif. Perubahan dikirim otomatis beberapa detik setelah tersimpan, dan progres dari perangkat lain diambil saat aplikasi dibuka."]),
+        el("div", { class: "sync-code" }, [el("code", null, [sync.code]), el("button", { class: "btn btn-sm", onclick: copySyncCode }, ["Salin kode"])]),
+        el("p", { class: "xs muted" }, ["Kode ini berfungsi seperti kata sandi: siapa pun yang memegangnya bisa membaca dan mengubah progres ini. Simpan di catatan pribadi dan jangan dibagikan."]),
+        el("p", { class: "xs", id: "syncStatus", "aria-live": "polite" }, [syncStatusText()]),
+        el("div", { class: "row" }, [
+          el("button", { class: "btn btn-sm", onclick: () => syncNow() }, ["Sinkronkan sekarang"]),
+          el("button", { class: "btn btn-sm btn-ghost", onclick: () => confirmBox("Putuskan perangkat ini?", "Progres di perangkat ini tetap ada, tetapi tidak lagi dikirim ke server. Data di server dan di perangkat lain tidak berubah.", "Putuskan", () => { sync = null; saveSyncCfg(); go("pengaturan"); }) }, ["Putuskan perangkat ini"]),
+          el("button", { class: "btn btn-sm btn-danger", onclick: () => confirmBox("Hapus data di server?", "Progres di server dihapus permanen dan sinkron di perangkat ini dimatikan. Progres di perangkat ini tetap ada. Putuskan juga perangkat lain yang memakai kode ini, karena perangkat itu akan mengunggah ulang datanya saat dibuka.", "Hapus dari server", deleteSync, true) }, ["Hapus data di server"])
+        ])
+      );
+    }
+    return box;
+  }
+  async function enableSync() {
+    sync = { code: newSyncCode(), at: 0 }; saveSyncCfg(); go("pengaturan");
+    await syncNow();
+    toast(syncErr ? "Kode dibuat, tetapi server belum terjangkau. Akan dicoba lagi." : "Sinkron aktif. Salin kodenya untuk perangkat lain.");
+  }
+  async function joinSync(v) {
+    const code = normCode(v);
+    if (!CODE_RE.test(code)) return toast("Kode sinkron berisi 24 huruf dan angka, misalnya ABCD-EFGH-JKLM-NPQR-STUV-WXYZ.");
+    let r; try { r = await rpc("sync_get", { p_code: code }); } catch (e) { return toast("Server tidak terjangkau. Coba lagi saat online."); }
+    if (!isObj(r) || !isObj(r.data)) return toast("Kode tidak ditemukan di server. Periksa lagi hurufnya.");
+    sync = { code, at: 0 }; saveSyncCfg();
+    await syncNow(); go("pengaturan");
+    toast("Tersambung. Progres dari perangkat lain sudah digabung.");
+  }
+  async function deleteSync() {
+    const code = sync && sync.code; if (!code) return;
+    try { await rpc("sync_delete", { p_code: code }); } catch (e) { return toast("Gagal menghapus: server tidak terjangkau."); }
+    sync = null; saveSyncCfg(); toast("Data di server dihapus."); go("pengaturan");
+  }
+  function copySyncCode() {
+    const t = sync && sync.code; if (!t) return;
+    (navigator.clipboard ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast("Kode disalin"), () => toast("Salin manual: " + t));
+  }
   let saveWarned = false;
   // Penyimpanan permanen: browser tidak menghapus data situs ini saat ruang disk menipis.
   // Chrome/Edge memberi izin tanpa bertanya (terutama bila aplikasi dipasang); Firefox menanyakan sekali.
@@ -146,7 +271,9 @@
   };
   const save = () => {
     askPersist();
-    if (store.set(KEY, JSON.stringify(state)) || saveWarned) return;
+    state.savedAt = Date.now();
+    if (store.set(KEY, JSON.stringify(state))) return scheduleSync(4000);
+    if (saveWarned) return;
     saveWarned = true;
     // spanduk tetap (bukan toast) agar tidak tertimpa notifikasi lain
     const bar = el("div", { class: "save-warn", role: "alert" }, [
@@ -393,7 +520,7 @@
       ]),
       ring(o.total ? o.mast / o.total : 0, "soal dikuasai", o.total ? (o.mast + o.ok) / o.total : 0)
     ]));
-    if (o.done && Date.now() - (state.lastExport || 0) > (persisted ? 30 : 7) * DAY && Date.now() > (state.exportSnooze || 0)) view.append(el("div", { class: "note row between export-remind", role: "status" }, [
+    if (o.done && !sync && Date.now() - (state.lastExport || 0) > (persisted ? 30 : 7) * DAY && Date.now() > (state.exportSnooze || 0)) view.append(el("div", { class: "note row between export-remind", role: "status" }, [
       el("span", null, [el("b", null, ["Cadangkan progres. "]), state.lastExport ? `Terakhir diekspor ${fmtDate(state.lastExport)}.` : "Progres baru tersimpan di browser ini dan bisa hilang bila data browser terhapus."]),
       el("span", { class: "row", style: "gap:6px" }, [el("button", { class: "btn btn-sm btn-primary", onclick: () => { exportData(); go("home"); } }, ["Ekspor sekarang"]), el("button", { class: "btn btn-sm btn-ghost", onclick: () => { state.exportSnooze = Date.now() + 3 * DAY; save(); go("home"); } }, ["Nanti"])])
     ]));
@@ -1990,8 +2117,10 @@
           el("p", { class: "xs muted" }, [counts]),
           el("p", { class: "xs muted" }, ["Kunci 50 soal resmi disusun aplikasi (form tidak memuat kunci). Bila kisi-kisi berbeda dari peraturan primer, pembahasan mencatat keduanya. Materi SOTK dan Renstra instansi di kisi-kisi hanya berupa judul subtopik, sehingga soalnya dilengkapi dari Permenimipas 1/2024, 2/2024, dan 11/2025."]),
           el("h3", null, ["Data progres"]),
-          el("p", { class: "xs muted" }, [(persisted ? "Tersimpan di browser ini dengan penyimpanan permanen: browser tidak akan menghapusnya sendiri saat ruang penuh. Tetap hilang bila data situs dihapus manual atau HP diganti, jadi ekspor sebulan sekali sudah cukup" : "Tersimpan di browser ini saja. Ekspor seminggu sekali sebagai cadangan") + (state.lastExport ? ` (terakhir ${fmtDate(state.lastExport)}).` : " (belum pernah).")]),
-          el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: exportData }, ["Ekspor JSON"]), el("button", { class: "btn btn-sm", onclick: importData }, ["Impor"]), el("button", { class: "btn btn-sm btn-danger", onclick: () => confirmBox("Hapus semua progres?", "Statistik, riwayat simulasi, dan tanda soal dihapus. Pengaturan tetap.", "Hapus progres", () => { state.stats = {}; state.history = []; state.bookmarks = []; state.days = {}; save(); toast("Progres dihapus"); go("pengaturan"); }, true) }, ["Reset progres"])])
+          el("p", { class: "xs muted" }, [sync ? "Tersimpan di perangkat ini dan tersinkron ke server, jadi ekspor JSON tidak wajib lagi (tetap bisa dipakai sebagai cadangan tambahan)." : (persisted ? "Tersimpan di browser ini dengan penyimpanan permanen: browser tidak akan menghapusnya sendiri saat ruang penuh. Tetap hilang bila data situs dihapus manual atau HP diganti, jadi ekspor sebulan sekali sudah cukup" : "Tersimpan di browser ini saja. Ekspor seminggu sekali sebagai cadangan") + (state.lastExport ? ` (terakhir ${fmtDate(state.lastExport)}).` : " (belum pernah).")]),
+          syncPanel(),
+          el("h3", null, ["Cadangan file"]),
+          el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: exportData }, ["Ekspor JSON"]), el("button", { class: "btn btn-sm", onclick: importData }, ["Impor"]), el("button", { class: "btn btn-sm btn-danger", onclick: () => confirmBox("Hapus semua progres?", "Statistik, riwayat simulasi, dan tanda soal dihapus. Pengaturan tetap.", "Hapus progres", () => { state.stats = {}; state.history = []; state.bookmarks = []; state.days = {}; state.jodoh = {}; state.resetAt = Date.now(); save(); toast("Progres dihapus"); go("pengaturan"); }, true) }, ["Reset progres"])])
         ])
       ]));
   }
@@ -2059,4 +2188,12 @@
   window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (routes[h] && h !== current) nav(h); });
   const start = location.hash.slice(1);
   go(exam && !exam.finished ? "simulasi" : routes[start] ? start : "home");
+  // sinkron: saat dibuka, saat kembali ke aplikasi, saat online lagi, dan sebelum aplikasi ditinggalkan
+  if (sync) syncNow();
+  document.addEventListener("visibilitychange", () => {
+    if (!sync) return;
+    if (document.visibilityState === "visible") { if (Date.now() - (sync.at || 0) > 20000) syncNow(); }
+    else if (syncTimer) syncNow();
+  });
+  window.addEventListener("online", () => { if (sync) syncNow(); });
 })();

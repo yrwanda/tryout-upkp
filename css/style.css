@@ -1351,3 +1351,8 @@ body.cat-on .sheet, body.cat-on .modal { color-scheme: light; --text: #1F2933; -
 body.cat-on .sheet .eyebrow, body.cat-on .sheet .cat-sec { color: #52606D; }
 .save-warn { position: fixed; left: 12px; right: 12px; bottom: calc(var(--tabbar-h) + 12px + env(safe-area-inset-bottom, 0px)); z-index: 95; display: flex; gap: 12px; align-items: center; justify-content: space-between; padding: 12px 14px; border-radius: 12px; background: var(--bad-soft); color: var(--bad); border: 1px solid var(--bad); box-shadow: var(--shadow-lift); font-weight: 700; font-size: .9rem; }
 @media (min-width: 1101px) { .save-warn { left: 268px; bottom: 16px; } }
+
+/* sinkron antarperangkat */
+.sync-code { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.sync-code code { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 1rem; font-weight: 700; letter-spacing: .04em; padding: 6px 10px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border); user-select: all; word-break: break-all; }
+.sync-input { max-width: 330px; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; text-transform: uppercase; }

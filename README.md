@@ -44,6 +44,12 @@ Simulasi bergaya CAT BKN (mengikuti pemberitaan Kompas 2019 dan Liputan6 2022 te
 - Versi baru tidak memuat ulang halaman di tengah simulasi, latihan, atau ronde mini game; muat ulang ditunda sampai pindah ke halaman lain (`window.upkpBusy` di `app.js`, `controllerchange` di `boot.js`).
 - Batasan yang tersisa: origin `yrwanda.github.io` dipakai bersama semua repo GitHub Pages milik akun ini (localStorage ikut terbagi); GitHub Pages tidak bisa mengirim header keamanan seperti `frame-ancestors`.
 
+## Sinkron antarperangkat
+- Pengaturan > Sinkron antarperangkat. Perangkat pertama membuat kode sinkron acak (24 karakter, 120 bit); perangkat lain memasukkan kode yang sama. Tanpa akun.
+- Backend: Supabase proyek `tryout-upkp` (ref `jmbddgpsfmphsgvuhziy`, Singapura, paket gratis). Tabel `sync_progress` (RLS aktif, tanpa policy) hanya diakses lewat fungsi `sync_get`, `sync_put`, `sync_delete`; server menyimpan hash SHA-256 kode, bukan kodenya. Kunci yang ada di `app.js` adalah publishable key (aman di sisi klien).
+- Penggabungan di perangkat (`mergeState`): statistik soal dan kartu mini game memakai catatan terbaru, riwayat simulasi disatukan, rekor diambil yang terbaik, pengaturan dan tanda soal dari sisi yang terakhir disimpan. "Reset progres" dicatat sebagai `resetAt` agar data lama dari perangkat lain tidak kembali.
+- Paket gratis Supabase menjeda proyek yang 7 hari tidak dipakai; aktifkan lagi dari dasbor. Untuk menghapus semuanya: dasbor Supabase > proyek tryout-upkp > Settings > General > Delete project.
+
 ## Menambah soal
 Tambahkan soal ke berkas `js/bank/bkn_*.js` (pola `window.BANK.<topik>.push({...})`, `set: "bkn"`, rujukan "Kisi-kisi BKN hal. X" di `src` saja, jangan diulang di pembahasan `e` karena halamannya sudah tampil di label soal dan baris Rujukan; teks soal `q` juga tidak memakai frasa "menurut kisi-kisi BKN"; berkas baru juga didaftarkan di `index.html` dan `sw.js`). Lalu:
 1. `node tools/rebalance.js .` menyeimbangkan posisi kunci A-E (kecuali `bkn_form.js` dan pilihan berurutan seperti Pertama-Kelima / angka / Romawi). Argumen ketiga opsional: JSON `{id:{o,a}}` untuk menimpa opsi.
