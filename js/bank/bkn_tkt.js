@@ -139,7 +139,7 @@ window.BANK.kebijakan.push(
     q: "Contoh kebijakan publik dalam kisi-kisi BKN: penetapan Harga Eceran Tertinggi (HET) minyak goreng tertuang dalam ...",
     o: ["Peraturan Menteri Perdagangan", "Instruksi Menteri Dalam Negeri", "Peraturan Presiden", "Undang-Undang", "Peraturan Daerah"],
     a: 0,
-    e: "Kisi-kisi BKN hal. 149: HET minyak goreng ditetapkan melalui Peraturan Menteri Perdagangan (respons atas kenaikan harga CPO); PPKM saat COVID-19 tertuang dalam Instruksi Menteri Dalam Negeri; Program JKN dilaksanakan melalui BPJS Kesehatan dengan tantangan pemerataan akses di daerah terpencil.",
+    e: "Kisi-kisi BKN hal. 149: HET minyak goreng ditetapkan melalui Peraturan Menteri Perdagangan (respons atas kenaikan harga kelapa sawit); PPKM saat COVID-19 tertuang dalam Instruksi Menteri Dalam Negeri; Program JKN dilaksanakan melalui kartu BPJS Kesehatan dengan tantangan pemerataan akses dan kualitas layanan di seluruh wilayah Indonesia.",
     src: "Kisi-kisi BKN hal. 149"
   },
   {
@@ -155,7 +155,7 @@ window.BANK.kebijakan.push(
     q: "Program Jaminan Kesehatan Nasional (JKN) sebagai contoh kebijakan publik memiliki sasaran ...",
     o: ["Seluruh warga negara Indonesia", "Pegawai negeri sipil saja", "Penduduk miskin saja", "Pekerja formal saja", "Warga negara asing pemegang izin tinggal"],
     a: 0,
-    e: "Kisi-kisi BKN hal. 149: JKN bertujuan menjamin kesehatan seluruh WNI, sasarannya seluruh WNI, implementasinya kartu BPJS Kesehatan di faskes tingkat pertama dan rumah sakit, tantangannya pemerataan akses dan kualitas terutama di daerah terpencil.",
+    e: "Kisi-kisi BKN hal. 149: JKN bertujuan menjamin kesehatan seluruh WNI, sasarannya seluruh WNI, implementasinya kartu BPJS Kesehatan di faskes tingkat pertama dan rumah sakit, tantangannya memastikan pemerataan akses dan kualitas layanan kesehatan di seluruh wilayah Indonesia.",
     src: "Kisi-kisi BKN hal. 149"
   },
   {
@@ -459,7 +459,7 @@ window.BANK.yanlik.push(
     q: "Asas pelayanan publik yang menuntut agar pelayanan tidak membedakan suku, ras, agama, golongan, gender, dan status ekonomi adalah ...",
     o: ["Kepentingan umum", "Keprofesionalan", "Persamaan perlakuan/tidak diskriminatif", "Keterbukaan", "Ketepatan waktu"],
     a: 2,
-    e: "Kisi-kisi BKN hal. 125 memuat 12 asas: kepentingan umum, kepastian hukum, kesamaan hak, keseimbangan hak dan kewajiban, keprofesionalan, partisipatif, persamaan perlakuan/tidak diskriminatif, keterbukaan, akuntabilitas, fasilitas dan perlakuan khusus bagi kelompok rentan, ketepatan waktu, serta kecepatan-kemudahan-keterjangkauan.",
+    e: "Kisi-kisi BKN hal. 125 memuat 12 asas: kepentingan umum, kepastian hukum, kesamaan hak, keseimbangan hak dan kewajiban, keprofesionalan, partisipatif, persamaan perlakuan/tidak diskriminatif, keterbukaan, akuntabilitas, fasilitas dan perlakuan khusus bagi kelompok rentan, ketepatan waktu, serta kecepatan-kemudahan-keterjangkauan. Catatan: kisi-kisi hanya memuat nama asas; uraian di soal mengikuti Penjelasan Pasal 4 UU 25/2009.",
     src: "Kisi-kisi BKN hal. 125"
   },
   {
@@ -467,32 +467,32 @@ window.BANK.yanlik.push(
     q: "Asas pelayanan publik yang mewajibkan penyelenggara memberikan kemudahan kepada penyandang disabilitas, lanjut usia, ibu hamil, dan anak-anak adalah ...",
     o: ["Kesamaan hak", "Partisipatif", "Fasilitas dan perlakuan khusus bagi kelompok rentan", "Akuntabilitas", "Kepastian hukum"],
     a: 2,
-    e: "Kisi-kisi BKN hal. 125: asas fasilitas dan perlakuan khusus bagi kelompok rentan (Pasal 4 huruf j UU 25/2009), ditegaskan Pasal 29-30 tentang pelayanan khusus dan larangan penyalahgunaan sarana khusus oleh yang tidak berhak.",
+    e: "Kisi-kisi BKN hal. 125: asas fasilitas dan perlakuan khusus bagi kelompok rentan (Pasal 4 huruf j UU 25/2009), ditegaskan Pasal 29-30 tentang pelayanan khusus dan larangan penyalahgunaan sarana khusus oleh yang tidak berhak. Catatan: kisi-kisi hanya memuat nama asas; uraian di soal mengikuti UU 25/2009.",
     src: "Kisi-kisi BKN hal. 125"
   },
   {
-    id: "bkn-yan-08", set: "bkn", topic: "yanlik",
+    id: "bkn-yan-08", set: "ext", topic: "yanlik",
     q: "Asas \"partisipatif\" dalam pelayanan publik berarti ...",
     o: ["Penyelenggara menetapkan tarif layanan secara sepihak tanpa konsultasi publik", "Peningkatan peran serta masyarakat dengan memperhatikan aspirasi, kebutuhan, dan harapannya", "Masyarakat wajib membayar iuran rutin untuk membiayai penyelenggaraan pelayanan", "Pelaksana pelayanan dipilih masyarakat melalui pemungutan suara secara berkala", "Masyarakat mengerjakan sendiri layanan yang dibutuhkan tanpa bantuan petugas"],
     a: 1,
     e: "Penjelasan Pasal 4 UU 25/2009: partisipatif adalah peningkatan peran serta masyarakat dalam penyelenggaraan pelayanan dengan memperhatikan aspirasi, kebutuhan, dan harapan masyarakat, misalnya melalui penyusunan standar pelayanan bersama masyarakat dan survei kepuasan.",
-    src: "Kisi-kisi BKN hal. 125; Penjelasan UU No. 25 Tahun 2009"
+    src: "Penjelasan Pasal 4 UU No. 25 Tahun 2009 (kisi-kisi BKN hal. 125 hanya memuat nama asas)"
   },
   {
-    id: "bkn-yan-09", set: "bkn", topic: "yanlik",
+    id: "bkn-yan-09", set: "ext", topic: "yanlik",
     q: "Asas \"keseimbangan hak dan kewajiban\" dalam pelayanan publik berarti ...",
     o: ["Pemenuhan hak harus sebanding dengan kewajiban yang harus dilaksanakan, baik oleh pemberi maupun penerima pelayanan", "Penyelenggara hanya memiliki kewajiban tanpa hak", "Penerima layanan hanya memiliki hak tanpa kewajiban", "Hak dan kewajiban ditentukan oleh pelaksana di lapangan", "Kewajiban membayar lebih tinggi memberi hak layanan lebih cepat"],
     a: 0,
     e: "Penjelasan Pasal 4 huruf d UU 25/2009: keseimbangan hak dan kewajiban berarti pemenuhan hak harus sebanding dengan kewajiban yang harus dilaksanakan, baik oleh pemberi maupun penerima pelayanan. Kisi-kisi BKN hal. 125 memuat asas ini di antara 12 asas.",
-    src: "Kisi-kisi BKN hal. 125; Penjelasan UU No. 25 Tahun 2009"
+    src: "Penjelasan Pasal 4 UU No. 25 Tahun 2009 (kisi-kisi BKN hal. 125 hanya memuat nama asas)"
   },
   {
-    id: "bkn-yan-10", set: "bkn", topic: "yanlik",
+    id: "bkn-yan-10", set: "ext", topic: "yanlik",
     q: "Prinsip pelayanan publik menurut Kep. MenPAN No. 63 Tahun 2003 antara lain ...",
     o: ["Kesederhanaan, kejelasan, kepastian waktu, akurasi, keamanan, dan kenyamanan", "Sentralisasi, hierarki, kerahasiaan, dan kepatuhan mutlak pada prosedur", "Efisiensi anggaran, penghematan pegawai, dan pengurangan jam pelayanan", "Kecepatan pelayanan tanpa memperhatikan prosedur dan kelengkapan persyaratan", "Pelayanan berbayar untuk semua jenis layanan agar instansi mandiri secara fiskal"],
     a: 0,
     e: "Kep. MenPAN 63/KEP/M.PAN/7/2003 (kisi-kisi BKN hal. 122) memuat 10 prinsip pelayanan publik tersebut serta standar pelayanan (prosedur, waktu penyelesaian, biaya, produk, sarana prasarana, kompetensi petugas). Pedoman ini menjadi acuan sebelum UU 25/2009 dan masih dirujuk BKN.",
-    src: "Kisi-kisi BKN hal. 122; Kep. MenPAN No. 63 Tahun 2003"
+    src: "Kep. MenPAN No. 63 Tahun 2003 (kisi-kisi BKN hal. 122 hanya menyebut judul regulasinya)"
   }
 );
 

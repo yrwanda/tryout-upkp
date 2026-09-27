@@ -279,7 +279,7 @@ Perpres 81/2010 tentang **Grand Design Reformasi Birokrasi 2010-2025**, dengan t
 - **Makro**: umum/mendasar (UUD, UU, PP, Perppu). **Meso**: penjelas pelaksanaan (Permen, SKB antarmenteri). **Mikro**: mengatur implementasi (Pergub, Perwali/Perbup).
 
 ## Contoh (hal. 149)
-HET minyak goreng (Permendag), PPKM (Inmendagri), Jaminan Kesehatan Nasional (kartu BPJS Kesehatan; tantangan pemerataan akses di daerah terpencil).
+HET minyak goreng (Permendag), PPKM (Inmendagri), Jaminan Kesehatan Nasional (kartu BPJS Kesehatan; tantangan pemerataan akses dan kualitas layanan di seluruh wilayah Indonesia).
 `,
   renstra: `
 ## Sistem perencanaan nasional (hal. 92-93)

@@ -19,7 +19,7 @@ window.BANK.gg.push(
     q: "Karakteristik good governance yang menuntut agar setiap pengambil keputusan bertanggung jawab kepada publik dan pemangku kepentingan adalah ...",
     o: ["Visi strategis", "Keadilan", "Transparansi", "Akuntabilitas", "Partisipasi"],
     a: 3,
-    e: "Kisi-kisi BKN hal. 143 mencantumkan akuntabilitas sebagai salah satu dari 9 karakteristik. Akuntabilitas = pertanggungjawaban pengambil keputusan kepada publik; transparansi = keterbukaan arus informasi; partisipasi = keterlibatan masyarakat dalam perumusan kebijakan.",
+    e: "Kisi-kisi BKN hal. 143 mencantumkan akuntabilitas sebagai salah satu dari 9 karakteristik. Akuntabilitas = pertanggungjawaban pengambil keputusan kepada publik; transparansi = keterbukaan arus informasi; partisipasi = keterlibatan masyarakat dalam perumusan kebijakan. Catatan: kisi-kisi hanya memuat nama karakteristik ini (hal. 144 hanya menguraikan partisipasi, kepastian hukum, dan transparansi); uraian di soal mengikuti pengertian umum.",
     src: "Kisi-kisi BKN hal. 143"
   },
   {
@@ -27,16 +27,16 @@ window.BANK.gg.push(
     q: "Karakteristik good governance yang berarti pemimpin dan masyarakat memiliki perspektif luas dan jauh ke depan tentang pembangunan adalah ...",
     o: ["Efektivitas dan efisiensi", "Tanggung jawab", "Kepastian hukum", "Berorientasi kesepakatan", "Visi strategis"],
     a: 4,
-    e: "Kisi-kisi BKN hal. 143: visi strategis termasuk 9 karakteristik good governance, yaitu wawasan jauh ke depan tentang tata pemerintahan dan pembangunan. Berorientasi kesepakatan = menjembatani kepentingan berbeda demi konsensus.",
+    e: "Kisi-kisi BKN hal. 143: visi strategis termasuk 9 karakteristik good governance, yaitu wawasan jauh ke depan tentang tata pemerintahan dan pembangunan. Berorientasi kesepakatan = menjembatani kepentingan berbeda demi konsensus. Catatan: kisi-kisi hanya memuat nama karakteristik ini; uraian di soal mengikuti pengertian umum.",
     src: "Kisi-kisi BKN hal. 143"
   },
   {
-    id: "bkn-gg-14", set: "bkn", topic: "gg",
+    id: "bkn-gg-14", set: "ext", topic: "gg",
     q: "Karakteristik good governance \"berorientasi pada kesepakatan\" berarti ...",
     o: ["Kebijakan mengikuti kesepakatan dengan investor", "Keputusan harus disetujui seluruh pegawai", "Keputusan diambil oleh pimpinan tertinggi", "Menjembatani kepentingan yang berbeda untuk mencapai konsensus terbaik bagi kepentingan bersama", "Semua kebijakan ditetapkan dengan pemungutan suara"],
     a: 3,
-    e: "Kisi-kisi BKN hal. 143 menyebut berorientasi pada kesepakatan (consensus orientation) sebagai karakteristik good governance: menjembatani perbedaan kepentingan menuju kesepakatan terbaik bagi kelompok masyarakat luas.",
-    src: "Kisi-kisi BKN hal. 143"
+    e: "Kisi-kisi BKN hal. 143 menyebut berorientasi pada kesepakatan (consensus orientation) sebagai karakteristik good governance: menjembatani perbedaan kepentingan menuju kesepakatan terbaik bagi kelompok masyarakat luas. Uraian ini tidak tertulis di kisi-kisi.",
+    src: "Konsep umum good governance (kisi-kisi BKN hal. 143 hanya memuat nama karakteristik)"
   },
   {
     id: "bkn-gg-15", set: "bkn", topic: "gg",
@@ -125,9 +125,9 @@ window.BANK.kebijakan.push(
   {
     id: "bkn-kbj-17", set: "bkn", topic: "kebijakan",
     q: "Tantangan program Jaminan Kesehatan Nasional (JKN) menurut contoh kebijakan publik dalam kisi-kisi BKN adalah ...",
-    o: ["Membatasi peserta hanya bagi PNS", "Mengganti kartu BPJS dengan uang tunai", "Menutup fasilitas kesehatan tingkat pertama", "Menaikkan harga obat", "Memastikan pemerataan akses dan kualitas layanan kesehatan, terutama di daerah terpencil"],
+    o: ["Membatasi peserta hanya bagi PNS", "Mengganti kartu BPJS dengan uang tunai", "Menutup fasilitas kesehatan tingkat pertama", "Menaikkan harga obat", "Memastikan pemerataan akses dan kualitas layanan kesehatan di seluruh wilayah Indonesia"],
     a: 4,
-    e: "Kisi-kisi BKN hal. 149: JKN bertujuan menjamin kesehatan seluruh WNI; implementasinya berupa kartu BPJS Kesehatan di faskes tingkat pertama maupun rumah sakit; tantangannya pemerataan akses dan kualitas layanan, terutama di daerah terpencil.",
+    e: "Kisi-kisi BKN hal. 149: JKN bertujuan menjamin kesehatan seluruh WNI; implementasinya berupa kartu BPJS Kesehatan di faskes tingkat pertama maupun rumah sakit; tantangannya memastikan pemerataan akses dan kualitas layanan kesehatan di seluruh wilayah Indonesia.",
     src: "Kisi-kisi BKN hal. 149"
   },
   {
@@ -355,12 +355,12 @@ window.BANK.yanlik.push(
     src: "Kisi-kisi BKN hal. 125"
   },
   {
-    id: "bkn-yan-14", set: "bkn", topic: "yanlik",
+    id: "bkn-yan-14", set: "ext", topic: "yanlik",
     q: "Asas pelayanan publik \"kepentingan umum\" berarti ...",
     o: ["Penyelenggara menetapkan tarif sesuai kemampuan anggaran", "Masyarakat wajib membayar retribusi", "Pelayanan diberikan sesuai urutan jabatan pemohon", "Pelayanan hanya untuk warga negara, bukan penduduk", "Pemberian pelayanan tidak boleh mengutamakan kepentingan pribadi dan/atau golongan"],
     a: 4,
     e: "Asas kepentingan umum (Penjelasan Pasal 4 UU 25/2009, kisi-kisi BKN hal. 125): pelayanan tidak boleh mengutamakan kepentingan pribadi dan/atau golongan. Mendahulukan pemohon berdasarkan jabatan bertentangan dengan asas ini dan asas persamaan perlakuan.",
-    src: "Kisi-kisi BKN hal. 125; UU No. 25 Tahun 2009 Pasal 4"
+    src: "Penjelasan Pasal 4 UU No. 25 Tahun 2009 (kisi-kisi BKN hal. 125 hanya memuat nama asas)"
   },
   {
     id: "bkn-yan-15", set: "bkn", topic: "yanlik",
@@ -371,12 +371,12 @@ window.BANK.yanlik.push(
     src: "Kisi-kisi BKN hal. 123; UU No. 25 Tahun 2009 Pasal 5"
   },
   {
-    id: "bkn-yan-16", set: "bkn", topic: "yanlik",
+    id: "bkn-yan-16", set: "ext", topic: "yanlik",
     q: "Asas \"keterbukaan\" dalam pelayanan publik berarti ...",
     o: ["Penyelenggara boleh menerima imbalan secara terbuka", "Pelayanan diberikan di ruang terbuka tanpa sekat", "Kantor pelayanan wajib buka 24 jam setiap hari", "Penerima layanan mudah mengakses informasi tentang pelayanan", "Seluruh data pribadi pemohon dipublikasikan di situs web"],
     a: 3,
     e: "Asas keterbukaan (Penjelasan Pasal 4 UU 25/2009, kisi-kisi BKN hal. 125): penerima layanan dapat dengan mudah mengakses dan memperoleh informasi pelayanan (persyaratan, biaya, waktu). Data pribadi justru wajib dilindungi, dan imbalan di luar ketentuan dilarang.",
-    src: "Kisi-kisi BKN hal. 125; UU No. 25 Tahun 2009 Pasal 4"
+    src: "Penjelasan Pasal 4 UU No. 25 Tahun 2009 (kisi-kisi BKN hal. 125 hanya memuat nama asas)"
   },
   {
     id: "bkn-yan-17", set: "bkn", topic: "yanlik",
