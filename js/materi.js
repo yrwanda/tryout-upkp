@@ -172,7 +172,7 @@ Ejaan dan tanda baca, kalimat efektif, ide pokok, kata baku, makna kata, kata um
 - **Konjungsi intrakalimat** didahului koma: ..., kecuali; ..., melainkan; ..., sedangkan; ..., seperti; ..., yaitu; ..., yakni. **Tanpa** koma: bahwa, jika, karena, maka, sebab, sehingga, supaya, ketika, lalu.
 
 ## Kalimat efektif dan paragraf (hal. 89-90)
-- Subjek tidak didahului preposisi (bagi, dari, untuk, di, pada...). Tidak ada subjek ganda. **Hemat** (bukan "para siswa-siswi"). **Logis** ("Sebelum ditemukan tak bernyawa, pria itu..." bukan "Mayat pria itu sebelumnya sering mondar-mandir").
+- Subjek tidak didahului preposisi (bagi, dari, untuk, di, pada...): kisi-kisi mencoret "dari" pada "Wakil dari Surakarta menjadi Duta Bahasa...". Tidak ada subjek ganda ("kakak" kedua dicoret). **Hemat**: kisi-kisi mencoret "Para" pada "Para siswa-siswi". **Logis** ("Sebelum ditemukan tak bernyawa, pria itu..." bukan "Mayat pria itu sebelumnya sering mondar-mandir").
 - Paragraf = rangkaian kalimat berkaitan satu gagasan. Gagasan pokok ada di **kalimat utama/topik**: awal (**deduktif**), tengah, akhir (**induktif**). Simpulan berisi ide pokok.
 `,
   kepegawaian: `

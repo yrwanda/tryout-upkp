@@ -219,7 +219,7 @@ window.BANK.kepegawaian.push(
     q: "Hukuman disiplin tingkat ringan menurut PP No. 94 Tahun 2021 terdiri atas ...",
     o: ["Pemotongan tunjangan kinerja 25% selama 6 bulan", "Penundaan kenaikan gaji berkala satu tahun", "Penurunan jabatan setingkat lebih rendah", "Pembebasan dari jabatan menjadi pelaksana", "Teguran lisan, teguran tertulis, dan pernyataan tidak puas secara tertulis"],
     a: 4,
-    e: "Ringan = teguran lisan, teguran tertulis, pernyataan tidak puas secara tertulis. Sedang = potong tunkin 25% selama 6/9/12 bulan. Berat = penurunan jabatan, pembebasan jabatan menjadi pelaksana (masing-masing 12 bulan), PDH-TAPS. Penundaan KGB adalah hukuman di PP 53/2010 yang sudah dicabut.",
+    e: "Ringan = teguran lisan, teguran tertulis, pernyataan tidak puas secara tertulis. Sedang = potong tunkin 25% selama 6/9/12 bulan. Berat = penurunan jabatan, pembebasan jabatan menjadi pelaksana (masing-masing 12 bulan), PDH-TAPS. Penundaan KGB adalah hukuman di PP 53/2010 yang sudah dicabut. Catatan: kisi-kisi menulis \"penurunan pangkat\"; Pasal 8 ayat (4) PP 94/2021 menyebut penurunan jabatan.",
     src: "Kisi-kisi BKN hal. 113; PP No. 94 Tahun 2021 Pasal 8"
   },
   {
@@ -227,7 +227,7 @@ window.BANK.kepegawaian.push(
     q: "Pembebasan dari jabatannya menjadi jabatan pelaksana selama 12 bulan menurut PP No. 94 Tahun 2021 termasuk hukuman disiplin tingkat ...",
     o: ["Ringan", "Sedang", "Berat", "Administratif", "Khusus"],
     a: 2,
-    e: "Hukuman berat = penurunan jabatan setingkat lebih rendah selama 12 bulan, pembebasan dari jabatan menjadi jabatan pelaksana selama 12 bulan, dan pemberhentian dengan hormat tidak atas permintaan sendiri sebagai PNS.",
+    e: "Hukuman berat = penurunan jabatan setingkat lebih rendah selama 12 bulan, pembebasan dari jabatan menjadi jabatan pelaksana selama 12 bulan, dan pemberhentian dengan hormat tidak atas permintaan sendiri sebagai PNS (Pasal 8 ayat 4 PP 94/2021). Kisi-kisi menulis \"penurunan pangkat\" untuk hukuman pertama; tingkatnya tetap berat.",
     src: "Kisi-kisi BKN hal. 113"
   },
   {

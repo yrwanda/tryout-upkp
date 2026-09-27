@@ -205,10 +205,10 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-26", set: "bkn", topic: "bindo",
-    q: "Kalimat \"Wakil dari Surakarta menjadi Duta Bahasa Provinsi Jawa Barat 2008\" dianggap tidak efektif menurut kisi-kisi BKN karena ...",
-    o: ["Subjek ganda", "Tidak logis (wakil Surakarta menjadi duta Jawa Barat)", "Pemborosan kata", "Subjek didahului preposisi", "Tidak ada predikat"],
+    q: "Kalimat \"Wakil dari Surakarta menjadi Duta Bahasa Provinsi Jawa Barat 2008\" dipakai kisi-kisi BKN sebagai contoh kalimat tidak efektif karena ...",
+    o: ["Subjek ganda", "Subjek didahului preposisi", "Pemborosan kata", "Tidak logis", "Tidak ada predikat"],
     a: 1,
-    e: "Kisi-kisi menyebut empat ketentuan kalimat efektif: subjek tidak didahului preposisi (akan, antara, bagi, dari, dengan, di, ke, oleh, pada, untuk, dsb.), tidak ada subjek ganda (\"Kakak demam sehingga kakak tidak dapat masuk sekolah\"), kehematan kata (\"Para siswa-siswi\"), dan logis (\"Mayat pria itu sebelumnya sering mondar-mandir\" tidak logis). Contoh Surakarta-Jawa Barat dipakai kisi-kisi BKN untuk menunjukkan ketidaklogisan.",
+    e: "Kalimat ini adalah contoh untuk ketentuan pertama, subjek tidak didahului preposisi. Kata \"dari\" dicoret, sehingga kalimat efektifnya \"Wakil Surakarta menjadi Duta Bahasa Provinsi Jawa Barat 2008\". Contoh ketentuan lain di halaman yang sama: subjek ganda (\"kakak\" kedua dicoret dari \"Kakak demam sehingga kakak tidak dapat masuk sekolah\"), kehematan kata (\"Para\" dicoret dari \"Para siswa-siswi\"), dan logis (\"Mayat pria yang ditemukan itu sebelumnya sering mondar-mandir\" tidak efektif).",
     src: "Kisi-kisi BKN hal. 89"
   },
   {

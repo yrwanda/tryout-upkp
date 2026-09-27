@@ -33,7 +33,7 @@ window.DETEKTIF = [
     ["Kata baku sesuai kaidah dan KBBI,", "misalnya apotek, ajek,", ["analisa,", "analisis,"], "antre, dan asas."],
     ["Nama geografi yang dipakai sebagai nama jenis", "ditulis dengan huruf kecil,", "misalnya", ["jeruk Bali", "jeruk bali"], "dan kunci inggris."],
     ["Singkatan", ["u.p.", "u.b."], "berarti untuk beliau,", "sedangkan a.n.", "berarti atas nama."],
-    ["Kalimat efektif harus hemat,", "jadi cukup menulis", ["\"para siswa-siswi\"", "\"para siswa\""], "tanpa mengulang makna jamak."]] },
+    ["Kalimat efektif harus hemat,", "jadi cukup menulis", ["\"para siswa-siswi\"", "\"siswa-siswi\""], "tanpa kata \"para\" yang mengulang makna jamak."]] },
   { id: "d-kepegawaian", topic: "kepegawaian", title: "Kepegawaian dan KORPRI", pages: "107-121", items: [
     ["PNS diangkat", ["berdasarkan perjanjian kerja", "secara tetap"], "oleh pejabat pembina kepegawaian", "untuk menduduki jabatan pemerintahan."],
     ["Hukuman disiplin sedang", "berupa pemotongan tunjangan kinerja", ["50%", "25%"], "selama 6, 9, atau 12 bulan."],

@@ -223,7 +223,7 @@ window.BANK.renstra.push(
     q: "Komponen RPJMN 2025-2029 menurut kisi-kisi BKN meliputi visi-misi, arah kebijakan, 8 prioritas nasional, sasaran utama, proyek prioritas, serta ...",
     o: ["17 program prioritas dan 8 program hasil terbaik cepat", "9 agenda Nawacita", "5 arahan Presiden", "4 pilar pembangunan", "7 agenda pembangunan"],
     a: 0,
-    e: "17 program prioritas dan 8 program hasil terbaik cepat (PHTC), misalnya makan bergizi gratis dan pemeriksaan kesehatan gratis. Nawacita (9) dan 5 arahan/4 pilar/7 agenda adalah komponen RPJMN 2014-2019 dan 2020-2024.",
+    e: "17 program prioritas dan 8 program hasil terbaik cepat (PHTC), misalnya makan siang dan susu gratis di sekolah dan pesantren (PHTC 1) serta pemeriksaan kesehatan gratis (PHTC 2). Pilihan lain milik dokumen lain: Nawacita (9 agenda) pada RPJMN 2015-2019; 7 agenda pembangunan dan 5 arahan Presiden pada RPJMN 2020-2024; 4 pilar dari Visi Indonesia 2045.",
     src: "Kisi-kisi BKN hal. 92 dan 96"
   },
   {

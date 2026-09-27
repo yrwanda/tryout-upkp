@@ -131,7 +131,7 @@ window.JODOH = [
   { id: "kalimat-paragraf", topic: "bindo", title: "Kalimat efektif, konjungsi, paragraf", pages: "87-90", left: "Istilah", right: "Aturan", pairs: [
     ["Paragraf deduktif", "Kalimat utama di awal paragraf"], ["Paragraf induktif", "Kalimat utama di akhir paragraf"],
     ["Namun, Oleh karena itu", "Konjungsi antarkalimat, diikuti koma"], ["sedangkan, melainkan, yaitu", "Konjungsi intrakalimat, didahului koma"],
-    ["bahwa, karena, sehingga", "Tanpa koma di depannya"], ["Kalimat hemat", "\"para siswa\", bukan \"para siswa-siswi\""],
+    ["bahwa, karena, sehingga", "Tanpa koma di depannya"], ["Kalimat hemat", "\"siswa-siswi\", bukan \"para siswa-siswi\""],
     ["Subjek kalimat efektif", "Tidak didahului preposisi (bagi, dari, untuk)"]] },
   { id: "korpri-sejarah", topic: "kepegawaian", title: "Sejarah dan anggota KORPRI", pages: "116-119", left: "Waktu/istilah", right: "Keterangan", pairs: [
     ["17 Agustus 1945", "Pegawai pemerintah Jepang menjadi pegawai NKRI"], ["27 Desember 1949 (RIS)", "Pegawai terbagi tiga: RI, nonkolaborator, kolaborator"],

@@ -83,7 +83,7 @@ window.BANK.bindo.push(
     q: "Kalimat \"Para siswa-siswi sedang mengerjakan soal ujian masuk perguruan tinggi\" melanggar prinsip kalimat efektif, yaitu ...",
     o: ["Ketepatan ejaan", "Kepaduan", "Kehematan kata", "Kelogisan", "Kesejajaran"],
     a: 2,
-    e: "Kehematan kata berarti menghindari kata-kata bermakna sama dalam satu kalimat. \"Para\" sudah menyatakan jamak, sehingga bentuk ulang \"siswa-siswi\" mubazir. Perbaikan: \"Para siswa ...\".",
+    e: "Kehematan kata berarti menghindari kata-kata bermakna sama dalam satu kalimat. \"Para\" dan bentuk ulang \"siswa-siswi\" sama-sama menyatakan jamak, jadi salah satunya mubazir. Kisi-kisi mencoret \"Para\", sehingga perbaikannya \"Siswa-siswi sedang mengerjakan soal ...\".",
     src: "Kisi-kisi BKN hal. 89"
   },
   {

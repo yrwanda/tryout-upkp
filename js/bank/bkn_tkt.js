@@ -255,7 +255,7 @@ window.BANK.kepegawaian.push(
     q: "Delapan komponen Manajemen ASN menurut kisi-kisi BKN (UU No. 20 Tahun 2023) adalah perencanaan kebutuhan, pengadaan, penguatan budaya kerja dan citra institusi, pengelolaan kinerja, pengembangan talenta dan karier, pengembangan kompetensi, pemberian penghargaan dan pengakuan, serta ...",
     o: ["Pemberhentian", "Pemilihan umum", "Pengawasan eksternal", "Penyusunan APBN", "Pembinaan partai politik"],
     a: 0,
-    e: "Kisi-kisi memuat 8 komponen sesuai Pasal 30 UU 20/2023, diakhiri dengan pemberhentian. Bandingkan manajemen PNS versi UU 5/2014/PP 11/2017 (14 komponen: penyusunan kebutuhan, pengadaan, pangkat dan jabatan, pengembangan karier, pola karier, promosi, mutasi, penilaian kinerja, penggajian dan tunjangan, penghargaan, disiplin, pemberhentian, jaminan pensiun dan hari tua, perlindungan). Soal latihan resmi BKN 2025: yang tidak termasuk manajemen PNS adalah \"peningkatan pendidikan\".",
+    e: "Kisi-kisi memuat 8 komponen sesuai Pasal 31 UU 20/2023, diakhiri dengan pemberhentian. Bandingkan manajemen PNS versi UU 5/2014/PP 11/2017 (14 komponen: penyusunan kebutuhan, pengadaan, pangkat dan jabatan, pengembangan karier, pola karier, promosi, mutasi, penilaian kinerja, penggajian dan tunjangan, penghargaan, disiplin, pemberhentian, jaminan pensiun dan hari tua, perlindungan). Soal latihan resmi BKN 2025: yang tidak termasuk manajemen PNS adalah \"peningkatan pendidikan\".",
     src: "Kisi-kisi BKN hal. 112; Latihan resmi BKN 2025"
   },
   {
@@ -467,7 +467,7 @@ window.BANK.yanlik.push(
     q: "Asas pelayanan publik yang mewajibkan penyelenggara memberikan kemudahan kepada penyandang disabilitas, lanjut usia, ibu hamil, dan anak-anak adalah ...",
     o: ["Kesamaan hak", "Partisipatif", "Fasilitas dan perlakuan khusus bagi kelompok rentan", "Akuntabilitas", "Kepastian hukum"],
     a: 2,
-    e: "Asas fasilitas dan perlakuan khusus bagi kelompok rentan (Pasal 4 huruf j UU 25/2009), ditegaskan Pasal 29-30 tentang pelayanan khusus dan larangan penyalahgunaan sarana khusus oleh yang tidak berhak. Catatan: kisi-kisi hanya memuat nama asas; uraian di soal mengikuti UU 25/2009.",
+    e: "Asas fasilitas dan perlakuan khusus bagi kelompok rentan (Pasal 4 huruf j UU 25/2009), ditegaskan Pasal 29: penyelenggara wajib memberi pelayanan dengan perlakuan khusus kepada anggota masyarakat tertentu (ayat 1), dan sarana khusus itu dilarang dipakai orang yang tidak berhak (ayat 2). Catatan: kisi-kisi hanya memuat nama asas; uraian di soal mengikuti UU 25/2009.",
     src: "Kisi-kisi BKN hal. 125"
   },
   {
