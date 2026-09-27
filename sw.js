@@ -1,5 +1,5 @@
 /* Service worker: cache semua aset agar aplikasi bisa dipakai offline. Naikkan VERSION setiap kali bank soal/aplikasi berubah. */
-const VERSION = "upkp-v32";
+const VERSION = "upkp-v33";
 const ASSETS = [
   "./", "./index.html", "./manifest.json", "./css/style.css",
   "./js/materi.js", "./js/app.js", "./js/boot.js",

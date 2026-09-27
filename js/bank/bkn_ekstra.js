@@ -5,7 +5,7 @@ window.BANK.perkantoran = window.BANK.perkantoran || [];
 window.BANK.perkantoran.push(
   {
     id: "bkn-ktr-01", set: "bkn", topic: "perkantoran",
-    q: "Menurut kisi-kisi BKN, unsur-unsur dalam komunikasi mencakup ...",
+    q: "Unsur-unsur dalam komunikasi mencakup ...",
     o: ["Who, what, to whom, how, in what effect", "Input, process, output", "Sender, receiver, feedback only", "Planning, organizing, controlling", "Encoding, decoding, noise"],
     a: 0,
     e: "Komunikasi adalah proses pengalihan informasi dari seseorang ke orang lain yang memberi arti terhadap informasi itu; unsurnya who, what, to whom, how, in what effect (formula Lasswell: who says what in which channel to whom with what effect).",
@@ -13,7 +13,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-02", set: "bkn", topic: "perkantoran",
-    q: "Keuntungan komunikasi lisan dibandingkan komunikasi tertulis menurut kisi-kisi BKN adalah ...",
+    q: "Keuntungan komunikasi lisan dibandingkan komunikasi tertulis adalah ...",
     o: ["Fleksibel, ada umpan balik langsung, dan dapat dibantu gesture", "Bahasa lebih terstruktur", "Ada kelonggaran waktu memilih diksi", "Bersifat satu arah", "Dapat diarsipkan secara permanen"],
     a: 0,
     e: "Komunikasi lisan (percakapan, dua arah) unggul dalam fleksibilitas, umpan balik langsung, dan bantuan gesture; komunikasi tertulis (satu arah) unggul karena bahasanya lebih terstruktur dan ada kelonggaran waktu memilih diksi yang tepat.",
@@ -29,7 +29,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-04", set: "bkn", topic: "perkantoran",
-    q: "Ciri ragam bahasa resmi menurut kisi-kisi BKN adalah ...",
+    q: "Ciri ragam bahasa resmi adalah ...",
     o: ["Bahasa baku sesuai kaidah tata bahasa dan ejaan, kalimat lengkap, lugas, dan sopan", "Banyak memakai singkatan dan istilah gaul agar pesan tersampaikan dengan akrab", "Kalimat pendek dan tidak lengkap agar naskah ringkas dan cepat dibaca", "Bercampur bahasa daerah dan bahasa asing untuk menunjukkan keragaman budaya", "Tidak terikat kaidah ejaan karena yang penting maksud penulis dapat dipahami"],
     a: 0,
     e: "Ragam resmi dipakai dalam suasana formal dan administrasi pemerintahan; cirinya bahasa baku, sesuai kaidah tata bahasa dan ejaan (kisi-kisi BKN menulis PUEBI, kini EYD V), kalimat lengkap, lugas, sopan. Contoh penggunaannya: naskah dinas.",
@@ -69,7 +69,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-09", set: "bkn", topic: "perkantoran",
-    q: "Naskah dinas korespondensi intern menurut kisi-kisi BKN adalah ...",
+    q: "Naskah dinas korespondensi intern adalah ...",
     o: ["Nota dinas dan memorandum", "Surat perjanjian dan surat kuasa", "Surat edaran dan pedoman", "Berita acara dan pengumuman", "Instruksi dan surat perintah"],
     a: 0,
     e: "Korespondensi intern = nota dinas dan memorandum; korespondensi ekstern = surat dinas kepada pihak luar; surat undangan. Naskah dinas khusus = surat perjanjian, surat kuasa, surat pengantar, berita acara, surat keterangan, pengumuman.",
@@ -77,7 +77,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-10", set: "bkn", topic: "perkantoran",
-    q: "Menurut Max Weber sebagaimana dikutip kisi-kisi BKN, organisasi adalah ...",
+    q: "Menurut Max Weber, organisasi adalah ...",
     o: ["Kerangka terstruktur berisi wewenang, tanggung jawab, dan pembagian kerja", "Kumpulan orang yang berkumpul secara sukarela tanpa tujuan bersama yang jelas", "Perusahaan yang didirikan untuk mencari laba sebesar-besarnya bagi pemiliknya", "Alat pemerintah untuk mengendalikan rakyat dan menjaga ketertiban umum", "Tempat berkumpulnya pegawai untuk melaksanakan pekerjaan sehari-hari"],
     a: 0,
     e: "Organisasi (Max Weber) adalah kerangka terstruktur berisi wewenang, tanggung jawab, dan pembagian kerja untuk menjalankan masing-masing fungsi tertentu. Unsur organisasi: personel (man), kerja sama (team work), tujuan, peralatan (equipment), lingkungan, dan sumber daya alam.",
@@ -85,7 +85,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-11", set: "bkn", topic: "perkantoran",
-    q: "Unsur-unsur organisasi menurut kisi-kisi BKN adalah ...",
+    q: "Unsur-unsur organisasi adalah ...",
     o: ["Personel, kerja sama, tujuan, peralatan, lingkungan, dan sumber daya alam", "Man, money, machines, methods, materials, market", "Planning, organizing, actuating, controlling", "Visi, misi, tujuan, sasaran", "Pimpinan, staf, dan pelaksana"],
     a: 0,
     e: "Enam unsur organisasi - personel (man), kerja sama (team work), tujuan, peralatan (equipment), lingkungan, sumber daya alam. \"Man, money, machines, methods, materials, market\" adalah unsur manajemen (6M); \"planning, organizing, actuating, controlling\" adalah fungsi manajemen.",
@@ -101,7 +101,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-13", set: "bkn", topic: "perkantoran",
-    q: "Tujuan administrasi menurut kisi-kisi BKN meliputi menyusun data (mencatat, mengirim, mengolah), memonitor kegiatan dan data, mengevaluasi, serta ...",
+    q: "Tujuan administrasi meliputi menyusun data (mencatat, mengirim, mengolah), memonitor kegiatan dan data, mengevaluasi, serta ...",
     o: ["Mengamankan data atau hasil kegiatan organisasi (menyimpan data)", "Menetapkan anggaran negara", "Memilih pimpinan organisasi", "Menghapus data lama", "Menjual data kepada pihak ketiga"],
     a: 0,
     e: "Tujuan administrasi - menyusun data (mencatat, mengirim, mengolah), memonitor/mengawasi kegiatan dan data, mengevaluasi, dan mengamankan/menyimpan data (filing system). Fungsi administrasi secara umum: perencanaan, penyusunan, pemberian arahan, pengoordinasian, pelaporan. Soal latihan resmi BKN 2025: yang bukan kegiatan administrasi adalah \"prosedur\".",
@@ -125,7 +125,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-16", set: "bkn", topic: "perkantoran",
-    q: "Menurut daftar tools pada e-mail dalam kisi-kisi BKN, fitur untuk meneruskan surat yang diterima kepada orang lain adalah ...",
+    q: "Menurut daftar tools pada e-mail, fitur untuk meneruskan surat yang diterima kepada orang lain adalah ...",
     o: ["Reply", "Forward", "Send", "Sent", "Inbox"],
     a: 1,
     e: "Tools pada E-mail: sent = kotak surat terkirim; inbox = kotak surat masuk; spam = kotak surat sampah; attach files = melampirkan file; insert link = melampirkan link; reply = menjawab surat; forward = meneruskan surat; send = mengirim surat.",
@@ -177,7 +177,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-04", set: "bkn", topic: "manajemen",
-    q: "Kegiatan routing (alur kerja), scheduling (penjadwalan), dan dispatching (penyampaian hasil/solusi) menurut kisi-kisi BKN termasuk fungsi ...",
+    q: "Kegiatan routing (alur kerja), scheduling (penjadwalan), dan dispatching (penyampaian hasil/solusi) termasuk fungsi ...",
     o: ["Planning", "Organizing", "Actuating", "Controlling", "Coordinating"],
     a: 3,
     e: "Kisi-kisi menempatkan routing (alur kerja), scheduling (menjadwalkan kegiatan), dispatching (penyampaian hasil/solusi), dan follow up (tindak lanjut) di bawah controlling (pengendalian). Actuating (pelaksanaan) dirumuskan sebagai menggerakkan semua orang dalam organisasi untuk melakukan pekerjaan demi tujuan yang telah disepakati. Sebagian literatur membahas routing-scheduling-dispatching sebagai bagian pelaksanaan; untuk ujian ini ikuti bagan kisi-kisi.",
@@ -185,7 +185,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-05", set: "bkn", topic: "manajemen",
-    q: "Pembagian tugas/pekerjaan dan pendelegasian menurut kisi-kisi BKN adalah kegiatan dalam fungsi ...",
+    q: "Pembagian tugas/pekerjaan dan pendelegasian adalah kegiatan dalam fungsi ...",
     o: ["Planning", "Organizing", "Actuating", "Controlling", "Commanding"],
     a: 1,
     e: "Organizing (pengorganisasian) = pembagian tugas/pekerjaan dan pendelegasian. Penugasan dan sharing knowledge ada di bawah commanding (pengarahan); planning = menetapkan dan merumuskan tujuan, identifikasi masalah, menentukan strategi; controlling = routing, scheduling, dispatching, follow up.",
@@ -233,7 +233,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-11", set: "bkn", topic: "manajemen",
-    q: "Empat indikator kepemimpinan menurut kisi-kisi BKN adalah ...",
+    q: "Empat indikator kepemimpinan adalah ...",
     o: ["Kemampuan mengambil keputusan, tanggung jawab, kemampuan memotivasi, dan kemampuan komunikasi", "Usia, pangkat, masa kerja, dan pendidikan", "Kekayaan, popularitas, jabatan, dan jaringan", "Kecerdasan, kekuatan fisik, keberanian, dan ketampanan", "Loyalitas, senioritas, disiplin, dan ketaatan"],
     a: 0,
     e: "Indikator kepemimpinan (1) kemampuan mengambil keputusan, (2) tanggung jawab, (3) kemampuan memotivasi, (4) kemampuan komunikasi. Gaya kepemimpinan adalah cara/pola pemimpin bersikap, berkomunikasi, dan berinteraksi untuk memengaruhi, mengarahkan, mendorong, dan mengendalikan bawahan.",
@@ -257,7 +257,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-14", set: "bkn", topic: "manajemen",
-    q: "Ciri-ciri teori birokrasi Max Weber menurut kisi-kisi BKN antara lain ...",
+    q: "Ciri-ciri teori birokrasi Max Weber antara lain ...",
     o: ["Pembagian kerja, hierarki wewenang, program rasional, prosedur, aturan, dan impersonal", "Partisipasi karyawan, perluasan kerja, dan manajemen bottom-up dari bawah ke atas", "Metode kerja atas dasar ilmu pengetahuan, seleksi dan latihan, serta motivasi karyawan", "Prinsip koordinasi, prinsip skalar atau hierarkis, dan prinsip fungsional", "Kegiatan teknikal, komersial, finansial, keamanan, akuntansi, dan manajerial"],
     a: 0,
     e: "Teori klasik - birokrasi (Weber: pembagian kerja, hierarki, program rasional, prosedur, aturan hak-kewajiban, impersonal), administrasi (Mooney & Reiley: prinsip koordinasi, skalar/hierarkis, fungsional), manajemen ilmiah (4 kaidah: metode kerja ilmiah, seleksi-latihan-pengembangan karyawan, pengembangan ilmu, motivasi dan mental karyawan; kisi-kisi BKN mengatribusikannya kepada Henry Fayol, sedangkan literatur umum menyebut F.W. Taylor; Fayol dikenal dengan 6 kegiatan industri: teknikal, komersial, finansial, keamanan, akuntansi, manajerial). Neo-klasik: Hugo Munsterberg (partisipasi, perluasan kerja, bottom-up). Modern: Abraham Maslow (organisasi sebagai kesatuan saling bergantung).",
@@ -273,7 +273,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-16", set: "bkn", topic: "manajemen",
-    q: "Tokoh teori manajemen neo-klasik dan teori modern menurut kisi-kisi BKN secara berurutan adalah ...",
+    q: "Tokoh teori manajemen neo-klasik dan teori modern secara berurutan adalah ...",
     o: ["Hugo Munsterberg dan Abraham Maslow", "Max Weber dan Henry Fayol", "Frederick Taylor dan Elton Mayo", "J.D. Mooney dan A. Reiley", "George Terry dan John Millet"],
     a: 0,
     e: "Teori neo-klasik oleh Hugo Munsterberg (pembagian kerja: partisipasi, perluasan kerja, manajemen bottom-up); teori modern oleh Abraham Maslow (organisasi sebagai satu kesatuan yang saling bergantung dan tidak bisa dipisahkan).",
@@ -289,7 +289,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-18", set: "bkn", topic: "manajemen",
-    q: "Menurut kisi-kisi BKN, materi Tes Pengetahuan Manajerial (Ujian Dinas Tk. II) mencakup empat fungsi manajemen POAC dan ...",
+    q: "Materi Tes Pengetahuan Manajerial (Ujian Dinas Tk. II) mencakup empat fungsi manajemen POAC dan ...",
     o: ["Teori kepemimpinan beserta tipe/gaya kepemimpinan", "Akuntansi keuangan negara", "Hukum pidana", "Statistika", "Bahasa asing"],
     a: 0,
     e: "Manajemen (planning, organizing, actuating, controlling: definisi, tahapan/fungsi, manfaat, jenis, kegiatan) serta teori kepemimpinan dan tipe gaya kepemimpinan. TPM hanya diujikan pada Ujian Dinas Tk. II (20 soal), bukan UPKP.",

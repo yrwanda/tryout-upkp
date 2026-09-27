@@ -10,7 +10,7 @@ window.BANK.perkantoran = window.BANK.perkantoran || [];
 window.BANK.perkantoran.push(
   {
     id: "bkn-ktr-19", set: "bkn", topic: "perkantoran",
-    q: "Keuntungan komunikasi tertulis menurut kisi-kisi BKN adalah ...",
+    q: "Keuntungan komunikasi tertulis adalah ...",
     o: ["Selalu bersifat dua arah", "Tidak memerlukan kaidah bahasa", "Lebih fleksibel dalam percakapan spontan", "Umpan balik langsung dan bisa dibantu gestur", "Bahasa lebih terstruktur dan ada kelonggaran waktu memilih diksi yang tepat"],
     a: 4,
     e: "Komunikasi tertulis bersifat satu arah; keuntungannya bahasa lebih terstruktur dan ada kelonggaran waktu memilih diksi. Umpan balik langsung, gestur, dan fleksibilitas adalah keuntungan komunikasi lisan.",
@@ -18,7 +18,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-20", set: "bkn", topic: "perkantoran",
-    q: "Komunikasi lisan dalam bentuk percakapan menurut kisi-kisi BKN bersifat ...",
+    q: "Komunikasi lisan dalam bentuk percakapan bersifat ...",
     o: ["Tidak memerlukan umpan balik", "Selalu tertulis", "Satu arah", "Dua arah", "Tertutup"],
     a: 3,
     e: "Komunikasi lisan melalui pelafalan kata-kata, misalnya percakapan (komunikasi dua arah); komunikasi tertulis bersifat satu arah.",
@@ -34,7 +34,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-22", set: "bkn", topic: "perkantoran",
-    q: "Berita acara, surat kuasa, dan surat keterangan menurut kisi-kisi BKN termasuk ...",
+    q: "Berita acara, surat kuasa, dan surat keterangan termasuk ...",
     o: ["Naskah dinas arahan", "Naskah dinas korespondensi intern", "Naskah dinas khusus", "Naskah dinas penetapan", "Naskah dinas penugasan"],
     a: 2,
     e: "Naskah dinas khusus = surat perjanjian, surat kuasa, surat pengantar, berita acara, surat keterangan, pengumuman.",
@@ -42,7 +42,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-23", set: "bkn", topic: "perkantoran",
-    q: "Standar operasional prosedur (SOP) dan surat edaran menurut kisi-kisi BKN termasuk naskah dinas arahan yang bersifat ...",
+    q: "Standar operasional prosedur (SOP) dan surat edaran termasuk naskah dinas arahan yang bersifat ...",
     o: ["Penetapan", "Penugasan", "Pengaturan", "Korespondensi", "Khusus"],
     a: 2,
     e: "Pengaturan = peraturan, pedoman, juklak, SOP, surat edaran; penetapan = keputusan; penugasan = instruksi, surat perintah, surat tugas.",
@@ -50,7 +50,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-24", set: "bkn", topic: "perkantoran",
-    q: "Instruksi menurut pembagian naskah dinas dalam kisi-kisi BKN termasuk naskah dinas arahan yang bersifat ...",
+    q: "Instruksi menurut pembagian naskah dinas termasuk naskah dinas arahan yang bersifat ...",
     o: ["Pengaturan", "Penetapan", "Penugasan", "Korespondensi ekstern", "Khusus"],
     a: 2,
     e: "Penugasan = instruksi, surat perintah, surat tugas. Soal latihan resmi BKN juga menguji pembagian ini (keputusan = penetapan).",
@@ -58,7 +58,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-25", set: "bkn", topic: "perkantoran",
-    q: "Naskah dinas arahan menurut kisi-kisi BKN memuat kebijakan pokok atau kebijakan pelaksanaan berupa produk hukum yang bersifat ...",
+    q: "Naskah dinas arahan memuat kebijakan pokok atau kebijakan pelaksanaan berupa produk hukum yang bersifat ...",
     o: ["Pengaturan, penetapan, dan penugasan", "Undangan, pemberitahuan, dan pengumuman", "Intern dan ekstern", "Rahasia, biasa, dan segera", "Perjanjian dan kuasa"],
     a: 0,
     e: "Naskah dinas arahan memuat kebijakan pokok/pelaksanaan yang harus dipedomani, berupa produk hukum yang bersifat pengaturan, penetapan, dan penugasan. Intern-ekstern adalah pembagian naskah korespondensi.",
@@ -66,7 +66,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-26", set: "bkn", topic: "perkantoran",
-    q: "Fungsi administrasi secara umum menurut kisi-kisi BKN meliputi ...",
+    q: "Fungsi administrasi secara umum meliputi ...",
     o: ["Perencanaan, penyusunan, pemberian arahan, pengoordinasian, dan pelaporan", "Produksi, distribusi, dan pemasaran", "Rekrutmen, promosi, dan pemberhentian", "Legislasi, anggaran, dan pengawasan", "Penyidikan, penuntutan, dan peradilan"],
     a: 0,
     e: "Secara umum administrasi memiliki fungsi perencanaan, penyusunan, pemberian arahan, pengoordinasian, dan pelaporan. Tujuannya menyusun, memonitor, mengevaluasi, dan mengamankan data kegiatan organisasi.",
@@ -74,7 +74,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-27", set: "bkn", topic: "perkantoran",
-    q: "Menurut kisi-kisi BKN, pada dasarnya tujuan administrasi adalah membantu organisasi untuk ...",
+    q: "Pada dasarnya tujuan administrasi adalah membantu organisasi untuk ...",
     o: ["Menghindari pemeriksaan keuangan", "Memperbanyak dokumen fisik", "Mengurangi penggunaan teknologi", "Menambah jumlah pegawai", "Melakukan perencanaan dan evaluasi kerja"],
     a: 4,
     e: "Pada dasarnya tujuan administrasi membantu organisasi atau perusahaan melakukan perencanaan dan evaluasi kerjanya.",
@@ -82,7 +82,7 @@ window.BANK.perkantoran.push(
   },
   {
     id: "bkn-ktr-28", set: "bkn", topic: "perkantoran",
-    q: "Menurut pembagian jenis naskah dinas dalam kisi-kisi BKN, surat undangan termasuk naskah dinas ...",
+    q: "Menurut pembagian jenis naskah dinas, surat undangan termasuk naskah dinas ...",
     o: ["Arahan yang bersifat pengaturan", "Arahan yang bersifat penetapan", "Arahan yang bersifat penugasan", "Korespondensi", "Khusus"],
     a: 3,
     e: "Kotak Naskah Dinas Korespondensi memuat intern (nota dinas dan memorandum), ekstern, dan surat undangan. Naskah dinas arahan terdiri atas pengaturan, penetapan, penugasan; naskah dinas khusus = surat perjanjian, surat kuasa, surat pengantar, berita acara, surat keterangan, pengumuman. Soal resmi BKN no. 45 juga menegaskan surat undangan bukan naskah dinas arahan.",
@@ -102,7 +102,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-20", set: "bkn", topic: "manajemen",
-    q: "Fungsi coordinating (koordinasi) menurut Henry Fayol dalam kisi-kisi BKN berisi ...",
+    q: "Fungsi coordinating (koordinasi) menurut Henry Fayol berisi ...",
     o: ["Pembagian tugas dan pendelegasian", "Follow up hasil kerja", "Sharing knowledge kepada bawahan", "Menetapkan tujuan dan strategi", "Penyatuan tindakan untuk tujuan bersama dan sinkronisasi kegiatan"],
     a: 4,
     e: "Coordinating = penyatuan tindakan untuk tujuan bersama dan sinkronisasi kegiatan; commanding = sharing knowledge dan penugasan; organizing = pembagian tugas dan pendelegasian; controlling = routing, scheduling, dispatching, follow up; planning = menetapkan tujuan dan menentukan strategi.",
@@ -142,7 +142,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-25", set: "bkn", topic: "manajemen",
-    q: "Gaya kepemimpinan yang aktif, dinamis, dan terarah menurut kisi-kisi BKN adalah ...",
+    q: "Gaya kepemimpinan yang aktif, dinamis, dan terarah adalah ...",
     o: ["Laissez faire", "Militeristik", "Otokratik", "Demokratik", "Paternalistik"],
     a: 3,
     e: "Demokratik = aktif, dinamis, dan terarah. Gaya ini melibatkan bawahan dalam pengambilan keputusan, berbeda dengan otokratik yang memusatkan wewenang.",
@@ -158,7 +158,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-27", set: "bkn", topic: "manajemen",
-    q: "Enam kegiatan industri (teknikal, komersial, finansial, keamanan, akuntansi, manajerial) dalam kisi-kisi BKN dikaitkan dengan tokoh ...",
+    q: "Enam kegiatan industri (teknikal, komersial, finansial, keamanan, akuntansi, manajerial) dikaitkan dengan tokoh ...",
     o: ["Abraham Maslow", "J.D. Mooney", "Max Weber", "Henry Fayol", "Hugo Munsterberg"],
     a: 3,
     e: "Enam kegiatan industri tercantum di bawah nama Henry Fayol. Weber = teori birokrasi; Munsterberg = neo-klasik; Maslow = teori modern; Mooney & Reiley = teori administrasi. Catatan: kisi-kisi BKN juga menaruh \"manajemen ilmiah\" di bawah Fayol, padahal literatur umum menyebut F.W. Taylor.",
@@ -166,7 +166,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-28", set: "bkn", topic: "manajemen",
-    q: "Pada bagan teori manajemen dalam kisi-kisi BKN, empat kondisi pokok yang dikaitkan dengan teori klasik adalah ...",
+    q: "Pada bagan teori manajemen, empat kondisi pokok yang dikaitkan dengan teori klasik adalah ...",
     o: ["Kekuasaan, saling melayani, doktrin, dan disiplin", "Man, money, machines, methods", "Planning, organizing, actuating, controlling", "Visi, misi, tujuan, sasaran", "Top, middle, low, operasional"],
     a: 0,
     e: "Kotak \"4 kondisi pokok\" (kekuasaan, saling melayani, doktrin, disiplin) dan \"4 unsur pokok\" (sistem kegiatan terkoordinasi, kelompok orang, kerja sama, kekuasaan dan kepemimpinan) terhubung ke Teori Klasik. Teori modern (Abraham Maslow) dikaitkan dengan organisasi sebagai satu kesatuan yang saling bergantung. 6M = unsur manajemen; POAC = fungsi manajemen.",
@@ -174,7 +174,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-29", set: "bkn", topic: "manajemen",
-    q: "Teori manajemen neo-klasik oleh Hugo Munsterberg menurut kisi-kisi BKN menekankan ...",
+    q: "Teori manajemen neo-klasik oleh Hugo Munsterberg menekankan ...",
     o: ["Prinsip koordinasi, skalar, dan fungsional", "Organisasi sebagai kesatuan yang saling bergantung", "Enam kegiatan industri", "Hierarki wewenang dan hubungan impersonal", "Partisipasi, perluasan kerja, dan manajemen bottom up"],
     a: 4,
     e: "Neo-klasik (Munsterberg) = pembagian kerja dengan partisipasi, perluasan kerja, dan manajemen bottom up. Hierarki dan impersonal = birokrasi Weber; koordinasi-skalar-fungsional = Mooney & Reiley; kesatuan saling bergantung = teori modern (Maslow).",
@@ -182,7 +182,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-30", set: "bkn", topic: "manajemen",
-    q: "Menurut kisi-kisi BKN, gaya kepemimpinan didefinisikan sebagai ...",
+    q: "Gaya kepemimpinan didefinisikan sebagai ...",
     o: ["Jabatan struktural yang melekat pada diri pemimpin", "Cara dan pola pemimpin memengaruhi serta mengarahkan bawahan", "Jumlah bawahan yang berada di bawah kendali pemimpin", "Aturan tertulis yang ditetapkan organisasi bagi pemimpin", "Hasil penilaian kinerja tahunan seorang pemimpin"],
     a: 1,
     e: "Gaya kepemimpinan = cara, pola, dan kemampuan tertentu pemimpin dalam bersikap, berkomunikasi, dan berinteraksi untuk memengaruhi, mengarahkan, mendorong, dan mengendalikan bawahan agar mencapai tujuan.",
@@ -190,7 +190,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-31", set: "bkn", topic: "manajemen",
-    q: "Kegiatan follow up (tindak lanjut) menurut kisi-kisi BKN termasuk fungsi manajemen ...",
+    q: "Kegiatan follow up (tindak lanjut) termasuk fungsi manajemen ...",
     o: ["Planning", "Organizing", "Actuating", "Controlling", "Commanding"],
     a: 3,
     e: "Controlling (pengendalian) = routing (alur kerja), scheduling, dispatching, dan follow up (tindak lanjut). Actuating = menggerakkan semua orang dalam organisasi; organizing = pembagian tugas dan pendelegasian; commanding = sharing knowledge dan penugasan.",
@@ -342,7 +342,7 @@ window.BANK.literasi.push(
   },
   {
     id: "bkn-lit-11", set: "bkn", topic: "literasi",
-    q: "Menurut kisi-kisi BKN, aktivitas menggunakan media sosial dan berbelanja online merupakan contoh ...",
+    q: "Aktivitas menggunakan media sosial dan berbelanja online merupakan contoh ...",
     o: ["Keamanan digital", "Keterampilan perangkat keras", "Kejahatan siber", "Etika digital", "Budaya digital"],
     a: 4,
     e: "Budaya digital = hasil kreasi manusia berbasis teknologi internet yang tercermin lewat cara berinteraksi, berperilaku, berpikir, dan berkomunikasi di dunia digital; contohnya aktivitas media sosial dan belanja online.",
@@ -350,7 +350,7 @@ window.BANK.literasi.push(
   },
   {
     id: "bkn-lit-12", set: "bkn", topic: "literasi",
-    q: "Penggunaan perangkat untuk transaksi digital menurut kisi-kisi BKN termasuk pilar ...",
+    q: "Penggunaan perangkat untuk transaksi digital termasuk pilar ...",
     o: ["Digital skills", "Digital culture", "Digital ethics", "Digital safety", "Digital citizenship"],
     a: 0,
     e: "Digital skills meliputi pengetahuan perangkat keras dan lunak serta penggunaan perangkat untuk transaksi digital.",
@@ -378,7 +378,7 @@ window.BANK.renstra = window.BANK.renstra || [];
 window.BANK.renstra.push(
   {
     id: "bkn-rst-18", set: "bkn", topic: "renstra",
-    q: "Undang-undang yang menjadi dasar dokumen perencanaan RPJP, RPJM, RKP, Renstra K/L, dan Renja K/L dalam kisi-kisi BKN adalah ...",
+    q: "Undang-undang yang menjadi dasar dokumen perencanaan RPJP, RPJM, RKP, Renstra K/L, dan Renja K/L adalah ...",
     o: ["UU No. 23 Tahun 2014 tentang Pemerintahan Daerah", "UU No. 12 Tahun 2011 tentang Pembentukan Peraturan Perundang-undangan", "UU No. 20 Tahun 2023 tentang ASN", "UU No. 17 Tahun 2003 tentang Keuangan Negara", "UU No. 25 Tahun 2004 tentang Sistem Perencanaan Pembangunan Nasional"],
     a: 4,
     e: "Kisi-kisi mencantumkan sumber bagan: UU No. 25 Tahun 2004 tentang Sistem Perencanaan Pembangunan Nasional (SPPN).",
@@ -386,7 +386,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-19", set: "bkn", topic: "renstra",
-    q: "Dalam bagan dokumen perencanaan kisi-kisi BKN, Rencana Kerja (Renja) K/L berjangka 1 tahun merupakan penjabaran dari ...",
+    q: "Dalam bagan dokumen perencanaan, Rencana Kerja (Renja) K/L berjangka 1 tahun merupakan penjabaran dari ...",
     o: ["RPJP Nasional", "RKP", "Renstra K/L", "APBN", "RPJMD"],
     a: 2,
     e: "RPJPN (20 th) dijabarkan ke RPJMN (5 th) dan RKP (1 th); RPJMN menjadi pedoman Renstra K/L (5 th); Renstra K/L dijabarkan ke Renja K/L (1 th). RKP menjadi pedoman Renja K/L, lalu menjadi dasar APBN.",
@@ -394,7 +394,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-20", set: "bkn", topic: "renstra",
-    q: "Menurut bagan kisi-kisi BKN, RKP yang berjangka 1 tahun menjadi dasar penyusunan APBN yang ...",
+    q: "RKP yang berjangka 1 tahun menjadi dasar penyusunan APBN yang ...",
     o: ["Ditetapkan MPR", "Diputuskan Bappenas tanpa pembahasan", "Ditetapkan sendiri oleh Kementerian Keuangan", "Dibahas bersama DPR", "Disahkan oleh BPK"],
     a: 3,
     e: "RKP → APBN yang dibahas bersama DPR (untuk daerah: APBD bersama DPRD). BPK memeriksa pertanggungjawaban keuangan, bukan mengesahkan APBN.",
@@ -458,7 +458,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-28", set: "bkn", topic: "renstra",
-    q: "Jumlah Prioritas Nasional, program prioritas, dan program hasil terbaik cepat dalam RPJMN 2025-2029 menurut kisi-kisi BKN berturut-turut adalah ...",
+    q: "Jumlah Prioritas Nasional, program prioritas, dan program hasil terbaik cepat dalam RPJMN 2025-2029 berturut-turut adalah ...",
     o: ["7, 17, dan 8", "8, 17, dan 8", "8, 8, dan 17", "9, 17, dan 7", "8, 16, dan 8"],
     a: 1,
     e: "8 Prioritas Nasional (Asta Cita), 17 program prioritas, dan 8 program hasil terbaik cepat.",
@@ -474,7 +474,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-30", set: "bkn", topic: "renstra",
-    q: "Dalam cakupan materi Rencana Strategis Instansi pada kisi-kisi BKN, ukuran keberhasilan pencapaian tujuan dan sasaran strategis disebut ...",
+    q: "Dalam cakupan materi Rencana Strategis Instansi, ukuran keberhasilan pencapaian tujuan dan sasaran strategis disebut ...",
     o: ["Visi", "Misi", "Indikator kinerja", "Permasalahan", "Sistematika"],
     a: 2,
     e: "Materi Renstra instansi = visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, dan sistematika Renstra. Indikator kinerja adalah ukuran keberhasilan (misalnya Indeks Penegakan dan Pelayanan Hukum pada Renstra Kemenimipas). Catatan: kisi-kisi hanya berisi daftar subtopik; arti indikator kinerja dan contohnya berasal dari luar kisi-kisi.",
@@ -482,7 +482,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-31", set: "bkn", topic: "renstra",
-    q: "Menurut bagan kisi-kisi BKN, dokumen perencanaan yang menjadi pedoman penyusunan Renstra K/L sekaligus dijabarkan ke dalam RKP adalah ...",
+    q: "Dokumen perencanaan yang menjadi pedoman penyusunan Renstra K/L sekaligus dijabarkan ke dalam RKP adalah ...",
     o: ["APBN", "RKA K/L", "RPJP Nasional", "RPJM Nasional", "Renja K/L"],
     a: 3,
     e: "RPJM Nasional (5 tahun) merupakan penjabaran RPJPN, menjadi pedoman Renstra K/L, dan dijabarkan ke RKP (1 tahun).",

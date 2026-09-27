@@ -109,7 +109,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-14", set: "bkn", topic: "bindo",
-    q: "Contoh gabungan kata yang penulisannya benar menurut kisi-kisi BKN adalah ...",
+    q: "Contoh gabungan kata yang penulisannya benar adalah ...",
     o: ["ibukota, rumahsakit, garisbawah, tanggungjawab", "ibu kota, rumah sakit, garis bawah, menggarisbawahi, tanggung jawab, pertanggungjawaban", "ibu-kota, rumah-sakit, garis-bawah, tanggung-jawab", "ibu kota, rumah sakit, menggaris bawahi, pertanggung jawaban", "ibukota, rumah sakit, garis bawah, bertepuktangan"],
     a: 1,
     e: "Gabungan kata ditulis terpisah (ibu kota, rumah sakit, garis bawah, tanggung jawab, bertepuk tangan), tetapi ditulis serangkai jika mendapat awalan dan akhiran sekaligus (menggarisbawahi, pertanggungjawaban).",
@@ -125,7 +125,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-16", set: "bkn", topic: "bindo",
-    q: "Penulisan singkatan nama orang dan gelar yang benar sesuai kisi-kisi BKN adalah ...",
+    q: "Penulisan singkatan nama orang dan gelar yang benar adalah ...",
     o: ["AH Nasution; H Hamid; Suman HS", "A.H. Nasution; H. Hamid; Suman Hs.", "A. H. Nasution; H Hamid; Suman Hs", "A.H Nasution; H. Hamid; Suman. Hs", "A.H. Nasution; H.Hamid; Suman H.s."],
     a: 1,
     e: "Singkatan nama orang, gelar, sapaan, jabatan, pangkat diikuti tanda titik pada setiap unsur: A.H. Nasution (Abdul Haris Nasution), H. Hamid (Haji Hamid), Suman Hs. (Suman Hasibuan); gelar: dr. (dokter), Dr. (doktor), Dr. (H.C.), M.B.A., M.Hum., M.Si., Ph.D., Prof., S.E., S.I.P.",
@@ -173,7 +173,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-22", set: "bkn", topic: "bindo",
-    q: "Pasangan kata baku - tidak baku yang benar menurut kisi-kisi BKN adalah ...",
+    q: "Pasangan kata baku - tidak baku yang benar adalah ...",
     o: ["apotik - apotek", "ajek - ajeg", "analisa - analisis", "antri - antre", "azas - asas"],
     a: 1,
     e: "Baku - tidak baku: apotek - apotik; ajek - ajeg; analisis - analisa; antre - antri; asas - azas. Hanya \"ajek - ajeg\" yang urutannya baku lalu tidak baku; pasangan lain terbalik (tidak baku lalu baku). Kata baku = sesuai kaidah dan KBBI. Soal latihan resmi BKN 2025: yang bukan kata baku adalah \"managemen\" (baku: manajemen).",
@@ -205,7 +205,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-26", set: "bkn", topic: "bindo",
-    q: "Kalimat \"Wakil dari Surakarta menjadi Duta Bahasa Provinsi Jawa Barat 2008\" dipakai kisi-kisi BKN sebagai contoh kalimat tidak efektif karena ...",
+    q: "Kalimat \"Wakil dari Surakarta menjadi Duta Bahasa Provinsi Jawa Barat 2008\" dipakai sebagai contoh kalimat tidak efektif karena ...",
     o: ["Subjek ganda", "Subjek didahului preposisi", "Pemborosan kata", "Tidak logis", "Tidak ada predikat"],
     a: 1,
     e: "Kalimat ini adalah contoh untuk ketentuan pertama, subjek tidak didahului preposisi. Kata \"dari\" dicoret, sehingga kalimat efektifnya \"Wakil Surakarta menjadi Duta Bahasa Provinsi Jawa Barat 2008\". Contoh ketentuan lain di halaman yang sama: subjek ganda (\"kakak\" kedua dicoret dari \"Kakak demam sehingga kakak tidak dapat masuk sekolah\"), kehematan kata (\"Para\" dicoret dari \"Para siswa-siswi\"), dan logis (\"Mayat pria yang ditemukan itu sebelumnya sering mondar-mandir\" tidak efektif).",
@@ -249,7 +249,7 @@ window.BANK.pancasila = window.BANK.pancasila || [];
 window.BANK.pancasila.push(
   {
     id: "bkn-pcs-01", set: "bkn", topic: "pancasila",
-    q: "Menurut kisi-kisi BKN, istilah Pancasila pertama kali disampaikan oleh Ir. Soekarno pada sidang BPUPKI tanggal 1 Juni 1945, dan Pancasila disahkan oleh PPKI pada tanggal ...",
+    q: "Istilah Pancasila pertama kali disampaikan oleh Ir. Soekarno pada sidang BPUPKI tanggal 1 Juni 1945, dan Pancasila disahkan oleh PPKI pada tanggal ...",
     o: ["17 Agustus 1945", "18 Agustus 1945", "22 Juni 1945", "29 Mei 1945", "1 Oktober 1945"],
     a: 1,
     e: "Istilah Pancasila disampaikan Soekarno 1 Juni 1945, disahkan PPKI 18 Agustus 1945 bersamaan dengan pengesahan UUD 1945 yang memuat Pancasila dalam Pembukaan. 22 Juni adalah Piagam Jakarta, 29 Mei usulan Yamin, 17 Agustus proklamasi.",
@@ -257,7 +257,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-02", set: "bkn", topic: "pancasila",
-    q: "Lima nilai utama Pancasila menurut kisi-kisi BKN adalah ...",
+    q: "Lima nilai utama Pancasila adalah ...",
     o: ["Ketuhanan, kemanusiaan, persatuan, kerakyatan, keadilan sosial", "Religius, nasionalis, mandiri, gotong royong, integritas", "Kejujuran, kedisiplinan, kerja keras, kesederhanaan, kepedulian", "Keimanan, kebangsaan, kekeluargaan, kemandirian, kesejahteraan", "Ketakwaan, kebersamaan, kemerdekaan, kedaulatan, kemakmuran"],
     a: 0,
     e: "Kisi-kisi menyebut nilai utama Pancasila: Ketuhanan, Kemanusiaan, Persatuan, Kerakyatan, dan Keadilan Sosial; pengamalannya membantu menciptakan masyarakat yang harmonis, adil, dan damai. \"Religius, nasionalis, mandiri, gotong royong, integritas\" adalah nilai utama karakter Kemendikbud (PPK), bukan nilai Pancasila.",
@@ -313,7 +313,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-09", set: "bkn", topic: "pancasila",
-    q: "Menurut kisi-kisi BKN, fungsi Pancasila meliputi delapan hal berikut, KECUALI ...",
+    q: "Fungsi Pancasila meliputi delapan hal berikut, KECUALI ...",
     o: ["Pandangan hidup dan dasar negara", "Sumber dari segala sumber hukum", "Jiwa dan kepribadian bangsa Indonesia", "Perjanjian luhur serta cita-cita dan tujuan bangsa", "Alat pemersatu partai politik"],
     a: 4,
     e: "Kisi-kisi memuat delapan fungsi: pandangan hidup, dasar negara, sumber dari segala sumber hukum, jiwa bangsa, kepribadian bangsa, perjanjian luhur, cita-cita dan tujuan bangsa, serta falsafah bangsa. \"Alat pemersatu partai politik\" tidak termasuk.",
@@ -369,7 +369,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-16", set: "bkn", topic: "pancasila",
-    q: "Menurut kisi-kisi BKN, fungsi Pancasila sebagai falsafah hidup bangsa adalah sebagai ...",
+    q: "Fungsi Pancasila sebagai falsafah hidup bangsa adalah sebagai ...",
     o: ["Alat penegakan hukum yang memberi sanksi bagi pelanggar norma sosial", "Pedoman teknis penyusunan anggaran pendapatan dan belanja negara", "Sarana propaganda pemerintah untuk memperoleh dukungan politik rakyat", "Dasar pembentukan kabinet dan pembagian kursi menteri antarpartai", "Pemersatu bangsa karena nilainya dianggap paling bijaksana, adil, dan benar"],
     a: 4,
     e: "Fungsi Pancasila sebagai falsafah hidup bangsa yaitu sebagai pemersatu bangsa Indonesia karena dianggap mempunyai nilai yang paling bijaksana, adil, dan benar.",
@@ -377,7 +377,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-17", set: "bkn", topic: "pancasila",
-    q: "Lima tujuan Pancasila menurut kisi-kisi BKN adalah menghendaki bangsa yang religius dan taat kepada Tuhan YME, adil secara sosial ekonomi, menghargai HAM, demokratis, serta ...",
+    q: "Lima tujuan Pancasila adalah menghendaki bangsa yang religius dan taat kepada Tuhan YME, adil secara sosial ekonomi, menghargai HAM, demokratis, serta ...",
     o: ["Kaya secara materiel", "Nasionalis dan mencintai tanah air Indonesia", "Berkuasa di kawasan Asia", "Bebas dari pengaruh asing sepenuhnya", "Menganut satu agama"],
     a: 1,
     e: "Tujuan Pancasila (1) bangsa yang religius dan taat kepada Tuhan YME, (2) adil secara sosial ekonomi, (3) menghargai HAM, (4) demokratis, (5) nasionalis dan mencintai tanah air Indonesia.",
@@ -425,7 +425,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-23", set: "bkn", topic: "pancasila",
-    q: "Dalam \"esensi pengamalan Pancasila\" pada kisi-kisi BKN, sila keempat dipadankan dengan kata kunci ...",
+    q: "Dalam \"esensi pengamalan Pancasila\", sila keempat dipadankan dengan kata kunci ...",
     o: ["Religion: Tuhan, agama, kepercayaan", "Humanity: HAM, hubungan manusia dengan manusia", "Nationalism: bela negara, rela berkorban, cinta tanah air", "Democracy: pemilu, musyawarah, kekeluargaan", "Justice: seimbang antara hak dan kewajiban"],
     a: 3,
     e: "Kisi-kisi memetakan: sila 1 religion (Tuhan, agama, kepercayaan); sila 2 humanity (HAM, manusia dengan manusia); sila 3 nationalism (bela negara, persatuan, rela berkorban, cinta tanah air); sila 4 democracy (pemilu, musyawarah, kekeluargaan); sila 5 justice (seimbang hak dan kewajiban; manusia, umum, alam, hukum, negara).",
@@ -441,7 +441,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-25", set: "bkn", topic: "pancasila",
-    q: "Ideologi Pancasila menurut kisi-kisi BKN adalah ...",
+    q: "Ideologi Pancasila adalah ...",
     o: ["Himpunan undang-undang yang mengatur tata negara dan lembaga negara", "Doktrin militer untuk mempertahankan negara dari ancaman luar dan dalam", "Ajaran filsafat Barat yang diadopsi Indonesia setelah kemerdekaan", "Sistem ekonomi terpimpin yang ditetapkan pemerintah untuk mengatur pasar", "Pandangan hidup atau sistem nilai dasar yang menjadi landasan negara dan bangsa"],
     a: 4,
     e: "Ideologi Pancasila adalah pandangan hidup atau sistem nilai dasar yang menjadi landasan bagi negara dan seluruh bangsa Indonesia, diakui sebagai ideologi negara dan tercantum dalam Pembukaan UUD 1945.",
@@ -485,7 +485,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-05", set: "bkn", topic: "sejarah",
-    q: "Capaian masa pemerintahan Susilo Bambang Yudhoyono menurut kisi-kisi BKN antara lain berikut ini, KECUALI ...",
+    q: "Capaian masa pemerintahan Susilo Bambang Yudhoyono antara lain berikut ini, KECUALI ...",
     o: ["Indonesia masuk G-20 pada 2009 dan menjadi kekuatan ekonomi nomor 10 dunia 2014 versi Bank Dunia", "Melunasi utang IMF", "Mengakhiri konflik di Aceh", "Penerbitan UU BPJS No. 24 Tahun 2011", "Peluncuran Kartu Indonesia Sehat dan Kartu Indonesia Pintar"],
     a: 4,
     e: "SBY: ekonomi nomor 10 dunia 2014, G-20 2009, lunas utang IMF, akhiri konflik Aceh, revitalisasi KPK (kasus Wisma Atlet/Nazaruddin), UU BPJS 24/2011 (PT Askes menjadi BPJS Kesehatan), serta kasus Hambalang dan Bank Century. KIS dan KIP adalah program masa Joko Widodo.",
@@ -501,7 +501,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-07", set: "bkn", topic: "sejarah",
-    q: "Program kesejahteraan sosial pada masa Presiden Joko Widodo yang disebut kisi-kisi BKN adalah ...",
+    q: "Program kesejahteraan sosial pada masa Presiden Joko Widodo adalah ...",
     o: ["Jaring Pengaman Sosial", "Program Keluarga Berencana", "Inpres Desa Tertinggal", "Kartu Indonesia Sehat (KIS), Kartu Indonesia Pintar (KIP), dan Bantuan Sosial", "Makan Bergizi Gratis"],
     a: 3,
     e: "Jokowi: pembangunan infrastruktur (tol, bandara, pelabuhan), KIS/KIP/Bansos, transformasi digital, dan penanganan pandemi COVID-19. Makan siang/bergizi gratis adalah program Prabowo. Kabinet Jokowi 2014-2019 bernama Kabinet Kerja (soal latihan resmi BKN 2025).",
@@ -509,7 +509,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-08", set: "bkn", topic: "sejarah",
-    q: "Menurut kisi-kisi BKN, Kabinet Merah Putih Presiden Prabowo Subianto terdiri atas ... kementerian, lebih banyak daripada kabinet Jokowi yang berjumlah 34 kementerian.",
+    q: "Kabinet Merah Putih Presiden Prabowo Subianto terdiri atas ... kementerian, lebih banyak daripada kabinet Jokowi yang berjumlah 34 kementerian.",
     o: ["38", "42", "48", "52", "60"],
     a: 2,
     e: "Kabinet Merah Putih terdiri atas 48 kementerian (dari 34 pada era Jokowi) karena pemecahan sejumlah kementerian (contoh di luar kisi-kisi: Kemenkumham menjadi Kementerian Hukum, Kementerian HAM, dan Kementerian Imigrasi dan Pemasyarakatan; UU 61/2024 menghapus batas 34 kementerian).",
@@ -517,7 +517,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-09", set: "bkn", topic: "sejarah",
-    q: "Program Makan Siang/Bergizi Gratis pada masa Prabowo menurut kisi-kisi BKN ditargetkan kepada ...",
+    q: "Program Makan Siang/Bergizi Gratis pada masa Prabowo ditargetkan kepada ...",
     o: ["Seluruh pegawai negeri sipil", "1 juta lansia di panti", "Mahasiswa perguruan tinggi negeri", "Pekerja migran Indonesia", "Lebih dari 3 juta anak Indonesia di sekolah maupun pesantren hingga April 2025"],
     a: 4,
     e: "Prabowo: penataan Kabinet Merah Putih 48 kementerian; diplomasi di forum internasional (Shangri-La Dialogue, KTT APEC, KTT G20); program makan siang gratis untuk >3 juta anak hingga April 2025; serta aksi \"Revolusi Rakyat Indonesia\" 25 Agustus 2025 di depan Gedung MPR/DPR/DPD yang menyoroti tunjangan anggota DPR Rp50 juta per bulan.",
@@ -549,7 +549,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-13", set: "bkn", topic: "sejarah",
-    q: "Amendemen UUD 1945 yang menegaskan Indonesia sebagai negara hukum dan kedaulatan berada di tangan rakyat disebut kisi-kisi BKN sebagai reformasi hukum pada masa ...",
+    q: "Amendemen UUD 1945 yang menegaskan Indonesia sebagai negara hukum dan kedaulatan berada di tangan rakyat merupakan kebijakan reformasi hukum pada masa ...",
     o: ["B.J. Habibie", "Abdurrahman Wahid", "Megawati Soekarnoputri", "Susilo Bambang Yudhoyono", "Joko Widodo"],
     a: 2,
     e: "Kisi-kisi menempatkan amendemen UUD 1945 (negara hukum, kedaulatan rakyat) pada masa Megawati; secara kronologis perubahan ketiga (2001) dan keempat (2002) memang terjadi pada masa pemerintahan Megawati, sedangkan perubahan pertama (1999) pada masa Habibie dan kedua (2000) pada masa Gus Dur.",
@@ -557,7 +557,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-14", set: "bkn", topic: "sejarah",
-    q: "Kasus-kasus hukum besar yang disebut kisi-kisi BKN pada masa SBY antara lain ...",
+    q: "Kasus-kasus hukum besar pada masa SBY antara lain ...",
     o: ["Kasus e-KTP", "Kasus BLBI", "Kasus Bank Bali", "Kasus Jiwasraya dan Asabri", "Kasus Wisma Atlet (Nazaruddin), mega proyek Hambalang, dan penyelamatan Bank Century"],
     a: 4,
     e: "Revitalisasi KPK dengan pembongkaran kasus suap Kemenpora Wafid Muharram/Wisma Atlet (Nazaruddin), mega proyek Hambalang, dan kasus penyelamatan Bank Century.",
@@ -585,7 +585,7 @@ window.BANK.uud.push(
   },
   {
     id: "bkn-uud-03", set: "bkn", topic: "uud",
-    q: "Menurut kisi-kisi BKN, setelah empat kali perubahan (1999-2002) UUD 1945 memiliki 16 bab, 37 pasal, ... ayat, 3 pasal aturan peralihan, dan 2 pasal aturan tambahan.",
+    q: "Setelah empat kali perubahan (1999-2002) UUD 1945 memiliki 16 bab, 37 pasal, ... ayat, 3 pasal aturan peralihan, dan 2 pasal aturan tambahan.",
     o: ["37", "65", "73", "170", "194"],
     a: 4,
     e: "Kisi-kisi menulis 194 ayat. Catatan pembanding: banyak sumber lain menghitung 73 pasal dan 170 ayat (menghitung pasal tambahan seperti 6A, 7A, 22C, 28A-28J sebagai pasal tersendiri); kisi-kisi BKN menghitung nomor pasal 1-37 tetap 37. Untuk ujian yang soalnya disusun BKN, gunakan angka kisi-kisi BKN: 16 bab, 37 pasal, 194 ayat.",
@@ -601,7 +601,7 @@ window.BANK.uud.push(
   },
   {
     id: "bkn-uud-05", set: "bkn", topic: "uud",
-    q: "Dasar pemikiran yang melatarbelakangi perubahan UUD 1945 menurut kisi-kisi BKN adalah berikut ini, KECUALI ...",
+    q: "Dasar pemikiran yang melatarbelakangi perubahan UUD 1945 adalah berikut ini, KECUALI ...",
     o: ["UUD 1945 memberikan kekuasaan yang sangat besar kepada Presiden (eksekutif dan legislatif)", "UUD 1945 mengandung pasal-pasal yang terlalu fleksibel sehingga menimbulkan multitafsir", "Penjelasan UUD 1945 sering diperlakukan mempunyai kekuatan hukum seperti pasal", "UUD 1945 dianggap terlalu panjang dan rinci", "Semua pilihan di atas merupakan dasar pemikiran perubahan"],
     a: 3,
     e: "Kisi-kisi menyebut tiga dasar pemikiran: kekuasaan Presiden yang sangat besar, pasal yang terlalu fleksibel (multitafsir), dan kedudukan Penjelasan yang diperlakukan seperti batang tubuh. \"Terlalu panjang dan rinci\" justru kebalikannya (naskah asli hanya 37 pasal).",
@@ -617,7 +617,7 @@ window.BANK.uud.push(
   },
   {
     id: "bkn-uud-07", set: "bkn", topic: "uud",
-    q: "Makna alinea kedua Pembukaan UUD 1945 menurut kisi-kisi BKN adalah ...",
+    q: "Makna alinea kedua Pembukaan UUD 1945 adalah ...",
     o: ["Kemerdekaan Indonesia merupakan berkat rahmat Allah dan dorongan keinginan luhur", "Tujuan negara, bentuk UUD, kedaulatan rakyat, dan dasar negara Pancasila", "Asas politik luar negeri bebas aktif dan ikut melaksanakan ketertiban dunia", "Kemerdekaan adalah hak segala bangsa sehingga penjajahan harus dihapuskan", "Kemerdekaan adalah langkah awal menuju negara merdeka, bersatu, berdaulat, adil, makmur"],
     a: 4,
     e: "Alinea I = hak kodrat kemerdekaan dan penghapusan penjajahan; alinea II = kemerdekaan sebagai langkah awal menuju merdeka, bersatu, berdaulat, adil, makmur; alinea III = kemerdekaan didorong nilai luhur dan berkat rahmat Allah; alinea IV = tujuan negara, UUD, kedaulatan rakyat, Pancasila, politik bebas aktif.",
@@ -721,7 +721,7 @@ window.BANK.uud.push(
   },
   {
     id: "bkn-uud-20", set: "bkn", topic: "uud",
-    q: "Lembaga negara yang ada SEBELUM amendemen UUD 1945 menurut kisi-kisi BKN adalah ...",
+    q: "Lembaga negara yang ada SEBELUM amendemen UUD 1945 adalah ...",
     o: ["DPR, DPD, Presiden, MA, MK", "MPR, Presiden, MA, BPK, KPU", "MPR, DPR, DPD, Presiden, MA, MK, KY, BPK", "MPR, DPR, DPA, MA, Presiden, BPK", "MPR, DPR, Presiden, MA, KY"],
     a: 3,
     e: "Sebelum amendemen: MPR, DPR, DPA, MA, Presiden, BPK (MPR sebagai lembaga tertinggi). Setelah amendemen: MPR, DPR, DPD, Presiden, MA, MK, KY, BPK yang dikelompokkan sebagai legislatif (membuat UU), eksekutif (melaksanakan UU), yudikatif (mengawasi jalannya UU), dan eksaminatif (pemeriksa keuangan negara).",
@@ -729,7 +729,7 @@ window.BANK.uud.push(
   },
   {
     id: "bkn-uud-21", set: "bkn", topic: "uud",
-    q: "Dalam kisi-kisi BKN, BPK dikelompokkan sebagai lembaga ...",
+    q: "BPK dikelompokkan sebagai lembaga ...",
     o: ["Legislatif", "Eksekutif", "Yudikatif", "Eksaminatif", "Konsultatif"],
     a: 3,
     e: "Lembaga eksaminatif adalah pemeriksa keuangan negara (BPK). Legislatif membuat UU (MPR, DPR, DPD), eksekutif melaksanakan UU (Presiden), yudikatif mengawasi jalannya UU (MA, MK, KY).",

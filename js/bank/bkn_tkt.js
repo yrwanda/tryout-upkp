@@ -4,7 +4,7 @@ window.BANK.gg = window.BANK.gg || [];
 window.BANK.gg.push(
   {
     id: "bkn-gg-01", set: "bkn", topic: "gg",
-    q: "Regulasi yang menjadi acuan materi Tata Kelola Pemerintahan yang Baik dalam kisi-kisi BKN adalah ...",
+    q: "Regulasi yang menjadi acuan materi Tata Kelola Pemerintahan yang Baik adalah ...",
     o: ["Perpres No. 81 Tahun 2010 tentang Grand Design Reformasi Birokrasi 2010-2025", "UU No. 30 Tahun 2014", "PP No. 60 Tahun 2008", "PermenPANRB No. 90 Tahun 2021", "Perpres No. 29 Tahun 2014"],
     a: 0,
     e: "Materi good governance mencakup Perpres 81/2010 (Grand Design RB 2010-2025), prinsip dasar good governance, tujuan reformasi birokrasi, dan sasaran reformasi birokrasi.",
@@ -12,7 +12,7 @@ window.BANK.gg.push(
   },
   {
     id: "bkn-gg-02", set: "bkn", topic: "gg",
-    q: "Good governance menurut kisi-kisi BKN dapat diartikan sebagai berikut, KECUALI ...",
+    q: "Good governance dapat diartikan sebagai berikut, KECUALI ...",
     o: ["Tata kepemerintahan yang baik", "Pengelolaan kepemerintahan yang baik", "Penyelenggaraan pemerintahan yang bersih, demokratis, dan efektif", "Penyelenggaraan pemerintahan yang baik", "Pemerintahan yang dikuasai satu partai secara tertutup"],
     a: 4,
     e: "Good governance = tata kepemerintahan yang baik; pengelolaan kepemerintahan yang baik; penyelenggaraan pemerintahan yang baik; penyelenggaraan pemerintahan yang bersih, demokratis, dan efektif. Pemerintahan tertutup satu partai bertentangan dengan prinsip partisipasi dan transparansi.",
@@ -36,7 +36,7 @@ window.BANK.gg.push(
   },
   {
     id: "bkn-gg-05", set: "bkn", topic: "gg",
-    q: "Sembilan karakteristik good governance menurut kisi-kisi BKN meliputi partisipasi, kepastian hukum, transparansi, tanggung jawab, keadilan, efektivitas dan efisiensi, akuntabilitas, visi strategik, dan ...",
+    q: "Sembilan karakteristik good governance meliputi partisipasi, kepastian hukum, transparansi, tanggung jawab, keadilan, efektivitas dan efisiensi, akuntabilitas, visi strategik, dan ...",
     o: ["Berorientasi pada kesepakatan (konsensus)", "Sentralisasi", "Kerahasiaan", "Loyalitas", "Senioritas"],
     a: 0,
     e: "Mengikuti UNDP: partisipasi, kepastian hukum (rule of law), transparansi, tanggung jawab (responsiveness), keadilan (equity), efektivitas dan efisiensi, akuntabilitas, visi strategik, dan berorientasi pada kesepakatan (consensus orientation).",
@@ -52,7 +52,7 @@ window.BANK.gg.push(
   },
   {
     id: "bkn-gg-07", set: "bkn", topic: "gg",
-    q: "Karakteristik good governance \"kepastian hukum\" menurut kisi-kisi BKN berarti ...",
+    q: "Karakteristik good governance \"kepastian hukum\" berarti ...",
     o: ["Kerangka hukum harus adil dan dilaksanakan tanpa pandang bulu, terutama hukum HAM", "Setiap kebijakan pemerintah harus mendapat persetujuan DPR sebelum diberlakukan", "Hukum hanya berlaku bagi warga negara, tidak bagi orang asing yang berada di Indonesia", "Aturan dapat diubah sewaktu-waktu oleh pejabat sesuai kebutuhan situasi", "Hukum adat menggantikan hukum negara dalam menyelesaikan sengketa masyarakat"],
     a: 0,
     e: "Kepastian hukum (rule of law) - kerangka hukum harus adil dan dilaksanakan tanpa pandang bulu, terutama hukum untuk hak asasi manusia.",
@@ -88,7 +88,7 @@ window.BANK.kebijakan = window.BANK.kebijakan || [];
 window.BANK.kebijakan.push(
   {
     id: "bkn-kbj-01", set: "bkn", topic: "kebijakan",
-    q: "Peraturan yang menjadi acuan materi Kebijakan Publik dalam kisi-kisi BKN adalah ...",
+    q: "Peraturan yang menjadi acuan materi Kebijakan Publik adalah ...",
     o: ["Per. MenPAN No. PER/04/M.PAN/4/2007 tentang Pedoman Umum Kebijakan Publik", "UU No. 12 Tahun 2011 tentang Pembentukan Peraturan Perundang-undangan", "Perpres No. 81 Tahun 2010 tentang Grand Design Reformasi Birokrasi 2010-2025", "PP No. 11 Tahun 2017 tentang Manajemen Pegawai Negeri Sipil", "Permenimipas No. 11 Tahun 2025 tentang Rencana Strategis Kemenimipas 2025-2029"],
     a: 0,
     e: "Per. MenPAN PER/04/M.PAN/4/2007 mengatur prinsip penyusunan kebijakan publik, bentuk kebijakan publik, dan proses kebijakan publik (formulasi, implementasi, evaluasi kinerja, revisi).",
@@ -96,7 +96,7 @@ window.BANK.kebijakan.push(
   },
   {
     id: "bkn-kbj-02", set: "bkn", topic: "kebijakan",
-    q: "Kebijakan publik menurut kisi-kisi BKN adalah ...",
+    q: "Kebijakan publik adalah ...",
     o: ["Tindakan pemerintah dalam hubungannya dengan masyarakat dan dunia usaha demi kepentingan publik", "Keputusan pribadi pejabat untuk kepentingan instansinya dan unit kerja yang dipimpinnya", "Aturan internal perusahaan swasta yang mengikat seluruh karyawan dan mitra usahanya", "Kesepakatan antarpartai politik mengenai pembagian kekuasaan di lembaga negara", "Putusan pengadilan yang telah berkekuatan hukum tetap dan mengikat para pihak"],
     a: 0,
     e: "Kebijakan = prinsip atau cara bertindak yang dipilih untuk mengarahkan pengambilan keputusan (Mustari, 2015); kebijakan publik = tindakan pemerintah untuk menjalankan tugas dan fungsinya dalam hubungannya dengan masyarakat dan dunia usaha yang berorientasi pada kepentingan publik.",
@@ -136,7 +136,7 @@ window.BANK.kebijakan.push(
   },
   {
     id: "bkn-kbj-07", set: "bkn", topic: "kebijakan",
-    q: "Contoh kebijakan publik dalam kisi-kisi BKN: penetapan Harga Eceran Tertinggi (HET) minyak goreng tertuang dalam ...",
+    q: "Contoh kebijakan publik: penetapan Harga Eceran Tertinggi (HET) minyak goreng tertuang dalam ...",
     o: ["Peraturan Menteri Perdagangan", "Instruksi Menteri Dalam Negeri", "Peraturan Presiden", "Undang-Undang", "Peraturan Daerah"],
     a: 0,
     e: "HET minyak goreng ditetapkan melalui Peraturan Menteri Perdagangan (respons atas kenaikan harga kelapa sawit); PPKM saat COVID-19 tertuang dalam Instruksi Menteri Dalam Negeri; Program JKN dilaksanakan melalui kartu BPJS Kesehatan dengan tantangan pemerataan akses dan kualitas layanan di seluruh wilayah Indonesia.",
@@ -172,7 +172,7 @@ window.BANK.kepegawaian = window.BANK.kepegawaian || [];
 window.BANK.kepegawaian.push(
   {
     id: "bkn-keg-01", set: "bkn", topic: "kepegawaian",
-    q: "Menurut kisi-kisi BKN, regulasi yang menjadi acuan materi Peraturan Kepegawaian antara lain berikut ini, KECUALI ...",
+    q: "Regulasi yang menjadi acuan materi Peraturan Kepegawaian antara lain berikut ini, KECUALI ...",
     o: ["UU No. 20 Tahun 2023 tentang ASN", "PP No. 11 Tahun 2017 dan PP No. 17 Tahun 2020 tentang Manajemen PNS", "PP No. 94 Tahun 2021 tentang Disiplin PNS", "Peraturan BKN No. 24 Tahun 2017 tentang Cuti", "UU No. 25 Tahun 2009 tentang Pelayanan Publik"],
     a: 4,
     e: "Kisi-kisi mencantumkan UU 20/2023, PP 11/2017 jo. 17/2020, PP 94/2021, Per BKN 24/2017 (cuti), Keppres 24/2010 (KORPRI), dan Keputusan Munas VIII KORPRI, dengan cakupan: larangan, kewajiban, fungsi ASN, disiplin, cuti, mutasi, pola dan pengembangan karier, lembaga dalam UU 20/2023, serta kedudukan-kepengurusan-fungsi-doktrin-lambang KORPRI. UU 25/2009 masuk materi Pelayanan Publik.",
@@ -196,7 +196,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-04", set: "bkn", topic: "kepegawaian",
-    q: "Kedudukan Pegawai ASN menurut kisi-kisi BKN adalah sebagai ...",
+    q: "Kedudukan Pegawai ASN adalah sebagai ...",
     o: ["Unsur aparatur negara yang bebas dari pengaruh dan intervensi golongan serta partai politik", "Anggota partai politik yang berkuasa dan menjalankan program partai di pemerintahan", "Pegawai kontrak lembaga swasta yang diperbantukan pada instansi pemerintah", "Pejabat negara yang dipilih rakyat melalui pemilihan umum secara langsung", "Wakil rakyat di lembaga legislatif yang mengawasi jalannya pemerintahan"],
     a: 0,
     e: "Pegawai ASN memiliki NIP, berkedudukan sebagai unsur aparatur negara, melaksanakan kebijakan yang ditetapkan pimpinan instansi pemerintah, bebas dari pengaruh dan intervensi semua golongan dan partai politik, memegang teguh Pancasila dan UUD 1945, serta setia kepada NKRI dan pemerintahan yang sah.",
@@ -220,7 +220,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-07", set: "bkn", topic: "kepegawaian",
-    q: "Jenis jabatan ASN menurut kisi-kisi BKN (UU No. 20 Tahun 2023) terdiri atas tujuh jabatan berikut, KECUALI ...",
+    q: "Jenis jabatan ASN (UU No. 20 Tahun 2023) terdiri atas tujuh jabatan berikut, KECUALI ...",
     o: ["Jabatan fungsional dan jabatan pelaksana", "Jabatan pimpinan tinggi utama, madya, dan pratama", "Jabatan administrator", "Jabatan pengawas", "Jabatan struktural eselon V"],
     a: 4,
     e: "Jabatan fungsional, jabatan pelaksana, JPT utama, JPT madya, JPT pratama, jabatan administrator, dan jabatan pengawas. Eselon V tidak ada lagi dalam UU 20/2023 (jabatan pengawas setara eselon IV, dan banyak instansi telah menghapusnya melalui penyederhanaan birokrasi).",
@@ -228,7 +228,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-08", set: "bkn", topic: "kepegawaian",
-    q: "Kewajiban ASN menurut kisi-kisi BKN antara lain berikut ini, KECUALI ...",
+    q: "Kewajiban ASN antara lain berikut ini, KECUALI ...",
     o: ["Setia dan taat pada Pancasila, UUD 1945, NKRI, dan pemerintah yang sah", "Menjaga persatuan dan kesatuan bangsa", "Menyimpan rahasia jabatan", "Bersedia ditempatkan di seluruh wilayah NKRI", "Menjadi anggota partai politik untuk memperjuangkan aspirasi rakyat"],
     a: 4,
     e: "Bersumber PP 94/2021 Pasal 3: setia dan taat; menjaga persatuan; melaksanakan kebijakan pejabat berwenang; menaati peraturan; melaksanakan tugas dengan pengabdian, kejujuran, kesadaran, tanggung jawab; integritas dan keteladanan di dalam maupun luar kedinasan; menyimpan rahasia jabatan; bersedia ditempatkan di seluruh NKRI. Menjadi anggota parpol justru dilarang dan menyebabkan pemberhentian.",
@@ -236,7 +236,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-09", set: "bkn", topic: "kepegawaian",
-    q: "Hak ASN menurut kisi-kisi BKN (UU No. 20 Tahun 2023) meliputi tujuh komponen berikut, KECUALI ...",
+    q: "Hak ASN (UU No. 20 Tahun 2023) meliputi tujuh komponen berikut, KECUALI ...",
     o: ["Penghasilan dan penghargaan yang bersifat motivasi", "Tunjangan dan fasilitas", "Jaminan sosial dan lingkungan kerja", "Pengembangan diri dan bantuan hukum", "Kepemilikan saham badan usaha milik negara"],
     a: 4,
     e: "Penghasilan; penghargaan yang bersifat motivasi; tunjangan dan fasilitas; jaminan sosial; lingkungan kerja; pengembangan diri; dan bantuan hukum (Pasal 21 UU 20/2023).",
@@ -244,7 +244,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-10", set: "bkn", topic: "kepegawaian",
-    q: "Manajemen ASN menurut kisi-kisi BKN adalah pengelolaan ASN untuk menghasilkan Pegawai ASN yang ...",
+    q: "Manajemen ASN adalah pengelolaan ASN untuk menghasilkan Pegawai ASN yang ...",
     o: ["Profesional, bernilai dasar, beretika profesi, bebas intervensi politik, bersih dari KKN", "Loyal kepada partai penguasa dan siap menjalankan agenda politik pemerintah", "Sejahtera secara ekonomi dengan penghasilan setara pegawai badan usaha", "Berpangkat tinggi dalam waktu singkat melalui kenaikan pangkat reguler", "Mahir teknologi informasi dan mampu bekerja jarak jauh dari mana saja"],
     a: 0,
     e: "Manajemen ASN adalah pengelolaan ASN untuk menghasilkan Pegawai ASN yang profesional, memiliki nilai dasar, etika profesi, bebas dari intervensi politik, bersih dari praktik korupsi, kolusi, dan nepotisme. Soal latihan resmi BKN 2025 memakai rumusan yang sama dengan jawaban \"manajemen PNS\".",
@@ -252,7 +252,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-11", set: "bkn", topic: "kepegawaian",
-    q: "Delapan komponen Manajemen ASN menurut kisi-kisi BKN (UU No. 20 Tahun 2023) adalah perencanaan kebutuhan, pengadaan, penguatan budaya kerja dan citra institusi, pengelolaan kinerja, pengembangan talenta dan karier, pengembangan kompetensi, pemberian penghargaan dan pengakuan, serta ...",
+    q: "Delapan komponen Manajemen ASN (UU No. 20 Tahun 2023) adalah perencanaan kebutuhan, pengadaan, penguatan budaya kerja dan citra institusi, pengelolaan kinerja, pengembangan talenta dan karier, pengembangan kompetensi, pemberian penghargaan dan pengakuan, serta ...",
     o: ["Pemberhentian", "Pemilihan umum", "Pengawasan eksternal", "Penyusunan APBN", "Pembinaan partai politik"],
     a: 0,
     e: "Kisi-kisi memuat 8 komponen sesuai Pasal 31 UU 20/2023, diakhiri dengan pemberhentian. Bandingkan manajemen PNS versi UU 5/2014/PP 11/2017 (14 komponen: penyusunan kebutuhan, pengadaan, pangkat dan jabatan, pengembangan karier, pola karier, promosi, mutasi, penilaian kinerja, penggajian dan tunjangan, penghargaan, disiplin, pemberhentian, jaminan pensiun dan hari tua, perlindungan). Soal latihan resmi BKN 2025: yang tidak termasuk manajemen PNS adalah \"peningkatan pendidikan\".",
@@ -260,7 +260,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-12", set: "bkn", topic: "kepegawaian",
-    q: "Menurut PP No. 94 Tahun 2021 sebagaimana dirangkum kisi-kisi BKN, hukuman disiplin tingkat sedang berupa pemotongan tunjangan kinerja sebesar ...",
+    q: "Menurut PP No. 94 Tahun 2021, hukuman disiplin tingkat sedang berupa pemotongan tunjangan kinerja sebesar ...",
     o: ["10% selama 3, 6, atau 9 bulan", "25% selama 6, 9, atau 12 bulan", "50% selama 6 bulan", "25% selama 1, 2, atau 3 bulan", "100% selama 1 bulan"],
     a: 1,
     e: "Ringan = teguran lisan, teguran tertulis, pernyataan tidak puas tertulis; sedang = pemotongan tukin 25% selama 6, 9, atau 12 bulan; berat = penurunan setingkat lebih rendah selama 12 bulan, pembebasan dari jabatan menjadi pelaksana 12 bulan, pemberhentian dengan hormat tidak atas permintaan sendiri. Catatan: kisi-kisi BKN menulis \"penurunan pangkat\"; teks PP 94/2021 Pasal 8 ayat (4) berbunyi \"penurunan jabatan setingkat lebih rendah\".",
@@ -276,7 +276,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-14", set: "bkn", topic: "kepegawaian",
-    q: "Bentuk penghargaan bagi PNS menurut kisi-kisi BKN antara lain ...",
+    q: "Bentuk penghargaan bagi PNS antara lain ...",
     o: ["Tanda kehormatan, kenaikan pangkat istimewa, dan prioritas pengembangan kompetensi", "Bonus tahunan sebesar dua kali gaji pokok dan tunjangan kinerja tambahan", "Kendaraan dinas pribadi yang menjadi hak milik setelah masa pensiun", "Rumah dinas permanen yang dapat diwariskan kepada ahli waris pegawai", "Pembebasan pajak penghasilan dan iuran jaminan kesehatan seumur hidup"],
     a: 0,
     e: "PP 11/2017 Pasal 231: penghargaan berupa tanda kehormatan, kenaikan pangkat istimewa, kesempatan prioritas untuk pengembangan kompetensi, dan kesempatan menghadiri acara resmi dan/atau acara kenegaraan.",
@@ -284,7 +284,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-15", set: "bkn", topic: "kepegawaian",
-    q: "Empat jenis kenaikan pangkat PNS menurut kisi-kisi BKN adalah ...",
+    q: "Empat jenis kenaikan pangkat PNS adalah ...",
     o: ["Reguler, pilihan, anumerta, dan pengabdian", "Reguler, istimewa, luar biasa, dan pensiun", "Otomatis, prestasi, jabatan, dan ijazah", "Berkala, pilihan, khusus, dan darurat", "Reguler, fungsional, struktural, dan pengabdian"],
     a: 0,
     e: "Kenaikan pangkat reguler, pilihan, anumerta, dan pengabdian. Kenaikan pangkat penyesuaian ijazah (UPKP) termasuk kenaikan pangkat pilihan. Kenaikan pangkat istimewa disebut sebagai bentuk penghargaan.",
@@ -292,7 +292,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-16", set: "bkn", topic: "kepegawaian",
-    q: "Tujuh jenis cuti PNS menurut kisi-kisi BKN (Peraturan BKN No. 24 Tahun 2017) adalah cuti tahunan, cuti besar, cuti sakit, cuti melahirkan, cuti karena alasan penting, cuti bersama, dan ...",
+    q: "Tujuh jenis cuti PNS (Peraturan BKN No. 24 Tahun 2017) adalah cuti tahunan, cuti besar, cuti sakit, cuti melahirkan, cuti karena alasan penting, cuti bersama, dan ...",
     o: ["Cuti haji", "Cuti di luar tanggungan negara", "Cuti pendidikan", "Cuti menikah", "Cuti bencana"],
     a: 1,
     e: "Cuti tahunan (permintaan tertulis kepada PPK, 12 hari), cuti besar (5 tahun bekerja, 3 bulan), cuti sakit (surat dokter, maksimal 1 tahun ditambah 6 bulan dengan keterangan tim penguji kesehatan), cuti melahirkan (anak ke-1 s.d. ke-3; anak ke-4 dst. memakai cuti besar), cuti karena alasan penting (paling lama 1 bulan), cuti di luar tanggungan negara (5 tahun bekerja, paling lama 3 tahun), cuti bersama (Keputusan Presiden).",
@@ -308,7 +308,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-18", set: "bkn", topic: "kepegawaian",
-    q: "Cuti sakit menurut kisi-kisi BKN diberikan berdasarkan surat keterangan dokter untuk paling lama ...",
+    q: "Cuti sakit diberikan berdasarkan surat keterangan dokter untuk paling lama ...",
     o: ["3 bulan, dapat diperpanjang 3 bulan atas persetujuan atasan langsung", "6 bulan, dapat diperpanjang 6 bulan dengan surat keterangan dokter", "1 tahun, dapat ditambah paling lama 6 bulan atas keterangan tim penguji kesehatan", "2 tahun tanpa syarat tambahan selama surat keterangan dokter masih berlaku", "Tidak dibatasi selama PNS masih dinyatakan sakit oleh dokter yang merawat"],
     a: 2,
     e: "Cuti sakit - surat dokter, maksimal 1 tahun, dapat ditambah 6 bulan apabila diperlukan berdasarkan surat keterangan tim penguji kesehatan; jika belum sembuh, PNS diuji kembali kesehatannya dan dapat diberhentikan dengan hormat jika tidak cakap jasmani/rohani.",
@@ -332,7 +332,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-21", set: "bkn", topic: "kepegawaian",
-    q: "Dasar hukum KORPRI yang disebut kisi-kisi BKN adalah ...",
+    q: "Dasar hukum KORPRI adalah ...",
     o: ["Keppres No. 24 Tahun 2010 dan Keputusan Munas VIII KORPRI", "PP No. 94 Tahun 2021", "UU No. 25 Tahun 2009", "Perpres No. 81 Tahun 2010", "Keppres No. 82 Tahun 1971 saja"],
     a: 0,
     e: "Keppres No. 24 Tahun 2010 (tentang pengesahan AD/ART KORPRI) dan Keputusan Munas VIII KORPRI. Keppres 82/1971 adalah dasar pembentukan KORPRI pada 29 November 1971 yang kini diperingati sebagai HUT KORPRI.",
@@ -348,7 +348,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-23", set: "bkn", topic: "kepegawaian",
-    q: "Fungsi KORPRI menurut kisi-kisi BKN antara lain berikut ini, KECUALI ...",
+    q: "Fungsi KORPRI antara lain berikut ini, KECUALI ...",
     o: ["Pembinaan dan pengembangan profesi ASN", "Perlindungan hukum dan advokasi kepada anggota atas dugaan pelanggaran Sistem Merit dan masalah hukum dalam tugas", "Usaha peningkatan kesejahteraan anggota sesuai ketentuan", "Rekomendasi kepada majelis kode etik instansi atas pelanggaran kode etik dan kode perilaku profesi", "Menetapkan kenaikan pangkat dan mutasi anggota"],
     a: 4,
     e: "Empat fungsi KORPRI (pembinaan profesi; perlindungan hukum dan advokasi; peningkatan kesejahteraan; rekomendasi kepada majelis kode etik). Tujuan: menjaga kode etik profesi dan standar pelayanan profesi ASN serta mewujudkan jiwa korps ASN sebagai pemersatu bangsa. Kenaikan pangkat dan mutasi adalah kewenangan PPK, bukan KORPRI.",
@@ -364,7 +364,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-25", set: "bkn", topic: "kepegawaian",
-    q: "Keanggotaan KORPRI menurut kisi-kisi BKN terdiri atas ...",
+    q: "Keanggotaan KORPRI terdiri atas ...",
     o: ["Anggota kehormatan, anggota biasa, dan anggota luar biasa", "Anggota tetap dan anggota tidak tetap", "Anggota pusat dan anggota daerah", "Anggota aktif dan anggota pasif", "Anggota PNS dan anggota PPPK saja"],
     a: 0,
     e: "Anggota kehormatan (penasihat KORPRI, dipilih selektif dan ditetapkan Dewan Pengurus Nasional); anggota biasa (PNS, pegawai BUMN, BUMD, LPP RI, BLU/BLUD, Badan Otorita/Pengelola KEK, aparatur pemerintah desa); anggota luar biasa (pensiunan anggota biasa). Soal latihan resmi BKN 2025: yang bukan anggota KORPRI adalah pegawai RS Siloam (swasta); pegawai Pertamina (BUMN) dan camat (PNS) termasuk anggota.",
@@ -416,7 +416,7 @@ window.BANK.yanlik = window.BANK.yanlik || [];
 window.BANK.yanlik.push(
   {
     id: "bkn-yan-01", set: "bkn", topic: "yanlik",
-    q: "Dua regulasi yang menjadi acuan materi Pelayanan Publik dalam kisi-kisi BKN adalah ...",
+    q: "Dua regulasi yang menjadi acuan materi Pelayanan Publik adalah ...",
     o: ["UU No. 25 Tahun 2009 dan Kep. MenPAN No. 63 Tahun 2003 tentang Pedoman Umum Penyelenggaraan Pelayanan Publik", "UU No. 30 Tahun 2014 dan PP No. 96 Tahun 2012", "UU No. 37 Tahun 2008 dan PermenPANRB No. 15 Tahun 2014", "UU No. 14 Tahun 2008 dan Perpres No. 76 Tahun 2013", "UU No. 23 Tahun 2014 dan PermenPANRB No. 14 Tahun 2017"],
     a: 0,
     e: "(1) UU No. 25 Tahun 2009 tentang Pelayanan Publik dan (2) Kep. MENPAN No. 63/KEP/M.PAN/7/2003 tentang Pedoman Umum Penyelenggaraan Pelayanan Publik (memuat prinsip: kesederhanaan, kejelasan, kepastian waktu, akurasi, keamanan, tanggung jawab, kelengkapan sarana, kemudahan akses, kedisiplinan-kesopanan-keramahan, kenyamanan).",
@@ -432,7 +432,7 @@ window.BANK.yanlik.push(
   },
   {
     id: "bkn-yan-03", set: "bkn", topic: "yanlik",
-    q: "Dalam organisasi penyelenggara pelayanan publik menurut kisi-kisi BKN, perumus kebijakan nasional pelayanan publik adalah ...",
+    q: "Dalam organisasi penyelenggara pelayanan publik, perumus kebijakan nasional pelayanan publik adalah ...",
     o: ["Ombudsman Republik Indonesia", "Menteri yang bertanggung jawab di bidang pendayagunaan aparatur negara", "Gubernur, bupati, dan wali kota", "Presiden secara langsung", "Dewan Perwakilan Rakyat"],
     a: 1,
     e: "Penyelenggara/pelaksana = institusi pemerintah/penyelenggara negara; pembina = pimpinan lembaga negara/kementerian/instansi pusat, gubernur, bupati, wali kota; perumus kebijakan nasional = Menteri PANRB; pengawas penyelenggaraan = Ombudsman (Pasal 6-7 dan 46 UU 25/2009).",
@@ -448,7 +448,7 @@ window.BANK.yanlik.push(
   },
   {
     id: "bkn-yan-05", set: "bkn", topic: "yanlik",
-    q: "Lembaga yang berperan sebagai pengawas penyelenggaraan pelayanan publik menurut kisi-kisi BKN adalah ...",
+    q: "Lembaga yang berperan sebagai pengawas penyelenggaraan pelayanan publik adalah ...",
     o: ["Badan Pemeriksa Keuangan", "Ombudsman", "Komisi Aparatur Sipil Negara", "Inspektorat Jenderal", "Badan Kepegawaian Negara"],
     a: 1,
     e: "Ombudsman mengawasi penyelenggaraan pelayanan publik (UU 37/2008; UU 25/2009 Pasal 46). Pengawasan internal dilakukan atasan langsung dan pengawas fungsional (Itjen), pengawasan eksternal oleh masyarakat, Ombudsman, dan DPR/DPRD (Pasal 35).",

@@ -45,7 +45,7 @@ Simulasi bergaya CAT BKN (mengikuti pemberitaan Kompas 2019 dan Liputan6 2022 te
 - Batasan yang tersisa: origin `yrwanda.github.io` dipakai bersama semua repo GitHub Pages milik akun ini (localStorage ikut terbagi); GitHub Pages tidak bisa mengirim header keamanan seperti `frame-ancestors`.
 
 ## Menambah soal
-Tambahkan soal ke berkas `js/bank/bkn_*.js` (pola `window.BANK.<topik>.push({...})`, `set: "bkn"`, rujukan "Kisi-kisi BKN hal. X" di `src` saja, jangan diulang di pembahasan `e` karena halamannya sudah tampil di label soal dan baris Rujukan; berkas baru juga didaftarkan di `index.html` dan `sw.js`). Lalu:
+Tambahkan soal ke berkas `js/bank/bkn_*.js` (pola `window.BANK.<topik>.push({...})`, `set: "bkn"`, rujukan "Kisi-kisi BKN hal. X" di `src` saja, jangan diulang di pembahasan `e` karena halamannya sudah tampil di label soal dan baris Rujukan; teks soal `q` juga tidak memakai frasa "menurut kisi-kisi BKN"; berkas baru juga didaftarkan di `index.html` dan `sw.js`). Lalu:
 1. `node tools/rebalance.js .` menyeimbangkan posisi kunci A-E (kecuali `bkn_form.js` dan pilihan berurutan seperti Pertama-Kelima / angka / Romawi). Argumen ketiga opsional: JSON `{id:{o,a}}` untuk menimpa opsi.
 2. `node tools/validate.js .` memeriksa struktur, opsi ganda, kuota per topik, dan jawaban benar yang jauh lebih panjang dari pengecoh.
 3. Naikkan `VERSION` di `sw.js` dan `?v=` di `index.html`.

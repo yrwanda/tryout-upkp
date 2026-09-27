@@ -8,7 +8,7 @@ window.BANK.gg = window.BANK.gg || [];
 window.BANK.gg.push(
   {
     id: "bkn-gg-11", set: "bkn", topic: "gg",
-    q: "Peran masyarakat sebagai komponen good governance menurut kisi-kisi BKN adalah ...",
+    q: "Peran masyarakat sebagai komponen good governance adalah ...",
     o: ["Menciptakan lingkungan politik dan hukum yang kondusif", "Mengembangkan kegiatan perekonomian dan lapangan kerja", "Menciptakan interaksi sosial, ekonomi, dan politik", "Menetapkan peraturan perundang-undangan", "Mengelola anggaran negara"],
     a: 2,
     e: "Pemerintah = lingkungan politik dan hukum yang kondusif; dunia usaha/swasta = kegiatan perekonomian dan lapangan kerja; masyarakat = interaksi sosial, ekonomi, dan politik.",
@@ -48,7 +48,7 @@ window.BANK.gg.push(
   },
   {
     id: "bkn-gg-16", set: "bkn", topic: "gg",
-    q: "Istilah berikut yang BUKAN padanan good governance menurut kisi-kisi BKN adalah ...",
+    q: "Istilah berikut yang BUKAN padanan good governance adalah ...",
     o: ["Tata kepemerintahan yang baik", "Pengelolaan kepemerintahan yang baik", "Penyelenggaraan pemerintahan yang baik", "Pemerintahan yang terpusat dan tertutup", "Penyelenggaraan pemerintahan yang bersih, demokratis, dan efektif"],
     a: 3,
     e: "Good governance = tata kepemerintahan yang baik, pengelolaan kepemerintahan yang baik, penyelenggaraan pemerintahan yang baik, penyelenggaraan pemerintahan yang bersih, demokratis, dan efektif. Pemerintahan terpusat dan tertutup bertentangan dengan partisipasi dan transparansi.",
@@ -64,7 +64,7 @@ window.BANK.gg.push(
   },
   {
     id: "bkn-gg-18", set: "bkn", topic: "gg",
-    q: "Jumlah karakteristik good governance yang tercantum dalam kisi-kisi BKN adalah ...",
+    q: "Jumlah karakteristik good governance adalah ...",
     o: ["5", "7", "8", "9", "10"],
     a: 3,
     e: "Sembilan karakteristik: partisipasi, kepastian hukum, transparansi, tanggung jawab, berorientasi pada kesepakatan, keadilan, efektivitas dan efisiensi, akuntabilitas, visi strategis.",
@@ -76,7 +76,7 @@ window.BANK.kebijakan = window.BANK.kebijakan || [];
 window.BANK.kebijakan.push(
   {
     id: "bkn-kbj-11", set: "bkn", topic: "kebijakan",
-    q: "Menurut Mustari (2015) yang dikutip kisi-kisi BKN, kebijakan adalah ...",
+    q: "Menurut Mustari (2015), kebijakan adalah ...",
     o: ["Keputusan pengadilan yang mengikat", "Rencana anggaran tahunan pemerintah", "Instruksi atasan kepada bawahan", "Peraturan tertulis yang memiliki sanksi pidana", "Prinsip atau cara bertindak yang dipilih untuk mengarahkan pengambilan keputusan"],
     a: 4,
     e: "Kebijakan = prinsip atau cara bertindak yang dipilih untuk mengarahkan pengambilan keputusan (Mustari, 2015). Kebijakan publik = tindakan pemerintah menjalankan tugas dan fungsinya dalam hubungan dengan masyarakat dan dunia usaha, berorientasi kepentingan publik.",
@@ -84,7 +84,7 @@ window.BANK.kebijakan.push(
   },
   {
     id: "bkn-kbj-12", set: "bkn", topic: "kebijakan",
-    q: "Tahap pertama dalam siklus kebijakan publik menurut kisi-kisi BKN adalah ...",
+    q: "Tahap pertama dalam siklus kebijakan publik adalah ...",
     o: ["Adopsi kebijakan", "Implementasi kebijakan", "Evaluasi kebijakan", "Formulasi kebijakan", "Penyusunan agenda"],
     a: 4,
     e: "Siklus = penyusunan agenda (identifikasi masalah yang akan masuk agenda) → formulasi → adopsi → implementasi → evaluasi.",
@@ -92,7 +92,7 @@ window.BANK.kebijakan.push(
   },
   {
     id: "bkn-kbj-13", set: "bkn", topic: "kebijakan",
-    q: "Urutan siklus kebijakan publik yang benar menurut kisi-kisi BKN adalah ...",
+    q: "Urutan siklus kebijakan publik yang benar adalah ...",
     o: ["Adopsi - agenda - formulasi - implementasi - evaluasi", "Agenda - formulasi - implementasi - adopsi - evaluasi", "Formulasi - agenda - adopsi - evaluasi - implementasi", "Agenda - formulasi - adopsi - implementasi - evaluasi", "Agenda - adopsi - formulasi - implementasi - evaluasi"],
     a: 3,
     e: "Penyusunan agenda → formulasi kebijakan → adopsi kebijakan → implementasi kebijakan → evaluasi kebijakan. Adopsi (memilih alternatif) harus mendahului implementasi.",
@@ -124,7 +124,7 @@ window.BANK.kebijakan.push(
   },
   {
     id: "bkn-kbj-17", set: "bkn", topic: "kebijakan",
-    q: "Tantangan program Jaminan Kesehatan Nasional (JKN) menurut contoh kebijakan publik dalam kisi-kisi BKN adalah ...",
+    q: "Tantangan program Jaminan Kesehatan Nasional (JKN) menurut contoh kebijakan publik adalah ...",
     o: ["Membatasi peserta hanya bagi PNS", "Mengganti kartu BPJS dengan uang tunai", "Menutup fasilitas kesehatan tingkat pertama", "Menaikkan harga obat", "Memastikan pemerataan akses dan kualitas layanan kesehatan di seluruh wilayah Indonesia"],
     a: 4,
     e: "JKN bertujuan menjamin kesehatan seluruh WNI; implementasinya berupa kartu BPJS Kesehatan di faskes tingkat pertama maupun rumah sakit; tantangannya memastikan pemerataan akses dan kualitas layanan kesehatan di seluruh wilayah Indonesia.",
@@ -200,7 +200,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-37", set: "bkn", topic: "kepegawaian",
-    q: "Berikut ini yang termasuk HAK (bukan kewajiban) ASN menurut kisi-kisi BKN adalah ...",
+    q: "Berikut ini yang termasuk HAK (bukan kewajiban) ASN adalah ...",
     o: ["Menyimpan rahasia jabatan", "Bersedia ditempatkan di seluruh wilayah NKRI", "Bantuan hukum", "Menunjukkan integritas dan keteladanan", "Menaati ketentuan peraturan perundang-undangan"],
     a: 2,
     e: "Hak ASN = penghasilan, penghargaan yang bersifat motivasi, tunjangan dan fasilitas, jaminan sosial, lingkungan kerja, pengembangan diri, dan bantuan hukum. Pilihan lain adalah kewajiban ASN.",
@@ -208,7 +208,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-38", set: "bkn", topic: "kepegawaian",
-    q: "Salah satu komponen manajemen ASN menurut UU No. 20 Tahun 2023 yang tercantum dalam kisi-kisi BKN adalah ...",
+    q: "Salah satu komponen manajemen ASN menurut UU No. 20 Tahun 2023 adalah ...",
     o: ["Pengelolaan aset pribadi pegawai", "Penetapan tarif layanan publik", "Pembinaan partai politik", "Penguatan budaya kerja dan citra institusi", "Penentuan afiliasi politik pegawai"],
     a: 3,
     e: "Manajemen ASN meliputi perencanaan kebutuhan, pengadaan, penguatan budaya kerja dan citra institusi, pengelolaan kinerja, pengembangan talenta dan karier, pengembangan kompetensi, pemberian penghargaan dan pengakuan, serta pemberhentian.",
@@ -232,7 +232,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-41", set: "bkn", topic: "kepegawaian",
-    q: "Hak cuti tahunan PNS menurut kisi-kisi BKN diajukan secara tertulis kepada PPK dengan lama ...",
+    q: "Hak cuti tahunan PNS diajukan secara tertulis kepada PPK dengan lama ...",
     o: ["6 hari kerja", "10 hari kerja", "12 hari kerja", "14 hari kerja", "1 bulan"],
     a: 2,
     e: "Cuti tahunan diajukan dengan permintaan tertulis kepada PPK, lamanya 12 hari kerja. Cuti karena alasan penting paling lama 1 bulan.",
@@ -240,7 +240,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-42", set: "bkn", topic: "kepegawaian",
-    q: "Cuti di luar tanggungan negara (CLTN) menurut kisi-kisi BKN dapat diberikan kepada PNS yang telah bekerja paling singkat 5 tahun untuk paling lama ...",
+    q: "Cuti di luar tanggungan negara (CLTN) dapat diberikan kepada PNS yang telah bekerja paling singkat 5 tahun untuk paling lama ...",
     o: ["3 bulan", "6 bulan", "1 tahun", "2 tahun", "3 tahun"],
     a: 4,
     e: "CLTN = 5 tahun bekerja → paling lama 3 tahun. Cuti besar = 5 tahun bekerja → 3 bulan. Jangan tertukar antara syarat masa kerja yang sama dan lama cuti yang berbeda.",
@@ -248,7 +248,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-43", set: "bkn", topic: "kepegawaian",
-    q: "Untuk kelahiran anak keempat dan seterusnya, PNS menurut kisi-kisi BKN diberikan ...",
+    q: "Untuk kelahiran anak keempat dan seterusnya, PNS diberikan ...",
     o: ["Cuti sakit", "Tidak diberikan cuti", "Cuti melahirkan 3 bulan", "Cuti besar", "Cuti karena alasan penting"],
     a: 3,
     e: "Cuti melahirkan untuk anak ke-1 sampai ke-3; untuk anak ke-4 dan seterusnya diberikan cuti besar.",
@@ -256,7 +256,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-44", set: "bkn", topic: "kepegawaian",
-    q: "Cuti bersama menurut kisi-kisi BKN ditetapkan dengan ...",
+    q: "Cuti bersama ditetapkan dengan ...",
     o: ["Surat Edaran MenPANRB", "Keputusan PPK masing-masing instansi", "Peraturan Menteri Agama", "Peraturan Kepala BKN", "Keputusan Presiden"],
     a: 4,
     e: "Cuti bersama ditetapkan dengan Keputusan Presiden. (Dalam praktik, hari libur nasional dan cuti bersama diumumkan lewat SKB tiga menteri, sedangkan cuti bersama ASN ditetapkan Keppres.)",
@@ -264,7 +264,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-45", set: "bkn", topic: "kepegawaian",
-    q: "Anggota luar biasa KORPRI menurut kisi-kisi BKN adalah ...",
+    q: "Anggota luar biasa KORPRI adalah ...",
     o: ["Penasihat KORPRI yang dipilih selektif", "Pegawai BUMN dan BUMD", "Pensiunan dari anggota biasa", "Aparatur pemerintah desa", "PPPK yang baru diangkat"],
     a: 2,
     e: "Anggota kehormatan = penasihat KORPRI yang dipilih selektif dan ditetapkan DP KORPRI Nasional; anggota biasa = PNS, pegawai BUMN, BUMD, LPP RI, BLU/BLUD, badan otorita/KEK, aparatur pemerintah desa; anggota luar biasa = pensiunan anggota biasa.",
@@ -272,7 +272,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-46", set: "bkn", topic: "kepegawaian",
-    q: "Tujuan KORPRI menurut kisi-kisi BKN adalah ...",
+    q: "Tujuan KORPRI adalah ...",
     o: ["Menyalurkan aspirasi politik pegawai negeri", "Menyelenggarakan seleksi CPNS di setiap instansi", "Memperjuangkan kenaikan gaji melalui aksi mogok kerja", "Menjaga kode etik profesi dan mewujudkan jiwa korps pemersatu bangsa", "Mengusulkan calon pejabat pimpinan tinggi kepada PPK"],
     a: 3,
     e: "Tujuan KORPRI adalah menjaga kode etik profesi dan standar pelayanan profesi ASN serta mewujudkan jiwa korps ASN sebagai pemersatu bangsa. KORPRI bebas dari kepentingan politik; seleksi CPNS bukan wewenang KORPRI.",
@@ -280,7 +280,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-47", set: "bkn", topic: "kepegawaian",
-    q: "Salah satu fungsi KORPRI menurut kisi-kisi BKN adalah memberikan perlindungan hukum dan advokasi kepada anggota terhadap ...",
+    q: "Salah satu fungsi KORPRI adalah memberikan perlindungan hukum dan advokasi kepada anggota terhadap ...",
     o: ["Tuntutan perdata dari usaha pribadi", "Pelanggaran lalu lintas di luar jam dinas", "Konflik dengan partai politik", "Sengketa waris keluarga", "Dugaan pelanggaran sistem merit dan masalah hukum dalam melaksanakan tugas"],
     a: 4,
     e: "Fungsi KORPRI: pembinaan dan pengembangan profesi ASN; perlindungan hukum dan advokasi atas dugaan pelanggaran sistem merit dan masalah hukum dalam melaksanakan tugas; usaha peningkatan kesejahteraan anggota; rekomendasi kepada majelis kode etik instansi.",
@@ -288,7 +288,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-48", set: "bkn", topic: "kepegawaian",
-    q: "Dewan Pengurus KORPRI menurut kisi-kisi BKN berbentuk dewan yang bersifat ...",
+    q: "Dewan Pengurus KORPRI berbentuk dewan yang bersifat ...",
     o: ["Sementara dan diganti setiap tahun", "Fungsional dan diisi pejabat struktural secara ex officio", "Hierarkis dan diangkat oleh PPK", "Kolektif dan dipilih oleh anggota berdasarkan musyawarah sesuai tingkat kepengurusan", "Tunggal dan ditunjuk Presiden"],
     a: 3,
     e: "Dewan Pengurus KORPRI berbentuk dewan dan bersifat kolektif, dipilih oleh anggota berdasarkan musyawarah sesuai tingkat kepengurusan; masa jabatan 5 tahun. Pengurus terdiri atas Dewan Pengurus dan Sekretariat Dewan Pengurus.",
@@ -296,7 +296,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-49", set: "bkn", topic: "kepegawaian",
-    q: "Dewan Pengurus KORPRI Kementerian/Lembaga Pemerintah Non Kementerian menurut kisi-kisi BKN berkedudukan di ...",
+    q: "Dewan Pengurus KORPRI Kementerian/Lembaga Pemerintah Non Kementerian berkedudukan di ...",
     o: ["Ibu kota provinsi", "Kantor BKN", "Instansi masing-masing", "Kantor KemenPANRB", "Sekretariat Negara"],
     a: 2,
     e: "Dewan Pengurus KORPRI Nasional berkedudukan di ibu kota negara; Dewan Pengurus KORPRI kementerian/LPNK/kesekretariatan lembaga negara berkedudukan di instansi masing-masing.",
@@ -312,7 +312,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-51", set: "bkn", topic: "kepegawaian",
-    q: "Jenis jabatan ASN yang termasuk jabatan pimpinan tinggi menurut kisi-kisi BKN adalah ...",
+    q: "Jenis jabatan ASN yang termasuk jabatan pimpinan tinggi adalah ...",
     o: ["Jabatan administrator dan pengawas", "Jabatan fungsional ahli utama", "JPT utama, JPT madya, dan JPT pratama", "Jabatan pelaksana tingkat terampil", "Jabatan struktural eselon III dan IV"],
     a: 2,
     e: "Jenis jabatan ASN: fungsional, pelaksana, JPT utama, JPT madya, JPT pratama, administrator, dan pengawas. Administrator dan pengawas adalah jabatan administrasi, bukan pimpinan tinggi.",
@@ -320,7 +320,7 @@ window.BANK.kepegawaian.push(
   },
   {
     id: "bkn-keg-52", set: "bkn", topic: "kepegawaian",
-    q: "Peraturan tentang cuti PNS yang dijadikan acuan kisi-kisi BKN adalah ...",
+    q: "Peraturan tentang cuti PNS yang dijadikan acuan adalah ...",
     o: ["Keppres No. 24 Tahun 2010", "UU No. 20 Tahun 2023", "PP No. 17 Tahun 2020", "Peraturan BKN No. 24 Tahun 2017", "PP No. 94 Tahun 2021"],
     a: 3,
     e: "Per BKN No. 24/2017 = cuti; PP 94/2021 = disiplin; Keppres 24/2010 = KORPRI; UU 20/2023 = ASN; PP 11/2017 jo. PP 17/2020 = manajemen PNS.",
@@ -332,7 +332,7 @@ window.BANK.yanlik = window.BANK.yanlik || [];
 window.BANK.yanlik.push(
   {
     id: "bkn-yan-11", set: "bkn", topic: "yanlik",
-    q: "Pembina penyelenggaraan pelayanan publik di tingkat provinsi menurut kisi-kisi BKN adalah ...",
+    q: "Pembina penyelenggaraan pelayanan publik di tingkat provinsi adalah ...",
     o: ["Ombudsman perwakilan provinsi", "Sekretaris daerah", "Ketua DPRD provinsi", "Menteri PANRB", "Gubernur"],
     a: 4,
     e: "Pembina = pimpinan lembaga negara/kementerian/instansi pusat, gubernur, bupati, wali kota. Menteri PANRB perumus kebijakan nasional; Ombudsman pengawas.",
@@ -348,7 +348,7 @@ window.BANK.yanlik.push(
   },
   {
     id: "bkn-yan-13", set: "bkn", topic: "yanlik",
-    q: "Asas pelayanan publik menurut UU No. 25 Tahun 2009 yang tercantum dalam kisi-kisi BKN meliputi hal berikut, KECUALI ...",
+    q: "Asas pelayanan publik menurut UU No. 25 Tahun 2009 meliputi hal berikut, KECUALI ...",
     o: ["Kepentingan umum", "Akuntabilitas", "Keuntungan maksimal penyelenggara", "Keterbukaan", "Keprofesionalan"],
     a: 2,
     e: "12 asas: kepentingan umum, kepastian hukum, kesamaan hak, keseimbangan hak dan kewajiban, keprofesionalan, partisipatif, persamaan perlakuan/tidak diskriminatif, keterbukaan, akuntabilitas, fasilitas dan perlakuan khusus bagi kelompok rentan, ketepatan waktu, kecepatan-kemudahan-keterjangkauan. Pelayanan publik tidak berorientasi keuntungan.",
@@ -380,7 +380,7 @@ window.BANK.yanlik.push(
   },
   {
     id: "bkn-yan-17", set: "bkn", topic: "yanlik",
-    q: "Dalam bagan organisasi penyelenggara pelayanan publik kisi-kisi BKN, yang berkedudukan sebagai \"penyelenggara\" adalah ...",
+    q: "Dalam bagan organisasi penyelenggara pelayanan publik, yang berkedudukan sebagai \"penyelenggara\" adalah ...",
     o: ["Masyarakat penerima layanan", "Lembaga swadaya masyarakat", "Media massa", "Perusahaan swasta mitra", "Institusi pemerintah atau penyelenggara negara"],
     a: 4,
     e: "Organisasi penyelenggara terdiri atas institusi pemerintah/penyelenggara negara sebagai penyelenggara, pelaksana (pegawai/petugas), dan Ombudsman sebagai pengawas eksternal. Masyarakat adalah penerima layanan.",
@@ -388,7 +388,7 @@ window.BANK.yanlik.push(
   },
   {
     id: "bkn-yan-18", set: "bkn", topic: "yanlik",
-    q: "Pembina penyelenggaraan pelayanan publik pada instansi pusat (kementerian/lembaga) menurut kisi-kisi BKN adalah ...",
+    q: "Pembina penyelenggaraan pelayanan publik pada instansi pusat (kementerian/lembaga) adalah ...",
     o: ["BPK", "Kepala unit layanan", "Ombudsman Republik Indonesia", "Pimpinan lembaga negara/kementerian/instansi pusat", "Presiden"],
     a: 3,
     e: "Pembina = pimpinan lembaga negara/kementerian/instansi pusat, gubernur, bupati, wali kota. Jadi di Kemenimipas pembinanya adalah Menteri Imigrasi dan Pemasyarakatan.",

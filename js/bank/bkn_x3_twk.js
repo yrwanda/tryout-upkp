@@ -40,7 +40,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-35", set: "bkn", topic: "bindo",
-    q: "Penulisan petikan langsung yang benar menurut kisi-kisi BKN adalah ...",
+    q: "Penulisan petikan langsung yang benar adalah ...",
     o: ["\"besok pagi,\" kata rino, \"mereka akan berangkat.\"", "\"Besok pagi\" kata Rino \"mereka akan berangkat\".", "\"besok pagi,\" kata Rino, \"Mereka akan berangkat.\"", "\"Besok pagi,\" kata Rino, \"mereka akan berangkat.\"", "\"Besok pagi,\" Kata Rino, \"Mereka akan berangkat.\""],
     a: 3,
     e: "Kaidah 5: huruf kapital di awal kalimat petikan langsung (\"Besok\"). Bagian lanjutan petikan yang terputus oleh \"kata Rino\" bukan awal kalimat baru, sehingga \"mereka\" ditulis kecil; \"kata\" juga kecil; koma memisahkan petikan dari keterangan.",
@@ -48,7 +48,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-36", set: "bkn", topic: "bindo",
-    q: "Perbedaan penulisan singkatan \"dr.\" dan \"Dr.\" menurut kisi-kisi BKN adalah ...",
+    q: "Perbedaan penulisan singkatan \"dr.\" dan \"Dr.\" adalah ...",
     o: ["dr. = doktor, Dr. = dokter", "dr. dipakai di awal kalimat, Dr. di tengah kalimat", "dr. untuk dokter umum, Dr. untuk dokter spesialis", "Keduanya sama-sama singkatan dokter", "dr. = dokter, Dr. = doktor"],
     a: 4,
     e: "Dr. = dokter; Dr. = doktor; Dr. (H.C.) = doktor honoris causa. Dokter spesialis memakai singkatan Sp. (misalnya Sp.A. spesialis anak).",
@@ -64,7 +64,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-38", set: "bkn", topic: "bindo",
-    q: "Singkatan satuan ukuran, lambang kimia, dan mata uang menurut kisi-kisi BKN ditulis ...",
+    q: "Singkatan satuan ukuran, lambang kimia, dan mata uang ditulis ...",
     o: ["Dengan huruf kapital semua (KM, KG, RP)", "Bebas, asal konsisten dalam satu naskah", "Dengan tanda titik di akhir (km., kg., Rp.)", "Tanpa tanda titik (km, kg, Cu, Rp)", "Dengan titik pada setiap huruf (k.m., k.g.)"],
     a: 3,
     e: "Kaidah 7: singkatan satuan ukuran, takaran, timbangan, lambang kimia, dan mata uang tidak diikuti tanda titik: kVA, km, kg, l, Cu, Rp. Bedakan dengan singkatan alamat (Jl., Gg., No.) yang diakhiri titik.",
@@ -88,7 +88,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-41", set: "bkn", topic: "bindo",
-    q: "Kalimat yang efektif (logis) menurut contoh dalam kisi-kisi BKN adalah ...",
+    q: "Kalimat yang efektif (logis) menurut contoh adalah ...",
     o: ["Pria yang ditemukan mayatnya itu sering mondar-mandir sebelumnya di kampung.", "Sering mondar-mandir di kampung, mayat pria itu ditemukan.", "Mayat pria yang ditemukan itu sebelumnya sering mondar-mandir di kampung.", "Sebelum ditemukan tak bernyawa, pria itu sering mondar-mandir di kampung.", "Mayat pria itu sering mondar-mandir di kampung sebelum ditemukan."],
     a: 3,
     e: "Kalimat bisa benar tata bahasanya tetapi tidak logis. \"Mayat ... sering mondar-mandir\" tidak logis karena mayat tidak dapat berjalan; kalimat efektifnya: \"Sebelum ditemukan tak bernyawa, pria itu sering mondar-mandir di kampung.\"",
@@ -112,7 +112,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-44", set: "bkn", topic: "bindo",
-    q: "Menurut kisi-kisi BKN, simpulan dalam sebuah paragraf berisi ...",
+    q: "Simpulan dalam sebuah paragraf berisi ...",
     o: ["Data statistik", "Pertanyaan retoris", "Kalimat-kalimat penjelas", "Ide pokok atau gagasan utama", "Contoh-contoh pendukung"],
     a: 3,
     e: "Simpulan dalam paragraf berisi ide pokok/gagasan utama. Ide pokok dikenal pula sebagai gagasan utama, gagasan pokok, atau pikiran utama; kalimat penjelas hanya mendukungnya.",
@@ -136,7 +136,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-47", set: "bkn", topic: "bindo",
-    q: "Pasangan kata baku yang seluruhnya benar menurut kisi-kisi BKN adalah ...",
+    q: "Pasangan kata baku yang seluruhnya benar adalah ...",
     o: ["apotik, analisis, antri, asas", "apotek, analisis, antri, azas", "apotik, analisa, antri", "apotek, analisis, antre, asas", "apotek, analisa, antre, azas"],
     a: 3,
     e: "Baku - tidak baku: apotek - apotik; ajek - ajeg; analisis - analisa; antre - antri; asas - azas. Kata baku sesuai kaidah bahasa Indonesia dan KBBI.",
@@ -144,7 +144,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-48", set: "bkn", topic: "bindo",
-    q: "Penulisan singkatan nama pangkat dan jabatan yang benar sesuai contoh kisi-kisi BKN adalah ...",
+    q: "Penulisan singkatan nama pangkat dan jabatan yang benar sesuai contoh adalah ...",
     o: ["kol. inf. Hendri; a.k.b.p. Purnomo", "KOL. INF. Hendri; A.K.B.P Purnomo", "Kol.Inf.Hendri; AKBP Purnomo.", "Kol Inf Hendri; AKBP. Purnomo", "Kol. Inf. Hendri; A.K.B.P. Purnomo"],
     a: 4,
     e: "Singkatan nama orang, gelar, sapaan, jabatan, atau pangkat diikuti tanda titik pada setiap unsur singkatan: Kol. Inf. Hendri (Kolonel Infanteri), A.K.B.P. Purnomo (Ajun Komisaris Besar Polisi), Sdr. Lukman, R.M. Syahid.",
@@ -156,7 +156,7 @@ window.BANK.pancasila = window.BANK.pancasila || [];
 window.BANK.pancasila.push(
   {
     id: "bkn-pcs-26", set: "bkn", topic: "pancasila",
-    q: "Menurut kisi-kisi BKN, Pancasila disahkan sebagai dasar negara oleh ...",
+    q: "Pancasila disahkan sebagai dasar negara oleh ...",
     o: ["BPUPKI pada 1 Juni 1945", "Panitia Sembilan pada 22 Juni 1945", "PPKI pada 18 Agustus 1945", "KNIP pada 29 Agustus 1945", "MPRS pada 5 Juli 1959"],
     a: 2,
     e: "Istilah Pancasila disampaikan Soekarno di sidang BPUPKI 1 Juni 1945 dan disahkan PPKI 18 Agustus 1945 (bersama UUD 1945). BPUPKI hanya membahas usulan; Panitia Sembilan menghasilkan Piagam Jakarta 22 Juni 1945; KNIP dan MPRS tidak mengesahkan dasar negara.",
@@ -164,7 +164,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-27", set: "bkn", topic: "pancasila",
-    q: "Secara etimologis, kisi-kisi BKN menyebut kata \"Pancasila\" berasal dari bahasa Sanskerta India, khususnya dari kalangan kasta ...",
+    q: "Secara etimologis, kata \"Pancasila\" berasal dari bahasa Sanskerta India, khususnya dari kalangan kasta ...",
     o: ["Ksatria", "Waisya", "Sudra", "Brahmana", "Paria"],
     a: 3,
     e: "Etimologi Pancasila berasal dari bahasa Sanskerta dari India (kasta Brahmana): panca = lima, sila = dasar. Bahasa Sanskerta dahulu merupakan bahasa kaum Brahmana (pemuka agama).",
@@ -172,7 +172,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-28", set: "bkn", topic: "pancasila",
-    q: "Menurut kisi-kisi BKN, nilai-nilai Pancasila sudah diterapkan dalam kehidupan masyarakat maupun kerajaan (meski belum dirumuskan secara konkret) sejak zaman kerajaan ...",
+    q: "Nilai-nilai Pancasila sudah diterapkan dalam kehidupan masyarakat maupun kerajaan (meski belum dirumuskan secara konkret) sejak zaman kerajaan ...",
     o: ["Mataram Islam dan Demak", "Singasari dan Kediri", "Ternate dan Tidore", "Kutai dan Tarumanegara", "Sriwijaya dan Majapahit"],
     a: 4,
     e: "Pancasila mulai dikenal sejak zaman Kerajaan Majapahit dan Sriwijaya; sila-silanya sudah diterapkan walau belum dirumuskan konkret. Istilah Pancasila juga ditemukan dalam kitab Sutasoma karya Mpu Tantular (masa Majapahit).",
@@ -196,7 +196,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-31", set: "bkn", topic: "pancasila",
-    q: "Menurut kisi-kisi BKN, fungsi Pancasila sebagai cita-cita dan tujuan bangsa Indonesia didasarkan pada kenyataan bahwa Pancasila ...",
+    q: "Fungsi Pancasila sebagai cita-cita dan tujuan bangsa Indonesia didasarkan pada kenyataan bahwa Pancasila ...",
     o: ["Diperingati setiap tanggal 1 Oktober sebagai hari kesaktian", "Dirumuskan pertama kali dalam sidang BPUPKI", "Termuat dalam Pembukaan UUD 1945 yang memuat tujuan menciptakan masyarakat adil dan makmur", "Menjadi lambang negara pada perisai burung Garuda", "Menjadi dasar pembentukan partai-partai politik"],
     a: 2,
     e: "Pancasila telah jelas termuat dalam Pembukaan UUD 1945 sehingga menjadi tujuan dan cita-cita bangsa, yaitu menciptakan masyarakat yang adil dan makmur. Pilihan lain benar sebagai fakta terpisah, tetapi bukan alasan fungsi cita-cita dan tujuan bangsa.",
@@ -252,7 +252,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-38", set: "bkn", topic: "pancasila",
-    q: "Dalam \"esensi pengamalan Pancasila\" pada kisi-kisi BKN, keseimbangan antara hak dan kewajiban manusia terhadap umum, alam, hukum, dan negara merupakan esensi sila ...",
+    q: "Dalam \"esensi pengamalan Pancasila\", keseimbangan antara hak dan kewajiban manusia terhadap umum, alam, hukum, dan negara merupakan esensi sila ...",
     o: ["Kedua (humanity)", "Ketiga (nationalism)", "Keempat (democracy)", "Kelima (justice)", "Pertama (religion)"],
     a: 3,
     e: "Sila 1 = religion (Tuhan, agama, kepercayaan); sila 2 = humanity (HAM, manusia dengan manusia); sila 3 = nationalism (bela negara, rela berkorban, cinta tanah air); sila 4 = democracy (pemilu, musyawarah, kekeluargaan); sila 5 = justice (seimbang hak dan kewajiban).",
@@ -260,7 +260,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-39", set: "bkn", topic: "pancasila",
-    q: "Bela negara, rela berkorban, dan cinta tanah air menurut esensi pengamalan Pancasila dalam kisi-kisi BKN merupakan kata kunci sila ...",
+    q: "Bela negara, rela berkorban, dan cinta tanah air menurut esensi pengamalan Pancasila merupakan kata kunci sila ...",
     o: ["Pertama", "Kedua", "Ketiga", "Keempat", "Kelima"],
     a: 2,
     e: "Sila ke-3 (Persatuan Indonesia) dipadankan dengan nationalism: nasionalisme, bela negara, persatuan, rela berkorban, cinta tanah air.",
@@ -276,7 +276,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-41", set: "bkn", topic: "pancasila",
-    q: "Pak Andi memimpin rapat RT yang diwarnai perbedaan pendapat tentang jadwal ronda. Sikap yang paling sesuai dengan contoh pengamalan Pancasila dalam kisi-kisi BKN adalah ...",
+    q: "Pak Andi memimpin rapat RT yang diwarnai perbedaan pendapat tentang jadwal ronda. Sikap yang paling sesuai dengan contoh pengamalan Pancasila adalah ...",
     o: ["Menetapkan jadwal sendiri karena ia ketua RT", "Mengikuti usulan warga yang paling senior", "Mengadakan pemungutan suara tanpa diskusi agar cepat", "Mengajak warga bermusyawarah sampai mencapai mufakat tanpa memaksakan kehendak", "Menunda keputusan sampai ada perintah dari kelurahan"],
     a: 3,
     e: "Contoh sikap pengamalan antara lain selalu mengedepankan musyawarah untuk mencapai mufakat dan tidak memaksakan kehendak pada orang lain (sila ke-4). Menetapkan sepihak atau mengikuti senior tanpa musyawarah bertentangan dengan butir tersebut.",
@@ -284,7 +284,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-42", set: "bkn", topic: "pancasila",
-    q: "Tujuan Pancasila menurut kisi-kisi BKN meliputi hal berikut, KECUALI menghendaki bangsa yang ...",
+    q: "Tujuan Pancasila meliputi hal berikut, KECUALI menghendaki bangsa yang ...",
     o: ["Religius dan taat kepada Tuhan Yang Maha Esa", "Adil secara sosial ekonomi", "Menghargai hak asasi manusia", "Menganut satu agama resmi negara", "Demokratis"],
     a: 3,
     e: "Lima tujuan Pancasila: bangsa religius dan taat kepada Tuhan YME; adil secara sosial ekonomi; menghargai HAM; demokratis; nasionalis dan cinta tanah air. Pancasila tidak menetapkan satu agama resmi negara; butir sila 1 justru melarang memaksakan agama.",
@@ -292,7 +292,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "bkn-pcs-43", set: "bkn", topic: "pancasila",
-    q: "Menurut kisi-kisi BKN, bangsa Indonesia (yang dijiwai Pancasila sebagai jiwa bangsa) dinyatakan lahir sejak ...",
+    q: "Bangsa Indonesia (yang dijiwai Pancasila sebagai jiwa bangsa) dinyatakan lahir sejak ...",
     o: ["Sumpah Pemuda 28 Oktober 1928", "Berdirinya Budi Utomo 20 Mei 1908", "Proklamasi kemerdekaan Indonesia", "Pengesahan UUD 1945 oleh PPKI", "Pengakuan kedaulatan 27 Desember 1949"],
     a: 2,
     e: "Pancasila sebagai jiwa bangsa: setiap bangsa mempunyai jiwa (Volksgeist); Pancasila berfungsi agar Indonesia tetap hidup dalam jiwa Pancasila, dan bangsa Indonesia lahir sejak proklamasi kemerdekaan Indonesia.",
@@ -312,7 +312,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-16", set: "bkn", topic: "sejarah",
-    q: "Upaya Presiden Abdurrahman Wahid untuk memberantas konflik bersenjata di Aceh menurut kisi-kisi BKN dilakukan melalui ...",
+    q: "Upaya Presiden Abdurrahman Wahid untuk memberantas konflik bersenjata di Aceh dilakukan melalui ...",
     o: ["Pemekaran provinsi", "Referendum kemerdekaan", "Pembubaran partai lokal", "Penetapan darurat militer", "Dialog"],
     a: 4,
     e: "Gus Dur berupaya memberantas konflik bersenjata di Aceh melalui dialog. Gus Dur juga mengadakan dialog kebangsaan pemberantasan korupsi.",
@@ -336,7 +336,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-19", set: "bkn", topic: "sejarah",
-    q: "Capaian ekonomi masa Presiden SBY yang disebut kisi-kisi BKN terkait lembaga keuangan internasional adalah ...",
+    q: "Capaian ekonomi masa Presiden SBY terkait lembaga keuangan internasional adalah ...",
     o: ["Mendapat pinjaman baru dari Bank Dunia", "Keluar dari keanggotaan ASEAN Free Trade Area", "Mendirikan Asian Infrastructure Investment Bank", "Bergabung kembali dengan OPEC", "Melunasi utang IMF sehingga tidak lagi bergantung pada lembaga tersebut"],
     a: 4,
     e: "SBY melunasi utang IMF dan tidak lagi tergantung kepada lembaga tersebut. Pilihan lain tidak tercantum dalam kisi-kisi BKN.",
@@ -344,7 +344,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-20", set: "bkn", topic: "sejarah",
-    q: "Menurut kisi-kisi BKN, pada 2014 Indonesia menjadi kekuatan ekonomi nomor ... dunia versi Bank Dunia dengan indikator PDB dan daya beli.",
+    q: "Pada 2014 Indonesia menjadi kekuatan ekonomi nomor ... dunia versi Bank Dunia dengan indikator PDB dan daya beli.",
     o: ["5", "7", "10", "16", "20"],
     a: 2,
     e: "Kekuatan ekonomi nomor 10 dunia pada 2014 versi Bank Dunia (indikator PDB dan daya beli). Angka 20 merujuk kelompok G-20, bukan peringkat.",
@@ -352,7 +352,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-21", set: "bkn", topic: "sejarah",
-    q: "Fokus Presiden Joko Widodo pada pembangunan jalan tol, bandara, dan pelabuhan menurut kisi-kisi BKN menunjukkan komitmen untuk ...",
+    q: "Fokus Presiden Joko Widodo pada pembangunan jalan tol, bandara, dan pelabuhan menunjukkan komitmen untuk ...",
     o: ["Menekan angka inflasi", "Menarik investasi asing di sektor tambang", "Membangun konektivitas antarwilayah", "Mengurangi impor bahan bakar", "Memindahkan ibu kota secepatnya"],
     a: 2,
     e: "Pembangunan infrastruktur (tol, bandara, pelabuhan, transportasi) menunjukkan komitmen membangun konektivitas antarwilayah. Capaian lain: KIS, KIP, bansos, transformasi digital, dan penanganan pandemi COVID-19.",
@@ -360,7 +360,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-22", set: "bkn", topic: "sejarah",
-    q: "Jumlah kementerian pada masa Presiden Joko Widodo yang dibandingkan dengan Kabinet Merah Putih dalam kisi-kisi BKN adalah ...",
+    q: "Jumlah kementerian pada masa Presiden Joko Widodo, sebagai pembanding Kabinet Merah Putih, adalah ...",
     o: ["30", "34", "38", "42", "48"],
     a: 1,
     e: "Kabinet Merah Putih terdiri atas 48 kementerian, jauh lebih banyak dari masa Presiden Jokowi dengan 34 kementerian; penambahan terjadi karena pemecahan sejumlah kementerian.",
@@ -368,7 +368,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-23", set: "bkn", topic: "sejarah",
-    q: "Forum internasional tempat Presiden Prabowo Subianto mengemukakan pandangan tentang stabilitas global menurut kisi-kisi BKN antara lain ...",
+    q: "Forum internasional tempat Presiden Prabowo Subianto mengemukakan pandangan tentang stabilitas global antara lain ...",
     o: ["KTT Iklim COP, KTT OPEC, dan WTO", "Forum Bali Democracy, KTT MIKTA, dan KTT D-8", "Konferensi Asia Afrika, KTT OKI, dan Sidang Umum PBB", "Shangri-La Dialogue, KTT APEC, dan KTT G20", "KTT ASEAN, KTT BRICS, dan WEF Davos"],
     a: 3,
     e: "Dalam berbagai forum internasional seperti Shangri-La Dialogue, KTT APEC, dan KTT G20, Prabowo mengemukakan pandangan tentang kebutuhan stabilitas global untuk memperkuat kerja sama internasional.",
@@ -376,7 +376,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-24", set: "bkn", topic: "sejarah",
-    q: "Aksi bertajuk \"Revolusi Rakyat Indonesia\" di depan Gedung MPR/DPR/DPD pada 25 Agustus 2025 menurut kisi-kisi BKN menyoroti ...",
+    q: "Aksi bertajuk \"Revolusi Rakyat Indonesia\" di depan Gedung MPR/DPR/DPD pada 25 Agustus 2025 menyoroti ...",
     o: ["Rencana pemindahan ibu kota negara", "Revisi undang-undang pemilu", "Program makan siang gratis", "Kenaikan harga bahan bakar minyak", "Besarnya tunjangan anggota DPR yang mencapai Rp50 juta per bulan"],
     a: 4,
     e: "Massa mahasiswa, buruh, petani, dan masyarakat sipil menyoroti besarnya tunjangan anggota DPR yang mencapai Rp50 juta per bulan di luar gaji pokok dan tunjangan lain.",
@@ -384,7 +384,7 @@ window.BANK.sejarah.push(
   },
   {
     id: "bkn-sej-25", set: "bkn", topic: "sejarah",
-    q: "Kebijakan Presiden B.J. Habibie di bidang reformasi hukum menurut kisi-kisi BKN adalah mengeluarkan undang-undang yang ...",
+    q: "Kebijakan Presiden B.J. Habibie di bidang reformasi hukum adalah mengeluarkan undang-undang yang ...",
     o: ["Menghapus dwifungsi ABRI sepenuhnya", "Membubarkan Golkar", "Menjamin kebebasan berpendapat dan mendorong lahirnya kekuatan sosial politik", "Menetapkan pemilihan presiden secara langsung", "Membentuk Mahkamah Konstitusi"],
     a: 2,
     e: "Reformasi hukum Habibie berupa undang-undang yang mengatur dan menjamin kebebasan berpendapat serta mendorong lahirnya kekuatan sosial politik. Kisi-kisi BKN menyebutnya \"UU No. 9 Tahun 1999\"; nomor yang tepat adalah UU No. 9 Tahun 1998 tentang Kemerdekaan Menyampaikan Pendapat di Muka Umum. Pilpres langsung dan MK lahir dari amandemen UUD (masa sesudahnya).",
@@ -396,7 +396,7 @@ window.BANK.uud = window.BANK.uud || [];
 window.BANK.uud.push(
   {
     id: "bkn-uud-25", set: "bkn", topic: "uud",
-    q: "Menurut kisi-kisi BKN, Panitia Sembilan yang merumuskan rancangan pembukaan hukum dasar dibentuk pada tanggal ...",
+    q: "Panitia Sembilan yang merumuskan rancangan pembukaan hukum dasar dibentuk pada tanggal ...",
     o: ["29 Mei 1945", "1 Juni 1945", "22 Juni 1945", "7 Agustus 1945", "18 Agustus 1945"],
     a: 1,
     e: "Panitia Sembilan dibentuk 1 Juni 1945 dan menghasilkan Piagam Jakarta pada 22 Juni 1945. 29 Mei = awal sidang I BPUPKI; 7 Agustus = pembentukan PPKI; 18 Agustus = pengesahan UUD 1945.",
@@ -436,7 +436,7 @@ window.BANK.uud.push(
   },
   {
     id: "bkn-uud-30", set: "bkn", topic: "uud",
-    q: "Asas politik luar negeri bebas aktif dan tujuan negara (melindungi segenap bangsa, memajukan kesejahteraan umum, mencerdaskan kehidupan bangsa) menurut kisi-kisi BKN termuat pada alinea ...",
+    q: "Asas politik luar negeri bebas aktif dan tujuan negara (melindungi segenap bangsa, memajukan kesejahteraan umum, mencerdaskan kehidupan bangsa) termuat pada alinea ...",
     o: ["Pertama", "Kedua", "Ketiga", "Keempat", "Semua alinea"],
     a: 3,
     e: "Alinea IV memuat tujuan negara, ketentuan bahwa kemerdekaan disusun dalam UUD, kedaulatan rakyat, dasar negara Pancasila, dan asas politik luar negeri bebas aktif.",
@@ -556,7 +556,7 @@ window.BANK.uud.push(
   },
   {
     id: "bkn-uud-45", set: "bkn", topic: "uud",
-    q: "Lembaga negara yang baru muncul setelah amandemen UUD 1945 menurut kisi-kisi BKN adalah ...",
+    q: "Lembaga negara yang baru muncul setelah amandemen UUD 1945 adalah ...",
     o: ["DPA, MK, dan KY", "MPR, DPD, dan DPA", "Presiden, MA, dan KY", "DPR, MA, dan BPK", "MK, KY, dan DPD"],
     a: 4,
     e: "Sebelum amandemen: MPR, DPR, DPA, MA, Presiden, BPK. Setelah amandemen: MPR, DPR, DPD, Presiden, MA, MK, KY, BPK. Jadi yang baru adalah MK, KY, dan DPD; DPA dihapus.",
@@ -564,7 +564,7 @@ window.BANK.uud.push(
   },
   {
     id: "bkn-uud-46", set: "bkn", topic: "uud",
-    q: "Dalam bagan lembaga negara setelah amandemen pada kisi-kisi BKN, lembaga legislatif memiliki peran ...",
+    q: "Dalam bagan lembaga negara setelah amandemen, lembaga legislatif memiliki peran ...",
     o: ["Mengawasi jalannya undang-undang melalui peradilan", "Memberi pertimbangan kepada Presiden", "Melaksanakan undang-undang", "Membuat undang-undang", "Memeriksa keuangan negara"],
     a: 3,
     e: "Legislatif membuat UU; eksekutif melaksanakan UU; yudikatif mengawasi jalannya UU; eksaminatif (BPK) memeriksa keuangan negara. Memberi pertimbangan kepada Presiden dahulu fungsi DPA yang sudah dihapus.",

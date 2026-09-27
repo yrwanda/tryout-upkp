@@ -128,7 +128,7 @@ window.BANK.literasi = window.BANK.literasi || [];
 window.BANK.literasi.push(
   {
     id: "bkn-lit-01", set: "bkn", topic: "literasi",
-    q: "Menurut kisi-kisi BKN, pilar literasi digital yang berisi pengetahuan mengenai perangkat keras dan perangkat lunak serta penggunaan perangkat untuk transaksi digital adalah ...",
+    q: "Pilar literasi digital yang berisi pengetahuan mengenai perangkat keras dan perangkat lunak serta penggunaan perangkat untuk transaksi digital adalah ...",
     o: ["Digital skills", "Digital culture", "Digital ethics", "Digital safety", "Digital economy"],
     a: 0,
     e: "Digital skills = pengetahuan perangkat keras/lunak dan penggunaan perangkat untuk transaksi digital; digital culture = penerapan Pancasila, Bhinneka Tunggal Ika, dan nilai NKRI di dunia digital; digital ethics = regulasi dan etika berinternet (netiquette); digital safety = proteksi dasar keamanan data.",
@@ -144,7 +144,7 @@ window.BANK.literasi.push(
   },
   {
     id: "bkn-lit-03", set: "bkn", topic: "literasi",
-    q: "Definisi literasi digital menurut Devri Suherdi (2021) sebagaimana dikutip kisi-kisi BKN adalah ...",
+    q: "Definisi literasi digital menurut Devri Suherdi (2021) adalah ...",
     o: ["Pengetahuan dan kecakapan memanfaatkan media digital dengan bijak, cerdas, cermat, dan tepat", "Kemampuan membuat program komputer dan aplikasi menggunakan bahasa pemrograman", "Kemampuan memperbaiki perangkat keras komputer dan jaringan internet yang rusak", "Kemampuan berjualan daring melalui lokapasar dan media sosial secara menguntungkan", "Kemampuan menghafal istilah teknologi informasi dan singkatannya dalam bahasa asing"],
     a: 0,
     e: "Kisi-kisi mengutip Devri Suherdi (2021): literasi digital mencakup kemampuan menemukan, mengerjakan, mengevaluasi, menggunakan, membuat, serta memanfaatkan media digital dengan bijak, cerdas, cermat, dan tepat sesuai kegunaannya.",
@@ -152,7 +152,7 @@ window.BANK.literasi.push(
   },
   {
     id: "bkn-lit-04", set: "bkn", topic: "literasi",
-    q: "Contoh etika digital menurut kisi-kisi BKN adalah ...",
+    q: "Contoh etika digital adalah ...",
     o: ["Tidak menyebarkan berita bohong dan tidak melakukan perundungan", "Menggunakan Zoom meeting dan Google Doc", "Berbelanja daring", "Menggunakan kata sandi dan OTP", "Membeli perangkat terbaru"],
     a: 0,
     e: "Etika digital = kemampuan menyadari, menyesuaikan diri, dan menerapkan etika saat berselancar (contoh: tidak menyebarkan hoaks, tidak melakukan perundungan). Keterampilan digital: menggunakan Zoom, Google Doc, spreadsheet. Budaya digital: media sosial, belanja daring. Keamanan digital: kata sandi, OTP, waspada cybercrime.",
@@ -168,7 +168,7 @@ window.BANK.literasi.push(
   },
   {
     id: "bkn-lit-06", set: "bkn", topic: "literasi",
-    q: "Keamanan digital menurut kisi-kisi BKN tercermin melalui ...",
+    q: "Keamanan digital tercermin melalui ...",
     o: ["Penggunaan password, pemahaman OTP, dan kewaspadaan terhadap cybercrime", "Aktivitas berbelanja daring melalui berbagai lokapasar dengan pembayaran digital", "Penggunaan media sosial secara aktif untuk membangun jejaring dan reputasi", "Kemampuan membuat konten video yang menarik dan viral di platform digital", "Menghindari penggunaan internet sama sekali agar terhindar dari kejahatan siber"],
     a: 0,
     e: "Keamanan digital adalah aktivitas mengamankan kegiatan digital, tercermin lewat penggunaan password hingga pemahaman OTP dan istilah keamanan siber lainnya; contohnya waspada terhadap cybercrime.",
@@ -196,7 +196,7 @@ window.BANK.renstra = window.BANK.renstra || [];
 window.BANK.renstra.push(
   {
     id: "bkn-rst-01", set: "bkn", topic: "renstra",
-    q: "Menurut kisi-kisi BKN, dokumen perencanaan pembangunan nasional berjangka 20 tahun, 5 tahun, dan 1 tahun secara berurutan adalah ...",
+    q: "Dokumen perencanaan pembangunan nasional berjangka 20 tahun, 5 tahun, dan 1 tahun secara berurutan adalah ...",
     o: ["RPJP Nasional, RPJM Nasional, dan RKP", "RKP, RPJM Nasional, dan RPJP Nasional", "Renstra K/L, Renja K/L, dan APBN", "RPJM Nasional, RKP, dan Renja K/L", "RPJP Nasional, RKP, dan RPJM Nasional"],
     a: 0,
     e: "UU 25/2004: RPJP Nasional 20 tahun dijabarkan ke RPJM Nasional 5 tahun, dijabarkan ke RKP 1 tahun; RPJMN menjadi pedoman Renstra K/L (5 tahun) yang dijabarkan ke Renja K/L (1 tahun); RKP menjadi pedoman penyusunan APBN yang dibahas bersama DPR (APBD dengan DPRD).",
@@ -204,7 +204,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-02", set: "bkn", topic: "renstra",
-    q: "Dalam bagan dokumen perencanaan kisi-kisi BKN, Renstra K/L disusun dengan berpedoman pada ...",
+    q: "Dalam bagan dokumen perencanaan, Renstra K/L disusun dengan berpedoman pada ...",
     o: ["RKP", "RPJM Nasional", "APBN", "Renja K/L", "RPJP Daerah"],
     a: 1,
     e: "RPJM Nasional menjadi pedoman Renstra K/L; Renstra K/L dijabarkan menjadi Renja K/L; RKP (penjabaran RPJMN) menjadi pedoman Renja K/L dan APBN. Sumber: UU No. 25 Tahun 2004 tentang SPPN.",
@@ -212,7 +212,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-03", set: "bkn", topic: "renstra",
-    q: "Visi pembangunan dalam RPJMN 2025-2029 menurut kisi-kisi BKN adalah ...",
+    q: "Visi pembangunan dalam RPJMN 2025-2029 adalah ...",
     o: ["Terwujudnya Indonesia Maju yang Berdaulat, Mandiri, dan Berkepribadian Berlandaskan Gotong Royong", "Bersama Indonesia Maju Menuju Indonesia Emas 2045", "Indonesia Emas 2045: Negara Nusantara Berdaulat, Maju, dan Berkelanjutan", "Indonesia Kuat, Adil, dan Makmur", "Menuju Indonesia Sejahtera 2030"],
     a: 1,
     e: "RPJMN 2025-2029 memuat visi dan misi, arah kebijakan, 8 Prioritas Nasional, sasaran utama, 17 program prioritas, 8 program hasil terbaik cepat, dan proyek prioritas; visinya \"Bersama Indonesia Maju Menuju Indonesia Emas 2045\". \"Terwujudnya Indonesia Maju yang Berdaulat, Mandiri, dan Berkepribadian...\" adalah visi RPJMN 2020-2024; \"Negara Nusantara Berdaulat, Maju, dan Berkelanjutan\" adalah visi RPJPN 2025-2045.",
@@ -220,7 +220,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-04", set: "bkn", topic: "renstra",
-    q: "Komponen RPJMN 2025-2029 menurut kisi-kisi BKN meliputi visi-misi, arah kebijakan, 8 prioritas nasional, sasaran utama, proyek prioritas, serta ...",
+    q: "Komponen RPJMN 2025-2029 meliputi visi-misi, arah kebijakan, 8 prioritas nasional, sasaran utama, proyek prioritas, serta ...",
     o: ["17 program prioritas dan 8 program hasil terbaik cepat", "9 agenda Nawacita", "5 arahan Presiden", "4 pilar pembangunan", "7 agenda pembangunan"],
     a: 0,
     e: "17 program prioritas dan 8 program hasil terbaik cepat (PHTC), misalnya makan siang dan susu gratis di sekolah dan pesantren (PHTC 1) serta pemeriksaan kesehatan gratis (PHTC 2). Pilihan lain milik dokumen lain: Nawacita (9 agenda) pada RPJMN 2015-2019; 7 agenda pembangunan dan 5 arahan Presiden pada RPJMN 2020-2024; 4 pilar dari Visi Indonesia 2045.",
@@ -276,7 +276,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-11", set: "bkn", topic: "renstra",
-    q: "Rumusan Prioritas Nasional 7 RPJMN 2025-2029 menurut kisi-kisi BKN adalah memperkuat reformasi politik, hukum, dan birokrasi, serta memperkuat pencegahan dan pemberantasan ...",
+    q: "Rumusan Prioritas Nasional 7 RPJMN 2025-2029 adalah memperkuat reformasi politik, hukum, dan birokrasi, serta memperkuat pencegahan dan pemberantasan ...",
     o: ["Korupsi dan narkoba", "Korupsi, narkoba, judi, dan penyelundupan", "Terorisme dan radikalisme", "Perdagangan orang dan pencucian uang", "Pungutan liar dan gratifikasi"],
     a: 1,
     e: "PN 7 - Memperkuat Reformasi Politik, Hukum, dan Birokrasi, serta Memperkuat Pencegahan dan Pemberantasan Korupsi, Narkoba, Judi, dan Penyelundupan; sasarannya antara lain supremasi hukum yang transparan-adil-tidak memihak, birokrasi adaptif dan melayani, masyarakat bebas narkoba, tata kelola BUMN, inflasi rendah, dan pendapatan negara optimal. Kemenimipas mendukung langsung PN 7 (rumusan Asta Cita 7 dalam Renstra menyebut \"korupsi dan narkoba\").",
@@ -316,7 +316,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-16", set: "bkn", topic: "renstra",
-    q: "Cakupan materi Rencana Strategis Instansi dalam kisi-kisi BKN meliputi ...",
+    q: "Cakupan materi Rencana Strategis Instansi meliputi ...",
     o: ["Laporan keuangan tahunan, neraca aset, dan realisasi anggaran instansi", "Daftar pegawai, peta jabatan, dan kebutuhan formasi lima tahun ke depan", "Rencana pengadaan barang/jasa dan jadwal pelaksanaan kontrak tahunan", "Jadwal cuti bersama, hari libur nasional, dan kalender kegiatan instansi", "Visi-misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, sistematika"],
     a: 4,
     e: "Materi Renstra instansi mencakup visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, dan sistematika Renstra. Untuk Kemenimipas, Renstra 2025-2029 ditetapkan dengan Permenimipas 11/2025.",
@@ -336,7 +336,7 @@ window.BANK.sotk = window.BANK.sotk || [];
 window.BANK.sotk.push(
   {
     id: "bkn-stk-01", set: "bkn", topic: "sotk",
-    q: "Cakupan materi SOTK dalam kisi-kisi BKN meliputi kedudukan, tugas, fungsi perangkat daerah/satuan kerja, jalur koordinasi, eselonisasi, serta ...",
+    q: "Cakupan materi SOTK meliputi kedudukan, tugas, fungsi perangkat daerah/satuan kerja, jalur koordinasi, eselonisasi, serta ...",
     o: ["Tarif layanan", "Jumlah anggaran", "Nama-nama pejabat", "Sejarah berdirinya instansi", "Pengangkatan dan pemberhentian"],
     a: 4,
     e: "SOTK (Struktur Organisasi dan Tata Kerja) mencakup kedudukan, tugas, fungsi, jalur koordinasi, eselonisasi, dan pengangkatan-pemberhentian. Untuk Kemenimipas rujukannya Permenimipas 1/2024 (Kementerian) dan 2/2024 (Kanwil Ditjen Imigrasi).",
