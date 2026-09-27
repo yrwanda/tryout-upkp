@@ -1356,3 +1356,6 @@ body.cat-on .sheet .eyebrow, body.cat-on .sheet .cat-sec { color: #52606D; }
 .sync-code { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .sync-code code { font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; font-size: 1rem; font-weight: 700; letter-spacing: .04em; padding: 6px 10px; border-radius: 8px; background: var(--surface-2); border: 1px solid var(--border); user-select: all; word-break: break-all; }
 .sync-input { max-width: 330px; font-family: ui-monospace, "SFMono-Regular", Consolas, monospace; text-transform: uppercase; }
+.qr-box { width: min(260px, 78vw); margin: 0 auto; padding: 10px; background: #fff; border-radius: 12px; border: 1px solid var(--border); }
+.qr-box svg { display: block; width: 100%; height: auto; }
+.share-steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }

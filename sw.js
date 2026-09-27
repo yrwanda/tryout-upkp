@@ -1,8 +1,8 @@
 /* Service worker: cache semua aset agar aplikasi bisa dipakai offline. Naikkan VERSION setiap kali bank soal/aplikasi berubah. */
-const VERSION = "upkp-v39";
+const VERSION = "upkp-v40";
 const ASSETS = [
   "./", "./index.html", "./manifest.json", "./css/style.css",
-  "./js/materi.js", "./js/app.js", "./js/boot.js",
+  "./js/materi.js", "./js/app.js", "./js/boot.js", "./js/qr.js",
   "./js/bank/bkn_twk.js", "./js/bank/bkn_tkt.js", "./js/bank/bkn_tsi_tkp.js", "./js/bank/bkn_ekstra.js",
   "./js/bank/bkn_x3_twk.js", "./js/bank/bkn_x3_tkt.js", "./js/bank/bkn_x3_lain.js", "./js/bank/bkn_x4.js", "./js/bank/bkn_x5.js", "./js/bank/bkn_form.js", "./js/jodoh.js", "./js/kelompok.js", "./js/urut.js", "./js/tebak.js", "./js/detektif.js",
   "./icons/logo.svg", "./icons/favicon.svg", "./icons/favicon-32.png", "./icons/apple-touch-icon.png", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/maskable-192.png", "./icons/maskable-512.png"

@@ -147,7 +147,49 @@
     const A = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789", b = new Uint8Array(24); crypto.getRandomValues(b);
     return Array.from(b, x => A[x % 32]).join("").match(/.{4}/g).join("-");
   }
-  const normCode = s => (String(s || "").toUpperCase().replace(/[^A-Z0-9]/g, "").match(/.{1,4}/g) || []).join("-");
+  // menerima kode saja atau link sambung utuh yang ditempel
+  const normCode = s => { const t = String(s || ""), m = t.match(/sambung=([A-Za-z0-9-]+)/); return ((m ? m[1] : t).toUpperCase().replace(/[^A-Z0-9]/g, "").match(/.{1,4}/g) || []).join("-"); };
+  const joinLink = code => location.origin + location.pathname + "#sambung=" + code;
+  // kode dari link dibaca sekali lalu dihapus dari alamat agar tidak tertinggal di bilah alamat
+  function takeJoinHash() {
+    const m = location.hash.match(/^#sambung=([A-Za-z0-9-]{20,40})$/);
+    if (!m) return null;
+    try { history.replaceState(null, "", location.pathname + location.search + "#home"); } catch (e) { }
+    const code = normCode(m[1]);
+    return CODE_RE.test(code) ? code : "";
+  }
+  function offerJoin(code) {
+    if (code === "") return toast("Link sambung tidak valid. Minta link baru dari perangkat yang sudah tersambung.");
+    if (sync && sync.code === code) return toast("Perangkat ini sudah tersambung dengan kode tersebut.");
+    confirmBox("Sambungkan perangkat ini?",
+      sync ? "Perangkat ini sedang memakai kode sinkron lain. Bila disambungkan, progres di perangkat ini digabung ke kode dari link, dan kode lama tidak dipakai lagi di perangkat ini."
+        : "Progres di perangkat ini akan digabung dengan progres dari perangkat yang membagikan link, lalu tersinkron otomatis. Hanya buka link sambung milik Anda sendiri.",
+      "Sambungkan", () => joinSync(code));
+  }
+  function shareSync() {
+    if (!sync) return;
+    const link = joinLink(sync.code), box = el("div", { class: "qr-box" });
+    try { box.innerHTML = window.QR.svg(link, "QR code link sambung sinkron"); } catch (e) { box.textContent = "QR code tidak dapat dibuat."; }
+    const inp = el("input", { class: "input", value: link, readonly: "readonly", "aria-label": "Link sambung", onfocus: e => e.target.select() });
+    const copy = () => (navigator.clipboard ? navigator.clipboard.writeText(link) : Promise.reject()).then(() => toast("Link disalin"), () => { inp.focus(); toast("Salin link dari kolom di atas."); });
+    sheet("Sambungkan perangkat lain",
+      el("div", { class: "stack", style: "gap:12px" }, [
+        box,
+        el("ol", { class: "share-steps small" }, [
+          el("li", null, ["Di HP: buka kamera, arahkan ke QR code ini, lalu buka link yang muncul."]),
+          el("li", null, ["Di laptop atau perangkat lain: buka link di bawah (kirim lewat pesan ke diri sendiri, misalnya)."]),
+          el("li", null, ["Tekan ", el("b", null, ["Sambungkan"]), " di perangkat baru. Selesai, selanjutnya tersinkron otomatis."])
+        ]),
+        inp,
+        el("div", { class: "row" }, [
+          el("button", { class: "btn btn-sm btn-primary", onclick: copy }, ["Salin link"]),
+          navigator.share ? el("button", { class: "btn btn-sm", onclick: () => navigator.share({ title: "Link sambung Tryout UPKP", url: link }).catch(() => { }) }, ["Bagikan..."]) : null
+        ]),
+        el("p", { class: "xs muted" }, ["Link dan QR code ini sama dengan kode sinkron: siapa pun yang membukanya bisa membaca dan mengubah progres Anda. Kirim hanya ke perangkat sendiri."]),
+        el("p", { class: "xs muted" }, ["Aplikasi yang dipasang di layar utama iPhone memakai penyimpanan terpisah dari Safari. Di sana, buka aplikasinya, lalu tempel link ini atau kodenya di kolom sambung pada Pengaturan."])
+      ])
+    );
+  }
   async function rpc(fn, body) {
     const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 15000);
     try {
@@ -219,12 +261,13 @@
       box.append(
         el("p", { class: "xs muted" }, ["Progres juga disimpan di server, jadi HP dan laptop memakai data yang sama tanpa ekspor-impor. Tidak perlu akun: perangkat pertama membuat kode sinkron, perangkat lain cukup memasukkan kode itu. Progres kedua perangkat digabung, tidak saling menimpa."]),
         el("div", { class: "row" }, [el("button", { class: "btn btn-sm btn-primary", onclick: enableSync }, ["Aktifkan di perangkat ini"])]),
-        el("label", { class: "xs muted", for: "syncCode" }, ["Sudah punya kode dari perangkat lain?"]),
+        el("label", { class: "xs muted", for: "syncCode" }, ["Sudah punya kode atau link dari perangkat lain? Tempel di sini, atau cukup scan QR code-nya."]),
         el("div", { class: "row" }, [inp, el("button", { class: "btn btn-sm", onclick: () => joinSync(inp.value) }, ["Sambungkan"])])
       );
     } else {
       box.append(
         el("p", { class: "xs muted" }, ["Aktif. Perubahan dikirim otomatis beberapa detik setelah tersimpan, dan progres dari perangkat lain diambil saat aplikasi dibuka."]),
+        el("div", { class: "row" }, [el("button", { class: "btn btn-sm btn-primary", onclick: shareSync }, ["Bagikan ke perangkat lain"])]),
         el("div", { class: "sync-code" }, [el("code", null, [sync.code]), el("button", { class: "btn btn-sm", onclick: copySyncCode }, ["Salin kode"])]),
         el("p", { class: "xs muted" }, ["Kode ini berfungsi seperti kata sandi: siapa pun yang memegangnya bisa membaca dan mengubah progres ini. Simpan di catatan pribadi dan jangan dibagikan."]),
         el("p", { class: "xs", id: "syncStatus", "aria-live": "polite" }, [syncStatusText()]),
@@ -244,11 +287,11 @@
   }
   async function joinSync(v) {
     const code = normCode(v);
-    if (!CODE_RE.test(code)) return toast("Kode sinkron berisi 24 huruf dan angka, misalnya ABCD-EFGH-JKLM-NPQR-STUV-WXYZ.");
+    if (!CODE_RE.test(code)) return toast("Kode sinkron berisi 24 huruf dan angka, misalnya ABCD-EFGH-JKLM-NPQR-STUV-WXYZ, atau tempel link sambungnya.");
     let r; try { r = await rpc("sync_get", { p_code: code }); } catch (e) { return toast("Server tidak terjangkau. Coba lagi saat online."); }
     if (!isObj(r) || !isObj(r.data)) return toast("Kode tidak ditemukan di server. Periksa lagi hurufnya.");
     sync = { code, at: 0 }; saveSyncCfg();
-    await syncNow(); go("pengaturan");
+    await syncNow(); go(current === "pengaturan" ? "pengaturan" : current);
     toast("Tersambung. Progres dari perangkat lain sudah digabung.");
   }
   async function deleteSync() {
@@ -2201,9 +2244,11 @@
   // aplikasi terbuka di tab lain: progres bisa saling menimpa
   let tabWarned = false;
   window.addEventListener("storage", e => { if (e.key === KEY && !tabWarned) { tabWarned = true; toast("Aplikasi ini juga terbuka di tab lain. Pakai satu tab saja agar progres tidak saling menimpa."); } });
-  window.addEventListener("hashchange", () => { const h = location.hash.slice(1); if (routes[h] && h !== current) nav(h); });
+  window.addEventListener("hashchange", () => { const jc = takeJoinHash(); if (jc !== null) return offerJoin(jc); const h = location.hash.slice(1); if (routes[h] && h !== current) nav(h); });
+  const joinCode = takeJoinHash();
   const start = location.hash.slice(1);
   go(exam && !exam.finished ? "simulasi" : routes[start] ? start : "home");
+  if (joinCode !== null) offerJoin(joinCode);
   // sinkron: saat dibuka, saat kembali ke aplikasi, saat online lagi, dan sebelum aplikasi ditinggalkan
   if (sync) syncNow();
   document.addEventListener("visibilitychange", () => {
