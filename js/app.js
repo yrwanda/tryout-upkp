@@ -260,6 +260,7 @@
     clearInterval(jodohInt); jodohInt = null; gameKey = null;
     current = name; view.innerHTML = ""; renderNav();
     routes[name](arg);
+    arenaWrap();
     if (location.hash.slice(1) !== name) { try { history.replaceState(null, "", "#" + name); } catch (e) { } }
     window.scrollTo({ top: 0 });
   }
@@ -462,6 +463,42 @@
       el("button", { class: "btn btn-primary", onclick: () => nav("selingan") }, [icon("play"), "Main"])
     ]);
   }
+
+  // Panggung bertema untuk tiap mini game: seluruh isi halaman game dibungkus satu "arena" dengan tekstur dan warnanya sendiri.
+  const ARENA = { jodoh: 1, kilat: 1, kelompok: 1, urut: 1, tebak: 1, detektif: 1 };
+  function arenaWrap() {
+    if (!ARENA[current]) return;
+    const f = view.firstElementChild;
+    if (f && f.classList.contains("arena") && view.children.length === 1) return;
+    const a = el("section", { class: "arena arena-" + current });
+    a.append(...[...view.childNodes]); view.append(a);
+  }
+  const GAME_ART = {
+    jodoh: `<rect x="14" y="24" width="46" height="64" rx="8" transform="rotate(-10 37 56)" fill="#FBF4E2" stroke="#C8922A" stroke-width="2.5"/>
+      <rect x="60" y="30" width="46" height="64" rx="8" transform="rotate(9 83 62)" fill="#FBF4E2" stroke="#C8922A" stroke-width="2.5"/>
+      <path d="M38 56C52 36 68 84 83 62" stroke="#2FBF71" stroke-width="5" fill="none" stroke-linecap="round"/>
+      <circle cx="38" cy="56" r="7" fill="#2FBF71" stroke="#0B3B2E" stroke-width="2"/><circle cx="83" cy="62" r="7" fill="#2FBF71" stroke="#0B3B2E" stroke-width="2"/>`,
+    kilat: `<circle cx="60" cy="60" r="42" fill="#0B1D3A" stroke="rgba(63,224,208,.25)" stroke-width="8"/>
+      <circle cx="60" cy="60" r="42" fill="none" stroke="#3FE0D0" stroke-width="8" stroke-dasharray="190 264" stroke-linecap="round" transform="rotate(-90 60 60)"/>
+      <path d="M67 26 41 64h17l-6 30 27-40H63z" fill="#FFE27A" stroke="#B8860B" stroke-width="2" stroke-linejoin="round"/>`,
+    kelompok: `<path d="M10 40h28l6 7h34v42H10z" fill="#B98546"/><path d="M22 50h28l6 7h40v40H22z" fill="#D9AE6A"/>
+      <path d="M34 60h28l6 7h40v38H34z" fill="#F0D59A" stroke="#8A5E0C" stroke-width="2"/><path d="M46 80h46M46 90h34" stroke="#8A5E0C" stroke-width="3" stroke-linecap="round"/>`,
+    urut: `<line x1="28" y1="14" x2="28" y2="106" stroke="#F2CE7A" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="28" cy="28" r="8" fill="#F2CE7A"/><circle cx="28" cy="60" r="8" fill="#F2CE7A"/><circle cx="28" cy="92" r="8" fill="#1A1F4A" stroke="#F2CE7A" stroke-width="3"/>
+      <rect x="44" y="18" width="62" height="20" rx="5" fill="#F4E9D0"/><rect x="44" y="50" width="62" height="20" rx="5" fill="#F4E9D0"/><rect x="44" y="82" width="62" height="20" rx="5" fill="none" stroke="#F4E9D0" stroke-width="2" stroke-dasharray="5 4"/>`,
+    tebak: `<rect x="18" y="30" width="72" height="52" rx="6" transform="rotate(-9 54 56)" fill="#E9D9BD"/>
+      <rect x="28" y="38" width="72" height="52" rx="6" transform="rotate(6 64 64)" fill="#FFF8EA" stroke="#B23A48" stroke-width="2.5"/>
+      <text x="64" y="80" font-size="36" font-weight="800" text-anchor="middle" fill="#B23A48" font-family="Plus Jakarta Sans, sans-serif" transform="rotate(6 64 64)">?</text>`,
+    detektif: `<rect x="14" y="14" width="64" height="86" rx="6" fill="#F6F1E4"/><path d="M24 32h44M24 44h44M24 56h30M24 68h44M24 80h36" stroke="#9FB3C8" stroke-width="3" stroke-linecap="round"/>
+      <path d="M22 57h36" stroke="#D0443C" stroke-width="3.5" stroke-linecap="round"/>
+      <circle cx="78" cy="72" r="18" fill="rgba(160,200,230,.25)" stroke="#E8D6A8" stroke-width="7"/><path d="M91 86l15 16" stroke="#E8D6A8" stroke-width="9" stroke-linecap="round"/>`
+  };
+  function gameArt(id, cls) {
+    const w = el("span", { class: "gart" + (cls ? " " + cls : ""), "aria-hidden": "true" });
+    w.innerHTML = `<svg viewBox="0 0 120 120">${GAME_ART[id] || ""}</svg>`;
+    return w;
+  }
+  const PAIR_COL = ["#2FBF71", "#3B82F6", "#E0A526", "#D9468F", "#8B5CF6", "#14B8A6"];
   const resumeBtn = () => drill && drill.active && drill.i < drill.qs.length
     ? el("button", { class: "btn btn-primary", onclick: () => go("latihan") }, [icon("play"), `Lanjut latihan (soal ${drill.i + 1}/${drill.qs.length})`]) : null;
   const backBtn = (label, route) => el("button", { class: "btn btn-ghost btn-sm", style: "padding-left:0;align-self:flex-start", onclick: () => go(route) }, [icon("left"), label]);
@@ -476,8 +513,8 @@
       el("div", { class: "game-grid" }, GAMES.map(g => {
         const sets = g.sets ? g.sets() : null, miss = sets ? sets.reduce((a, x) => a + gMissed(g, x), 0) : 0, kb = state.kilatBest || 0;
         const meta = g.meta ? g.meta() : sets ? `${sets.length} set` + (miss ? ` · ${miss} kartu pernah keliru` : "") : kb ? `Rekor: ${kb} benar dalam 60 detik` : "Belum ada rekor";
-        return el("button", { class: "game-card" + (g.feat ? " feat" : ""), onclick: () => go(g.id) }, [
-          el("span", { class: "game-ic", "aria-hidden": "true" }, [icon(g.icon)]),
+        return el("button", { class: "game-card g-" + g.id + (g.feat ? " feat" : ""), onclick: () => go(g.id) }, [
+          GAME_ART[g.id] ? gameArt(g.id, "game-art") : el("span", { class: "game-ic", "aria-hidden": "true" }, [icon(g.icon)]),
           el("span", { class: "stack", style: "gap:4px;min-width:0" }, [el("span", { class: "game-t" }, [g.title]), el("span", { class: "small muted" }, [g.desc]), el("span", { class: "xs faint" }, [meta])]),
           icon("right")
         ]);
@@ -489,11 +526,12 @@
     const sets = g.sets();
     const pickRandom = () => { const w = sets.filter(x => gMissed(g, x)); const fresh = sets.filter(x => !(state.jodohBest || {})[x.id]); return shuffle(w.length ? w : fresh.length ? fresh : sets)[0]; };
     view.append(
-      el("div", { class: "stack", style: "gap:6px" }, [
-        backBtn("Semua mini game", "selingan"),
+      backBtn("Semua mini game", "selingan"),
+      el("div", { class: "arena-hero" }, [gameArt(g.id, "hero-art"), el("div", { class: "stack", style: "gap:6px" }, [
+        el("span", { class: "eyebrow" }, ["Selingan"]),
         el("h1", null, [g.title]),
         el("p", { class: "muted" }, [`${g.desc} ${g.how} Tidak ada skor, hanya waktu dan jumlah keliru.`])
-      ]),
+      ])]),
       el("div", { class: "row" }, [resumeBtn(), el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go(g.id, { set: pickRandom().id }) }, [icon("shuffle"), "Set acak"])])
     );
     const groups = {}; sets.forEach(x => { const t = topicById(x.topic); (groups[t.test] = groups[t.test] || []).push(x); });
@@ -569,6 +607,7 @@
         ])
       ])
     );
+    arenaWrap();
     const f = view.querySelector(".btn-primary"); if (f) f.focus();
   }
 
@@ -596,7 +635,7 @@
       if (!sel || sel.side === side) { clear(); sel = { side, i, btn }; btn.setAttribute("aria-pressed", "true"); return; }
       const a = sel, li = side === "L" ? i : a.i;
       if (a.i === i) {
-        done.add(i); [a.btn, btn].forEach(b => { b.setAttribute("aria-pressed", "false"); b.classList.add("ok"); b.disabled = true; b.prepend(el("span", { class: "jnum" }, [String(done.size)])); });
+        done.add(i); [a.btn, btn].forEach(b => { b.setAttribute("aria-pressed", "false"); b.classList.add("ok"); b.disabled = true; b.style.setProperty("--pc", PAIR_COL[(done.size - 1) % PAIR_COL.length]); b.prepend(el("span", { class: "jnum" }, [String(done.size)])); });
         sel = null; prog.textContent = `${done.size}/${pairs.length}`; live.textContent = `Cocok: ${pairs[i][0]} dengan ${pairs[i][1]}.`;
         if (done.size === pairs.length) finishRound(g, x, {
           secs: clk.secs(), errors, full: pairs.length === Math.min(g.size, x.pairs.length),
@@ -738,11 +777,12 @@
     drawSeg(); upd();
     const kb = state.kilatBest || 0;
     view.append(
-      el("div", { class: "stack", style: "gap:6px" }, [
-        backBtn("Semua mini game", "selingan"),
+      backBtn("Semua mini game", "selingan"),
+      el("div", { class: "arena-hero" }, [gameArt("kilat", "hero-art"), el("div", { class: "stack", style: "gap:6px" }, [
+        el("span", { class: "eyebrow" }, ["Selingan"]),
         el("h1", null, ["Benar atau Salah"]),
         el("p", { class: "muted" }, ["Sebuah pasangan muncul, misalnya pasal dan isinya. Putuskan pasangan itu benar atau salah. Salah menjawab tidak mengurangi waktu: jawaban yang benar ditampilkan dulu, lalu waktu berjalan lagi."])
-      ]),
+      ])]),
       el("section", { class: "panel stack", style: "gap:16px" }, [
         el("div", { class: "field" }, [el("span", { class: "label" }, ["Cakupan"]), seg, info]),
         el("div", { class: "row" }, [resumeBtn(), el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go("kilat", { play: true }) }, [icon("bolt"), "Mulai 60 detik"])]),
@@ -758,6 +798,8 @@
     const LIMIT = 60000;
     let cur = null, score = 0, answered = 0, streak = 0, bestStreak = 0, left = LIMIT, last = Date.now(), paused = false, done = false, fixT = null;
     const scoreEl = el("span", { class: "num" }, ["0"]), streakEl = el("span", { class: "num" }, ["0"]), secEl = el("span", { class: "num" }, ["60"]);
+    const kring = el("span", { class: "kring", style: "--p:1", role: "timer", "aria-label": "Sisa waktu" }, [secEl]);
+    const hot = () => streakEl.parentNode && streakEl.parentNode.classList.toggle("hot", streak >= 3);
     const bar = el("i", { style: "width:100%" }), barWrap = el("div", { class: "kbar", role: "progressbar", "aria-label": "Sisa waktu", "aria-valuemin": 0, "aria-valuemax": 60 }, [bar]);
     const qEl = el("div", { class: "kq", "aria-live": "polite" }), fixEl = el("div");
     const bNo = el("button", { class: "kbtn no", onclick: () => answer(false) }, [icon("x"), "Salah"]);
@@ -784,12 +826,12 @@
       const ok = v === cur.truth, key = gKey(cur.o.x, cur.o.p[0]);
       answered++; marks.set(key, marks.get(key) || !ok);
       if (ok) {
-        score++; streak++; bestStreak = Math.max(bestStreak, streak); scoreEl.textContent = String(score); streakEl.textContent = String(streak);
+        score++; streak++; bestStreak = Math.max(bestStreak, streak); scoreEl.textContent = String(score); streakEl.textContent = String(streak); hot();
         qEl.classList.add("ok"); bNo.disabled = bYes.disabled = true; paused = true;
         setTimeout(() => { paused = false; last = Date.now(); if (!done) nextQ(); }, 200);
         return;
       }
-      streak = 0; streakEl.textContent = "0"; paused = true; wrongs.push(cur);
+      streak = 0; streakEl.textContent = "0"; hot(); paused = true; wrongs.push(cur);
       qEl.classList.add("bad"); bNo.disabled = bYes.disabled = true;
       fixEl.append(el("div", { class: "kfix" }, [
         el("b", null, [cur.truth ? "Pasangan itu benar." : "Pasangan itu salah."]),
@@ -827,6 +869,7 @@
           el("button", { class: "btn btn-ghost", onclick: () => go("selingan") }, ["Mini game lain"])
         ])
       ]));
+      arenaWrap();
       const f = view.querySelector(".btn-primary"); if (f) f.focus();
     }
     gameKey = e => {
@@ -838,7 +881,7 @@
     };
     view.append(
       el("div", { class: "stack", style: "gap:10px" }, [
-        el("div", { class: "row between" }, [backBtn("Keluar", "kilat"), el("div", { class: "jmeter small muted" }, [meterSpan("Benar", scoreEl), meterSpan("Beruntun", streakEl), el("span", null, [icon("timer"), secEl])])]),
+        el("div", { class: "row between" }, [backBtn("Keluar", "kilat"), el("div", { class: "jmeter small muted" }, [meterSpan("Benar", scoreEl), el("span", { class: "kstreak" }, [icon("flame"), streakEl]), kring])]),
         barWrap
       ]),
       el("section", { class: "panel jpanel stack", style: "gap:14px" }, [qEl, fixEl, el("div", { class: "kbtns" }, [bNo, bYes])]),
@@ -850,7 +893,7 @@
       const now = Date.now(); if (!paused) left -= now - last; last = now;
       const s = Math.max(0, Math.ceil(left / 1000));
       bar.style.width = Math.max(0, left / LIMIT * 100) + "%"; barWrap.classList.toggle("low", left < 10000); barWrap.setAttribute("aria-valuenow", s);
-      secEl.textContent = String(s);
+      secEl.textContent = String(s); kring.style.setProperty("--p", Math.max(0, left / LIMIT)); kring.classList.toggle("low", left < 10000);
       if (left <= 0 && !done) end();
     }, 100);
   }
@@ -970,6 +1013,7 @@
         errBtn.classList.add(byUser ? "hit" : "miss"); errBtn.innerHTML = "";
         errBtn.append(el("s", null, [bad]), " ", el("ins", null, [good]));
         res.push({ it, wrong, byUser });
+        box.append(el("span", { class: "dstamp" + (byUser ? "" : " miss"), "aria-hidden": "true" }, [byUser ? "Ditemukan" : "Ditunjukkan"]));
         if (byUser) { fb.innerHTML = ""; fb.append(el("p", { class: "small" }, [el("b", null, ["Ketemu. "]), `Seharusnya: ${good}`])); }
         else fb.append(el("p", { class: "small" }, [el("b", null, ["Seharusnya: "]), good]));
         const last = qi + 1 >= qs.length;

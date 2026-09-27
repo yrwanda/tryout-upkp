@@ -28,6 +28,7 @@ Fitur belajar: **Sesi Hari Ini** (soal salah diulang besok, benar sekali diulang
   - `js/urut.js` **Urutkan** (15 set, 103 kartu, maks. 6 per ronde); items sudah urut, teks kartu tidak boleh membocorkan urutan.
   - `js/tebak.js` **Tebak dari Petunjuk** (8 set, 70 teka-teki, 5 per ronde, 6 pilihan); petunjuk urut dari tersulit, tidak boleh menyebut jawaban, minimal 6 jawaban per set.
   - `js/detektif.js` **Detektif Kisi-kisi** (10 set, 68 paragraf, 5 per ronde); tepat satu bagian `[salah, benar]` per paragraf, bagian lain harus benar menurut PPT.
+  - Tampilan: tiap game memakai panggung bertema (`arenaWrap()` di app.js, kelas `.arena-<id>` di style.css) yang menimpa token warna secara lokal; komponen berbahan kertas memakai token terang. Tema: Jodohkan meja beludru, Benar atau Salah arena neon, Kelompokkan meja arsip kayu, Urutkan linimasa, Tebak ruang berkas, Detektif meja penyidik.
   - Set `ext: true` = pelengkap (disembunyikan bila soal pelengkap dimatikan).
 - `js/app.js` logika aplikasi; `css/style.css` tampilan (token warna terang/gelap).
 
