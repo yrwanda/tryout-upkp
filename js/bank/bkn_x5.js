@@ -23,10 +23,10 @@ window.BANK.inggris.push(
   },
   {
     id: "bkn-eng-33", set: "ext", topic: "inggris",
-    q: "She is ... applicant who submitted the complete documents.",
+    q: "She is ... only applicant who submitted the complete documents.",
     o: ["a", "an", "the", "any", "some"],
     a: 2,
-    e: "Artikel \"the\" dipakai untuk benda/orang tertentu yang sudah dibatasi keterangan (who submitted the complete documents). \"An\" juga cocok secara bunyi, tetapi kalimat merujuk satu pemohon tertentu.",
+    e: "Artikel \"the\" dipakai untuk benda/orang tertentu yang sudah dibatasi keterangan (who submitted the complete documents). Kata \"only\" (satu-satunya) selalu didahului \"the\"; \"an only applicant\" tidak lazim.",
     src: "Pelengkap tata bahasa Inggris dasar (di luar kisi-kisi BKN hal. 165-171, yang hanya memuat tenses)"
   },
   {
@@ -158,8 +158,8 @@ window.BANK.sotk.push(
     q: "Inspektorat Wilayah yang melakukan pengawasan intern atas pelaksanaan tugas Direktorat Jenderal Imigrasi (unit pusat) adalah ...",
     o: ["Inspektorat Wilayah I", "Inspektorat Wilayah II", "Inspektorat Wilayah III", "Inspektorat Wilayah IV", "Inspektorat Wilayah V"],
     a: 2,
-    e: "Permenimipas 1/2024: Inspektorat Wilayah III mengawasi Direktorat Jenderal Imigrasi serta kanwil dan UPT di sejumlah provinsi (antara lain Riau, Aceh, Jawa Timur, Kalimantan Tengah). Inspektorat Wilayah IV mengawasi Ditjen Pemasyarakatan. Itjen hanya punya empat Inspektorat Wilayah.",
-    src: "Kisi-kisi BKN hal. 151 (subtopik SOTK); Permenimipas No. 1 Tahun 2024 Pasal 106-107"
+    e: "Permenimipas 1/2024: Pasal 100: Inspektorat Wilayah III mengawasi Direktorat Jenderal Imigrasi serta kanwil dan UPT di Riau, Aceh, Jawa Timur, Kalimantan Tengah, Sulawesi Tengah, Kepulauan Riau, Papua, dan Sumatera Barat. Inspektorat Wilayah IV mengawasi Ditjen Pemasyarakatan. Itjen hanya punya empat Inspektorat Wilayah.",
+    src: "Kisi-kisi BKN hal. 151 (subtopik SOTK); Permenimipas No. 1 Tahun 2024 Pasal 100 dan 107"
   },
   {
     id: "bkn-stk-31", set: "ext", topic: "sotk",

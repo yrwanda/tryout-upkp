@@ -347,7 +347,7 @@ window.BANK.sotk.push(
     q: "Padanan jabatan pimpinan tinggi madya dalam eselonisasi lama adalah ...",
     o: ["Eselon II", "Eselon III", "Eselon IV", "Eselon V", "Eselon I"],
     a: 4,
-    e: "Eselonisasi: JPT madya = eselon I (Sekjen, Dirjen, Irjen, Kepala Badan, Staf Ahli), JPT pratama = eselon II (Direktur, Kepala Biro, Kepala Kanwil), administrator = eselon III (Kabag, Kasubdit, Kabid), pengawas = eselon IV (Kasubbag, Kasi).",
+    e: "Eselonisasi: JPT madya = eselon I (Sekjen, Dirjen, Irjen, Kepala Badan, Staf Ahli), JPT pratama = eselon II (Direktur, Kepala Biro, Kepala Kanwil), administrator = eselon III (Kabag, Kasubdit; di Kanwil: kepala bagian dan kepala bidang), pengawas = eselon IV (Kasubbag). Dasar: Pasal 400 Permenimipas 1/2024 dan Pasal 41 Permenimipas 2/2024 (Kakanwil tipe A = II.a, tipe B = II.b).",
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 400"
   },
   {
@@ -371,7 +371,7 @@ window.BANK.sotk.push(
     q: "Pengangkatan dan pemberhentian pejabat pimpinan tinggi madya (eselon I) di kementerian dilakukan oleh ...",
     o: ["Menteri", "Sekretaris Jenderal", "Kepala BKN", "Menteri PANRB", "Presiden atas usul Menteri"],
     a: 4,
-    e: "Kisi-kisi memasukkan pengangkatan dan pemberhentian sebagai materi SOTK. Pejabat eselon I diangkat dan diberhentikan Presiden atas usul Menteri; eselon II ke bawah oleh Menteri selaku PPK (Pasal 401 Permenimipas 1/2024; UU 20/2023 Pasal 29).",
+    e: "Kisi-kisi memasukkan pengangkatan dan pemberhentian sebagai materi SOTK. Pejabat eselon I diangkat dan diberhentikan Presiden atas usul Menteri; JPT pratama/eselon II diangkat dan diberhentikan Menteri atas usul Direktur Jenderal; pejabat administrasi/eselon III ke bawah oleh pimpinan tinggi madya unit eselon I yang diberi pelimpahan wewenang oleh Menteri (Pasal 401 ayat 1-3 Permenimipas 1/2024).",
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 401"
   },
   {

@@ -513,7 +513,7 @@ window.BANK.sotk.push(
     q: "Menurut Pasal 401 ayat (2) Permenimipas No. 1 Tahun 2024, pejabat pimpinan tinggi pratama atau pejabat struktural eselon II ke bawah diangkat dan diberhentikan oleh ...",
     o: ["Kepala BKN", "Direktur Jenderal masing-masing", "Presiden", "Menteri", "Sekretaris Jenderal"],
     a: 3,
-    e: "Pasal 401: ayat (1) Sesjen, Dirjen, Irjen, Kepala Badan, dan Staf Ahli diangkat dan diberhentikan Presiden atas usul Menteri; ayat (2) JPT pratama/eselon II ke bawah diangkat dan diberhentikan Menteri.",
+    e: "Pasal 401: ayat (1) Sesjen, Dirjen, Irjen, Kepala Badan, dan Staf Ahli diangkat dan diberhentikan Presiden atas usul Menteri; ayat (2) JPT pratama/eselon II ke bawah diangkat dan diberhentikan Menteri atas usul Direktur Jenderal; ayat (3) pejabat administrasi/eselon III ke bawah oleh pimpinan tinggi madya unit eselon I yang diberi pelimpahan wewenang oleh Menteri.",
     src: "Kisi-kisi BKN hal. 151; Permenimipas No. 1 Tahun 2024 Pasal 401"
   },
   {

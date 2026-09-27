@@ -161,9 +161,9 @@ window.BANK.kebijakan.push(
   {
     id: "bkn-kbj-10", set: "ext", topic: "kebijakan",
     q: "Menurut Per. MenPAN PER/04/M.PAN/4/2007, prinsip penyusunan kebijakan publik antara lain ...",
-    o: ["Berlandaskan Pancasila dan UUD 1945, berorientasi kepentingan publik, partisipatif, transparan", "Ditetapkan secara tertutup oleh pimpinan tertinggi tanpa melibatkan pemangku kepentingan", "Mengutamakan kepentingan pejabat penyusun dan unit kerja yang mengusulkan kebijakan", "Tidak boleh direvisi setelah ditetapkan agar kepastian hukum tetap terjaga", "Berlaku surut untuk menjerat pelanggaran yang terjadi sebelum kebijakan ditetapkan"],
+    o: ["Berorientasi kepentingan publik, transparan, akuntabel, dan partisipatif", "Ditetapkan secara tertutup oleh pimpinan tertinggi tanpa melibatkan pemangku kepentingan", "Mengutamakan kepentingan pejabat penyusun dan unit kerja yang mengusulkan kebijakan", "Tidak boleh direvisi setelah ditetapkan agar kepastian hukum tetap terjaga", "Berlaku surut untuk menjerat pelanggaran yang terjadi sebelum kebijakan ditetapkan"],
     a: 0,
-    e: "Pedoman umum Per. MenPAN 04/2007 menekankan kebijakan publik yang berlandaskan konstitusi, berorientasi kepentingan publik, partisipatif (melibatkan pemangku kepentingan), transparan, akuntabel, serta melalui tahap formulasi-implementasi-evaluasi kinerja-revisi.",
+    e: "Per. MenPAN PER/04/M.PAN/4/2007 memuat enam nilai dasar kebijakan: cerdas (memecahkan masalah), bijaksana (tidak menimbulkan masalah baru yang lebih besar), memberi harapan, untuk kepentingan publik (bukan kepentingan negara, pemerintah, atau birokrasi), produktif, serta akuntabel dan transparan. Proses penyusunannya harus mencerminkan tata kelola yang baik: transparan, akuntabel, dan partisipatif. Pilihan lain bertentangan dengan prinsip tersebut.",
     src: "Per. MenPAN No. PER/04/M.PAN/4/2007 (kisi-kisi BKN hal. 145 hanya memuat judul \"prinsip penyusunan kebijakan publik\")"
   }
 );
@@ -457,9 +457,9 @@ window.BANK.yanlik.push(
   {
     id: "bkn-yan-06", set: "bkn", topic: "yanlik",
     q: "Asas pelayanan publik yang menuntut agar pelayanan tidak membedakan suku, ras, agama, golongan, gender, dan status ekonomi adalah ...",
-    o: ["Kepentingan umum", "Keprofesionalan", "Persamaan perlakuan/tidak diskriminatif", "Keterbukaan", "Ketepatan waktu"],
+    o: ["Kepentingan umum", "Keprofesionalan", "Kesamaan hak", "Keterbukaan", "Persamaan perlakuan/tidak diskriminatif"],
     a: 2,
-    e: "Kisi-kisi memuat 12 asas: kepentingan umum, kepastian hukum, kesamaan hak, keseimbangan hak dan kewajiban, keprofesionalan, partisipatif, persamaan perlakuan/tidak diskriminatif, keterbukaan, akuntabilitas, fasilitas dan perlakuan khusus bagi kelompok rentan, ketepatan waktu, serta kecepatan-kemudahan-keterjangkauan. Catatan: kisi-kisi hanya memuat nama asas; uraian di soal mengikuti Penjelasan Pasal 4 UU 25/2009.",
+    e: "Penjelasan Pasal 4 huruf c UU 25/2009: asas kesamaan hak berarti pemberian pelayanan tidak membedakan suku, ras, agama, golongan, gender, dan status ekonomi. Jangan tertukar dengan asas persamaan perlakuan/tidak diskriminatif (huruf g), yang dijelaskan sebagai setiap warga negara berhak memperoleh pelayanan yang adil. Kisi-kisi memuat 12 asas ini tanpa uraian; uraian di soal mengikuti Penjelasan UU.",
     src: "Kisi-kisi BKN hal. 125"
   },
   {
