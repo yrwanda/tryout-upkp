@@ -127,7 +127,25 @@
   }
   let state = load();
   let saveWarned = false;
+  // Penyimpanan permanen: browser tidak menghapus data situs ini saat ruang disk menipis.
+  // Chrome/Edge memberi izin tanpa bertanya (terutama bila aplikasi dipasang); Firefox menanyakan sekali.
+  let persisted = false, persistAsked = false;
+  const checkPersist = () => {
+    const st = navigator.storage;
+    if (!st || !st.persisted) return;
+    st.persisted().then(p => {
+      persisted = p;
+      if (p && current === "home" && view.querySelector(".export-remind")) go("home");
+    }).catch(() => { });
+  };
+  const askPersist = () => {
+    const st = navigator.storage;
+    if (persisted || persistAsked || !st || !st.persist) return;
+    persistAsked = true;
+    st.persist().then(p => { persisted = p; }).catch(() => { });
+  };
   const save = () => {
+    askPersist();
     if (store.set(KEY, JSON.stringify(state)) || saveWarned) return;
     saveWarned = true;
     // spanduk tetap (bukan toast) agar tidak tertimpa notifikasi lain
@@ -312,12 +330,19 @@
     if (drill && drill.active && name !== "latihan" && !SEL_ROUTES.includes(name)) drill.active = false;
     go(name, arg);
   }
+  // Sedang di tengah sesi? (simulasi, latihan berjalan, atau ronde mini game) -> pembaruan aplikasi ditunda.
+  const busyAt = name => (name === "simulasi" && !!exam) || ((name === "latihan" || SEL_ROUTES.includes(name)) && !!(drill && drill.active)) || (SEL_ROUTES.includes(name) && name !== "selingan");
+  window.upkpBusy = () => busyAt(current);
+  window.addEventListener("upkp-update", () => toast("Versi baru sudah siap. Dipakai otomatis setelah sesi ini selesai."));
   function go(name, arg) {
+    // versi baru menunggu: pakai sekarang, saat pindah ke halaman yang aman dimuat ulang
+    if (window.upkpUpdateReady && !busyAt(name)) { try { history.replaceState(null, "", "#" + name); } catch (e) { } return location.reload(); }
     clearInterval(jodohInt); jodohInt = null; gameKey = null;
     document.body.classList.remove("cat-on"); roundSeq++;
     current = name; view.innerHTML = ""; renderNav();
     routes[name](arg);
     arenaWrap();
+    if (!document.body.classList.contains("cat-on")) fsExit();
     if (location.hash.slice(1) !== name) { try { history.replaceState(null, "", "#" + name); } catch (e) { } }
     window.scrollTo({ top: 0 });
   }
@@ -368,7 +393,7 @@
       ]),
       ring(o.total ? o.mast / o.total : 0, "soal dikuasai", o.total ? (o.mast + o.ok) / o.total : 0)
     ]));
-    if (o.done && Date.now() - (state.lastExport || 0) > 7 * DAY && Date.now() > (state.exportSnooze || 0)) view.append(el("div", { class: "note row between", role: "status" }, [
+    if (o.done && Date.now() - (state.lastExport || 0) > (persisted ? 30 : 7) * DAY && Date.now() > (state.exportSnooze || 0)) view.append(el("div", { class: "note row between export-remind", role: "status" }, [
       el("span", null, [el("b", null, ["Cadangkan progres. "]), state.lastExport ? `Terakhir diekspor ${fmtDate(state.lastExport)}.` : "Progres baru tersimpan di browser ini dan bisa hilang bila data browser terhapus."]),
       el("span", { class: "row", style: "gap:6px" }, [el("button", { class: "btn btn-sm btn-primary", onclick: () => { exportData(); go("home"); } }, ["Ekspor sekarang"]), el("button", { class: "btn btn-sm btn-ghost", onclick: () => { state.exportSnooze = Date.now() + 3 * DAY; save(); go("home"); } }, ["Nanti"])])
     ]));
@@ -1704,6 +1729,22 @@
   // informasi soal dan tombol "Selesai Ujian" di kanan atas, pilihan tampilan 1/2, sisa waktu di kanan bawah.
   // Pilihan yang belum disimpan tidak dihitung. CAT tidak punya tombol ragu-ragu; soal yang dilewati tetap merah.
   let catSel = null;
+  // Layar penuh hanya di komputer (mouse + layar lebar); di HP menutupi tombol sistem dan membingungkan.
+  const fsEl = () => document.fullscreenElement || document.webkitFullscreenElement;
+  const fsAble = () => !!(document.fullscreenEnabled || document.webkitFullscreenEnabled) && matchMedia("(hover: hover) and (pointer: fine) and (min-width: 900px)").matches;
+  function fsEnter() {
+    if (!fsAble() || fsEl()) return;
+    const d = document.documentElement, f = d.requestFullscreen || d.webkitRequestFullscreen;
+    try { const r = f.call(d, { navigationUI: "hide" }); if (r && r.catch) r.catch(() => { }); } catch (e) { }
+  }
+  function fsExit() {
+    if (!fsEl()) return;
+    const f = document.exitFullscreen || document.webkitExitFullscreen;
+    try { const r = f.call(document); if (r && r.catch) r.catch(() => { }); } catch (e) { }
+  }
+  const fsSync = () => { const b = $(".cat-fs"); if (b) { b.textContent = fsEl() ? "Keluar layar penuh" : "Layar penuh"; b.setAttribute("aria-pressed", fsEl() ? "true" : "false"); } };
+  document.addEventListener("fullscreenchange", fsSync);
+  document.addEventListener("webkitfullscreenchange", fsSync);
   function catConfirm(b, secs, onStart) {
     document.body.classList.add("cat-on");
     view.innerHTML = "";
@@ -1725,11 +1766,12 @@
           el("li", null, ["Pilih jawaban, lalu tekan ", el("b", null, ["Simpan dan Lanjutkan"]), ". Pilihan yang belum disimpan tidak dihitung."]),
           el("li", null, ["Tekan ", el("b", null, ["Lewatkan"]), " untuk pindah ke soal berikutnya. Nomornya tetap merah sampai dijawab."]),
           el("li", null, ["Kotak nomor soal: ", el("b", { class: "c-ok" }, ["hijau"]), " sudah dijawab, ", el("b", { class: "c-no" }, ["merah"]), " belum. Tekan nomor untuk pindah soal atau mengubah jawaban."]),
-          el("li", null, ["Sisa waktu ada di kanan bawah. Tekan ", el("b", null, ["Selesai Ujian"]), " di kanan atas bila sudah selesai. Benar bernilai 5, salah atau kosong 0."])
+          el("li", null, ["Sisa waktu ada di kanan bawah. Tekan ", el("b", null, ["Selesai Ujian"]), " di kanan atas bila sudah selesai. Benar bernilai 5, salah atau kosong 0."]),
+          fsAble() ? el("li", null, ["Di komputer, layar otomatis menjadi penuh. Tekan ", el("b", null, ["Esc"]), " untuk keluar, atau tombol ", el("b", null, ["Layar penuh"]), " di atas untuk masuk lagi."]) : null
         ]),
         el("div", { class: "cat-actions" }, [
           el("button", { class: "cat-skip", onclick: () => go("simulasi") }, ["Kembali"]),
-          el("button", { class: "cat-save", onclick: () => { state.settings.catName = name.value.trim(); save(); onStart(); } }, ["Mulai Ujian"])
+          el("button", { class: "cat-save", onclick: () => { fsEnter(); state.settings.catName = name.value.trim(); save(); onStart(); } }, ["Mulai Ujian"])
         ])
       ])
     ]));
@@ -1784,6 +1826,7 @@
     const head = el("header", { class: "cat-head" }, [
       el("div", { class: "cat-id" }, [el("b", null, [MODES[exam.mode].title]), el("span", null, [state.settings.catName || "Peserta simulasi"])]),
       el("div", { class: "cat-view", role: "group", "aria-label": "Tampilan soal" }, [1, 2].map(v => el("button", { "aria-pressed": tampil === v ? "true" : "false", title: v === 1 ? "Tampilan 1: soal di atas, jawaban di bawah" : "Tampilan 2: soal di kiri, jawaban di kanan", onclick: () => { state.settings.catView = v; save(); renderExamQ(); } }, [String(v)]))),
+      fsAble() ? el("button", { class: "cat-fs", "aria-pressed": fsEl() ? "true" : "false", onclick: () => fsEl() ? fsExit() : fsEnter() }, [fsEl() ? "Keluar layar penuh" : "Layar penuh"]) : null,
       el("button", { class: "cat-finish", onclick: askFinish }, ["Selesai Ujian"])
     ]);
     const info = el("div", { class: "cat-info" }, [
@@ -1947,7 +1990,7 @@
           el("p", { class: "xs muted" }, [counts]),
           el("p", { class: "xs muted" }, ["Kunci 50 soal resmi disusun aplikasi (form tidak memuat kunci). Bila kisi-kisi berbeda dari peraturan primer, pembahasan mencatat keduanya. Materi SOTK dan Renstra instansi di kisi-kisi hanya berupa judul subtopik, sehingga soalnya dilengkapi dari Permenimipas 1/2024, 2/2024, dan 11/2025."]),
           el("h3", null, ["Data progres"]),
-          el("p", { class: "xs muted" }, ["Tersimpan di browser ini saja. Ekspor seminggu sekali sebagai cadangan" + (state.lastExport ? ` (terakhir ${fmtDate(state.lastExport)}).` : " (belum pernah).")]),
+          el("p", { class: "xs muted" }, [(persisted ? "Tersimpan di browser ini dengan penyimpanan permanen: browser tidak akan menghapusnya sendiri saat ruang penuh. Tetap hilang bila data situs dihapus manual atau HP diganti, jadi ekspor sebulan sekali sudah cukup" : "Tersimpan di browser ini saja. Ekspor seminggu sekali sebagai cadangan") + (state.lastExport ? ` (terakhir ${fmtDate(state.lastExport)}).` : " (belum pernah).")]),
           el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: exportData }, ["Ekspor JSON"]), el("button", { class: "btn btn-sm", onclick: importData }, ["Impor"]), el("button", { class: "btn btn-sm btn-danger", onclick: () => confirmBox("Hapus semua progres?", "Statistik, riwayat simulasi, dan tanda soal dihapus. Pengaturan tetap.", "Hapus progres", () => { state.stats = {}; state.history = []; state.bookmarks = []; state.days = {}; save(); toast("Progres dihapus"); go("pengaturan"); }, true) }, ["Reset progres"])])
         ])
       ]));
@@ -2008,7 +2051,8 @@
   $("#topTheme").addEventListener("click", cycleTheme);
   $("#topSettings").appendChild(icon("sliders"));
   $("#topSettings").addEventListener("click", () => nav("pengaturan"));
-  applyTheme(); renderSideFoot(); restoreExam();
+  applyTheme(); renderSideFoot(); restoreExam(); checkPersist();
+  if (Object.keys(state.stats).length || state.history.length) askPersist();
   // aplikasi terbuka di tab lain: progres bisa saling menimpa
   let tabWarned = false;
   window.addEventListener("storage", e => { if (e.key === KEY && !tabWarned) { tabWarned = true; toast("Aplikasi ini juga terbuka di tab lain. Pakai satu tab saja agar progres tidak saling menimpa."); } });

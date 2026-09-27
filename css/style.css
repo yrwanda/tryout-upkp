@@ -1248,6 +1248,9 @@ body.cat-on .view { max-width: 1280px; padding: 0; gap: 0; }
 .cat-view { display: inline-flex; border: 1px solid rgba(255, 255, 255, .45); border-radius: 6px; overflow: hidden; }
 .cat-view button { width: 34px; height: 32px; border: 0; background: transparent; color: #FFFFFF; font-weight: 700; }
 .cat-view button[aria-pressed="true"] { background: #FFFFFF; color: var(--cat-head); }
+.cat-fs { min-height: 32px; padding: 4px 12px; border: 1px solid rgba(255, 255, 255, .45); border-radius: 6px; background: transparent; color: #FFFFFF; font-weight: 700; font-size: .84rem; }
+.cat-fs:hover { background: rgba(255, 255, 255, .12); }
+.cat-fs:focus-visible { outline: 3px solid #F4B400; outline-offset: 2px; }
 .cat-finish { min-height: 36px; padding: 6px 16px; border: 0; border-radius: 6px; background: var(--cat-red); color: #FFFFFF; font-weight: 800; }
 .cat-finish:hover { filter: brightness(1.08); }
 .cat-info { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 6px 16px; padding: 8px 18px; background: #FFFFFF; border-bottom: 1px solid var(--border); font-size: .88rem; color: var(--muted); }
@@ -1324,7 +1327,7 @@ body.cat-on .view { max-width: 1280px; padding: 0; gap: 0; }
   .cat-side { display: none; }
   .cat .cat-listbtn { display: inline-flex; }
   .cat-body.v2 { grid-template-columns: minmax(0, 1fr); }
-  .cat-view { display: none; }
+  .cat-view, .cat-fs { display: none; }
   .cat-head { padding: 8px 12px; }
   .cat-info { padding: 8px 12px; justify-content: flex-start; }
   .cat-bottom { position: sticky; bottom: 0; margin: 0 -10px -14px; padding: 10px; background: #FFFFFF; border-top: 1px solid var(--border); box-shadow: 0 -4px 12px rgba(31, 41, 51, .08); }
