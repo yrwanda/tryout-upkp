@@ -343,7 +343,7 @@ window.BANK.yanlik.push(
     q: "Asas pelayanan publik yang menuntut penyelesaian setiap jenis pelayanan tepat waktu sesuai standar pelayanan adalah asas ...",
     o: ["Keprofesionalan", "Kesamaan hak", "Kepastian hukum", "Ketepatan waktu", "Keterbukaan"],
     a: 3,
-    e: "Kisi-kisi BKN hal. 125: salah satu dari 12 asas UU 25/2009 adalah ketepatan waktu. Asas lain yang mirip, \"kecepatan, kemudahan, dan keterjangkauan\", menekankan proses yang cepat, mudah, dan terjangkau.",
+    e: "Kisi-kisi BKN hal. 125: salah satu dari 12 asas UU 25/2009 adalah ketepatan waktu. Asas lain yang mirip, \"kecepatan, kemudahan, dan keterjangkauan\", menekankan proses yang cepat, mudah, dan terjangkau. Catatan: kisi-kisi hanya memuat nama asas; uraian di soal mengikuti Penjelasan Pasal 4 UU 25/2009.",
     src: "Kisi-kisi BKN hal. 125"
   },
   {

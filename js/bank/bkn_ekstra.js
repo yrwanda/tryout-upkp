@@ -132,12 +132,12 @@ window.BANK.perkantoran.push(
     src: "Kisi-kisi BKN hal. 133"
   },
   {
-    id: "bkn-ktr-17", set: "bkn", topic: "perkantoran",
+    id: "bkn-ktr-17", set: "ext", topic: "perkantoran",
     q: "Aturan penulisan surat dinas yang benar menurut tata naskah dinas antara lain ...",
     o: ["Memakai kop surat, nomor, sifat, lampiran, hal, tanggal, tujuan, isi ringkas, tanda tangan, tembusan", "Ditulis tangan dengan bahasa santai agar terasa lebih personal bagi penerimanya", "Tanpa nomor surat agar praktis dan mempercepat proses pengiriman kepada tujuan", "Menggunakan singkatan gaul agar akrab dan mudah dipahami pegawai muda", "Ditandatangani oleh staf mana pun yang sedang berada di kantor saat surat selesai"],
     a: 0,
     e: "Kisi-kisi BKN hal. 126 menyebut aturan penulisan surat dinas dan jenis naskah dinas sebagai materi perkantoran; surat dinas memakai kop, nomor, sifat, lampiran, hal, tanggal, tujuan, isi (pembuka-inti-penutup) dengan ragam resmi (hal. 130), tanda tangan pejabat berwenang, dan tembusan.",
-    src: "Kisi-kisi BKN hal. 126 dan 130"
+    src: "Tata naskah dinas (kisi-kisi BKN hal. 126 hanya menyebut \"aturan penulisan surat dinas\" sebagai topik)"
   },
   {
     id: "bkn-ktr-18", set: "bkn", topic: "perkantoran",

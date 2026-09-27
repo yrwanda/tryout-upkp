@@ -159,12 +159,12 @@ window.BANK.kebijakan.push(
     src: "Kisi-kisi BKN hal. 149"
   },
   {
-    id: "bkn-kbj-10", set: "bkn", topic: "kebijakan",
+    id: "bkn-kbj-10", set: "ext", topic: "kebijakan",
     q: "Menurut Per. MenPAN PER/04/M.PAN/4/2007, prinsip penyusunan kebijakan publik antara lain ...",
     o: ["Berlandaskan Pancasila dan UUD 1945, berorientasi kepentingan publik, partisipatif, transparan", "Ditetapkan secara tertutup oleh pimpinan tertinggi tanpa melibatkan pemangku kepentingan", "Mengutamakan kepentingan pejabat penyusun dan unit kerja yang mengusulkan kebijakan", "Tidak boleh direvisi setelah ditetapkan agar kepastian hukum tetap terjaga", "Berlaku surut untuk menjerat pelanggaran yang terjadi sebelum kebijakan ditetapkan"],
     a: 0,
     e: "Pedoman umum Per. MenPAN 04/2007 menekankan kebijakan publik yang berlandaskan konstitusi, berorientasi kepentingan publik, partisipatif (melibatkan pemangku kepentingan), transparan, akuntabel, serta melalui tahap formulasi-implementasi-evaluasi kinerja-revisi (kisi-kisi BKN hal. 145).",
-    src: "Kisi-kisi BKN hal. 145; Per. MenPAN No. PER/04/M.PAN/4/2007"
+    src: "Per. MenPAN No. PER/04/M.PAN/4/2007 (kisi-kisi BKN hal. 145 hanya memuat judul \"prinsip penyusunan kebijakan publik\")"
   }
 );
 
@@ -383,8 +383,8 @@ window.BANK.kepegawaian.push(
     q: "Lambang KORPRI terdiri atas unsur ...",
     o: ["Pohon, bangunan, dan sayap", "Pohon, garuda, dan bintang", "Padi, kapas, dan bintang", "Bangunan, mahkota, dan garuda", "Pohon, mahkota, dan sayap"],
     a: 0,
-    e: "Lambang KORPRI (AD/ART Keppres 24/2010): pohon dengan 17 ranting, 8 dahan, dan 45 daun (kekuatan, kesanggupan, dan dinamika hidup); bangunan berbentuk balairung dengan lima tiang (pengayom dan pelindung, pemerintahan berdasarkan Pancasila); serta sayap besar 4 helai dan sayap kecil 5 helai (pengabdian dan dinamika). Soal ini ada di latihan resmi BKN 2025 (KORPRI no. 1 dan 6).",
-    src: "Keppres No. 24 Tahun 2010 (AD/ART KORPRI); Latihan resmi BKN 2025"
+    e: "Kisi-kisi BKN hal. 117: lambang KORPRI terdiri atas pohon, bangunan, dan sayap (berwarna emas). Pohon melambangkan kehidupan masyarakat, pengayom dan pelindung bangsa; 17 ranting, 8 dahan, dan 45 daun melambangkan perjuangan sejak 17 Agustus 1945. Bangunan berbentuk balairung lima tiang melambangkan tempat pemersatu anggota KORPRI dan perekat bangsa. Sayap dengan elar 4 di tengah dan 5 di tepi melambangkan pengabdian dan perjuangan KORPRI. Warna emas melambangkan keluhuran dan keagungan cita-cita kemerdekaan. Soal ini ada di latihan resmi BKN 2025 (KORPRI no. 1 dan 6).",
+    src: "Kisi-kisi BKN hal. 117; Latihan resmi BKN 2025"
   },
   {
     id: "bkn-keg-28", set: "bkn", topic: "kepegawaian",

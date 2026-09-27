@@ -183,12 +183,12 @@ window.BANK.literasi.push(
     src: "Kisi-kisi BKN hal. 139"
   },
   {
-    id: "bkn-lit-08", set: "bkn", topic: "literasi",
+    id: "bkn-lit-08", set: "ext", topic: "literasi",
     q: "Perundungan di dunia maya yang dilarang etika digital dikenal dengan istilah ...",
     o: ["Cyberbullying", "Phishing", "Hacking", "Spamming", "Cracking"],
     a: 0,
     e: "Cyberbullying = perundungan siber (penghinaan, ancaman, pelecehan daring), termasuk perbuatan yang dapat dijerat UU ITE. Phishing = penipuan data; hacking/cracking = pembobolan sistem; spamming = pesan massal tak diinginkan. Kisi-kisi BKN hal. 139: tidak melakukan perundungan adalah contoh etika digital.",
-    src: "Kisi-kisi BKN hal. 139"
+    src: "Istilah umum literasi digital (kisi-kisi BKN hal. 139 hanya menyebut \"tidak melakukan perundungan\")"
   }
 );
 

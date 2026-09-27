@@ -477,7 +477,7 @@ window.BANK.renstra.push(
     q: "Dalam cakupan materi Rencana Strategis Instansi pada kisi-kisi BKN, ukuran keberhasilan pencapaian tujuan dan sasaran strategis disebut ...",
     o: ["Visi", "Misi", "Indikator kinerja", "Permasalahan", "Sistematika"],
     a: 2,
-    e: "Kisi-kisi BKN hal. 150: materi Renstra instansi = visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, dan sistematika Renstra. Indikator kinerja adalah ukuran keberhasilan (misalnya Indeks Penegakan dan Pelayanan Hukum pada Renstra Kemenimipas).",
+    e: "Kisi-kisi BKN hal. 150: materi Renstra instansi = visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, dan sistematika Renstra. Indikator kinerja adalah ukuran keberhasilan (misalnya Indeks Penegakan dan Pelayanan Hukum pada Renstra Kemenimipas). Catatan: hal. 150 hanya berisi daftar subtopik; arti indikator kinerja dan contohnya berasal dari luar kisi-kisi.",
     src: "Kisi-kisi BKN hal. 150"
   },
   {
