@@ -37,6 +37,25 @@ window.MATERI = {
 - Tujuan: bangsa religius, adil sosial-ekonomi, menghargai HAM, demokratis, nasionalis dan cinta tanah air.
 - Contoh sikap: musyawarah untuk mufakat, tidak memaksakan kehendak, mendahulukan kepentingan bersama, menghormati antarumat beragama, tidak diskriminatif, menjaga nama baik bangsa.
 - Butir sila 1: kerukunan antarumat, kebebasan beribadah, tidak memaksakan agama. Sila 2: persamaan derajat, tenggang rasa (tepa selira), tidak semena-mena, berani membela kebenaran. Sila 3: kepentingan bangsa di atas pribadi/golongan, rela berkorban, Bhinneka Tunggal Ika. Sila 4: musyawarah diliputi kekeluargaan, menerima dan melaksanakan hasil musyawarah dengan iktikad baik, memberi kepercayaan kepada wakil. Sila 5: gotong royong, seimbang hak dan kewajiban, tidak memakai hak milik untuk pemerasan, pemborosan, gaya hidup mewah, atau merugikan kepentingan umum; suka bekerja keras.
+## Modul: sejarah perumusan Pancasila (modul hlm. 3-18)
+- BPUPKI (ketua dr. Radjiman) bersidang **29 Mei-1 Juni 1945** dan **10-17 Juli 1945**.
+- Yamin (29 Mei): Peri Kebangsaan, Peri Kemanusiaan, Peri Ketuhanan, Peri Kerakyatan, Kesejahteraan Rakyat. Soepomo: teori negara perseorangan, kelas, dan **integralistik**. Soekarno (1 Juni): lima dasar sebagai **philosophische grondslag**, dapat diperas menjadi Trisila dan **Ekasila (gotong royong)**.
+- Panitia Sembilan menyusun **Piagam Jakarta** (22 Juni 1945). Tujuh kata dihapus atas kesepakatan Hatta, Ki Bagus Hadikusumo, Teuku Moh. Hasan, dan tokoh Muslim lain; PPKI mengesahkan 18 Agustus 1945. Naskah proklamasi diketik **Sayuti Melik**.
+- Orde Baru: **Inpres 12/1968** (tata urutan pengucapan Pancasila), **Tap II/MPR/1978** tentang P4 Ekaprasetya Pancakarsa **36 butir**, dijabarkan BP-7 (1994) menjadi **45 butir** (7-10-7-10-11), **Asas Tunggal** 1982.
+- Reformasi: **Tap XVIII/MPR/1998** (Pancasila dasar negara), Tap III/MPR/2000 (sumber hukum dasar), penjelasan Pasal 2 **UU 12/2011** (sumber segala sumber hukum negara), sosialisasi **Empat Pilar** (Pancasila, UUD 1945, NKRI, Bhinneka Tunggal Ika).
+
+## Modul: istilah, asal mula, dan lambang negara (modul hlm. 19-30)
+- Istilah Pancasila ada dalam **Negarakertagama** (Mpu Prapanca, 1365, sarga 53 bait 2) dan Sutasoma (Mpu Tantular, Pancasila Krama). Di Jawa dikenal **Ma Lima**: mateni, maleng, madon, madat, maen.
+- Asal mula: causa **materialis** (adat, budaya, agama bangsa), **formalis** (perumusan oleh BPUPKI), **efisien** (PPKI mengesahkan), **finalis** (tujuan menjadi dasar negara).
+- Lambang dirancang **Sultan Hamid II** dari Pontianak; Panitia Lencana Negara dibentuk 10 Januari 1950; disahkan **PP 66/1951** (17 Oktober 1951); tata cara penggunaan PP 43/1958; nama resmi "Garuda Pancasila" di **Pasal 36A** (amandemen kedua, 2000).
+- Bulu sayap 17, ekor 8, pangkal ekor **19**, leher 45. Rantai: segi empat laki-laki, lingkaran perempuan. Garis hitam tebal di perisai = **khatulistiwa**. Banteng = hewan sosial yang suka berkumpul seperti musyawarah.
+
+## Modul: makna sila dan pelaksanaan Pancasila (modul hlm. 31-52)
+- "Ketuhanan Yang Maha Esa" menekankan **sifat-sifat luhur Tuhan**; Indonesia bukan negara agama.
+- Pemimpin "hikmat kebijaksanaan": hikmat = profesional, kebijaksanaan = arif dan berhati nurani.
+- Notonagoro: pelaksanaan **objektif** dalam penyelenggaraan negara (wajib hukum) dan **subjektif** dalam pribadi (wajib moral, paling menentukan).
+- Prinsip intrinsik: **konsisten, koheren, koresponden**. Sumber bahan: **tri prakara** (nilai agama, adat istiadat, kebiasaan bernegara).
+- HAM: universalisme lawan **partikularisme**; **Tap XVII/MPR/1998** memuat Piagam HAM. Sistem Ekonomi Pancasila berlandaskan **Pasal 33**.
 `,
   uud: `
 ## Sejarah (hal. 41-42)
@@ -87,6 +106,22 @@ window.MATERI = {
 - Sebelum amandemen: MPR (lembaga tertinggi), DPR, Presiden, DPA, MA, BPK.
 - Sesudah amandemen: MPR, DPR, DPD, Presiden, MA, MK, KY, BPK (sejajar). DPA dihapus.
 - Legislatif (membuat UU), eksekutif (melaksanakan UU), yudikatif (mengawasi/mengadili pelaksanaan UU), eksaminatif (BPK, memeriksa keuangan negara).
+## Modul: UUD 1945 dalam pelaksanaannya (modul hlm. 3-16)
+- 1945-1949: **Pasal IV Aturan Peralihan** (kekuasaan dijalankan Presiden dibantu Komite Nasional). Penyimpangan: **Maklumat Wapres No. X** (16 Oktober 1945) membuat KNIP berfungsi legislatif; **Maklumat 14 November 1945** mengganti kabinet presidensial menjadi parlementer.
+- **Konstitusi RIS** 27 Desember 1949-17 Agustus 1950 (tidak berlaku di negara bagian RI beribu kota Yogyakarta), disepakati di Scheveningen. **UUDS 1950** 17 Agustus 1950-5 Juli 1959: parlementer, demokrasi liberal.
+- 1959-1966: MPRS mengangkat Presiden seumur hidup, DPR dibubarkan 1960. Tap IV/MPR/1983 (referendum) dicabut **Tap VIII/MPR/1998** karena tidak sejalan dengan **Pasal 37**.
+- Amandemen I (1999): masa jabatan Presiden dibatasi, DPR memegang kekuasaan membentuk UU. II (2000): HAM, fungsi DPR. III (2001): MPR bukan lembaga tertinggi, Presiden dipilih langsung, lahir DPD, MK, KY. IV (2002): DPA dihapus, MPR terdiri atas DPR dan DPD.
+- Jenis perubahan: mengubah rumusan, membuat rumusan baru (Pasal 6A), **menghapus** (Bab IV DPA), memindahkan pasal ke ayat. Kini UUD terdiri atas **Pembukaan dan pasal-pasal**.
+- **Konvensi** = hukum dasar tidak tertulis, contoh pidato Presiden di DPR setiap **16 Agustus**.
+
+## Modul: Pembukaan dan kelembagaan negara (modul hlm. 17-34)
+- Alinea pertama memuat **dalil objektif** (penjajahan bertentangan dengan perikemanusiaan dan perikeadilan). Pokok pikiran pertama: **persatuan**.
+- **Pasal 37 ayat (5)**: bentuk NKRI tidak dapat diubah. Perubahan UUD: usul 1/3, hadir 2/3, setuju **50% + 1** seluruh anggota MPR.
+- Presiden dan Wakil berhalangan bersamaan: **Menlu, Mendagri, Menhan** (Pasal 8 ayat 3). Kekosongan Wakil Presiden: MPR memilih dalam **60 hari**.
+- Grasi dan rehabilitasi: pertimbangan **MA**; amnesti dan abolisi: pertimbangan **DPR**. **Abolisi** menghentikan pengusutan perkara.
+- Hak DPR: interpelasi, **angket**, menyatakan pendapat. Jumlah anggota DPD tidak lebih dari **1/3 anggota DPR**.
+- MA: kasasi, PK, menguji peraturan di bawah UU terhadap UU. MK: menguji UU terhadap UUD, sengketa kewenangan lembaga, pembubaran parpol, hasil pemilu; 9 hakim (3 dari MA, 3 DPR, 3 Presiden). KY diangkat Presiden dengan persetujuan DPR. BPK dipilih DPR dengan pertimbangan DPD.
+- Pemerintahan daerah berasas **otonomi dan tugas pembantuan**.
 `,
   sejarah: `
 ## Peristiwa Reformasi Mei 1998 (hal. 59)
@@ -250,6 +285,23 @@ Ejaan dan tanda baca, kalimat efektif, ide pokok, kata baku, makna kata, kata um
 ## Kalimat efektif dan paragraf (hal. 89-90)
 - Subjek tidak didahului preposisi (bagi, dari, untuk, di, pada...): kisi-kisi mencoret "dari" pada "Wakil dari Surakarta menjadi Duta Bahasa...". Tidak ada subjek ganda ("kakak" kedua dicoret). **Hemat**: kisi-kisi mencoret "Para" pada "Para siswa-siswi". **Logis** ("Sebelum ditemukan tak bernyawa, pria itu..." bukan "Mayat pria itu sebelumnya sering mondar-mandir").
 - Paragraf = rangkaian kalimat berkaitan satu gagasan. Gagasan pokok ada di **kalimat utama/topik**: awal (**deduktif**), tengah, akhir (**induktif**). Simpulan berisi ide pokok.
+## Modul: sejarah dan kedudukan bahasa Indonesia (modul hlm. 1-11)
+- Commissie voor de Volkslectuur (1908) menjadi **Balai Pustaka** (1917). **Jahja Datoek Kajo** berpidato dalam bahasa Indonesia di Volksraad (1927). Majalah **Pujangga Baru** (1933): Sutan Takdir Alisjahbana, Amir Hamzah, Armijn Pane.
+- Kongres Bahasa Indonesia I di **Solo (1938)**, II di Medan (1954), V (1988) mempersembahkan **KBBI** dan Tata Bahasa Baku, X (2013) merekomendasikan UKBI sebagai **paspor bahasa** bagi tenaga kerja asing.
+- **Ejaan Republik (Soewandi)** 19 Maret 1947; **EYD** 16 Agustus 1972 (Keppres 57/1972). Pedoman yang berlaku sekarang: EYD Edisi V.
+- Bahasa **nasional** sejak 28 Oktober 1928 (identitas, kebanggaan, pemersatu). Bahasa **negara** sejak 18 Agustus 1945, Pasal 36 (bahasa resmi kenegaraan, pengantar pendidikan, penghubung nasional, pengembang kebudayaan dan iptek).
+
+## Modul: diksi (modul hlm. 39-48)
+- Syarat diksi: **ketepatan dan kesesuaian**; kelompok kata harus tepat, **saksama** (hari raya, jaksa agung), dan lazim.
+- Makna **leksikal** (kamus) dan **gramatikal** (afiksasi, reduplikasi, komposisi). Perubahan makna: meluas (berlayar), **menyempit** (sarjana), **ameliorasi** (istri), peyorasi (bini), asosiasi (menyikat barang), **sinestesia** (kata-katanya pedas).
+- Homonim (bisa), **homograf** (teras, sedan), **homofon** (bang-bank, masa-massa), **polisemi** (kepala, kaki). Sinonim dialek temporal: hulubalang-komandan.
+- Kata ilmiah-populer: prediksi-ramalan, bibliografi-daftar pustaka. **Jargon** = kode kalangan tertentu; slang = salah ucap disengaja dan bersifat sementara.
+
+## Modul: kalimat efektif (modul hlm. 48-60)
+- Unsur kalimat: S, P, O, Pel, Ket. Subjek hilang bila diawali preposisi ("**Bagi** siswa dilarang masuk"). Predikat tidak boleh didahului "**yang**".
+- **Pelengkap** tidak dapat menjadi subjek kalimat pasif ("berlandaskan Pancasila"), sedangkan objek dapat.
+- Ciri kalimat efektif: kesepadanan, **keparalelan** (dibekukan atau dinaikkan), ketegasan (urutan bertahap, repetisi, partikel -lah), **kehematan** (baju merah; sejak pagi; para tamu), **kecermatan** (tidak bermakna ganda), **kepaduan** ("sudah saya baca"; tanpa "tentang" atau "daripada" sesudah verba), dan kelogisan.
+- Konjungsi intrakalimat (sehingga, sedangkan) tidak membuka kalimat; pakai konjungsi antarkalimat seperti "Oleh karena itu,".
 `,
   kepegawaian: `
 ## Dasar hukum (hal. 106)
@@ -333,6 +385,16 @@ Kepentingan umum; kepastian hukum; kesamaan hak; keseimbangan hak dan kewajiban;
 - **Keseimbangan hak dan kewajiban**: pemenuhan hak sebanding dengan kewajiban pemberi dan penerima layanan. **Keprofesionalan**: pelaksana berkompetensi sesuai bidang tugas.
 - **Partisipatif**: peran serta masyarakat dengan memperhatikan aspirasi, kebutuhan, dan harapannya. **Keterbukaan**: penerima layanan mudah mengakses informasi pelayanan. **Akuntabilitas**: proses dapat dipertanggungjawabkan.
 - **Fasilitas dan perlakuan khusus bagi kelompok rentan**: kemudahan bagi kelompok rentan. **Ketepatan waktu**: tiap jenis pelayanan selesai tepat waktu sesuai standar. **Kecepatan, kemudahan, keterjangkauan**: layanan cepat, mudah, terjangkau.
+## Modul: Permen PANRB 29/2022 tentang PEKPPP (Pasal 1-12)
+- PEKPPP = pengukuran sistematis untuk memperoleh **Indeks Pelayanan Publik (IPP)**; menggantikan Permen PANRB 17/2017.
+- Tujuan: rekomendasi perbaikan, nilai IPP, pemeringkatan berkala, dan penghargaan (piagam, piala).
+- Menteri melakukan PEKPPP nasional paling sedikit **1 kali setahun**. Unit yang dinilai disebut **Unit Lokus**; instrumennya penilaian **Evaluator** dan **pengguna layanan**.
+- Mekanisme: persiapan, pelaksanaan (pemeriksaan dokumen dan/atau wawancara), penyampaian hasil dan tindak lanjut (dilaporkan paling lambat **3 bulan** sebelum PEKPPP berikutnya), pemeringkatan dan penghargaan.
+
+## Modul: UU 25/2009 standar, maklumat, dan pengaduan (Pasal 15-46)
+- Standar pelayanan memuat 14 komponen, antara lain dasar hukum, persyaratan, prosedur, jangka waktu, biaya/tarif, produk, penanganan pengaduan, dan evaluasi kinerja pelaksana.
+- **Maklumat pelayanan** = pernyataan kesanggupan melaksanakan pelayanan sesuai standar, wajib dipublikasikan.
+- Pengaduan kepada penyelenggara, **Ombudsman**, atau DPR/DPRD; diajukan paling lambat **30 hari** sejak menerima pelayanan; ditanggapi paling lambat **14 hari**. Ombudsman wajib mediasi dan konsiliasi atas permintaan para pihak.
 `,
   gg: `
 ## Pengertian dan komponen (hal. 140-142)
@@ -348,6 +410,18 @@ Partisipasi, kepastian hukum, transparansi, tanggung jawab (responsif), berorien
 ## Reformasi birokrasi (hal. 140)
 Perpres 81/2010 tentang **Grand Design Reformasi Birokrasi 2010-2025**, dengan tiga pokok: **prinsip dasar good governance**, **tujuan RB**, dan **sasaran RB**.
 > Pelengkap (sumber primer, karena kisi-kisi BKN hal. 140 hanya berupa judul): tujuan RB = birokrasi profesional, berintegritas, berkinerja tinggi, bersih bebas KKN, melayani, netral; tiga sasaran RB = pemerintahan bersih bebas KKN, kualitas pelayanan publik, kapasitas dan akuntabilitas kinerja birokrasi.
+## Modul: UU 30/2014 Administrasi Pemerintahan, asas dan kewenangan (Pasal 1-25)
+- Dasar penyelenggaraan: **asas legalitas, pelindungan HAM, dan AUPB**. Fungsi pemerintahan: pengaturan, pelayanan, pembangunan, pemberdayaan, pelindungan.
+- **8 AUPB** (Pasal 10): kepastian hukum, kemanfaatan, ketidakberpihakan, kecermatan, tidak menyalahgunakan kewenangan, keterbukaan, kepentingan umum, pelayanan yang baik.
+- Kewenangan diperoleh melalui **atribusi** (UUD/UU, wewenang baru), **delegasi** (PP, Perpres, Perda; subdelegasi paling banyak satu tingkat di bawah), dan **mandat** (tugas rutin; **Plh** untuk pejabat berhalangan sementara, **Plt** berhalangan tetap; bertindak atas nama pemberi mandat).
+- Penyalahgunaan wewenang: **melampaui** (masa jabatan, wilayah), **mencampuradukkan** (di luar bidang atau tujuan), **sewenang-wenang** (tanpa dasar kewenangan).
+- Diskresi bertujuan melancarkan pemerintahan, mengisi kekosongan hukum, memberi kepastian hukum, dan mengatasi stagnasi. Diskresi yang mengubah alokasi anggaran wajib **disetujui atasan**.
+> Sebagian ketentuan diskresi (Pasal 24) dan keputusan fiktif positif (Pasal 53) diubah UU 6/2023 (Cipta Kerja). Soal di aplikasi tidak memakai pasal yang berubah itu.
+
+## Modul: UU 30/2014 keputusan dan upaya administratif (Pasal 52-78)
+- Syarat sah keputusan: **pejabat berwenang, sesuai prosedur, substansi sesuai objek**. Ditetapkan pejabat tidak berwenang = **tidak sah**; cacat prosedur atau substansi = batal atau dapat dibatalkan.
+- Pencabutan dan pembatalan hanya karena cacat **wewenang, prosedur, dan/atau substansi**; oleh pejabat atau atasannya paling lama 5 hari kerja.
+- Upaya administratif: **keberatan** (diajukan paling lama 21 hari kerja, diselesaikan 10 hari kerja) lalu **banding** ke atasan (10 hari kerja), lalu gugatan ke pengadilan. Tidak menunda pelaksanaan keputusan dan tidak dipungut biaya.
 `,
   kebijakan: `
 ## Dasar dan konsep (hal. 145-146)
@@ -402,6 +476,11 @@ UU 25/2004 SPPN: **RPJP Nasional 20 tahun** → dijabarkan **RPJM Nasional 5 tah
 ## Rencana strategis instansi (hal. 150)
 Kisi-kisi BKN hanya mencantumkan subtopik: **visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, sistematika Renstra**.
 > Pelengkap (sumber primer, karena kisi-kisi BKN hanya berupa judul): Renstra Kemenimipas 2025-2029 ditetapkan Permenimipas 11/2025. Sistematika Renstra K/L: Bab I Pendahuluan; II Visi, Misi, Tujuan, Sasaran Strategis; III Arah Kebijakan, Strategi, Kerangka Regulasi dan Kelembagaan; IV Target Kinerja dan Kerangka Pendanaan; V Penutup.
+## Modul: Ringkasan RPJMN 2025-2029 (modul hlm. 6-45)
+- RPJPN 2025-2045 ditetapkan dengan **UU 59/2024**; RPJMN 2025-2029 (Perpres 12/2025) adalah tahap I dengan fokus **perkuatan fondasi transformasi**.
+- Sasaran Visi Indonesia Emas 2045: GNI per kapita **USD 30.300**, kontribusi PDB maritim **15%**, manufaktur 28%, kemiskinan 0,5-0,8%, rasio Gini 0,290-0,320, Indeks Modal Manusia 0,73.
+- Pertumbuhan ekonomi 5,3% (2025) menjadi **8,0% (2029)**. Tiga ujung tombak: pertumbuhan tinggi, penurunan kemiskinan, peningkatan kualitas SDM; pengungkit: deregulasi perizinan dan kebijakan fiskal-moneter pro-growth.
+- Kemiskinan ekstrem 1,47% menjadi **0% pada 2029**; tingkat kemiskinan 9,03% menjadi 4,5-5,0%.
 `,
   sotk: `
 ## Cakupan kisi-kisi BKN (hal. 151)
@@ -428,6 +507,20 @@ Struktur Organisasi dan Tata Kerja: **tugas, kedudukan, fungsi perangkat daerah/
 
 ## Jalur koordinasi dan tata kerja (Permenimipas 2/2024 Pasal 32-40)
 - Prinsip **koordinasi, integrasi, sinkronisasi**; **pengawasan melekat** dan lapor berjenjang; JF/pelaksana bertanggung jawab kepada Kakanwil melalui atasan langsung; tembusan laporan ke satuan yang secara fungsional berhubungan kerja; pola hubungan kerja ditetapkan Menteri; perubahan OTK perlu persetujuan tertulis MenPANRB (Pasal 44).
+## Modul: UU 22/2022 tentang Pemasyarakatan, ketentuan umum dan hak (Pasal 1-18)
+- Pemasyarakatan = **subsistem peradilan pidana** di bidang perlakuan terhadap tahanan, anak, dan warga binaan. **Warga Binaan**: narapidana, anak binaan, dan klien.
+- Anak berkonflik dengan hukum berumur **12 sampai belum 18 tahun**; Anak Binaan 14 sampai belum 18 tahun.
+- Rutan (pelayanan tahanan), LPAS, Lapas (pembinaan narapidana), LPKA, **Bapas** (pembimbingan klien). Petugas Pemasyarakatan = **pejabat fungsional penegak hukum**. Pembimbing Kemasyarakatan menyusun **Litmas**; Asesor melakukan asesmen; Wali Pemasyarakatan membantu kepala Lapas/LPKA.
+- 8 asas, antara lain **kehilangan kemerdekaan sebagai satu-satunya penderitaan**. 6 fungsi: pelayanan, pembinaan, pembimbingan kemasyarakatan, perawatan, pengamanan, pengamatan.
+- Hak bersyarat narapidana (remisi, asimilasi, cuti, pembebasan bersyarat): **berkelakuan baik, aktif ikut pembinaan, risiko menurun**. Cuti menjelang bebas/PB: **2/3 masa pidana, minimal 9 bulan** (Anak Binaan 1/2). Tidak berlaku bagi pidana seumur hidup dan terpidana mati. Narapidana **wajib bekerja**. Klien PB berhak **izin keluar negeri** untuk alasan penting.
+
+## Modul: UU 22/2022, penyelenggaraan fungsi dan pengawasan (Pasal 19-88)
+- Rutan, Lapas, dan Bapas dibentuk di **kabupaten/kota**; LPAS dan LPKA di **provinsi**.
+- Pengeluaran tahanan: tetap, sementara, dan **demi hukum** (masa penahanan habis). Pelayanan dan pembinaan berdasarkan **Litmas**; pembinaan narapidana berupa kepribadian dan kemandirian.
+- Narapidana dibawa keluar untuk penyidikan paling lama **24 jam**; dapat dipindahkan ke negara lain berdasarkan perjanjian.
+- Anak boleh tinggal bersama ibunya di Rutan/Lapas paling lama sampai **3 tahun**. Sel pengasingan paling lama **12 hari**, tidak untuk perempuan dalam fungsi reproduksi.
+- Pengamanan (Rutan, Lapas): pencegahan, penindakan, pemulihan. Pengamatan (LPAS, LPKA): pencegahan, penegakan disiplin, pemulihan.
+- Pengawasan internal oleh menteri; pengawasan eksternal oleh **komisi DPR bidang hukum**.
 `,
   inggris: `
 ## Cakupan kisi-kisi BKN (hal. 165-171)

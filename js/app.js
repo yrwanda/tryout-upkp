@@ -439,7 +439,7 @@
   function srcTag(q) {
     if (q.set === "form") return el("span", { class: "row", style: "gap:6px" }, [el("span", { class: "stamp" }, [icon("award"), `Soal resmi BKN · no. ${parseInt(q.id.split("-")[1], 10)}`]), el("span", { class: "chip chip-warn", title: "BKN tidak menerbitkan kunci; kunci disusun aplikasi" }, ["kunci disusun AI"])]);
     if (q.set === "ext") return el("span", { class: "chip chip-warn", title: "Isi soal diambil dari luar PPT kisi-kisi" }, ["Pelengkap · di luar isi kisi-kisi"]);
-    if (q.set === "mod") { const mm = (q.src || "").match(/hlm\.\s*([\d][\d\s\-–,]*)/); return el("span", { class: "chip chip-page", title: q.src }, [mm ? `Modul hlm. ${mm[1].trim().replace(/[,\s]+$/, "")}` : "Dari modul"]); }
+    if (q.set === "mod") { const mm = (q.src || "").match(/hlm\.\s*([\d][\d\s\-–,]*)/); return el("span", { class: "chip chip-page", title: q.src }, [mm ? `Modul hlm. ${mm[1].trim().replace(/[,\s]+$/, "")}` : q.src || "Dari modul"]); }
     const m = (q.src || "").match(/hal\.\s*([\d][\d\s\-–,]*)/);
     return el("span", { class: "chip chip-page" }, [m ? `Kisi-kisi hal. ${m[1].trim().replace(/[,\s]+$/, "")}` : "Dari kisi-kisi"]);
   }
@@ -666,7 +666,7 @@
       const modeBar = () => el("div", { class: "cloze-bar" }, [
         el("div", { class: "seg", role: "group", "aria-label": "Mode materi" }, [["baca", "Baca"], ["belajar", "Belajar"], ["hafal", "Hafalan"]].map(([v, l]) => el("button", { "aria-pressed": (renderMateri.mode || "baca") === v ? "true" : "false", onclick: () => { renderMateri.mode = v; draw(); } }, [l]))),
         hafal ? el("div", { class: "row", style: "gap:6px" }, [counter, el("button", { class: "btn btn-sm btn-ghost", onclick: () => setAll(true) }, ["Buka semua"]), el("button", { class: "btn btn-sm btn-ghost", onclick: () => setAll(false) }, ["Tutup semua"])])
-          : el("span", { class: "small muted" }, [renderMateri.mode === "belajar" ? "Baca satu bagian, langsung jawab 3 soal dari halaman kisi-kisi yang sama, lalu lanjut ke bagian berikutnya." : "Mode Belajar: per bagian dengan soal. Mode Hafalan: kata kunci disembunyikan, tebak lalu ketuk."])
+          : el("span", { class: "small muted" }, [renderMateri.mode === "belajar" ? "Baca satu bagian, langsung jawab 3 soal dari halaman kisi-kisi atau modul yang sama, lalu lanjut ke bagian berikutnya." : "Mode Belajar: per bagian dengan soal. Mode Hafalan: kata kunci disembunyikan, tebak lalu ketuk."])
       ]);
       const blanks = () => [...art.querySelectorAll(".cloze")];
       const upd = () => { const b = blanks(); counter.textContent = `${b.filter(x => x.classList.contains("open")).length}/${b.length} dibuka`; };
@@ -700,13 +700,20 @@
   }
 
   // ---------- Belajar per bagian ----------
-  // Metode: baca satu bagian pendek, langsung jawab 3 soal dari halaman kisi-kisi yang sama (mengingat sendiri tepat
+  // Metode: baca satu bagian pendek, langsung jawab 3 soal dari halaman kisi-kisi atau modul yang sama (mengingat sendiri tepat
   // setelah membaca lebih melekat daripada membaca ulang), lalu lanjut. Bagian yang selesai dicatat di state.learned
   // ("topik#urutan" -> waktu) dan menjadi acuan Rencana hari ini. Soal yang salah ikut masuk jadwal ulang sesi harian.
   const srcPages = (src, word = "hal") => {
     const out = new Set();
     const re = word === "hlm" ? /hlm\.\s*([\d][\d\s\-–,]*(?:\s*dan\s*\d[\d\-–]*)?)/g : /hal\.\s*([\d][\d\s\-–,]*(?:\s*dan\s*\d[\d\-–]*)?)/g;
     for (const m of String(src || "").matchAll(re))
+      m[1].split(/,|dan/).forEach(x => { const r = x.trim().split(/[-–]/).map(Number); if (r[0]) for (let i = r[0]; i <= (r[1] || r[0]); i++) out.add(i); });
+    return out;
+  };
+  // nomor pasal dalam rujukan, termasuk daftar dan rentang ("Pasal 19, 28, 35" atau "Pasal 75-76")
+  const srcPasal = src => {
+    const out = new Set();
+    for (const m of String(src || "").matchAll(/Pasal\s+(\d[\d\s,\-–]*(?:\s*dan\s*\d+)?)/g))
       m[1].split(/,|dan/).forEach(x => { const r = x.trim().split(/[-–]/).map(Number); if (r[0]) for (let i = r[0]; i <= (r[1] || r[0]); i++) out.add(i); });
     return out;
   };
@@ -718,7 +725,7 @@
       const pasal = [], pm = full.match(/Pasal (\d+)(?:-(\d+))?/);
       if (pm) for (let i = +pm[1]; i <= +(pm[2] || pm[1]); i++) pasal.push(i);
       const keys = [...body.matchAll(/\*\*([^*]+)\*\*/g)].map(x => x[1].toLowerCase().trim()).filter(k => k.length >= 4).slice(0, 15);
-      return { full, title: full.replace(/\s*\([^()]*(?:hal|hlm)\.[^()]*\)\s*$/, ""), body, pages: srcPages(full), mpages: srcPages(full, "hlm"), pasal, keys };
+      return { full, title: full.replace(/\s*\([^()]*(?:hal|hlm)\.[^()]*\)\s*$/, ""), body, pages: srcPages(full), mpages: srcPages(full, "hlm"), pasal, keys, isMod: /^Modul:/.test(full), law: (full.match(/(?:UU|PP|Perpres|Permen PANRB) \d+\/\d{4}/) || [""])[0] };
     });
   }
   const learnKey = (tid, i) => tid + "#" + i;
@@ -728,6 +735,8 @@
   function sectionQs(tid, sec, n) {
     const pri = q => { const st = state.stats[q.id]; return !st ? 1 : st.lastWrong ? 0 : mastered(st) ? 3 : 2; };
     const score = q => {
+      // bagian "Modul: ..." hanya berisi soal modul, dan soal modul tidak masuk bagian kisi-kisi
+      if (sec.isMod !== (q.set === "mod")) return 0;
       const pg = srcPages(q.src);
       // bagian "dari soal resmi": soal Google Form BKN dan soal turunannya yang tidak mencantumkan halaman
       if (/soal resmi/i.test(sec.full) && !pg.size && (q.set === "form" || /Latihan resmi/.test(q.src))) return 3;
@@ -735,7 +744,7 @@
       // bagian ringkasan modul ("modul hlm.") hanya dicocokkan dengan soal modul
       const mp = q.set === "mod" ? srcPages(q.src, "hlm") : null;
       if (sec.mpages.size && mp && [...mp].some(x => sec.mpages.has(x))) return [...mp].every(x => sec.mpages.has(x)) ? 3 : 2;
-      if (sec.pasal.length && sec.pasal.some(x => new RegExp("Pasal " + x + "(?!\\d)").test(q.src))) return 3;
+      if (sec.pasal.length && (!sec.law || q.src.includes(sec.law))) { const ps = srcPasal(q.src); if (sec.pasal.some(x => ps.has(x))) return 3; }
       const txt = (q.q + " " + q.o[q.a]).toLowerCase();
       return sec.keys.some(k => txt.includes(k)) ? 1 : 0;
     };
