@@ -124,7 +124,7 @@ window.BANK.kebijakan.push(
   },
   {
     id: "bkn-kbj-17", set: "bkn", topic: "kebijakan",
-    q: "Tantangan program Jaminan Kesehatan Nasional (JKN) menurut contoh kebijakan publik adalah ...",
+    q: "Tantangan utama dalam pelaksanaan program Jaminan Kesehatan Nasional (JKN) adalah ...",
     o: ["Membatasi peserta hanya bagi PNS", "Mengganti kartu BPJS dengan uang tunai", "Menutup fasilitas kesehatan tingkat pertama", "Menaikkan harga obat", "Memastikan pemerataan akses dan kualitas layanan kesehatan di seluruh wilayah Indonesia"],
     a: 4,
     e: "JKN bertujuan menjamin kesehatan seluruh WNI; implementasinya berupa kartu BPJS Kesehatan di faskes tingkat pertama maupun rumah sakit; tantangannya memastikan pemerataan akses dan kualitas layanan kesehatan di seluruh wilayah Indonesia.",
@@ -380,7 +380,7 @@ window.BANK.yanlik.push(
   },
   {
     id: "bkn-yan-17", set: "bkn", topic: "yanlik",
-    q: "Dalam bagan organisasi penyelenggara pelayanan publik, yang berkedudukan sebagai \"penyelenggara\" adalah ...",
+    q: "Dalam organisasi penyelenggara pelayanan publik, pihak yang berkedudukan sebagai \"penyelenggara\" adalah ...",
     o: ["Masyarakat penerima layanan", "Lembaga swadaya masyarakat", "Media massa", "Perusahaan swasta mitra", "Institusi pemerintah atau penyelenggara negara"],
     a: 4,
     e: "Organisasi penyelenggara terdiri atas institusi pemerintah/penyelenggara negara sebagai penyelenggara, pelaksana (pegawai/petugas), dan Ombudsman sebagai pengawas eksternal. Masyarakat adalah penerima layanan.",

@@ -222,7 +222,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-41", set: "bkn", topic: "renstra",
-    q: "Menurut isu sasaran PN 2, Indonesia baru mencapai peringkat ketiga pada Global Islamic Economy Indicator (GIEI) 2023/2024. Isu ini berkaitan dengan ...",
+    q: "Indonesia baru mencapai peringkat ketiga pada Global Islamic Economy Indicator (GIEI) 2023/2024. Dalam RPJMN 2025-2029, isu ini berkaitan dengan ...",
     o: ["Ekonomi biru", "Ekonomi hijau", "Swasembada pangan", "Ekonomi digital", "Ekonomi syariah"],
     a: 4,
     e: "Sasaran 5, perekonomian progresif-inklusif-berkelanjutan: isu ekonomi syariah antara lain peringkat ketiga GIEI 2023/2024, ekspor produk halal ke negara OKI baru sekitar 3,8% dari total impor halal OKI, UMKM tersertifikasi halal baru sekitar 0,2% (2022), dan aset keuangan syariah Indonesia di posisi ke-7 global dengan pangsa terhadap keuangan nasional baru sekitar 12% (2023).",
@@ -230,7 +230,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-42", set: "bkn", topic: "renstra",
-    q: "Menurut isu ekonomi digital, tingkat literasi digital Indonesia adalah ...",
+    q: "Menurut RPJMN 2025-2029, tingkat literasi digital Indonesia adalah ...",
     o: ["Setara rata-rata ASEAN, sekitar 70%", "Paling rendah se-Asia, sekitar 45%", "Tidak diukur dalam RPJMN", "Tertinggi se-ASEAN, sekitar 80%", "Paling rendah se-ASEAN, 62% di bawah rata-rata ASEAN 70%"],
     a: 4,
     e: "Tingkat literasi digital Indonesia paling rendah se-ASEAN (Indonesia 62%, di bawah rata-rata ASEAN 70%). Isu lain: adopsi digital di sektor strategis belum optimal dan ekosistem bisnis digital belum terbangun.",
@@ -246,7 +246,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-44", set: "bkn", topic: "renstra",
-    q: "Tiga krisis global (Triple Planetary Crisis) dalam isu transformasi ekonomi hijau terdiri atas ...",
+    q: "Tiga krisis global (Triple Planetary Crisis) yang melatarbelakangi transformasi ekonomi hijau dalam RPJMN 2025-2029 terdiri atas ...",
     o: ["Inflasi, pengangguran, dan kemiskinan", "Banjir, kekeringan, dan kebakaran hutan", "Krisis pangan, energi, dan air", "Perubahan iklim, polusi dan kerusakan lingkungan, serta kehilangan keanekaragaman hayati", "Krisis keuangan, pandemi, dan perang"],
     a: 3,
     e: "PN 2 sasaran 6, transformasi ekonomi hijau: Triple Planetary Crisis = perubahan iklim, polusi dan kerusakan lingkungan, serta kehilangan keanekaragaman hayati.",
@@ -262,7 +262,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-46", set: "bkn", topic: "renstra",
-    q: "Menurut isu transformasi ekonomi hijau, kemampuan daya tampung dan daya dukung TPA nasional diproyeksikan akan penuh pada tahun ...",
+    q: "Dalam RPJMN 2025-2029, daya tampung dan daya dukung TPA nasional diproyeksikan akan penuh pada tahun ...",
     o: ["2025", "2028", "2030", "2035", "2045"],
     a: 1,
     e: "TPA nasional diproyeksikan penuh pada 2028 atau lebih cepat; produksi sampah domestik diproyeksikan 67,8 juta ton/tahun pada 2029; saat ini 40% TPA masih open dumping.",
@@ -298,7 +298,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-52", set: "bkn", topic: "bindo",
-    q: "Menurut tabel tanda baca, tanda baca yang ditulis TANPA spasi sebelum maupun sesudahnya adalah ...",
+    q: "Tanda baca yang ditulis TANPA spasi sebelum maupun sesudahnya adalah ...",
     o: ["Titik, seru, dan tanya", "Koma, titik koma, dan titik dua", "Tanda hubung, tanda pisah, dan garis miring", "Tanda petik dan tanda kurung", "Elipsis dan apostrof"],
     a: 2,
     e: "Kelompok pembatas (hubung, pisah, garis miring) ditulis rapat tanpa spasi: di-PHK, 5-10 Januari, Rp200/buah. Penutup dan penjeda rapat dengan kata sebelumnya tetapi diikuti spasi; pengapit dan elipsis diberi spasi di kedua sisi; apostrof didahului spasi tetapi rapat dengan kata sesudahnya.",
@@ -306,7 +306,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-53", set: "bkn", topic: "bindo",
-    q: "Penulisan tanda pisah yang benar sesuai contoh tabel tanda baca adalah ...",
+    q: "Penulisan tanda pisah yang benar adalah ...",
     o: ["Acara berlangsung 5 –10 Januari.", "Acara berlangsung 5– 10 Januari.", "Acara berlangsung 5 - - 10 Januari.", "Acara berlangsung 5 – 10 Januari.", "Acara berlangsung 5–10 Januari."],
     a: 4,
     e: "Tanda pisah termasuk kelompok pembatas yang ditulis tanpa spasi sebelum dan sesudah: \"Acara berlangsung 5–10 Januari.\" Tanda pisah di sini bermakna 'sampai dengan'.",

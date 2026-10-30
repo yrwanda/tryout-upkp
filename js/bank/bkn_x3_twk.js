@@ -88,7 +88,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-41", set: "bkn", topic: "bindo",
-    q: "Kalimat yang efektif (logis) menurut contoh adalah ...",
+    q: "Kalimat yang paling efektif dan logis adalah ...",
     o: ["Pria yang ditemukan mayatnya itu sering mondar-mandir sebelumnya di kampung.", "Sering mondar-mandir di kampung, mayat pria itu ditemukan.", "Mayat pria yang ditemukan itu sebelumnya sering mondar-mandir di kampung.", "Sebelum ditemukan tak bernyawa, pria itu sering mondar-mandir di kampung.", "Mayat pria itu sering mondar-mandir di kampung sebelum ditemukan."],
     a: 3,
     e: "Kalimat bisa benar tata bahasanya tetapi tidak logis. \"Mayat ... sering mondar-mandir\" tidak logis karena mayat tidak dapat berjalan; kalimat efektifnya: \"Sebelum ditemukan tak bernyawa, pria itu sering mondar-mandir di kampung.\"",
@@ -144,7 +144,7 @@ window.BANK.bindo.push(
   },
   {
     id: "bkn-bin-48", set: "bkn", topic: "bindo",
-    q: "Penulisan singkatan nama pangkat dan jabatan yang benar sesuai contoh adalah ...",
+    q: "Penulisan singkatan nama pangkat dan jabatan yang benar adalah ...",
     o: ["kol. inf. Hendri; a.k.b.p. Purnomo", "KOL. INF. Hendri; A.K.B.P Purnomo", "Kol.Inf.Hendri; AKBP Purnomo.", "Kol Inf Hendri; AKBP. Purnomo", "Kol. Inf. Hendri; A.K.B.P. Purnomo"],
     a: 4,
     e: "Singkatan nama orang, gelar, sapaan, jabatan, atau pangkat diikuti tanda titik pada setiap unsur singkatan: Kol. Inf. Hendri (Kolonel Infanteri), A.K.B.P. Purnomo (Ajun Komisaris Besar Polisi), Sdr. Lukman, R.M. Syahid.",
@@ -564,7 +564,7 @@ window.BANK.uud.push(
   },
   {
     id: "bkn-uud-46", set: "bkn", topic: "uud",
-    q: "Dalam bagan lembaga negara setelah amandemen, lembaga legislatif memiliki peran ...",
+    q: "Setelah amandemen UUD 1945, peran lembaga legislatif adalah ...",
     o: ["Mengawasi jalannya undang-undang melalui peradilan", "Memberi pertimbangan kepada Presiden", "Melaksanakan undang-undang", "Membuat undang-undang", "Memeriksa keuangan negara"],
     a: 3,
     e: "Legislatif membuat UU; eksekutif melaksanakan UU; yudikatif mengawasi jalannya UU; eksaminatif (BPK) memeriksa keuangan negara. Memberi pertimbangan kepada Presiden dahulu fungsi DPA yang sudah dihapus.",

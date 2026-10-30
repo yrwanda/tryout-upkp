@@ -545,8 +545,8 @@ Present, past, dan future tense, masing-masing dengan latihan soal.
 `,
   literasi: `
 ## Empat pilar (hal. 137)
-- **Digital skills**: pengetahuan perangkat keras dan lunak; transaksi digital.
-- **Digital culture**: penerapan Pancasila, Bhinneka Tunggal Ika, nilai NKRI di dunia digital.
+- **Digital skills**: pengetahuan perangkat keras dan lunak.
+- **Digital culture**: penggunaan perangkat untuk **transaksi digital**; penerapan Pancasila, Bhinneka Tunggal Ika, nilai NKRI di dunia digital.
 - **Digital ethics**: regulasi dan etika berinternet (netiket).
 - **Digital safety**: proteksi dasar keamanan data.
 

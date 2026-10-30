@@ -166,7 +166,7 @@ window.BANK.manajemen.push(
   },
   {
     id: "bkn-mnj-28", set: "bkn", topic: "manajemen",
-    q: "Pada bagan teori manajemen, empat kondisi pokok yang dikaitkan dengan teori klasik adalah ...",
+    q: "Empat kondisi pokok yang dikaitkan dengan teori organisasi klasik adalah ...",
     o: ["Kekuasaan, saling melayani, doktrin, dan disiplin", "Man, money, machines, methods", "Planning, organizing, actuating, controlling", "Visi, misi, tujuan, sasaran", "Top, middle, low, operasional"],
     a: 0,
     e: "Kotak \"4 kondisi pokok\" (kekuasaan, saling melayani, doktrin, disiplin) dan \"4 unsur pokok\" (sistem kegiatan terkoordinasi, kelompok orang, kerja sama, kekuasaan dan kepemimpinan) terhubung ke Teori Klasik. Teori modern (Abraham Maslow) dikaitkan dengan organisasi sebagai satu kesatuan yang saling bergantung. 6M = unsur manajemen; POAC = fungsi manajemen.",
@@ -259,7 +259,7 @@ window.BANK.inggris.push(
   {
     id: "bkn-eng-23", set: "bkn", topic: "inggris",
     q: "Don't call me at nine tomorrow morning. I ... a presentation at that time.",
-    o: ["give", "gave", "will give", "will be giving", "will have given"],
+    o: ["give", "gave", "was giving", "will be giving", "will have given"],
     a: 3,
     e: "Kegiatan yang sedang berlangsung pada titik waktu tertentu di masa depan (at nine tomorrow, at that time) → future continuous: will be giving. Pola sama dengan latihan kisi-kisi BKN \"She will be watching K-drama when you eat dinner\".",
     src: "Kisi-kisi BKN hal. 170-171 (future tense)"
@@ -352,8 +352,8 @@ window.BANK.literasi.push(
     id: "bkn-lit-12", set: "bkn", topic: "literasi",
     q: "Penggunaan perangkat untuk transaksi digital termasuk pilar ...",
     o: ["Digital skills", "Digital culture", "Digital ethics", "Digital safety", "Digital citizenship"],
-    a: 0,
-    e: "Digital skills meliputi pengetahuan perangkat keras dan lunak serta penggunaan perangkat untuk transaksi digital.",
+    a: 1,
+    e: "Butir \"penggunaan perangkat untuk transaksi digital\" termasuk pilar digital culture, bersama penerapan Pancasila, Bhinneka Tunggal Ika, dan nilai NKRI di dunia digital. Digital skills hanya berisi pengetahuan perangkat keras dan perangkat lunak. Sejalan dengan itu, contoh budaya digital adalah aktivitas bermedia sosial dan berbelanja online.",
     src: "Kisi-kisi BKN hal. 137"
   },
   {
@@ -386,7 +386,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-19", set: "bkn", topic: "renstra",
-    q: "Dalam bagan dokumen perencanaan, Rencana Kerja (Renja) K/L berjangka 1 tahun merupakan penjabaran dari ...",
+    q: "Rencana Kerja (Renja) K/L berjangka 1 tahun merupakan penjabaran dari ...",
     o: ["RPJP Nasional", "RKP", "Renstra K/L", "APBN", "RPJMD"],
     a: 2,
     e: "RPJPN (20 th) dijabarkan ke RPJMN (5 th) dan RKP (1 th); RPJMN menjadi pedoman Renstra K/L (5 th); Renstra K/L dijabarkan ke Renja K/L (1 th). RKP menjadi pedoman Renja K/L, lalu menjadi dasar APBN.",
@@ -474,7 +474,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-30", set: "bkn", topic: "renstra",
-    q: "Dalam cakupan materi Rencana Strategis Instansi, ukuran keberhasilan pencapaian tujuan dan sasaran strategis disebut ...",
+    q: "Dalam Rencana Strategis instansi, ukuran keberhasilan pencapaian tujuan dan sasaran strategis disebut ...",
     o: ["Visi", "Misi", "Indikator kinerja", "Permasalahan", "Sistematika"],
     a: 2,
     e: "Materi Renstra instansi = visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, dan sistematika Renstra. Indikator kinerja adalah ukuran keberhasilan (misalnya Indeks Penegakan dan Pelayanan Hukum pada Renstra Kemenimipas). Catatan: kisi-kisi hanya berisi daftar subtopik; arti indikator kinerja dan contohnya berasal dari luar kisi-kisi.",

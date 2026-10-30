@@ -39,7 +39,7 @@ window.BANK.inggris.push(
     q: "She ... the movie before you tell us about the plot.",
     o: ["watched", "watch", "watches", "has watched", "have watched"],
     a: 3,
-    e: "Tindakan yang sudah selesai sebelum saat ini (sebelum kamu menceritakan alurnya) memakai present perfect; subjek she: has watched.",
+    e: "Tindakan yang sudah selesai sebelum saat ini (sebelum kamu menceritakan alurnya) memakai present perfect; subjek she: has watched. \"Have watched\" salah karena subjeknya orang ketiga tunggal, sedangkan \"watched\" tidak menunjukkan keterkaitan dengan saat ini.",
     src: "Kisi-kisi BKN hal. 167"
   },
   {
@@ -76,10 +76,10 @@ window.BANK.inggris.push(
   },
   {
     id: "bkn-eng-10", set: "bkn", topic: "inggris",
-    q: "Febby didn't need to study English because she ... about it.",
+    q: "Febby didn't need to study English because she ... about them.",
     o: ["learn", "already learned", "has learned", "have learned", "had learned"],
     a: 4,
-    e: "Alasan yang terjadi sebelum kejadian lampau (didn't need) memakai past perfect: had (already) learned.",
+    e: "Alasan yang terjadi sebelum kejadian lampau (didn't need) memakai past perfect: had learned. \"Already learned\" kadang dipakai dalam bahasa Inggris Amerika sehari-hari, tetapi bentuk baku untuk kejadian yang lebih dulu dari kejadian lampau lain adalah past perfect.",
     src: "Kisi-kisi BKN hal. 169"
   },
   {
@@ -87,7 +87,7 @@ window.BANK.inggris.push(
     q: "Where ... after class tomorrow?",
     o: ["will you go", "will you be going", "will you have gone", "do you go", "did you go"],
     a: 0,
-    e: "Rencana masa depan sederhana (tomorrow) memakai simple future dalam bentuk tanya: Where will you go?",
+    e: "Rencana masa depan sederhana (tomorrow) memakai simple future dalam bentuk tanya: Where will you go? \"Will you be going\" juga gramatikal (lebih sopan), tetapi latihan ini menguji simple future; \"do you go\" dan \"did you go\" tidak cocok dengan tomorrow.",
     src: "Kisi-kisi BKN hal. 171"
   },
   {
@@ -103,7 +103,7 @@ window.BANK.inggris.push(
     q: "She ... K-drama when you eat dinner.",
     o: ["will watch", "watch", "watches", "will have watched", "will be watching"],
     a: 4,
-    e: "Tindakan yang akan sedang berlangsung pada saat tindakan lain terjadi di masa depan memakai future continuous: will be watching.",
+    e: "Tindakan yang akan sedang berlangsung pada saat tindakan lain terjadi di masa depan memakai future continuous: will be watching. \"Will watch\" berarti ia baru mulai menonton saat kamu makan, sehingga kurang tepat untuk kegiatan yang sedang berlangsung.",
     src: "Kisi-kisi BKN hal. 171"
   },
   {
@@ -128,10 +128,10 @@ window.BANK.literasi = window.BANK.literasi || [];
 window.BANK.literasi.push(
   {
     id: "bkn-lit-01", set: "bkn", topic: "literasi",
-    q: "Pilar literasi digital yang berisi pengetahuan mengenai perangkat keras dan perangkat lunak serta penggunaan perangkat untuk transaksi digital adalah ...",
+    q: "Pilar literasi digital yang berisi pengetahuan mengenai perangkat keras dan perangkat lunak adalah ...",
     o: ["Digital skills", "Digital culture", "Digital ethics", "Digital safety", "Digital economy"],
     a: 0,
-    e: "Digital skills = pengetahuan perangkat keras/lunak dan penggunaan perangkat untuk transaksi digital; digital culture = penerapan Pancasila, Bhinneka Tunggal Ika, dan nilai NKRI di dunia digital; digital ethics = regulasi dan etika berinternet (netiquette); digital safety = proteksi dasar keamanan data.",
+    e: "Digital skills = pengetahuan perangkat keras dan perangkat lunak; digital culture = penggunaan perangkat untuk transaksi digital serta penerapan Pancasila, Bhinneka Tunggal Ika, dan nilai NKRI di dunia digital; digital ethics = regulasi dan etika berinternet (netiquette); digital safety = proteksi dasar keamanan data.",
     src: "Kisi-kisi BKN hal. 137"
   },
   {
@@ -204,7 +204,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-02", set: "bkn", topic: "renstra",
-    q: "Dalam bagan dokumen perencanaan, Renstra K/L disusun dengan berpedoman pada ...",
+    q: "Renstra Kementerian/Lembaga (Renstra K/L) disusun dengan berpedoman pada ...",
     o: ["RKP", "RPJM Nasional", "APBN", "Renja K/L", "RPJP Daerah"],
     a: 1,
     e: "RPJM Nasional menjadi pedoman Renstra K/L; Renstra K/L dijabarkan menjadi Renja K/L; RKP (penjabaran RPJMN) menjadi pedoman Renja K/L dan APBN. Sumber: UU No. 25 Tahun 2004 tentang SPPN.",
@@ -300,7 +300,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-14", set: "bkn", topic: "renstra",
-    q: "Menurut soal latihan resmi BKN, empat pilar RPJMN IV 2020-2024 antara lain ...",
+    q: "Salah satu dari empat pilar RPJMN IV 2020-2024 adalah ...",
     o: ["Kelembagaan politik dan hukum yang mantap", "Revolusi mental dan pembangunan kebudayaan", "Meningkatnya kualitas kehidupan masyarakat", "Pengelolaan kelembagaan dan keuangan daerah", "Penyederhanaan birokrasi"],
     a: 0,
     e: "Empat pilar RPJMN IV 2020-2024 (RPJPN 2005-2025 tahap IV): kelembagaan politik dan hukum yang mantap; kesejahteraan masyarakat yang terus meningkat; struktur ekonomi yang semakin maju dan kokoh; terwujudnya keanekaragaman hayati yang terjaga. \"Revolusi mental dan pembangunan kebudayaan\" adalah salah satu dari 7 agenda pembangunan; 5 arahan Presiden: SDM, infrastruktur, penyederhanaan regulasi, penyederhanaan birokrasi, transformasi ekonomi; RPJMN 2020-2024 memuat 9 misi.",
@@ -308,7 +308,7 @@ window.BANK.renstra.push(
   },
   {
     id: "bkn-rst-15", set: "bkn", topic: "renstra",
-    q: "Strategi untuk mencapai arahan Presiden \"Penyederhanaan Birokrasi\" dalam RPJMN 2020-2024 menurut latihan resmi BKN adalah ...",
+    q: "Strategi untuk mencapai arahan Presiden \"Penyederhanaan Birokrasi\" dalam RPJMN 2020-2024 adalah ...",
     o: ["Pembangunan karakter", "Penyelenggaraan e-Government", "Pendekatan Perilaku Hidup Bersih dan Sehat", "Pembangunan infrastruktur ekonomi", "Pemberian bantuan sosial"],
     a: 1,
     e: "Penyederhanaan birokrasi (pemangkasan eselon, penggunaan e-Government/SPBE, digitalisasi layanan) adalah salah satu dari 5 arahan Presiden 2020-2024. Pembangunan karakter termasuk agenda revolusi mental; PHBS bagian agenda SDM.",
@@ -360,7 +360,7 @@ window.BANK.sotk.push(
   },
   {
     id: "bkn-stk-04", set: "ext", topic: "sotk",
-    q: "Dalam materi SOTK, \"kedudukan\" satuan kerja berarti ...",
+    q: "Dalam susunan organisasi dan tata kerja (SOTK), \"kedudukan\" suatu satuan kerja berarti ...",
     o: ["Alamat kantor dan wilayah kerja satuan kerja sesuai penetapan menteri", "Jumlah pegawai dan komposisi jabatan yang dimiliki satuan kerja", "Besaran anggaran dan sumber pendanaan satuan kerja dalam DIPA", "Kelas jabatan pimpinan dan tunjangan kinerja yang melekat padanya", "Posisi dalam struktur: di bawah dan bertanggung jawab kepada siapa serta siapa pemimpinnya"],
     a: 4,
     e: "Rumusan kedudukan dalam peraturan OTK selalu berbentuk: \"X berada di bawah dan bertanggung jawab kepada Y\" dan \"X dipimpin oleh Z\". Contoh: Kanwil Ditjen Imigrasi adalah instansi vertikal Kemenimipas yang dipimpin Kepala Kanwil dan melapor kepada Dirjen Imigrasi.",

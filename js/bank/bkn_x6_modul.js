@@ -680,7 +680,7 @@ window.BANK.bindo.push(
     q: "Kita mengatakan \"hari raya\" dan \"jaksa agung\", bukan \"hari agung\" atau \"jaksa raya\", meskipun raya dan agung bersinonim. Hal ini berkaitan dengan syarat diksi ...",
     o: ["Lazim", "Saksama", "Populer", "Ilmiah", "Konotatif"],
     a: 1,
-    e: "Modul memberi contoh syarat saksama (modul menulis \"seksama\"; bentuk baku KBBI adalah \"saksama\"): besar, agung, akbar, raya, dan tinggi bersinonim, tetapi hanya pasangan tertentu yang dipakai (hari raya, hari besar, jaksa agung). Syarat lazim dicontohkan dengan \"anjing makan\", bukan \"anjing bersantap\".",
+    e: "Contoh syarat saksama (bentuk baku KBBI \"saksama\", bukan \"seksama\"): besar, agung, akbar, raya, dan tinggi bersinonim, tetapi hanya pasangan tertentu yang dipakai (hari raya, hari besar, jaksa agung). Syarat lazim dicontohkan dengan \"anjing makan\", bukan \"anjing bersantap\".",
     src: "Modul Bahasa Indonesia hlm. 40"
   },
   {
@@ -736,7 +736,7 @@ window.BANK.bindo.push(
     q: "Sinonim \"hulubalang\" dengan \"komandan\" dan \"kempa\" dengan \"stempel\" terjadi karena perbedaan ...",
     o: ["Dialek regional", "Dialek sosial", "Dialek temporal", "Ragam bahasa", "Pengaruh bahasa asing"],
     a: 2,
-    e: "Modul membedakan penyebab sinonim: bahasa daerah (macan-harimau), dialek regional (handuk-tuala), bahasa asing (realita-kenyataan), dialek sosial (istri-bini), ragam bahasa (tengah-madya), dan dialek temporal atau perbedaan zaman (hulubalang-komandan, kempa-stempel).",
+    e: "Penyebab sinonim: bahasa daerah (macan-harimau), dialek regional (handuk-tuala), bahasa asing (realita-kenyataan), dialek sosial (istri-bini), ragam bahasa (tengah-madya), dan dialek temporal atau perbedaan zaman (hulubalang-komandan, kempa-stempel).",
     src: "Modul Bahasa Indonesia hlm. 44"
   },
   {
@@ -744,7 +744,7 @@ window.BANK.bindo.push(
     q: "Padanan kata populer yang tepat untuk kata ilmiah \"prediksi\" dan \"bibliografi\" adalah ...",
     o: ["Ramalan dan daftar pustaka", "Kiasan dan biografi singkat", "Pertentangan dan ukuran", "Akhir dan kekacauan", "Perbedaan perlakuan dan rasa kecewa"],
     a: 0,
-    e: "Contoh pasangan kata ilmiah-populer dalam modul: analogi-kiasan, frustrasi-rasa kecewa, final-akhir, diskriminasi-perbedaan perlakuan, prediksi-ramalan, kontradiksi-pertentangan, format-ukuran, anarki-kekacauan, biodata-biografi singkat, bibliografi-daftar pustaka.",
+    e: "Contoh pasangan kata ilmiah-populer: analogi-kiasan, frustrasi-rasa kecewa, final-akhir, diskriminasi-perbedaan perlakuan, prediksi-ramalan, kontradiksi-pertentangan, format-ukuran, anarki-kekacauan, biodata-biografi singkat, bibliografi-daftar pustaka.",
     src: "Modul Bahasa Indonesia hlm. 46-47"
   },
   {
@@ -1017,7 +1017,7 @@ window.BANK.pancasila.push(
   },
   {
     id: "mod-pcs-24", set: "mod", topic: "pancasila",
-    q: "Menurut modul, kepala banteng yang melambangkan sila keempat dipilih karena banteng adalah ...",
+    q: "Kepala banteng yang melambangkan sila keempat dipilih karena banteng adalah ...",
     o: ["Hewan yang kuat dan pemberani", "Hewan sosial yang suka berkumpul, seperti musyawarah", "Hewan khas Pulau Jawa", "Lambang partai nasional pertama", "Hewan yang setia kepada pemimpinnya"],
     a: 1,
     e: "Kepala banteng (kiri atas perisai) dipilih karena banteng hewan sosial yang suka berkumpul, seperti musyawarah tempat orang berdiskusi untuk mengambil keputusan.",
@@ -1034,8 +1034,8 @@ window.BANK.pancasila.push(
   {
     id: "mod-pcs-26", set: "mod", topic: "pancasila",
     q: "Dari segi intrinsik (ke dalam), Pancasila harus memenuhi prinsip ...",
-    o: ["Penyalur dan penyaring kepentingan horizontal dan vertikal", "Konsisten, koheren, dan koresponden", "Universal, partikular, dan kontekstual", "Objektif dan subjektif", "Legal, formal, dan material"],
-    a: 1,
+    o: ["Universal, partikular, dan kontekstual", "Objektif dan subjektif", "Legal, formal, dan material", "Penyalur dan penyaring kepentingan horizontal dan vertikal", "Konsisten, koheren, dan koresponden"],
+    a: 4,
     e: "Penyimpangan pelaksanaan Pancasila terjadi karena dilanggarnya prinsip intrinsik (konsisten, koheren, koresponden) dan ekstrinsik (mampu menjadi penyalur dan penyaring kepentingan horizontal maupun vertikal).",
     src: "Modul Pancasila hlm. 47"
   },
@@ -1065,15 +1065,15 @@ window.BANK.pancasila.push(
   },
   {
     id: "mod-pcs-30", set: "mod", topic: "pancasila",
-    q: "Menurut modul, frasa \"Ketuhanan Yang Maha Esa\" pada sila pertama terutama menekankan ...",
-    o: ["Indonesia sebagai negara agama", "Pemisahan total antara agama dan negara", "Jumlah Tuhan yang hanya satu", "Kewajiban setiap warga negara memeluk agama monoteis", "Sifat-sifat luhur Tuhan dan keesaan dalam beragama"],
+    q: "Pernyataan yang sesuai dengan makna sila pertama \"Ketuhanan Yang Maha Esa\" adalah ...",
+    o: ["Setiap warga negara wajib memeluk agama monoteis", "Indonesia adalah negara agama berdasarkan satu agama tertentu", "Agama sepenuhnya dipisahkan dari kehidupan bernegara", "Negara boleh memaksakan suatu agama kepada penduduk", "Indonesia bukan negara agama, melainkan negara Pancasila yang menjamin kebebasan beragama"],
     a: 4,
-    e: "Modul menjelaskan \"maha\" berarti mulia atau besar dan \"esa\" mengacu pada keberadaan yang mutlak, sehingga yang ditekankan adalah sifat-sifat luhur Tuhan. Frasa ini tidak berarti warga harus memeluk agama monoteis. Indonesia bukan negara agama, melainkan negara yang didirikan atas landasan Pancasila.",
+    e: "Sila pertama menekankan sifat-sifat luhur Tuhan dan tidak berarti warga wajib memeluk agama monoteis. Kalimat \"Atas berkat rahmat Allah Yang Maha Kuasa\" (alinea ketiga Pembukaan) menunjukkan Indonesia bukan negara agama, melainkan negara yang didirikan atas landasan Pancasila. Pasal 29 menjamin kemerdekaan memeluk agama, dan pemerintah melarang paksaan memeluk atau meninggalkan suatu agama.",
     src: "Modul Pancasila hlm. 31-32"
   },
   {
     id: "mod-pcs-31", set: "mod", topic: "pancasila",
-    q: "Pemimpin yang \"hikmat kebijaksanaan\" dalam sila keempat menurut modul berarti pemimpin yang ...",
+    q: "Pemimpin yang \"hikmat kebijaksanaan\" dalam sila keempat berarti pemimpin yang ...",
     o: ["Berasal dari golongan bangsawan atau tokoh adat", "Selalu mengikuti suara terbanyak", "Berpengalaman di bidang militer dan pertahanan", "Dipilih langsung oleh rakyat melalui pemilu", "Profesional (hikmat) sekaligus dewasa dan berhati nurani (bijaksana)"],
     a: 4,
     e: "Hikmat merujuk pada hal yang bersifat fisis (berakal sehat, rasional, cerdas, terampil), sedangkan kebijaksanaan merujuk pada hal yang bersifat psikis (berhati nurani, arif, jujur, adil). Perbedaan demokrasi Barat dan Indonesia terletak pada permusyawaratan.",
@@ -1152,7 +1152,7 @@ window.BANK.sejarah.push(
     q: "Pidato pembelaan Mohammad Hatta di pengadilan Belanda tahun 1928 berjudul ...",
     o: ["Indonesia Menggugat", "Mencapai Indonesia Merdeka", "Indonesia Vrij", "Ke Arah Indonesia Merdeka", "Penemuan Kembali Revolusi Kita"],
     a: 2,
-    e: "Hatta, Nazir Pamuntjak, Abdul Madjid, dan Ali Sastroamidjojo ditangkap dan diadili Maret 1928. Hatta membacakan pembelaan berjudul \"Indonesia Vrij\" (modul menulis \"Indonesia Vry\"). Kesalahan mereka tidak terbukti sehingga dibebaskan. \"Indonesia Menggugat\" adalah pembelaan Soekarno tahun 1930.",
+    e: "Hatta, Nazir Pamuntjak, Abdul Madjid, dan Ali Sastroamidjojo ditangkap dan diadili Maret 1928. Hatta membacakan pembelaan berjudul \"Indonesia Vrij\". Kesalahan mereka tidak terbukti sehingga dibebaskan. \"Indonesia Menggugat\" adalah pembelaan Soekarno tahun 1930.",
     src: "Modul Sejarah Indonesia hlm. 11"
   },
   {
@@ -1785,7 +1785,7 @@ window.BANK.uud.push(
   },
   {
     id: "mod-uud-14", set: "mod", topic: "uud",
-    q: "Menurut modul, alinea pertama Pembukaan UUD 1945 mengungkapkan \"dalil objektif\", yaitu ...",
+    q: "Alinea pertama Pembukaan UUD 1945 mengandung \"dalil objektif\", yaitu ...",
     o: ["Negara melindungi segenap bangsa Indonesia", "Rakyat Indonesia berkehendak hidup bebas", "Indonesia adalah negara yang berkedaulatan rakyat", "Penjajahan tidak sesuai dengan perikemanusiaan dan perikeadilan sehingga harus dihapuskan", "Kemerdekaan diperoleh atas berkat rahmat Allah"],
     a: 3,
     e: "Alinea pertama memuat dalil objektif (penjajahan bertentangan dengan perikemanusiaan dan perikeadilan) dan pernyataan subjektif (aspirasi bangsa Indonesia membebaskan diri dari penjajahan). Pendirian ini melandasi politik luar negeri Indonesia.",
