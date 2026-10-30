@@ -2315,9 +2315,11 @@
       return;
     }
     const hist = validHistory();
-    const wrongIds = Object.keys(state.stats).filter(id => qById[id] && state.stats[id].lastWrong);
-    const bm = state.bookmarks.map(id => qById[id]).filter(Boolean);
-    const dq = Object.keys(state.doubts).map(id => qById[id]).filter(Boolean);
+    // hanya soal dari topik yang sedang difokuskan: soal Perkantoran/Manajemen yang dulu sempat dikerjakan tidak ikut diulang
+    const focusQ = q => !!q && inScope(q) && inFocus(topicById(q.topic));
+    const wrongIds = Object.keys(state.stats).filter(id => focusQ(qById[id]) && state.stats[id].lastWrong);
+    const bm = state.bookmarks.map(id => qById[id]).filter(focusQ);
+    const dq = Object.keys(state.doubts).map(id => qById[id]).filter(focusQ);
     const doubtText = () => dq.map(q => `${q.id} | ${q.q} | kunci aplikasi: ${L[q.a]}. ${q.o[q.a]} | rujukan: ${q.src}`).join("\n");
     const copyDoubts = async () => { const t = doubtText(); try { await navigator.clipboard.writeText(t); toast("Daftar disalin. Tempel ke Claude atau kirim ke rekan untuk dicek."); } catch (e) { const ta = el("textarea", { class: "input", style: "min-height:140px", readonly: true }); ta.value = t; sheet("Salin daftar ini", ta); ta.select(); } };
     view.append(el("h1", null, ["Riwayat & pengulangan"]),
