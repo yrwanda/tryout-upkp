@@ -139,6 +139,82 @@ window.MATERI = {
 
 ## Tambahan dari soal resmi BKN 2025
 - Presiden ke-4: Abdurrahman Wahid. G30S/PKI terjadi pada masa Soekarno; Jenderal Ahmad Yani termasuk pahlawan revolusi. Tekanan menjelang runtuhnya Orde Baru datang dari mahasiswa. Sentralisasi Orde Baru: pemerintah pusat mengendalikan seluruh aspek kehidupan.
+
+## Modul: pergerakan nasional 1908-1942 (modul hlm. 3-18)
+- Sebelum 1908 perjuangan bersifat kedaerahan, mengandalkan perang, dan bergantung pada pemimpin. Sesudah 1908: **bersifat nasional**, memakai organisasi dan diplomasi, ada kaderisasi.
+| Organisasi | Pokok penting |
+|---|---|
+| Budi Utomo, 20 Mei 1908 | Gagasan dr. Wahidin, ketua **Sutomo**, pelajar STOVIA |
+| Sarekat Islam | Pecah 1921: SI putih (Cokroaminoto) dan **SI merah (Semaun, Darsono)** |
+| Muhammadiyah, 18 Nov 1912 | K.H. Ahmad Dahlan; **Aisyiyah**, Nasyiatul Aisyiyah, Hizbul Wathan |
+| Indische Partij, 25 Des 1912 | Douwes Dekker, Cipto, Suwardi; semboyan **Indie voor de Indier** |
+| Perhimpunan Indonesia | Majalah Hindia Putra menjadi **Indonesia Merdeka**; pembelaan Hatta **Indonesia Vrij** (1928) |
+| PNI, 1927 | Jiwa, tekad, dan tindakan nasional; pembelaan Soekarno **Indonesia Menggugat** (1930) |
+- **PPPKI** 17 Desember 1927. Kongres Pemuda II 27-28 Oktober 1928: Sumpah Pemuda, **Indonesia Raya** pertama dikumandangkan. Indonesia Muda 31 Desember 1930.
+- PNI dibubarkan: Hatta mendirikan PNI Baru, Sartono mendirikan **Partindo**.
+- Masa bertahan (1935-1942): taktik **kooperatif** lewat Volksraad. **Parindra** 1935 = Budi Utomo + PBI (ketua dr. Sutomo).
+- **Volksraad** 18 Mei 1918 (Gubernur Jenderal Van Limburg Stirum). **Petisi Sutarjo** 15 Juli 1936: otonomi bertahap 10 tahun, ditolak. **GAPI** Mei 1939 (Thamrin): "Indonesia Berparlemen". Jawaban pemerintah: **Komisi Visman** Maret 1941.
+
+## Modul: pendudukan Jepang sampai proklamasi (modul hlm. 18-24)
+- Belanda menyerah tanpa syarat di **Kalijati** (Subang), 8 Maret 1942: Tjarda van Starkenborgh kepada Letjen Imamura.
+| Organisasi | Pokok penting |
+|---|---|
+| Gerakan 3A, 29 April 1942 | Organisasi pertama Jepang; ketua Mr. Syamsuddin |
+| **Putera**, 9 Maret 1943 | Empat Serangkai: Soekarno, Hatta, Ki Hajar Dewantara, K.H. Mas Mansur |
+| Jawa Hokokai, 8 Januari 1944 | Dipimpin orang Jepang, bersifat memaksa (romusha) |
+| Masyumi, 1943 | Pengganti MIAI; ketua K.H. Hasyim Asy'ari |
+| **Heiho** | Pembantu prajurit Jepang, terutama perang di luar Jawa |
+| **Peta**, 3 Oktober 1943 | Pertahanan dalam negeri |
+- Wilayah: Jawa-Madura di bawah Tentara XVI (Batavia), Sumatera di bawah **Tentara XXV** (Bukittinggi), timur di bawah Armada Selatan II (Makassar).
+- Perlawanan: Teuku Abdul Jalil (Aceh), K.H. Zainal Mustafa (Singaparna), **Supriyadi** (Peta Blitar).
+- **BPUPKI** diketuai dr. Radjiman Wedyodiningrat, sidang 29 Mei-1 Juni 1945, lalu diganti PPKI.
+- 16 Agustus 1945 **Rengasdengklok**: golongan muda menjauhkan Soekarno-Hatta dari pengaruh Jepang. Naskah disusun di **rumah Laksamana Maeda**, dibacakan di Pegangsaan Timur 56.
+- Tentara: **BKR** (22 Agustus 1945) → TKR (5 Oktober 1945) → TRI (Januari 1946) → TNI (3 Juni 1947).
+
+## Modul: mempertahankan kemerdekaan 1945-1949 (modul hlm. 24-38)
+- PPKI 18 Agustus 1945: **mengesahkan UUD**, memilih Soekarno-Hatta; sidang berikutnya membentuk kementerian dan 8 provinsi.
+- AFNEI (Sekutu) datang **diboncengi NICA**, lalu pecah pertempuran.
+| Peristiwa | Pokok penting |
+|---|---|
+| **Linggarjati**, 15 Nov 1946 | Kekuasaan RI: Jawa, Sumatera, Madura |
+| Agresi Militer I, 21 Juli 1947 | DK PBB membentuk **KTN**: Australia, Belgia, Amerika Serikat |
+| **Renville** | Di kapal USS Renville; delegasi RI dipimpin Amir Syarifuddin |
+| Madiun, 18 Sept 1948 | PKI pimpinan **Muso** |
+| Agresi Militer II, 19 Des 1948 | **PDRI** di Sumatera Barat, Syafruddin Prawiranegara |
+| **Roem-Royen**, 7 Mei 1949 | Pemerintah RI kembali ke Yogyakarta |
+| KMB, 23 Agt-2 Nov 1949 | Pengakuan kedaulatan **27 Desember 1949** |
+- Ekonomi: **ORI** (Rp1 = 1.000 yen Jepang), BNI 1946, diplomasi beras ke India, **Plan Kasimo** (swasembada pangan 1948-1950).
+- RIS kembali ke negara kesatuan: Piagam Persetujuan 19 Mei 1950, **UUDS 1950** ditandatangani 15 Agustus 1950.
+
+## Modul: Demokrasi Liberal 1950-1959 (modul hlm. 38-55)
+- UUDS 1950: **kabinet parlementer dan multipartai**, kabinet sering jatuh bangun (7 kabinet).
+- Urutan kabinet: **Natsir - Sukiman - Wilopo - Ali I - Burhanuddin Harahap - Ali II - Djuanda**.
+- **KAA** Bandung April 1955 (Kabinet Ali I). **Pemilu 1955** (DPR 29 September, Konstituante 15 Desember) oleh Kabinet **Burhanuddin Harahap**.
+- Pemberontakan: APRA/Westerling (Bandung), Andi Azis (Makassar), **RMS/Soumokil** (Ambon, 25 April 1950), DI/TII (Kartosuwiryo, Daud Beureuh, Kahar Muzakar), PRRI dan Permesta.
+- Dewan daerah: **Dewan Banteng** (Sumbar), Dewan Gajah (Sumut), Dewan Garuda (Sumsel), Dewan Manguni (Sulut).
+- Ekonomi: **Program Benteng** (Soemitro, kredit untuk pengusaha pribumi), **Gunting Syafruddin**, nasionalisasi perusahaan Belanda Desember 1957.
+- **Konsepsi Presiden** 21 Februari 1957: Demokrasi Terpimpin, Kabinet Gotong Royong, Dewan Nasional.
+- Konstituante gagal karena suara tidak mencapai **dua pertiga** (Pasal 37 UUDS 1950). **Dekrit 5 Juli 1959**: bubarkan Konstituante, UUD 1945 berlaku lagi dan UUDS 1950 tidak berlaku, bentuk MPRS dan DPAS.
+
+## Modul: Demokrasi Terpimpin dan G30S (modul hlm. 55-71)
+- Kekuasaan terpusat pada presiden. Pidato 17 Agustus 1959 "Penemuan Kembali Revolusi Kita" menjadi **Manipol** (GBHN), lalu Manipol-USDEK.
+- Masyumi dan PSI dibubarkan (1960) karena tokohnya dianggap terlibat **PRRI/Permesta**. Politik luar negeri: **Nefo** lawan Oldefo.
+- Irian Barat: Trikora, **Komando Mandala** (Soeharto), Perjanjian New York 15 Agustus 1962, **UNTEA**, diserahkan 1 Mei 1963.
+- **Dwikora** 3 Mei 1964: konfrontasi dengan Federasi Malaysia.
+- Ekonomi memburuk: proyek mercusuar (**Monas, Ganefo, Conefo**), cetak uang, inflasi tiga digit.
+- PKI (D.N. Aidit) mengusulkan **Angkatan Kelima**: buruh dan tani dipersenjatai; ditolak Letjen Ahmad Yani.
+- G30S dipimpin **Letkol Untung** (Cakrabirawa). Di Yogyakarta gugur **Kolonel Katamso** dan **Letkol Sugiyono**. Penumpasan oleh Kostrad (Mayjen Soeharto) dengan RPKAD pimpinan **Sarwo Edhie Wibowo**.
+
+## Modul: Orde Baru sampai Pemilu 1999 (modul hlm. 71-95)
+- **Tritura** 10 Januari 1966: bubarkan PKI, bersihkan Kabinet Dwikora dari unsur G30S, turunkan harga.
+- **Supersemar** 11 Maret 1966 lahir setelah Basuki Rahmat, M. Jusuf, dan Amir Machmud menemui Presiden; PKI dibubarkan 12 Maret 1966.
+- SU IV MPRS 1966: Tap IX (Supersemar), Tap XIII (Kabinet Ampera), **Tap XXV (pembubaran PKI)**. Pidato pertanggungjawaban Soekarno: **Nawaksara**.
+- Kabinet Ampera: **Dwi Darma** (stabilitas politik dan ekonomi) dan Catur Karya.
+- Konfrontasi Malaysia berakhir 11 Agustus 1966, kembali ke **PBB 28 September 1966**, ASEAN 8 Agustus 1967.
+- Soeharto Pejabat Presiden **12 Maret 1967**, Presiden 27 Maret 1968. Kabinet Pembangunan I: **Panca Krida**; Pelita I mulai 1 April 1969.
+- Inflasi turun dari **650% (1966) menjadi 85% (1968)**.
+- Reformasi: Pemilu **7 Juni 1999** diikuti **48 partai**, dilaksanakan KPU.
+> Modul menyebut Kabinet Reformasi Pembangunan berisi 16 menteri; kisi-kisi BKN hal. 60 menyebut 37. Untuk ujian ikuti kisi-kisi.
 `,
   bindo: `
 ## Cakupan (hal. 68-70)

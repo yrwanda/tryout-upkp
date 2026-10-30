@@ -9,9 +9,10 @@ Kementerian Imigrasi dan Pemasyarakatan, mengikuti SE Kepala BKN No. 10 Tahun 20
 - Buka `index.html` langsung di browser (tanpa server), atau jalankan `python -m http.server 8765` lalu buka http://localhost:8765.
 - Progres tersimpan di localStorage browser. Gunakan Pengaturan > Ekspor/Impor untuk memindahkan progres.
 
-## Bank soal: kisi-kisi BKN 2025 (+ pelengkap yang ditandai)
-Total 565 soal, dibedakan lewat field `set`:
+## Bank soal: kisi-kisi BKN 2025, modul UPKP (+ pelengkap yang ditandai)
+Total 638 soal, dibedakan lewat field `set`:
 - `set: "bkn"` (473): dari isi PPT kisi-kisi PPSS BKN "PPT UDIN & UPKP - IMIPAS" (hal. 18-172), termasuk halaman bergambar; rujukan "Kisi-kisi BKN hal. X".
+- `set: "mod"` (73, terus bertambah): **soal utama dari modul UPKP** (folder MATERI UPKP: UPKP_TWK, UPKP_TKT, UPKP_TSI) untuk materi yang tidak dibahas PPT kisi-kisi. Rujukan memakai "hlm." (misalnya "Modul Sejarah Indonesia hlm. 65") supaya tidak tertukar dengan "hal." kisi-kisi; label soal "Modul hlm. X". Ikut simulasi, latihan, sesi harian, dan Kursi Panas seperti soal kisi-kisi. Bagian modul yang usang (modul Kepegawaian sebelum UU 5/2014, ejaan lama di modul Bahasa) tidak dipakai. Sudah ada: Sejarah 1908-1999 (`js/bank/bkn_x6_modul.js`). Ringkasannya ada di materi sebagai bagian berjudul "Modul: ... (modul hlm. X-Y)" yang dipasangkan dengan soal modul di mode Belajar.
 - `set: "form"` (50): soal asli Google Form "Latihan Soal UD/UPKP 2025", 4 opsi, urutan asli. BKN tidak menerbitkan kunci; kunci disusun aplikasi dan diberi label "kunci disusun AI".
 - `set: "ext"` (42+): **pelengkap**, isinya dari luar PPT kisi-kisi dan ditandai "Pelengkap": SOTK dari Permenimipas 1/2024 dan 2/2024 (kisi-kisi hal. 151 hanya berisi judul subtopik), sistematika Renstra, dan tata bahasa Inggris di luar tenses. Bisa disembunyikan di Pengaturan (akibatnya SOTK tidak cukup untuk simulasi 100 soal).
 - Bank kurasi riset lama (488 soal) ada di `arsip/kurasi/` dan tidak dimuat.

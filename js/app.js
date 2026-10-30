@@ -350,7 +350,7 @@
   // ---------- Data ----------
   const BANK = window.BANK || {}, TOPICS = window.TOPICS || [], TESTS = window.TESTS || {}, MATERI = window.MATERI || {};
   const topicById = id => TOPICS.find(t => t.id === id);
-  // set: "bkn" = dari isi kisi-kisi, "form" = soal resmi BKN, "ext" = pelengkap (isi dari luar PPT kisi-kisi)
+  // set: "bkn" = dari isi kisi-kisi, "mod" = dari modul UPKP (soal utama, rujukan "hlm."), "form" = soal resmi BKN, "ext" = pelengkap (isi dari luar PPT kisi-kisi)
   const inScope = q => state.settings.includeExt !== false || q.set !== "ext";
   const pool = tid => (BANK[tid] || []).filter(inScope);
   const ALL = TOPICS.flatMap(t => BANK[t.id] || []);
@@ -439,6 +439,7 @@
   function srcTag(q) {
     if (q.set === "form") return el("span", { class: "row", style: "gap:6px" }, [el("span", { class: "stamp" }, [icon("award"), `Soal resmi BKN · no. ${parseInt(q.id.split("-")[1], 10)}`]), el("span", { class: "chip chip-warn", title: "BKN tidak menerbitkan kunci; kunci disusun aplikasi" }, ["kunci disusun AI"])]);
     if (q.set === "ext") return el("span", { class: "chip chip-warn", title: "Isi soal diambil dari luar PPT kisi-kisi" }, ["Pelengkap · di luar isi kisi-kisi"]);
+    if (q.set === "mod") { const mm = (q.src || "").match(/hlm\.\s*([\d][\d\s\-–,]*)/); return el("span", { class: "chip chip-page", title: q.src }, [mm ? `Modul hlm. ${mm[1].trim().replace(/[,\s]+$/, "")}` : "Dari modul"]); }
     const m = (q.src || "").match(/hal\.\s*([\d][\d\s\-–,]*)/);
     return el("span", { class: "chip chip-page" }, [m ? `Kisi-kisi hal. ${m[1].trim().replace(/[,\s]+$/, "")}` : "Dari kisi-kisi"]);
   }
@@ -702,9 +703,10 @@
   // Metode: baca satu bagian pendek, langsung jawab 3 soal dari halaman kisi-kisi yang sama (mengingat sendiri tepat
   // setelah membaca lebih melekat daripada membaca ulang), lalu lanjut. Bagian yang selesai dicatat di state.learned
   // ("topik#urutan" -> waktu) dan menjadi acuan Rencana hari ini. Soal yang salah ikut masuk jadwal ulang sesi harian.
-  const srcPages = src => {
+  const srcPages = (src, word = "hal") => {
     const out = new Set();
-    for (const m of String(src || "").matchAll(/hal\.\s*([\d][\d\s\-–,]*(?:\s*dan\s*\d[\d\-–]*)?)/g))
+    const re = word === "hlm" ? /hlm\.\s*([\d][\d\s\-–,]*(?:\s*dan\s*\d[\d\-–]*)?)/g : /hal\.\s*([\d][\d\s\-–,]*(?:\s*dan\s*\d[\d\-–]*)?)/g;
+    for (const m of String(src || "").matchAll(re))
       m[1].split(/,|dan/).forEach(x => { const r = x.trim().split(/[-–]/).map(Number); if (r[0]) for (let i = r[0]; i <= (r[1] || r[0]); i++) out.add(i); });
     return out;
   };
@@ -716,7 +718,7 @@
       const pasal = [], pm = full.match(/Pasal (\d+)(?:-(\d+))?/);
       if (pm) for (let i = +pm[1]; i <= +(pm[2] || pm[1]); i++) pasal.push(i);
       const keys = [...body.matchAll(/\*\*([^*]+)\*\*/g)].map(x => x[1].toLowerCase().trim()).filter(k => k.length >= 4).slice(0, 15);
-      return { full, title: full.replace(/\s*\([^()]*hal\.[^()]*\)\s*$/, ""), body, pages: srcPages(full), pasal, keys };
+      return { full, title: full.replace(/\s*\([^()]*(?:hal|hlm)\.[^()]*\)\s*$/, ""), body, pages: srcPages(full), mpages: srcPages(full, "hlm"), pasal, keys };
     });
   }
   const learnKey = (tid, i) => tid + "#" + i;
@@ -730,6 +732,9 @@
       // bagian "dari soal resmi": soal Google Form BKN dan soal turunannya yang tidak mencantumkan halaman
       if (/soal resmi/i.test(sec.full) && !pg.size && (q.set === "form" || /Latihan resmi/.test(q.src))) return 3;
       if (sec.pages.size && pg.size && [...pg].some(x => sec.pages.has(x))) return [...pg].every(x => sec.pages.has(x)) ? 3 : 2;
+      // bagian ringkasan modul ("modul hlm.") hanya dicocokkan dengan soal modul
+      const mp = q.set === "mod" ? srcPages(q.src, "hlm") : null;
+      if (sec.mpages.size && mp && [...mp].some(x => sec.mpages.has(x))) return [...mp].every(x => sec.mpages.has(x)) ? 3 : 2;
       if (sec.pasal.length && sec.pasal.some(x => new RegExp("Pasal " + x + "(?!\\d)").test(q.src))) return 3;
       const txt = (q.q + " " + q.o[q.a]).toLowerCase();
       return sec.keys.some(k => txt.includes(k)) ? 1 : 0;
@@ -1752,7 +1757,7 @@
           kpSoundBtn()
         ]),
         strip, lifes,
-        el("div", { class: "kp-qwrap" }, [el("div", { class: "kp-q" }, [el("span", { class: "kp-q-meta" }, [`${TESTS[t.test].short} · ${t.label}` + (q.set === "ext" ? " · Pelengkap" : q.set === "form" ? " · Soal resmi BKN" : "")]), el("p", null, [q.q])])]),
+        el("div", { class: "kp-qwrap" }, [el("div", { class: "kp-q" }, [el("span", { class: "kp-q-meta" }, [`${TESTS[t.test].short} · ${t.label}` + (q.set === "ext" ? " · Pelengkap" : q.set === "form" ? " · Soal resmi BKN" : q.set === "mod" ? " · Modul" : "")]), el("p", null, [q.q])])]),
         el("div", { class: "kp-opts" }, rows.map(r => r.row)),
         help, act
       ]),
@@ -1816,7 +1821,7 @@
   let pickSel = new Set(), pickCount = 20, pickOrder = "unseen", pickSrc = "all";
   function pickFrom(tids, n, order, src) {
     let list = tids.flatMap(pool);
-    if (src === "form") list = list.filter(q => q.set === "form"); else if (src === "kisi") list = list.filter(q => q.set === "bkn");
+    if (src === "form" || src === "mod") list = list.filter(q => q.set === src); else if (src === "kisi") list = list.filter(q => q.set === "bkn");
     const st = id => state.stats[id];
     if (order === "unseen") list = shuffle(list).sort((a, b) => (st(a.id) ? 1 : 0) - (st(b.id) ? 1 : 0));
     else if (order === "wrong") list = shuffle(list).sort((a, b) => { const sa = st(a.id), sb = st(b.id); const w = s => !s ? 1 : s.lastWrong ? 3 + s.wrong : s.wrong > 0 ? 2 : 0; return w(sb) - w(sa); });
@@ -1839,7 +1844,7 @@
   function renderLatihan(arg) {
     if (drill && drill.active) return drill.i >= drill.qs.length ? renderDrillSummary() : renderDrillQ();
     if (arg && arg.topics) pickSel = new Set(arg.topics);
-    const avail = () => { let l = [...pickSel].flatMap(pool); if (pickSrc === "form") l = l.filter(q => q.set === "form"); else if (pickSrc === "kisi") l = l.filter(q => q.set === "bkn"); return l.length; };
+    const avail = () => { let l = [...pickSel].flatMap(pool); if (pickSrc === "form" || pickSrc === "mod") l = l.filter(q => q.set === pickSrc); else if (pickSrc === "kisi") l = l.filter(q => q.set === "bkn"); return l.length; };
     const startBtn = el("button", { class: "btn btn-primary", onclick: () => { if (!pickSel.size) return toast("Pilih minimal satu topik."); startDrill(pickFrom([...pickSel], pickCount, pickOrder, pickSrc), [...pickSel].map(id => topicById(id).label).join(", ")); } });
     const refresh = () => { const a = avail(); startBtn.textContent = pickSel.size ? `Mulai ${Math.min(a, pickCount)} soal` : "Pilih topik dulu"; startBtn.disabled = !pickSel.size || !a; };
     const groups = {}; TOPICS.filter(inFocus).forEach(t => (groups[t.test] = groups[t.test] || []).push(t));
@@ -1865,7 +1870,7 @@
         el("div", { class: "opts-row" }, [
           el("div", { class: "field" }, [el("span", { class: "label" }, ["Jumlah soal"]), seg([[10, "10"], [20, "20"], [30, "30"], [50, "50"]], () => pickCount, v => pickCount = v)]),
           el("div", { class: "field" }, [el("span", { class: "label" }, ["Prioritas"]), seg([["unseen", "Belum dicoba"], ["wrong", "Pernah salah"], ["random", "Acak"]], () => pickOrder, v => pickOrder = v)]),
-          el("div", { class: "field" }, [el("span", { class: "label" }, ["Jenis soal"]), seg([["all", "Semua"], ["kisi", "Isi kisi-kisi saja"], ["form", "Resmi saja"]], () => pickSrc, v => pickSrc = v)])
+          el("div", { class: "field" }, [el("span", { class: "label" }, ["Jenis soal"]), seg([["all", "Semua"], ["kisi", "Kisi-kisi"], ["mod", "Modul"], ["form", "Resmi"]], () => pickSrc, v => pickSrc = v)])
         ]),
         el("div", { class: "row" }, [startBtn])
       ])
@@ -2357,7 +2362,7 @@
         ]),
         el("section", { class: "panel stack", style: "gap:14px" }, [
           el("h2", null, ["Bank soal"]),
-          el("p", { class: "small" }, [`${ALL.length} soal: ${ALL.filter(q => q.set === "bkn").length} dari isi PPT kisi-kisi PPSS BKN 2025, ${formSet().length} soal resmi Google Form BKN 2025, dan ${ALL.filter(q => q.set === "ext").length} soal pelengkap.`]),
+          el("p", { class: "small" }, [`${ALL.length} soal: ${ALL.filter(q => q.set === "bkn").length} dari isi PPT kisi-kisi PPSS BKN 2025, ${ALL.filter(q => q.set === "mod").length} dari modul UPKP (materi yang tidak dibahas kisi-kisi), ${formSet().length} soal resmi Google Form BKN 2025, dan ${ALL.filter(q => q.set === "ext").length} soal pelengkap.`]),
           el("p", { class: "xs muted" }, [counts]),
           el("p", { class: "xs muted" }, ["Kunci 50 soal resmi disusun aplikasi (form tidak memuat kunci). Bila kisi-kisi berbeda dari peraturan primer, pembahasan mencatat keduanya. Materi SOTK dan Renstra instansi di kisi-kisi hanya berupa judul subtopik, sehingga soalnya dilengkapi dari Permenimipas 1/2024, 2/2024, dan 11/2025."]),
           el("h3", null, ["Data progres"]),
