@@ -580,7 +580,7 @@ window.BANK.uud.push(
     q: "Saat disahkan PPKI pada 18 Agustus 1945, batang tubuh UUD 1945 terdiri atas ...",
     o: ["16 bab, 37 pasal, 65 ayat, 4 pasal aturan peralihan, dan 2 ayat aturan tambahan", "21 bab, 73 pasal, 170 ayat", "16 bab, 37 pasal, 194 ayat, 3 pasal aturan peralihan, 2 pasal aturan tambahan", "20 bab, 40 pasal, 100 ayat", "12 bab, 30 pasal, 50 ayat"],
     a: 0,
-    e: "Naskah asli UUD 1945 terdiri atas Pembukaan, Batang Tubuh (16 bab, 37 pasal, 65 ayat, 4 pasal aturan peralihan, 2 ayat aturan tambahan), serta Penjelasan. \"16 bab, 37 pasal, 194 ayat...\" adalah angka kisi-kisi BKN untuk naskah setelah amandemen.",
+    e: "Naskah asli UUD 1945 terdiri atas Pembukaan, Batang Tubuh (16 bab, 37 pasal, 65 ayat, 4 pasal aturan peralihan, 2 ayat aturan tambahan), serta Penjelasan. \"16 bab, 37 pasal, 194 ayat...\" adalah angka kisi-kisi BKN untuk naskah setelah amandemen. Catatan: banyak sumber, termasuk modul UUD 1945, menyebut 49 ayat untuk naskah asli; jawaban ini mengikuti angka kisi-kisi BKN karena pilihan 49 ayat tidak tersedia.",
     src: "Kisi-kisi BKN hal. 41"
   },
   {

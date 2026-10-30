@@ -37,6 +37,7 @@ window.MATERI = {
 - Tujuan: bangsa religius, adil sosial-ekonomi, menghargai HAM, demokratis, nasionalis dan cinta tanah air.
 - Contoh sikap: musyawarah untuk mufakat, tidak memaksakan kehendak, mendahulukan kepentingan bersama, menghormati antarumat beragama, tidak diskriminatif, menjaga nama baik bangsa.
 - Butir sila 1: kerukunan antarumat, kebebasan beribadah, tidak memaksakan agama. Sila 2: persamaan derajat, tenggang rasa (tepa selira), tidak semena-mena, berani membela kebenaran. Sila 3: kepentingan bangsa di atas pribadi/golongan, rela berkorban, Bhinneka Tunggal Ika. Sila 4: musyawarah diliputi kekeluargaan, menerima dan melaksanakan hasil musyawarah dengan iktikad baik, memberi kepercayaan kepada wakil. Sila 5: gotong royong, seimbang hak dan kewajiban, tidak memakai hak milik untuk pemerasan, pemborosan, gaya hidup mewah, atau merugikan kepentingan umum; suka bekerja keras.
+
 ## Modul: sejarah perumusan Pancasila (modul hlm. 3-18)
 - BPUPKI (ketua dr. Radjiman) bersidang **29 Mei-1 Juni 1945** dan **10-17 Juli 1945**.
 - Yamin (29 Mei): Peri Kebangsaan, Peri Kemanusiaan, Peri Ketuhanan, Peri Kerakyatan, Kesejahteraan Rakyat. Soepomo: teori negara perseorangan, kelas, dan **integralistik**. Soekarno (1 Juni): lima dasar sebagai **philosophische grondslag**, dapat diperas menjadi Trisila dan **Ekasila (gotong royong)**.
@@ -61,6 +62,7 @@ window.MATERI = {
 ## Sejarah (hal. 41-42)
 - Sidang BPUPKI menghasilkan rumusan dasar negara. Panitia Sembilan (Soekarno, Yamin, Soebardjo, dkk.) menyusun rancangan pembukaan → **Piagam Jakarta 22 Juni 1945**.
 - Disahkan PPKI **18 Agustus 1945**: Pembukaan, Batang Tubuh (16 bab, 37 pasal, 65 ayat, 4 pasal aturan peralihan, 2 ayat aturan tambahan), dan Penjelasan.
+> Angka 65 ayat adalah rumusan kisi-kisi BKN hal. 41; modul UUD 1945 hlm. 13 dan banyak sumber lain menyebut 49 ayat. Untuk soal BKN, kenali angka kisi-kisi.
 - **Amandemen 4 kali** oleh MPR: I 14-21 Okt 1999; II 7-18 Agt 2000; III 1-9 Nov 2001; IV 1-11 Agt 2002.
 - Alasan amandemen: kekuasaan Presiden terlalu besar (eksekutif dan legislatif), pasal terlalu fleksibel/multitafsir, Penjelasan diperlakukan setara pasal.
 > Kisi-kisi BKN: setelah amandemen "16 bab, 37 pasal, 194 ayat, 3 pasal aturan peralihan, 2 pasal aturan tambahan". Angka nomor pasal memang tetap sampai Pasal 37, tetapi hitungan resmi MPR adalah 21 bab, 73 pasal, 170 ayat. Untuk ujian, kenali rumusan kisi-kisi BKN dan pahami perbedaannya.
@@ -99,13 +101,14 @@ window.MATERI = {
 - **Pasal 2**: MPR = anggota DPR + DPD dipilih melalui pemilu; bersidang sedikitnya sekali dalam 5 tahun di ibu kota; putusan dengan suara terbanyak.
 - **Pasal 3**: MPR mengubah dan menetapkan UUD, melantik Presiden/Wapres, hanya dapat memberhentikan Presiden/Wapres menurut UUD.
 - **Pasal 4**: Presiden memegang kekuasaan pemerintahan, dibantu satu Wapres. **Pasal 5**: Presiden berhak mengajukan RUU ke DPR dan menetapkan PP.
-- **Pasal 6**: syarat calon (WNI sejak lahir, tidak pernah menerima kewarganegaraan lain atas kehendak sendiri, tidak pernah mengkhianati negara, mampu jasmani rohani). **Pasal 6A**: dipilih langsung satu pasangan; diusulkan parpol/gabungan parpol; menang jika >50% suara dengan ≥20% di lebih dari setengah provinsi; bila tidak ada, dua pasangan teratas dipilih langsung lagi.
+- **Pasal 6**: syarat calon (WNI sejak lahir, tidak pernah menerima kewarganegaraan lain atas kehendak sendiri, tidak pernah mengkhianati negara, mampu jasmani rohani). **Pasal 6A**: dipilih langsung satu pasangan; diusulkan parpol/gabungan parpol; menang jika memperoleh >50% suara dengan sedikitnya 20% suara di setiap provinsi yang tersebar di lebih dari setengah jumlah provinsi; bila tidak ada, dua pasangan teratas dipilih langsung lagi.
 - **Pasal 7**: masa jabatan 5 tahun, dapat dipilih kembali satu kali. **Pasal 7A-7B**: pemberhentian oleh MPR atas usul DPR setelah diputus MK (pengkhianatan, korupsi, penyuapan, pidana berat, perbuatan tercela, tidak memenuhi syarat); usul DPR adalah bagian fungsi pengawasan.
 
 ## Lembaga negara (hal. 56-57)
 - Sebelum amandemen: MPR (lembaga tertinggi), DPR, Presiden, DPA, MA, BPK.
 - Sesudah amandemen: MPR, DPR, DPD, Presiden, MA, MK, KY, BPK (sejajar). DPA dihapus.
 - Legislatif (membuat UU), eksekutif (melaksanakan UU), yudikatif (mengawasi/mengadili pelaksanaan UU), eksaminatif (BPK, memeriksa keuangan negara).
+
 ## Modul: UUD 1945 dalam pelaksanaannya (modul hlm. 3-16)
 - 1945-1949: **Pasal IV Aturan Peralihan** (kekuasaan dijalankan Presiden dibantu Komite Nasional). Penyimpangan: **Maklumat Wapres No. X** (16 Oktober 1945) membuat KNIP berfungsi legislatif; **Maklumat 14 November 1945** mengganti kabinet presidensial menjadi parlementer.
 - **Konstitusi RIS** 27 Desember 1949-17 Agustus 1950 (tidak berlaku di negara bagian RI beribu kota Yogyakarta), disepakati di Scheveningen. **UUDS 1950** 17 Agustus 1950-5 Juli 1959: parlementer, demokrasi liberal.
@@ -285,6 +288,7 @@ Ejaan dan tanda baca, kalimat efektif, ide pokok, kata baku, makna kata, kata um
 ## Kalimat efektif dan paragraf (hal. 89-90)
 - Subjek tidak didahului preposisi (bagi, dari, untuk, di, pada...): kisi-kisi mencoret "dari" pada "Wakil dari Surakarta menjadi Duta Bahasa...". Tidak ada subjek ganda ("kakak" kedua dicoret). **Hemat**: kisi-kisi mencoret "Para" pada "Para siswa-siswi". **Logis** ("Sebelum ditemukan tak bernyawa, pria itu..." bukan "Mayat pria itu sebelumnya sering mondar-mandir").
 - Paragraf = rangkaian kalimat berkaitan satu gagasan. Gagasan pokok ada di **kalimat utama/topik**: awal (**deduktif**), tengah, akhir (**induktif**). Simpulan berisi ide pokok.
+
 ## Modul: sejarah dan kedudukan bahasa Indonesia (modul hlm. 1-11)
 - Commissie voor de Volkslectuur (1908) menjadi **Balai Pustaka** (1917). **Jahja Datoek Kajo** berpidato dalam bahasa Indonesia di Volksraad (1927). Majalah **Pujangga Baru** (1933): Sutan Takdir Alisjahbana, Amir Hamzah, Armijn Pane.
 - Kongres Bahasa Indonesia I di **Solo (1938)**, II di Medan (1954), V (1988) mempersembahkan **KBBI** dan Tata Bahasa Baku, X (2013) merekomendasikan UKBI sebagai **paspor bahasa** bagi tenaga kerja asing.
@@ -316,6 +320,7 @@ UU 20/2023 (ASN); PP 11/2017 jo. PP 17/2020 (Manajemen PNS); PP 94/2021 (Disipli
 ## Hak, kewajiban, manajemen (hal. 111-112)
 - **Hak**: penghasilan, penghargaan motivasi, tunjangan dan fasilitas, jaminan sosial, lingkungan kerja, pengembangan diri, bantuan hukum.
 - **Kewajiban**: setia pada Pancasila/UUD/NKRI/pemerintah sah; menjaga persatuan; melaksanakan kebijakan pejabat berwenang; menaati peraturan; tugas dengan pengabdian dan kejujuran; integritas dan keteladanan; **menyimpan rahasia jabatan**; bersedia ditempatkan di seluruh NKRI.
+> Delapan kewajiban ini sama dengan kewajiban PNS dalam **Pasal 3 PP 94/2021**. UU 20/2023 Pasal 24 merumuskan kewajiban Pegawai ASN lebih ringkas: setia dan taat pada Pancasila, UUD 1945, NKRI, dan pemerintahan yang sah; menaati peraturan; melaksanakan nilai dasar ASN serta kode etik dan kode perilaku; **menjaga netralitas**; bersedia ditempatkan di seluruh wilayah NKRI dan perwakilan RI di luar negeri. Hak ASN di atas sesuai Pasal 21 UU 20/2023.
 - **Manajemen ASN**: pengelolaan untuk ASN profesional, bernilai dasar, beretika, bebas intervensi politik, bersih KKN. Delapan komponen (urutan kisi-kisi, Pasal 31 UU 20/2023): perencanaan kebutuhan, pengadaan, penguatan budaya kerja dan citra institusi, pengelolaan kinerja, pengembangan talenta dan karier, pengembangan kompetensi, penghargaan dan pengakuan, pemberhentian.
 
 ## Disiplin PP 94/2021 (hal. 113)
@@ -385,6 +390,7 @@ Kepentingan umum; kepastian hukum; kesamaan hak; keseimbangan hak dan kewajiban;
 - **Keseimbangan hak dan kewajiban**: pemenuhan hak sebanding dengan kewajiban pemberi dan penerima layanan. **Keprofesionalan**: pelaksana berkompetensi sesuai bidang tugas.
 - **Partisipatif**: peran serta masyarakat dengan memperhatikan aspirasi, kebutuhan, dan harapannya. **Keterbukaan**: penerima layanan mudah mengakses informasi pelayanan. **Akuntabilitas**: proses dapat dipertanggungjawabkan.
 - **Fasilitas dan perlakuan khusus bagi kelompok rentan**: kemudahan bagi kelompok rentan. **Ketepatan waktu**: tiap jenis pelayanan selesai tepat waktu sesuai standar. **Kecepatan, kemudahan, keterjangkauan**: layanan cepat, mudah, terjangkau.
+
 ## Modul: Permen PANRB 29/2022 tentang PEKPPP (Pasal 1-12)
 - PEKPPP = pengukuran sistematis untuk memperoleh **Indeks Pelayanan Publik (IPP)**; menggantikan Permen PANRB 17/2017.
 - Tujuan: rekomendasi perbaikan, nilai IPP, pemeringkatan berkala, dan penghargaan (piagam, piala).
@@ -410,6 +416,7 @@ Partisipasi, kepastian hukum, transparansi, tanggung jawab (responsif), berorien
 ## Reformasi birokrasi (hal. 140)
 Perpres 81/2010 tentang **Grand Design Reformasi Birokrasi 2010-2025**, dengan tiga pokok: **prinsip dasar good governance**, **tujuan RB**, dan **sasaran RB**.
 > Pelengkap (sumber primer, karena kisi-kisi BKN hal. 140 hanya berupa judul): tujuan RB = birokrasi profesional, berintegritas, berkinerja tinggi, bersih bebas KKN, melayani, netral; tiga sasaran RB = pemerintahan bersih bebas KKN, kualitas pelayanan publik, kapasitas dan akuntabilitas kinerja birokrasi.
+
 ## Modul: UU 30/2014 Administrasi Pemerintahan, asas dan kewenangan (Pasal 1-25)
 - Dasar penyelenggaraan: **asas legalitas, pelindungan HAM, dan AUPB**. Fungsi pemerintahan: pengaturan, pelayanan, pembangunan, pemberdayaan, pelindungan.
 - **8 AUPB** (Pasal 10): kepastian hukum, kemanfaatan, ketidakberpihakan, kecermatan, tidak menyalahgunakan kewenangan, keterbukaan, kepentingan umum, pelayanan yang baik.
@@ -476,6 +483,7 @@ UU 25/2004 SPPN: **RPJP Nasional 20 tahun** → dijabarkan **RPJM Nasional 5 tah
 ## Rencana strategis instansi (hal. 150)
 Kisi-kisi BKN hanya mencantumkan subtopik: **visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, sistematika Renstra**.
 > Pelengkap (sumber primer, karena kisi-kisi BKN hanya berupa judul): Renstra Kemenimipas 2025-2029 ditetapkan Permenimipas 11/2025. Sistematika Renstra K/L: Bab I Pendahuluan; II Visi, Misi, Tujuan, Sasaran Strategis; III Arah Kebijakan, Strategi, Kerangka Regulasi dan Kelembagaan; IV Target Kinerja dan Kerangka Pendanaan; V Penutup.
+
 ## Modul: Ringkasan RPJMN 2025-2029 (modul hlm. 6-45)
 > Nomor hlm. adalah halaman PDF. Nomor yang tercetak di buku lebih kecil 4 (hlm. PDF 18 = halaman 14 di buku).
 - RPJPN 2025-2045 ditetapkan dengan **UU 59/2024**; RPJMN 2025-2029 (Perpres 12/2025) adalah tahap I dengan fokus **perkuatan fondasi transformasi**.
@@ -508,6 +516,7 @@ Struktur Organisasi dan Tata Kerja: **tugas, kedudukan, fungsi perangkat daerah/
 
 ## Jalur koordinasi dan tata kerja (Permenimipas 2/2024 Pasal 32-40)
 - Prinsip **koordinasi, integrasi, sinkronisasi**; **pengawasan melekat** dan lapor berjenjang; JF/pelaksana bertanggung jawab kepada Kakanwil melalui atasan langsung; tembusan laporan ke satuan yang secara fungsional berhubungan kerja; pola hubungan kerja ditetapkan Menteri; perubahan OTK perlu persetujuan tertulis MenPANRB (Pasal 44).
+
 ## Modul: UU 22/2022 tentang Pemasyarakatan, ketentuan umum dan hak (Pasal 1-18)
 - Pemasyarakatan = **subsistem peradilan pidana** di bidang perlakuan terhadap tahanan, anak, dan warga binaan. **Warga Binaan**: narapidana, anak binaan, dan klien.
 - Anak berkonflik dengan hukum berumur **12 sampai belum 18 tahun**; Anak Binaan 14 sampai belum 18 tahun.
