@@ -146,6 +146,16 @@ window.JODOH = [
     ["UU 20/2023", "Aparatur Sipil Negara"], ["PP 11/2017 jo. PP 17/2020", "Manajemen PNS"], ["PP 94/2021", "Disiplin PNS"], ["Peraturan BKN 24/2017", "Cuti PNS"],
     ["Keppres 24/2010", "KORPRI"], ["UU 25/2009", "Pelayanan publik"], ["Perpres 81/2010", "Grand Design Reformasi Birokrasi 2010-2025"],
     ["PER/04/M.PAN/4/2007", "Pedoman formulasi sampai revisi kebijakan publik"], ["UU 24/2011", "BPJS"]] },
+  { id: "uu20-pokok", topic: "kepegawaian", title: "Pokok-pokok UU 20/2023 tentang ASN", pages: "", src: "UU 20/2023 Pasal 2, 10-18, 64-70", left: "Istilah", right: "Ketentuan", pairs: [
+    ["Fungsi ASN", "Pelaksana kebijakan publik, pelayan publik, perekat bangsa"], ["Peran ASN", "Perencana, pelaksana, dan pengawas"],
+    ["Jabatan pengawas", "Jabatan manajerial tingkat dasar"], ["Jabatan pelaksana", "Pekerjaan rutin dan sederhana"],
+    ["Asas proporsionalitas", "Keseimbangan hak dan kewajiban"], ["Sengketa Pegawai ASN", "Keberatan dan banding administratif"],
+    ["Penataan pegawai non-ASN", "Paling lambat Desember 2024"], ["Lembaga Administrasi Negara", "Pengembangan kapasitas dan pembelajaran ASN"],
+    ["Badan Kepegawaian Negara", "Kebijakan teknis Manajemen ASN"]] },
+  { id: "pp94-mangkir", topic: "kepegawaian", title: "Hari tidak masuk kerja dan hukumannya", pages: "", src: "PP 94/2021 Pasal 9-11", left: "Tanpa alasan sah", right: "Hukuman", pairs: [
+    ["3 hari (kumulatif setahun)", "Teguran lisan"], ["4-6 hari (kumulatif setahun)", "Teguran tertulis"], ["7-10 hari (kumulatif setahun)", "Pernyataan tidak puas secara tertulis"],
+    ["11-13 hari (kumulatif setahun)", "Potong tunjangan kinerja 25% selama 6 bulan"], ["21-24 hari (kumulatif setahun)", "Penurunan jabatan setingkat lebih rendah 12 bulan"],
+    ["25-27 hari (kumulatif setahun)", "Dibebaskan menjadi jabatan pelaksana 12 bulan"], ["10 hari berturut-turut", "Diberhentikan dengan hormat tidak atas permintaan sendiri"]] },
   { id: "gg-rb", topic: "gg", title: "Good governance dan reformasi birokrasi", pages: "123-125, 140-144", left: "Istilah", right: "Keterangan", pairs: [
     ["Good governance", "Pemerintahan yang bersih, demokratis, efektif"], ["Partisipasi", "Masyarakat ikut merumuskan kebijakan publik"],
     ["Perpres 81/2010", "Grand Design Reformasi Birokrasi 2010-2025"], ["Tiga pokok materi Grand Design RB", "Prinsip dasar GG, tujuan RB, sasaran RB"],

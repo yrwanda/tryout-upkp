@@ -93,6 +93,7 @@
     const out = { ts: h.ts, mode: h.mode === "form" ? "form" : "upkp", durationSec: num(h.durationSec, 0), timeout: h.timeout === true, total: { n: t.n, correct: t.correct, score: t.score, max: t.max },
       qids: strArr(h.qids), answers: objOf(h.answers, v => Number.isInteger(v) ? v : undefined), flags: objOf(h.flags, v => v === true ? true : undefined), perm: objOf(h.perm, v => Array.isArray(v) && v.every(Number.isInteger) ? v : undefined) };
     if (["kisi", "mod", "form"].includes(h.src)) out.src = h.src;
+    if (isObj(h.tq)) out.tq = objOf(h.tq, v => Number.isInteger(v) && v >= 0 ? v : undefined);
     if (Array.isArray(h.rows)) out.rows = h.rows.map(row).filter(Boolean);
     else if (isObj(h.perTest)) { out.perTest = objOf(h.perTest, v => isObj(v) && [v.n, v.correct, v.score, v.max].every(x => typeof x === "number") ? { n: v.n, correct: v.correct, score: v.score, max: v.max } : undefined); if (isObj(h.thresholds)) out.thresholds = objOf(h.thresholds, v => v === undefined || v === null ? undefined : String(v)); }
     else return null;
@@ -355,6 +356,10 @@
   // set: "bkn" = dari isi kisi-kisi, "mod" = dari modul UPKP (soal utama, rujukan "hlm."), "form" = soal resmi BKN, "ext" = pelengkap (isi dari luar PPT kisi-kisi)
   const inScope = q => state.settings.includeExt !== false || q.set !== "ext";
   const pool = tid => (BANK[tid] || []).filter(inScope);
+  // pasangan soal kembar (js/bank/kembar.js): dalam satu set soal, yang kedua dari pasangan dibuang
+  const twinOf = {}; (window.KEMBAR || []).forEach(([a, b]) => { twinOf[a] = b; twinOf[b] = a; });
+  const noTwins = list => { const seen = new Set(); return list.filter(q => { if (twinOf[q.id] && seen.has(twinOf[q.id])) return false; seen.add(q.id); return true; }); };
+  const hasTwin = (list, q) => !!twinOf[q.id] && list.some(x => x.id === twinOf[q.id]);
   const ALL = TOPICS.flatMap(t => BANK[t.id] || []);
   const qById = {}; ALL.forEach(q => { qById[q.id] = q; });
   const formSet = () => ALL.filter(q => q.set === "form").sort((a, b) => a.id.localeCompare(b.id));
@@ -397,15 +402,15 @@
   function todaySession(n) {
     n = n || 20; const now = Date.now();
     const core = CORE.flatMap(t => pool(t.id));
-    const due = core.filter(q => state.stats[q.id] && dueAt(state.stats[q.id]) <= now && !mastered(state.stats[q.id])).sort((a, b) => dueAt(state.stats[a.id]) - dueAt(state.stats[b.id]));
+    const due = noTwins(core.filter(q => state.stats[q.id] && dueAt(state.stats[q.id]) <= now && !mastered(state.stats[q.id])).sort((a, b) => dueAt(state.stats[a.id]) - dueAt(state.stats[b.id])));
     const out = due.slice(0, Math.min(12, n));
     const weakest = testReadiness().slice().sort((a, b) => a.r - b.r)[0];
     const fresh = shuffle(core.filter(q => !state.stats[q.id]));
     const weakTopics = new Set(CORE.filter(t => t.test === (weakest && weakest.k)).map(t => t.id));
     fresh.sort((a, b) => (weakTopics.has(b.topic) ? 1 : 0) - (weakTopics.has(a.topic) ? 1 : 0));
-    for (const q of fresh) { if (out.length >= n) break; out.push(q); }
-    if (out.length < n) for (const q of shuffle(core.filter(q => !out.includes(q) && mastered(state.stats[q.id]) && dueAt(state.stats[q.id]) <= now))) { if (out.length >= n) break; out.push(q); }
-    if (out.length < n) for (const q of shuffle(core.filter(q => !out.includes(q)))) { if (out.length >= n) break; out.push(q); }
+    for (const q of fresh) { if (out.length >= n) break; if (!hasTwin(out, q)) out.push(q); }
+    if (out.length < n) for (const q of shuffle(core.filter(q => !out.includes(q) && mastered(state.stats[q.id]) && dueAt(state.stats[q.id]) <= now))) { if (out.length >= n) break; if (!hasTwin(out, q)) out.push(q); }
+    if (out.length < n) for (const q of shuffle(core.filter(q => !out.includes(q)))) { if (out.length >= n) break; if (!hasTwin(out, q)) out.push(q); }
     return { qs: shuffle(out), due: Math.min(due.length, 12), weakest: weakest ? weakest.k : null };
   }
   // Acak urutan pilihan setiap kali soal tampil, agar yang diingat isi jawabannya, bukan posisi hurufnya.
@@ -441,7 +446,7 @@
   function srcTag(q) {
     if (q.set === "form") return el("span", { class: "row", style: "gap:6px" }, [el("span", { class: "stamp" }, [icon("award"), `Soal resmi BKN · no. ${parseInt(q.id.split("-")[1], 10)}`]), el("span", { class: "chip chip-warn", title: "BKN tidak menerbitkan kunci; kunci disusun aplikasi" }, ["kunci disusun AI"])]);
     if (q.set === "ext") return el("span", { class: "chip chip-warn", title: "Isi soal diambil dari luar PPT kisi-kisi" }, ["Pelengkap · di luar isi kisi-kisi"]);
-    if (q.set === "mod") { const mm = (q.src || "").match(/hlm\.\s*([\d][\d\s\-–,]*)/); return el("span", { class: "chip chip-page", title: q.src }, [mm ? `${/Renstra Kemenimipas/.test(q.src) ? "Renstra" : "Modul"} hlm. ${mm[1].trim().replace(/[,\s]+$/, "")}` : q.src || "Dari modul"]); }
+    if (q.set === "mod") { const mm = (q.src || "").match(/hlm\.\s*([\d][\d\s\-–,]*)/); return el("span", { class: "chip chip-page", title: q.src }, [mm ? `${/Renstra Kemenimipas/.test(q.src) ? "Renstra" : /PER\/04\/M\.PAN/.test(q.src) ? "Pedoman PER/04" : "Modul"} hlm. ${mm[1].trim().replace(/[,\s]+$/, "")}` : q.src || "Dari modul"]); }
     const m = (q.src || "").match(/hal\.\s*([\d][\d\s\-–,]*)/);
     return el("span", { class: "chip chip-page" }, [m ? `Kisi-kisi hal. ${m[1].trim().replace(/[,\s]+$/, "")}` : "Dari kisi-kisi"]);
   }
@@ -822,35 +827,52 @@
     state.settings.examDate = KALBAR.date; save(); renderSideFoot();
     toast(`Tanggal ujian: ${KALBAR.day}, ${KALBAR.place}`); go(current);
   }
-  // Rencana hari ini: tiga langkah menurut sisa hari (fase 1 > H-14, fase 2 H-14 s.d. H-4, fase 3 H-3 s.d. H-1)
+  // Rencana hari ini menurut sisa hari: fase 1 > H-14, fase 2 H-14 s.d. H-8, fase 3 = minggu terakhir (H-7 s.d. H-1)
+  // dengan jadwal per hari: simulasi H-7, H-5, H-3 (terakhir), sisanya ulang soal yang salah; tanpa materi baru mulai H-4.
+  const WEEK = { 7: ["sim", "wrong"], 6: ["wrong", "learn"], 5: ["sim"], 4: ["wrong", "daily"], 3: ["sim"], 2: ["wrong"], 1: ["daily"] };
+  const WEEK_TXT = { 7: "Simulasi + ulang yang salah", 6: "Ulang yang salah + 1 bagian materi", 5: "Simulasi", 4: "Ulang yang salah + sesi harian",
+    3: "Simulasi terakhir", 2: "Ulang yang salah, tanpa materi baru", 1: "Sesi harian ringan, siapkan perlengkapan" };
   function planCard() {
     const d = daysLeft(), today = dayKey(), sims = validHistory().filter(h => h.mode !== "form"), last = sims[sims.length - 1];
     const learnedToday = Object.values(state.learned || {}).filter(ts => dayKey(new Date(ts)) === today).length;
     const simToday = !!last && dayKey(new Date(last.ts)) === today;
-    const phase = d === null || d < 0 ? null : d === 0 ? 0 : d > 14 ? 1 : d > 3 ? 2 : 3;
+    const phase = d === null || d < 0 ? null : d === 0 ? 0 : d > 14 ? 1 : d > 7 ? 2 : 3;
     const nx = nextLearn(), simEvery = phase === 2 ? 3 : 5;
     const wrong = CORE.flatMap(t => pool(t.id)).filter(q => state.stats[q.id] && state.stats[q.id].lastWrong);
-    const steps = [];
-    if ((phase === null || phase === 1 || phase === 2) && nx) steps.push({ done: learnedToday >= 2, title: `Pelajari 2 bagian materi (${Math.min(learnedToday, 2)}/2)`,
-      body: `Berikutnya: ${nx.t.label}, bagian "${sections(nx.t.id)[nx.left].title}". Baca, lalu jawab 3 soal.`, btn: ["Mulai belajar", () => nav("materi", { topic: nx.t.id, mode: "belajar", sec: nx.left })] });
-    if (phase === 3 && wrong.length) steps.push({ done: false, title: `Ulang ${Math.min(wrong.length, 30)} soal yang terakhir salah`,
-      body: "Menjelang ujian, perbaiki yang pernah salah. Tidak perlu menambah materi baru.", btn: ["Latih", () => startDrill(shuffle(wrong).slice(0, 30), "Ulang soal yang salah")] });
-    if (phase !== 0) steps.push({ done: state.dailyDone === today, title: "Sesi harian 20 soal",
-      body: "Soal jatuh tempo diulang, sisanya soal baru dari jenis tes terlemah. Sekitar 20-25 menit.", btn: ["Mulai", () => startDrill(todaySession(20).qs, "Sesi hari ini", { daily: true })] });
-    if (phase === 1 || phase === 2) { if (simToday || !last || Date.now() - last.ts >= simEvery * DAY) steps.push({ done: simToday, title: "Simulasi 100 soal, 90 menit",
-      body: phase === 1 ? "Sekali tiap 5 hari untuk mengukur kemajuan." : "Tiap 3 hari untuk melatih ketahanan 90 menit. Setelahnya latih ulang soal yang salah.", btn: ["Buka simulasi", () => { simMode = "upkp"; nav("simulasi"); }] }); }
+    const S = {
+      learn: n => nx && { done: learnedToday >= n, title: `Pelajari ${n} bagian materi (${Math.min(learnedToday, n)}/${n})`,
+        body: `Berikutnya: ${nx.t.label}, bagian "${sections(nx.t.id)[nx.left].title}". Baca, lalu jawab 3 soal.`, btn: ["Mulai belajar", () => nav("materi", { topic: nx.t.id, mode: "belajar", sec: nx.left })] },
+      wrong: () => wrong.length && { done: false, title: `Ulang ${Math.min(wrong.length, 30)} soal yang terakhir salah`,
+        body: "Perbaiki yang pernah salah. Soal yang dijawab benar keluar dari daftar ini.", btn: ["Latih", () => startDrill(shuffle(wrong).slice(0, 30), "Ulang soal yang salah")] },
+      daily: () => ({ done: state.dailyDone === today, title: "Sesi harian 20 soal",
+        body: "Soal jatuh tempo diulang, sisanya soal baru dari jenis tes terlemah. Sekitar 20-25 menit.", btn: ["Mulai", () => startDrill(todaySession(20).qs, "Sesi hari ini", { daily: true })] }),
+      sim: body => ({ done: simToday, title: "Simulasi 100 soal, 90 menit", body, btn: ["Buka simulasi", () => { simMode = "upkp"; nav("simulasi"); }] })
+    };
+    let steps = [];
+    if (phase === 3) steps = WEEK[d].map(k => k === "sim" ? S.sim(d === 3 ? "Simulasi terakhir sebelum ujian. Kerjakan penuh tanpa jeda, lalu lihat analisis waktunya." : "Kerjakan penuh 90 menit tanpa jeda, lalu latih ulang soal yang salah.")
+      : k === "learn" ? S.learn(1) : k === "wrong" ? S.wrong() : S.daily());
+    else {
+      if (phase === null || phase === 1 || phase === 2) steps.push(S.learn(2));
+      if (phase !== 0) steps.push(S.daily());
+      if ((phase === 1 || phase === 2) && (simToday || !last || Date.now() - last.ts >= simEvery * DAY))
+        steps.push(S.sim(phase === 1 ? "Sekali tiap 5 hari untuk mengukur kemajuan." : "Tiap 3 hari untuk melatih ketahanan 90 menit. Setelahnya latih ulang soal yang salah."));
+    }
+    steps = steps.filter(Boolean);
+    if (phase === 3 && !steps.length) steps.push(S.daily());
     const PH = { 0: ["Hari ujian", "Tidak perlu belajar materi baru. Cek perlengkapan, berangkat lebih awal, dan kerjakan semua soal."],
       1: ["Fase 1 · Pahami", "Kuasai materi bagian demi bagian sambil menjaga ulangan harian."],
       2: ["Fase 2 · Latih", "Materi tetap jalan, ditambah simulasi tiap 3 hari untuk kecepatan dan ketahanan 90 menit."],
-      3: ["Fase 3 · Mantapkan", "Tidak ada materi baru. Ulang yang salah, tidur cukup, siapkan perlengkapan hari H."] };
+      3: ["Minggu terakhir", "Simulasi di H-7, H-5, dan H-3; hari lain untuk mengulang soal yang salah. Mulai H-4 tidak ada materi baru."] };
     return el("section", { class: "panel plan stack", style: "gap:12px" }, [
-      el("div", { class: "sec-head" }, [el("h2", null, ["Rencana hari ini"]), phase !== null ? el("span", { class: "chip" }, [PH[phase][0]]) : null]),
+      el("div", { class: "sec-head" }, [el("h2", null, ["Rencana hari ini"]), phase !== null ? el("span", { class: "chip" }, [phase === 3 ? `${PH[3][0]} · H-${d}` : PH[phase][0]]) : null]),
       el("p", { class: "small muted" }, [phase !== null ? PH[phase][1] : "Isi tanggal ujian agar rencana menyesuaikan sisa hari."]),
       steps.length ? el("ol", { class: "plan-list" }, steps.map((x, k) => el("li", { class: "plan-step" + (x.done ? " done" : "") }, [
         el("span", { class: "ob-num", "aria-hidden": "true" }, [x.done ? icon("check") : String(k + 1)]),
         el("div", { class: "stack", style: "gap:3px;min-width:0;flex:1" }, [el("b", null, [x.title]), el("span", { class: "small muted" }, [x.body])]),
         x.done ? el("span", { class: "chip chip-ok" }, ["Selesai"]) : el("button", { class: "btn btn-sm btn-primary", onclick: x.btn[1] }, [x.btn[0]])
-      ]))) : null
+      ]))) : null,
+      phase === 3 ? el("ol", { class: "week-plan small", "aria-label": "Jadwal minggu terakhir" }, [7, 6, 5, 4, 3, 2, 1].map(k =>
+        el("li", { class: k === d ? "now" : k > d ? "past" : null, "aria-current": k === d ? "date" : null }, [el("b", { class: "num" }, [`H-${k}`]), el("span", null, [WEEK_TXT[k]])]))) : null
     ]);
   }
   function hariHCard(d) {
@@ -1844,6 +1866,7 @@
     if (order === "unseen") list = shuffle(list).sort((a, b) => (st(a.id) ? 1 : 0) - (st(b.id) ? 1 : 0));
     else if (order === "wrong") list = shuffle(list).sort((a, b) => { const sa = st(a.id), sb = st(b.id); const w = s => !s ? 1 : s.lastWrong ? 3 + s.wrong : s.wrong > 0 ? 2 : 0; return w(sb) - w(sa); });
     else list = shuffle(list);
+    list = noTwins(list);
     // sebar merata antartopik
     if (tids.length > 1) {
       const by = {}; list.forEach(q => (by[q.topic] = by[q.topic] || []).push(q));
@@ -2003,11 +2026,11 @@
       wrong.length ? el("div", { class: "stack" }, [el("h2", null, ["Soal yang salah"]), el("div", { class: "review" }, wrong.map(q => reviewItem(q, drill.answers[q.id], false, null, drill.perm[q.id])))]) : ""
     );
   }
-  function reviewItem(q, ch, flagged, no, perm) {
+  function reviewItem(q, ch, flagged, no, perm, secs) {
     perm = perm || idPerm(q);
     const t = topicById(q.topic), st = ch === null || ch === undefined ? "skip" : ch === q.a ? "ok" : "bad";
     return el("article", { class: "review-item " + st }, [
-      el("div", { class: "q-meta" }, [no ? el("span", { class: "chip num" }, [`No. ${no}`]) : null, testChip(t), el("span", { class: "chip" }, [t.label]), srcTag(q), flagged ? el("span", { class: "chip chip-warn" }, [icon("flag"), "Ragu-ragu"]) : null]),
+      el("div", { class: "q-meta" }, [no ? el("span", { class: "chip num" }, [`No. ${no}`]) : null, testChip(t), el("span", { class: "chip" }, [t.label]), srcTag(q), secs ? el("span", { class: "chip num", title: "Lama soal ini dibuka selama simulasi" }, [`Waktu ${fmtTime(secs)}`]) : null, flagged ? el("span", { class: "chip chip-warn" }, [icon("flag"), "Ragu-ragu"]) : null]),
       el("div", { class: "q-text" }, [q.q]),
       el("div", { class: "options" }, perm.map((i, pos) => el("div", { class: "opt" + (i === q.a ? " correct" : i === ch ? " wrong" : " dim") }, [el("span", { class: "k" }, [L[pos]]), el("span", null, [q.o[i]]), el("span", { class: "mk" }, [i === q.a ? icon("check") : i === ch ? icon("x") : ""])]))),
       feedback(q, st === "skip" ? null : ch, perm),
@@ -2037,7 +2060,7 @@
         CORE.filter(t => t.test === k).forEach(t => {
           if (!src || src === "all") return qs.push(...pickFrom([t.id], t.n, "unseen"));
           const main = pickFrom([t.id], t.n, "unseen", src), got = new Set(main.map(q => q.id));
-          const fill = pickFrom([t.id], pool(t.id).length, "unseen").filter(q => !got.has(q.id)).slice(0, t.n - main.length);
+          const fill = pickFrom([t.id], pool(t.id).length, "unseen").filter(q => !got.has(q.id) && !got.has(twinOf[q.id])).slice(0, t.n - main.length);
           qs.push(...shuffle(main.concat(fill)));
         });
         sections.push({ key: k, start, end: qs.length });
@@ -2047,7 +2070,7 @@
   }
   const secLabel = (mode, key) => mode === "form" ? topicById(key).label : TESTS[key].label;
   const secTc = (mode, key) => mode === "form" ? tcOf(topicById(key)) : "tc" + TESTS[key].color;
-  function persistExam() { if (!exam || exam.finished) return store.del(EXAM_KEY); store.set(EXAM_KEY, JSON.stringify({ mode: exam.mode, src: exam.src, ids: exam.qs.map(q => q.id), sections: exam.sections, i: exam.i, answers: exam.answers, flags: exam.flags, perm: exam.perm, endAt: exam.endAt, startedAt: exam.startedAt })); }
+  function persistExam() { if (!exam || exam.finished) return store.del(EXAM_KEY); store.set(EXAM_KEY, JSON.stringify({ mode: exam.mode, src: exam.src, tq: exam.tq, tcur: exam.tcur, ids: exam.qs.map(q => q.id), sections: exam.sections, i: exam.i, answers: exam.answers, flags: exam.flags, perm: exam.perm, endAt: exam.endAt, startedAt: exam.startedAt })); }
   function restoreExam() {
     try {
       const s = JSON.parse(store.get(EXAM_KEY) || "null"); if (!s) return;
@@ -2057,6 +2080,12 @@
     } catch (e) { store.del(EXAM_KEY); }
   }
   const remaining = () => Math.max(0, Math.round((exam.endAt - Date.now()) / 1000));
+  // waktu per soal (detik): saat nomor berganti atau ujian selesai, lama soal yang sedang dibuka ditambahkan ke exam.tq
+  const tickQ = () => {
+    const c = exam && exam.tcur; if (!c) return;
+    const s = Math.max(0, Math.round((Math.min(Date.now(), exam.endAt) - c.t0) / 1000));
+    exam.tq = exam.tq || {}; exam.tq[c.id] = (exam.tq[c.id] || 0) + s; exam.tcur = null;
+  };
   function startTimer() {
     clearInterval(timerInt);
     timerInt = setInterval(() => {
@@ -2198,6 +2227,7 @@
     exam.perm = exam.perm || {};
     const perm = exam.perm[q.id] || (exam.perm[q.id] = makePerm(q));
     if (!catSel || catSel.id !== q.id) catSel = { id: q.id, i: q.id in exam.answers ? exam.answers[q.id] : null };
+    if (!exam.tcur || exam.tcur.id !== q.id) { tickQ(); exam.tcur = { id: q.id, t0: Date.now() }; persistExam(); }
     const tampil = state.settings.catView === 2 ? 2 : 1;
     let sheetEl = null;
     const goTo = k => { if (sheetEl) sheetEl.remove(); exam.i = k; catSel = null; persistExam(); renderExamQ(); window.scrollTo({ top: 0 }); };
@@ -2266,7 +2296,7 @@
     ])]));
   }
   function finishExam(timeout, silent) {
-    clearInterval(timerInt); exam.finished = true; exam.finishedAt = Date.now();
+    clearInterval(timerInt); tickQ(); exam.finished = true; exam.finishedAt = Date.now();
     const agg = {};
     exam.sections.forEach(s => {
       const r = agg[s.key] || (agg[s.key] = { key: s.key, label: secLabel(exam.mode, s.key), tc: secTc(exam.mode, s.key), n: 0, correct: 0 });
@@ -2275,7 +2305,7 @@
     const rows = Object.values(agg).map(r => Object.assign(r, { score: r.correct * 5, max: r.n * 5, th: exam.mode === "form" ? "" : state.settings.thresholds[r.key] }));
     const total = rows.reduce((a, r) => ({ n: a.n + r.n, correct: a.correct + r.correct, score: a.score + r.score, max: a.max + r.max }), { n: 0, correct: 0, score: 0, max: 0 });
     exam.result = { rows, total, timeout };
-    state.history.push({ ts: exam.finishedAt, mode: exam.mode, src: exam.src, durationSec: Math.round((Math.min(exam.finishedAt, exam.endAt) - exam.startedAt) / 1000), rows, total, timeout, qids: exam.qs.map(q => q.id), answers: exam.answers, flags: exam.flags, perm: exam.perm || {} });
+    state.history.push({ ts: exam.finishedAt, mode: exam.mode, src: exam.src, tq: exam.tq || {}, durationSec: Math.round((Math.min(exam.finishedAt, exam.endAt) - exam.startedAt) / 1000), rows, total, timeout, qids: exam.qs.map(q => q.id), answers: exam.answers, flags: exam.flags, perm: exam.perm || {} });
     if (state.history.length > 60) state.history.shift();
     save(); store.del(EXAM_KEY);
     if (!silent) toast(timeout ? "Waktu habis. Simulasi dinilai." : "Simulasi dinilai.");
@@ -2290,6 +2320,39 @@
       ]);
     }));
   }
+  // Analisis waktu: patokan CAT 54 detik per soal (90 menit/100 soal UPKP; 45 menit/50 soal latihan resmi).
+  function timePanel(ex) {
+    // rata-rata dihitung dari soal yang pernah dibuka, agar ujian yang belum tuntas tidak tampak cepat
+    const tq = ex.tq || {}, used = ex.qs.reduce((a, q) => a + (tq[q.id] || 0), 0), opened = ex.qs.filter(q => q.id in tq).length;
+    if (!used) return "";
+    const m = MODES[ex.mode || "upkp"], target = Math.round(m.min * 60 / m.n), avg = Math.round(used / opened);
+    const st = q => !(q.id in ex.answers) ? "kosong" : ex.answers[q.id] === q.a ? "benar" : "salah";
+    const groups = [];
+    ex.qs.forEach((q, i) => {
+      const t = topicById(q.topic), key = ex.mode === "form" ? t.label : TESTS[t.test].label, short = ex.mode === "form" ? t.label : TESTS[t.test].short;
+      let g = groups.find(x => x.key === key); if (!g) groups.push(g = { key, short, n: 0, open: 0, secs: 0, ok: 0 });
+      g.n++; g.secs += tq[q.id] || 0; if (q.id in tq) g.open++; if (st(q) === "benar") g.ok++;
+    });
+    groups.forEach(g => g.avg = g.open ? Math.round(g.secs / g.open) : null);
+    const timed = groups.filter(g => g.open), slowG = timed.reduce((a, g) => g.avg > a.avg ? g : a, timed[0]);
+    const slow = ex.qs.map((q, i) => ({ q, no: i + 1, s: tq[q.id] || 0 })).filter(x => x.s > 0).sort((a, b) => b.s - a.s).slice(0, 5);
+    const slowMiss = slow.filter(x => x.s > target && st(x.q) !== "benar").length, unopened = ex.qs.filter(q => !(q.id in tq) && !(q.id in ex.answers)).length;
+    const notes = [
+      avg > target ? `Rata-rata ${avg} detik per soal, lebih lambat dari patokan ${target} detik.` : `Rata-rata ${avg} detik per soal, di bawah patokan ${target} detik.`,
+      timed.length > 1 ? `Bagian paling lama: ${slowG.key} (${slowG.avg} detik per soal).` : "",
+      slowMiss >= 3 ? `${slowMiss} dari ${slow.length} soal terlama (di atas ${target} detik) tetap salah atau kosong. Soal yang membuat ragu lebih baik dilewati dulu, lalu dikerjakan setelah semua nomor terbuka.` : "",
+      unopened ? `${unopened} soal tidak sempat dibuka.` : ""
+    ].filter(Boolean).join(" ");
+    return el("section", { class: "panel stack", style: "gap:14px" }, [
+      el("h2", null, ["Waktu pengerjaan"]),
+      el("p", { class: "small" }, [notes]),
+      el("div", { class: "table-wrap" }, [el("table", { class: "tbl" }, [
+        el("thead", null, [el("tr", null, [el("th", null, [ex.mode === "form" ? "Bagian" : "Jenis tes"]), el("th", { class: "n" }, ["Detik/soal"]), el("th", { class: "n" }, ["Benar"])])]),
+        el("tbody", null, groups.map(g => el("tr", null, [el("td", { title: g.key }, [g.short]), el("td", { class: "n", style: g.avg > target ? "color:var(--warn)" : null }, [g.open ? String(g.avg) : "-"]), el("td", { class: "n" }, [`${g.ok}/${g.n}`])])))
+      ])]),
+      slow.length ? el("div", { class: "stack", style: "gap:6px" }, [el("h3", null, ["Soal paling lama"]), el("ol", { class: "small", style: "margin:0;padding-left:20px" }, slow.map(x => el("li", null, [`No. ${x.no} · ${topicById(x.q.topic).label} · ${fmtTime(x.s)} · ${st(x.q)}`])))]) : ""
+    ]);
+  }
   function renderResult(ex) {
     view.innerHTML = "";
     const r = ex.result, rows = r.rows, anyTh = rows.some(x => x.th !== "" && x.th !== undefined && x.th !== null), allPass = rows.every(x => x.th === "" || x.th === undefined || x.th === null || x.score >= Number(x.th));
@@ -2297,7 +2360,7 @@
     const list = el("div", { class: "review" });
     const drawList = () => {
       list.innerHTML = "";
-      ex.qs.forEach((q, i) => { const ch = ex.answers[q.id], st = ch === undefined ? "skip" : ch === q.a ? "ok" : "bad"; if (filter !== "all" && !(filter === "flag" ? ex.flags[q.id] : st === filter)) return; list.appendChild(reviewItem(q, ch === undefined ? null : ch, !!ex.flags[q.id], i + 1, (ex.perm || {})[q.id])); });
+      ex.qs.forEach((q, i) => { const ch = ex.answers[q.id], st = ch === undefined ? "skip" : ch === q.a ? "ok" : "bad"; if (filter !== "all" && !(filter === "flag" ? ex.flags[q.id] : st === filter)) return; list.appendChild(reviewItem(q, ch === undefined ? null : ch, !!ex.flags[q.id], i + 1, (ex.perm || {})[q.id], (ex.tq || {})[q.id])); });
       if (!list.children.length) list.appendChild(el("div", { class: "empty" }, ["Tidak ada soal untuk filter ini."]));
     };
     const cnt = { bad: ex.qs.filter(q => q.id in ex.answers && ex.answers[q.id] !== q.a).length, skip: ex.qs.filter(q => !(q.id in ex.answers)).length, flag: ex.qs.filter(q => ex.flags[q.id]).length };
@@ -2318,6 +2381,7 @@
           el("button", { class: "btn btn-ghost", onclick: () => { exam = null; go("riwayat"); } }, ["Riwayat"])
         ])
       ]),
+      timePanel(ex),
       el("div", { class: "sec-head" }, [el("h2", null, ["Pembahasan"]), chips]),
       list
     );
@@ -2344,7 +2408,7 @@
   }
   function renderRiwayat(arg) {
     if (arg && arg.attempt) {
-      const h = arg.attempt, ex = { mode: h.mode, src: h.src, qs: h.qids.map(id => qById[id]).filter(Boolean), answers: h.answers || {}, flags: h.flags || {}, perm: h.perm || {}, result: { rows: rowsOf(h), total: h.total, timeout: h.timeout } };
+      const h = arg.attempt, ex = { mode: h.mode, src: h.src, tq: h.tq, qs: h.qids.map(id => qById[id]).filter(Boolean), answers: h.answers || {}, flags: h.flags || {}, perm: h.perm || {}, result: { rows: rowsOf(h), total: h.total, timeout: h.timeout } };
       renderResult(ex);
       view.insertBefore(el("div", null, [el("button", { class: "btn btn-sm btn-ghost", onclick: () => go("riwayat") }, [icon("left"), "Kembali ke riwayat"])]), view.firstChild);
       return;

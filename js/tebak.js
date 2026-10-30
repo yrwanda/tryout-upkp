@@ -41,6 +41,14 @@ window.TEBAK = [
     { a: "Hukuman disiplin sedang", c: ["Selama 6, 9, atau 12 bulan", "Pemotongan tunjangan kinerja 25%"] },
     { a: "Bhinneka Karya Abdi Negara", c: ["Doktrin korps pegawai", "Tugas beraneka ragam, tetap bersatu dalam pengabdian"] },
     { a: "Panca Prasetya KORPRI", c: ["Diawali: Kami anggota Korps Pegawai Republik Indonesia...", "Lima janji anggota korps pegawai"] }] },
+  { id: "t-keg-modul", topic: "kepegawaian", title: "Tebak istilah UU ASN dan disiplin PNS", pages: "", src: "UU 20/2023; PP 94/2021; PP 11/2017", ask: "Istilah apa yang dimaksud?", items: [
+    { a: "Sistem Merit", c: ["Penerapannya diawasi lembaga yang menerima delegasi Presiden", "Berdasarkan kualifikasi, kompetensi, potensi, kinerja, integritas, dan moralitas", "Dasar penyelenggaraan Manajemen ASN"] },
+    { a: "Jabatan pelaksana", c: ["Bersama jabatan fungsional membentuk jabatan nonmanajerial", "Bukan jabatan fungsional", "Pekerjaannya rutin dan sederhana"] },
+    { a: "Jabatan pengawas", c: ["Di Kemenimipas, kepala subbagian menduduki jabatan ini", "Termasuk jabatan manajerial", "Jabatan manajerial tingkat dasar"] },
+    { a: "Masa percobaan CPNS", c: ["Pembinaan diklatnya dilakukan Kepala LAN", "Disebut juga masa prajabatan", "Berlangsung 1 tahun sebelum diangkat menjadi PNS"] },
+    { a: "Upaya administratif", c: ["Ditempuh PNS yang tidak puas atas hukuman disiplin", "Cara menyelesaikan sengketa Pegawai ASN", "Terdiri atas keberatan dan banding administratif"] },
+    { a: "Pemberhentian sementara", c: ["Juga berlaku bagi ASN yang ditahan sebagai tersangka", "Dialami PNS yang menjalani cuti di luar tanggungan negara", "Dialami PNS yang diangkat menjadi pejabat negara"] },
+    { a: "Tim pemeriksa", c: ["Dibentuk oleh PPK atau pejabat lain yang ditunjuk", "Wajib untuk dugaan pelanggaran berhukuman berat", "Terdiri atas atasan langsung, unsur pengawasan, dan unsur kepegawaian"] }] },
   { id: "t-tkt", topic: "gg", title: "Tebak istilah pelayanan dan kebijakan", pages: "122-149", ask: "Istilah atau pihak apa yang dimaksud?", items: [
     { a: "Ombudsman", c: ["Bagian dari organisasi penyelenggara pelayanan publik", "Pengawas penyelenggaraan pelayanan publik"] },
     { a: "Menteri PANRB", c: ["Pejabat di bidang pendayagunaan aparatur negara", "Perumus kebijakan nasional pelayanan publik"] },

@@ -160,11 +160,11 @@ window.BANK.kebijakan.push(
   },
   {
     id: "bkn-kbj-10", set: "ext", topic: "kebijakan",
-    q: "Menurut Per. MenPAN PER/04/M.PAN/4/2007, prinsip penyusunan kebijakan publik antara lain ...",
-    o: ["Berorientasi kepentingan publik, transparan, akuntabel, dan partisipatif", "Ditetapkan secara tertutup oleh pimpinan tertinggi tanpa melibatkan pemangku kepentingan", "Mengutamakan kepentingan pejabat penyusun dan unit kerja yang mengusulkan kebijakan", "Tidak boleh direvisi setelah ditetapkan agar kepastian hukum tetap terjaga", "Berlaku surut untuk menjerat pelanggaran yang terjadi sebelum kebijakan ditetapkan"],
+    q: "Prinsip penyusunan kebijakan publik dalam Per. MenPAN PER/04/M.PAN/4/2007 antara lain ...",
+    o: ["Benar dalam proses, benar secara isi, benar secara politik-etik, dan benar secara hukum", "Cepat, murah, dan tidak perlu melibatkan pihak lain", "Ditetapkan tertutup oleh pimpinan tertinggi tanpa pemangku kepentingan", "Mengutamakan kepentingan unit kerja yang mengusulkan kebijakan", "Tidak boleh direvisi setelah ditetapkan"],
     a: 0,
-    e: "Per. MenPAN PER/04/M.PAN/4/2007 memuat enam nilai dasar kebijakan: cerdas (memecahkan masalah), bijaksana (tidak menimbulkan masalah baru yang lebih besar), memberi harapan, untuk kepentingan publik (bukan kepentingan negara, pemerintah, atau birokrasi), produktif, serta akuntabel dan transparan. Proses penyusunannya harus mencerminkan tata kelola yang baik: transparan, akuntabel, dan partisipatif. Pilihan lain bertentangan dengan prinsip tersebut.",
-    src: "Per. MenPAN No. PER/04/M.PAN/4/2007 (kisi-kisi BKN hal. 145 hanya memuat judul \"prinsip penyusunan kebijakan publik\")"
+    e: "Bab II pedoman: benar dalam proses (transparan, dapat dipertanggungjawabkan, melibatkan pihak yang seharusnya terlibat), benar secara isi, benar secara politik-etik (menerapkan prinsip good governance), benar secara hukum (bukan imbauan, memuat batas aturan dan sanksi tegas), dan benar secara manajemen. Pedoman ini juga mengatur revisi kebijakan, jadi kebijakan bukan tidak boleh direvisi.",
+    src: "Per. MenPAN No. PER/04/M.PAN/4/2007 Lampiran I hlm. 5 (kisi-kisi BKN hal. 145 hanya memuat judul \"prinsip penyusunan kebijakan publik\")"
   }
 );
 

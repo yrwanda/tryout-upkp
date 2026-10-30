@@ -41,6 +41,10 @@ window.URUT = [
     ["Setia dan taat kepada NKRI dan Pemerintah RI", "Janji ke-1"], ["Menjunjung kehormatan bangsa, memegang rahasia jabatan dan negara", "Janji ke-2"],
     ["Mengutamakan kepentingan negara dan masyarakat di atas pribadi dan golongan", "Janji ke-3"], ["Memelihara persatuan dan kesetiakawanan Korps", "Janji ke-4"],
     ["Menegakkan kejujuran, keadilan, dan disiplin", "Janji ke-5"]] },
+  { id: "u-hukdis", topic: "kepegawaian", title: "Jenis hukuman disiplin dari yang paling ringan", pages: "", src: "PP 94/2021 Pasal 8, 9-11", dir: "Dari hukuman paling ringan", items: [
+    ["Teguran lisan", "Ringan · 3 hari tidak masuk"], ["Teguran tertulis", "Ringan · 4-6 hari"], ["Pernyataan tidak puas secara tertulis", "Ringan · 7-10 hari"],
+    ["Pemotongan tunjangan kinerja 25%", "Sedang · 11-20 hari"], ["Penurunan jabatan setingkat lebih rendah", "Berat · 21-24 hari"],
+    ["Pembebasan dari jabatan menjadi jabatan pelaksana", "Berat · 25-27 hari"], ["Pemberhentian dengan hormat tidak atas permintaan sendiri", "Berat · 28 hari atau lebih"]] },
   { id: "u-siklus", topic: "kebijakan", title: "Siklus kebijakan publik", pages: "147", dir: "Dari tahap pertama", items: [
     ["Penyusunan agenda", "Mengidentifikasi masalah"], ["Formulasi kebijakan", "Mendefinisikan masalah, mendaftar alternatif"], ["Adopsi kebijakan", "Memilih satu alternatif"],
     ["Implementasi kebijakan", "Melaksanakan kebijakan"], ["Evaluasi kebijakan", "Menilai sejauh mana masalah terpecahkan"]] },

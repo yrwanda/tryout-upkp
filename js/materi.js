@@ -372,6 +372,44 @@ Kami Anggota Korps Pegawai Republik Indonesia adalah insan yang beriman dan bert
 - 3) Mengutamakan kepentingan negara dan masyarakat di atas kepentingan pribadi dan golongan.
 - 4) Memelihara persatuan dan kesatuan bangsa serta kesetiakawanan Korps Pegawai RI.
 - 5) Menegakkan kejujuran, keadilan, dan disiplin serta meningkatkan kesejahteraan dan profesionalisme.
+
+## Modul: UU 20/2023 tentang ASN (Pasal 1-77)
+- Disahkan dan diundangkan **31 Oktober 2023** (LN 2023 Nomor 141), mencabut UU 5/2014.
+- **13 asas** (Pasal 2), antara lain kepastian hukum, profesionalitas, **proporsionalitas** (keseimbangan hak dan kewajiban), keterpaduan (satu sistem nasional), **pendelegasian**, **netralitas**, nondiskriminatif, kesejahteraan.
+| Pasal | Isi |
+|---|---|
+| 10 (fungsi) | pelaksana kebijakan publik; pelayan publik; perekat dan pemersatu bangsa |
+| 12 (peran) | perencana, pelaksana, dan pengawas tugas umum pemerintahan dan pembangunan |
+| 15 | JPT = manajerial tingkat tinggi; administrator = menengah; **pengawas = dasar** |
+| 18 | jabatan fungsional (keahlian/keterampilan); **jabatan pelaksana** (rutin dan sederhana) |
+- Penghasilan berupa **gaji atau upah**; jaminan sosial: kesehatan, kecelakaan kerja, kematian, pensiun, hari tua. Jaminan pensiun dan hari tua dibiayai **pemerintah sebagai pemberi kerja dan iuran pegawai** (Pasal 21-22).
+- **Presiden** pemegang kekuasaan tertinggi Manajemen ASN (Pasal 26). Manajemen ASN berdasarkan **Sistem Merit**: kualifikasi, kompetensi, potensi, kinerja, integritas, dan moralitas. Pasal 70: **LAN** tetap mengurus pengembangan kapasitas dan pembelajaran ASN, **BKN** kebijakan teknis Manajemen ASN, **KASN** bertugas sampai peraturan pelaksanaan terbit.
+- Delegasi wewenang pengangkatan kecuali **JPT utama, JPT madya, JF tertinggi** (Pasal 29). Jabatan manajerial dari PPPK hanya **JPT tertentu** (penjelasan Pasal 34).
+- Kinerja dikelola dengan mekanisme **fleksibel dan kolaboratif** (Pasal 41). Mobilitas talenta: dalam instansi, antarinstansi, ke luar instansi (Pasal 46). Penghargaan ASN daerah dari **APBD** (Pasal 50).
+- Pemberhentian **tidak dengan hormat**: penyelewengan Pancasila/UUD, pelanggaran disiplin berat, pidana kejahatan jabatan, **anggota/pengurus partai politik**. Pidana umum minimal **2 tahun** penjara (Pasal 52).
+- Diberhentikan **sementara**: menjadi pejabat negara, komisioner/anggota LNS, menjalani CLTN, ditahan sebagai tersangka/terdakwa (Pasal 53).
+- **BUP** (Pasal 55): JPT **60**; administrator, pengawas, pelaksana **58**; JF sesuai peraturan.
+- JPT madya/pratama calon kepala daerah mundur **sejak ditetapkan sebagai calon** (Pasal 56). Mantan pejabat negara tanpa lowongan dalam **5 tahun** diberhentikan dengan hormat (Pasal 60).
+- Sengketa: **keberatan dan banding administratif** (Pasal 64). Penataan honorer paling lambat **Desember 2024** (Pasal 66). Digitalisasi: keberlangsungan, kerahasiaan, keamanan siber (Pasal 63).
+
+## Modul: PP 94/2021 tentang Disiplin PNS (Pasal 1-46)
+- Ditetapkan 31 Agustus 2021. **Disiplin PNS** = kesanggupan menaati kewajiban dan menghindari larangan; pelanggaran bisa di dalam maupun **di luar jam kerja** (Pasal 1).
+| Tidak masuk kerja tanpa alasan sah (kumulatif setahun) | Hukuman |
+|---|---|
+| 3 hari / 4-6 hari / 7-10 hari | teguran lisan / teguran tertulis / pernyataan tidak puas tertulis |
+| 11-13 / 14-16 / 17-20 hari | potong tukin 25% selama 6 / 9 / 12 bulan |
+| 21-24 hari | penurunan jabatan setingkat lebih rendah 12 bulan |
+| 25-27 hari | dibebaskan menjadi jabatan pelaksana 12 bulan |
+| 28 hari atau lebih, atau **10 hari berturut-turut** | diberhentikan dengan hormat tidak atas permintaan sendiri; gaji dihentikan bulan berikutnya |
+- Langsung **berat**: menyalahgunakan wewenang, **menerima hadiah terkait jabatan**, meminta sesuatu terkait jabatan, kampanye dengan mengerahkan PNS lain atau fasilitas negara. Kampanye memakai **atribut partai/PNS** = **sedang**. Tidak lapor harta kekayaan: JPT berat, administrator/fungsional sedang.
+- Pemeriksaan: panggilan paling lambat **7 hari kerja**; hukuman berat diperiksa **tim** (atasan langsung, unsur pengawasan, unsur kepegawaian). Beberapa pelanggaran = **satu hukuman terberat**; pengulangan = lebih berat.
+- Keputusan disampaikan paling lambat 14 hari kerja dan **berlaku hari ke-15 sejak diterima**. Pejabat yang tidak menghukum dijatuhi hukuman oleh **atasannya**.
+- Mencabut PP 53/2010 (kecuali hukuman sedang) dan PP 6/1974; berlaku juga untuk **calon PNS**.
+
+## Modul: PP 11/2017 jo. PP 17/2020 tentang Manajemen PNS (Pasal 34-203)
+- CPNS menjalani **masa percobaan 1 tahun** (masa prajabatan, diklat terintegrasi hanya 1 kali, pembinaan oleh **Kepala LAN**). Mundur saat masa percobaan: dilarang ikut seleksi untuk jangka waktu tertentu (Pasal 34-35).
+- CPNS diberhentikan bila, antara lain, melanggar disiplin **sedang atau berat**, memberi keterangan tidak benar saat melamar, menjadi anggota partai politik, atau menolak sumpah/janji (Pasal 37). Sumpah/janji diucapkan saat pelantikan oleh PPK (Pasal 39).
+- Pengembangan kompetensi paling sedikit **20 jam pelajaran per tahun**, melalui sistem pembelajaran terintegrasi (*corporate university*) (Pasal 203 sebagaimana diubah PP 17/2020).
 `,
   yanlik: `
 ## Dasar (hal. 122)
@@ -397,10 +435,16 @@ Kepentingan umum; kepastian hukum; kesamaan hak; keseimbangan hak dan kewajiban;
 - Menteri melakukan PEKPPP nasional paling sedikit **1 kali setahun**. Unit yang dinilai disebut **Unit Lokus**; instrumennya penilaian **Evaluator** dan **pengguna layanan**.
 - Mekanisme: persiapan, pelaksanaan (pemeriksaan dokumen dan/atau wawancara), penyampaian hasil dan tindak lanjut (dilaporkan paling lambat **3 bulan** sebelum PEKPPP berikutnya), pemeringkatan dan penghargaan.
 
-## Modul: UU 25/2009 standar, maklumat, dan pengaduan (Pasal 15-46)
+## Modul: UU 25/2009 standar, maklumat, pengaduan, dan sanksi (Pasal 2-58)
+- Kewajiban dan larangan: pelaksana dari instansi pemerintah, BUMN, atau BUMD **dilarang merangkap komisaris/pengurus organisasi usaha** (Pasal 17). Kewajiban masyarakat: mematuhi persyaratan, **ikut menjaga sarana dan prasarana**, berpartisipasi aktif (Pasal 19).
+- Sistem informasi penyelenggara memuat profil penyelenggara dan pelaksana, standar, maklumat, pengelolaan pengaduan, dan penilaian kinerja (Pasal 23). Fasilitas perlakuan khusus **dilarang dipakai orang yang tidak berhak** (Pasal 29).
+- Biaya/tarif ditetapkan dengan **persetujuan DPR/DPRD** dan berdasarkan peraturan (Pasal 31). Pengawasan **internal**: atasan langsung dan pengawas fungsional; **eksternal**: masyarakat, Ombudsman, DPR/DPRD (Pasal 35). Penyelenggara wajib mengumumkan **nama dan alamat penanggung jawab pengaduan** (Pasal 36). Peran serta masyarakat sejak **penyusunan standar sampai evaluasi dan penghargaan** (Pasal 39).
 - Standar pelayanan memuat 14 komponen, antara lain dasar hukum, persyaratan, prosedur, jangka waktu, biaya/tarif, produk, penanganan pengaduan, dan evaluasi kinerja pelaksana.
 - **Maklumat pelayanan** = pernyataan kesanggupan melaksanakan pelayanan sesuai standar, wajib dipublikasikan.
-- Pengaduan kepada penyelenggara, **Ombudsman**, atau DPR/DPRD; diajukan paling lambat **30 hari** sejak menerima pelayanan; ditanggapi paling lambat **14 hari**. Ombudsman wajib mediasi dan konsiliasi atas permintaan para pihak.
+- Pengaduan kepada penyelenggara, **Ombudsman**, atau DPR/DPRD; diajukan paling lambat **30 hari** sejak menerima pelayanan; ditanggapi paling lambat **14 hari**.
+- Dasar: UU dimaksudkan memberi **kepastian hukum** hubungan masyarakat dan penyelenggara (Pasal 2). Pembina kementerian melapor ke **Presiden dan DPR**; gubernur ke DPRD provinsi dan menteri; bupati/wali kota ke DPRD kabupaten/kota dan gubernur (Pasal 6).
+- Pemeriksaan pengaduan: prinsip **independen, nondiskriminasi, tidak memihak, tidak memungut biaya** (Pasal 48); diputus paling lambat **60 hari** sejak berkas lengkap, disampaikan paling lambat 14 hari; Ombudsman dapat **mediasi, konsiliasi, ajudikasi khusus** untuk ganti rugi (Pasal 50).
+- Sanksi dikenakan kepada **pimpinan penyelenggara** (Pasal 57); teguran tertulis lalu **pembebasan dari jabatan** bila dalam 3 bulan tidak dilaksanakan (Pasal 54). Ombudsman wajib mediasi dan konsiliasi atas permintaan para pihak.
 `,
   gg: `
 ## Pengertian dan komponen (hal. 140-142)
@@ -443,6 +487,16 @@ Perpres 81/2010 tentang **Grand Design Reformasi Birokrasi 2010-2025**, dengan t
 
 ## Contoh (hal. 149)
 HET minyak goreng (Permendag), PPKM (Inmendagri), Jaminan Kesehatan Nasional (kartu BPJS Kesehatan; tantangan pemerataan akses dan kualitas layanan di seluruh wilayah Indonesia).
+
+## Modul: Pedoman PER/04/M.PAN/4/2007 (modul hlm. 1-15)
+> Ditetapkan 16 April 2007 oleh Menteri Negara PAN Taufiq Effendi. Nomor hlm. mengikuti lampiran; salinan yang tersedia hanya memuat halaman ganjil.
+- Penetapan kebijakan publik **tidak dapat didelegasikan, dipindahkan, atau diprivatisasikan** ke organisasi di luar pemerintahan. Ada **6 nilai dasar**, antara lain cerdas (memecahkan masalah, akuntabel), **bijaksana** (tidak menimbulkan masalah baru yang lebih besar), memberi harapan, dan **untuk kepentingan publik**, bukan negara, pemerintah, atau birokrasi saja (hlm. 1).
+- **2 bentuk** kebijakan publik: peraturan terkodifikasi secara formal dan legal; **pernyataan pejabat publik** di depan publik (pidato tertulis, lisan, termasuk kepada media massa) (hlm. 3).
+- **Prinsip penyusunan**: benar dalam proses (transparan, akuntabel, melibatkan pihak terkait); benar secara isi; benar secara politik-etik (good governance, moralitas); **benar secara hukum** (bukan imbauan, ada sanksi tegas); benar secara manajemen (hlm. 5).
+- Stratifikasi: pusat dan daerah. Sifat: **strategis/politis**, **manajemen**, **teknis** (hlm. 7).
+- Formulasi: tugas **pra-kebijakan** = naskah akademik + **draf nol**, maksimal **14 hari kerja**, tidak harus dikontrakkan ke pihak luar. Draf nol dibahas di **4 forum publik**: I pakar, II instansi pemerintah lain, III **beneficiaries**, IV seluruh pihak (tokoh masyarakat, LSM, asosiasi). Draf-1 dan Draf-2 (final) masing-masing maksimal **5 hari kerja** (hlm. 9-15).
+- Evaluasi kinerja kebijakan lebih **makro** daripada riset kebijakan; sampelnya **kelembagaan**, bukan individu; maksimal **3 bulan**; laporan paling lambat **15 hari kerja** setelah evaluasi. Perencanaan, pembentukan tim, dan rencana kerja masing-masing paling lama 10 hari kerja (hlm. 13).
+- **Revisi** kebijakan maksimal **9 bulan** (hlm. 15). Kuadran IV: keputusan internal yang tidak berkenaan dengan publik (kebakaran, pencurian), dibuat pejabat yang bertugas saat kejadian (Lampiran 4).
 `,
   renstra: `
 ## Sistem perencanaan nasional (hal. 92-93)
@@ -629,6 +683,24 @@ Present, past, dan future tense, masing-masing dengan latihan soal.
 ## Definisi dan contoh (hal. 138-139)
 - **Devri Suherdi (2021)**: literasi digital = pengetahuan dan kecakapan memanfaatkan media digital (alat komunikasi, jaringan internet) untuk menemukan, mengerjakan, mengevaluasi, menggunakan, membuat, dan memanfaatkannya dengan bijak, cerdas, cermat, tepat.
 - Etika digital: tidak menyebar hoaks, tidak merundung. Budaya digital: media sosial, belanja daring. Keterampilan digital: Zoom, Google Docs, spreadsheet. Keamanan digital: kata sandi, OTP, istilah keamanan siber, waspada cybercrime.
+
+## Modul: Cakap Bermedia Digital (modul hlm. 5-79)
+> Modul Kominfo, Japelidi, dan Siberkreasi (2021), pilar digital skills. Nomor hlm. = nomor slide.
+- Literasi digital bukan sekadar menguasai teknologi, tetapi juga kecakapan **memediasi media digital secara produktif** (Kurnia & Wijayanto, 2020). Literasi digital masyarakat Indonesia masih **level sedang**; subindeks IP-TIK terendah adalah **keahlian** (Kominfo, 2020).
+- **Firewall** memonitor alur penggunaan internet dan mengecek hal yang merugikan. Wi-Fi publik: pakai saat mendesak, hindari transaksi online dan perbankan, gunakan VPN, **matikan file sharing** dan bluetooth.
+- Mesin pencari: **penelusuran (crawling)** triliunan sumber → **pengindeksan (indexing)** data relevan → **pemeringkatan (ranking)**. Tanda **minus (-)** menyingkirkan hasil, titik dua (:) untuk situs tertentu, tanda bintang (*) untuk kata yang hilang. Untuk akademik: **Google Cendekia (Scholar)**.
+- **Tiga gangguan informasi**: misinformasi (salah, tanpa niat merugikan), disinformasi (salah dan berniat merugikan), **malinformasi** (berniat merugikan: sepenggal bocoran, pelecehan, ujaran kebencian).
+| Jenis dis/misinformasi | Ciri |
+|---|---|
+| Satire/parodi | tidak bertujuan merugikan, tetapi berpotensi menipu |
+| Konten yang menyesatkan | membingkai isu atau seseorang secara menyesatkan |
+| Konten tiruan | meniru sumber asli |
+| Konten rekaan | 100% palsu untuk menipu dan merugikan |
+| Hubungan yang salah | judul, visual, atau keterangan tidak mendukung konten |
+| Konteks yang salah | konten asli dibagikan dengan konteks salah |
+| Konten yang dimanipulasi | informasi/gambar asli dimanipulasi untuk menipu |
+- Kompetensi aplikasi percakapan: mengakses, menyeleksi, memahami, memverifikasi, memproduksi, mendistribusikan, berpartisipasi dan berkolaborasi. Cek fakta lewat **Mafindo, Cekfakta.com**, atau media arus utama; sebelum membagikan: verifikasi, cek fakta, urgensi dan manfaat.
+- Konten negatif melanggar **UU ITE** dan jejak digitalnya sulit dihapus. Transaksi aman: lokapasar resmi, tanpa Wi-Fi publik, bayar ke rekening resmi lokapasar atau dompet digital.
 `,
   perkantoran: `
 ## Cakupan (hal. 126)

@@ -2507,3 +2507,794 @@ window.BANK.sotk.push(
     src: "Permenimipas 1/2024 Pasal 176-178"
   }
 );
+
+// Kepegawaian: UU 20/2023 tentang ASN, PP 94/2021 tentang Disiplin PNS, PP 11/2017 jo. PP 17/2020 tentang Manajemen PNS.
+// Hanya pasal yang belum dipakai soal kisi-kisi bkn-keg-*. Batas usia pensiun mengikuti UU 20/2023 (lebih baru dari PP 11/2017 Pasal 239).
+window.BANK.kepegawaian = window.BANK.kepegawaian || [];
+window.BANK.kepegawaian.push(
+  {
+    id: "mod-keg-01", set: "mod", topic: "kepegawaian",
+    q: "Berikut asas penyelenggaraan kebijakan dan Manajemen ASN menurut Pasal 2 UU 20/2023, KECUALI ...",
+    o: ["Netralitas", "Pendelegasian", "Senioritas", "Nondiskriminatif", "Kesejahteraan"],
+    a: 2,
+    e: "Pasal 2 memuat 13 asas: kepastian hukum, profesionalitas, proporsionalitas, keterpaduan, pendelegasian, netralitas, akuntabilitas, efektivitas dan efisiensi, keterbukaan, nondiskriminatif, persatuan dan kesatuan, keadilan dan kesetaraan, serta kesejahteraan. Senioritas tidak termasuk; Manajemen ASN memakai Sistem Merit.",
+    src: "UU 20/2023 Pasal 2"
+  },
+  {
+    id: "mod-keg-02", set: "mod", topic: "kepegawaian",
+    q: "Penyelenggaraan Manajemen ASN yang mengutamakan keseimbangan antara hak dan kewajiban Pegawai ASN disebut asas ...",
+    o: ["Profesionalitas", "Keadilan dan kesetaraan", "Akuntabilitas", "Proporsionalitas", "Kepastian hukum"],
+    a: 3,
+    e: "Penjelasan Pasal 2 huruf c. Profesionalitas mengutamakan keahlian berlandaskan kode etik; keadilan dan kesetaraan mencerminkan rasa keadilan dan kesempatan yang sama; kepastian hukum mengutamakan landasan peraturan, kepatutan, dan keadilan.",
+    src: "UU 20/2023 Pasal 2"
+  },
+  {
+    id: "mod-keg-03", set: "mod", topic: "kepegawaian",
+    q: "Asas yang berarti sebagian kewenangan Manajemen ASN dapat didelegasikan pelaksanaannya kepada Instansi Pemerintah adalah asas ...",
+    o: ["Pendelegasian", "Keterpaduan", "Efektivitas dan efisiensi", "Keterbukaan", "Netralitas"],
+    a: 0,
+    e: "Penjelasan Pasal 2 huruf e. Asas keterpaduan berarti Manajemen ASN didasarkan pada satu sistem pengelolaan yang terpadu secara nasional (huruf d).",
+    src: "UU 20/2023 Pasal 2"
+  },
+  {
+    id: "mod-keg-04", set: "mod", topic: "kepegawaian",
+    q: "Fungsi Pegawai ASN menurut Pasal 10 UU 20/2023 adalah ...",
+    o: ["Perencana, pelaksana, dan pengawas pembangunan", "Pelayan publik, penegak hukum, dan pengawas", "Abdi negara, abdi masyarakat, dan abdi pemerintah", "Regulator, fasilitator, dan dinamisator", "Pelaksana kebijakan publik, pelayan publik, serta perekat dan pemersatu bangsa"],
+    a: 4,
+    e: "Fungsi ada di Pasal 10. Perencana, pelaksana, dan pengawas penyelenggaraan tugas umum pemerintahan dan pembangunan nasional adalah peran ASN (Pasal 12).",
+    src: "UU 20/2023 Pasal 10"
+  },
+  {
+    id: "mod-keg-05", set: "mod", topic: "kepegawaian",
+    q: "Pegawai ASN berperan sebagai perencana, pelaksana, dan pengawas penyelenggaraan tugas umum pemerintahan dan pembangunan nasional. Ketentuan ini mengatur ... ASN.",
+    o: ["Fungsi", "Tugas", "Peran", "Kedudukan", "Kewajiban"],
+    a: 2,
+    e: "Pasal 12 (peran). Pasal 10 mengatur fungsi, Pasal 11 tugas (melaksanakan kebijakan publik, memberikan pelayanan publik, mempererat persatuan), Pasal 8 kedudukan sebagai unsur aparatur negara.",
+    src: "UU 20/2023 Pasal 8-12"
+  },
+  {
+    id: "mod-keg-06", set: "mod", topic: "kepegawaian",
+    q: "Jabatan nonmanajerial yang bertanggung jawab memberikan pelayanan dan melaksanakan pekerjaan yang bersifat rutin dan sederhana adalah ...",
+    o: ["Jabatan fungsional keterampilan", "Jabatan pengawas", "Jabatan fungsional keahlian", "Jabatan administrator", "Jabatan pelaksana"],
+    a: 4,
+    e: "Pasal 18: jabatan nonmanajerial terdiri atas jabatan fungsional (pekerjaan sesuai keahlian dan/atau keterampilan tertentu) dan jabatan pelaksana (pekerjaan rutin dan sederhana). Administrator dan pengawas termasuk jabatan manajerial (Pasal 14).",
+    src: "UU 20/2023 Pasal 18"
+  },
+  {
+    id: "mod-keg-07", set: "mod", topic: "kepegawaian",
+    q: "Jabatan manajerial tingkat dasar menurut UU 20/2023 adalah ...",
+    o: ["Jabatan pengawas", "Jabatan administrator", "Jabatan pimpinan tinggi pratama", "Jabatan pelaksana", "Jabatan fungsional ahli pertama"],
+    a: 0,
+    e: "Pasal 15: jabatan pimpinan tinggi = manajerial tingkat tinggi; administrator = tingkat menengah; pengawas = tingkat dasar. Jabatan pelaksana dan fungsional termasuk nonmanajerial.",
+    src: "UU 20/2023 Pasal 15"
+  },
+  {
+    id: "mod-keg-08", set: "mod", topic: "kepegawaian",
+    q: "Jaminan sosial Pegawai ASN menurut Pasal 21 ayat (6) UU 20/2023 terdiri atas hal berikut, KECUALI ...",
+    o: ["Jaminan kesehatan", "Jaminan kecelakaan kerja", "Jaminan pensiun", "Jaminan kehilangan pekerjaan", "Jaminan hari tua"],
+    a: 3,
+    e: "Lima jaminan sosial ASN: kesehatan, kecelakaan kerja, kematian, pensiun, dan hari tua. Jaminan pensiun dan hari tua dibayarkan setelah pegawai berhenti bekerja (Pasal 22).",
+    src: "UU 20/2023 Pasal 21-22"
+  },
+  {
+    id: "mod-keg-09", set: "mod", topic: "kepegawaian",
+    q: "Sumber pembiayaan jaminan pensiun dan jaminan hari tua Pegawai ASN berasal dari ...",
+    o: ["APBN saja", "Iuran Pegawai ASN saja", "BPJS Ketenagakerjaan", "Pemerintah selaku pemberi kerja dan iuran Pegawai ASN yang bersangkutan", "Hasil investasi PT Taspen saja"],
+    a: 3,
+    e: "Pasal 22 ayat (4). Jaminan ini diberikan sebagai perlindungan kesinambungan penghasilan hari tua, sebagai hak, dan sebagai penghargaan atas pengabdian (ayat 2).",
+    src: "UU 20/2023 Pasal 22"
+  },
+  {
+    id: "mod-keg-10", set: "mod", topic: "kepegawaian",
+    q: "Penghasilan sebagai komponen penghargaan dan pengakuan Pegawai ASN dapat berupa ...",
+    o: ["Gaji atau upah", "Gaji dan tunjangan kinerja", "Gaji pokok saja", "Honorarium", "Insentif dan bonus"],
+    a: 0,
+    e: "Pasal 21 ayat (3). Tunjangan dan fasilitas merupakan komponen tersendiri (ayat 5), demikian pula penghargaan yang bersifat motivasi, finansial maupun nonfinansial (ayat 4).",
+    src: "UU 20/2023 Pasal 21"
+  },
+  {
+    id: "mod-keg-11", set: "mod", topic: "kepegawaian",
+    q: "Prinsip meritokrasi dalam Sistem Merit adalah pengelolaan SDM berdasarkan ...",
+    o: ["Masa kerja dan pangkat", "Kualifikasi, kompetensi, potensi, kinerja, serta integritas dan moralitas", "Usia dan pendidikan terakhir", "Kedekatan dengan pimpinan dan loyalitas", "Jumlah pelatihan yang diikuti"],
+    a: 1,
+    e: "Penjelasan Pasal 26 ayat (2) huruf d: dilaksanakan secara adil dan wajar tanpa membedakan suku, ras, warna kulit, agama, asal-usul, jenis kelamin, status pernikahan, umur, atau berkebutuhan khusus. Manajemen ASN diselenggarakan berdasarkan Sistem Merit (Pasal 27).",
+    src: "UU 20/2023 Pasal 26-27"
+  },
+  {
+    id: "mod-keg-12", set: "mod", topic: "kepegawaian",
+    q: "Pemegang kekuasaan tertinggi dalam kebijakan, pembinaan profesi, dan Manajemen ASN adalah ...",
+    o: ["Menteri PANRB", "Kepala BKN", "Pejabat Pembina Kepegawaian", "Presiden", "Kepala LAN"],
+    a: 3,
+    e: "Pasal 26 ayat (1). Presiden mendelegasikan sebagian kewenangannya kepada kementerian/lembaga di bidang kebijakan strategis, pengembangan kapasitas dan pembelajaran ASN, kebijakan teknis Manajemen ASN, dan pengawasan penerapan Sistem Merit (ayat 2).",
+    src: "UU 20/2023 Pasal 26"
+  },
+  {
+    id: "mod-keg-13", set: "mod", topic: "kepegawaian",
+    q: "Saat UU 20/2023 berlaku, lembaga yang tetap menjalankan tugas di bidang kebijakan teknis pengembangan kapasitas dan pembelajaran ASN adalah ...",
+    o: ["Badan Kepegawaian Negara", "Komisi Aparatur Sipil Negara", "Kementerian PANRB", "Lembaga Administrasi Negara", "Ombudsman RI"],
+    a: 3,
+    e: "Pasal 70: LAN tetap menjalankan tugas Pasal 26 ayat (2) huruf b; BKN tetap menjalankan tugas huruf c (kebijakan teknis Manajemen ASN); KASN tetap bertugas sampai peraturan pelaksanaan UU ini ditetapkan.",
+    src: "UU 20/2023 Pasal 70"
+  },
+  {
+    id: "mod-keg-14", set: "mod", topic: "kepegawaian",
+    q: "Presiden dapat mendelegasikan kewenangan menetapkan pengangkatan, pemindahan, dan pemberhentian pejabat kepada menteri, gubernur, atau bupati/wali kota, kecuali untuk ...",
+    o: ["Pejabat administrator dan pejabat pengawas di semua instansi", "Pejabat fungsional jenjang ahli pertama dan ahli muda", "Pejabat pimpinan tinggi utama, pejabat pimpinan tinggi madya, dan pejabat fungsional tertinggi", "Pejabat pimpinan tinggi pratama di instansi daerah", "Pegawai pemerintah dengan perjanjian kerja di instansi pusat"],
+    a: 2,
+    e: "Pasal 29 ayat (1). Ketiga jabatan itu tetap menjadi kewenangan Presiden. Pejabat yang Berwenang juga hanya mengusulkan pengangkatan, pemindahan, dan pemberhentian selain ketiga jabatan tersebut (Pasal 30 ayat 4).",
+    src: "UU 20/2023 Pasal 29-30"
+  },
+  {
+    id: "mod-keg-15", set: "mod", topic: "kepegawaian",
+    q: "Pengisian jabatan manajerial dari PPPK hanya diperuntukkan bagi ...",
+    o: ["Jabatan pimpinan tinggi tertentu dengan prioritas untuk Instansi Pusat tertentu", "Semua jabatan administrator", "Jabatan pengawas di instansi daerah", "Jabatan pelaksana", "Jabatan fungsional keterampilan"],
+    a: 0,
+    e: "Pasal 34: jabatan manajerial dan nonmanajerial diutamakan diisi dari PNS; jabatan tertentu dapat diisi dari PPPK. Penjelasan ayat (2) membatasi jabatan manajerial dari PPPK hanya untuk jabatan pimpinan tinggi tertentu.",
+    src: "UU 20/2023 Pasal 34"
+  },
+  {
+    id: "mod-keg-16", set: "mod", topic: "kepegawaian",
+    q: "Mobilitas talenta Pegawai ASN menurut UU 20/2023 dapat dilakukan ...",
+    o: ["Hanya dalam satu instansi", "Hanya antar-instansi pusat", "Hanya ke BUMN", "Dalam satu instansi, antar-instansi pemerintah, atau ke luar instansi pemerintah", "Hanya atas permintaan pegawai"],
+    a: 3,
+    e: "Pasal 46 ayat (3). Penjelasannya menyebut mobilitas ke luar instansi antara lain ke BUMN/BUMD, lembaga internasional, dan badan swasta. Mobilitas talenta nasional oleh Presiden bertujuan mengatasi kesenjangan talenta (Pasal 47).",
+    src: "UU 20/2023 Pasal 46-47"
+  },
+  {
+    id: "mod-keg-17", set: "mod", topic: "kepegawaian",
+    q: "Pengelolaan kinerja Pegawai ASN dilaksanakan melalui mekanisme kerja yang ...",
+    o: ["Hierarkis dan terpusat", "Fleksibel dan kolaboratif", "Seragam di semua instansi", "Berbasis kehadiran fisik", "Ditetapkan Presiden setiap tahun"],
+    a: 1,
+    e: "Pasal 41. Pengelolaan kinerja berorientasi pada hasil dan perilaku kerja, pengembangan kinerja, pemenuhan ekspektasi pimpinan, dan dialog kinerja yang intensif (Pasal 42).",
+    src: "UU 20/2023 Pasal 41-42"
+  },
+  {
+    id: "mod-keg-18", set: "mod", topic: "kepegawaian",
+    q: "Pendanaan penghargaan dan pengakuan bagi Pegawai ASN yang bekerja di instansi daerah bersumber dari ...",
+    o: ["APBN", "APBD", "Dana alokasi khusus", "Iuran pegawai", "Hibah pemerintah pusat"],
+    a: 1,
+    e: "Pasal 50 ayat (3). Untuk instansi pusat bersumber dari APBN (ayat 2). Komponen penghargaan diberikan secara adil, layak, dan kompetitif (ayat 1).",
+    src: "UU 20/2023 Pasal 50"
+  },
+  {
+    id: "mod-keg-19", set: "mod", topic: "kepegawaian",
+    q: "Pegawai ASN yang menjadi anggota dan/atau pengurus partai politik diberhentikan dengan kategori ...",
+    o: ["Pemberhentian dengan hormat", "Pemberhentian atas permintaan sendiri", "Pemberhentian sementara", "Pemberhentian tidak dengan hormat", "Pembebasan dari jabatan"],
+    a: 3,
+    e: "Pasal 52 ayat (3) huruf j dan ayat (4). Kategori tidak dengan hormat juga berlaku untuk penyelewengan terhadap Pancasila dan UUD 1945 serta pidana kejahatan jabatan.",
+    src: "UU 20/2023 Pasal 52"
+  },
+  {
+    id: "mod-keg-20", set: "mod", topic: "kepegawaian",
+    q: "Pegawai ASN diberhentikan tidak atas permintaan sendiri apabila dipidana penjara berdasarkan putusan berkekuatan hukum tetap karena tindak pidana dengan pidana penjara paling singkat ...",
+    o: ["6 bulan", "1 tahun", "2 tahun", "4 tahun", "5 tahun"],
+    a: 2,
+    e: "Pasal 52 ayat (3) huruf h. Untuk tindak pidana kejahatan jabatan atau yang berhubungan dengan jabatan, pemberhentian berlaku tanpa batas lama pidana (huruf i) dan masuk kategori tidak dengan hormat.",
+    src: "UU 20/2023 Pasal 52"
+  },
+  {
+    id: "mod-keg-21", set: "mod", topic: "kepegawaian",
+    q: "PNS diberhentikan sementara apabila ...",
+    o: ["Mengikuti tugas belajar di dalam atau di luar negeri lebih dari enam bulan", "Dimutasi ke instansi lain atau diperbantukan pada organisasi profesi ASN", "Menjalani cuti besar atau cuti sakit lebih dari satu tahun", "Dijatuhi hukuman disiplin sedang berupa pemotongan tunjangan kinerja", "Diangkat menjadi pejabat negara, komisioner atau anggota lembaga nonstruktural, atau menjalani cuti di luar tanggungan negara"],
+    a: 4,
+    e: "Pasal 53 ayat (1). Pegawai ASN yang ditahan karena menjadi tersangka atau terdakwa juga diberhentikan sementara (ayat 2). Pengaktifan kembali dilakukan oleh PPK (ayat 3).",
+    src: "UU 20/2023 Pasal 53"
+  },
+  {
+    id: "mod-keg-22", set: "mod", topic: "kepegawaian",
+    q: "Batas usia pensiun pejabat administrator dan pejabat pengawas menurut UU 20/2023 adalah ...",
+    o: ["56 tahun", "58 tahun", "60 tahun", "62 tahun", "65 tahun"],
+    a: 1,
+    e: "Pasal 55: 60 tahun bagi pejabat pimpinan tinggi utama, madya, dan pratama; 58 tahun bagi administrator, pengawas, dan pelaksana; pejabat fungsional sesuai ketentuan peraturan perundang-undangan.",
+    src: "UU 20/2023 Pasal 55"
+  },
+  {
+    id: "mod-keg-23", set: "mod", topic: "kepegawaian",
+    q: "Pejabat pimpinan tinggi madya yang akan mencalonkan diri sebagai gubernur wajib menyatakan pengunduran diri secara tertulis dari PNS sejak ...",
+    o: ["Mendaftar ke partai politik", "Hari pemungutan suara", "Masa kampanye dimulai", "Dilantik sebagai gubernur", "Ditetapkan sebagai calon"],
+    a: 4,
+    e: "Pasal 56. Ketentuan yang sama berlaku bagi Pegawai ASN yang mencalonkan diri atau dicalonkan menjadi Presiden/Wakil Presiden, anggota DPR, DPD, dan kepala daerah (Pasal 59 ayat 3).",
+    src: "UU 20/2023 Pasal 56-59"
+  },
+  {
+    id: "mod-keg-24", set: "mod", topic: "kepegawaian",
+    q: "PNS yang tidak lagi menjabat sebagai pejabat negara (misalnya menteri) dan tidak memperoleh lowongan jabatan ASN dalam waktu paling lambat ... diberhentikan dengan hormat.",
+    o: ["1 tahun", "2 tahun", "3 tahun", "5 tahun", "10 tahun"],
+    a: 3,
+    e: "Pasal 60 ayat (2). Selama menjabat, PNS tersebut diberhentikan sementara (Pasal 59 ayat 1), lalu diaktifkan kembali setelah tidak menjabat (ayat 2).",
+    src: "UU 20/2023 Pasal 59-60"
+  },
+  {
+    id: "mod-keg-25", set: "mod", topic: "kepegawaian",
+    q: "Sengketa Pegawai ASN diselesaikan melalui upaya administratif yang terdiri atas ...",
+    o: ["Mediasi dan arbitrase", "Gugatan ke PTUN dan kasasi", "Keberatan dan banding administratif", "Pengaduan ke Ombudsman dan KASN", "Klarifikasi dan rekonsiliasi"],
+    a: 2,
+    e: "Pasal 64. Ketentuan lebih lanjut mengenai upaya administratif diatur dalam Peraturan Pemerintah.",
+    src: "UU 20/2023 Pasal 64"
+  },
+  {
+    id: "mod-keg-26", set: "mod", topic: "kepegawaian",
+    q: "Penataan pegawai non-ASN (honorer) menurut UU 20/2023 wajib diselesaikan paling lambat ...",
+    o: ["Desember 2023", "Juni 2024", "Desember 2024", "Desember 2025", "Oktober 2028"],
+    a: 2,
+    e: "Pasal 66. Sejak UU berlaku, instansi pemerintah dilarang mengangkat pegawai non-ASN selain Pegawai ASN; PPK yang melanggar dikenai sanksi (Pasal 65).",
+    src: "UU 20/2023 Pasal 65-66"
+  },
+  {
+    id: "mod-keg-27", set: "mod", topic: "kepegawaian",
+    q: "UU 20/2023 tentang Aparatur Sipil Negara disahkan dan diundangkan pada tanggal ...",
+    o: ["15 Januari 2014", "31 Agustus 2021", "17 Agustus 2023", "31 Oktober 2023", "1 Januari 2024"],
+    a: 3,
+    e: "Disahkan Presiden Joko Widodo dan diundangkan 31 Oktober 2023 (Lembaran Negara 2023 Nomor 141), sekaligus mencabut UU 5/2014 (Pasal 76). PP 94/2021 ditetapkan 31 Agustus 2021.",
+    src: "UU 20/2023 Pasal 76-77"
+  },
+  {
+    id: "mod-keg-28", set: "mod", topic: "kepegawaian",
+    q: "Organisasi profesi ASN berfungsi memberikan pelindungan hukum dan advokasi kepada anggotanya terhadap ...",
+    o: ["Penurunan pangkat karena kinerja", "Mutasi antardaerah", "Sengketa pribadi di luar kedinasan", "Pemotongan tunjangan kinerja", "Dugaan pelanggaran Sistem Merit dan masalah hukum dalam melaksanakan tugas"],
+    a: 4,
+    e: "Pasal 62 ayat (3) huruf b. Pegawai ASN berhimpun dalam organisasi profesi ASN yang antara lain bertujuan menjaga kode etik profesi dan mewujudkan jiwa korps ASN sebagai pemersatu bangsa.",
+    src: "UU 20/2023 Pasal 62"
+  },
+  {
+    id: "mod-keg-29", set: "mod", topic: "kepegawaian",
+    q: "Digitalisasi Manajemen ASN wajib memperhatikan prinsip ...",
+    o: ["Keberlangsungan, kerahasiaan, dan keamanan siber", "Kecepatan, kemudahan, dan kemurahan", "Keterbukaan penuh seluruh data pegawai", "Sentralisasi data di setiap instansi daerah", "Transparansi dan partisipasi publik"],
+    a: 0,
+    e: "Pasal 63 ayat (4). Digitalisasi dilaksanakan secara nasional paling lama 1 tahun sejak UU diundangkan (Pasal 71).",
+    src: "UU 20/2023 Pasal 63"
+  },
+  {
+    id: "mod-keg-30", set: "mod", topic: "kepegawaian",
+    q: "Menurut PP 94/2021, Disiplin PNS adalah ...",
+    o: ["Ketaatan PNS terhadap ketentuan jam kerja dan kehadiran di kantor setiap hari", "Kesanggupan PNS untuk menaati kewajiban dan menghindari larangan yang ditentukan dalam peraturan perundang-undangan", "Kepatuhan PNS terhadap setiap perintah atasan langsung tanpa pengecualian", "Kesediaan PNS ditempatkan di seluruh wilayah NKRI sesuai kebutuhan organisasi", "Hukuman yang dijatuhkan pejabat berwenang kepada PNS yang melanggar kewajiban"],
+    a: 1,
+    e: "Pasal 1 angka 4. Pelanggaran disiplin mencakup ucapan, tulisan, atau perbuatan, baik di dalam maupun di luar jam kerja (angka 6). Hukuman disiplin adalah hukuman yang dijatuhkan Pejabat yang Berwenang Menghukum (angka 7).",
+    src: "PP 94/2021 Pasal 1"
+  },
+  {
+    id: "mod-keg-31", set: "mod", topic: "kepegawaian",
+    q: "PNS yang tidak masuk kerja tanpa alasan sah secara kumulatif 7 sampai 10 hari kerja dalam setahun dijatuhi hukuman ...",
+    o: ["Teguran lisan", "Teguran tertulis", "Pernyataan tidak puas secara tertulis", "Pemotongan tunjangan kinerja 25% selama 6 bulan", "Penurunan jabatan setingkat lebih rendah"],
+    a: 2,
+    e: "Pasal 9 ayat (2) huruf b: 3 hari = teguran lisan; 4-6 hari = teguran tertulis; 7-10 hari = pernyataan tidak puas secara tertulis. Mulai 11 hari masuk hukuman sedang (Pasal 10).",
+    src: "PP 94/2021 Pasal 9"
+  },
+  {
+    id: "mod-keg-32", set: "mod", topic: "kepegawaian",
+    q: "PNS yang tidak masuk kerja tanpa alasan sah secara kumulatif 21 sampai 24 hari kerja dalam setahun dijatuhi hukuman ...",
+    o: ["Pemotongan tunjangan kinerja 25% selama 12 bulan", "Penurunan jabatan setingkat lebih rendah selama 12 bulan", "Pembebasan dari jabatannya menjadi jabatan pelaksana selama 12 bulan", "Pemberhentian dengan hormat tidak atas permintaan sendiri", "Pernyataan tidak puas secara tertulis"],
+    a: 1,
+    e: "Pasal 11 ayat (2) huruf d: 21-24 hari = penurunan jabatan; 25-27 hari = pembebasan menjadi jabatan pelaksana; 28 hari atau lebih = pemberhentian dengan hormat tidak atas permintaan sendiri. 17-20 hari masih hukuman sedang (pemotongan tukin 12 bulan).",
+    src: "PP 94/2021 Pasal 11"
+  },
+  {
+    id: "mod-keg-33", set: "mod", topic: "kepegawaian",
+    q: "PNS yang tidak masuk kerja tanpa alasan sah secara terus-menerus selama 10 hari kerja dijatuhi pemberhentian dengan hormat tidak atas permintaan sendiri, dan pembayaran gajinya ...",
+    o: ["Tetap dibayar sampai keputusan berlaku", "Dibayarkan setengahnya", "Dipotong 25% selama 12 bulan", "Dihentikan sejak hari pertama tidak masuk", "Dihentikan sejak bulan berikutnya"],
+    a: 4,
+    e: "Pasal 15 ayat (2) jo. Pasal 11 ayat (2) huruf d angka 4. Pelanggaran kewajiban masuk kerja dihitung kumulatif sampai akhir tahun berjalan (Pasal 15 ayat 1).",
+    src: "PP 94/2021 Pasal 11, 15"
+  },
+  {
+    id: "mod-keg-34", set: "mod", topic: "kepegawaian",
+    q: "PNS yang menerima hadiah yang berhubungan dengan jabatan dan/atau pekerjaannya dijatuhi hukuman disiplin tingkat ...",
+    o: ["Ringan", "Sedang", "Berat", "Ringan atau sedang tergantung nilai hadiah", "Tidak dijatuhi hukuman jika dilaporkan"],
+    a: 2,
+    e: "Pasal 14 huruf g. Larangan lain yang langsung berhukuman berat antara lain menyalahgunakan wewenang, menjadi perantara dengan konflik kepentingan, dan meminta sesuatu yang berhubungan dengan jabatan.",
+    src: "PP 94/2021 Pasal 14"
+  },
+  {
+    id: "mod-keg-35", set: "mod", topic: "kepegawaian",
+    q: "PNS yang memberikan dukungan kepada calon anggota DPR dengan menjadi peserta kampanye menggunakan atribut partai atau atribut PNS dijatuhi hukuman disiplin ...",
+    o: ["Ringan", "Teguran lisan", "Berat", "Pemberhentian tidak dengan hormat", "Sedang"],
+    a: 4,
+    e: "Pasal 13 huruf g. Bila kampanye dilakukan dengan mengerahkan PNS lain atau menggunakan fasilitas negara, hukumannya berat (Pasal 14 huruf i).",
+    src: "PP 94/2021 Pasal 13-14"
+  },
+  {
+    id: "mod-keg-36", set: "mod", topic: "kepegawaian",
+    q: "Pejabat pimpinan tinggi yang tidak melaporkan harta kekayaan kepada pejabat yang berwenang dijatuhi hukuman disiplin ...",
+    o: ["Ringan", "Sedang", "Berat", "Teguran tertulis", "Tidak dijatuhi hukuman"],
+    a: 2,
+    e: "Pasal 11 ayat (2) huruf c. Bila dilakukan pejabat administrator atau pejabat fungsional, hukumannya sedang (Pasal 10 ayat 2 huruf e).",
+    src: "PP 94/2021 Pasal 10-11"
+  },
+  {
+    id: "mod-keg-37", set: "mod", topic: "kepegawaian",
+    q: "Jarak waktu antara tanggal surat panggilan dan tanggal pemeriksaan PNS yang diduga melanggar disiplin paling lambat ...",
+    o: ["3 hari kerja", "7 hari kerja", "14 hari kerja", "15 hari kerja", "30 hari kerja"],
+    a: 1,
+    e: "Pasal 26 ayat (2). Bila tidak hadir, dipanggil kedua paling lambat 7 hari kerja kemudian; bila tetap tidak hadir, hukuman dijatuhkan berdasarkan alat bukti dan keterangan yang ada tanpa pemeriksaan (ayat 3-4).",
+    src: "PP 94/2021 Pasal 26"
+  },
+  {
+    id: "mod-keg-38", set: "mod", topic: "kepegawaian",
+    q: "Pemeriksaan pelanggaran disiplin yang ancaman hukumannya berat dilakukan oleh tim pemeriksa yang terdiri atas ...",
+    o: ["Atasan langsung, unsur pengawasan, dan unsur kepegawaian", "Inspektorat dan aparat penegak hukum", "PPK dan Kepala BKN", "Atasan langsung saja", "Majelis kode etik dan KORPRI"],
+    a: 0,
+    e: "Pasal 29 ayat (2)-(3). Untuk ancaman hukuman sedang, pemeriksaan dapat dilakukan tim pemeriksa (ayat 1). Tim dibentuk oleh PPK atau pejabat lain yang ditunjuk (ayat 5).",
+    src: "PP 94/2021 Pasal 29"
+  },
+  {
+    id: "mod-keg-39", set: "mod", topic: "kepegawaian",
+    q: "Keputusan hukuman disiplin yang tidak diajukan upaya administratif mulai berlaku pada ...",
+    o: ["Hari keputusan ditetapkan", "Hari ke-7 sejak diterima", "Hari ke-14 sejak ditetapkan", "Hari ke-15 sejak diterima", "Awal bulan berikutnya"],
+    a: 3,
+    e: "Pasal 38 ayat (1). Keputusan disampaikan paling lambat 14 hari kerja sejak ditetapkan (Pasal 37 ayat 3). Bila diajukan upaya administratif, berlaku sesuai keputusan upaya administratifnya (Pasal 38 ayat 2).",
+    src: "PP 94/2021 Pasal 37-38"
+  },
+  {
+    id: "mod-keg-40", set: "mod", topic: "kepegawaian",
+    q: "PNS yang terbukti melakukan beberapa pelanggaran disiplin sekaligus dijatuhi ...",
+    o: ["Hukuman untuk setiap pelanggaran secara terpisah", "Satu jenis hukuman disiplin yang terberat", "Hukuman yang paling ringan", "Pemberhentian otomatis", "Hukuman yang dipilih sendiri oleh PNS"],
+    a: 1,
+    e: "Pasal 35 ayat (1). PNS yang mengulangi pelanggaran yang sifatnya sama dijatuhi hukuman lebih berat dari yang terakhir (ayat 2), dan satu pelanggaran tidak boleh dihukum dua kali (ayat 3).",
+    src: "PP 94/2021 Pasal 35"
+  },
+  {
+    id: "mod-keg-41", set: "mod", topic: "kepegawaian",
+    q: "Pejabat yang Berwenang Menghukum yang tidak menjatuhkan hukuman disiplin kepada PNS yang melanggar disiplin akan ...",
+    o: ["Dibebaskan karena itu kewenangan diskresinya", "Dilaporkan ke KASN", "Diganti oleh pejabat setingkat", "Ditegur oleh BKN", "Dijatuhi hukuman disiplin oleh atasannya"],
+    a: 4,
+    e: "Pasal 24 ayat (2). Bila menjatuhkan hukuman yang tidak sesuai dengan pelanggaran, ia dijatuhi hukuman disiplin yang lebih berat (ayat 3). Keduanya setelah melalui pemeriksaan (ayat 4).",
+    src: "PP 94/2021 Pasal 24"
+  },
+  {
+    id: "mod-keg-42", set: "mod", topic: "kepegawaian",
+    q: "PP 94/2021 tentang Disiplin PNS mencabut peraturan berikut ...",
+    o: ["PP 53/2010 (kecuali ketentuan hukuman disiplin sedang) dan PP 6/1974", "UU 5/2014", "PP 11/2017", "PP 30/1980 dan PP 10/1983", "Peraturan BKN 24/2017"],
+    a: 0,
+    e: "Pasal 45. PP 6/1974 tentang Pembatasan Kegiatan PNS dalam Usaha Swasta dicabut. Ketentuan PP 94/2021 berlaku mutatis mutandis bagi calon PNS (Pasal 43). Pelanggaran PP 10/1983 tentang izin perkawinan dan perceraian dijatuhi salah satu hukuman disiplin berat (Pasal 41).",
+    src: "PP 94/2021 Pasal 41-45"
+  },
+  {
+    id: "mod-keg-43", set: "mod", topic: "kepegawaian",
+    q: "Calon PNS wajib menjalani masa percobaan selama 1 tahun yang merupakan masa prajabatan. Pembinaan pendidikan dan pelatihannya dilakukan oleh ...",
+    o: ["Kepala BKN", "Menteri PANRB", "Kepala LAN", "PPK instansi masing-masing", "Kepala BPSDM daerah"],
+    a: 2,
+    e: "PP 11/2017 Pasal 34: diklat prajabatan dilakukan terintegrasi dan hanya dapat diikuti 1 kali. Calon PNS yang mengundurkan diri saat masa percobaan tidak boleh mengikuti seleksi pengadaan PNS untuk jangka waktu tertentu (Pasal 35).",
+    src: "PP 11/2017 Pasal 34-35"
+  },
+  {
+    id: "mod-keg-44", set: "mod", topic: "kepegawaian",
+    q: "Calon PNS diberhentikan apabila, antara lain ...",
+    o: ["Terbukti melakukan pelanggaran disiplin tingkat sedang atau berat", "Mendapat teguran lisan", "Belum menikah", "Menolak mutasi dalam satu kantor", "Tidak lulus seleksi kompetensi bidang"],
+    a: 0,
+    e: "PP 11/2017 Pasal 37 ayat (2): juga bila mengundurkan diri, meninggal, memberi keterangan tidak benar saat melamar, dihukum penjara/kurungan berkekuatan hukum tetap, menjadi anggota/pengurus partai politik, atau tidak bersedia mengucapkan sumpah/janji.",
+    src: "PP 11/2017 Pasal 37"
+  },
+  {
+    id: "mod-keg-45", set: "mod", topic: "kepegawaian",
+    q: "Pengembangan kompetensi bagi setiap PNS dilakukan paling sedikit ...",
+    o: ["10 jam pelajaran dalam 1 tahun", "20 jam pelajaran dalam 1 tahun", "40 jam pelajaran dalam 1 tahun", "80 jam pelajaran dalam 2 tahun", "1 kali pelatihan dalam 5 tahun"],
+    a: 1,
+    e: "PP 11/2017 Pasal 203 ayat (4) sebagaimana diubah PP 17/2020, yang menambah ayat (4a): pengembangan kompetensi dilaksanakan melalui sistem pembelajaran terintegrasi (corporate university).",
+    src: "PP 11/2017 Pasal 203"
+  }
+);
+
+// Pelayanan Publik tambahan: UU 25/2009 pasal yang belum dipakai mod-yan-01..16 dan soal kisi-kisi bkn-yan-*.
+window.BANK.yanlik.push(
+  {
+    id: "mod-yan-17", set: "mod", topic: "yanlik",
+    q: "UU 25/2009 tentang Pelayanan Publik dimaksudkan untuk memberikan ...",
+    o: ["Keuntungan bagi penyelenggara pelayanan", "Kepastian hukum dalam hubungan antara masyarakat dan penyelenggara dalam pelayanan publik", "Kewenangan penuh kepada pemerintah daerah", "Pembebasan biaya untuk seluruh pelayanan", "Dasar pembentukan Ombudsman"],
+    a: 1,
+    e: "Pasal 2. Tujuannya (Pasal 3) antara lain batasan dan hubungan yang jelas tentang hak, tanggung jawab, kewajiban, dan kewenangan para pihak, serta perlindungan dan kepastian hukum bagi masyarakat.",
+    src: "UU 25/2009 Pasal 2-3"
+  },
+  {
+    id: "mod-yan-18", set: "mod", topic: "yanlik",
+    q: "Pembina pelayanan publik pada tingkat kementerian wajib melaporkan hasil perkembangan kinerja pelayanan publik kepada ...",
+    o: ["Ombudsman", "Menteri PANRB saja", "Presiden dan DPR", "BPK", "DPRD provinsi"],
+    a: 2,
+    e: "Pasal 6 ayat (4). Gubernur melapor kepada DPRD provinsi dan menteri (ayat 5); bupati/wali kota kepada DPRD kabupaten/kota dan gubernur (ayat 6).",
+    src: "UU 25/2009 Pasal 6"
+  },
+  {
+    id: "mod-yan-19", set: "mod", topic: "yanlik",
+    q: "Penyelenggaraan pelayanan publik oleh organisasi penyelenggara sekurang-kurangnya meliputi hal berikut, KECUALI ...",
+    o: ["Pengelolaan pengaduan masyarakat", "Pengelolaan informasi", "Penyuluhan kepada masyarakat", "Penetapan tarif pajak daerah", "Pelayanan konsultasi"],
+    a: 3,
+    e: "Pasal 8 ayat (2): pelaksanaan pelayanan, pengelolaan pengaduan masyarakat, pengelolaan informasi, pengawasan internal, penyuluhan kepada masyarakat, dan pelayanan konsultasi.",
+    src: "UU 25/2009 Pasal 8"
+  },
+  {
+    id: "mod-yan-20", set: "mod", topic: "yanlik",
+    q: "Pelaksana pelayanan publik yang berasal dari instansi pemerintah, BUMN, atau BUMD dilarang ...",
+    o: ["Mengikuti pelatihan pelayanan prima", "Memberikan pelayanan di luar jam kerja", "Menerima pengaduan masyarakat", "Membuat laporan kinerja berkala", "Merangkap sebagai komisaris atau pengurus organisasi usaha"],
+    a: 4,
+    e: "Pasal 17 huruf a. Larangan lain: meninggalkan tugas tanpa alasan sah, menambah pelaksana atau membuat perjanjian kerja sama tanpa persetujuan penyelenggara, dan melanggar asas pelayanan publik.",
+    src: "UU 25/2009 Pasal 17"
+  },
+  {
+    id: "mod-yan-21", set: "mod", topic: "yanlik",
+    q: "Berikut yang termasuk KEWAJIBAN masyarakat dalam pelayanan publik adalah ...",
+    o: ["Mengawasi pelaksanaan standar pelayanan", "Mendapat tanggapan atas pengaduan", "Ikut menjaga terpeliharanya sarana, prasarana, dan/atau fasilitas pelayanan publik", "Mendapat advokasi dan perlindungan", "Mengetahui kebenaran isi standar pelayanan"],
+    a: 2,
+    e: "Pasal 19: mematuhi persyaratan standar pelayanan, ikut menjaga sarana dan prasarana, serta berpartisipasi aktif. Pilihan lainnya adalah hak masyarakat (Pasal 18).",
+    src: "UU 25/2009 Pasal 18-19"
+  },
+  {
+    id: "mod-yan-22", set: "mod", topic: "yanlik",
+    q: "Sistem informasi yang wajib dikelola penyelenggara pelayanan publik sekurang-kurangnya memuat hal berikut, KECUALI ...",
+    o: ["Profil penyelenggara dan profil pelaksana", "Standar pelayanan dan maklumat pelayanan", "Pengelolaan pengaduan", "Penilaian kinerja", "Data harta kekayaan pribadi pelaksana"],
+    a: 4,
+    e: "Pasal 23 ayat (4). Sistem informasi nasional dikelola oleh Menteri (ayat 2), dan informasinya wajib disediakan kepada masyarakat secara terbuka dan mudah diakses (ayat 5).",
+    src: "UU 25/2009 Pasal 23"
+  },
+  {
+    id: "mod-yan-23", set: "mod", topic: "yanlik",
+    q: "Sarana, prasarana, dan/atau fasilitas pelayanan publik dengan perlakuan khusus ...",
+    o: ["Dilarang digunakan oleh orang yang tidak berhak", "Boleh dipakai siapa saja bila sedang kosong", "Hanya disediakan di kantor pusat", "Dikenakan biaya tambahan", "Hanya untuk pejabat negara"],
+    a: 0,
+    e: "Pasal 29 ayat (2). Penyelenggara wajib memberikan pelayanan dengan perlakuan khusus kepada anggota masyarakat tertentu sesuai peraturan (ayat 1). Pelanggaran ayat (2) dikenai teguran tertulis, lalu pembebasan dari jabatan bila dalam 3 bulan tidak dilaksanakan (Pasal 54 ayat 2).",
+    src: "UU 25/2009 Pasal 29, 54"
+  },
+  {
+    id: "mod-yan-24", set: "mod", topic: "yanlik",
+    q: "Penentuan biaya/tarif pelayanan publik ditetapkan ...",
+    o: ["Sepenuhnya oleh kepala unit pelayanan", "Oleh Menteri Keuangan saja", "Oleh Ombudsman", "Melalui kesepakatan dengan penerima layanan", "Dengan persetujuan DPR atau DPRD dan berdasarkan peraturan perundang-undangan"],
+    a: 4,
+    e: "Pasal 31 ayat (4). Biaya pada dasarnya tanggung jawab negara dan/atau masyarakat; yang tidak diwajibkan kepada negara oleh peraturan dibebankan kepada penerima pelayanan (ayat 1-3).",
+    src: "UU 25/2009 Pasal 31"
+  },
+  {
+    id: "mod-yan-25", set: "mod", topic: "yanlik",
+    q: "Pengawasan pelayanan publik oleh pengawas fungsional termasuk jenis pengawasan ...",
+    o: ["Eksternal", "Masyarakat", "Legislatif", "Internal", "Ombudsman"],
+    a: 3,
+    e: "Pasal 35: pengawasan internal = atasan langsung dan pengawas fungsional. Pengawasan eksternal = masyarakat (laporan/pengaduan), Ombudsman, serta DPR/DPRD.",
+    src: "UU 25/2009 Pasal 35"
+  },
+  {
+    id: "mod-yan-26", set: "mod", topic: "yanlik",
+    q: "Penyelenggara wajib mengumumkan ...",
+    o: ["Nama dan alamat penanggung jawab pengelola pengaduan serta sarana pengaduan yang disediakan", "Besaran gaji dan tunjangan seluruh pelaksana di unit pelayanan", "Daftar nama pengadu beserta identitas dan isi pengaduannya", "Rencana anggaran tahunan unit beserta realisasi belanjanya", "Nama pelaksana yang pernah dijatuhi hukuman disiplin"],
+    a: 0,
+    e: "Pasal 36 ayat (4). Penyelenggara juga wajib menyediakan sarana pengaduan, menugaskan pelaksana yang kompeten, mengelola, dan menindaklanjuti pengaduan (ayat 1-3).",
+    src: "UU 25/2009 Pasal 36"
+  },
+  {
+    id: "mod-yan-27", set: "mod", topic: "yanlik",
+    q: "Peran serta masyarakat dalam penyelenggaraan pelayanan publik dimulai sejak ...",
+    o: ["Pengaduan diajukan", "Penyusunan standar pelayanan sampai dengan evaluasi dan pemberian penghargaan", "Pelayanan selesai diberikan", "Survei kepuasan dilaksanakan", "Maklumat pelayanan diumumkan"],
+    a: 1,
+    e: "Pasal 39 ayat (1). Wujudnya kerja sama, pemenuhan hak dan kewajiban, dan peran aktif dalam penyusunan kebijakan; masyarakat juga dapat membentuk lembaga pengawasan pelayanan publik (ayat 2-3).",
+    src: "UU 25/2009 Pasal 39"
+  },
+  {
+    id: "mod-yan-28", set: "mod", topic: "yanlik",
+    q: "Dalam memeriksa materi pengaduan, penyelenggara wajib berpedoman pada prinsip ...",
+    o: ["Cepat, murah, dan sederhana", "Kekeluargaan dan musyawarah", "Independen, nondiskriminasi, tidak memihak, dan tidak memungut biaya", "Kerahasiaan penuh tanpa tanggapan", "Senioritas pengadu"],
+    a: 2,
+    e: "Pasal 48 ayat (1). Bila pengadu keberatan dipertemukan dengan teradu karena alasan yang dapat mengancam kepentingannya, dengar pendapat dapat dilakukan terpisah (ayat 3).",
+    src: "UU 25/2009 Pasal 48"
+  },
+  {
+    id: "mod-yan-29", set: "mod", topic: "yanlik",
+    q: "Penyelenggara wajib memutuskan hasil pemeriksaan pengaduan paling lambat ... sejak berkas pengaduan dinyatakan lengkap.",
+    o: ["14 hari", "30 hari", "45 hari", "60 hari", "90 hari"],
+    a: 3,
+    e: "Pasal 50 ayat (1). Keputusan disampaikan kepada pengadu paling lambat 14 hari sejak diputuskan (ayat 2). Bila menuntut ganti rugi, keputusan memuat jumlah dan batas waktu pembayarannya (ayat 3).",
+    src: "UU 25/2009 Pasal 50"
+  },
+  {
+    id: "mod-yan-30", set: "mod", topic: "yanlik",
+    q: "Dalam penyelesaian ganti rugi pelayanan publik, Ombudsman dapat melakukan ...",
+    o: ["Mediasi, konsiliasi, dan ajudikasi khusus", "Penyidikan dan penuntutan", "Penyitaan aset penyelenggara", "Pemberhentian pelaksana", "Penetapan tarif baru"],
+    a: 0,
+    e: "Pasal 50 ayat (5). Penyelenggara wajib menyediakan anggaran untuk membayar ganti rugi (ayat 4); mekanisme pembayarannya diatur peraturan presiden (ayat 8).",
+    src: "UU 25/2009 Pasal 50"
+  },
+  {
+    id: "mod-yan-31", set: "mod", topic: "yanlik",
+    q: "Sanksi bagi penyelenggara yang melanggar ketentuan UU 25/2009 dikenakan kepada ...",
+    o: ["Seluruh pelaksana di unit tersebut", "Pengadu", "Ombudsman", "Pimpinan penyelenggara", "Menteri PANRB"],
+    a: 3,
+    e: "Pasal 57 ayat (1); pengenaannya dilakukan oleh atasan penyelenggara (ayat 2). Bila terdapat perbuatan melawan hukum atau tindak pidana, perkara dapat dilanjutkan ke peradilan umum (Pasal 58).",
+    src: "UU 25/2009 Pasal 57-58"
+  },
+  {
+    id: "mod-yan-32", set: "mod", topic: "yanlik",
+    q: "Penyelenggara yang tidak memeriksa pengaduan masyarakat dikenai teguran tertulis, dan bila dalam waktu ... tetap tidak melaksanakannya dikenai sanksi pembebasan dari jabatan.",
+    o: ["1 bulan", "3 bulan", "6 bulan", "1 tahun", "2 tahun"],
+    a: 1,
+    e: "Pasal 54 ayat (2), untuk pelanggaran antara lain Pasal 47 ayat (1) (kewajiban memeriksa pengaduan). Untuk pelanggaran Pasal 33 ayat (2), batas waktunya 1 tahun (ayat 3).",
+    src: "UU 25/2009 Pasal 47, 54"
+  }
+);
+
+// Kebijakan Publik: Per. MenPAN PER/04/M.PAN/4/2007 (salinan pindaian peraturan.bpk.go.id). Salinan itu hanya memuat
+// halaman ganjil lampiran (1, 3, 5, ..., 15) dan hlm. 2 Lampiran 4; soal hanya dari halaman yang terbaca.
+// Batas waktu FGD tertulis berbeda di hlm. 11 (10 hari kerja) dan hlm. 15 (15 hari), jadi tidak dijadikan soal.
+window.BANK.kebijakan = window.BANK.kebijakan || [];
+window.BANK.kebijakan.push(
+  {
+    id: "mod-kbj-01", set: "mod", topic: "kebijakan",
+    q: "Dalam membentuk suatu kebijakan publik, pada dasarnya terdapat berapa nilai dasar kebijakan?",
+    o: ["3", "4", "5", "6", "8"],
+    a: 3,
+    e: "Pedoman menyebut 6 nilai dasar, antara lain kebijakan bersifat cerdas, bijaksana, memberikan harapan, dan untuk kepentingan publik.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 1"
+  },
+  {
+    id: "mod-kbj-02", set: "mod", topic: "kebijakan",
+    q: "Nilai dasar kebijakan publik \"bijaksana\" berarti kebijakan tersebut ...",
+    o: ["Memecahkan masalah dan dapat dipertanggungjawabkan kepada publik", "Disetujui seluruh pihak tanpa kecuali", "Memberikan harapan bahwa hari esok lebih baik", "Dibuat secepat mungkin", "Tidak menghasilkan masalah baru yang lebih besar daripada masalah yang dipecahkan"],
+    a: 4,
+    e: "Hlm. 1: cerdas = memecahkan masalah yang dapat dipertanggungjawabkan kepada publik dari segi manfaat, kualitas, dan akuntabel; bijaksana = tidak menghasilkan masalah baru yang lebih besar; ketiga = memberikan harapan bahwa warga dapat memasuki hari esok lebih baik.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 1"
+  },
+  {
+    id: "mod-kbj-03", set: "mod", topic: "kebijakan",
+    q: "Salah satu nilai dasar kebijakan publik menegaskan bahwa kebijakan publik dibuat untuk kepentingan ...",
+    o: ["Negara dan pemerintah", "Birokrasi pelaksana", "Publik, bukan kepentingan negara, pemerintah, atau birokrasi saja", "Pejabat yang menetapkannya", "Kelompok usaha besar"],
+    a: 2,
+    e: "Nilai dasar keempat pada hlm. 1 pedoman.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 1"
+  },
+  {
+    id: "mod-kbj-04", set: "mod", topic: "kebijakan",
+    q: "Penetapan kebijakan publik merupakan tugas lembaga pemerintahan yang berwenang dan ...",
+    o: ["Dapat diserahkan kepada konsultan swasta bila lembaga pemerintah tidak sanggup", "Boleh dilimpahkan kepada LSM yang memiliki keahlian di bidangnya", "Dapat diprivatisasikan kepada badan usaha apabila terbukti lebih efisien", "Wajib diserahkan kepada DPR untuk disetujui sebelum dilaksanakan", "Tidak dapat didelegasikan, dipindahkan, ataupun diprivatisasikan kepada organisasi di luar pemerintahan"],
+    a: 4,
+    e: "Hlm. 1 pedoman: penetapan kebijakan publik adalah tugas lembaga pemerintahan yang berkewenangan dalam penyelenggaraan tugas pemerintahan negara dan pembangunan bangsa, yang tidak dapat digantikan.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 1"
+  },
+  {
+    id: "mod-kbj-05", set: "mod", topic: "kebijakan",
+    q: "Kebijakan publik mempunyai dua bentuk, yaitu ...",
+    o: ["Undang-undang yang disahkan DPR dan peraturan daerah yang disahkan DPRD", "Peraturan yang terkodifikasi secara formal dan legal, serta pernyataan pejabat publik di depan publik", "Kebijakan makro yang bersifat umum dan kebijakan mikro yang mengatur pelaksanaan", "Kebijakan tertulis dalam dokumen resmi dan kebiasaan yang berlaku di instansi", "Keputusan pejabat tata usaha negara dan instruksi pimpinan kepada bawahan"],
+    a: 1,
+    e: "Pengertian umum angka 4. Kebijakan publik terkodifikasi adalah segenap peraturan perundang-undangan di tingkat pusat dan daerah (angka 5).",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 3"
+  },
+  {
+    id: "mod-kbj-06", set: "mod", topic: "kebijakan",
+    q: "Pidato lisan seorang menteri di depan publik, termasuk pernyataannya kepada media massa, tergolong bentuk kebijakan publik berupa ...",
+    o: ["Pernyataan pejabat publik", "Kebijakan terkodifikasi", "Naskah akademik", "Draf nol kebijakan", "Kebijakan teknis"],
+    a: 0,
+    e: "Pengertian umum angka 6: pernyataan pejabat publik adalah pernyataan di depan publik, baik berupa pidato tertulis, pidato lisan, termasuk pernyataan kepada media massa.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 3"
+  },
+  {
+    id: "mod-kbj-07", set: "mod", topic: "kebijakan",
+    q: "Prinsip penyusunan kebijakan publik yang menuntut kebijakan bukan imbauan, melainkan memberi batas aturan dan mencantumkan sanksi tegas bagi pelanggarnya, adalah prinsip ...",
+    o: ["Benar dalam proses", "Benar secara isi", "Benar secara politik-etik", "Benar secara hukum", "Benar secara manajemen"],
+    a: 3,
+    e: "Bab II angka 4. Benar secara hukum juga berarti memberi keadilan dan kesamaan di depan hukum bagi publik.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 5"
+  },
+  {
+    id: "mod-kbj-08", set: "mod", topic: "kebijakan",
+    q: "Prinsip \"benar dalam proses\" dalam penyusunan kebijakan publik berarti prosesnya harus ...",
+    o: ["Selesai dalam waktu paling singkat", "Mengikuti kehendak pimpinan", "Dirahasiakan sampai kebijakan ditetapkan", "Disusun oleh konsultan independen", "Transparan, dapat dipertanggungjawabkan, dan melibatkan pihak yang seharusnya terlibat"],
+    a: 4,
+    e: "Bab II angka 1. Benar secara isi menuntut isi fokus pada isu kebijakan, bukan kompromi politik/ekonomi, dan tidak bertentangan dengan kebijakan yang lebih tinggi (angka 2).",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 5"
+  },
+  {
+    id: "mod-kbj-09", set: "mod", topic: "kebijakan",
+    q: "Prinsip \"benar secara politik-etik\" berarti kebijakan ...",
+    o: ["Mengakomodasi para pihak terkait, menerapkan prinsip good governance, dan memperhatikan kaidah moralitas", "Menguntungkan partai politik pemenang pemilu dan koalisi pendukung pemerintah", "Disusun oleh DPR bersama partai politik dengan memperhatikan aspirasi konstituen", "Berlaku khusus bagi pejabat politik dan tidak mengikat aparatur sipil negara", "Bebas dari pengawasan publik selama tidak melanggar peraturan yang lebih tinggi"],
+    a: 0,
+    e: "Bab II angka 3: mengakomodasi para pihak yang terkait secara langsung dengan kebijakan, menerapkan prinsip-prinsip pokok good governance, dan memperhatikan kaidah moralitas dalam pembuatan kebijakan.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 5"
+  },
+  {
+    id: "mod-kbj-10", set: "mod", topic: "kebijakan",
+    q: "Kebijakan publik yang menjadi acuan pelaksanaan pencapaian sasaran tertentu secara teknis dalam rangka pelaksanaan kebijakan pemerintah termasuk sifat kebijakan ...",
+    o: ["Strategis/politis", "Manajemen", "Teknis", "Nasional", "Daerah"],
+    a: 2,
+    e: "Bab III huruf C: sifat kebijakan publik meliputi strategis/politis (politik dan strategi dasar negara), manajemen (penjabaran politik dan strategi dasar), dan teknis. Pusat dan daerah adalah stratifikasi (huruf B).",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 7"
+  },
+  {
+    id: "mod-kbj-11", set: "mod", topic: "kebijakan",
+    q: "Tugas pra-kebijakan dalam formulasi kebijakan publik adalah ...",
+    o: ["Mengesahkan kebijakan dan mengundangkannya", "Melakukan evaluasi kinerja kebijakan", "Menyelenggarakan forum publik keempat", "Merumuskan naskah akademik dan draf nol kebijakan", "Merevisi kebijakan yang sudah berlaku"],
+    a: 3,
+    e: "Bab IV huruf C. Waktu merumuskan naskah akademik bersama draf nol maksimum 14 hari kerja, dan pembuatan draf nol tidak harus dikontrakkan atau dikerjakan kepada pihak luar.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 9"
+  },
+  {
+    id: "mod-kbj-12", set: "mod", topic: "kebijakan",
+    q: "Waktu untuk merumuskan naskah akademik bersama draf nol kebijakan paling lama ...",
+    o: ["5 hari kerja", "10 hari kerja", "14 hari kerja", "30 hari", "3 bulan"],
+    a: 2,
+    e: "Bab IV huruf C angka 2. Setelah itu, draf nol didiskusikan bersama forum publik dalam empat jenjang (huruf D).",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 9"
+  },
+  {
+    id: "mod-kbj-13", set: "mod", topic: "kebijakan",
+    q: "Forum publik ketiga dalam formulasi kebijakan publik melibatkan ...",
+    o: ["Para pakar kebijakan", "Instansi pemerintah di luar lembaga perumus", "Pihak yang memperoleh dampak secara langsung (beneficiaries)", "Seluruh pihak terkait secara luas seperti tokoh masyarakat, LSM, dan asosiasi usaha", "Anggota DPR saja"],
+    a: 2,
+    e: "Hlm. 9 dan 15: forum publik I = pakar kebijakan dan pakar terkait (bila mungkin anggota legislatif); II = instansi pemerintah di luar lembaga perumus; III = beneficiaries; IV = seluruh pihak terkait secara luas.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 9, 15"
+  },
+  {
+    id: "mod-kbj-14", set: "mod", topic: "kebijakan",
+    q: "Hasil diskusi publik dijadikan materi penyusunan pasal-pasal kebijakan oleh Tim Perumus dan disebut Draf-1. Formulasi Draf-1 dilakukan paling lama ...",
+    o: ["3 hari kerja", "5 hari kerja", "14 hari kerja", "30 hari", "3 bulan"],
+    a: 1,
+    e: "Bab IV huruf H. Draf-2 (Draf Final) juga dirumuskan maksimal 5 hari kerja (huruf J), lalu disahkan pejabat publik atau dibawa ke proses legislasi untuk kebijakan berbentuk undang-undang (huruf K).",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 11"
+  },
+  {
+    id: "mod-kbj-15", set: "mod", topic: "kebijakan",
+    q: "Evaluasi kinerja kebijakan berbeda dengan riset kebijakan karena evaluasi kinerja kebijakan ...",
+    o: ["Lebih bersifat mikro, dengan sampel individu", "Lebih bersifat makro, dengan sampel atau data uji petik bersifat kelembagaan", "Hanya dilakukan oleh pihak luar pemerintah", "Tidak memerlukan rencana kerja", "Selalu memakan waktu lebih dari satu tahun"],
+    a: 1,
+    e: "Bab VI huruf D. Secara ideal proses evaluasi kinerja kebijakan diselenggarakan maksimal 3 bulan.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 13"
+  },
+  {
+    id: "mod-kbj-16", set: "mod", topic: "kebijakan",
+    q: "Pelaporan hasil evaluasi kinerja kebijakan dilakukan paling lambat ...",
+    o: ["7 hari kerja setelah evaluasi selesai", "15 hari kerja setelah evaluasi selesai dilaksanakan", "30 hari setelah evaluasi dimulai", "3 bulan setelah tim dibentuk", "Akhir tahun anggaran"],
+    a: 1,
+    e: "Bab VI huruf E. Perencanaan evaluasi, pembentukan tim (dari pejabat intern), dan penyusunan rencana kerja masing-masing paling lama 10 hari kerja (huruf A-C).",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 13"
+  },
+  {
+    id: "mod-kbj-17", set: "mod", topic: "kebijakan",
+    q: "Revisi kebijakan publik dapat dilaksanakan dalam waktu maksimal ...",
+    o: ["3 bulan", "6 bulan", "9 bulan", "12 bulan", "2 tahun"],
+    a: 2,
+    e: "Hlm. 15: batasan waktu bersifat acuan dasar atau koridor dan dapat disesuaikan; bila dapat dilakukan dalam 9 bulan, revisi dinilai efisien dan efektif secara proses.",
+    src: "Pedoman PER/04/M.PAN/4/2007 hlm. 15"
+  },
+  {
+    id: "mod-kbj-18", set: "mod", topic: "kebijakan",
+    q: "Keputusan atas kejadian kebakaran atau pencurian di kantor pemerintah, yang dibuat pejabat yang bertugas saat kejadian tanpa melalui proses formulasi, termasuk kuadran kebijakan ...",
+    o: ["I", "II", "III", "IV", "V"],
+    a: 3,
+    e: "Lampiran 4: kuadran IV = keputusan internal organisasi publik yang tidak berkenaan dengan publik. Kuadran III = keputusan eksternal yang berkenaan dengan publik secara terbatas (izin kepemilikan lahan, restitusi pajak, izin investasi), dibuat pejabat administratif, waktu kurang dari 1 bulan.",
+    src: "Pedoman PER/04/M.PAN/4/2007 Lampiran 4 hlm. 2"
+  }
+);
+
+// Literasi Digital: Modul Cakap Bermedia Digital (Kominfo, Japelidi, Siberkreasi 2021), versi slide 89 halaman.
+// hlm. = nomor slide PDF. Empat pilar sudah dicakup bkn-lit-*, jadi soal ini memakai isi modul yang lain.
+window.BANK.literasi = window.BANK.literasi || [];
+window.BANK.literasi.push(
+  {
+    id: "mod-lit-01", set: "mod", topic: "literasi",
+    q: "Literasi digital adalah konsep dan praktik yang ...",
+    o: ["Hanya menitikberatkan pada kecakapan menguasai perangkat keras dan perangkat lunak teknologi", "Bukan sekadar menitikberatkan kecakapan menguasai teknologi, tetapi juga kecakapan pengguna dalam proses mediasi media digital secara produktif", "Terbatas pada kemampuan mengetik, membuat dokumen, dan mengirim surel secara cepat", "Sama dengan kemampuan membaca buku cetak yang dipindahkan ke layar perangkat digital", "Hanya berlaku bagi pegawai bidang teknologi informasi yang mengelola jaringan kantor"],
+    a: 1,
+    e: "Definisi Kurnia & Wijayanto (2020) dan Kurnia & Astuti (2017) yang dikutip modul. Kecakapan digital (digital skills) adalah bagian dari literasi digital yang perlu diasah terus-menerus.",
+    src: "Modul Cakap Bermedia Digital hlm. 6"
+  },
+  {
+    id: "mod-lit-02", set: "mod", topic: "literasi",
+    q: "Dari tiga subindeks Indeks Pembangunan Teknologi Informasi dan Komunikasi (IP-TIK), subindeks dengan skor paling rendah bagi Indonesia adalah ...",
+    o: ["Akses dan infrastruktur", "Penggunaan", "Keahlian", "Keamanan siber", "Konektivitas"],
+    a: 2,
+    e: "Modul (mengutip Kominfo, 2020) juga mencatat literasi digital masyarakat Indonesia masih berada pada level sedang, sehingga kecakapan digital perlu diasah.",
+    src: "Modul Cakap Bermedia Digital hlm. 5"
+  },
+  {
+    id: "mod-lit-03", set: "mod", topic: "literasi",
+    q: "Program yang memonitor alur penggunaan internet dan mengecek hal-hal yang dapat merugikan dan berbahaya disebut ...",
+    o: ["Malware", "Browser", "Firewall", "Cookie", "Bluetooth"],
+    a: 2,
+    e: "Definisi firewall (Levine & Young, 2010) pada modul. Malware justru program berbahaya yang harus ditangkal.",
+    src: "Modul Cakap Bermedia Digital hlm. 15"
+  },
+  {
+    id: "mod-lit-04", set: "mod", topic: "literasi",
+    q: "Berikut hal yang perlu diperhatikan saat menggunakan Wi-Fi publik, KECUALI ...",
+    o: ["Gunakan hanya saat keperluan mendesak", "Hindari bertransaksi perbankan", "Gunakan VPN", "Aktifkan aplikasi berbagi file agar mudah bertukar data", "Matikan fitur bluetooth"],
+    a: 3,
+    e: "Modul menyarankan justru mematikan aplikasi file sharing, menghindari transaksi online dan perbankan, serta tidak membuka email pribadi atau kantor saat memakai Wi-Fi publik.",
+    src: "Modul Cakap Bermedia Digital hlm. 13"
+  },
+  {
+    id: "mod-lit-05", set: "mod", topic: "literasi",
+    q: "Tahap kerja mesin pencari yang berupa pemilahan data atau informasi yang relevan dengan kata kunci yang diketikkan disebut ...",
+    o: ["Penelusuran (crawling)", "Pengindeksan (indexing)", "Pemeringkatan (ranking)", "Pengunduhan (downloading)", "Penyaringan aman (safe search)"],
+    a: 1,
+    e: "Urutan kerja mesin pencari (Luenendonk, 2021): penelusuran (menelusuri triliunan sumber informasi di internet), pengindeksan (memilah data yang relevan), lalu pemeringkatan (mengurutkan data yang dianggap paling sesuai).",
+    src: "Modul Cakap Bermedia Digital hlm. 23"
+  },
+  {
+    id: "mod-lit-06", set: "mod", topic: "literasi",
+    q: "Urutan proses kerja mesin pencarian informasi yang benar adalah ...",
+    o: ["Pemeringkatan, penelusuran, pengindeksan", "Pengindeksan, pemeringkatan, penelusuran", "Penelusuran, pemeringkatan, pengindeksan", "Penelusuran, pengindeksan, pemeringkatan", "Pengindeksan, penelusuran, pemeringkatan"],
+    a: 3,
+    e: "Crawling (penelusuran) - indexing (pengindeksan) - ranking (pemeringkatan).",
+    src: "Modul Cakap Bermedia Digital hlm. 23"
+  },
+  {
+    id: "mod-lit-07", set: "mod", topic: "literasi",
+    q: "Untuk menyingkirkan hasil pencarian yang tidak diinginkan di Google, pengguna dapat menambahkan tanda ...",
+    o: ["Minus (-)", "Titik dua (:)", "Bintang (*)", "Kutip (\"...\")", "Dua titik (..)"],
+    a: 0,
+    e: "Modul: tanda minus untuk menyingkirkan hasil, titik dua untuk mencari di situs tertentu, tanda bintang untuk kata yang hilang, dua titik di antara angka untuk rentang angka.",
+    src: "Modul Cakap Bermedia Digital hlm. 30"
+  },
+  {
+    id: "mod-lit-08", set: "mod", topic: "literasi",
+    q: "Layanan Google yang khusus untuk keperluan akademik, seperti mencari jurnal dan karya ilmiah, adalah ...",
+    o: ["Google Assistant", "Google Trends", "Google Lite", "Google Safe Search", "Google Cendekia (Google Scholar)"],
+    a: 4,
+    e: "Modul menyebut Google dan Microsoft melengkapi layanannya dengan basis data spesifik untuk akademik seperti Google Scholar atau Google Cendekia.",
+    src: "Modul Cakap Bermedia Digital hlm. 31"
+  },
+  {
+    id: "mod-lit-09", set: "mod", topic: "literasi",
+    q: "Dalam tiga gangguan informasi, informasi yang salah tetapi tidak disertai niat merugikan disebut ...",
+    o: ["Disinformasi", "Malinformasi", "Misinformasi", "Propaganda", "Satire"],
+    a: 2,
+    e: "Modul (firstdraftnews.org): misinformasi = salah; disinformasi = salah dan berniat merugikan; malinformasi = berniat merugikan, misalnya sepenggal bocoran, pelecehan, atau ujaran kebencian.",
+    src: "Modul Cakap Bermedia Digital hlm. 32"
+  },
+  {
+    id: "mod-lit-10", set: "mod", topic: "literasi",
+    q: "Sepenggal bocoran, pelecehan, dan ujaran kebencian yang disebarkan dengan niat merugikan termasuk gangguan informasi jenis ...",
+    o: ["Misinformasi", "Hubungan yang salah", "Satire", "Malinformasi", "Konten tiruan"],
+    a: 3,
+    e: "Dalam diagram tiga gangguan informasi, malinformasi berada pada lingkaran \"niat merugikan\", sedangkan disinformasi berada di irisan \"salah\" dan \"niat merugikan\".",
+    src: "Modul Cakap Bermedia Digital hlm. 32"
+  },
+  {
+    id: "mod-lit-11", set: "mod", topic: "literasi",
+    q: "Konten yang 100% palsu, dirancang untuk menipu dan menyebabkan kerugian, termasuk jenis dis/misinformasi ...",
+    o: ["Satire/parodi", "Konten tiruan", "Konteks yang salah", "Konten yang menyesatkan", "Konten rekaan"],
+    a: 4,
+    e: "Konten tiruan = meniru sumber-sumber asli; konteks yang salah = konten asli dibagikan dengan informasi atau konteks yang salah; konten yang menyesatkan = membingkai isu atau seseorang secara menyesatkan.",
+    src: "Modul Cakap Bermedia Digital hlm. 33"
+  },
+  {
+    id: "mod-lit-12", set: "mod", topic: "literasi",
+    q: "Judul, visual, atau keterangan sebuah berita yang tidak mendukung isi kontennya termasuk jenis dis/misinformasi ...",
+    o: ["Hubungan yang salah", "Konten rekaan", "Satire/parodi", "Konten yang dimanipulasi", "Konten tiruan"],
+    a: 0,
+    e: "Tujuh jenis dis/misinformasi: satire/parodi, konten yang menyesatkan, konten tiruan, konten rekaan, hubungan yang salah, konteks yang salah, dan konten yang dimanipulasi.",
+    src: "Modul Cakap Bermedia Digital hlm. 33"
+  },
+  {
+    id: "mod-lit-13", set: "mod", topic: "literasi",
+    q: "Jenis dis/misinformasi yang tidak bertujuan menyebabkan kerugian, tetapi berpotensi menipu, adalah ...",
+    o: ["Konten rekaan", "Konten yang dimanipulasi", "Satire/parodi", "Konteks yang salah", "Hubungan yang salah"],
+    a: 2,
+    e: "Konten yang dimanipulasi = informasi atau gambar asli dimanipulasi untuk menipu; konten rekaan = 100% palsu untuk menipu dan merugikan.",
+    src: "Modul Cakap Bermedia Digital hlm. 33"
+  },
+  {
+    id: "mod-lit-14", set: "mod", topic: "literasi",
+    q: "Berikut kompetensi yang berkaitan langsung dengan penggunaan aplikasi percakapan, KECUALI ...",
+    o: ["Mengakses", "Menyeleksi", "Memverifikasi", "Mendistribusikan", "Memonetisasi"],
+    a: 4,
+    e: "Tujuh kompetensi: mengakses, menyeleksi, memahami, memverifikasi, memproduksi, mendistribusikan, serta berpartisipasi dan berkolaborasi.",
+    src: "Modul Cakap Bermedia Digital hlm. 45"
+  },
+  {
+    id: "mod-lit-15", set: "mod", topic: "literasi",
+    q: "Untuk melawan kabar bohong di aplikasi percakapan, informasi sebaiknya diverifikasi pada sumber yang valid, antara lain ...",
+    o: ["Mafindo, Cekfakta.com, atau laman resmi media arus utama", "Akun anonim yang paling banyak pengikutnya", "Grup percakapan keluarga", "Kolom komentar unggahan tersebut", "Pesan berantai yang sama dari banyak orang"],
+    a: 0,
+    e: "Langkah lainnya: pahami maksud informasi dengan seleksi dan identifikasi, dan jangan asal menyebarkan pesan tanpa memastikan kebenarannya. Sebelum membagikan: verifikasi, cek fakta, pertimbangkan urgensi dan manfaat.",
+    src: "Modul Cakap Bermedia Digital hlm. 63-64"
+  },
+  {
+    id: "mod-lit-16", set: "mod", topic: "literasi",
+    q: "Produksi konten negatif di ruang digital dapat melanggar ketentuan dalam ...",
+    o: ["UU Pelayanan Publik", "UU Informasi dan Transaksi Elektronik (ITE)", "UU Aparatur Sipil Negara", "UU Keimigrasian", "UU Kearsipan"],
+    a: 1,
+    e: "Modul juga mengingatkan bahwa jejak digital konten negatif sulit dihapus karena hingga kini belum ada cara yang efektif untuk menghapusnya.",
+    src: "Modul Cakap Bermedia Digital hlm. 65"
+  },
+  {
+    id: "mod-lit-17", set: "mod", topic: "literasi",
+    q: "Salah satu tips bertransaksi digital dengan aman adalah ...",
+    o: ["Memakai Wi-Fi publik agar hemat kuota", "Membayar ke rekening pribadi penjual agar lebih cepat", "Membagikan kode OTP kepada kurir", "Memakai marketplace atau lokapasar yang resmi dan terbukti terpercaya", "Menyimpan PIN di catatan ponsel tanpa kunci"],
+    a: 3,
+    e: "Tips lain: bertransaksi dari rumah atau tempat mana pun tanpa Wi-Fi publik, dan membayar ke rekening lokapasar yang resmi atau dengan dompet digital.",
+    src: "Modul Cakap Bermedia Digital hlm. 79"
+  }
+);

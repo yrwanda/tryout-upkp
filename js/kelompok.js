@@ -53,6 +53,11 @@ window.KELOMPOK = [
     { label: "Anggota kehormatan", items: ["Penasihat KORPRI yang ditetapkan DP KORPRI Nasional"] },
     { label: "Anggota biasa", items: ["PNS", "Pegawai BUMN", "Pegawai BUMD", "Pegawai BLU/BLUD", "Pegawai LPP RI", "Aparatur pemerintah desa"] },
     { label: "Anggota luar biasa", items: ["Pensiunan anggota biasa"] }] },
+  { id: "k-hukdis", topic: "kepegawaian", title: "Tingkat hukuman disiplin PNS", pages: "", src: "PP 94/2021 Pasal 9-14", q: "Pelanggaran ini dijatuhi hukuman disiplin tingkat apa?", bins: [
+    { label: "Ringan", items: ["Tidak masuk kerja 3 hari tanpa alasan sah", "Tidak masuk kerja 7 hari tanpa alasan sah"] },
+    { label: "Sedang", items: ["Tidak masuk kerja 12 hari tanpa alasan sah", "Kampanye memakai atribut partai atau atribut PNS", "Pejabat fungsional tidak melaporkan harta kekayaan", "Tidak menghadiri sumpah/janji PNS tanpa alasan sah"] },
+    { label: "Berat", items: ["Menerima hadiah yang berhubungan dengan jabatan", "Menyalahgunakan wewenang", "Kampanye dengan menggunakan fasilitas negara", "Pejabat pimpinan tinggi tidak melaporkan harta kekayaan", "Tidak masuk kerja 10 hari berturut-turut tanpa alasan sah"] }],
+    note: "Pelanggaran yang tingkatnya bergantung pada dampak (unit kerja, instansi, atau negara) tidak dipakai." },
   { id: "k-asas-gg", topic: "gg", title: "Asas pelayanan publik atau karakteristik good governance", pages: "125, 143", q: "Istilah ini ada di daftar yang mana?", note: "Kepastian hukum, akuntabilitas, dan partisipasi ada di kedua daftar, jadi tidak dimunculkan.", bins: [
     { label: "Asas pelayanan publik", items: ["Kepentingan umum", "Kesamaan hak", "Keseimbangan hak dan kewajiban", "Keprofesionalan", "Persamaan perlakuan/tidak diskriminatif", "Keterbukaan", "Fasilitas dan perlakuan khusus bagi kelompok rentan", "Ketepatan waktu", "Kecepatan, kemudahan, dan keterjangkauan"] },
     { label: "Karakteristik good governance", items: ["Transparansi", "Tanggung jawab", "Berorientasi pada kesepakatan", "Keadilan", "Efektivitas dan efisiensi", "Visi strategik"] }] },

@@ -44,6 +44,14 @@ window.DETEKTIF = [
     ["Pohon pada lambang KORPRI memiliki", ["17 ranting, 8 dahan, dan 17 daun", "17 ranting, 8 dahan, dan 45 daun"], "yang melambangkan perjuangan", "sejak proklamasi 17 Agustus 1945."],
     ["Masa jabatan Dewan Pengurus KORPRI", "adalah", ["3 tahun,", "5 tahun,"], "dipilih secara musyawarah,", "dan bersifat kolektif."],
     ["Pensiunan dari anggota biasa", "tercatat sebagai", ["anggota kehormatan KORPRI.", "anggota luar biasa KORPRI."]]] },
+  { id: "d-keg-modul", topic: "kepegawaian", title: "UU ASN dan disiplin PNS", pages: "", src: "UU 20/2023; PP 94/2021; PP 11/2017", items: [
+    ["UU 20/2023 tentang ASN", "diundangkan pada", ["17 Agustus 2023", "31 Oktober 2023"], "dan mencabut", "UU 5/2014."],
+    ["Batas usia pensiun", "pejabat administrator dan pengawas", "adalah", ["60 tahun,", "58 tahun,"], "sedangkan pejabat pimpinan tinggi 60 tahun."],
+    ["PNS yang tidak masuk kerja", "tanpa alasan sah", ["5 hari", "10 hari"], "berturut-turut", "diberhentikan dengan hormat tidak atas permintaan sendiri."],
+    ["PNS yang menerima hadiah", "yang berhubungan dengan jabatan", "dijatuhi hukuman disiplin", ["sedang.", "berat."]],
+    ["Keputusan hukuman disiplin", "berlaku pada", ["hari ke-7", "hari ke-15"], "sejak diterima."],
+    ["Pengembangan kompetensi PNS", "paling sedikit", ["40 jam pelajaran", "20 jam pelajaran"], "dalam satu tahun."],
+    ["Penataan pegawai non-ASN", "wajib selesai", "paling lambat", ["Desember 2025.", "Desember 2024."]]] },
   { id: "d-pelayanan", topic: "gg", title: "Pelayanan publik dan good governance", pages: "122-144", items: [
     ["Pengawas penyelenggaraan pelayanan publik", "adalah", ["Menteri PANRB,", "Ombudsman,"], "sedangkan Menteri PANRB", "merumuskan kebijakan nasionalnya."],
     ["UU 25/2009 memuat", ["9 asas", "12 asas"], "pelayanan publik,", "antara lain kepastian hukum", "dan ketepatan waktu."],

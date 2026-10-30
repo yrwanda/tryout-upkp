@@ -347,3 +347,49 @@ window.BANK.sotk.push(
   }
 );
 
+
+// Bahasa Inggris tambahan: 9 tense dalam cakupan kisi-kisi hal. 165-171. Setiap kalimat hanya punya satu jawaban yang benar;
+// konteks yang di bahasa Inggris Amerika bisa memakai simple past dan present perfect sekaligus sengaja dihindari.
+window.BANK.inggris = window.BANK.inggris || [];
+window.BANK.inggris.push(
+  { id: "bkn-eng-43", set: "bkn", topic: "inggris", q: "The office ... at 8 a.m. every weekday.", o: ["opens", "is opening", "opened", "has opened", "will opening"], a: 0,
+    e: "Jadwal atau kebiasaan tetap (every weekday) memakai simple present: subjek tunggal + verb-s. \"Will opening\" salah bentuk; setelah will harus verb dasar.", src: "Kisi-kisi BKN hal. 166-167 (present tense)" },
+  { id: "bkn-eng-44", set: "bkn", topic: "inggris", q: "Rina usually ... the bus to the office, but today she is driving her own car.", o: ["is taking", "takes", "took", "has taken", "will take"], a: 1,
+    e: "\"Usually\" menandai kebiasaan, jadi simple present (takes). Kontrasnya, kejadian hari ini memakai present continuous (is driving).", src: "Kisi-kisi BKN hal. 166-167 (present tense)" },
+  { id: "bkn-eng-45", set: "bkn", topic: "inggris", q: "Listen! Someone ... at the door.", o: ["knocks", "knocked", "is knocking", "has knocked", "will knock"], a: 2,
+    e: "\"Listen!\" menunjukkan kejadian yang sedang berlangsung saat berbicara, jadi present continuous (is knocking).", src: "Kisi-kisi BKN hal. 166-167 (present tense)" },
+  { id: "bkn-eng-46", set: "bkn", topic: "inggris", q: "They ... each other since they joined the training in 2020.", o: ["know", "knew", "are knowing", "have known", "had known"], a: 3,
+    e: "\"Since\" + titik waktu lampau yang masih berlanjut sampai sekarang memakai present perfect (have known). \"Know\" adalah stative verb, jadi tidak lazim dalam bentuk continuous.", src: "Kisi-kisi BKN hal. 166-167 (present tense)" },
+  { id: "bkn-eng-47", set: "bkn", topic: "inggris", q: "... you ever ... to Kalimantan?", o: ["Do / go", "Are / going", "Will / be", "Had / been", "Have / been"], a: 4,
+    e: "Pertanyaan pengalaman dengan \"ever\" memakai present perfect: Have you ever been to ...?", src: "Kisi-kisi BKN hal. 166-167 (present tense)" },
+  { id: "bkn-eng-48", set: "bkn", topic: "inggris", q: "At this moment, the applicants ... in line in front of the counter.", o: ["are standing", "stand", "stood", "have stood", "will stand"], a: 0,
+    e: "\"At this moment\" menandai kejadian yang sedang berlangsung, jadi present continuous (are standing).", src: "Kisi-kisi BKN hal. 166-167 (present tense)" },
+  { id: "bkn-eng-49", set: "bkn", topic: "inggris", q: "... she work at the immigration office?", o: ["Do", "Does", "Is", "Has", "Are"], a: 1,
+    e: "Kalimat tanya simple present untuk subjek tunggal (she) memakai \"Does\" + verb dasar (work).", src: "Kisi-kisi BKN hal. 166-167 (present tense)" },
+  { id: "bkn-eng-50", set: "bkn", topic: "inggris", q: "He ... like coffee; he prefers tea.", o: ["don't", "isn't", "doesn't", "hasn't", "wasn't"], a: 2,
+    e: "Kalimat negatif simple present untuk subjek tunggal (he) memakai \"doesn't\" + verb dasar (like).", src: "Kisi-kisi BKN hal. 166-167 (present tense)" },
+  { id: "bkn-eng-51", set: "bkn", topic: "inggris", q: "I ... the new regulation yet, so I can't explain it.", o: ["don't read", "wasn't read", "won't read", "haven't read", "hadn't read"], a: 3,
+    e: "\"Yet\" dalam kalimat negatif yang dampaknya terasa sekarang (can't explain) memakai present perfect (haven't read).", src: "Kisi-kisi BKN hal. 166-167 (present tense)" },
+  { id: "bkn-eng-52", set: "bkn", topic: "inggris", q: "Yesterday the immigration officer ... the visa application.", o: ["approves", "has approved", "will approve", "is approving", "approved"], a: 4,
+    e: "Keterangan waktu lampau yang pasti (yesterday) memakai simple past (approved). Present perfect tidak dipakai bersama \"yesterday\".", src: "Kisi-kisi BKN hal. 168-169 (past tense)" },
+  { id: "bkn-eng-53", set: "bkn", topic: "inggris", q: "Two years ago, Andi ... in Surabaya.", o: ["lived", "lives", "has lived", "is living", "will live"], a: 0,
+    e: "\"Two years ago\" adalah waktu lampau yang pasti, jadi simple past (lived).", src: "Kisi-kisi BKN hal. 168-169 (past tense)" },
+  { id: "bkn-eng-54", set: "bkn", topic: "inggris", q: "She ... to the training center every day last month.", o: ["goes", "went", "has gone", "will go", "is going"], a: 1,
+    e: "Kebiasaan yang terjadi pada periode lampau (last month) memakai simple past (went).", src: "Kisi-kisi BKN hal. 168-169 (past tense)" },
+  { id: "bkn-eng-55", set: "bkn", topic: "inggris", q: "Where ... you yesterday? I looked for you everywhere.", o: ["are", "have been", "were", "will be", "was"], a: 2,
+    e: "Simple past to be untuk subjek \"you\" adalah \"were\". \"Was\" hanya untuk I/he/she/it; present perfect tidak dipakai dengan \"yesterday\".", src: "Kisi-kisi BKN hal. 168-169 (past tense)" },
+  { id: "bkn-eng-56", set: "bkn", topic: "inggris", q: "The phone rang while we ... dinner.", o: ["have", "are having", "will have", "were having", "has had"], a: 3,
+    e: "Kegiatan yang sedang berlangsung di masa lampau lalu disela kejadian singkat (rang) memakai past continuous (were having).", src: "Kisi-kisi BKN hal. 168-169 (past tense)" },
+  { id: "bkn-eng-57", set: "bkn", topic: "inggris", q: "When I arrived at the airport, the plane ... already ... off.", o: ["has / taken", "will / take", "is / taking", "did / take", "had / taken"], a: 4,
+    e: "Kejadian yang selesai lebih dulu sebelum kejadian lampau lain (arrived) memakai past perfect: had already taken off.", src: "Kisi-kisi BKN hal. 168-169 (past tense)" },
+  { id: "bkn-eng-58", set: "bkn", topic: "inggris", q: "By the time the manager arrived, we ... the meeting room.", o: ["had prepared", "prepare", "have prepared", "will prepare", "are preparing"], a: 0,
+    e: "\"By the time\" + simple past (arrived) menandai kejadian yang sudah selesai sebelumnya, jadi past perfect (had prepared).", src: "Kisi-kisi BKN hal. 168-169 (past tense)" },
+  { id: "bkn-eng-59", set: "bkn", topic: "inggris", q: "Don't worry about the documents. I ... them to you tomorrow.", o: ["sent", "will send", "have sent", "had sent", "was sending"], a: 1,
+    e: "Janji atau keputusan untuk waktu mendatang (tomorrow) memakai simple future (will send).", src: "Kisi-kisi BKN hal. 170-171 (future tense)" },
+  { id: "bkn-eng-60", set: "bkn", topic: "inggris", q: "This time next week, we ... on the beach in Bali.", o: ["lie", "have lain", "will be lying", "had lain", "lay"], a: 2,
+    e: "Kegiatan yang sedang berlangsung pada titik waktu tertentu di masa depan (this time next week) memakai future continuous (will be lying).", src: "Kisi-kisi BKN hal. 170-171 (future tense)" },
+  { id: "bkn-eng-61", set: "bkn", topic: "inggris", q: "By 2027, the government ... the new immigration system nationwide.", o: ["implements", "implemented", "has implemented", "will have implemented", "had implemented"], a: 3,
+    e: "\"By\" + waktu mendatang menandai kegiatan yang sudah selesai sebelum titik itu, jadi future perfect (will have implemented).", src: "Kisi-kisi BKN hal. 170-171 (future tense)" },
+  { id: "bkn-eng-62", set: "bkn", topic: "inggris", q: "By the time you get to the office, the meeting ... .", o: ["starts", "started", "has started", "had started", "will have started"], a: 4,
+    e: "\"By the time\" + simple present (get) untuk masa depan: kejadian lain sudah selesai sebelum itu, jadi future perfect (will have started).", src: "Kisi-kisi BKN hal. 170-171 (future tense)" }
+);
