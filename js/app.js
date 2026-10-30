@@ -2353,7 +2353,7 @@
     const drawTheme = () => { themeSeg.innerHTML = ""; ["auto", "light", "dark"].forEach(v => themeSeg.appendChild(el("button", { "aria-pressed": state.settings.theme === v ? "true" : "false", onclick: () => { state.settings.theme = v; save(); applyTheme(); renderSideFoot(); drawTheme(); } }, [THEME_LABEL[v]]))); };
     drawTheme();
     const saveBtn = el("button", { class: "btn btn-primary", onclick: () => { state.settings.examDate = date.value; TEST_ORDER.forEach(k => state.settings.thresholds[k] = th[k].value); save(); renderSideFoot(); toast("Pengaturan disimpan"); } }, ["Simpan"]);
-    const counts = TOPICS.map(t => `${t.label} ${pool(t.id).length}`).join(" · ");
+    const counts = TOPICS.filter(inFocus).map(t => `${t.label} ${pool(t.id).length}`).join(" · ");
     const extBox = el("input", { id: "includeExt", type: "checkbox", style: "width:20px;height:20px;margin-top:2px;flex:none", onchange: e => { state.settings.includeExt = e.target.checked; save(); toast(e.target.checked ? "Soal pelengkap disertakan" : "Soal pelengkap disembunyikan"); go("pengaturan"); } });
     extBox.checked = state.settings.includeExt !== false;
     view.append(el("h1", null, ["Pengaturan"]),
