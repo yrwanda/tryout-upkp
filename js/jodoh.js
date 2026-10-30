@@ -113,7 +113,7 @@ window.JODOH = [
   { id: "sejarah-uud", topic: "uud", title: "Sejarah UUD dan lembaga negara", pages: "41-42, 56-57", left: "Istilah", right: "Keterangan", pairs: [
     ["Panitia Sembilan", "Menyusun Piagam Jakarta, 22 Juni 1945"], ["PPKI", "Mengesahkan UUD 1945, 18 Agustus 1945"],
     ["UUD sebelum amandemen", "16 bab, 37 pasal, 65 ayat"], ["Alasan amandemen", "Kekuasaan Presiden terlalu besar, pasal multitafsir"],
-    ["MPR sebelum amandemen", "Di puncak bagan, membawahi DPR, Presiden, DPA, MA, BPK"], ["DPA", "Dihapus setelah amandemen"], ["Lembaga baru setelah amandemen", "DPD, MK, KY"]] },
+    ["MPR sebelum amandemen", "Lembaga tertinggi negara, di atas DPR, Presiden, DPA, MA, BPK"], ["DPA", "Dihapus setelah amandemen"], ["Lembaga baru setelah amandemen", "DPD, MK, KY"]] },
   { id: "presiden-masa", topic: "sejarah", title: "Presiden dan masa jabatan", pages: "60", left: "Presiden", right: "Masa jabatan", pairs: [
     ["Soekarno", "1945-1967 (21 tahun 7 bulan)"], ["Soeharto", "1967-1998 (31 tahun 2 bulan)"], ["B.J. Habibie", "1998-1999 (1 tahun 5 bulan)"],
     ["Abdurrahman Wahid", "1999-2001 (1 tahun 9 bulan)"], ["Megawati Soekarnoputri", "2001-2004 (3 tahun 3 bulan)"], ["Susilo Bambang Yudhoyono", "2004-2014"],
@@ -148,7 +148,7 @@ window.JODOH = [
     ["PER/04/M.PAN/4/2007", "Pedoman formulasi sampai revisi kebijakan publik"], ["UU 24/2011", "BPJS"]] },
   { id: "gg-rb", topic: "gg", title: "Good governance dan reformasi birokrasi", pages: "123-125, 140-144", left: "Istilah", right: "Keterangan", pairs: [
     ["Good governance", "Pemerintahan yang bersih, demokratis, efektif"], ["Partisipasi", "Masyarakat ikut merumuskan kebijakan publik"],
-    ["Perpres 81/2010", "Grand Design Reformasi Birokrasi 2010-2025"], ["Tiga pokok Grand Design RB di kisi-kisi", "Prinsip dasar GG, tujuan RB, sasaran RB"],
+    ["Perpres 81/2010", "Grand Design Reformasi Birokrasi 2010-2025"], ["Tiga pokok materi Grand Design RB", "Prinsip dasar GG, tujuan RB, sasaran RB"],
     ["Pelayanan publik", "Barang, jasa, dan/atau pelayanan administratif"], ["Asas pelayanan publik", "12 asas, antara lain kesamaan hak"],
     ["Karakteristik good governance", "9 karakteristik, antara lain visi strategis"]] },
   { id: "contoh-kebijakan", topic: "kebijakan", title: "Konsep dan contoh kebijakan", pages: "145-149", left: "Istilah/contoh", right: "Keterangan", pairs: [

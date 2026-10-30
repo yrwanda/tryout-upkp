@@ -26,7 +26,7 @@ window.URUT = [
     ["Kabinet Indonesia Maju", "Joko Widodo 2019-2024"], ["Kabinet Merah Putih", "Prabowo Subianto, 48 kementerian"]] },
   { id: "u-berakhlak", topic: "kepegawaian", title: "Urutan nilai BerAKHLAK", pages: "109", dir: "Sesuai urutan huruf BerAKHLAK", items: [
     ["Berorientasi pelayanan", "Ber"], ["Akuntabel", "A"], ["Kompeten", "K"], ["Harmonis", "H"], ["Loyal", "L"], ["Adaptif", "A"], ["Kolaboratif", "K"]] },
-  { id: "u-manajemen-asn", topic: "kepegawaian", title: "Urutan komponen manajemen ASN", pages: "112", dir: "Sesuai urutan nomor di kisi-kisi", items: [
+  { id: "u-manajemen-asn", topic: "kepegawaian", title: "Urutan komponen manajemen ASN", pages: "112", dir: "Sesuai urutan huruf a sampai h di Pasal 31 UU 20/2023", items: [
     ["Perencanaan kebutuhan", "Nomor 1"], ["Pengadaan", "Nomor 2"], ["Penguatan budaya kerja dan citra institusi", "Nomor 3"], ["Pengelolaan kinerja", "Nomor 4"],
     ["Pengembangan talenta dan karier", "Nomor 5"], ["Pengembangan kompetensi", "Nomor 6"], ["Pemberian penghargaan dan pengakuan", "Nomor 7"], ["Pemberhentian", "Nomor 8"]] },
   { id: "u-hukuman", topic: "kepegawaian", title: "Hukuman disiplin dari ringan ke berat", pages: "113", dir: "Dari yang paling ringan", items: [

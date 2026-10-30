@@ -74,7 +74,7 @@ window.TEBAK = [
     { a: "J.D. Mooney dan A. Reiley", c: ["Prinsip koordinasi, skalar, dan fungsional", "Teori administrasi"] },
     { a: "Hugo Munsterberg", c: ["Partisipasi dan manajemen bottom-up", "Teori neo-klasik"] },
     { a: "Abraham Maslow", c: ["Organisasi sebagai satu kesatuan yang saling bergantung", "Teori modern"] },
-    { a: "George R. Terry", c: ["Fungsi actuating (pelaksanaan) pada bagan fungsi manajemen", "Perencanaan, pengorganisasian, penggerakan, pengawasan", "POAC"] },
+    { a: "George R. Terry", c: ["Memasukkan fungsi actuating (penggerakan)", "Perencanaan, pengorganisasian, penggerakan, pengawasan", "POAC"] },
     { a: "Henry Fayol", c: ["Enam kegiatan industri, dari teknikal sampai manajerial", "Fungsi commanding dan coordinating"] },
     { a: "Mintzberg", c: ["Peran antarpribadi, informasi, dan keputusan", "10 peran manajer dalam 3 kategori"] },
     { a: "Harold Koontz dan Cyril O'Donnell", c: ["Manajemen = pencapaian tujuan melalui dan dengan orang lain"] },

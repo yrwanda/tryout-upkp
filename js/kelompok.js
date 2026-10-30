@@ -12,7 +12,7 @@ window.KELOMPOK = [
     { label: "Eksekutif (melaksanakan UU)", items: ["Presiden"] },
     { label: "Yudikatif (mengawasi jalannya UU)", items: ["MA", "MK", "KY"] },
     { label: "Eksaminatif (memeriksa keuangan)", items: ["BPK"] }] },
-  { id: "k-amandemen-lembaga", topic: "uud", title: "Lembaga sebelum dan sesudah amandemen", pages: "56-57", q: "Lembaga ini ada di bagan yang mana?", bins: [
+  { id: "k-amandemen-lembaga", topic: "uud", title: "Lembaga sebelum dan sesudah amandemen", pages: "56-57", q: "Lembaga ini ada pada masa yang mana?", bins: [
     { label: "Ada sebelum dan sesudah", items: ["MPR", "DPR", "Presiden", "MA", "BPK"] },
     { label: "Hanya sebelum amandemen", items: ["DPA"] },
     { label: "Baru setelah amandemen", items: ["DPD", "MK", "KY"] }] },
@@ -45,7 +45,7 @@ window.KELOMPOK = [
   { id: "k-hak-kewajiban", topic: "kepegawaian", title: "Hak atau kewajiban ASN", pages: "111", q: "Ini hak atau kewajiban ASN?", bins: [
     { label: "Hak ASN", items: ["Penghasilan", "Penghargaan yang bersifat motivasi", "Tunjangan dan fasilitas", "Jaminan sosial", "Lingkungan kerja", "Pengembangan diri", "Bantuan hukum"] },
     { label: "Kewajiban ASN", items: ["Setia dan taat pada Pancasila, UUD 1945, NKRI, pemerintah yang sah", "Menjaga persatuan dan kesatuan bangsa", "Menaati peraturan perundang-undangan", "Menunjukkan integritas dan keteladanan", "Menyimpan rahasia jabatan", "Bersedia ditempatkan di seluruh wilayah NKRI"] }] },
-  { id: "k-hukuman", topic: "kepegawaian", title: "Tingkat hukuman disiplin", pages: "113", q: "Hukuman ini termasuk tingkat apa?", note: "Kisi-kisi menulis \"penurunan pangkat\"; PP 94/2021 menyebut penurunan jabatan. Tingkatnya sama: berat.", bins: [
+  { id: "k-hukuman", topic: "kepegawaian", title: "Tingkat hukuman disiplin", pages: "113", q: "Hukuman ini termasuk tingkat apa?", note: "Ada sumber yang menulis \"penurunan pangkat\"; PP 94/2021 menyebut penurunan jabatan. Tingkatnya sama: berat.", bins: [
     { label: "Ringan", items: ["Teguran lisan", "Teguran tertulis", "Pernyataan tidak puas secara tertulis"] },
     { label: "Sedang", items: ["Potong tunjangan kinerja 25% selama 6 bulan", "Potong tunjangan kinerja 25% selama 9 bulan", "Potong tunjangan kinerja 25% selama 12 bulan"] },
     { label: "Berat", items: ["Penurunan jabatan setingkat lebih rendah selama 12 bulan", "Pembebasan dari jabatan menjadi pelaksana selama 12 bulan", "Pemberhentian dengan hormat tidak atas permintaan sendiri"] }] },
@@ -76,7 +76,7 @@ window.KELOMPOK = [
     { label: "Komunikasi tertulis", items: ["Satu arah", "Bahasa lebih terstruktur", "Ada kelonggaran waktu memilih diksi"] }] },
   { id: "k-ragam", topic: "perkantoran", title: "Ragam beku atau ragam resmi", pages: "129-130", q: "Ini contoh atau ciri ragam yang mana?", bins: [
     { label: "Ragam beku", items: ["Pengambilan sumpah", "Akta notaris", "Upacara kenegaraan", "Naskah perjanjian jual beli", "Surat sewa menyewa", "Pola dan kaidahnya tidak boleh diubah"] },
-    { label: "Ragam resmi", items: ["Naskah dinas", "Bahasa baku sesuai kaidah dan PUEBI", "Kalimat lengkap, lugas, dan sopan"] }] },
+    { label: "Ragam resmi", items: ["Naskah dinas", "Bahasa baku sesuai kaidah dan EYD", "Kalimat lengkap, lugas, dan sopan"] }] },
   { id: "k-level-manajemen", topic: "manajemen", title: "Level manajemen", pages: "159", q: "Jabatan ini termasuk level mana?", bins: [
     { label: "Top management", items: ["Kepala institusi", "CEO", "Direktur"] },
     { label: "Middle management", items: ["Manajer cabang", "Kepala pengawas", "Kepala departemen", "Kepala bagian"] },

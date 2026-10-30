@@ -68,7 +68,7 @@ window.DETEKTIF = [
     ["Menurut George R. Terry,", "manajemen adalah proses", "perencanaan, pengorganisasian,", ["pengarahan, serta koordinasi", "penggerakan, serta pengawasan"], "guna mencapai tujuan yang sudah diputuskan."],
     ["Gaya kepemimpinan", ["demokratik", "otokratik"], "bercirikan sentralisasi wewenang,", "sedangkan laissez faire", "bercirikan kendali bebas."],
     ["Teori kepemimpinan", ["situasional", "trait"], "menyatakan pemimpin dilahirkan", "dengan sifat-sifat tertentu."],
-    ["Pada bagan McKinsey 7S,", ["strategy", "shared vision"], "berada di tengah", "sebagai nilai-nilai organisasi."],
+    ["Dalam model McKinsey 7S,", ["strategy", "shared vision"], "berada di tengah", "sebagai nilai-nilai organisasi."],
     ["Mandor, supervisor, dan pengawas lapangan", "termasuk", ["middle management.", "low management."]],
     ["Mintzberg mengidentifikasi", ["7 peran manajer", "10 peran manajer"], "dalam 3 kategori:", "interpersonal, informasional,", "dan pengambil keputusan."],
     ["Teori neo-klasik", "dikemukakan oleh", ["Max Weber,", "Hugo Munsterberg,"], "sedangkan teori modern", "oleh Abraham Maslow."]] },
