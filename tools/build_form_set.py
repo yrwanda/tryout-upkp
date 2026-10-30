@@ -1,3 +1,5 @@
+# PERINGATAN: jangan dijalankan ulang. js/bank/bkn_form.js sudah diedit langsung setelah dibangkitkan
+# (pembahasan tanpa rujukan halaman, koreksi kunci no. 44, pembahasan no. 14). Ubah bkn_form.js secara langsung.
 # Membangun js/bank/bkn_form.js dari data Google Form latihan resmi BKN 2025 (gform.json)
 # Teks soal/opsi dipertahankan; kunci dan pembahasan disusun di sini.
 import json, re, sys

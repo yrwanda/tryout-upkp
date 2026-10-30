@@ -67,7 +67,7 @@ Tambahkan soal ke berkas `js/bank/bkn_*.js` (pola `window.BANK.<topik>.push({...
 2. `node tools/validate.js .` memeriksa struktur, opsi ganda, kuota per topik, dan jawaban benar yang jauh lebih panjang dari pengecoh.
 3. Naikkan `VERSION` di `sw.js` dan `?v=` di `index.html`.
 
-`bkn_form.js` dibangkitkan oleh `python tools/build_form_set.py` dari `tools/gform_bkn_2025.json`.
+`bkn_form.js` awalnya dibangkitkan oleh `python tools/build_form_set.py` dari `tools/gform_bkn_2025.json`, tetapi sesudah itu diedit langsung; jangan jalankan skrip itu lagi karena akan menimpa perbaikan.
 
 ## Sumber
 PPT kisi-kisi PPSS BKN "PPT UDIN & UPKP - IMIPAS" (2025); Google Form latihan resmi BKN 2025 (s.id/LatihanUdinUPKP-Kemenimipas); SE BKN 10/2024. Pelengkap untuk catatan perbedaan dan subtopik yang di kisi-kisi BKN hanya berupa judul: Permenimipas 1/2024, 2/2024, 11/2025; PP 94/2021; PP 18/2016; UU 23/2014; UU 25/2009; UU 9/1998.
