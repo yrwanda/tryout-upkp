@@ -254,6 +254,15 @@ svg.ic { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none
 .prose strong { color: var(--text); font-weight: 700; background: linear-gradient(transparent 62%, var(--primary-soft) 62%); }
 .prose .note { margin: 12px 0; font-family: var(--font-read); }
 .table-wrap { overflow-x: auto; margin: 12px 0; border: 1px solid var(--border); border-radius: 10px; }
+/* bayangan tepi saat tabel bisa digeser ke samping (muncul hanya bila ada isi tersembunyi) */
+.table-wrap {
+  background:
+    linear-gradient(90deg, var(--surface) 40%, transparent) 0 0 / 28px 100% no-repeat local,
+    linear-gradient(270deg, var(--surface) 40%, transparent) 100% 0 / 28px 100% no-repeat local,
+    radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--text) 30%, transparent), transparent) 0 0 / 12px 100% no-repeat scroll,
+    radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--text) 30%, transparent), transparent) 100% 0 / 12px 100% no-repeat scroll;
+  background-color: var(--surface);
+}
 .prose table, .tbl { width: 100%; border-collapse: collapse; font-size: .9rem; }
 .prose th, .prose td, .tbl th, .tbl td { padding: 9px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
 .prose th, .tbl th { background: var(--surface-2); font-family: var(--font-ui); font-size: .78rem; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
@@ -288,6 +297,9 @@ svg.ic { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none
 .options { display: flex; flex-direction: column; gap: 10px; }
 /* kode panjang tanpa spasi (PER/04/M.PAN/4/2007, URL) boleh dipatah agar tidak meluber di HP */
 .prose, .q-text, .opt, .cat-opt, .feedback { overflow-wrap: anywhere; }
+/* di tabel, 'anywhere' membuat kolom menyempit dan memotong kata biasa; biarkan tabel bergulir saja */
+.prose th, .prose td { overflow-wrap: break-word; }
+@media (max-width: 420px) { .prose th, .prose td { padding: 8px 8px; } }
 .opt {
   display: grid; grid-template-columns: 36px minmax(0, 1fr) 22px; gap: 12px; align-items: center; width: 100%;
   min-height: 56px; padding: 10px 14px; text-align: left; border-radius: 14px; border: 1.5px solid var(--border);
