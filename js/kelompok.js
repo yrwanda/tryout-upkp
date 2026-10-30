@@ -65,6 +65,19 @@ window.KELOMPOK = [
     { label: "Budaya digital", items: ["Aktif di media sosial", "Berbelanja online"] },
     { label: "Keterampilan digital", items: ["Memakai Zoom meeting", "Memakai Google Docs dan spreadsheet"] },
     { label: "Keamanan digital", items: ["Memakai password", "Memahami OTP", "Waspada terhadap cybercrime"] }] },
+  { id: "k-arah-imipas", topic: "renstra", title: "Arah kebijakan Kemenimipas 2025-2029", pages: "", src: "Renstra Kemenimipas hlm. 109-110", q: "Strategi ini termasuk arah kebijakan mana?", bins: [
+    { label: "AK 1: penegakan hukum", items: ["Penguatan reintegrasi sosial dan pencegahan pengulangan tindak pidana", "Pembinaan kepribadian warga binaan berlandaskan Pancasila", "Mencegah overstaying lewat prinsip due process of law"] },
+    { label: "AK 2: pelayanan publik", items: ["Meningkatkan aksesibilitas dan kualitas layanan keimigrasian dan pemasyarakatan", "Mengembangkan produk keimigrasian untuk kesejahteraan masyarakat", "Kerja sama antarinstitusi dalam dan luar negeri untuk layanan yang integratif"] },
+    { label: "AK 3: SDM", items: ["Sistem pengembangan karier yang transparan dan terstruktur", "Membentuk dan meningkatkan pendidikan tinggi kedinasan", "Kompetensi SDM sesuai kebutuhan jabatan"] },
+    { label: "AK 4: tata kelola", items: ["Kebijakan dan produk hukum berbasis bukti", "Penyederhanaan birokrasi dan tata kelola", "Penguatan pengawasan intern organisasi", "Kualitas data dan informasi yang dapat diakses publik"] }],
+    note: "Integrasi data dan teknologi tidak dipakai karena muncul di arah kebijakan 2 dan 4 sekaligus." },
+  { id: "k-unit-imipas", topic: "sotk", title: "Unit di bawah tiap eselon I", pages: "", src: "Permenimipas 1/2024 Pasal 12, 78, 117, 235, 348", q: "Unit ini berada di bawah unit eselon I mana?", bins: [
+    { label: "Sekretariat Jenderal", items: ["Biro Perencanaan dan Keuangan", "Biro Hukum dan Kerja Sama", "Biro Barang Milik Negara", "Biro Umum"] },
+    { label: "Inspektorat Jenderal", items: ["Inspektorat Wilayah I", "Inspektorat Wilayah IV"] },
+    { label: "Ditjen Imigrasi", items: ["Direktorat Visa dan Dokumen Perjalanan", "Direktorat Tempat Pemeriksaan Imigrasi", "Direktorat Intelijen Keimigrasian", "Direktorat Kerja Sama Keimigrasian dan Bina Perwakilan"] },
+    { label: "Ditjen PAS", items: ["Direktorat Pelayanan Tahanan dan Anak", "Direktorat Pembimbingan Kemasyarakatan", "Direktorat Pengamanan dan Intelijen", "Direktorat Perawatan Kesehatan dan Rehabilitasi"] },
+    { label: "BPSDM", items: ["Pusat Pelatihan", "Pusat Pengembangan dan Penilaian Kompetensi"] }],
+    note: "Direktorat Kepatuhan Internal tidak dipakai karena ada di Ditjen Imigrasi dan Ditjen Pemasyarakatan." },
   { id: "k-naskah", topic: "perkantoran", title: "Jenis naskah dinas", pages: "132", q: "Naskah ini termasuk jenis apa?", bins: [
     { label: "Arahan: pengaturan", items: ["Peraturan", "Pedoman", "SOP", "Surat edaran"] },
     { label: "Arahan: penetapan", items: ["Keputusan"] },

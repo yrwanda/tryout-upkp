@@ -50,6 +50,12 @@ window.URUT = [
     ["Ideologi Pancasila, demokrasi, HAM", "PN 1"], ["Hankam dan swasembada pangan, energi, air", "PN 2"], ["Infrastruktur dan lapangan kerja berkualitas", "PN 3"],
     ["SDM, sains, pendidikan, kesehatan, olahraga", "PN 4"], ["Hilirisasi dan industri berbasis SDA", "PN 5"], ["Membangun dari desa dan dari bawah", "PN 6"],
     ["Reformasi politik, hukum, birokrasi; berantas korupsi dan narkoba", "PN 7"], ["Harmoni lingkungan, budaya, toleransi beragama", "PN 8"]] },
+  { id: "u-renstra-imipas", topic: "renstra", title: "Dari visi ke strategi Renstra Kemenimipas", pages: "", src: "Renstra Kemenimipas hlm. 78-109", dir: "Dari tingkat paling atas", items: [
+    ["Visi kementerian", "Satu visi, menuju Indonesia Emas 2045"], ["Misi", "Dua misi, sejalan Asta Cita 1 dan 7"], ["Tujuan", "Dua tujuan"],
+    ["Sasaran strategis", "Dua sasaran: Indeks Penegakan Hukum dan Pelayanan, Indeks RB"], ["Arah kebijakan", "Empat arah kebijakan"], ["Strategi", "Turunan setiap arah kebijakan"]] },
+  { id: "u-regulasi-imipas", topic: "sotk", title: "Lahirnya Kemenimipas dan peraturan turunannya", pages: "", src: "Perpres 157/2024; Permenimipas 1/2024, 2/2024, 11/2025", dir: "Dari yang paling awal ditetapkan", items: [
+    ["Perpres tentang Kementerian Imigrasi dan Pemasyarakatan", "5 November 2024"], ["Permenimipas tentang OTK Kementerian", "19 November 2024"],
+    ["Permenimipas tentang OTK Kanwil Ditjen Imigrasi", "20 Desember 2024"], ["Permenimipas tentang Renstra Kemenimipas 2025-2029", "17 September 2025"]] },
   { id: "u-poac", topic: "manajemen", title: "Fungsi manajemen menurut Terry", pages: "157", dir: "Sesuai urutan definisi Terry", items: [
     ["Perencanaan", "Planning"], ["Pengorganisasian", "Organizing"], ["Penggerakan", "Actuating"], ["Pengawasan", "Controlling"]] }
 ];

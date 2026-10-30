@@ -59,6 +59,22 @@ window.TEBAK = [
     { a: "FEW Nexus", c: ["Pendekatan swasembada dalam PN 2", "Pangan, energi, dan air"] },
     { a: "Triple Planetary Crisis", c: ["Isu pada sasaran ekonomi hijau PN 2", "Perubahan iklim, polusi, dan hilangnya keanekaragaman hayati"] },
     { a: "Program hasil terbaik cepat", c: ["Antara lain Badan Penerimaan Negara dan kenaikan gaji ASN", "Delapan program, nomor satu makan siang dan susu gratis"] }] },
+  { id: "t-renstra-imipas", topic: "renstra", title: "Tebak istilah Renstra Kemenimipas", pages: "", src: "Renstra Kemenimipas hlm. 80-115, 142", ask: "Istilah apa yang dimaksud?", items: [
+    { a: "PRIMA", c: ["Landasan bersikap dan fondasi budaya kerja kementerian", "Terdiri atas lima nilai", "Profesional, Responsif, Integritas, Modern, Akuntabel"] },
+    { a: "Pimpasa", c: ["Ditempatkan di desa binaan imigrasi", "Mengedukasi masyarakat untuk mencegah TPPO", "Petugas imigrasi pembina desa"] },
+    { a: "DIPTA", c: ["Bagian strategi modernisasi dan digitalisasi", "Mengintegrasikan data imigrasi dan pemasyarakatan", "Dashboard Imigrasi dan Pemasyarakatan Terpadu"] },
+    { a: "Holding structure", c: ["Unit eselon I teknis punya instansi vertikal sampai wilayah", "Tergambar pada Ditjen Imigrasi dan Ditjen Pemasyarakatan", "Bentuk organisasi Kemenimipas"] },
+    { a: "Indeks Reformasi Birokrasi", c: ["Juga menjadi indikator Tujuan 2", "Mengukur tata kelola yang berintegritas, efektif, dan efisien", "Indikator Sasaran Strategis 2"] },
+    { a: "Lapas Mega Prison", c: ["Keberhasilannya diukur dari terbentuknya lembaga ini", "Dibangun bersama penguatan asimilasi kerja sosial, Pokmas Lipas, dan Bapas", "Salah satu mitigasi overcrowding dan overstaying"] },
+    { a: "Corporate university", c: ["Pegawai bisa belajar dari mana saja dan kapan saja", "Pembelajaran formal, berbasis sosial, dan berbasis pengalaman", "Sistem pembelajaran terintegrasi untuk pengembangan kompetensi"] }] },
+  { id: "t-unit-imipas", topic: "sotk", title: "Tebak unit dan jabatan Kemenimipas", pages: "", src: "Perpres 157/2024; Permenimipas 1/2024", ask: "Unit atau jabatan apa yang dimaksud?", items: [
+    { a: "Inspektorat Jenderal", c: ["Melakukan pengawasan untuk tujuan tertentu atas penugasan Menteri", "Terdiri atas sekretariat dan paling banyak 4 inspektorat", "Menyelenggarakan pengawasan intern di Kementerian"] },
+    { a: "Sekretariat Jenderal", c: ["Pimpinannya mengoordinasikan staf ahli secara administratif", "Terdiri atas paling banyak 5 biro", "Koordinasi pelaksanaan tugas, pembinaan, dan dukungan administrasi"] },
+    { a: "BPSDM", c: ["Terdiri atas sekretariat dan paling banyak 3 pusat", "Memiliki Pusat Pelatihan", "Melaksanakan pengembangan SDM di bidang keimigrasian dan pemasyarakatan"] },
+    { a: "Staf khusus Menteri", c: ["Masa baktinya paling lama sama dengan masa jabatan Menteri", "Hak keuangannya paling tinggi setara eselon I.b", "Paling banyak 5 orang, diangkat Menteri setelah persetujuan Presiden"] },
+    { a: "Wakil Menteri", c: ["Membantu koordinasi kebijakan strategis lintas unit eselon I", "Satu kesatuan unsur pemimpin bersama Menteri", "Diangkat dan diberhentikan oleh Presiden"] },
+    { a: "Pusat Strategi Kebijakan", c: ["Hanya terdiri atas Subbagian Tata Usaha serta kelompok jabatan fungsional", "Diawasi Inspektorat Wilayah I", "Memberi rekomendasi strategi kebijakan imigrasi dan pemasyarakatan"] },
+    { a: "Direktorat Tempat Pemeriksaan Imigrasi", c: ["Salah satu direktorat baru di Ditjen Imigrasi setelah Kemenimipas terbentuk", "Mengelola pemeriksaan keimigrasian di laut, udara, dan darat", "Punya subdirektorat TPI Laut, TPI Udara, dan TPI Darat"] }] },
   { id: "t-bindo", topic: "bindo", title: "Tebak istilah bahasa Indonesia", pages: "84-90", ask: "Istilah apa yang dimaksud?", items: [
     { a: "Paragraf deduktif", c: ["Gagasan pokok muncul lebih dulu", "Kalimat utama di awal paragraf"] },
     { a: "Paragraf induktif", c: ["Gagasan pokok muncul sebagai simpulan", "Kalimat utama di akhir paragraf"] },

@@ -171,6 +171,37 @@ window.JODOH = [
     // tiap baris kiri sengaja beda subjek: game Benar atau Salah menukar pasangan, jadi hasil tukaran harus pasti salah
     ["Laporan pelaksanaan tugas Kakanwil Ditjen Imigrasi", "Disampaikan kepada Dirjen Imigrasi"], ["Tipe Kanwil Ditjen Imigrasi Kalimantan Barat", "Tipe B, Kakanwil eselon II.b"],
     ["Perubahan OTK", "Perlu persetujuan tertulis MenPANRB"], ["Keimigrasian", "Urusan absolut, bukan urusan perangkat daerah"]] },
+  // Set bersumber modul/peraturan (src menggantikan rujukan hal. kisi-kisi). Renstra: RENSTRA.pdf = Permenimipas 11/2025, hlm. = halaman PDF.
+  { id: "imipas-renstra", topic: "renstra", title: "Istilah kunci Renstra Kemenimipas", pages: "", src: "Renstra Kemenimipas hlm. 2, 80-89", left: "Istilah", right: "Keterangan", pairs: [
+    ["PRIMA", "Nilai utama: profesional, responsif, integritas, modern, akuntabel"], ["Guard dan guide", "Dua peran yang dicerminkan logo kementerian"],
+    ["Asta Cita 1 dan 7", "Didukung langsung oleh Kemenimipas"], ["Asta Cita 4 dan 8", "Didukung tidak langsung oleh Kemenimipas"],
+    ["Indeks Penegakan Hukum dan Pelayanan", "Indikator Sasaran Strategis 1"], ["Indeks RB Kemenimipas", "Indikator Sasaran Strategis 2"],
+    ["Permen PANRB 89/2021", "Acuan penyusunan pohon kinerja"], ["Perpres 80/2025", "Acuan penyusunan Renstra dan Renja K/L"],
+    ["KRISNA-RENSTRA", "Sistem informasi data kinerja Renstra"]] },
+  { id: "imipas-strategi", topic: "renstra", title: "Strategi dan inovasi Renstra Kemenimipas", pages: "", src: "Renstra Kemenimipas hlm. 111-117, 142", left: "Istilah", right: "Keterangan", pairs: [
+    ["Pimpasa", "Petugas imigrasi pembina desa, edukasi cegah TPPO"], ["Timpora", "Tim pengawasan orang asing lintas instansi"],
+    ["DIPTA", "Dashboard Imigrasi dan Pemasyarakatan Terpadu"], ["IDP", "Rencana pengembangan kompetensi bagi setiap pegawai"],
+    ["Corporate university", "Sistem pembelajaran terintegrasi untuk pengembangan kompetensi"], ["Evidence-based policy", "Kebijakan dan produk hukum berbasis bukti"],
+    ["UU 63/2024", "Perubahan ketiga UU Keimigrasian"], ["Permenkumham 22/2023", "Visa dan Izin Tinggal, dasar Golden Visa"],
+    ["Holding structure", "Bentuk organisasi Kemenimipas"]] },
+  { id: "imipas-angka", topic: "renstra", title: "Renstra Kemenimipas dalam angka", pages: "", src: "Renstra Kemenimipas hlm. 16-17, 144-148, 192", left: "Angka", right: "Keterangan", pairs: [
+    ["13", "Rumah detensi imigrasi"], ["22", "Pelaksana fungsi keimigrasian di luar negeri"], ["94", "Balai Pemasyarakatan (Bapas)"],
+    ["162", "Rumah Tahanan Negara (Rutan)"], ["337", "Lembaga Pemasyarakatan (Lapas)"], ["250", "Jumlah ideal kantor imigrasi"],
+    ["30", "Kantor imigrasi baru yang dibutuhkan dalam lima tahun"], ["514", "Kebutuhan ideal Lapas, minimal satu per kabupaten/kota"],
+    ["1985", "Ortaker UPT Pemasyarakatan belum diperbarui sejak tahun ini"], ["Rp9,64 triliun", "Pendanaan Ditjen Imigrasi 2025, terbesar di kementerian"]] },
+  { id: "perpres157-batas", topic: "sotk", title: "Batas jumlah unit (Perpres 157/2024)", pages: "", src: "Perpres 157/2024 Pasal 11, 15, 23, 27, 31", left: "Unit", right: "Jumlah", pairs: [
+    ["Biro di Sekretariat Jenderal", "Paling banyak 5"], ["Direktorat di Ditjen Imigrasi", "Paling banyak 8"], ["Inspektorat di Inspektorat Jenderal", "Paling banyak 4"],
+    ["Pusat di BPSDM", "Paling banyak 3"], ["Bidang dalam satu pusat", "Paling banyak 2"]] },
+  { id: "perpres157-pokok", topic: "sotk", title: "Ketentuan pokok Perpres 157/2024", pages: "", src: "Perpres 157/2024 Pasal 3-59", left: "Hal", right: "Ketentuan", pairs: [
+    ["Wakil menteri", "Diangkat dan diberhentikan Presiden, bertanggung jawab kepada Menteri"], ["Staf khusus Menteri", "Paling banyak 5 orang, diangkat Menteri setelah persetujuan Presiden"],
+    ["Hak keuangan staf khusus", "Paling tinggi setara eselon I.b"], ["Pusat di lingkungan kementerian", "Di bawah Menteri melalui Sekretaris Jenderal"],
+    ["Sinergi tugas kementerian", "Dengan kementerian bidang hukum dan bidang HAM"], ["Penataan organisasi eselon II ke bawah", "Peraturan Menteri setelah persetujuan tertulis MenPANRB"],
+    ["Asal tugas Ditjen Imigrasi dan Ditjen PAS", "Dialihkan dari Kementerian Hukum dan HAM"], ["Penetapan Perpres 157/2024", "5 November 2024"]] },
+  { id: "otk-unit", topic: "sotk", title: "Siapa mengerjakan apa (Permenimipas 1/2024)", pages: "", src: "Permenimipas 1/2024 Pasal 39, 63, 96, 107, 177, 347, 375, 378", left: "Unit", right: "Tugas", pairs: [
+    ["Biro Umum", "Ketatausahaan, keprotokolan, dan pengamanan Kementerian"], ["Biro Barang Milik Negara", "Pengelolaan BMN dan pengadaan barang/jasa"],
+    ["Inspektorat Wilayah II", "Mengawasi Sekretariat Jenderal dan DKI Jakarta"], ["Inspektorat Wilayah IV", "Mengawasi Ditjen Pemasyarakatan dan Kalimantan Barat"],
+    ["Direktorat Pengawasan dan Penindakan Keimigrasian", "Termasuk penanganan pengungsi dari luar negeri"], ["BPSDM", "Penilaian dan rekomendasi pengembangan kompetensi"],
+    ["Pusat Data, Informasi, dan Komunikasi Publik", "Membawahi Bidang Komunikasi Publik"], ["Staf Ahli Bidang Hubungan Antar Lembaga", "Isu hubungan luar negeri dan wilayah perbatasan"]] },
   { id: "definisi-ahli", topic: "manajemen", title: "Definisi menurut para ahli", pages: "134-135, 157", left: "Ahli", right: "Definisi", pairs: [
     ["George R. Terry", "Perencanaan, pengorganisasian, penggerakan, pengawasan"], ["Henry Fayol", "Merencanakan, mengorganisasikan, menggerakkan SDM, mengendalikan"],
     ["Harold Koontz dan Cyril O'Donnell", "Mencapai tujuan melalui dan dengan orang lain"], ["John D. Millet", "Pembimbingan dan pemberian fasilitas bagi kelompok formal"],

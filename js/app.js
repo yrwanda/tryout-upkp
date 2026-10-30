@@ -890,6 +890,8 @@
   const JODOH = window.JODOH || [], KELOMPOK = window.KELOMPOK || [], URUT = window.URUT || [], TEBAK = window.TEBAK || [], DETEKTIF = window.DETEKTIF || [];
   const setInScope = x => (state.settings.includeExt !== false || !x.ext) && inFocus(topicById(x.topic));
   const gKey = (x, item) => x.id + "|" + item;
+  // set dari modul/peraturan memakai src; set dari PPT kisi-kisi memakai nomor hal.
+  const gSrc = x => x.src || "Kisi-kisi hal. " + x.pages;
   const gStat = key => (state.jodoh || {})[key];
   const gWeak = st => !!st && st.w > 0 && st.lastW;
   // prioritas: pernah keliru, belum pernah muncul, sisanya acak
@@ -1008,7 +1010,7 @@
           const t = topicById(x.topic), best = (state.jodohBest || {})[x.id], miss = gMissed(g, x);
           return el("button", { class: "jset " + tcOf(t), onclick: () => go(g.id, { set: x.id }) }, [
             el("span", { class: "jset-top" }, [el("span", { class: "mono" }, [MONO[t.id]]), el("span", { class: "jset-t" }, [x.title])]),
-            el("span", { class: "xs muted" }, [`${g.count(x)} · kisi-kisi hal. ${x.pages}`]),
+            el("span", { class: "xs muted" }, [`${g.count(x)} · ${x.src || "kisi-kisi hal. " + x.pages}`]),
             el("span", { class: "row", style: "gap:6px" }, [
               x.ext ? el("span", { class: "chip chip-warn" }, ["Pelengkap"]) : null,
               miss ? el("span", { class: "chip chip-bad" }, [`${miss} pernah keliru`]) : null,
@@ -1023,7 +1025,7 @@
     const t = topicById(x.topic);
     return el("div", { class: "stack", style: "gap:10px" }, [
       el("div", { class: "row between" }, [backBtn("Pilih set", g.id), el("div", { class: "jmeter small muted" }, meter)]),
-      el("div", { class: "row", style: "gap:6px" }, [testChip(t), el("span", { class: "chip chip-page" }, [`Kisi-kisi hal. ${x.pages}`]), x.ext ? el("span", { class: "chip chip-warn" }, ["Pelengkap, di luar isi kisi-kisi"]) : null]),
+      el("div", { class: "row", style: "gap:6px" }, [testChip(t), el("span", { class: "chip chip-page" }, [gSrc(x)]), x.ext ? el("span", { class: "chip chip-warn" }, ["Pelengkap, di luar isi kisi-kisi"]) : null]),
       el("h1", null, [x.title])
     ]);
   }
@@ -1066,7 +1068,7 @@
           el("ul", { class: "jlist" }, o.wrong.map(pr => el("li", null, [el("b", null, [pr[0]]), el("span", { "aria-hidden": "true" }, ["→"]), el("span", null, [pr[1]])])))
         ]) : "",
         o.extra || "",
-        el("p", { class: "xs muted" }, [`Rujukan: PPT kisi-kisi BKN hal. ${x.pages}.`]),
+        el("p", { class: "xs muted" }, [`Rujukan: ${x.src || "PPT kisi-kisi BKN hal. " + x.pages}.`]),
         el("div", { class: "row" }, [
           resumeBtn(),
           el("button", { class: resumeBtn() ? "btn" : "btn btn-primary", onclick: () => go(g.id, { set: x.id }) }, [icon("shuffle"), "Main lagi"]),
@@ -1329,7 +1331,7 @@
         wl.length ? el("div", { class: "stack", style: "gap:8px" }, [
           el("h2", null, ["Pasangan yang benar untuk jawaban yang keliru"]),
           el("p", { class: "small muted" }, ["Pasangan ini akan lebih sering muncul, juga di Jodohkan."]),
-          el("ul", { class: "jlist" }, wl.map(w => el("li", null, [el("b", null, [w.o.p[0]]), el("span", { "aria-hidden": "true" }, ["→"]), el("span", null, [w.o.p[1], el("span", { class: "udet" }, [`${w.o.x.title}, hal. ${w.o.x.pages}`])])])))
+          el("ul", { class: "jlist" }, wl.map(w => el("li", null, [el("b", null, [w.o.p[0]]), el("span", { "aria-hidden": "true" }, ["→"]), el("span", null, [w.o.p[1], el("span", { class: "udet" }, [`${w.o.x.title}, ${w.o.x.src || "hal. " + w.o.x.pages}`])])])))
         ]) : "",
         el("div", { class: "row" }, [
           resumeBtn(),

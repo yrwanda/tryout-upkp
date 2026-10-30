@@ -64,6 +64,22 @@ window.DETEKTIF = [
     ["Tingkat literasi digital Indonesia 62%,", ["tertinggi", "terendah"], "se-ASEAN,", "di bawah rata-rata ASEAN 70%."],
     ["PN 6 RPJMN 2025-2029 adalah", ["hilirisasi dan industri berbasis SDA,", "membangun dari desa dan dari bawah,"], "antara lain untuk mengurangi kemiskinan."],
     ["Kontribusi PDB maritim", "hanya mencapai", ["17,93%", "7,93%"], "pada 2022."]] },
+  { id: "d-renstra-imipas", topic: "renstra", title: "Renstra Kemenimipas 2025-2029", pages: "", src: "Renstra Kemenimipas hlm. 1-3, 80-89, 144-147, 192", items: [
+    ["Renstra Kemenimipas 2025-2029", "ditetapkan dengan", ["Permenimipas 1/2024", "Permenimipas 11/2025"], "dan disusun sesuai", "Perpres 80/2025."],
+    ["Kemenimipas mendukung langsung", ["Asta Cita 1 dan 4,", "Asta Cita 1 dan 7,"], "sedangkan Asta Cita 4 dan 8", "didukung secara tidak langsung."],
+    ["Nilai utama PRIMA", "terdiri atas profesional, responsif, integritas,", ["mandiri, dan akuntabel.", "modern, dan akuntabel."]],
+    ["Sasaran Strategis 2", "diukur dengan", ["Indeks Penegakan Hukum dan Pelayanan,", "Indeks Reformasi Birokrasi Kemenimipas,"], "dan bersama SS 1 dipetakan", "ke empat perspektif balanced scorecard."],
+    ["Jumlah kantor imigrasi ideal", "adalah 250 unit,", "sehingga dibutuhkan", ["50 kantor imigrasi baru", "30 kantor imigrasi baru"], "dalam lima tahun."],
+    ["Ortaker UPT Pemasyarakatan", "belum diperbarui sejak", ["1995,", "1985,"], "sehingga perlu diselaraskan dengan UU 22/2022", "dan KUHP baru."],
+    ["Pada 2025, pendanaan terbesar", "ada di", ["Ditjen Pemasyarakatan,", "Ditjen Imigrasi,"], "sekitar Rp9,64 triliun."]] },
+  { id: "d-sotk-imipas", topic: "sotk", title: "Perpres 157/2024 dan Permenimipas 1/2024", pages: "", src: "Perpres 157/2024; Permenimipas 1/2024", items: [
+    ["Perpres 157/2024", "ditetapkan pada", ["20 Oktober 2024,", "5 November 2024,"], "lalu OTK kementerian diatur dengan", "Permenimipas 1/2024."],
+    ["Ditjen Imigrasi terdiri atas sekretariat", "dan paling banyak", ["10 direktorat;", "8 direktorat;"], "tiap direktorat paling banyak", "4 subdirektorat."],
+    ["Staf khusus Menteri", "paling banyak", ["3 orang", "5 orang"], "dan diangkat Menteri", "setelah mendapat persetujuan Presiden."],
+    ["Inspektorat Wilayah IV", "mengawasi", ["Direktorat Jenderal Imigrasi", "Direktorat Jenderal Pemasyarakatan"], "serta kanwil dan UPT", "di Kalimantan Barat."],
+    ["Penataan organisasi eselon II ke bawah", "ditetapkan dengan", ["Peraturan Presiden", "Peraturan Menteri"], "setelah persetujuan tertulis", "menteri PANRB."],
+    ["Pusat Data, Informasi, dan Komunikasi Publik", "berada di bawah Menteri", ["melalui Inspektur Jenderal.", "melalui Sekretaris Jenderal."]],
+    ["Selain APBN, tugas keimigrasian", "dapat didanai", ["pinjaman luar negeri", "sumber lain yang sah dan tidak mengikat"], "sesuai peraturan perundang-undangan."]] },
   { id: "d-manajemen", topic: "manajemen", title: "Manajemen dan kepemimpinan", pages: "154-164", items: [
     ["Menurut George R. Terry,", "manajemen adalah proses", "perencanaan, pengorganisasian,", ["pengarahan, serta koordinasi", "penggerakan, serta pengawasan"], "guna mencapai tujuan yang sudah diputuskan."],
     ["Gaya kepemimpinan", ["demokratik", "otokratik"], "bercirikan sentralisasi wewenang,", "sedangkan laissez faire", "bercirikan kendali bebas."],
