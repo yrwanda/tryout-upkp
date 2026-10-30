@@ -1359,3 +1359,21 @@ body.cat-on .sheet .eyebrow, body.cat-on .sheet .cat-sec { color: #52606D; }
 .qr-box { width: min(260px, 78vw); margin: 0 auto; padding: 10px; background: #fff; border-radius: 12px; border: 1px solid var(--border); }
 .qr-box svg { display: block; width: 100%; height: auto; }
 .share-steps { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+
+/* ---------- Belajar per bagian, rencana, hari H, perkiraan nilai akhir ---------- */
+.learn { display: flex; flex-direction: column; gap: 18px; }
+.learn-head { display: flex; flex-direction: column; gap: 8px; }
+.learn-steps { display: flex; flex-wrap: wrap; gap: 6px; }
+.learn-dot { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--border); background: var(--surface); color: var(--muted); font-weight: 700; font-size: .82rem; font-variant-numeric: tabular-nums; }
+.learn-dot.done { background: var(--ok-soft); border-color: var(--ok); color: var(--ok); }
+.learn-dot.cur { outline: 2px solid var(--primary); outline-offset: 2px; color: var(--text); }
+.learn-quiz { border-top: 1px dashed var(--border); padding-top: 14px; }
+.learn-q { box-shadow: none; }
+.plan-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.plan-step { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); }
+.plan-step.done { opacity: .75; }
+.plan-step .ob-num { flex: none; }
+.hari-h { border-left: 4px solid var(--warn, #c98a12); }
+.hh-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
+.final-est { padding: 14px 16px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
+@media (max-width: 560px) { .plan-step { flex-wrap: wrap; } .plan-step .btn { margin-left: 36px; } }

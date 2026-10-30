@@ -357,17 +357,17 @@ Struktur Organisasi dan Tata Kerja: **tugas, kedudukan, fungsi perangkat daerah/
 ## Cakupan kisi-kisi BKN (hal. 165-171)
 Present, past, dan future tense, masing-masing dengan latihan soal.
 
-## Present
+## Present (hal. 166-167)
 - **Simple present**: kebiasaan (She **reads** the newspaper every morning).
 - **Present continuous**: sedang terjadi (Right now, I **am looking**...; Look at the window, **is it raining**?).
 - **Present perfect**: sejak/selama sampai sekarang (We **have been** here since seven o'clock).
 
-## Past
+## Past (hal. 168-169)
 - **Simple past**: waktu lampau pasti (I **went** to bed early yesterday).
 - **Past continuous** + simple past: While I **was doing** my homework, my mother got home.
 - **Past perfect**: kejadian lebih dulu di masa lampau (I had finished my work before I **played**...; the train **had gone**; she **had learned** about them).
 
-## Future
+## Future (hal. 170-171)
 - **Simple future**: I **will get** home at eight tonight; The game **will start** next month.
 - **Future continuous**: sedang berlangsung pada saat tertentu nanti (She **will be watching** K-drama when you eat dinner).
 - **Future perfect**: sudah selesai sebelum titik tertentu (By the time I finish..., my mother **will have finished** cooking).
@@ -387,6 +387,7 @@ Present, past, dan future tense, masing-masing dengan latihan soal.
   perkantoran: `
 ## Cakupan (hal. 126)
 Aturan penulisan surat dinas, jenis naskah dinas, alat pengiriman surel (naskah dinas, surat elektronik, surat dinas).
+> Pengumuman Sekjen 27 Oktober 2026 menyebut perkantoran dalam deskripsi Tes Kompetensi Teknis. Namun tabel komposisi PPT kisi-kisi hal. 6 hanya memberi Perkantoran 10 soal untuk UPKP lulusan SMP/SMA. Untuk UPKP D3-S2 (termasuk S1), TKT terdiri atas Peraturan Kepegawaian, Pelayanan Publik, Good Governance, dan Kebijakan Publik.
 
 ## Komunikasi (hal. 127-128)
 - Proses pengalihan informasi; penerima memberi arti. Unsur menurut kisi-kisi: **who, what, to whom, how, in what effect** (dikenal sebagai rumusan Lasswell; nama ini tidak disebut di kisi-kisi).

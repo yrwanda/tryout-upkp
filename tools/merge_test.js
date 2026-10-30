@@ -1,7 +1,7 @@
 const fs = require("fs");
 const src = fs.readFileSync(require("path").join(__dirname, "../js/app.js"), "utf8");
 const cut = (a, b) => { const i = src.indexOf(a), j = src.indexOf(b, i); if (i < 0 || j < 0) throw new Error("marker " + a); return src.slice(i, j); };
-const code = cut("  const defaults = () =>", "  const store = {") + cut("  const BAD_KEYS", "  function load()") + cut("  function mergeState", "  const syncStatusText") + "\nmodule.exports = { sanitize, mergeState };";
+const code = cut("  const OFFICIAL_TH", "  const KEY =") + cut("  const defaults = () =>", "  const store = {") + cut("  const BAD_KEYS", "  function load()") + cut("  function mergeState", "  const syncStatusText") + "\nmodule.exports = { sanitize, mergeState };";
 fs.writeFileSync(require("path").join(require("os").tmpdir(), "upkp_merge_mod.js"), code);
 const { sanitize, mergeState } = require(require("path").join(require("os").tmpdir(), "upkp_merge_mod.js"));
 let fail = 0; const ok = (c, m) => { if (!c) { fail++; console.log("GAGAL:", m); } else console.log("ok  ", m); };
