@@ -321,7 +321,7 @@ window.BANK.renstra.push(
     o: ["UU Nomor 17 Tahun 2007", "UU Nomor 25 Tahun 2004", "UU Nomor 59 Tahun 2024", "Perpres Nomor 12 Tahun 2025", "Perpres Nomor 18 Tahun 2020"],
     a: 2,
     e: "RPJPN 2025-2045 ditetapkan dengan UU 59/2024. RPJMN 2025-2029 (Perpres 12/2025) adalah tahap pertama implementasinya, berfokus pada perkuatan fondasi transformasi. UU 17/2007 adalah RPJPN 2005-2025, UU 25/2004 tentang Sistem Perencanaan Pembangunan Nasional.",
-    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 6"
+    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 6 (halaman PDF; nomor tercetak 2)"
   },
   {
     id: "mod-rst-02", set: "mod", topic: "renstra",
@@ -329,7 +329,7 @@ window.BANK.renstra.push(
     o: ["5,3 persen", "6,3 persen", "7,0 persen", "8,0 persen", "9,0 persen"],
     a: 3,
     e: "Pertumbuhan ekonomi ditargetkan naik dari 5,3% (2025) menjadi 6,3% (2026), 7,5% (2027), 7,7% (2028), dan 8,0% (2029).",
-    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 18"
+    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 18 (halaman PDF; nomor tercetak 14)"
   },
   {
     id: "mod-rst-03", set: "mod", topic: "renstra",
@@ -337,7 +337,7 @@ window.BANK.renstra.push(
     o: ["Pertumbuhan tinggi berkelanjutan, penurunan kemiskinan, dan peningkatan kualitas SDM", "Hilirisasi, digitalisasi, dan dekarbonisasi", "Investasi, ekspor, dan konsumsi", "Pangan, energi, dan air", "Deregulasi, debirokratisasi, dan desentralisasi"],
     a: 0,
     e: "Pertumbuhan ekonomi menciptakan sumber daya untuk mengatasi kemiskinan, sedangkan modal manusia berkualitas mendorong pertumbuhan yang berkelanjutan dan inklusif. Pengungkit utamanya deregulasi perizinan serta kebijakan fiskal dan moneter pro-growth.",
-    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 18"
+    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 18 (halaman PDF; nomor tercetak 14)"
   },
   {
     id: "mod-rst-04", set: "mod", topic: "renstra",
@@ -345,7 +345,7 @@ window.BANK.renstra.push(
     o: ["USD 5.000", "USD 12.500", "USD 23.000", "USD 30.300", "USD 50.000"],
     a: 3,
     e: "Sasaran utama Visi Indonesia Emas 2045 antara lain GNI per kapita USD 30.300 (setara negara maju), kontribusi PDB maritim 15%, kontribusi PDB manufaktur 28%, tingkat kemiskinan 0,5-0,8%, rasio Gini 0,290-0,320, dan Indeks Modal Manusia 0,73.",
-    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 6"
+    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 6 (halaman PDF; nomor tercetak 2)"
   },
   {
     id: "mod-rst-05", set: "mod", topic: "renstra",
@@ -353,15 +353,15 @@ window.BANK.renstra.push(
     o: ["0 persen", "0,5-1 persen", "1,47 persen", "4,5-5,0 persen", "7,0-8,0 persen"],
     a: 0,
     e: "Indikator Prioritas Nasional: tingkat kemiskinan ekstrem dari baseline 1,47% ditargetkan 0,5-1% pada 2025 dan 0% pada 2029. Tingkat kemiskinan dari 9,03% ditargetkan 7,0-8,0% (2025) dan 4,5-5,0% (2029).",
-    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 45"
+    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 45 (halaman PDF; nomor tercetak 41)"
   },
   {
     id: "mod-rst-06", set: "mod", topic: "renstra",
     q: "Dalam sasaran utama Visi Indonesia Emas 2045, target kontribusi PDB maritim adalah ...",
     o: ["7,93 persen", "10 persen", "15 persen", "28 persen", "30 persen"],
     a: 2,
-    e: "Kontribusi PDB maritim ditargetkan 15% pada 2045 (kondisi 2022 baru 7,93%), sedangkan kontribusi PDB manufaktur ditargetkan 28%.",
-    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 6"
+    e: "Kontribusi PDB maritim ditargetkan 15% pada 2045 (menurut kisi-kisi BKN, kondisi 2022 baru 7,93%), sedangkan kontribusi PDB manufaktur ditargetkan 28%.",
+    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 6 (halaman PDF; nomor tercetak 2)"
   },
   {
     id: "mod-rst-07", set: "mod", topic: "renstra",
@@ -369,7 +369,7 @@ window.BANK.renstra.push(
     o: ["Perkuatan fondasi transformasi menuju Indonesia Emas 2045", "Pemantapan swasembada pangan", "Pemulihan ekonomi pascapandemi", "Percepatan pembangunan infrastruktur dasar", "Pencapaian negara berpendapatan tinggi"],
     a: 0,
     e: "RPJMN 2025-2029 berfokus pada perkuatan fondasi transformasi menuju Indonesia Emas 2045 dan disusun dengan mengintegrasikan kebijakan RPJPN dengan visi, misi, dan program Presiden (\"Bersama Indonesia Maju, Menuju Indonesia Emas 2045\").",
-    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 6-8"
+    src: "Modul Ringkasan RPJMN 2025-2029 hlm. 6-8 (halaman PDF; nomor tercetak 2-4)"
   }
 );
 
@@ -680,7 +680,7 @@ window.BANK.bindo.push(
     q: "Kita mengatakan \"hari raya\" dan \"jaksa agung\", bukan \"hari agung\" atau \"jaksa raya\", meskipun raya dan agung bersinonim. Hal ini berkaitan dengan syarat diksi ...",
     o: ["Lazim", "Saksama", "Populer", "Ilmiah", "Konotatif"],
     a: 1,
-    e: "Modul memberi contoh syarat saksama: besar, agung, akbar, raya, dan tinggi bersinonim, tetapi hanya pasangan tertentu yang dipakai (hari raya, hari besar, jaksa agung). Syarat lazim dicontohkan dengan \"anjing makan\", bukan \"anjing bersantap\".",
+    e: "Modul memberi contoh syarat saksama (modul menulis \"seksama\"; bentuk baku KBBI adalah \"saksama\"): besar, agung, akbar, raya, dan tinggi bersinonim, tetapi hanya pasangan tertentu yang dipakai (hari raya, hari besar, jaksa agung). Syarat lazim dicontohkan dengan \"anjing makan\", bukan \"anjing bersantap\".",
     src: "Modul Bahasa Indonesia hlm. 40"
   },
   {
@@ -1152,7 +1152,7 @@ window.BANK.sejarah.push(
     q: "Pidato pembelaan Mohammad Hatta di pengadilan Belanda tahun 1928 berjudul ...",
     o: ["Indonesia Menggugat", "Mencapai Indonesia Merdeka", "Indonesia Vrij", "Ke Arah Indonesia Merdeka", "Penemuan Kembali Revolusi Kita"],
     a: 2,
-    e: "Hatta, Nazir Pamuntjak, Abdul Madjid, dan Ali Sastroamidjojo ditangkap dan diadili Maret 1928. Hatta membacakan pembelaan berjudul \"Indonesia Vrij\". Kesalahan mereka tidak terbukti sehingga dibebaskan. \"Indonesia Menggugat\" adalah pembelaan Soekarno tahun 1930.",
+    e: "Hatta, Nazir Pamuntjak, Abdul Madjid, dan Ali Sastroamidjojo ditangkap dan diadili Maret 1928. Hatta membacakan pembelaan berjudul \"Indonesia Vrij\" (modul menulis \"Indonesia Vry\"). Kesalahan mereka tidak terbukti sehingga dibebaskan. \"Indonesia Menggugat\" adalah pembelaan Soekarno tahun 1930.",
     src: "Modul Sejarah Indonesia hlm. 11"
   },
   {
@@ -1326,10 +1326,10 @@ window.BANK.sejarah.push(
   {
     id: "mod-sej-30", set: "mod", topic: "sejarah",
     q: "Kedatangan pasukan Sekutu (AFNEI) ke Indonesia memicu pertempuran karena ...",
-    o: ["Sekutu menolak melucuti tentara Jepang", "Sekutu ingin membentuk negara persemakmuran", "Sekutu menyerang Yogyakarta", "Kedatangan Sekutu diboncengi NICA yang ingin menegakkan kembali kekuasaan Belanda", "Sekutu mengakui PDRI"],
+    o: ["Sekutu menolak melucuti tentara Jepang", "Sekutu ingin membentuk negara persemakmuran", "Sekutu menyerang Yogyakarta", "Kedatangan Sekutu diboncengi NICA, padahal Belanda ingin menjajah kembali", "Sekutu mengakui PDRI"],
     a: 3,
     e: "AFNEI dibentuk SEAC (Laksamana Mountbatten) untuk melucuti dan memulangkan tentara Jepang serta membebaskan tawanan perang. Ketegangan timbul setelah diketahui kedatangan pasukan Inggris diboncengi NICA (Netherlands Indies Civil Administration).",
-    src: "Modul Sejarah Indonesia hlm. 25"
+    src: "Modul Sejarah Indonesia hlm. 24-26"
   },
   {
     id: "mod-sej-31", set: "mod", topic: "sejarah",
@@ -1398,9 +1398,9 @@ window.BANK.sejarah.push(
   {
     id: "mod-sej-39", set: "mod", topic: "sejarah",
     q: "Bantuan beras kepada India yang sedang dilanda kelaparan pada masa awal kemerdekaan lebih bersifat politik, yaitu ...",
-    o: ["Memenuhi kewajiban yang ditetapkan dalam Persetujuan Renville", "Membayar sebagian utang Hindia Belanda yang ditanggung Republik", "Memperoleh pinjaman dari Exim Bank untuk membangun prasarana", "Membalas dukungan India terhadap Indonesia dalam Konferensi Asia Afrika", "Menembus blokade dan menolak menjual surplus beras ke daerah pendudukan Belanda"],
+    o: ["Memenuhi kewajiban yang ditetapkan dalam Persetujuan Renville", "Membayar sebagian utang Hindia Belanda yang ditanggung Republik", "Memperoleh pinjaman dari Exim Bank untuk membangun prasarana", "Membalas dukungan India terhadap Indonesia dalam Konferensi Asia Afrika", "Membantu negara sahabat daripada menjual surplus beras ke daerah pendudukan Belanda"],
     a: 4,
-    e: "Persetujuan Linggarjati mengharuskan RI menjual surplus beras ke daerah pendudukan Belanda. Pemerintah memilih membantu India yang membalas dengan bahan pakaian, sekaligus menembus blokade ekonomi Belanda.",
+    e: "Persetujuan Linggarjati mengharuskan RI menjual surplus beras ke daerah pendudukan Belanda. Pemerintah menganggap lebih menguntungkan menjual beras kepada negara sahabat daripada membantu Belanda. India membalas dengan mengirim bahan pakaian.",
     src: "Modul Sejarah Indonesia hlm. 33"
   },
   {
@@ -1494,7 +1494,7 @@ window.BANK.sejarah.push(
   {
     id: "mod-sej-51", set: "mod", topic: "sejarah",
     q: "Program Benteng yang dimulai April 1950 bertujuan untuk ...",
-    o: ["Menumbuhkan pengusaha nasional pribumi melalui bantuan kredit", "Membangun benteng pertahanan di perbatasan", "Menasionalisasi perusahaan Belanda", "Memotong nilai uang untuk menekan inflasi", "Mendatangkan modal asing"],
+    o: ["Menumbuhkan pengusaha bangsa Indonesia lewat bantuan kredit", "Membangun benteng pertahanan di perbatasan", "Menasionalisasi perusahaan Belanda", "Memotong nilai uang untuk menekan inflasi", "Mendatangkan modal asing"],
     a: 0,
     e: "Program Benteng berasal dari gagasan Prof. Dr. Soemitro Djojohadikusumo dan dijalankan Kabinet Natsir. Selama 1950-1953 sekitar 700 perusahaan bangsa Indonesia mendapat kredit dari program ini.",
     src: "Modul Sejarah Indonesia hlm. 54"
@@ -1625,7 +1625,7 @@ window.BANK.sejarah.push(
     o: ["Resopim", "Tahun Vivere Pericoloso", "Penemuan Kembali Revolusi Kita", "Jasmerah", "Nawaksara"],
     a: 4,
     e: "Nawaksara berarti sembilan pasal. MPRS menilainya tidak memenuhi harapan karena tidak jelas memuat kebijakan Presiden tentang G30S dan epilognya. Pelengkap Nawaksara (10 Januari 1967) juga ditolak DPRGR. Jasmerah adalah pidato 17 Agustus 1966.",
-    src: "Modul Sejarah Indonesia hlm. 76, 78"
+    src: "Modul Sejarah Indonesia hlm. 76-78"
   },
   {
     id: "mod-sej-68", set: "mod", topic: "sejarah",

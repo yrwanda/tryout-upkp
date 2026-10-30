@@ -477,6 +477,7 @@ UU 25/2004 SPPN: **RPJP Nasional 20 tahun** → dijabarkan **RPJM Nasional 5 tah
 Kisi-kisi BKN hanya mencantumkan subtopik: **visi dan misi, permasalahan, tujuan dan sasaran strategis, indikator kinerja, sistematika Renstra**.
 > Pelengkap (sumber primer, karena kisi-kisi BKN hanya berupa judul): Renstra Kemenimipas 2025-2029 ditetapkan Permenimipas 11/2025. Sistematika Renstra K/L: Bab I Pendahuluan; II Visi, Misi, Tujuan, Sasaran Strategis; III Arah Kebijakan, Strategi, Kerangka Regulasi dan Kelembagaan; IV Target Kinerja dan Kerangka Pendanaan; V Penutup.
 ## Modul: Ringkasan RPJMN 2025-2029 (modul hlm. 6-45)
+> Nomor hlm. adalah halaman PDF. Nomor yang tercetak di buku lebih kecil 4 (hlm. PDF 18 = halaman 14 di buku).
 - RPJPN 2025-2045 ditetapkan dengan **UU 59/2024**; RPJMN 2025-2029 (Perpres 12/2025) adalah tahap I dengan fokus **perkuatan fondasi transformasi**.
 - Sasaran Visi Indonesia Emas 2045: GNI per kapita **USD 30.300**, kontribusi PDB maritim **15%**, manufaktur 28%, kemiskinan 0,5-0,8%, rasio Gini 0,290-0,320, Indeks Modal Manusia 0,73.
 - Pertumbuhan ekonomi 5,3% (2025) menjadi **8,0% (2029)**. Tiga ujung tombak: pertumbuhan tinggi, penurunan kemiskinan, peningkatan kualitas SDM; pengungkit: deregulasi perizinan dan kebijakan fiskal-moneter pro-growth.
