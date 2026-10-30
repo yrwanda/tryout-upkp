@@ -67,16 +67,10 @@
   const icon = (name, label) => { const s = document.createElementNS("http://www.w3.org/2000/svg", "svg"); s.setAttribute("viewBox", "0 0 24 24"); s.setAttribute("class", "ic"); s.setAttribute("aria-hidden", label ? "false" : "true"); if (label) s.setAttribute("aria-label", label); s.innerHTML = ICONS[name] || ""; return s; };
 
   // ---------- Penyimpanan ----------
-  // Pengumuman Sekjen Kemenimipas SEK-SA.02.05-4929 (27 Oktober 2026): ambang UPKP, nilai akhir = CAT 60% + makalah 40% (minimal 80),
-  // jadwal dan lokasi per Kanwil, serta tata tertib.
+  // Pengumuman Sekjen Kemenimipas SEK-SA.02.05-4929 (27 Oktober 2026): ambang CAT UPKP, jadwal dan lokasi per Kanwil, tata tertib.
   const OFFICIAL_TH = { TWK: 100, TKT: 75, TSI: 75, TKP: 35 };
   const ANN = "Pengumuman Sekjen Kemenimipas Nomor SEK-SA.02.05-4929 tanggal 27 Oktober 2026";
   const KALBAR = { date: "2026-11-25", day: "Rabu, 25 November 2026", place: "UPT BKN Pontianak", addr: "Jl. Achmad Sood No. 25, Pontianak (bekas Gedung Dukcapil Provinsi Kalimantan Barat)" };
-  const FINAL_MIN = 80;
-  // perkiraan: pengumuman tidak memuat rumus konversi nilai CAT; dipakai pola Ujian Dinas Tk. II di PPT kisi-kisi hal. 7
-  // (nilai CAT dibagi nilai maksimalnya menjadi skala 100), lalu 60% CAT + 40% makalah
-  const makalahNeeded = (cat, max) => (FINAL_MIN - 0.6 * (cat / max * 100)) / 0.4;
-  const catNeeded = (makalah, max) => Math.ceil((FINAL_MIN - 0.4 * makalah) / 0.6 / 100 * max);
   const KEY = "upkp-app-v1", EXAM_KEY = "upkp-exam-v2";
   const defaults = () => ({ settings: { examDate: "", durationMin: 90, thresholds: { TWK: "100", TKT: "75", TSI: "75", TKP: "35" }, thOfficial: 1, theme: "auto", includeExt: true }, stats: {}, history: [], bookmarks: [], days: {}, doubts: {}, lastExport: 0, exportSnooze: 0 });
   const store = {
@@ -618,13 +612,13 @@
       ])]),
       el("div", { class: "row" }, [el("button", { class: "btn btn-sm", onclick: () => nav("materi", { topic: rec.t.id }) }, ["Baca materi"]), el("button", { class: "btn btn-sm btn-primary", onclick: () => startDrill(pickFrom([rec.t.id], 15, "unseen"), rec.t.label) }, ["Latih 15 soal"])])
     ]));
-    // perkiraan skor CAT per jenis tes, dibandingkan dengan ambang resmi dan target nilai akhir 80
+    // perkiraan skor CAT per jenis tes, dibandingkan dengan ambang resmi
     const est = estRows(), estTotal = est.reduce((a, r) => a + r.score, 0), estMax = est.reduce((a, r) => a + r.max, 0);
     view.append(el("section", { class: "panel stack", style: "gap:12px" }, [
       el("div", { class: "sec-head" }, [el("h2", null, ["Perkiraan skor CAT"]), el("span", { class: "small muted" }, ["Dari jawaban terakhir tiap soal. Garis tipis di bar adalah ambang resmi."])]),
       o.done < 20 ? el("p", { class: "small muted" }, ["Perkiraan muncul setelah sekitar 20 soal dijawab. Mulai dari sesi harian atau mode Belajar di Materi."]) : scoreBars(est),
-      o.done < 20 ? null : el("p", { class: "small" }, [el("b", null, [`Total sekitar ${estTotal}/${estMax}.`]), ` Agar nilai akhir mencapai 80, CAT perlu sekitar ${catNeeded(80, estMax)} bila makalah bernilai 80, atau ${catNeeded(90, estMax)} bila makalah 90. Setiap jenis tes juga harus lewat ambangnya.`]),
-      el("p", { class: "xs muted" }, ["Ambang resmi: TWK 100, TKT 75, TSI 75, TKP 35 (" + ANN + "). Nilai akhir minimal 80 dari CAT (bobot 60%) dan makalah (bobot 40%); konversinya perkiraan."])
+      o.done < 20 ? null : el("p", { class: "small" }, [el("b", null, [`Total sekitar ${estTotal}/${estMax}.`]), ` Lulus CAT berarti setiap jenis tes lewat ambangnya, jadi kejar jenis tes yang barnya paling jauh dari garis.`]),
+      el("p", { class: "xs muted" }, ["Ambang resmi: TWK 100, TKT 75, TSI 75, TKP 35 (" + ANN + ")."])
     ]));
     view.append(el("div", { class: "sec-head" }, [el("h2", null, ["Penguasaan per topik"]), legend()]));
     const groups = {}; TOPICS.filter(inFocus).forEach(t => (groups[t.test] = groups[t.test] || []).push(t));
@@ -869,19 +863,7 @@
       return { key: k, label: TESTS[k].label, tc: "tc" + TESTS[k].color, n, correct, score: correct * 5, max: n * 5, th: state.settings.thresholds[k] };
     });
   }
-  function finalPanel(score, max, rows) {
-    const scaled = score / max * 100, part = .6 * scaled, need = makalahNeeded(score, max);
-    const fails = rows.filter(x => x.th !== "" && x.th !== null && x.th !== undefined && x.score < Number(x.th));
-    const r1 = n => (Math.round(n * 10) / 10).toLocaleString("id-ID");
-    const msg = need > 100 ? `Walau makalah bernilai 100, nilai akhir paling tinggi ${r1(part + 40)}, di bawah 80. Nilai CAT perlu minimal sekitar ${catNeeded(100, max)} dari ${max}.`
-      : need <= 0 ? "Porsi CAT saja sudah mencapai 80." : `Agar nilai akhir mencapai 80, makalah perlu minimal ${Math.ceil(need)}.`;
-    return el("div", { class: "final-est stack", style: "gap:8px" }, [
-      el("h3", null, ["Perkiraan nilai akhir UPKP"]),
-      el("p", { class: "small" }, [`Nilai CAT ${score}/${max} = ${r1(scaled)} dalam skala 100, menyumbang ${r1(part)} poin (bobot 60%). Makalah berbobot 40%. `, el("b", null, [msg])]),
-      el("p", { class: "small" }, [fails.length ? `Selain nilai akhir, setiap jenis tes harus lewat ambangnya. Masih di bawah ambang: ${fails.map(x => x.label).join(", ")}.` : "Semua jenis tes sudah lewat ambang resmi."]),
-      el("p", { class: "xs muted" }, [ANN + " menetapkan bobot CAT 60%, makalah 40%, dan nilai akhir minimal 80, tanpa rumus konversi nilai CAT. Perkiraan ini memakai pola Ujian Dinas Tk. II di PPT kisi-kisi hal. 7: nilai CAT dibagi nilai maksimalnya menjadi skala 100."])
-    ]);
-  }
+
 
 
   // ---------- Selingan: mini game ----------
@@ -2281,7 +2263,6 @@
           el("div", { class: "stack", style: "gap:6px" }, [el("div", { class: "score-big" }, [String(r.total.score), el("small", null, [` / ${r.total.max}`])]), el("span", { class: "muted num" }, [`${r.total.correct} dari ${r.total.n} benar · ${pct(r.total.score, r.total.max)}%`])]),
           scoreBars(rows)
         ]),
-        ex.mode !== "form" ? finalPanel(r.total.score, r.total.max, rows) : null,
         el("div", { class: "row" }, [
           el("button", { class: "btn btn-primary", onclick: () => { exam = null; go("simulasi"); } }, ["Simulasi baru"]),
           wrong.length ? el("button", { class: "btn", onclick: () => { exam = null; startDrill(shuffle(wrong), "Soal salah/kosong dari simulasi"); } }, [`Latih ${wrong.length} soal salah/kosong`]) : null,

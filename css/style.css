@@ -1375,5 +1375,4 @@ body.cat-on .sheet .eyebrow, body.cat-on .sheet .cat-sec { color: #52606D; }
 .plan-step .ob-num { flex: none; }
 .hari-h { border-left: 4px solid var(--warn, #c98a12); }
 .hh-list { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 4px; }
-.final-est { padding: 14px 16px; border-radius: 12px; background: var(--surface-2); border: 1px solid var(--border); }
 @media (max-width: 560px) { .plan-step { flex-wrap: wrap; } .plan-step .btn { margin-left: 36px; } }

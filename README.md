@@ -45,12 +45,12 @@ Simulasi bergaya CAT BKN (mengikuti pemberitaan Kompas 2019 dan Liputan6 2022 te
 - Batasan yang tersisa: origin `yrwanda.github.io` dipakai bersama semua repo GitHub Pages milik akun ini (localStorage ikut terbagi); GitHub Pages tidak bisa mengirim header keamanan seperti `frame-ancestors`.
 
 ## Fokus UPKP S1 dan metode belajar
-- Sumber aturan ujian: Pengumuman Sekjen Kemenimipas SEK-SA.02.05-4929 (27 Oktober 2026). Ambang UPKP: TWK 100, TKT 75, TSI 75, TKP 35 (diisi otomatis sekali, tetap bisa diubah). Nilai akhir = CAT 60% + makalah 40%, minimal 80. Kanwil Kalbar: Rabu 25 November 2026, UPT BKN Pontianak.
-- Konversi nilai CAT ke skala 100 tidak tertulis di pengumuman; aplikasi memakai pola Ujian Dinas Tk. II (PPT kisi-kisi hal. 7) dan selalu memberi label "perkiraan".
+- Sumber aturan ujian: Pengumuman Sekjen Kemenimipas SEK-SA.02.05-4929 (27 Oktober 2026). Ambang CAT UPKP: TWK 100, TKT 75, TSI 75, TKP 35 (diisi otomatis sekali, tetap bisa diubah). Kanwil Kalbar: Rabu 25 November 2026, UPT BKN Pontianak.
+- Aplikasi hanya menyiapkan ujian CAT; komponen makalah sengaja tidak dibahas.
 - Perkantoran dan Manajemen disembunyikan (bukan materi UPKP D3-S2 menurut PPT kisi-kisi hal. 6); bisa dimunculkan di Pengaturan.
 - Materi > mode **Belajar**: tiap bagian (judul `##` di `js/materi.js`) dibaca lalu langsung diuji 3 soal yang halaman kisi-kisinya sama (cadangan: nomor pasal SOTK, kata kunci tebal, soal resmi). Bagian selesai dicatat di `state.learned` dan ikut tersinkron.
 - Beranda > **Rencana hari ini** menurut sisa hari: Fase 1 (> H-14) pahami materi 2 bagian/hari + sesi harian + simulasi tiap 5 hari; Fase 2 (H-14 s.d. H-4) simulasi tiap 3 hari; Fase 3 (H-3 s.d. H-1) hanya ulang soal yang salah. Kartu persiapan hari H muncul mulai H-7.
-- Beranda > **Perkiraan skor CAT** per jenis tes dari jawaban terakhir tiap soal, dibandingkan ambang resmi dan target nilai akhir 80.
+- Beranda > **Perkiraan skor CAT** per jenis tes dari jawaban terakhir tiap soal, dibandingkan ambang resmi.
 
 ## Sinkron antarperangkat
 - Pengaturan > Sinkron antarperangkat. Perangkat pertama membuat kode sinkron acak (24 karakter, 120 bit); perangkat lain memasukkan kode yang sama. Tanpa akun.
