@@ -163,6 +163,7 @@ svg.ic { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none
   color: var(--muted); font-weight: 700; font-size: .88rem;
 }
 .seg button[aria-pressed="true"] { background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+@media (max-width: 520px) { .seg button { padding: 6px 10px; flex: 1 1 auto; } }
 .field { display: flex; flex-direction: column; gap: 6px; }
 .field > label, .label { font-size: .82rem; font-weight: 700; color: var(--muted); }
 .input {
@@ -285,6 +286,8 @@ svg.ic { width: 20px; height: 20px; flex: none; stroke: currentColor; fill: none
 .q-meta { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .q-text { font-family: var(--font-read); font-size: 1.14rem; line-height: 1.6; font-weight: 700; white-space: pre-line; }
 .options { display: flex; flex-direction: column; gap: 10px; }
+/* kode panjang tanpa spasi (PER/04/M.PAN/4/2007, URL) boleh dipatah agar tidak meluber di HP */
+.prose, .q-text, .opt, .cat-opt, .feedback { overflow-wrap: anywhere; }
 .opt {
   display: grid; grid-template-columns: 36px minmax(0, 1fr) 22px; gap: 12px; align-items: center; width: 100%;
   min-height: 56px; padding: 10px 14px; text-align: left; border-radius: 14px; border: 1.5px solid var(--border);
@@ -342,7 +345,7 @@ details.more summary { cursor: pointer; font-weight: 700; color: var(--muted); m
 .timer { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 10px; background: var(--surface-2); font-weight: 800; font-variant-numeric: tabular-nums; font-size: 1.05rem; }
 .timer.low { background: var(--bad-soft); color: var(--bad); }
 .exam-layout { display: grid; grid-template-columns: minmax(0, 1fr) 272px; gap: 20px; align-items: start; }
-.navpanel { position: sticky; top: 84px; display: flex; flex-direction: column; gap: 12px; padding: 16px; max-height: calc(100vh - 110px); overflow-y: auto; }
+.navpanel { position: sticky; top: 84px; display: flex; flex-direction: column; gap: 12px; padding: 16px; max-height: calc(100vh - 110px); max-height: calc(100dvh - 110px); overflow-y: auto; overscroll-behavior: contain; }
 .navgrid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
 .navgrid button {
   min-height: 38px; border-radius: 9px; border: 1.5px solid var(--border); background: var(--surface);
@@ -357,7 +360,7 @@ details.more summary { cursor: pointer; font-weight: 700; color: var(--muted); m
 .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 4px; margin-right: 5px; vertical-align: -2px; border: 1.5px solid var(--border); }
 .sheet-bg { position: fixed; inset: 0; z-index: 60; background: rgba(0, 0, 0, .45); display: flex; align-items: flex-end; justify-content: center; animation: fade .2s var(--ease); }
 .sheet {
-  width: 100%; max-width: 560px; max-height: 80vh; overflow-y: auto; background: var(--surface); border-radius: 20px 20px 0 0;
+  width: 100%; max-width: 560px; max-height: 80vh; max-height: 80dvh; overflow-y: auto; overscroll-behavior: contain; background: var(--surface); border-radius: 20px 20px 0 0;
   padding: 10px 18px calc(18px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 12px; animation: slide .25s var(--ease);
 }
 .sheet .grab { width: 42px; height: 5px; border-radius: 99px; background: var(--surface-3); margin: 4px auto 6px; }
@@ -445,6 +448,7 @@ details.more summary { cursor: pointer; font-weight: 700; color: var(--muted); m
   .score-hero { grid-template-columns: minmax(0, 1fr); gap: 16px; }
   .bar-row { grid-template-columns: minmax(0, 1fr) auto; }
   .bar-row .bar-track { grid-column: 1 / -1; grid-row: 2; }
+  .bar-score { flex-direction: column; align-items: flex-end; gap: 4px !important; }
   .q-card { padding: 18px; }
   .q-text { font-size: 1.06rem; }
   .kbd-hint { display: none; }
@@ -516,6 +520,14 @@ p, li { text-wrap: pretty; }
   .cloze-bar > .row { flex-wrap: nowrap; }
   .cloze-bar .btn-sm { padding: 6px 8px; }
 }
+@media (max-width: 360px) {
+  .topbar .brand { gap: 8px; padding: 0; }
+  .topbar .brand-mark { width: 32px; height: 32px; }
+  .topbar .brand > div { min-width: 0; }
+  .topbar .brand strong { font-size: .92rem; overflow: hidden; text-overflow: ellipsis; }
+  .topbar .icon-btn { width: 36px; }
+  #installBtn { padding: 6px 8px; }
+}
 
 /* ---------- Jodohkan (selingan) ---------- */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
@@ -582,7 +594,7 @@ p, li { text-wrap: pretty; }
 @keyframes jpop { 0% { transform: scale(.96); } 60% { transform: scale(1.02); } 100% { transform: none; } }
 
 /* ---------- Selingan: menu dan tiga game tambahan ---------- */
-.game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+.game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 12px; }
 .game-card {
   display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; text-align: left;
   padding: 16px; border-radius: var(--r); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow);
@@ -1261,7 +1273,7 @@ body.cat-on .view { max-width: 1280px; padding: 0; gap: 0; }
 .cat-listbtn .ic { width: 16px; height: 16px; }
 .cat-exit { color: var(--muted); }
 .cat-main { flex: 1; display: grid; grid-template-columns: 264px minmax(0, 1fr); gap: 14px; padding: 14px 18px 18px; align-items: start; }
-.cat-side { position: sticky; top: 14px; background: #FFFFFF; border: 1px solid var(--border); border-radius: 8px; padding: 12px; max-height: calc(100vh - 28px); overflow: auto; }
+.cat-side { position: sticky; top: 14px; background: #FFFFFF; border: 1px solid var(--border); border-radius: 8px; padding: 12px; max-height: calc(100vh - 28px); max-height: calc(100dvh - 28px); overflow: auto; overscroll-behavior: contain; }
 .cat-side-h { font-weight: 800; font-size: .9rem; margin-bottom: 8px; }
 .cat-gridwrap { display: flex; flex-direction: column; gap: 8px; }
 .cat-sec { font-size: .72rem; font-weight: 800; letter-spacing: .08em; color: var(--muted); margin-top: 4px; }

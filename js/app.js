@@ -1854,7 +1854,7 @@
     if (drill && drill.active) return drill.i >= drill.qs.length ? renderDrillSummary() : renderDrillQ();
     if (arg && arg.topics) pickSel = new Set(arg.topics);
     const avail = () => { let l = [...pickSel].flatMap(pool); if (pickSrc === "form" || pickSrc === "mod") l = l.filter(q => q.set === pickSrc); else if (pickSrc === "kisi") l = l.filter(q => q.set === "bkn"); return l.length; };
-    const startBtn = el("button", { class: "btn btn-primary", onclick: () => { if (!pickSel.size) return toast("Pilih minimal satu topik."); startDrill(pickFrom([...pickSel], pickCount, pickOrder, pickSrc), [...pickSel].map(id => topicById(id).label).join(", ")); } });
+    const startBtn = el("button", { class: "btn btn-primary", onclick: () => { if (!pickSel.size) return toast("Pilih minimal satu topik."); startDrill(pickFrom([...pickSel], pickCount, pickOrder, pickSrc), pickSel.size > 2 ? `Latihan ${pickSel.size} topik` : [...pickSel].map(id => topicById(id).label).join(", ")); } });
     const refresh = () => { const a = avail(); startBtn.textContent = pickSel.size ? `Mulai ${Math.min(a, pickCount)} soal` : "Pilih topik dulu"; startBtn.disabled = !pickSel.size || !a; };
     const groups = {}; TOPICS.filter(inFocus).forEach(t => (groups[t.test] = groups[t.test] || []).push(t));
     const picker = el("div", { class: "picker" }, Object.keys(groups).map(k => el("div", { class: "pick-group" }, [
@@ -2251,7 +2251,7 @@
       return el("div", { class: "bar-row " + r.tc }, [
         el("div", null, [el("div", { style: "font-weight:700;font-size:.92rem" }, [r.label]), el("div", { class: "xs muted num" }, [`${r.correct}/${r.n} benar`])]),
         el("div", { class: "bar-track", role: "img", "aria-label": `${r.label}: skor ${r.score} dari ${r.max}` }, [el("i", { style: `width:${pct(r.score, r.max)}%` }), th !== null ? el("span", { class: "th", style: `left:${Math.min(100, pct(th, r.max))}%`, title: `Ambang ${th}` }) : null]),
-        el("div", { class: "row", style: "gap:8px;justify-content:flex-end" }, [el("b", { class: "num" }, [`${r.score}/${r.max}`]), pass === null ? null : el("span", { class: "chip " + (pass ? "chip-ok" : "chip-bad") }, [icon(pass ? "check" : "x"), pass ? `Lewat ambang ${th}` : `Di bawah ambang ${th}`])])
+        el("div", { class: "row bar-score", style: "gap:8px;justify-content:flex-end" }, [el("b", { class: "num" }, [`${r.score}/${r.max}`]), pass === null ? null : el("span", { class: "chip " + (pass ? "chip-ok" : "chip-bad") }, [icon(pass ? "check" : "x"), pass ? `Lewat ambang ${th}` : `Di bawah ambang ${th}`])])
       ]);
     }));
   }
