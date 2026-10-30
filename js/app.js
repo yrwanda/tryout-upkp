@@ -1233,7 +1233,8 @@
 
   // Benar atau Salah: 60 detik, pernyataan dibentuk dari pasangan Jodohkan (asli atau ditukar dengan pasangan lain di set yang sama)
   let kilatScope = "all";
-  const kilatSets = () => JODOH.filter(setInScope).filter(x => x.pairs.length >= 3 && (kilatScope === "all" || topicById(x.topic).test === kilatScope));
+  // noKilat: set yang pasangannya saling beririsan (tukaran bisa tetap benar), cukup dimainkan di Jodohkan
+  const kilatSets = () => JODOH.filter(setInScope).filter(x => !x.noKilat && x.pairs.length >= 3 && (kilatScope === "all" || topicById(x.topic).test === kilatScope));
   function renderKilat(arg) { return arg && arg.play ? kilatPlay() : kilatMenu(); }
   function kilatMenu() {
     const all = JODOH.filter(setInScope), tests = TEST_ORDER.concat(["EKSTRA"]).filter(k => all.some(x => topicById(x.topic).test === k));

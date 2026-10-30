@@ -67,7 +67,7 @@ window.JODOH = [
     ["Implementasi", "Melaksanakan kebijakan yang diambil"], ["Evaluasi", "Menilai sejauh mana masalah terpecahkan"], ["Kebijakan makro", "UUD, UU, PP, Perppu"],
     ["Kebijakan meso", "Peraturan Menteri, SKB antarmenteri"], ["Kebijakan mikro", "Peraturan gubernur, bupati, wali kota"]] },
   { id: "perencanaan", topic: "renstra", title: "Dokumen perencanaan", pages: "93, 150", left: "Dokumen", right: "Ciri", pairs: [
-    ["RPJP Nasional", "20 tahun"], ["RPJM Nasional", "5 tahun, pedoman Renstra K/L"], ["RKP", "1 tahun, dasar penyusunan APBN"], ["Renja K/L", "1 tahun, penjabaran Renstra K/L"],
+    ["RPJP Nasional", "20 tahun"], ["RPJM Nasional", "5 tahun, pedoman Renstra K/L"], ["RKP", "1 tahun, penjabaran RPJM Nasional"], ["Renja K/L", "1 tahun, penjabaran Renstra K/L"],
     ["UU 25/2004", "Sistem Perencanaan Pembangunan Nasional"]] },
   { id: "prioritas-nasional", topic: "renstra", title: "Prioritas Nasional RPJMN 2025-2029", pages: "97-101", left: "PN", right: "Isi", pairs: [
     ["PN 1", "Ideologi Pancasila, demokrasi, HAM"], ["PN 2", "Hankam dan swasembada pangan, energi, air"], ["PN 3", "Infrastruktur dan lapangan kerja berkualitas"],
@@ -155,7 +155,7 @@ window.JODOH = [
     ["HET minyak goreng", "Peraturan Menteri Perdagangan"], ["PPKM", "Instruksi Menteri Dalam Negeri"], ["Jaminan Kesehatan Nasional", "Kartu BPJS Kesehatan"],
     ["Nugroho (2006)", "Tingkatan kebijakan makro, meso, mikro"], ["Mustari (2015)", "Prinsip atau cara bertindak untuk mengarahkan keputusan"],
     ["Kebijakan publik", "Tindakan pemerintah yang berorientasi kepentingan publik"]] },
-  { id: "kerangka-rpjmn", topic: "renstra", title: "Kerangka RPJMN 2025-2029", pages: "92-96, 103-105", left: "Istilah", right: "Keterangan", pairs: [
+  { id: "kerangka-rpjmn", topic: "renstra", noKilat: true, title: "Kerangka RPJMN 2025-2029", pages: "92-96, 103-105", left: "Istilah", right: "Keterangan", pairs: [
     ["Visi RPJMN 2025-2029", "Bersama Indonesia Maju Menuju Indonesia Emas 2045"], ["Arah pembangunan", "Direncanakan dan dianggarkan"],
     ["Strategi kewilayahan", "Menyatukan arah pembangunan pusat dan daerah"], ["Tata kelola pelaksanaan", "Dikendalikan pelaksanaannya"],
     ["Asta Cita", "Sama dengan 8 Prioritas Nasional"], ["Program prioritas", "17 program, antara lain berantas korupsi dan narkoba"],
@@ -168,8 +168,9 @@ window.JODOH = [
     ["40%", "TPA yang masih open dumping"], ["12,7 juta ha", "Hutan dan lahan kritis"]] },
   { id: "otk-imipas", topic: "sotk", title: "OTK dan tata kerja Kemenimipas", pages: "151 (subtopik)", ext: true, left: "Istilah", right: "Ketentuan", pairs: [
     ["Sesjen, Dirjen, Irjen, Kepala Badan, Staf Ahli", "Diangkat Presiden atas usul Menteri"], ["JPT pratama (eselon II)", "Diangkat Menteri atas usul Dirjen"],
-    ["Kakanwil Ditjen Imigrasi", "Melaporkan pelaksanaan tugas kepada Dirjen Imigrasi"], ["Kanwil Ditjen Imigrasi", "Instansi vertikal di provinsi"],
-    ["Kanwil Kalimantan Barat", "Tipe B"], ["Perubahan OTK", "Perlu persetujuan tertulis MenPANRB"], ["Keimigrasian", "Urusan absolut, bukan urusan perangkat daerah"]] },
+    // tiap baris kiri sengaja beda subjek: game Benar atau Salah menukar pasangan, jadi hasil tukaran harus pasti salah
+    ["Laporan pelaksanaan tugas Kakanwil Ditjen Imigrasi", "Disampaikan kepada Dirjen Imigrasi"], ["Tipe Kanwil Ditjen Imigrasi Kalimantan Barat", "Tipe B, Kakanwil eselon II.b"],
+    ["Perubahan OTK", "Perlu persetujuan tertulis MenPANRB"], ["Keimigrasian", "Urusan absolut, bukan urusan perangkat daerah"]] },
   { id: "definisi-ahli", topic: "manajemen", title: "Definisi menurut para ahli", pages: "134-135, 157", left: "Ahli", right: "Definisi", pairs: [
     ["George R. Terry", "Perencanaan, pengorganisasian, penggerakan, pengawasan"], ["Henry Fayol", "Merencanakan, mengorganisasikan, menggerakkan SDM, mengendalikan"],
     ["Harold Koontz dan Cyril O'Donnell", "Mencapai tujuan melalui dan dengan orang lain"], ["John D. Millet", "Pembimbingan dan pemberian fasilitas bagi kelompok formal"],
