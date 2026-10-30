@@ -439,7 +439,7 @@
   function srcTag(q) {
     if (q.set === "form") return el("span", { class: "row", style: "gap:6px" }, [el("span", { class: "stamp" }, [icon("award"), `Soal resmi BKN · no. ${parseInt(q.id.split("-")[1], 10)}`]), el("span", { class: "chip chip-warn", title: "BKN tidak menerbitkan kunci; kunci disusun aplikasi" }, ["kunci disusun AI"])]);
     if (q.set === "ext") return el("span", { class: "chip chip-warn", title: "Isi soal diambil dari luar PPT kisi-kisi" }, ["Pelengkap · di luar isi kisi-kisi"]);
-    if (q.set === "mod") { const mm = (q.src || "").match(/hlm\.\s*([\d][\d\s\-–,]*)/); return el("span", { class: "chip chip-page", title: q.src }, [mm ? `Modul hlm. ${mm[1].trim().replace(/[,\s]+$/, "")}` : q.src || "Dari modul"]); }
+    if (q.set === "mod") { const mm = (q.src || "").match(/hlm\.\s*([\d][\d\s\-–,]*)/); return el("span", { class: "chip chip-page", title: q.src }, [mm ? `${/Renstra Kemenimipas/.test(q.src) ? "Renstra" : "Modul"} hlm. ${mm[1].trim().replace(/[,\s]+$/, "")}` : q.src || "Dari modul"]); }
     const m = (q.src || "").match(/hal\.\s*([\d][\d\s\-–,]*)/);
     return el("span", { class: "chip chip-page" }, [m ? `Kisi-kisi hal. ${m[1].trim().replace(/[,\s]+$/, "")}` : "Dari kisi-kisi"]);
   }
@@ -717,6 +717,10 @@
       m[1].split(/,|dan/).forEach(x => { const r = x.trim().split(/[-–]/).map(Number); if (r[0]) for (let i = r[0]; i <= (r[1] || r[0]); i++) out.add(i); });
     return out;
   };
+  // "Permenimipas No. 1 Tahun 2024" disamakan dengan "Permenimipas 1/2024" agar cocok dengan judul bagian materi
+  const normLaw = s => String(s || "").replace(/\b(UU|PP|Perpres|Permenimipas|Permen PANRB)\s+(?:No\.|Nomor)\s*(\d+)\s+Tahun\s+(\d{4})/g, "$1 $2/$3");
+  // topik Renstra punya dua modul bernomor halaman sendiri; halaman hanya dicocokkan dalam dokumen yang sama
+  const modDoc = s => (String(s || "").match(/Renstra Kemenimipas|RPJMN/) || [""])[0];
   const secCache = {};
   function sections(tid) {
     if (secCache[tid]) return secCache[tid];
@@ -725,7 +729,7 @@
       const pasal = [], pm = full.match(/Pasal (\d+)(?:-(\d+))?/);
       if (pm) for (let i = +pm[1]; i <= +(pm[2] || pm[1]); i++) pasal.push(i);
       const keys = [...body.matchAll(/\*\*([^*]+)\*\*/g)].map(x => x[1].toLowerCase().trim()).filter(k => k.length >= 4).slice(0, 15);
-      return { full, title: full.replace(/\s*\([^()]*(?:hal|hlm)\.[^()]*\)\s*$/, ""), body, pages: srcPages(full), mpages: srcPages(full, "hlm"), pasal, keys, isMod: /^Modul:/.test(full), law: (full.match(/(?:UU|PP|Perpres|Permen PANRB) \d+\/\d{4}/) || [""])[0] };
+      return { full, title: full.replace(/\s*\([^()]*(?:hal|hlm)\.[^()]*\)\s*$/, ""), body, pages: srcPages(full), mpages: srcPages(full, "hlm"), pasal, keys, isMod: /^Modul:/.test(full), law: (full.match(/(?:UU|PP|Perpres|Permenimipas|Permen PANRB) \d+\/\d{4}/) || [""])[0] };
     });
   }
   const learnKey = (tid, i) => tid + "#" + i;
@@ -743,8 +747,8 @@
       if (sec.pages.size && pg.size && [...pg].some(x => sec.pages.has(x))) return [...pg].every(x => sec.pages.has(x)) ? 3 : 2;
       // bagian ringkasan modul ("modul hlm.") hanya dicocokkan dengan soal modul
       const mp = q.set === "mod" ? srcPages(q.src, "hlm") : null;
-      if (sec.mpages.size && mp && [...mp].some(x => sec.mpages.has(x))) return [...mp].every(x => sec.mpages.has(x)) ? 3 : 2;
-      if (sec.pasal.length && (!sec.law || q.src.includes(sec.law))) { const ps = srcPasal(q.src); if (sec.pasal.some(x => ps.has(x))) return 3; }
+      if (sec.mpages.size && mp && modDoc(sec.full) === modDoc(q.src) && [...mp].some(x => sec.mpages.has(x))) return [...mp].every(x => sec.mpages.has(x)) ? 3 : 2;
+      if (sec.pasal.length && (!sec.law || normLaw(q.src).includes(sec.law))) { const ps = srcPasal(q.src); if (sec.pasal.some(x => ps.has(x))) return 3; }
       const txt = (q.q + " " + q.o[q.a]).toLowerCase();
       return sec.keys.some(k => txt.includes(k)) ? 1 : 0;
     };

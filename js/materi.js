@@ -490,6 +490,37 @@ Kisi-kisi BKN hanya mencantumkan subtopik: **visi dan misi, permasalahan, tujuan
 - Sasaran Visi Indonesia Emas 2045: GNI per kapita **USD 30.300**, kontribusi PDB maritim **15%**, manufaktur 28%, kemiskinan 0,5-0,8%, rasio Gini 0,290-0,320, Indeks Modal Manusia 0,73.
 - Pertumbuhan ekonomi 5,3% (2025) menjadi **8,0% (2029)**. Tiga ujung tombak: pertumbuhan tinggi, penurunan kemiskinan, peningkatan kualitas SDM; pengungkit: deregulasi perizinan dan kebijakan fiskal-moneter pro-growth.
 - Kemiskinan ekstrem 1,47% menjadi **0% pada 2029**; tingkat kemiskinan 9,03% menjadi 4,5-5,0%.
+
+## Modul: Renstra Kemenimipas 2025-2029, dasar dan kondisi umum (modul hlm. 1-77)
+> Nomor hlm. adalah halaman PDF dokumen Permenimipas 11/2025 beserta lampirannya. Nomor tercetak = hlm. PDF + 1.
+- Ditetapkan dengan **Permenimipas 11/2025** (17 September 2025), disusun sesuai **Perpres 80/2025** tentang Penyusunan Renstra dan Renja K/L. Pasal 2: memuat visi, misi, tujuan, sasaran strategis; arah kebijakan, strategi, kerangka regulasi dan kelembagaan; target kinerja dan kerangka pendanaan. Pasal 3: data kinerja di **KRISNA-RENSTRA** tidak terpisahkan dari dokumen.
+- Kemenimipas lahir dari **Perpres 157/2024**: suburusan imigrasi dan pemasyarakatan dipisahkan dari Kemenkumham. Susunan: 5 unit eselon I, 3 staf ahli, 2 pusat.
+- Sebaran Ditjen Imigrasi: 33 kanwil, 133 kantor imigrasi, **13 rumah detensi**, 96 TPI laut, 37 TPI udara, 16 PLBN, 40 PLB tradisional, **22 pelaksana fungsi keimigrasian di luar negeri**.
+- Sebaran Ditjen PAS: 33 kanwil, 337 Lapas, 162 Rutan, 33 cabang Rutan, 33 LPKA, 94 Bapas, **1 RS Pengayoman** (layanan kesehatan warga binaan).
+- Isu strategis antara lain pengungsi luar negeri (**Perpres 125/2016**), TPPO/TPPM/FTF, masa transisi dari Kemenkumham, overcrowding dan overstay, kebutuhan JF Pembimbing Kemasyarakatan, Asesor, dan Wali Pemasyarakatan.
+
+## Modul: Renstra Kemenimipas 2025-2029, visi sampai sasaran strategis (modul hlm. 78-102)
+- **Visi**: "Terwujudnya penegakan hukum dan pelayanan bidang keimigrasian dan pemasyarakatan yang berintegritas, berkeadilan, dan mendukung keamanan nasional tangguh menuju Indonesia Emas 2045".
+- Logo (Kepmenimipas M.IP-17.UM.01.01/2024) mencerminkan peran **guard** (pelindung) dan **guide** (pembimbing). Nilai utama **PRIMA**: Profesional, Responsif, Integritas, Modern, Akuntabel.
+- Mendukung langsung **Asta Cita 1 dan 7**; tidak langsung Asta Cita 4 dan 8.
+| | Rumusan | Indikator |
+|---|---|---|
+| Misi 1 (Asta Cita 1) | Penegakan hukum dan pelayanan yang berintegritas dan berkeadilan | |
+| Misi 2 (Asta Cita 7) | Tata kelola penyelenggaraan yang modern, profesional, dan berintegritas | |
+| Sasaran Strategis 1 | Meningkatnya kualitas penegakan hukum dan pelayanan bidang keimigrasian dan pemasyarakatan | **Indeks Penegakan Hukum dan Pelayanan** |
+| Sasaran Strategis 2 | Meningkatnya tata kelola yang berintegritas, efektif, dan efisien | **Indeks RB Kemenimipas** |
+- Sasaran strategis dipetakan ke 4 perspektif **balanced scorecard**: keuangan; pemangku kepentingan dan layanan; proses bisnis internal; pembelajaran dan perkembangan.
+- **Pohon kinerja** (Permen PANRB 89/2021): pohon 1 turun ke 3 kinerja sub sektor, pohon 2 ke 5.
+- Mitigasi overcrowding: asimilasi kerja sosial, Pokmas Lipas, penguatan Bapas, Lapas Mega Prison.
+
+## Modul: Renstra Kemenimipas 2025-2029, arah kebijakan sampai pendanaan (modul hlm. 103-216)
+- RPJPN 2025-2045: Kemenimipas mendukung Misi 3 **Transformasi Tata Kelola** dan Misi 4 **Supremasi Hukum, Stabilitas, dan Kepemimpinan Indonesia**.
+- **4 arah kebijakan**: (1) kualitas penegakan hukum; (2) kualitas pelayanan publik, prinsip pelayanan prima; (3) SDM berintegritas, profesional, humanis, berwawasan global; (4) tata kelola akuntabel, transparan, berkeadilan (termasuk **evidence-based policy**, penyederhanaan birokrasi, pengawasan intern).
+- Strategi kunci: **Pimpasa** (petugas imigrasi pembina desa) dan Timpora; **DIPTA** (Dashboard Imigrasi dan Pemasyarakatan Terpadu); corporate university dengan SKJ, kamus kompetensi, HCDP, dan **IDP** per pegawai.
+- Regulasi: **UU 63/2024** (perubahan ketiga UU 6/2011: pengawasan real-time, senjata api, izin masuk kembali sama dengan ITAS/ITAP); **Permenkumham 22/2023** Visa dan Izin Tinggal (Golden Visa).
+- Kelembagaan berbentuk **holding structure**. Kantor imigrasi 126, ideal 250, butuh **30 kanim baru**; rudenim baru di **Aceh dan Palembang**. UPT Pemasyarakatan ideal satu per kabupaten/kota (**514**); ortaker UPT PAS belum diperbarui sejak **1985**.
+- Ditjen Imigrasi menjalankan Program Penegakan dan Pelayanan Hukum serta Program Dukungan Manajemen.
+- Pendanaan 2025: Ditjen Imigrasi **Rp9,64 T** (terbesar), Ditjen PAS Rp9,26 T, Setjen Rp3,63 T; total Rp22,63 T naik ke Rp35,71 T pada 2029.
 `,
   sotk: `
 ## Cakupan kisi-kisi BKN (hal. 151)
@@ -531,6 +562,36 @@ Struktur Organisasi dan Tata Kerja: **tugas, kedudukan, fungsi perangkat daerah/
 - Anak boleh tinggal bersama ibunya di Rutan/Lapas paling lama sampai **3 tahun**. Sel pengasingan paling lama **12 hari**, tidak untuk perempuan dalam fungsi reproduksi.
 - Pengamanan (Rutan, Lapas): pencegahan, penindakan, pemulihan. Pengamatan (LPAS, LPKA): pencegahan, penegakan disiplin, pemulihan.
 - Pengawasan internal oleh menteri; pengawasan eksternal oleh **komisi DPR bidang hukum**.
+
+## Modul: Perpres 157/2024 tentang Kementerian Imigrasi dan Pemasyarakatan (Pasal 1-59)
+- Ditetapkan dan diundangkan **5 November 2024** (LN 2024 Nomor 353), melaksanakan Pasal 11 UU 39/2008 tentang Kementerian Negara jo. UU 61/2024.
+- **Wakil menteri** diangkat dan diberhentikan Presiden, bertanggung jawab kepada Menteri; Menteri dan wakil menteri satu kesatuan unsur pemimpin (Pasal 3-4).
+| Unit | Batas paling banyak |
+|---|---|
+| Sekretariat Jenderal | 5 biro; biro 3 bagian; bagian 2 subbagian (Pasal 11) |
+| Ditjen Imigrasi / Ditjen PAS | Setditjen + **8 direktorat**; direktorat 4 subdirektorat + 1 subbagian TU (Pasal 15, 19) |
+| Inspektorat Jenderal | Setitjen + **4 inspektorat** (Pasal 23) |
+| BPSDM | Sekretariat Badan + **3 pusat** (Pasal 27) |
+| Pusat | 2 bidang; di bawah Menteri melalui Sekjen (Pasal 30-31) |
+- **Staf khusus** paling banyak **5 orang**, diangkat Menteri setelah persetujuan Presiden; hak keuangan paling tinggi setara **eselon I.b**; PNS diberhentikan dari jabatan organik tanpa kehilangan status PNS (Pasal 33-37).
+- Tata kerja: Menteri menerapkan SAKIP, manajemen risiko pembangunan nasional, transformasi digital (Pasal 41); sinergi dengan kementerian bidang **hukum** dan **HAM** (Pasal 49); SPBE (Pasal 52); dana APBN (Pasal 53).
+- Penataan organisasi: eselon I lewat Perpres atas usul MenPANRB; eselon II ke bawah lewat **Peraturan Menteri setelah persetujuan tertulis MenPANRB** (Pasal 54). Besaran organisasi: karakteristik tugas, fungsi, beban kerja (Pasal 55).
+- Tugas dan fungsi Ditjen Imigrasi dan Ditjen PAS di **Kemenkumham** (Perpres 18/2023) dialihkan ke Kemenimipas (Pasal 57).
+
+## Modul: Permenimipas 1/2024, unit organisasi pusat (Pasal 1-385)
+- Ditetapkan **19 November 2024**, diundangkan 20 November 2024 (BN 2024 Nomor 867), melaksanakan **Pasal 54 ayat (1) huruf b Perpres 157/2024**.
+- Fungsi Kementerian (Pasal 6) antara lain kebijakan, bimtek dan supervisi di daerah, dukungan administrasi, BMN, pengawasan, pengembangan SDM, kegiatan teknis nasional.
+- Itjen: pengawasan intern atas kinerja dan keuangan; pengawasan tujuan tertentu atas **penugasan Menteri** (Pasal 77). **Itwil I**: Itjen, BPSDM, Pusat Strategi Kebijakan. **Itwil II**: Setjen, Pusdatin, DKI Jakarta. **Itwil III**: Ditjen Imigrasi. **Itwil IV**: Ditjen PAS, Kalimantan Barat.
+- Setjen: **Biro Umum** (tata usaha, kesehatan, rumah tangga, keprotokolan, pengamanan); **Biro BMN** (BMN dan pengadaan barang/jasa).
+- Ditjen PAS (Pasal 235): Sistem dan Strategi Penyelenggaraan Pemasyarakatan; Pelayanan Tahanan dan Anak; Pembinaan Narapidana dan Anak Binaan; Pembimbingan Kemasyarakatan; Perawatan Kesehatan dan Rehabilitasi; Pengamanan dan Intelijen; Kepatuhan Internal; Teknologi Informasi dan Kerja Sama.
+- Penanganan pengungsi dari luar negeri: fungsi **Direktorat Pengawasan dan Penindakan Keimigrasian** (Pasal 177).
+- BPSDM: penilaian dan rekomendasi pengembangan kompetensi (Pasal 347). Pusdatin: Bidang Komunikasi Publik + Subbagian TU (Pasal 378). Staf Ahli Hubungan Antar Lembaga: hubungan antarlembaga, luar negeri, wilayah perbatasan (Pasal 375).
+
+## Modul: Permenimipas 1/2024, tata kerja dan ketentuan lain (Pasal 386-406)
+- Kelompok JF bekerja lewat **tim kerja/kelompok kerja**; jumlahnya berdasarkan anjab dan ABK (Pasal 387-388).
+- Menteri menerapkan SAKIP (Pasal 392) dan melapor kepada Presiden **berkala atau sewaktu-waktu** (Pasal 394). Kementerian menyusun **anjab, peta jabatan, ABK, uraian tugas** (Pasal 395).
+- Prinsip koordinasi, integrasi, sinkronisasi, kolaborasi didukung **interoperabilitas data dan informasi** (Pasal 396).
+- Dana APBN; fungsi keimigrasian boleh dari **sumber lain yang sah dan tidak mengikat** (Pasal 402-403). Peralihan: jabatan lama tetap bertugas sampai jabatan baru dibentuk (Pasal 405).
 `,
   inggris: `
 ## Cakupan kisi-kisi BKN (hal. 165-171)

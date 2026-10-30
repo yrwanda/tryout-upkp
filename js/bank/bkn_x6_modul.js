@@ -1921,3 +1921,589 @@ window.BANK.uud.push(
   }
 );
 
+
+// Renstra Kemenimipas 2025-2029 (Permenimipas 11/2025 beserta lampirannya, berkas RENSTRA.pdf).
+// hlm. = halaman PDF; nomor tercetak di dokumen = hlm. PDF + 1.
+window.BANK.renstra.push(
+  {
+    id: "mod-rsk-01", set: "mod", topic: "renstra",
+    q: "Visi Kementerian Imigrasi dan Pemasyarakatan periode 2025-2029 adalah ...",
+    o: ["Masyarakat memperoleh kepastian hukum dalam pelayanan keimigrasian dan pemasyarakatan yang berintegritas dan berkeadilan", "Terwujudnya kedaulatan negara dan reintegrasi sosial melalui penegakan hukum keimigrasian dan pemasyarakatan yang tangguh", "Terwujudnya penegakan hukum dan pelayanan bidang keimigrasian dan pemasyarakatan yang berintegritas, berkeadilan, dan mendukung keamanan nasional tangguh menuju Indonesia Emas 2045", "Terwujudnya pelayanan keimigrasian dan pemasyarakatan yang modern, transparan, dan humanis untuk mendukung kedaulatan negara menuju Indonesia Emas 2045", "Terwujudnya tata kelola keimigrasian dan pemasyarakatan yang profesional, responsif, berintegritas, modern, dan akuntabel menuju Indonesia Emas 2045"],
+    a: 2,
+    e: "Visi kementerian diselaraskan dengan visi Presiden dan Wakil Presiden 2025-2029, \"Bersama Indonesia Maju Menuju Indonesia Emas 2045\". Kata kunci visi: penegakan hukum dan pelayanan, berintegritas, berkeadilan, keamanan nasional tangguh. Profesional, responsif, integritas, modern, akuntabel adalah nilai utama PRIMA, bukan visi.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 78 (halaman PDF; nomor tercetak 79)"
+  },
+  {
+    id: "mod-rsk-02", set: "mod", topic: "renstra",
+    q: "Nilai utama Kementerian Imigrasi dan Pemasyarakatan dirumuskan dalam singkatan PRIMA, yaitu ...",
+    o: ["Profesional, Ramah, Inovatif, Melayani, Amanah", "Pelayanan, Responsif, Integritas, Mandiri, Adaptif", "Profesional, Religius, Integritas, Modern, Akuntabel", "Proaktif, Responsif, Inovatif, Melayani, Akuntabel", "Profesional, Responsif, Integritas, Modern, Akuntabel"],
+    a: 4,
+    e: "PRIMA = Profesional, Responsif, Integritas, Modern, Akuntabel. Nilai ini menjadi landasan bersikap dan fondasi budaya kerja kementerian.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 80-81 (halaman PDF; nomor tercetak 81-82)"
+  },
+  {
+    id: "mod-rsk-03", set: "mod", topic: "renstra",
+    q: "Logo Kementerian Imigrasi dan Pemasyarakatan mencerminkan dua peran kementerian, yaitu ...",
+    o: ["Pelindung (guard) dan pembimbing (guide)", "Penjaga (keeper) dan pelayan (server)", "Pengawas (watcher) dan penegak (enforcer)", "Fasilitator dan regulator", "Penjaga gerbang dan penjaga lapas"],
+    a: 0,
+    e: "Logo ditetapkan dengan Kepmenimipas M.IP-17.UM.01.01 Tahun 2024. Guard: Imigrasi sebagai garda terdepan penjaga gerbang dan kedaulatan, Pemasyarakatan menjaga rasa keadilan. Guide: membimbing masyarakat dan pengunjung agar patuh aturan, serta membimbing Warga Binaan agar tidak mengulangi kesalahan.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 80 (halaman PDF; nomor tercetak 81)"
+  },
+  {
+    id: "mod-rsk-04", set: "mod", topic: "renstra",
+    q: "Nilai utama Kemenimipas yang diwujudkan dengan memberikan layanan secara cepat, tepat, dan tanggap, termasuk berkolaborasi dengan pemangku kepentingan, adalah ...",
+    o: ["Profesional", "Integritas", "Modern", "Responsif", "Akuntabel"],
+    a: 3,
+    e: "Responsif: cepat, tepat, tanggap, dan kolaboratif. Profesional: sesuai keahlian dan kompetensi dengan pendekatan humanis. Integritas: jujur dan berani menolak intervensi. Modern: memakai sistem dan TI secara transparan. Akuntabel: dapat dipertanggungjawabkan kepada publik.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 80-81 (halaman PDF; nomor tercetak 81-82)"
+  },
+  {
+    id: "mod-rsk-05", set: "mod", topic: "renstra",
+    q: "Asta Cita yang didukung secara langsung oleh Kemenimipas, sesuai kesepakatan dengan Bappenas, adalah ...",
+    o: ["Asta Cita 4 dan 8", "Asta Cita 1 dan 7", "Asta Cita 2 dan 7", "Asta Cita 1 dan 4", "Asta Cita 3 dan 6"],
+    a: 1,
+    e: "Asta Cita 1: memperkokoh ideologi Pancasila, demokrasi, dan HAM. Asta Cita 7: memperkuat reformasi politik, hukum, dan birokrasi serta pencegahan dan pemberantasan korupsi dan narkoba. Asta Cita 4 dan 8 didukung secara tidak langsung.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 82 (halaman PDF; nomor tercetak 83)"
+  },
+  {
+    id: "mod-rsk-06", set: "mod", topic: "renstra",
+    q: "Misi Kemenimipas 2025-2029 yang sejalan dengan Asta Cita 7 (reformasi politik, hukum, dan birokrasi) adalah ...",
+    o: ["Mewujudkan penegakan hukum dan pelayanan bidang keimigrasian dan pemasyarakatan yang berintegritas dan berkeadilan", "Mewujudkan reintegrasi sosial warga binaan yang berlandaskan Pancasila", "Mewujudkan tata kelola penyelenggaraan keimigrasian dan pemasyarakatan yang modern, profesional, dan berintegritas", "Mewujudkan pelayanan paspor dan visa berbasis digital", "Mewujudkan kedaulatan negara melalui pengawasan perbatasan"],
+    a: 2,
+    e: "Kemenimipas memiliki dua misi. Misi 1 (sejalan Asta Cita 1): penegakan hukum dan pelayanan yang berintegritas dan berkeadilan. Misi 2 (sejalan Asta Cita 7): tata kelola penyelenggaraan yang modern, profesional, dan berintegritas.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 82-83 (halaman PDF; nomor tercetak 83-84)"
+  },
+  {
+    id: "mod-rsk-07", set: "mod", topic: "renstra",
+    q: "Sasaran Strategis 1 Kemenimipas 2025-2029 adalah ...",
+    o: ["Meningkatnya kualitas penegakan hukum dan pelayanan bidang keimigrasian dan pemasyarakatan", "Meningkatnya tata kelola penyelenggaraan keimigrasian dan pemasyarakatan yang berintegritas, efektif, dan efisien", "Meningkatnya penerimaan negara bukan pajak keimigrasian", "Menurunnya tingkat overcrowding lapas dan rutan", "Meningkatnya kepuasan masyarakat terhadap layanan paspor"],
+    a: 0,
+    e: "SS 1 berindikator Indeks Penegakan Hukum dan Pelayanan Bidang Imigrasi dan Pemasyarakatan. SS 2 (tata kelola yang berintegritas, efektif, dan efisien) berindikator Indeks Reformasi Birokrasi Kemenimipas.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 84-85 (halaman PDF; nomor tercetak 85-86)"
+  },
+  {
+    id: "mod-rsk-08", set: "mod", topic: "renstra",
+    q: "Indikator kinerja Sasaran Strategis 2 Kemenimipas (tata kelola yang berintegritas, efektif, dan efisien) adalah ...",
+    o: ["Indeks Penegakan Hukum dan Pelayanan Bidang Imigrasi dan Pemasyarakatan", "Nilai SAKIP Kementerian", "Opini BPK atas laporan keuangan", "Indeks Reformasi Birokrasi Kementerian Imigrasi dan Pemasyarakatan", "Indeks Kepuasan Masyarakat"],
+    a: 3,
+    e: "Indeks RB Kemenimipas sekaligus menjadi indikator Tujuan 2. Indeks Penegakan Hukum dan Pelayanan adalah indikator SS 1. Nilai SAKIP dan opini BPK termasuk indikator di tingkat program Sekretariat Jenderal.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 84-86 (halaman PDF; nomor tercetak 85-87)"
+  },
+  {
+    id: "mod-rsk-09", set: "mod", topic: "renstra",
+    q: "Dua sasaran strategis Kemenimipas dipetakan ke dalam empat perspektif balanced scorecard, yaitu perspektif ...",
+    o: ["Visi; misi; tujuan strategis; dan sasaran strategis kementerian", "Input; proses; output; dan outcome dalam kerangka logis program", "Kekuatan; kelemahan; peluang; dan ancaman lingkungan strategis", "Perencanaan; pelaksanaan; pengawasan; dan evaluasi kinerja organisasi", "Keuangan; pemangku kepentingan dan layanan; proses bisnis internal; pembelajaran dan perkembangan"],
+    a: 4,
+    e: "SS 1 terkait perspektif pemangku kepentingan/pengguna layanan dan proses internal. SS 2 terkait perspektif keuangan (antara lain PNBP) serta pembelajaran dan pertumbuhan.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 85-86 (halaman PDF; nomor tercetak 86-87)"
+  },
+  {
+    id: "mod-rsk-10", set: "mod", topic: "renstra",
+    q: "Pohon kinerja Kemenimipas disusun dengan mengacu pada peraturan tentang penjenjangan kinerja instansi pemerintah, yaitu ...",
+    o: ["Permen PANRB Nomor 29 Tahun 2022", "Permen PANRB Nomor 89 Tahun 2021", "Perpres Nomor 29 Tahun 2014", "Permen PANRB Nomor 53 Tahun 2014", "Perpres Nomor 80 Tahun 2025"],
+    a: 1,
+    e: "Permen PANRB 89/2021 tentang Penjenjangan Kinerja Instansi Pemerintah. Pohon kinerja berisi kinerja strategis sektor (intermediate outcome level I), kinerja strategis sub sektor (level II), dan kinerja taktikal (immediate outcome).",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 88 (halaman PDF; nomor tercetak 89)"
+  },
+  {
+    id: "mod-rsk-11", set: "mod", topic: "renstra",
+    q: "Jumlah kinerja strategis sub sektor (intermediate outcome level II) pada pohon kinerja 1 (penegakan hukum dan pelayanan) dan pohon kinerja 2 (tata kelola) secara berurutan adalah ...",
+    o: ["2 dan 2", "3 dan 5", "5 dan 3", "3 dan 3", "4 dan 5"],
+    a: 1,
+    e: "Pohon 1 diturunkan menjadi 3: penegakan hukum keimigrasian, kualitas layanan keimigrasian, dan pemenuhan hak tahanan, anak, dan warga binaan. Pohon 2 diturunkan menjadi 5; kinerja taktikal terbanyak ada pada pembinaan dan dukungan administrasi oleh Sekretariat Jenderal.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 88-89 (halaman PDF; nomor tercetak 89-90)"
+  },
+  {
+    id: "mod-rsk-12", set: "mod", topic: "renstra",
+    q: "Renstra Kemenimipas 2025-2029 disusun sesuai peraturan tentang Penyusunan Rencana Strategis dan Rencana Kerja Kementerian/Lembaga, yaitu ...",
+    o: ["Perpres Nomor 12 Tahun 2025", "PP Nomor 40 Tahun 2006", "UU Nomor 59 Tahun 2024", "Perpres Nomor 80 Tahun 2025", "Perpres Nomor 157 Tahun 2024"],
+    a: 3,
+    e: "Perpres 80/2025 tentang Penyusunan Renstra dan Renja K/L. Perpres 12/2025 = RPJMN 2025-2029; PP 40/2006 = tata cara penyusunan rencana pembangunan nasional; UU 59/2024 = RPJPN 2025-2045; Perpres 157/2024 = pembentukan Kemenimipas.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 89 dan 215 (halaman PDF; nomor tercetak 90 dan 216)"
+  },
+  {
+    id: "mod-rsk-13", set: "mod", topic: "renstra",
+    q: "Rencana Strategis Kementerian Imigrasi dan Pemasyarakatan Tahun 2025-2029 ditetapkan dengan ...",
+    o: ["Permenimipas Nomor 11 Tahun 2025", "Permenimipas Nomor 1 Tahun 2024", "Permenimipas Nomor 2 Tahun 2024", "Perpres Nomor 157 Tahun 2024", "Kepmenimipas Nomor M.IP-17.UM.01.01 Tahun 2024"],
+    a: 0,
+    e: "Permenimipas 11/2025 ditetapkan 17 September 2025. Pasal 1: Renstra adalah dokumen perencanaan Kemenimipas untuk 5 tahun (2025-2029). Permenimipas 1/2024 mengatur OTK Kementerian, 2/2024 OTK Kanwil Ditjen Imigrasi, Kepmen M.IP-17 tentang lambang dan cap dinas.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 1-3 (batang tubuh Permenimipas 11/2025)"
+  },
+  {
+    id: "mod-rsk-14", set: "mod", topic: "renstra",
+    q: "Data dan informasi kinerja Renstra Kemenimipas yang termuat dalam sistem informasi berikut merupakan bagian yang tidak terpisahkan dari dokumen Renstra, yaitu ...",
+    o: ["SAKTI", "e-SAKIP", "KRISNA-RENSTRA", "SIPD", "SPAN"],
+    a: 2,
+    e: "Pasal 3 Permenimipas 11/2025. Pasal 2: Renstra memuat (a) visi, misi, tujuan, dan sasaran strategis; (b) arah kebijakan, strategi, kerangka regulasi, dan kerangka kelembagaan; (c) target kinerja dan kerangka pendanaan.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 2 (batang tubuh Permenimipas 11/2025)"
+  },
+  {
+    id: "mod-rsk-15", set: "mod", topic: "renstra",
+    q: "Arah kebijakan Kemenimipas 2025-2029 di bidang sumber daya manusia adalah ...",
+    o: ["Peningkatan kesejahteraan pegawai melalui tunjangan kinerja", "Pengembangan SDM yang berintegritas, profesional, humanis, dan berwawasan global", "Penerapan sistem merit dalam manajemen ASN", "Pemenuhan formasi jabatan fungsional pemasyarakatan", "Pengembangan SDM yang adaptif, inovatif, dan berorientasi pelayanan"],
+    a: 1,
+    e: "Empat arah kebijakan: (1) peningkatan kualitas penegakan hukum lewat penguatan fungsi keimigrasian dan pemasyarakatan; (2) peningkatan kualitas pelayanan publik dengan prinsip pelayanan prima; (3) pengembangan SDM yang berintegritas, profesional, humanis, dan berwawasan global; (4) tata kelola yang akuntabel, transparan, dan berkeadilan.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 107 (halaman PDF; nomor tercetak 108)"
+  },
+  {
+    id: "mod-rsk-16", set: "mod", topic: "renstra",
+    q: "Strategi \"memperkuat kualitas kebijakan dan produk hukum imigrasi dan pemasyarakatan berbasis bukti (evidence-based policy)\" termasuk dalam arah kebijakan ...",
+    o: ["Peningkatan kualitas penegakan hukum melalui penguatan fungsi keimigrasian dan pemasyarakatan", "Peningkatan kualitas pelayanan publik yang menjunjung tinggi prinsip pelayanan prima", "Pengembangan SDM yang berintegritas, profesional, humanis, dan berwawasan global", "Penyelenggaraan tata kelola yang akuntabel, transparan, dan berkeadilan", "Penguatan kerja sama internasional keimigrasian"],
+    a: 3,
+    e: "Arah kebijakan 4 punya lima strategi: modernisasi sarana-prasarana dan digitalisasi; penyederhanaan birokrasi; kebijakan berbasis bukti; kualitas data dan informasi publik; penguatan pengawasan intern.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 110 dan 116 (halaman PDF; nomor tercetak 111 dan 117)"
+  },
+  {
+    id: "mod-rsk-17", set: "mod", topic: "renstra",
+    q: "Petugas imigrasi yang ditempatkan di desa binaan imigrasi untuk mengedukasi masyarakat tentang pencegahan TPPO dan tindak pidana pekerja migran disebut ...",
+    o: ["Pimpasa (petugas imigrasi pembina desa)", "Timpora", "Atase imigrasi", "Pokmas Lipas", "Pembimbing Kemasyarakatan"],
+    a: 0,
+    e: "Pimpasa bagian dari strategi peningkatan kesadaran hukum keimigrasian. Timpora adalah tim pengawasan orang asing lintas instansi (imigrasi, kepolisian, kejaksaan, dinas tenaga kerja). Pokmas Lipas adalah kelompok masyarakat peduli pemasyarakatan. Pembimbing Kemasyarakatan adalah jabatan fungsional di Bapas.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 111 (halaman PDF; nomor tercetak 112)"
+  },
+  {
+    id: "mod-rsk-18", set: "mod", topic: "renstra",
+    q: "Dasbor terpadu yang mengintegrasikan data dan informasi imigrasi serta pemasyarakatan dalam strategi modernisasi Kemenimipas disebut ...",
+    o: ["SDP (Sistem Database Pemasyarakatan)", "SIMKIM", "SPPT-TI", "Satu Data Indonesia", "DIPTA (Dashboard Imigrasi dan Pemasyarakatan Terpadu)"],
+    a: 4,
+    e: "DIPTA disebut dalam strategi 1 arah kebijakan 4. SDP dan SPPT-TI (Sistem Peradilan Pidana Terpadu berbasis TI) adalah sistem di sisi pemasyarakatan untuk pertukaran data antarpenegak hukum.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 114-115 (halaman PDF; nomor tercetak 115-116)"
+  },
+  {
+    id: "mod-rsk-19", set: "mod", topic: "renstra",
+    q: "Dalam strategi peningkatan kompetensi berbasis corporate university, dokumen rencana pengembangan yang disusun bagi setiap pegawai adalah ...",
+    o: ["Human Capital Development Plan (HCDP)", "Standar Kompetensi Jabatan", "Individual Development Plan (IDP)", "Kamus Kompetensi", "Sasaran Kinerja Pegawai (SKP)"],
+    a: 2,
+    e: "Empat dokumen pengembangan SDM yang perlu disusun: Standar Kompetensi Jabatan, Kamus Kompetensi, HCDP (tingkat organisasi), dan IDP bagi setiap pegawai.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 115 (halaman PDF; nomor tercetak 116)"
+  },
+  {
+    id: "mod-rsk-20", set: "mod", topic: "renstra",
+    q: "Bentuk organisasi Kemenimipas, yang ditandai unit eselon I teknis (Ditjen Imigrasi dan Ditjen Pemasyarakatan) memiliki instansi vertikal sampai ke wilayah, disebut ...",
+    o: ["Matrix structure", "Holding structure", "Flat structure", "Divisional structure", "Network structure"],
+    a: 1,
+    e: "Kerangka kelembagaan Kemenimipas berbentuk holding structure. Perpres 157/2024 tetap membuka kemungkinan penyesuaian SOTK secara selektif.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 142 (halaman PDF; nomor tercetak 143)"
+  },
+  {
+    id: "mod-rsk-21", set: "mod", topic: "renstra",
+    q: "Jumlah kantor imigrasi yang ideal dicatat sebanyak 250 unit. Dalam lima tahun ke depan, kantor imigrasi baru yang dibutuhkan sebanyak ...",
+    o: ["10", "13", "22", "30", "124"],
+    a: 3,
+    e: "Saat itu tercatat 126 kantor imigrasi untuk 416 kabupaten dan 96 kota. Usulan 30 kantor baru mempertimbangkan IKN, pemekaran wilayah, kabupaten/kota berpenduduk di atas 1,2 juta jiwa, dan peningkatan status UKK.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 144-145 (halaman PDF; nomor tercetak 145-146)"
+  },
+  {
+    id: "mod-rsk-22", set: "mod", topic: "renstra",
+    q: "Penambahan dua rumah detensi imigrasi baru dalam Renstra Kemenimipas 2025-2029 direncanakan di ...",
+    o: ["Aceh dan Palembang", "Batam dan Pontianak", "Medan dan Makassar", "Kupang dan Jayapura", "Balikpapan dan IKN"],
+    a: 0,
+    e: "Lokasi dipilih dengan mempertimbangkan konsentrasi kedatangan dan pengungsi beserta pengawasannya. Saat ini ada 13 rumah detensi imigrasi.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 145 (halaman PDF; nomor tercetak 146)"
+  },
+  {
+    id: "mod-rsk-23", set: "mod", topic: "renstra",
+    q: "Jumlah pelaksana fungsi keimigrasian di luar negeri atau tempat lain dalam sebaran unit kerja Ditjen Imigrasi adalah ...",
+    o: ["13", "16", "22", "33", "40"],
+    a: 2,
+    e: "Sebaran di wilayah Indonesia: 1 kantor pusat, 33 kantor wilayah, 133 kantor imigrasi, 13 rumah detensi, 96 TPI laut, 37 TPI udara, 16 pos lintas batas internasional, dan 40 pos lintas batas tradisional. Di luar negeri: 22 pelaksana fungsi keimigrasian.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 16 (halaman PDF; nomor tercetak 17)"
+  },
+  {
+    id: "mod-rsk-24", set: "mod", topic: "renstra",
+    q: "Unit kerja pemasyarakatan yang memberikan layanan kesehatan khusus bagi warga binaan adalah ...",
+    o: ["Balai Pemasyarakatan", "Lembaga Pembinaan Khusus Anak", "Lapas Terbuka", "Rumah Tahanan Negara", "Rumah Sakit Pengayoman"],
+    a: 4,
+    e: "Sebaran unit kerja pemasyarakatan: 33 Kanwil Ditjen PAS, 337 Lapas, 162 Rutan, 33 Cabang Rutan, 33 LPKA, 94 Bapas, dan 1 RS Pengayoman.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 17 (halaman PDF; nomor tercetak 18)"
+  },
+  {
+    id: "mod-rsk-25", set: "mod", topic: "renstra",
+    q: "Kebutuhan ideal Lapas, Rutan, dan Bapas masing-masing ditetapkan 514 unit. Angka ini didasarkan pada ...",
+    o: ["Jumlah kecamatan di Indonesia", "Minimal satu UPT Pemasyarakatan di setiap kabupaten/kota", "Rasio satu UPT untuk setiap 500 narapidana", "Jumlah pengadilan negeri di Indonesia", "Jumlah provinsi dikalikan rata-rata kebutuhan"],
+    a: 1,
+    e: "Data BPS: 38 provinsi dan 514 kabupaten/kota. Eksisting 337 Lapas (gap 177), 162 Rutan, 94 Bapas; Kanwil ideal 38, eksisting 33. Kekurangan Lapas berdampak overcrowding dan menghambat pembinaan.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 148 (halaman PDF; nomor tercetak 149)"
+  },
+  {
+    id: "mod-rsk-26", set: "mod", topic: "renstra",
+    q: "Perubahan organisasi dan tata kerja UPT Pemasyarakatan dinilai mendesak karena ortaker tersebut belum diperbarui sejak tahun ...",
+    o: ["1964", "1975", "1983", "1985", "1995"],
+    a: 3,
+    e: "Ortaker UPT Pemasyarakatan perlu diselaraskan dengan UU 22/2022 tentang Pemasyarakatan dan UU 1/2023 (KUHP) yang mengedepankan pemidanaan alternatif dan keadilan restoratif, antara lain dengan memunculkan fungsi keadilan restoratif pada Bapas.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 147 (halaman PDF; nomor tercetak 148)"
+  },
+  {
+    id: "mod-rsk-27", set: "mod", topic: "renstra",
+    q: "Unit eselon I dengan kerangka pendanaan terbesar pada tahun 2025 dalam Renstra Kemenimipas adalah ...",
+    o: ["Direktorat Jenderal Imigrasi", "Direktorat Jenderal Pemasyarakatan", "Sekretariat Jenderal", "Inspektorat Jenderal", "BPSDM Imigrasi dan Pemasyarakatan"],
+    a: 0,
+    e: "Kerangka pendanaan 2025: Ditjen Imigrasi Rp9,64 triliun, Ditjen Pemasyarakatan Rp9,26 triliun, Setjen Rp3,63 triliun, Itjen Rp82,5 miliar, BPSDM Rp16,9 miliar. Total kementerian Rp22,63 triliun (2025) naik menjadi Rp35,71 triliun (2029).",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 192 (halaman PDF; nomor tercetak 193)"
+  },
+  {
+    id: "mod-rsk-28", set: "mod", topic: "renstra",
+    q: "Peran Kemenimipas dalam pengelolaan pengungsi internasional, termasuk penguatan kapasitas rumah detensi, mengacu pada ...",
+    o: ["UU Nomor 6 Tahun 2011", "Perpres Nomor 157 Tahun 2024", "Perpres Nomor 125 Tahun 2016", "Konvensi Pengungsi 1951", "Permenkumham Nomor 22 Tahun 2023"],
+    a: 2,
+    e: "Perpres 125/2016 tentang Penanganan Pengungsi dari Luar Negeri. Isu ini masuk isu strategis global karena arus pengungsi akibat konflik, perubahan iklim, dan ketidakstabilan ekonomi. Indonesia belum meratifikasi Konvensi Pengungsi 1951.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 75 (halaman PDF; nomor tercetak 76)"
+  },
+  {
+    id: "mod-rsk-29", set: "mod", topic: "renstra",
+    q: "Revisi Undang-Undang Keimigrasian yang antara lain mengatur pengawasan orang asing secara real-time dan senjata api bagi pejabat imigrasi disahkan melalui ...",
+    o: ["UU Nomor 6 Tahun 2011", "UU Nomor 22 Tahun 2022", "UU Nomor 61 Tahun 2024", "UU Nomor 59 Tahun 2024", "UU Nomor 63 Tahun 2024"],
+    a: 4,
+    e: "UU 63/2024 adalah Perubahan Ketiga atas UU 6/2011 tentang Keimigrasian. Isinya juga mengatur masa berlaku izin masuk kembali yang sama dengan ITAS atau ITAP. UU 61/2024 mengubah UU Kementerian Negara; UU 59/2024 tentang RPJPN.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 117 (halaman PDF; nomor tercetak 118)"
+  },
+  {
+    id: "mod-rsk-30", set: "mod", topic: "renstra",
+    q: "Ketentuan visa dan izin tinggal diintegrasikan dalam satu peraturan yang menjadi dasar inovasi Golden Visa, yaitu ...",
+    o: ["Permen PANRB Nomor 29 Tahun 2022", "Permenkumham Nomor 22 Tahun 2023 tentang Visa dan Izin Tinggal", "Perpres Nomor 80 Tahun 2025", "Permenimipas Nomor 11 Tahun 2025", "UU Nomor 63 Tahun 2024"],
+    a: 1,
+    e: "Golden Visa dikembangkan melalui Permenkumham 22/2023 tentang Visa dan Izin Tinggal. Golden Visa juga disebut sebagai program pendorong PNBP dan iklim berusaha.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 117 (halaman PDF; nomor tercetak 118)"
+  },
+  {
+    id: "mod-rsk-31", set: "mod", topic: "renstra",
+    q: "Dalam RPJPN 2025-2045, Kemenimipas mendapat mandat mendukung misi pembangunan ...",
+    o: ["Transformasi Sosial dan Transformasi Ekonomi", "Ketahanan Sosial Budaya dan Ekologi", "Transformasi Ekonomi dan Pembangunan Kewilayahan", "Transformasi Tata Kelola serta Supremasi Hukum, Stabilitas, dan Kepemimpinan Indonesia", "Sarana dan Prasarana yang Berkualitas dan Ramah Lingkungan"],
+    a: 3,
+    e: "Kemenimipas mendukung Misi 3 (Transformasi Tata Kelola) dan Misi 4 (Supremasi Hukum, Stabilitas, dan Kepemimpinan Indonesia). RPJPN 2025-2045 (UU 59/2024) memuat 8 misi, 17 arah pembangunan, dan 45 indikator utama.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 103 (halaman PDF; nomor tercetak 104)"
+  },
+  {
+    id: "mod-rsk-32", set: "mod", topic: "renstra",
+    q: "Langkah mitigasi risiko overcrowding dan overstaying di lapas dan rutan dalam Renstra Kemenimipas antara lain ...",
+    o: ["Moratorium penahanan, pembebasan massal narapidana, dan penghentian penerimaan tahanan baru", "Asimilasi kerja sosial, penguatan Pokmas Lipas, penguatan Bapas, dan pembangunan Lapas Mega Prison", "Pemindahan tahanan ke ruang tahanan kepolisian dan penundaan eksekusi putusan pengadilan", "Penambahan masa pidana bagi residivis dan pembatasan hak remisi seluruh narapidana", "Penutupan Lapas Kelas III dan penggabungan penghuninya ke Lapas Kelas I terdekat"],
+    a: 1,
+    e: "Mitigasi: asimilasi kerja sosial narapidana di masyarakat, penguatan kelompok masyarakat peduli pemasyarakatan (Pokmas Lipas) bersama pemda, penguatan Bapas dalam pendampingan klien, dan pembangunan Lapas Mega Prison.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 91 (halaman PDF; nomor tercetak 92)"
+  },
+  {
+    id: "mod-rsk-33", set: "mod", topic: "renstra",
+    q: "Dua program yang dijalankan Direktorat Jenderal Imigrasi untuk mencapai sasaran strategis Kemenimipas adalah ...",
+    o: ["Program Pelayanan Publik dan Program Pengawasan", "Program Penegakan Hukum dan Program Pembinaan", "Program Penegakan dan Pelayanan Hukum serta Program Dukungan Manajemen", "Program Keimigrasian dan Program Kerja Sama Internasional", "Program Pembangunan Perbatasan dan Program Reformasi Birokrasi"],
+    a: 2,
+    e: "Program Penegakan dan Pelayanan Hukum bersasaran terwujudnya penegakan hukum keimigrasian dan meningkatnya kualitas layanan keimigrasian. Program Dukungan Manajemen bersasaran meningkatnya penerapan reformasi birokrasi di lingkungan Ditjen Imigrasi.",
+    src: "Modul Renstra Kemenimipas 2025-2029 hlm. 182 (halaman PDF; nomor tercetak 183)"
+  }
+);
+
+// SOTK Kemenimipas: Perpres 157/2024 (salinan pindaian, 20 hlm.) dan Permenimipas 1/2024 tentang OTK Kementerian.
+// Fokus pada pasal yang belum dipakai soal pelengkap SOTK di bkn_x3_lain.js.
+window.BANK.sotk.push(
+  {
+    id: "mod-pps-01", set: "mod", topic: "sotk",
+    q: "Perpres Nomor 157 Tahun 2024 tentang Kementerian Imigrasi dan Pemasyarakatan ditetapkan pada tanggal ...",
+    o: ["20 Oktober 2024", "21 Oktober 2024", "5 November 2024", "19 November 2024", "17 September 2025"],
+    a: 2,
+    e: "Ditetapkan dan diundangkan 5 November 2024 oleh Presiden Prabowo Subianto (Lembaran Negara 2024 Nomor 353), berlaku sejak diundangkan (Pasal 59). Permenimipas 1/2024 ditetapkan 19 November 2024; Renstra Kemenimipas (Permenimipas 11/2025) 17 September 2025.",
+    src: "Perpres 157/2024 Pasal 59"
+  },
+  {
+    id: "mod-pps-02", set: "mod", topic: "sotk",
+    q: "Perpres 157/2024 tentang Kementerian Imigrasi dan Pemasyarakatan ditetapkan untuk melaksanakan ketentuan ...",
+    o: ["Pasal 11 UU Nomor 39 Tahun 2008 tentang Kementerian Negara sebagaimana telah diubah dengan UU Nomor 61 Tahun 2024", "Pasal 17 UU Nomor 6 Tahun 2011 tentang Keimigrasian sebagaimana telah diubah dengan UU Nomor 63 Tahun 2024", "Pasal 54 Perpres Nomor 140 Tahun 2024 tentang Organisasi Kementerian Negara", "Pasal 1 UU Nomor 22 Tahun 2022 tentang Pemasyarakatan dan Pasal 5 UU Nomor 6 Tahun 2011", "Pasal 4 UU Nomor 25 Tahun 2004 tentang Sistem Perencanaan Pembangunan Nasional"],
+    a: 0,
+    e: "Bagian menimbang Perpres 157/2024. Dasar mengingat: Pasal 4 ayat (1) dan Pasal 17 UUD 1945, UU 39/2008 jo. UU 61/2024, dan Perpres 140/2024 tentang Organisasi Kementerian Negara.",
+    src: "Perpres 157/2024 Menimbang"
+  },
+  {
+    id: "mod-pps-03", set: "mod", topic: "sotk",
+    q: "Wakil Menteri Imigrasi dan Pemasyarakatan diangkat dan diberhentikan oleh ..., serta berada di bawah dan bertanggung jawab kepada ...",
+    o: ["Menteri; Presiden", "Presiden; Presiden", "Menteri; Sekretaris Jenderal", "Presiden; Menteri", "DPR; Presiden"],
+    a: 3,
+    e: "Pasal 3: wakil menteri diangkat dan diberhentikan oleh Presiden, berada di bawah dan bertanggung jawab kepada Menteri, bertugas membantu Menteri memimpin pelaksanaan tugas Kementerian. Pasal 4: Menteri dan wakil menteri satu kesatuan unsur pemimpin.",
+    src: "Perpres 157/2024 Pasal 3"
+  },
+  {
+    id: "mod-pps-04", set: "mod", topic: "sotk",
+    q: "Direktorat Jenderal Imigrasi terdiri atas Sekretariat Direktorat Jenderal dan paling banyak ... direktorat.",
+    o: ["5", "8", "9", "10", "12"],
+    a: 1,
+    e: "Pasal 15 ayat (1); ketentuan yang sama berlaku bagi Ditjen Pemasyarakatan (Pasal 19). Permenimipas 1/2024 Pasal 117 mengisinya dengan 8 direktorat: Visa dan Dokumen Perjalanan; Izin Tinggal dan Status Keimigrasian; Intelijen; Pengawasan dan Penindakan; Kerja Sama dan Bina Perwakilan; Kepatuhan Internal; TPI; Teknologi Informasi Keimigrasian.",
+    src: "Perpres 157/2024 Pasal 15"
+  },
+  {
+    id: "mod-pps-05", set: "mod", topic: "sotk",
+    q: "Jika tugas dan fungsi sebuah direktorat di Ditjen Imigrasi tidak dapat dilaksanakan oleh kelompok jabatan fungsional, di dalamnya dapat dibentuk paling banyak ...",
+    o: ["2 subdirektorat dan 2 subbagian", "3 subdirektorat tanpa subbagian", "5 subdirektorat dan 1 subbagian", "4 bidang dan 2 seksi", "4 subdirektorat dan 1 subbagian yang menangani ketatausahaan"],
+    a: 4,
+    e: "Pasal 15 ayat (7). Sekretariat Direktorat Jenderal dapat dibentuk paling banyak 4 bagian (ayat 3), dan tiap bagian paling banyak 2 subbagian (ayat 5). Pembentukannya dilakukan secara selektif.",
+    src: "Perpres 157/2024 Pasal 15"
+  },
+  {
+    id: "mod-pps-06", set: "mod", topic: "sotk",
+    q: "Inspektorat Jenderal Kemenimipas terdiri atas Sekretariat Inspektorat Jenderal dan paling banyak ...",
+    o: ["4 inspektorat", "3 inspektorat", "5 inspektorat", "6 inspektorat", "8 inspektorat"],
+    a: 0,
+    e: "Pasal 23 ayat (1). Sekretariat Inspektorat Jenderal dapat dibentuk paling banyak 3 bagian. Permenimipas 1/2024 Pasal 78 mengisinya dengan Inspektorat Wilayah I sampai IV.",
+    src: "Perpres 157/2024 Pasal 23"
+  },
+  {
+    id: "mod-pps-07", set: "mod", topic: "sotk",
+    q: "Badan Pengembangan SDM Imigrasi dan Pemasyarakatan terdiri atas Sekretariat Badan dan paling banyak ...",
+    o: ["2 pusat", "4 pusat", "3 pusat", "5 pusat", "2 direktorat"],
+    a: 2,
+    e: "Pasal 27 ayat (1). Saat ini Permenimipas 1/2024 Pasal 348 baru mengisi dua pusat: Pusat Pengembangan dan Penilaian Kompetensi serta Pusat Pelatihan.",
+    src: "Perpres 157/2024 Pasal 27"
+  },
+  {
+    id: "mod-pps-08", set: "mod", topic: "sotk",
+    q: "Sekretariat Jenderal terdiri atas paling banyak 5 biro. Jika tugas biro tidak dapat dilaksanakan oleh kelompok jabatan fungsional, di dalam biro dapat dibentuk paling banyak ...",
+    o: ["2 bagian", "3 bagian", "4 bagian", "5 bagian", "3 subdirektorat"],
+    a: 1,
+    e: "Pasal 11 ayat (1) dan (3). Tiap bagian dapat dibentuk paling banyak 2 subbagian (ayat 5), kecuali bagian yang menangani ketatausahaan pimpinan (ayat 6).",
+    src: "Perpres 157/2024 Pasal 11"
+  },
+  {
+    id: "mod-pps-09", set: "mod", topic: "sotk",
+    q: "Di lingkungan Kemenimipas dapat diangkat staf khusus paling banyak ... orang, yang diangkat oleh ...",
+    o: ["3; Presiden", "5; Presiden atas usul Menteri", "3; Menteri tanpa persetujuan Presiden", "5; Menteri setelah mendapat persetujuan Presiden", "7; Sekretaris Jenderal"],
+    a: 3,
+    e: "Pasal 33: usulan diajukan kepada Presiden melalui Menteri Sekretaris Negara. Masa bakti paling lama sama dengan masa jabatan Menteri; staf khusus diberhentikan oleh Menteri dan bertanggung jawab kepada Menteri (Pasal 34).",
+    src: "Perpres 157/2024 Pasal 33-34"
+  },
+  {
+    id: "mod-pps-10", set: "mod", topic: "sotk",
+    q: "Hak keuangan dan fasilitas lainnya bagi staf khusus Menteri Imigrasi dan Pemasyarakatan diberikan paling tinggi setara dengan ...",
+    o: ["Jabatan struktural eselon I.b atau jabatan pimpinan tinggi madya", "Jabatan struktural eselon I.a", "Jabatan struktural eselon II.a", "Menteri", "Jabatan fungsional ahli utama"],
+    a: 0,
+    e: "Pasal 37: staf khusus mendapat dukungan administrasi dari Sekretariat Jenderal, dan saat berhenti tidak memperoleh uang pensiun maupun pesangon.",
+    src: "Perpres 157/2024 Pasal 37"
+  },
+  {
+    id: "mod-pps-11", set: "mod", topic: "sotk",
+    q: "PNS yang diangkat menjadi staf khusus Menteri ...",
+    o: ["Diberhentikan dengan hormat sebagai PNS", "Wajib mengundurkan diri sebagai PNS", "Tetap menduduki jabatan organiknya", "Diberhentikan sementara tanpa hak gaji", "Diberhentikan dari jabatan organiknya tanpa kehilangan statusnya sebagai PNS"],
+    a: 4,
+    e: "Pasal 35 ayat (2). Pasal 36: setelah berhenti, PNS tersebut diangkat dalam jabatan organik sesuai formasi; jika sudah mencapai batas usia pensiun, diberhentikan dengan hormat dan diberi hak kepegawaiannya. Staf khusus juga dapat berasal dari non-PNS.",
+    src: "Perpres 157/2024 Pasal 35-36"
+  },
+  {
+    id: "mod-pps-12", set: "mod", topic: "sotk",
+    q: "Dalam memimpin pelaksanaan tugas dan fungsinya, Menteri Imigrasi dan Pemasyarakatan menerapkan ...",
+    o: ["Sistem merit, manajemen talenta nasional, dan budaya kerja ASN BerAKHLAK", "Sistem manajemen mutu dan pengawasan melekat secara berjenjang", "Sistem akuntabilitas kinerja pemerintah, manajemen risiko pembangunan nasional, dan transformasi digital nasional", "Standar pelayanan minimal, maklumat pelayanan, dan survei kepuasan masyarakat", "Prinsip koordinasi, integrasi, dan sinkronisasi dengan pemerintah daerah"],
+    a: 2,
+    e: "Pasal 41. Sistem pengendalian intern diterapkan oleh semua unsur (Pasal 46); prinsip koordinasi, integrasi, sinkronisasi, dan kolaborasi diatur Pasal 45.",
+    src: "Perpres 157/2024 Pasal 41"
+  },
+  {
+    id: "mod-pps-13", set: "mod", topic: "sotk",
+    q: "Penyelenggaraan tugas dan fungsi Kemenimipas dilakukan secara sinergi dengan kementerian yang menyelenggarakan urusan pemerintahan di bidang ...",
+    o: ["Luar negeri dan pertahanan", "Dalam negeri dan ketenagakerjaan", "Keuangan dan aparatur negara", "Hukum dan hak asasi manusia", "Politik dan keamanan"],
+    a: 3,
+    e: "Pasal 49. Imigrasi dan pemasyarakatan semula berada di Kemenkumham, yang kemudian dipecah; urusan hukum dan urusan HAM kini dipegang kementerian masing-masing.",
+    src: "Perpres 157/2024 Pasal 49"
+  },
+  {
+    id: "mod-pps-14", set: "mod", topic: "sotk",
+    q: "Penataan organisasi Kemenimipas untuk jabatan pimpinan tinggi pratama atau eselon II ke bawah ditetapkan dengan ...",
+    o: ["Peraturan Presiden atas usul menteri PANRB", "Peraturan Menteri setelah mendapat persetujuan tertulis dari menteri PANRB", "Keputusan Sekretaris Jenderal", "Peraturan Pemerintah", "Keputusan Presiden"],
+    a: 1,
+    e: "Pasal 54 ayat (1): eselon I dengan Peraturan Presiden atas usul menteri PANRB (huruf a); eselon II ke bawah dengan Peraturan Menteri setelah persetujuan tertulis menteri PANRB (huruf b). Huruf b inilah dasar terbitnya Permenimipas 1/2024.",
+    src: "Perpres 157/2024 Pasal 54"
+  },
+  {
+    id: "mod-pps-15", set: "mod", topic: "sotk",
+    q: "Pasal 57 Perpres 157/2024 mengalihkan tugas dan fungsi Ditjen Imigrasi dan Ditjen Pemasyarakatan menjadi tugas dan fungsi Kemenimipas. Sebelumnya kedua direktorat jenderal itu berada di lingkungan ...",
+    o: ["Kementerian Dalam Negeri", "Kementerian Koordinator Bidang Politik dan Keamanan", "Kementerian Luar Negeri", "Kementerian Sekretariat Negara", "Kementerian Hukum dan Hak Asasi Manusia"],
+    a: 4,
+    e: "Kemenkumham diatur Perpres 18/2023. Pasal 56: pengalihan SDM, aset, anggaran, dan dokumen dikoordinasikan bersama oleh Menteri, menteri bidang hukum, dan menteri bidang HAM. Pasal 58: peraturan pelaksanaan Perpres 18/2023 soal imigrasi dan pemasyarakatan tetap berlaku sepanjang tidak bertentangan.",
+    src: "Perpres 157/2024 Pasal 56-58"
+  },
+  {
+    id: "mod-pps-16", set: "mod", topic: "sotk",
+    q: "Pembinaan dan pengelolaan SDM, keuangan, perlengkapan, kearsipan, dokumentasi, dan persandian di Kemenimipas diselenggarakan dengan menerapkan ...",
+    o: ["Sistem pemerintahan berbasis elektronik dalam rangka mendukung transformasi digital", "Sistem manajemen mutu ISO 9001", "Sistem akuntansi berbasis kas", "Sistem pengadaan manual terpusat", "Sistem informasi pemerintahan daerah"],
+    a: 0,
+    e: "Pasal 52. Pasal 53: pendanaan pelaksanaan tugas Kementerian bersumber dari APBN.",
+    src: "Perpres 157/2024 Pasal 52-53"
+  },
+  {
+    id: "mod-pps-17", set: "mod", topic: "sotk",
+    q: "Besaran organisasi Kemenimipas ditentukan berdasarkan ...",
+    o: ["Jumlah pegawai dan jumlah satuan kerja", "Besarnya anggaran tahunan", "Karakteristik tugas dan fungsi serta beban kerja", "Jumlah provinsi dan kabupaten/kota", "Usulan Dewan Perwakilan Rakyat"],
+    a: 2,
+    e: "Pasal 55 ayat (1). Ayat (2): besaran organisasi juga mempertimbangkan mandat konstitusi, visi dan misi Presiden, tantangan utama bangsa, dan peran pemerintah.",
+    src: "Perpres 157/2024 Pasal 55"
+  },
+  {
+    id: "mod-pps-18", set: "mod", topic: "sotk",
+    q: "Pusat yang dibentuk di lingkungan Kemenimipas berada di bawah dan bertanggung jawab kepada ...",
+    o: ["Sekretaris Jenderal", "Direktur Jenderal Imigrasi", "Inspektur Jenderal", "Menteri melalui Sekretaris Jenderal", "Wakil Menteri"],
+    a: 3,
+    e: "Pasal 30: pusat dibentuk sesuai kebutuhan dan beban kerja, dipimpin Kepala Pusat. Pasal 31: pusat dapat dibentuk paling banyak 2 bidang serta bagian yang menangani ketatausahaan. Permenimipas 1/2024 membentuk Pusat Strategi Kebijakan serta Pusat Data, Informasi, dan Komunikasi Publik.",
+    src: "Perpres 157/2024 Pasal 30-31"
+  },
+  {
+    id: "mod-otk-01", set: "mod", topic: "sotk",
+    q: "Permenimipas Nomor 1 Tahun 2024 tentang Organisasi dan Tata Kerja Kemenimipas ditetapkan dan diundangkan pada tanggal ...",
+    o: ["5 November 2024 dan 5 November 2024", "19 November 2024 dan 20 November 2024", "20 Oktober 2024 dan 21 Oktober 2024", "1 Desember 2024 dan 2 Desember 2024", "17 September 2025 dan 18 September 2025"],
+    a: 1,
+    e: "Ditetapkan 19 November 2024 oleh Menteri Agus Andrianto, diundangkan 20 November 2024 (Berita Negara 2024 Nomor 867), berlaku sejak diundangkan (Pasal 406). Tanggal 5 November 2024 adalah penetapan Perpres 157/2024.",
+    src: "Permenimipas 1/2024 Pasal 406"
+  },
+  {
+    id: "mod-otk-02", set: "mod", topic: "sotk",
+    q: "Permenimipas 1/2024 tentang Organisasi dan Tata Kerja Kemenimipas disusun untuk melaksanakan ketentuan ...",
+    o: ["Pasal 54 ayat (1) huruf b Perpres Nomor 157 Tahun 2024", "Pasal 11 UU Nomor 39 Tahun 2008", "Pasal 17 ayat (3) UUD 1945", "Pasal 3 Perpres Nomor 140 Tahun 2024", "Pasal 2 Permenimipas Nomor 11 Tahun 2025"],
+    a: 0,
+    e: "Bagian menimbang huruf a. Penyusunannya juga telah mendapat persetujuan tertulis menteri yang menyelenggarakan urusan aparatur negara (huruf b). Pasal 11 UU 39/2008 adalah dasar Perpres 157/2024.",
+    src: "Permenimipas 1/2024 Menimbang; Perpres 157/2024 Pasal 54"
+  },
+  {
+    id: "mod-otk-03", set: "mod", topic: "sotk",
+    q: "Menteri dan Wakil Menteri Imigrasi dan Pemasyarakatan merupakan ...",
+    o: ["Atasan dan bawahan dalam jabatan struktural", "Dua jabatan yang setara kedudukannya", "Unsur pembantu pimpinan", "Pejabat yang sama-sama bertanggung jawab kepada DPR", "Satu kesatuan unsur pemimpin Kementerian"],
+    a: 4,
+    e: "Pasal 4. Kementerian berada di bawah dan bertanggung jawab kepada Presiden serta dipimpin Menteri (Pasal 2); Wakil Menteri membantu perumusan/pelaksanaan kebijakan dan koordinasi lintas unit eselon I (Pasal 3).",
+    src: "Permenimipas 1/2024 Pasal 2-4"
+  },
+  {
+    id: "mod-otk-04", set: "mod", topic: "sotk",
+    q: "Berikut termasuk fungsi Kemenimipas menurut Pasal 6 Permenimipas 1/2024, KECUALI ...",
+    o: ["Pengelolaan barang milik negara/kekayaan negara yang menjadi tanggung jawab Kementerian", "Pelaksanaan pengembangan SDM di bidang keimigrasian dan pemasyarakatan", "Pelaksanaan penuntutan perkara tindak pidana keimigrasian", "Pelaksanaan kegiatan teknis yang berskala nasional", "Pelaksanaan tugas pokok sampai ke daerah"],
+    a: 2,
+    e: "Penuntutan adalah kewenangan kejaksaan. Sepuluh fungsi Pasal 6 antara lain perumusan, penetapan, dan pelaksanaan kebijakan; bimbingan teknis dan supervisi di daerah; dukungan administrasi; pengelolaan BMN; pengawasan; pengembangan SDM; kegiatan teknis berskala nasional; tugas pokok sampai ke daerah; dukungan substantif.",
+    src: "Permenimipas 1/2024 Pasal 6"
+  },
+  {
+    id: "mod-otk-05", set: "mod", topic: "sotk",
+    q: "Inspektorat Jenderal Kemenimipas melaksanakan pengawasan untuk tujuan tertentu atas ...",
+    o: ["Permintaan BPK", "Laporan masyarakat secara langsung", "Penugasan Presiden", "Penugasan Menteri", "Usul Direktur Jenderal"],
+    a: 3,
+    e: "Pasal 77 huruf c. Fungsi lain Itjen: kebijakan teknis pengawasan intern; pengawasan intern atas kinerja dan keuangan melalui audit, reviu, evaluasi, pemantauan, dan kegiatan pengawasan lainnya; laporan hasil pengawasan; administrasi Itjen.",
+    src: "Permenimipas 1/2024 Pasal 77"
+  },
+  {
+    id: "mod-otk-06", set: "mod", topic: "sotk",
+    q: "Inspektorat Wilayah yang mengawasi Sekretariat Jenderal, Pusat Data, Informasi, dan Komunikasi Publik, serta kantor wilayah dan UPT di Provinsi DKI Jakarta adalah ...",
+    o: ["Inspektorat Wilayah I", "Inspektorat Wilayah II", "Inspektorat Wilayah III", "Inspektorat Wilayah IV", "Sekretariat Inspektorat Jenderal"],
+    a: 1,
+    e: "Pasal 96. Itwil I: Itjen, BPSDM, Pusat Strategi Kebijakan (Pasal 92). Itwil III: Ditjen Imigrasi (Pasal 100). Itwil IV: Ditjen Pemasyarakatan dan wilayah antara lain Kalimantan Barat (Pasal 107).",
+    src: "Permenimipas 1/2024 Pasal 96"
+  },
+  {
+    id: "mod-otk-07", set: "mod", topic: "sotk",
+    q: "Pengawasan intern atas BPSDM Imigrasi dan Pemasyarakatan serta Pusat Strategi Kebijakan menjadi tugas ...",
+    o: ["Inspektorat Wilayah I", "Inspektorat Wilayah II", "Inspektorat Wilayah III", "Inspektorat Wilayah IV", "Direktorat Kepatuhan Internal"],
+    a: 0,
+    e: "Pasal 92: Itwil I mengawasi Inspektorat Jenderal, BPSDM, Pusat Strategi Kebijakan, serta kanwil dan UPT di Sumatera Utara, Banten, Kalimantan Selatan, Sulawesi Utara, Bali, Maluku Utara, Bengkulu, Bangka Belitung, dan Sulawesi Barat.",
+    src: "Permenimipas 1/2024 Pasal 92"
+  },
+  {
+    id: "mod-otk-08", set: "mod", topic: "sotk",
+    q: "Berikut direktorat di lingkungan Direktorat Jenderal Pemasyarakatan, KECUALI ...",
+    o: ["Direktorat Pelayanan Tahanan dan Anak", "Direktorat Pembimbingan Kemasyarakatan", "Direktorat Pengawasan dan Penindakan Keimigrasian", "Direktorat Perawatan Kesehatan dan Rehabilitasi", "Direktorat Sistem dan Strategi Penyelenggaraan Pemasyarakatan"],
+    a: 2,
+    e: "Pasal 235: Sekretariat Ditjen; Direktorat Sistem dan Strategi Penyelenggaraan Pemasyarakatan; Pelayanan Tahanan dan Anak; Pembinaan Narapidana dan Anak Binaan; Pembimbingan Kemasyarakatan; Perawatan Kesehatan dan Rehabilitasi; Pengamanan dan Intelijen; Kepatuhan Internal; Teknologi Informasi dan Kerja Sama Pemasyarakatan. Direktorat Pengawasan dan Penindakan Keimigrasian ada di Ditjen Imigrasi.",
+    src: "Permenimipas 1/2024 Pasal 235"
+  },
+  {
+    id: "mod-otk-09", set: "mod", topic: "sotk",
+    q: "Fungsi Direktorat Jenderal Pemasyarakatan menurut Pasal 234 Permenimipas 1/2024 mencakup bidang berikut, KECUALI ...",
+    o: ["Pembimbingan kemasyarakatan", "Perawatan", "Pengamanan, pengamatan, dan intelijen pemasyarakatan", "Teknologi informasi dan kerja sama pemasyarakatan", "Perlintasan negara dan izin tinggal"],
+    a: 4,
+    e: "Bidang fungsi Ditjen PAS: pelayanan, pembinaan, pembimbingan kemasyarakatan, perawatan, pengamanan, pengamatan, dan intelijen pemasyarakatan, serta teknologi informasi dan kerja sama pemasyarakatan. Perlintasan negara dan izin tinggal adalah bidang Ditjen Imigrasi.",
+    src: "Permenimipas 1/2024 Pasal 234"
+  },
+  {
+    id: "mod-otk-10", set: "mod", topic: "sotk",
+    q: "Unit eselon I yang menyelenggarakan fungsi penilaian dan rekomendasi pengembangan kompetensi sumber daya manusia di lingkungan Kemenimipas adalah ...",
+    o: ["Sekretariat Jenderal", "Inspektorat Jenderal", "Direktorat Jenderal Imigrasi", "Badan Pengembangan Sumber Daya Manusia Imigrasi dan Pemasyarakatan", "Direktorat Jenderal Pemasyarakatan"],
+    a: 3,
+    e: "Pasal 346-347: BPSDM bertugas melaksanakan pengembangan SDM di bidang keimigrasian dan pemasyarakatan; fungsinya antara lain penyusunan kebijakan teknis pengembangan SDM serta penilaian dan rekomendasi pengembangan kompetensi.",
+    src: "Permenimipas 1/2024 Pasal 346-347"
+  },
+  {
+    id: "mod-otk-11", set: "mod", topic: "sotk",
+    q: "Susunan organisasi Pusat Data, Informasi, dan Komunikasi Publik terdiri atas ...",
+    o: ["Bidang Data, Bidang Informasi, dan Bidang Komunikasi", "Bidang Komunikasi Publik, Subbagian Tata Usaha, serta kelompok jabatan fungsional dan pelaksana", "Subbagian Tata Usaha serta kelompok jabatan fungsional dan pelaksana saja", "Bagian Umum dan dua subbidang", "Tiga subdirektorat dan Subbagian Tata Usaha"],
+    a: 1,
+    e: "Pasal 378. Pusat ini berada di bawah dan bertanggung jawab kepada Menteri melalui Sekretaris Jenderal (Pasal 376). Pusat Strategi Kebijakan hanya terdiri atas Subbagian Tata Usaha serta kelompok jabatan fungsional dan pelaksana (Pasal 384).",
+    src: "Permenimipas 1/2024 Pasal 376-378"
+  },
+  {
+    id: "mod-otk-12", set: "mod", topic: "sotk",
+    q: "Staf Ahli yang memberikan rekomendasi isu strategis kepada Menteri terkait hubungan antarlembaga serta hubungan luar negeri dan wilayah perbatasan adalah ...",
+    o: ["Staf Ahli Bidang Hubungan Antar Lembaga", "Staf Ahli Bidang Pelayanan Publik dan Reformasi Hukum", "Staf Ahli Bidang Penguatan Reformasi Birokrasi", "Staf Ahli Bidang Keamanan Perbatasan", "Staf Ahli Bidang Kerja Sama Internasional"],
+    a: 0,
+    e: "Pasal 375 ayat (1). Hanya ada tiga staf ahli (Pasal 374): Hubungan Antar Lembaga; Pelayanan Publik dan Reformasi Hukum; Penguatan Reformasi Birokrasi (termasuk transformasi digital).",
+    src: "Permenimipas 1/2024 Pasal 374-375"
+  },
+  {
+    id: "mod-otk-13", set: "mod", topic: "sotk",
+    q: "Biro di Sekretariat Jenderal yang bertugas melaksanakan pembinaan dan layanan ketatausahaan, kesehatan, kerumahtanggaan, prasarana fisik, keprotokolan, dan pengamanan Kementerian adalah ...",
+    o: ["Biro Perencanaan dan Keuangan", "Biro Barang Milik Negara", "Biro Hukum dan Kerja Sama", "Biro Umum", "Biro SDM Aparatur, Organisasi, dan Ketatalaksanaan"],
+    a: 3,
+    e: "Pasal 63. Biro Perencanaan dan Keuangan: rencana, program, anggaran, kinerja, risiko, laporan keuangan (Pasal 13). Biro BMN: BMN dan pengadaan (Pasal 39). Biro Hukum dan Kerja Sama: hukum dan kerja sama (Pasal 53).",
+    src: "Permenimipas 1/2024 Pasal 63"
+  },
+  {
+    id: "mod-otk-14", set: "mod", topic: "sotk",
+    q: "Koordinasi dan fasilitasi pengelolaan barang milik/kekayaan negara serta pengadaan barang/jasa di lingkungan Kemenimipas menjadi tugas ...",
+    o: ["Biro Umum", "Biro Perencanaan dan Keuangan", "Biro Barang Milik Negara", "Pusat Data, Informasi, dan Komunikasi Publik", "Inspektorat Jenderal"],
+    a: 2,
+    e: "Pasal 39. Fungsi Sekretariat Jenderal huruf f (Pasal 11) memang mencakup koordinasi pengelolaan BMN dan pelayanan pengadaan barang/jasa; pelaksananya Biro Barang Milik Negara.",
+    src: "Permenimipas 1/2024 Pasal 39"
+  },
+  {
+    id: "mod-otk-15", set: "mod", topic: "sotk",
+    q: "Menteri menyampaikan laporan mengenai hasil pelaksanaan urusan pemerintahan di bidang imigrasi dan pemasyarakatan kepada Presiden ...",
+    o: ["Setiap akhir masa jabatan", "Setiap tahun anggaran melalui DPR", "Hanya bila diminta Presiden", "Setiap triwulan melalui Menteri Sekretaris Negara", "Secara berkala atau sewaktu-waktu sesuai kebutuhan"],
+    a: 4,
+    e: "Pasal 394. Pasal 392: dalam melaksanakan tugas dan fungsinya, Menteri harus menerapkan sistem akuntabilitas kinerja instansi pemerintahan.",
+    src: "Permenimipas 1/2024 Pasal 392-394"
+  },
+  {
+    id: "mod-otk-16", set: "mod", topic: "sotk",
+    q: "Kemenimipas harus menyusun dokumen berikut terhadap seluruh jabatan di lingkungannya, yaitu ...",
+    o: ["Rencana strategis, rencana kerja, dan perjanjian kinerja", "Analisis jabatan, peta jabatan, analisis beban kerja, dan uraian tugas", "Standar pelayanan, maklumat pelayanan, dan SOP", "Sasaran kinerja pegawai dan penilaian perilaku", "Rencana kebutuhan formasi dan pola karier"],
+    a: 1,
+    e: "Pasal 395. Pasal 393: Kementerian juga harus menyusun proses bisnis yang menggambarkan tata hubungan kerja yang efektif dan efisien antarunit, diatur dengan Peraturan Menteri.",
+    src: "Permenimipas 1/2024 Pasal 393-395"
+  },
+  {
+    id: "mod-otk-17", set: "mod", topic: "sotk",
+    q: "Prinsip koordinasi, integrasi, sinkronisasi, dan kolaborasi yang wajib diterapkan setiap unsur Kemenimipas didukung dengan ...",
+    o: ["Interoperabilitas data dan informasi", "Pengawasan melekat", "Rapat koordinasi berkala", "Pelimpahan wewenang", "Persetujuan tertulis menteri PANRB"],
+    a: 0,
+    e: "Pasal 396 ayat (2). Prinsip ini berlaku di dalam Kementerian maupun dalam hubungan antarkementerian atau lembaga lain (ayat 1). Semua unsur juga menerapkan sistem pengendalian intern pemerintah (Pasal 397).",
+    src: "Permenimipas 1/2024 Pasal 396-397"
+  },
+  {
+    id: "mod-otk-18", set: "mod", topic: "sotk",
+    q: "Selain APBN, pelaksanaan tugas dan fungsi keimigrasian dapat dibebankan kepada ...",
+    o: ["Anggaran pendapatan dan belanja daerah saja", "Pinjaman luar negeri", "Iuran pegawai", "Sumber lain yang sah dan tidak mengikat sesuai ketentuan peraturan perundang-undangan", "Hibah dari pemohon layanan keimigrasian"],
+    a: 3,
+    e: "Pasal 403. Pasal 402: segala pendanaan pelaksanaan tugas dan fungsi Kementerian dibebankan kepada APBN.",
+    src: "Permenimipas 1/2024 Pasal 402-403"
+  },
+  {
+    id: "mod-otk-19", set: "mod", topic: "sotk",
+    q: "Pada saat Permenimipas 1/2024 mulai berlaku, jabatan beserta pejabat yang sudah ada di Kemenimipas ...",
+    o: ["Diberhentikan seluruhnya dan diangkat kembali melalui seleksi terbuka", "Dialihkan ke Kementerian Hukum sampai penataan organisasi selesai", "Tetap melaksanakan tugas dan fungsinya sampai dibentuk jabatan baru dan diangkat pejabat baru", "Dinonaktifkan selama enam bulan sampai uji kompetensi selesai", "Otomatis diangkat menjadi pejabat baru tanpa pelantikan ulang"],
+    a: 2,
+    e: "Pasal 405 (ketentuan peralihan). Perubahan susunan organisasi dan tata kerja selanjutnya diatur Menteri setelah persetujuan tertulis menteri PANRB (Pasal 404).",
+    src: "Permenimipas 1/2024 Pasal 404-405"
+  },
+  {
+    id: "mod-otk-20", set: "mod", topic: "sotk",
+    q: "Kelompok jabatan fungsional memberikan pelayanan fungsional dalam pelaksanaan tugas jabatan pimpinan tinggi pratama. Mekanisme sistem kerjanya ditetapkan melalui ...",
+    o: ["Seksi dan subseksi", "Satuan tugas ad hoc", "Rapat pimpinan", "Struktur eselon IV", "Tim kerja/kelompok kerja"],
+    a: 4,
+    e: "Pasal 387. Jumlah kelompok jabatan fungsional ditentukan berdasarkan analisis jabatan dan beban kerja (Pasal 388).",
+    src: "Permenimipas 1/2024 Pasal 387-388"
+  },
+  {
+    id: "mod-otk-21", set: "mod", topic: "sotk",
+    q: "Direktorat di Ditjen Imigrasi yang fungsinya mencakup standardisasi dan pelaksanaan kebijakan penanganan pengungsi dari luar negeri adalah ...",
+    o: ["Direktorat Intelijen Keimigrasian", "Direktorat Pengawasan dan Penindakan Keimigrasian", "Direktorat Izin Tinggal dan Status Keimigrasian", "Direktorat Kerja Sama Keimigrasian dan Bina Perwakilan", "Direktorat Tempat Pemeriksaan Imigrasi"],
+    a: 1,
+    e: "Pasal 177 huruf b-d. Tugas pokoknya pengawasan keimigrasian, penyidikan keimigrasian, dan tindakan administratif keimigrasian (Pasal 176). Salah satu subdirektoratnya: Penanganan Deteni dan Koordinasi Penanganan Pengungsi.",
+    src: "Permenimipas 1/2024 Pasal 176-178"
+  }
+);
