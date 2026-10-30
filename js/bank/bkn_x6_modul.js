@@ -1986,7 +1986,7 @@ window.BANK.renstra.push(
     q: "Indikator kinerja Sasaran Strategis 2 Kemenimipas (tata kelola yang berintegritas, efektif, dan efisien) adalah ...",
     o: ["Indeks Penegakan Hukum dan Pelayanan Bidang Imigrasi dan Pemasyarakatan", "Nilai SAKIP Kementerian", "Opini BPK atas laporan keuangan", "Indeks Reformasi Birokrasi Kementerian Imigrasi dan Pemasyarakatan", "Indeks Kepuasan Masyarakat"],
     a: 3,
-    e: "Indeks RB Kemenimipas sekaligus menjadi indikator Tujuan 2. Indeks Penegakan Hukum dan Pelayanan adalah indikator SS 1. Nilai SAKIP dan opini BPK termasuk indikator di tingkat program Sekretariat Jenderal.",
+    e: "Indeks RB Kemenimipas sekaligus menjadi indikator Tujuan 2. Indeks Penegakan Hukum dan Pelayanan adalah indikator SS 1. Nilai SAKIP dan opini BPK adalah indikator dalam kerangka kinerja Sekretariat Jenderal (hlm. 177).",
     src: "Modul Renstra Kemenimipas 2025-2029 hlm. 84-86 (halaman PDF; nomor tercetak 85-87)"
   },
   {
@@ -2066,7 +2066,7 @@ window.BANK.renstra.push(
     q: "Dasbor terpadu yang mengintegrasikan data dan informasi imigrasi serta pemasyarakatan dalam strategi modernisasi Kemenimipas disebut ...",
     o: ["SDP (Sistem Database Pemasyarakatan)", "SIMKIM", "SPPT-TI", "Satu Data Indonesia", "DIPTA (Dashboard Imigrasi dan Pemasyarakatan Terpadu)"],
     a: 4,
-    e: "DIPTA disebut dalam strategi 1 arah kebijakan 4. SDP dan SPPT-TI (Sistem Peradilan Pidana Terpadu berbasis TI) adalah sistem di sisi pemasyarakatan untuk pertukaran data antarpenegak hukum.",
+    e: "DIPTA disebut dalam strategi 1 arah kebijakan 4. SDP dan SPPT-TI (Sistem Peradilan Pidana Terpadu berbasis TI) adalah sistem di sisi pemasyarakatan untuk pertukaran data antarpenegak hukum (strategi 2 arah kebijakan 2, hlm. 113).",
     src: "Modul Renstra Kemenimipas 2025-2029 hlm. 114-115 (halaman PDF; nomor tercetak 115-116)"
   },
   {
@@ -2098,7 +2098,7 @@ window.BANK.renstra.push(
     q: "Penambahan dua rumah detensi imigrasi baru dalam Renstra Kemenimipas 2025-2029 direncanakan di ...",
     o: ["Aceh dan Palembang", "Batam dan Pontianak", "Medan dan Makassar", "Kupang dan Jayapura", "Balikpapan dan IKN"],
     a: 0,
-    e: "Lokasi dipilih dengan mempertimbangkan konsentrasi kedatangan dan pengungsi beserta pengawasannya. Saat ini ada 13 rumah detensi imigrasi.",
+    e: "Lokasi dipilih dengan mempertimbangkan konsentrasi kedatangan dan pengungsi beserta pengawasannya. Saat ini ada 13 rumah detensi imigrasi (Tabel 1.1, hlm. 16).",
     src: "Modul Renstra Kemenimipas 2025-2029 hlm. 145 (halaman PDF; nomor tercetak 146)"
   },
   {
