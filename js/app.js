@@ -92,6 +92,7 @@
     const row = r => isObj(r) && typeof r.key === "string" && [r.n, r.correct, r.score, r.max].every(x => typeof x === "number" && isFinite(x)) ? { key: r.key, label: String(r.label || r.key), tc: /^tc[1-5]$/.test(r.tc) ? r.tc : "tc1", n: r.n, correct: r.correct, score: r.score, max: r.max, th: r.th === undefined || r.th === null ? "" : String(r.th) } : null;
     const out = { ts: h.ts, mode: h.mode === "form" ? "form" : "upkp", durationSec: num(h.durationSec, 0), timeout: h.timeout === true, total: { n: t.n, correct: t.correct, score: t.score, max: t.max },
       qids: strArr(h.qids), answers: objOf(h.answers, v => Number.isInteger(v) ? v : undefined), flags: objOf(h.flags, v => v === true ? true : undefined), perm: objOf(h.perm, v => Array.isArray(v) && v.every(Number.isInteger) ? v : undefined) };
+    if (["kisi", "mod", "form"].includes(h.src)) out.src = h.src;
     if (Array.isArray(h.rows)) out.rows = h.rows.map(row).filter(Boolean);
     else if (isObj(h.perTest)) { out.perTest = objOf(h.perTest, v => isObj(v) && [v.n, v.correct, v.score, v.max].every(x => typeof x === "number") ? { n: v.n, correct: v.correct, score: v.score, max: v.max } : undefined); if (isObj(h.thresholds)) out.thresholds = objOf(h.thresholds, v => v === undefined || v === null ? undefined : String(v)); }
     else return null;
@@ -112,6 +113,7 @@
     if (typeof st.catName === "string") ds.catName = st.catName.slice(0, 60);
     if (st.catView === 2) ds.catView = 2;
     if (st.kpSound === true) ds.kpSound = true;
+    if (["kisi", "mod", "form"].includes(st.simSrc)) ds.simSrc = st.simSrc;
     d.stats = objOf(s.stats, v => isObj(v) ? { seen: num(v.seen, 0), correct: num(v.correct, 0), wrong: num(v.wrong, 0), lastWrong: v.lastWrong === true, t: num(v.t, 0), okDays: strArr(v.okDays).slice(-3) } : undefined);
     d.history = (Array.isArray(s.history) ? s.history : []).map(cleanHistory).filter(Boolean).slice(-60);
     d.bookmarks = strArr(s.bookmarks);
@@ -2019,14 +2021,25 @@
     upkp: { title: "Simulasi UPKP D3-S2", sub: "Komposisi kisi-kisi hal. 6 / SE BKN 10/2024", n: 100, min: 90 },
     form: { title: "Latihan Resmi BKN 2025", sub: "50 soal asli, urutan asli, 4 pilihan", n: 50, min: 45 }
   };
-  function buildExam(mode) {
+  // Jenis soal simulasi UPKP, sama dengan filter Latihan. Jenis pilihan didahulukan per topik; kekurangannya
+  // diisi jenis lain supaya komposisi 100 soal dan ambang per jenis tes tetap sebanding dengan CAT.
+  const SIM_SRC = [["all", "Semua"], ["kisi", "Kisi-kisi"], ["mod", "Modul"], ["form", "Resmi"]];
+  const simSrcLabel = k => (SIM_SRC.find(x => x[0] === k) || ["", ""])[1];
+  const simSrc = () => state.settings.simSrc || "all";
+  const srcAvail = (tid, src) => pool(tid).filter(q => src === "kisi" ? q.set === "bkn" : q.set === src).length;
+  function buildExam(mode, src) {
     const qs = [], sections = [];
     if (mode === "form") {
       formSet().forEach(q => { const last = sections[sections.length - 1]; if (!last || last.key !== q.topic) sections.push({ key: q.topic, start: qs.length, end: qs.length + 1 }); else last.end++; qs.push(q); });
     } else {
       TEST_ORDER.forEach(k => {
         const start = qs.length;
-        CORE.filter(t => t.test === k).forEach(t => qs.push(...pickFrom([t.id], t.n, "unseen")));
+        CORE.filter(t => t.test === k).forEach(t => {
+          if (!src || src === "all") return qs.push(...pickFrom([t.id], t.n, "unseen"));
+          const main = pickFrom([t.id], t.n, "unseen", src), got = new Set(main.map(q => q.id));
+          const fill = pickFrom([t.id], pool(t.id).length, "unseen").filter(q => !got.has(q.id)).slice(0, t.n - main.length);
+          qs.push(...shuffle(main.concat(fill)));
+        });
         sections.push({ key: k, start, end: qs.length });
       });
     }
@@ -2034,7 +2047,7 @@
   }
   const secLabel = (mode, key) => mode === "form" ? topicById(key).label : TESTS[key].label;
   const secTc = (mode, key) => mode === "form" ? tcOf(topicById(key)) : "tc" + TESTS[key].color;
-  function persistExam() { if (!exam || exam.finished) return store.del(EXAM_KEY); store.set(EXAM_KEY, JSON.stringify({ mode: exam.mode, ids: exam.qs.map(q => q.id), sections: exam.sections, i: exam.i, answers: exam.answers, flags: exam.flags, perm: exam.perm, endAt: exam.endAt, startedAt: exam.startedAt })); }
+  function persistExam() { if (!exam || exam.finished) return store.del(EXAM_KEY); store.set(EXAM_KEY, JSON.stringify({ mode: exam.mode, src: exam.src, ids: exam.qs.map(q => q.id), sections: exam.sections, i: exam.i, answers: exam.answers, flags: exam.flags, perm: exam.perm, endAt: exam.endAt, startedAt: exam.startedAt })); }
   function restoreExam() {
     try {
       const s = JSON.parse(store.get(EXAM_KEY) || "null"); if (!s) return;
@@ -2066,21 +2079,31 @@
         el("h3", null, [m.title]), el("div", { class: "big" }, [`${m.n} soal · ${m.min} menit`]), el("span", { class: "small muted" }, [m.sub])
       ])));
       comp.innerHTML = "";
-      const b = buildExamPreview(simMode);
+      const src = simMode === "upkp" ? simSrc() : "all", lbl = simSrcLabel(src), part = src !== "all";
+      if (simMode === "upkp") comp.appendChild(el("div", { class: "field", style: "margin-bottom:14px" }, [el("span", { class: "label" }, ["Jenis soal"]),
+        el("div", { class: "seg", role: "group", "aria-label": "Jenis soal" }, SIM_SRC.map(([v, l]) => el("button", { "aria-pressed": src === v ? "true" : "false", onclick: () => { state.settings.simSrc = v; save(); draw(); } }, [l])))]));
+      const b = buildExamPreview(simMode, src);
       comp.appendChild(el("div", { class: "table-wrap" }, [el("table", { class: "tbl" }, [
-        el("thead", null, [el("tr", null, [el("th", null, [simMode === "form" ? "Bagian (urutan asli)" : "Jenis tes / materi"]), el("th", { class: "n" }, ["Soal"]), el("th", { class: "n" }, ["Skor maks"])])]),
-        el("tbody", null, b.map(r => el("tr", r.sub ? { class: "sub" } : null, [el("td", { style: r.sub ? "padding-left:26px;color:var(--muted)" : "font-weight:700" }, [r.label]), el("td", { class: "n" }, [r.n]), el("td", { class: "n" }, [r.sub ? "" : r.n * 5])])))
+        el("thead", null, [el("tr", null, [el("th", null, [simMode === "form" ? "Bagian (urutan asli)" : "Jenis tes / materi"]), el("th", { class: "n" }, ["Soal"]), part ? el("th", { class: "n" }, [lbl]) : el("th", { class: "n" }, ["Skor maks"])])]),
+        el("tbody", null, b.map(r => el("tr", r.sub ? { class: "sub" } : null, [el("td", { style: r.sub ? "padding-left:26px;color:var(--muted)" : "font-weight:700" }, [r.label]), el("td", { class: "n" }, [r.n]),
+          part ? el("td", { class: "n", style: r.got < r.n ? "color:var(--warn)" : null }, [r.got]) : el("td", { class: "n" }, [r.sub ? "" : r.n * 5])])))
       ])]));
+      if (part) {
+        const kurang = CORE.filter(t => srcAvail(t.id, src) < t.n).map(t => `${t.label} ${srcAvail(t.id, src)}/${t.n}`);
+        const tot = b.filter(r => !r.sub).reduce((a, r) => a + r.got, 0);
+        comp.appendChild(el("p", { class: "small muted", style: "margin-top:10px" }, [`${tot} dari 100 soal berjenis ${lbl}. ` + (kurang.length ? `Kekurangannya diisi soal jenis lain agar komposisi CAT tetap: ${kurang.join(", ")}.` : "Semua topik terisi penuh dari jenis ini.") +
+          (src === "form" ? " Untuk 50 soal resmi utuh dengan urutan aslinya, pilih kartu Latihan Resmi BKN 2025." : "")]));
+      }
     };
     draw();
     const start = () => {
       const minutes = Math.min(240, Math.max(10, parseInt(dur.value, 10) || MODES[simMode].min)); dur.value = minutes;
       if (simMode === "upkp") state.settings.durationMin = minutes;
       TEST_ORDER.forEach(k => state.settings.thresholds[k] = th[k].value); save();
-      const b = buildExam(simMode), secs = minutes * 60;
+      const src = simMode === "upkp" ? simSrc() : "all", b = buildExam(simMode, src), secs = minutes * 60;
       // halaman konfirmasi data peserta seperti CAT; waktu baru berjalan setelah Mulai Ujian
       catConfirm(b, secs, () => {
-        exam = { mode: simMode, qs: b.qs, sections: b.sections, i: 0, answers: {}, flags: {}, perm: {}, startedAt: Date.now(), endAt: Date.now() + secs * 1000, finished: false };
+        exam = { mode: simMode, src: src !== "all" ? src : undefined, qs: b.qs, sections: b.sections, i: 0, answers: {}, flags: {}, perm: {}, startedAt: Date.now(), endAt: Date.now() + secs * 1000, finished: false };
         catSel = null; persistExam(); startTimer(); renderExamQ(); window.scrollTo({ top: 0 });
       });
       window.scrollTo({ top: 0 });
@@ -2101,10 +2124,14 @@
       ])
     );
   }
-  function buildExamPreview(mode) {
+  function buildExamPreview(mode, src) {
     const rows = [];
     if (mode === "form") { const secs = buildExam("form").sections; secs.forEach(s => rows.push({ label: topicById(s.key).label, n: s.end - s.start })); }
-    else TEST_ORDER.forEach(k => { const ts = CORE.filter(t => t.test === k); rows.push({ label: TESTS[k].label, n: ts.reduce((a, t) => a + t.n, 0) }); ts.forEach(t => rows.push({ label: t.label, n: t.n, sub: true })); });
+    else TEST_ORDER.forEach(k => {
+      const ts = CORE.filter(t => t.test === k), got = t => src && src !== "all" ? Math.min(t.n, srcAvail(t.id, src)) : t.n;
+      rows.push({ label: TESTS[k].label, n: ts.reduce((a, t) => a + t.n, 0), got: ts.reduce((a, t) => a + got(t), 0) });
+      ts.forEach(t => rows.push({ label: t.label, n: t.n, got: got(t), sub: true }));
+    });
     return rows;
   }
   const secOf = i => exam.sections.find(s => i >= s.start && i < s.end);
@@ -2144,6 +2171,7 @@
         el("table", { class: "cat-table" }, [el("tbody", null, [
           row(el("label", { for: "catName" }, ["Nama peserta"]), name),
           row("Jenis ujian", MODES[simMode].title),
+          simMode === "upkp" && simSrc() !== "all" ? row("Jenis soal", simSrcLabel(simSrc()) + ", didahulukan per topik") : null,
           row("Jumlah soal", `${b.qs.length} soal`),
           row("Susunan", susunan),
           row("Alokasi waktu", `${Math.round(secs / 60)} menit`)
@@ -2247,7 +2275,7 @@
     const rows = Object.values(agg).map(r => Object.assign(r, { score: r.correct * 5, max: r.n * 5, th: exam.mode === "form" ? "" : state.settings.thresholds[r.key] }));
     const total = rows.reduce((a, r) => ({ n: a.n + r.n, correct: a.correct + r.correct, score: a.score + r.score, max: a.max + r.max }), { n: 0, correct: 0, score: 0, max: 0 });
     exam.result = { rows, total, timeout };
-    state.history.push({ ts: exam.finishedAt, mode: exam.mode, durationSec: Math.round((Math.min(exam.finishedAt, exam.endAt) - exam.startedAt) / 1000), rows, total, timeout, qids: exam.qs.map(q => q.id), answers: exam.answers, flags: exam.flags, perm: exam.perm || {} });
+    state.history.push({ ts: exam.finishedAt, mode: exam.mode, src: exam.src, durationSec: Math.round((Math.min(exam.finishedAt, exam.endAt) - exam.startedAt) / 1000), rows, total, timeout, qids: exam.qs.map(q => q.id), answers: exam.answers, flags: exam.flags, perm: exam.perm || {} });
     if (state.history.length > 60) state.history.shift();
     save(); store.del(EXAM_KEY);
     if (!silent) toast(timeout ? "Waktu habis. Simulasi dinilai." : "Simulasi dinilai.");
@@ -2279,7 +2307,7 @@
     const wrong = ex.qs.filter(q => ex.answers[q.id] !== q.a);
     view.append(
       el("section", { class: "panel lift stack", style: "gap:22px" }, [
-        el("div", { class: "row between" }, [el("div", null, [el("span", { class: "eyebrow" }, [MODES[ex.mode || "upkp"].title]), el("h1", { style: "margin-top:4px" }, ["Hasil simulasi"])]), el("div", { class: "row" }, [r.timeout ? el("span", { class: "chip chip-warn" }, ["Waktu habis"]) : el("span", { class: "chip chip-ok" }, ["Selesai"]), anyTh ? el("span", { class: "chip " + (allPass ? "chip-ok" : "chip-bad") }, [allPass ? "Lewat semua ambang" : "Belum lewat semua ambang"]) : null])]),
+        el("div", { class: "row between" }, [el("div", null, [el("span", { class: "eyebrow" }, [MODES[ex.mode || "upkp"].title + (ex.src ? " · soal " + simSrcLabel(ex.src) : "")]), el("h1", { style: "margin-top:4px" }, ["Hasil simulasi"])]), el("div", { class: "row" }, [r.timeout ? el("span", { class: "chip chip-warn" }, ["Waktu habis"]) : el("span", { class: "chip chip-ok" }, ["Selesai"]), anyTh ? el("span", { class: "chip " + (allPass ? "chip-ok" : "chip-bad") }, [allPass ? "Lewat semua ambang" : "Belum lewat semua ambang"]) : null])]),
         el("div", { class: "score-hero" }, [
           el("div", { class: "stack", style: "gap:6px" }, [el("div", { class: "score-big" }, [String(r.total.score), el("small", null, [` / ${r.total.max}`])]), el("span", { class: "muted num" }, [`${r.total.correct} dari ${r.total.n} benar · ${pct(r.total.score, r.total.max)}%`])]),
           scoreBars(rows)
@@ -2310,13 +2338,13 @@
       if (i === data.length - 1) svg += `<text class="ax" x="${x + bw / 2}" y="${y - 6}" text-anchor="middle" style="font-weight:700;fill:var(--text)">${p}%</text>`;
     });
     box.innerHTML = svg + "</svg>"; box.appendChild(tip);
-    const show = (e, target) => { const i = +target.dataset.i, h = data[i]; tip.hidden = false; tip.textContent = `${fmtDate(h.ts)} · ${h.mode === "form" ? "Resmi 50" : "UPKP 100"} · ${h.total.score}/${h.total.max} (${pct(h.total.score, h.total.max)}%)`; const br = box.getBoundingClientRect(), tr = target.getBoundingClientRect(); tip.style.left = (tr.left - br.left + tr.width / 2) + "px"; tip.style.top = (tr.top - br.top) + "px"; };
+    const show = (e, target) => { const i = +target.dataset.i, h = data[i]; tip.hidden = false; tip.textContent = `${fmtDate(h.ts)} · ${h.mode === "form" ? "Resmi 50" : "UPKP 100" + (h.src ? " " + simSrcLabel(h.src) : "")} · ${h.total.score}/${h.total.max} (${pct(h.total.score, h.total.max)}%)`; const br = box.getBoundingClientRect(), tr = target.getBoundingClientRect(); tip.style.left = (tr.left - br.left + tr.width / 2) + "px"; tip.style.top = (tr.top - br.top) + "px"; };
     box.querySelectorAll(".bar-m").forEach(b => { b.addEventListener("mouseenter", e => show(e, b)); b.addEventListener("focus", e => show(e, b)); b.addEventListener("mouseleave", () => tip.hidden = true); b.addEventListener("blur", () => tip.hidden = true); });
     return box;
   }
   function renderRiwayat(arg) {
     if (arg && arg.attempt) {
-      const h = arg.attempt, ex = { mode: h.mode, qs: h.qids.map(id => qById[id]).filter(Boolean), answers: h.answers || {}, flags: h.flags || {}, perm: h.perm || {}, result: { rows: rowsOf(h), total: h.total, timeout: h.timeout } };
+      const h = arg.attempt, ex = { mode: h.mode, src: h.src, qs: h.qids.map(id => qById[id]).filter(Boolean), answers: h.answers || {}, flags: h.flags || {}, perm: h.perm || {}, result: { rows: rowsOf(h), total: h.total, timeout: h.timeout } };
       renderResult(ex);
       view.insertBefore(el("div", null, [el("button", { class: "btn btn-sm btn-ghost", onclick: () => go("riwayat") }, [icon("left"), "Kembali ke riwayat"])]), view.firstChild);
       return;
@@ -2344,7 +2372,7 @@
         el("div", { class: "sec-head" }, [el("h2", null, ["Skor simulasi"]), hist.length ? el("div", { class: "legend-row" }, [el("span", { class: "tc1" }, ["UPKP 100 soal"]), el("span", { class: "tc2" }, ["Resmi 50 soal"])]) : null]),
         hist.length ? scoreChart(hist) : el("div", { class: "empty" }, ["Belum ada simulasi. Hasilnya akan tampil sebagai grafik di sini."]),
         hist.length ? el("div", { class: "list" }, hist.slice().reverse().map(h => el("div", { class: "list-item" }, [
-          el("div", { class: "stack", style: "gap:2px" }, [el("div", { class: "row", style: "gap:8px" }, [el("b", { class: "num" }, [`${h.total.score}/${h.total.max}`]), el("span", { class: "chip " + (h.mode === "form" ? "tc2" : "tc1") + " chip-test" }, [h.mode === "form" ? "Resmi 50" : "UPKP 100"]), h.timeout ? el("span", { class: "chip chip-warn" }, ["waktu habis"]) : null]),
+          el("div", { class: "stack", style: "gap:2px" }, [el("div", { class: "row", style: "gap:8px" }, [el("b", { class: "num" }, [`${h.total.score}/${h.total.max}`]), el("span", { class: "chip " + (h.mode === "form" ? "tc2" : "tc1") + " chip-test" }, [h.mode === "form" ? "Resmi 50" : "UPKP 100" + (h.src ? " · " + simSrcLabel(h.src) : "")]), h.timeout ? el("span", { class: "chip chip-warn" }, ["waktu habis"]) : null]),
             el("span", { class: "xs muted num" }, [`${fmtDate(h.ts)} · ${Math.round(h.durationSec / 60)} menit · ` + rowsOf(h).slice(0, 4).map(r => `${h.mode === "form" ? r.label.split(" ")[0] : r.key} ${r.score}`).join(", ")])]),
           el("button", { class: "btn btn-sm", onclick: () => go("riwayat", { attempt: h }) }, ["Pembahasan"])
         ]))) : null
