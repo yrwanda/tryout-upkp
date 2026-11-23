@@ -652,6 +652,29 @@ Struktur Organisasi dan Tata Kerja: **tugas, kedudukan, fungsi perangkat daerah/
 - Menteri menerapkan SAKIP (Pasal 392) dan melapor kepada Presiden **berkala atau sewaktu-waktu** (Pasal 394). Kementerian menyusun **anjab, peta jabatan, ABK, uraian tugas** (Pasal 395).
 - Prinsip koordinasi, integrasi, sinkronisasi, kolaborasi didukung **interoperabilitas data dan informasi** (Pasal 396).
 - Dana APBN; fungsi keimigrasian boleh dari **sumber lain yang sah dan tidak mengikat** (Pasal 402-403). Peralihan: jabatan lama tetap bertugas sampai jabatan baru dibentuk (Pasal 405).
+
+## Modul: Permenimipas 1/2024, Direktorat Jenderal Imigrasi (Pasal 114-230)
+- Ditjen Imigrasi berada di bawah dan bertanggung jawab kepada **Menteri**, dipimpin **Direktur Jenderal** (Pasal 114). Tugas: perumusan dan pelaksanaan kebijakan di bidang **keimigrasian** (Pasal 115).
+- Lima bidang fungsi (Pasal 116): **pelayanan dan fasilitas keimigrasian**, penegakan hukum dan keamanan keimigrasian, kerja sama keimigrasian, **perlintasan negara**, dan teknologi informasi keimigrasian.
+- **Sekretariat Ditjen** = dukungan manajemen (Pasal 118). Empat bagian (Pasal 120-130): Perencanaan (rencana, anggaran, reformasi birokrasi, manajemen risiko, laporan kinerja); SDM; Keuangan (termasuk **PNBP**); Umum dan BMN (kearsipan, kesehatan, keprotokolan, pengamanan).
+| Direktorat (Pasal) | Subdirektorat |
+|---|---|
+| Visa dan Dokumen Perjalanan (134-136) | Layanan Visa; Layanan Dokumen Perjalanan; Analisis Kebutuhan dan Distribusi; Standardisasi |
+| Izin Tinggal dan Status Keimigrasian (150-152) | Izin Tinggal; Alih Status Keimigrasian; Penentuan Status Keimigrasian |
+| Intelijen Keimigrasian (163-165) | Penyelidikan dan Operasi Intelijen; Pengamanan Keimigrasian; Produk Intelijen |
+| Pengawasan dan Penindakan Keimigrasian (176-178) | Pengawasan; Penyidikan; Tindakan Administratif; Penanganan Deteni dan Koordinasi Penanganan Pengungsi |
+| Kerja Sama Keimigrasian dan Bina Perwakilan (192-194) | Kerja Sama Dalam Negeri dan Organisasi Internasional; Kerja Sama Antarnegara; Bina Perwakilan |
+| Kepatuhan Internal (205-207) | Pencegahan dan Pengendalian; Fasilitasi Advokasi dan Investigasi Internal |
+| Tempat Pemeriksaan Imigrasi (215-217) | TPI Laut; TPI Udara; TPI Darat |
+| Teknologi Informasi Keimigrasian (228-230) | Tanpa subdirektorat: Subbagian TU dan kelompok jabatan fungsional |
+- Tiap direktorat juga punya **Subbagian Tata Usaha** dan kelompok jabatan fungsional dan pelaksana.
+- Layanan Visa: persetujuan **visa kunjungan**, preclearance **kartu perjalanan pebisnis APEC**, dan **visa tinggal terbatas** (Pasal 138). Analisis Kebutuhan dan Distribusi: **pencetakan dan distribusi** visa serta dokumen perjalanan (Pasal 144).
+- Subdit Izin Tinggal: izin tinggal kunjungan, terbatas, tetap, **darurat**, dan **keadaan terpaksa** (Pasal 154). Alih Status: alih status ITAS dan ITAP serta **izin tinggal peralihan** (Pasal 157). Penentuan Status: penentuan status keimigrasian, kebijakan **diaspora Indonesia**, dan **surat keterangan keimigrasian** (Pasal 160).
+- Intelijen: Penyelidikan dan Operasi = penyelidikan, operasi intelijen, **kontra intelijen**, dan **penggalangan** (Pasal 167). Pengamanan = kantor dan **instalasi vital**, personil, material, dokumen, perizinan (Pasal 170). Produk Intelijen = perkiraan intelijen, jaringan nonlembaga, **laboratorium forensik keimigrasian** (Pasal 173).
+- Pengawasan dan Penindakan: Subdit Pengawasan = pengawasan dan **pelaporan orang asing** serta usulan tindakan administratif (Pasal 180); Subdit Penyidikan = penyidikan tindak pidana keimigrasian dan **pembinaan PPNS keimigrasian** (Pasal 182-183); Subdit Deteni = deteni, **pencari suaka, pengungsi, imigran ilegal** (Pasal 189).
+- Bina Perwakilan: kerja sama dengan **perwakilan asing di Indonesia** dan perwakilan RI di luar negeri (Pasal 201-202).
+- Kepatuhan Internal: pencegahan pelanggaran kode etik, disiplin, **pembinaan mental pegawai** (Pasal 206, 208-209); **investigasi internal** dugaan pelanggaran kode etik dan disiplin (Pasal 211-212).
+- TPI: pengawasan operasional dan pemeriksaan pada **alat angkut** (TPI Laut dan Udara, Pasal 219, 222); TPI Darat juga melaksanakan **operasi pengawasan pada perbatasan darat** (Pasal 225).
 `,
   inggris: `
 ## Cakupan kisi-kisi BKN (hal. 165-171)

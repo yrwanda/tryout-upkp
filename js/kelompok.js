@@ -83,6 +83,13 @@ window.KELOMPOK = [
     { label: "Ditjen PAS", items: ["Direktorat Pelayanan Tahanan dan Anak", "Direktorat Pembimbingan Kemasyarakatan", "Direktorat Pengamanan dan Intelijen", "Direktorat Perawatan Kesehatan dan Rehabilitasi"] },
     { label: "BPSDM", items: ["Pusat Pelatihan", "Pusat Pengembangan dan Penilaian Kompetensi"] }],
     note: "Direktorat Kepatuhan Internal tidak dipakai karena ada di Ditjen Imigrasi dan Ditjen Pemasyarakatan." },
+  { id: "k-subdit-imigrasi", topic: "sotk", title: "Subdirektorat di Ditjen Imigrasi", pages: "", src: "Permenimipas 1/2024 Pasal 136, 152, 165, 178, 194", q: "Subdirektorat ini berada di bawah direktorat mana?", bins: [
+    { label: "Visa dan Dokumen Perjalanan", items: ["Layanan Visa", "Layanan Dokumen Perjalanan", "Analisis Kebutuhan dan Distribusi Visa dan Dokumen Perjalanan", "Standardisasi Visa dan Dokumen Perjalanan"] },
+    { label: "Izin Tinggal dan Status Keimigrasian", items: ["Izin Tinggal", "Alih Status Keimigrasian", "Penentuan Status Keimigrasian"] },
+    { label: "Intelijen Keimigrasian", items: ["Penyelidikan dan Operasi Intelijen Keimigrasian", "Pengamanan Keimigrasian", "Produk Intelijen Keimigrasian"] },
+    { label: "Pengawasan dan Penindakan Keimigrasian", items: ["Pengawasan Keimigrasian", "Penyidikan Keimigrasian", "Tindakan Administratif Keimigrasian", "Penanganan Deteni dan Koordinasi Penanganan Pengungsi"] },
+    { label: "Kerja Sama Keimigrasian dan Bina Perwakilan", items: ["Kerja Sama Dalam Negeri dan Organisasi Internasional", "Kerja Sama Antarnegara", "Bina Perwakilan"] }],
+    note: "Direktorat Kepatuhan Internal (2 subdirektorat) dan Tempat Pemeriksaan Imigrasi (TPI Laut, Udara, Darat) tidak dipakai agar kelompok tetap lima. Direktorat Teknologi Informasi Keimigrasian tidak punya subdirektorat." },
   { id: "k-naskah", topic: "perkantoran", title: "Jenis naskah dinas", pages: "132", q: "Naskah ini termasuk jenis apa?", bins: [
     { label: "Arahan: pengaturan", items: ["Peraturan", "Pedoman", "SOP", "Surat edaran"] },
     { label: "Arahan: penetapan", items: ["Keputusan"] },

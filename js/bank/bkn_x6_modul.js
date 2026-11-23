@@ -3298,3 +3298,168 @@ window.BANK.literasi.push(
     src: "Modul Cakap Bermedia Digital hlm. 79"
   }
 );
+
+// SOTK: Direktorat Jenderal Imigrasi dalam Permenimipas 1/2024 Bab VI (Pasal 114-230), modul UPKP_TSI.
+// Susunan direktorat sudah ada di bkn-stk-31..42 (pelengkap); soal ini menguji tugas tiap bagian dan subdirektorat.
+window.BANK.sotk.push(
+  {
+    id: "mod-imi-01", set: "mod", topic: "sotk",
+    q: "Direktorat Jenderal Imigrasi berada di bawah dan bertanggung jawab kepada ...",
+    o: ["Presiden", "Sekretaris Jenderal Kemenimipas", "Menteri Imigrasi dan Pemasyarakatan", "Wakil Menteri Imigrasi dan Pemasyarakatan", "Inspektur Jenderal Kemenimipas"],
+    a: 2,
+    e: "Pasal 114: Ditjen Imigrasi berada di bawah dan bertanggung jawab kepada Menteri, dipimpin oleh Direktur Jenderal. Tugasnya perumusan dan pelaksanaan kebijakan di bidang keimigrasian (Pasal 115).",
+    src: "Permenimipas 1/2024 Pasal 114"
+  },
+  {
+    id: "mod-imi-02", set: "mod", topic: "sotk",
+    q: "Perencanaan dan pengelolaan penerimaan negara bukan pajak (PNBP) di lingkungan Direktorat Jenderal Imigrasi menjadi tugas ...",
+    o: ["Bagian Keuangan Sekretariat Ditjen Imigrasi", "Bagian Perencanaan Sekretariat Ditjen Imigrasi", "Bagian Umum dan BMN Sekretariat Ditjen Imigrasi", "Direktorat Visa dan Dokumen Perjalanan", "Direktorat Izin Tinggal dan Status Keimigrasian"],
+    a: 0,
+    e: "Pasal 127: Bagian Keuangan menyiapkan pembinaan dan pengelolaan urusan keuangan serta perencanaan dan pengelolaan PNBP di lingkungan Ditjen Imigrasi. Bagian Perencanaan mengurus rencana, program, dan anggaran.",
+    src: "Permenimipas 1/2024 Pasal 127"
+  },
+  {
+    id: "mod-imi-03", set: "mod", topic: "sotk",
+    q: "Pengelolaan capaian kinerja organisasi, manajemen risiko, dan penyusunan laporan kinerja Direktorat Jenderal Imigrasi menjadi tugas ...",
+    o: ["Bagian Sumber Daya Manusia", "Bagian Keuangan", "Direktorat Kepatuhan Internal", "Bagian Perencanaan", "Bagian Umum dan Barang Milik Negara"],
+    a: 3,
+    e: "Pasal 121. Bagian Perencanaan juga menyiapkan rencana, program, dan anggaran, fasilitasi pembentukan peraturan, penataan organisasi, ketatalaksanaan, dan reformasi birokrasi.",
+    src: "Permenimipas 1/2024 Pasal 121"
+  },
+  {
+    id: "mod-imi-04", set: "mod", topic: "sotk",
+    q: "Persetujuan preclearance permohonan kartu perjalanan pebisnis APEC termasuk fungsi ...",
+    o: ["Subdirektorat Layanan Dokumen Perjalanan", "Subdirektorat Layanan Visa", "Subdirektorat Kerja Sama Antarnegara", "Subdirektorat Izin Tinggal", "Subdirektorat Bina Perwakilan"],
+    a: 1,
+    e: "Pasal 138 huruf a: Subdirektorat Layanan Visa menangani persetujuan pemberian visa kunjungan dan preclearance kartu perjalanan pebisnis APEC; huruf b: persetujuan visa tinggal terbatas.",
+    src: "Permenimipas 1/2024 Pasal 137-138"
+  },
+  {
+    id: "mod-imi-05", set: "mod", topic: "sotk",
+    q: "Pelaksanaan kebijakan pencetakan dan distribusi visa serta dokumen perjalanan menjadi fungsi ...",
+    o: ["Subdirektorat Standardisasi Visa dan Dokumen Perjalanan", "Subdirektorat Layanan Dokumen Perjalanan", "Subdirektorat Produk Intelijen Keimigrasian", "Subdirektorat Pengamanan Keimigrasian", "Subdirektorat Analisis Kebutuhan dan Distribusi"],
+    a: 4,
+    e: "Pasal 144 huruf c. Nama lengkapnya Subdirektorat Analisis Kebutuhan dan Distribusi Visa dan Dokumen Perjalanan. Subdirektorat Standardisasi mengurus standar visa dan dokumen perjalanan (Pasal 147).",
+    src: "Permenimipas 1/2024 Pasal 143-144"
+  },
+  {
+    id: "mod-imi-06", set: "mod", topic: "sotk",
+    q: "Penanganan pengaduan di bidang visa dan dokumen perjalanan termasuk fungsi ...",
+    o: ["Direktorat Visa dan Dokumen Perjalanan", "Direktorat Kepatuhan Internal", "Direktorat Izin Tinggal dan Status Keimigrasian", "Direktorat Teknologi Informasi Keimigrasian", "Direktorat Tempat Pemeriksaan Imigrasi"],
+    a: 0,
+    e: "Pasal 135 huruf e: pemantauan, evaluasi, penanganan pengaduan, dan pelaporan di bidang visa dan dokumen perjalanan. Tugas direktorat ini dilaksanakan sesuai kebijakan teknis yang ditetapkan Direktur Jenderal Imigrasi (Pasal 134).",
+    src: "Permenimipas 1/2024 Pasal 134-135"
+  },
+  {
+    id: "mod-imi-07", set: "mod", topic: "sotk",
+    q: "Berikut jenis izin tinggal yang menjadi bidang Subdirektorat Izin Tinggal, KECUALI ...",
+    o: ["Izin tinggal darurat", "Izin tinggal keadaan terpaksa", "Izin tinggal kunjungan", "Izin tinggal peralihan", "Izin tinggal tetap"],
+    a: 3,
+    e: "Pasal 154: izin tinggal kunjungan, terbatas, tetap, darurat, dan keadaan terpaksa. Izin tinggal peralihan termasuk bidang Subdirektorat Alih Status Keimigrasian (Pasal 157 huruf c).",
+    src: "Permenimipas 1/2024 Pasal 154, 157"
+  },
+  {
+    id: "mod-imi-08", set: "mod", topic: "sotk",
+    q: "Kebijakan bagi diaspora Indonesia serta pemberian surat keterangan keimigrasian termasuk bidang ...",
+    o: ["Subdirektorat Izin Tinggal", "Subdirektorat Alih Status Keimigrasian", "Subdirektorat Penentuan Status Keimigrasian", "Subdirektorat Layanan Dokumen Perjalanan", "Subdirektorat Bina Perwakilan"],
+    a: 2,
+    e: "Pasal 160: penentuan status keimigrasian, bimbingan teknis dan evaluasi kebijakan bagi diaspora Indonesia, serta pemberian surat keterangan keimigrasian dan surat keterangan status keimigrasian.",
+    src: "Permenimipas 1/2024 Pasal 159-160"
+  },
+  {
+    id: "mod-imi-09", set: "mod", topic: "sotk",
+    q: "Kontra intelijen dan penggalangan keimigrasian termasuk bidang ...",
+    o: ["Subdirektorat Pengamanan Keimigrasian", "Subdirektorat Produk Intelijen Keimigrasian", "Subdirektorat Pengawasan Keimigrasian", "Subdirektorat Penyidikan Keimigrasian", "Subdirektorat Penyelidikan dan Operasi Intelijen"],
+    a: 4,
+    e: "Pasal 167: penyelidikan keimigrasian, operasi intelijen, kontra intelijen, dan penggalangan keimigrasian. Nama lengkapnya Subdirektorat Penyelidikan dan Operasi Intelijen Keimigrasian, di bawah Direktorat Intelijen Keimigrasian.",
+    src: "Permenimipas 1/2024 Pasal 166-167"
+  },
+  {
+    id: "mod-imi-10", set: "mod", topic: "sotk",
+    q: "Pengamanan kantor dan instalasi vital, personil, material dan dokumen, serta perizinan keimigrasian menjadi bidang ...",
+    o: ["Subdirektorat Produk Intelijen Keimigrasian", "Subdirektorat Pengamanan Keimigrasian", "Subdirektorat Pengawasan Keimigrasian", "Direktorat Teknologi Informasi Keimigrasian", "Subdirektorat Fasilitasi Advokasi"],
+    a: 1,
+    e: "Pasal 170, Subdirektorat Pengamanan Keimigrasian di bawah Direktorat Intelijen Keimigrasian. Dua subdirektorat lain di direktorat ini: Penyelidikan dan Operasi Intelijen Keimigrasian, serta Produk Intelijen Keimigrasian (Pasal 165).",
+    src: "Permenimipas 1/2024 Pasal 169-170"
+  },
+  {
+    id: "mod-imi-11", set: "mod", topic: "sotk",
+    q: "Laboratorium forensik keimigrasian dan pengelolaan informasi intelijen termasuk bidang ...",
+    o: ["Subdirektorat Produk Intelijen Keimigrasian", "Subdirektorat Penyidikan Keimigrasian", "Direktorat Teknologi Informasi Keimigrasian", "Subdirektorat Standardisasi Visa dan Dokumen Perjalanan", "Subdirektorat Pengamanan Keimigrasian"],
+    a: 0,
+    e: "Pasal 173 huruf a: produksi kegiatan intelijen, kerja sama lembaga intelijen, pembinaan jaringan nonlembaga, produksi perkiraan intelijen, laboratorium forensik keimigrasian, dan pengelolaan informasi intelijen.",
+    src: "Permenimipas 1/2024 Pasal 172-173"
+  },
+  {
+    id: "mod-imi-12", set: "mod", topic: "sotk",
+    q: "Pelaksanaan pengawasan dan pelaporan orang asing serta usulan pemberian tindakan administratif keimigrasian menjadi fungsi ...",
+    o: ["Subdirektorat Tindakan Administratif Keimigrasian", "Subdirektorat Penyidikan Keimigrasian", "Subdirektorat Pengawasan Keimigrasian", "Subdirektorat Pengamanan Keimigrasian", "Subdirektorat Izin Tinggal"],
+    a: 2,
+    e: "Pasal 180 huruf b. Subdirektorat Pengawasan mengusulkan; kebijakan tindakan administratif keimigrasian sendiri dirumuskan Subdirektorat Tindakan Administratif Keimigrasian (Pasal 185-186).",
+    src: "Permenimipas 1/2024 Pasal 179-180, 185-186"
+  },
+  {
+    id: "mod-imi-13", set: "mod", topic: "sotk",
+    q: "Pembinaan penyidik pegawai negeri sipil (PPNS) keimigrasian termasuk bidang ...",
+    o: ["Subdirektorat Tindakan Administratif Keimigrasian", "Subdirektorat Pengawasan Keimigrasian", "Subdirektorat Pencegahan dan Pengendalian", "Subdirektorat Penyidikan Keimigrasian", "Subdirektorat Penyelidikan dan Operasi Intelijen"],
+    a: 3,
+    e: "Pasal 182-183: Subdirektorat Penyidikan Keimigrasian menangani penyidikan tindak pidana keimigrasian, pembinaan PPNS keimigrasian, dan pelaksanaan penyidikan.",
+    src: "Permenimipas 1/2024 Pasal 182-183"
+  },
+  {
+    id: "mod-imi-14", set: "mod", topic: "sotk",
+    q: "Koordinasi penanganan pencari suaka, pengungsi, dan imigran ilegal termasuk bidang ...",
+    o: ["Subdirektorat Kerja Sama Antarnegara", "Subdirektorat Penanganan Deteni dan Koordinasi Penanganan Pengungsi", "Subdirektorat Tindakan Administratif Keimigrasian", "Subdirektorat Kerja Sama Dalam Negeri dan Organisasi Internasional", "Subdirektorat Penentuan Status Keimigrasian"],
+    a: 1,
+    e: "Pasal 189 huruf b. Subdirektorat ini juga menangani deteni dan penyebaran informasi terkait deteni dan pengungsi; berada di bawah Direktorat Pengawasan dan Penindakan Keimigrasian (Pasal 178).",
+    src: "Permenimipas 1/2024 Pasal 188-189"
+  },
+  {
+    id: "mod-imi-15", set: "mod", topic: "sotk",
+    q: "Bina kerja sama dengan perwakilan asing di Indonesia dan kerja sama keimigrasian dengan perwakilan RI di luar negeri termasuk bidang ...",
+    o: ["Subdirektorat Kerja Sama Antarnegara", "Subdirektorat Layanan Visa", "Subdirektorat Kerja Sama Dalam Negeri", "Subdirektorat Penentuan Status Keimigrasian", "Subdirektorat Bina Perwakilan"],
+    a: 4,
+    e: "Pasal 201-202, Subdirektorat Bina Perwakilan di bawah Direktorat Kerja Sama Keimigrasian dan Bina Perwakilan. Kerja sama dengan negara lain ditangani Subdirektorat Kerja Sama Antarnegara (Pasal 198-199).",
+    src: "Permenimipas 1/2024 Pasal 201-202"
+  },
+  {
+    id: "mod-imi-16", set: "mod", topic: "sotk",
+    q: "Kerja sama keimigrasian dengan organisasi internasional termasuk bidang ...",
+    o: ["Subdirektorat Kerja Sama Antarnegara", "Subdirektorat Bina Perwakilan", "Subdirektorat Kerja Sama Dalam Negeri dan Organisasi Internasional", "Subdirektorat Produk Intelijen Keimigrasian", "Subdirektorat Penanganan Deteni dan Koordinasi Penanganan Pengungsi"],
+    a: 2,
+    e: "Pasal 195-196. Subdirektorat ini juga melaksanakan kerja sama bilateral keimigrasian dengan lembaga pemerintah dan nonpemerintah dalam negeri.",
+    src: "Permenimipas 1/2024 Pasal 195-196"
+  },
+  {
+    id: "mod-imi-17", set: "mod", topic: "sotk",
+    q: "Investigasi internal atas dugaan pelanggaran kode etik dan perilaku atau disiplin pegawai Direktorat Jenderal Imigrasi menjadi fungsi ...",
+    o: ["Subdirektorat Penyidikan Keimigrasian", "Subdirektorat Fasilitasi Advokasi dan Investigasi Internal", "Subdirektorat Tindakan Administratif Keimigrasian", "Subdirektorat Pengamanan Keimigrasian", "Subdirektorat Pengawasan Keimigrasian"],
+    a: 1,
+    e: "Pasal 211-212, di bawah Direktorat Kepatuhan Internal. Subdirektorat ini juga mengawasi kepatuhan pelaksanaan tugas pelayanan dan pengawasan keimigrasian.",
+    src: "Permenimipas 1/2024 Pasal 211-212"
+  },
+  {
+    id: "mod-imi-18", set: "mod", topic: "sotk",
+    q: "Edukasi pencegahan korupsi dan pembinaan mental pegawai Direktorat Jenderal Imigrasi termasuk bidang ...",
+    o: ["Subdirektorat Pencegahan dan Pengendalian", "Subdirektorat Kerja Sama Antarnegara", "Subdirektorat Fasilitasi Advokasi dan Investigasi Internal", "Bagian Perencanaan Sekretariat Ditjen", "Subdirektorat Penyelidikan dan Operasi Intelijen"],
+    a: 0,
+    e: "Pasal 208-209, Subdirektorat Pencegahan dan Pengendalian di bawah Direktorat Kepatuhan Internal: pembinaan mental pegawai, edukasi pencegahan korupsi, serta pencegahan pelanggaran kode etik dan disiplin.",
+    src: "Permenimipas 1/2024 Pasal 208-209"
+  },
+  {
+    id: "mod-imi-19", set: "mod", topic: "sotk",
+    q: "Pelaksanaan operasi pengawasan pada perbatasan darat termasuk fungsi ...",
+    o: ["Subdirektorat Pengawasan Keimigrasian", "Subdirektorat Tempat Pemeriksaan Imigrasi Laut", "Subdirektorat Kerja Sama Antarnegara", "Subdirektorat Tempat Pemeriksaan Imigrasi Darat", "Subdirektorat Pengamanan Keimigrasian"],
+    a: 3,
+    e: "Pasal 225 huruf d. Subdirektorat TPI Laut dan Udara melakukan pengawasan operasional dan pemeriksaan keimigrasian pada alat angkut (Pasal 219, 222).",
+    src: "Permenimipas 1/2024 Pasal 224-225"
+  },
+  {
+    id: "mod-imi-20", set: "mod", topic: "sotk",
+    q: "Pelaksanaan pemeliharaan dan pengamanan teknologi informasi keimigrasian termasuk fungsi ...",
+    o: ["Direktorat Intelijen Keimigrasian", "Direktorat Tempat Pemeriksaan Imigrasi", "Direktorat Kepatuhan Internal", "Direktorat Visa dan Dokumen Perjalanan", "Direktorat Teknologi Informasi Keimigrasian"],
+    a: 4,
+    e: "Pasal 229 huruf e. Direktorat ini tidak memiliki subdirektorat; susunannya hanya Subbagian Tata Usaha serta kelompok jabatan fungsional dan pelaksana (Pasal 230).",
+    src: "Permenimipas 1/2024 Pasal 228-230"
+  }
+);
